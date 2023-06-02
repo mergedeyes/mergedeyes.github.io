@@ -152,3 +152,58 @@ hint: 'git pull ...') before pushing again.
 hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 
 
+----------
+
+Fri Jun 02 2023 12:27:30 GMT+0200 (Mitteleuropäische Sommerzeit)
+
+warning: in the working copy of 'assets/bootstrap/css/bootstrap.min.css', LF will be replaced by CRLF the next time Git touches it
+
+
+----------
+
+Fri Jun 02 2023 12:27:30 GMT+0200 (Mitteleuropäische Sommerzeit)
+
+warning: in the working copy of 'assets/bootstrap/js/bootstrap.min.js', LF will be replaced by CRLF the next time Git touches it
+
+
+----------
+
+Fri Jun 02 2023 12:27:30 GMT+0200 (Mitteleuropäische Sommerzeit)
+
+warning: in the working copy of 'assets/css/Features-Minimal-icons.css', LF will be replaced by CRLF the next time Git touches it
+
+
+----------
+
+Fri Jun 02 2023 12:27:30 GMT+0200 (Mitteleuropäische Sommerzeit)
+
+warning: in the working copy of 'index.html', LF will be replaced by CRLF the next time Git touches it
+
+
+----------
+
+Fri Jun 02 2023 12:27:30 GMT+0200 (Mitteleuropäische Sommerzeit)
+
+warning: in the working copy of 'sitemap.xml', LF will be replaced by CRLF the next time Git touches it
+
+
+----------
+
+Fri Jun 02 2023 12:27:32 GMT+0200 (Mitteleuropäische Sommerzeit)
+
+To https://github.com/mergedeyes/mergedeyes.github.io.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'https://github.com/mergedeyes/mergedeyes.github.io.git'
+
+
+----------
+
+Fri Jun 02 2023 12:27:32 GMT+0200 (Mitteleuropäische Sommerzeit)
+
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+
