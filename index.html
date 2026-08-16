@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ── EDIT: page title + description (shown in browser tab & search results) ── -->
+  <title>Jan — Systems &amp; Infrastructure</title>
+  <meta name="description" content="Personal site of Jan — systems engineer and Rust developer working close to the metal." />
+
+  <!-- Open Graph (how the link looks when shared). EDIT url/title/description. -->
+  <meta property="og:title" content="Jan — Systems &amp; Infrastructure" />
+  <meta property="og:description" content="Systems engineer and Rust developer working close to the metal." />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="layout">
+
+    <!-- ─────────────────────────  SIDE RAIL / NAV  ───────────────────────── -->
+    <header class="rail" id="rail">
+      <div class="rail__top">
+        <a class="brand" href="#top">
+          <span class="brand__name">Jan</span>
+          <span class="brand__meta">systems &amp; infrastructure</span>
+        </a>
+        <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="nav" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+      <nav class="nav" id="nav" aria-label="Sections">
+        <a href="#projects"  data-path="~/projects">Projects</a>
+        <a href="#work"       data-path="~/work">Work</a>
+        <a href="#education"  data-path="~/education">Education</a>
+        <a href="#skills"     data-path="~/skills">Skills</a>
+        <a href="#about"      data-path="~/about">About&nbsp;Me</a>
+        <a href="#contact"    data-path="~/contact">Contact</a>
+      </nav>
+
+      <div class="rail__status">
+        <span class="dot" aria-hidden="true"></span>
+        <span>open to work</span>
+      </div>
+    </header>
+
+    <!-- ─────────────────────────────  CONTENT  ───────────────────────────── -->
+    <main class="main" id="main">
+
+      <!-- ══════════════════════  HERO  ══════════════════════ -->
+      <section class="hero" id="top">
+        <p class="eyebrow">~/jan</p>
+        <h1 class="hero__title">Building things<br />close to the metal.</h1>
+        <p class="hero__lead">
+          <!-- EDIT: your one-paragraph intro. -->
+          I'm a systems engineer and Rust developer. I care about the parts of a
+          system most people never see — the layers where reliability, performance,
+          and correctness are decided.
+        </p>
+        <p class="statusline">
+          <span class="statusline__label">status</span>
+          <span class="statusline__value">shipping, learning, and reading kernel source<span class="cursor" aria-hidden="true"></span></span>
+        </p>
+      </section>
+
+      <!-- ══════════════════════  PROJECTS  ══════════════════════ -->
+      <section class="section" id="projects">
+        <div class="section__head">
+          <p class="section__path">~/projects</p>
+          <h2 class="section__title">Projects</h2>
+        </div>
+
+        <!-- EDIT: duplicate a <article class="card"> block for each project. -->
+        <div class="cards">
+          <article class="card reveal">
+            <div class="card__head">
+              <h3 class="card__title">Project name</h3>
+              <span class="tag">Rust</span>
+            </div>
+            <p class="card__body">
+              One or two sentences on what it does and why it exists. Lead with the
+              problem it solves, not the framework list.
+            </p>
+            <div class="card__foot">
+              <a href="#" class="link">Repository</a>
+              <a href="#" class="link">Live / demo</a>
+            </div>
+          </article>
+
+          <article class="card reveal">
+            <div class="card__head">
+              <h3 class="card__title">Another project</h3>
+              <span class="tag">Go</span>
+            </div>
+            <p class="card__body">
+              What you built, what was hard, and what you'd change. Keep it honest —
+              the interesting part is the decision, not the checklist.
+            </p>
+            <div class="card__foot">
+              <a href="#" class="link">Repository</a>
+            </div>
+          </article>
+
+          <article class="card reveal">
+            <div class="card__head">
+              <h3 class="card__title">A third thing</h3>
+              <span class="tag">Infra</span>
+            </div>
+            <p class="card__body">
+              A script, a service, a mirror, a homelab experiment — small projects
+              belong here too if they show how you think.
+            </p>
+            <div class="card__foot">
+              <a href="#" class="link">Repository</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ══════════════════════  WORK  ══════════════════════ -->
+      <section class="section" id="work">
+        <div class="section__head">
+          <p class="section__path">~/work</p>
+          <h2 class="section__title">Work</h2>
+        </div>
+
+        <!-- EDIT: one <div class="entry"> per role, newest first. -->
+        <div class="timeline">
+          <div class="entry reveal">
+            <div class="entry__meta">
+              <span class="entry__date">2023 — Present</span>
+            </div>
+            <div class="entry__body">
+              <h3 class="entry__title">Role / Title</h3>
+              <p class="entry__org">Company · City</p>
+              <p class="entry__desc">
+                What you're responsible for and what you've shipped. Prefer concrete
+                outcomes over duties.
+              </p>
+            </div>
+          </div>
+
+          <div class="entry reveal">
+            <div class="entry__meta">
+              <span class="entry__date">2021 — 2023</span>
+            </div>
+            <div class="entry__body">
+              <h3 class="entry__title">Previous role</h3>
+              <p class="entry__org">Company · City</p>
+              <p class="entry__desc">
+                A line or two on the scope and the impact.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════════════  EDUCATION  ══════════════════════ -->
+      <section class="section" id="education">
+        <div class="section__head">
+          <p class="section__path">~/education</p>
+          <h2 class="section__title">Education</h2>
+        </div>
+
+        <div class="timeline">
+          <div class="entry reveal">
+            <div class="entry__meta">
+              <span class="entry__date">Year — Year</span>
+            </div>
+            <div class="entry__body">
+              <h3 class="entry__title">Qualification / Programme</h3>
+              <p class="entry__org">Institution · City</p>
+              <p class="entry__desc">
+                Focus areas, notable coursework, or a line on what you took from it.
+              </p>
+            </div>
+          </div>
+
+          <div class="entry reveal">
+            <div class="entry__meta">
+              <span class="entry__date">Year — Year</span>
+            </div>
+            <div class="entry__body">
+              <h3 class="entry__title">Earlier qualification</h3>
+              <p class="entry__org">Institution · City</p>
+              <p class="entry__desc">Short description.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════════════  SKILLS  ══════════════════════ -->
+      <section class="section" id="skills">
+        <div class="section__head">
+          <p class="section__path">~/skills</p>
+          <h2 class="section__title">Skills</h2>
+        </div>
+
+        <!-- EDIT: prefilled from your stack — adjust freely. -->
+        <div class="skills">
+          <div class="skillset reveal">
+            <h3 class="skillset__title">Languages</h3>
+            <ul class="chips">
+              <li>Rust</li>
+              <li>Go</li>
+              <li>Python</li>
+              <li>C</li>
+              <li>C++</li>
+              <li>Bash / Shell</li>
+            </ul>
+          </div>
+
+          <div class="skillset reveal">
+            <h3 class="skillset__title">Systems &amp; DevOps</h3>
+            <ul class="chips">
+              <li>Linux</li>
+              <li>systemd</li>
+              <li>Networking</li>
+              <li>Containers</li>
+              <li>CI/CD</li>
+              <li>Packaging</li>
+              <li>Kernel internals</li>
+            </ul>
+          </div>
+
+          <div class="skillset reveal">
+            <h3 class="skillset__title">Tooling</h3>
+            <ul class="chips">
+              <li>Git</li>
+              <li>Cargo</li>
+              <li>Docker</li>
+              <li>Nginx</li>
+              <li>Observability</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════════════  ABOUT  ══════════════════════ -->
+      <section class="section" id="about">
+        <div class="section__head">
+          <p class="section__path">~/about</p>
+          <h2 class="section__title">About Me</h2>
+        </div>
+
+        <div class="prose reveal">
+          <!-- EDIT: a few honest paragraphs. Who you are, what you're drawn to,
+               where you're headed. -->
+          <p>
+            I work in IT systems engineering and I'm moving toward a DevOps role
+            where I still get to write real code. Rust is my primary language; I
+            reach for Go, Python, and C/C++ when the job calls for them.
+          </p>
+          <p>
+            I like understanding the <em>why</em> behind a design decision, not just
+            the how — and I'd rather sit with a hard problem than paper over it. Lately
+            that curiosity has been pulling me toward kernel development.
+          </p>
+          <p>
+            Outside of that, I run and maintain a few things of my own, and I'm always
+            happy to talk about systems, infrastructure, and the trade-offs underneath.
+          </p>
+        </div>
+      </section>
+
+      <!-- ══════════════════════  CONTACT  ══════════════════════ -->
+      <section class="section" id="contact">
+        <div class="section__head">
+          <p class="section__path">~/contact</p>
+          <h2 class="section__title">Contact</h2>
+        </div>
+
+        <div class="contact reveal">
+          <p class="contact__lead">
+            The best way to reach me is email. I'm also on the usual places.
+          </p>
+          <ul class="contact__list">
+            <!-- EDIT these links. Delete any you don't want. -->
+            <li>
+              <span class="contact__key">email</span>
+              <a class="link" href="mailto:you@example.com">you@example.com</a>
+            </li>
+            <li>
+              <span class="contact__key">github</span>
+              <a class="link" href="https://github.com/yourusername" target="_blank" rel="noopener">github.com/yourusername</a>
+            </li>
+            <li>
+              <span class="contact__key">linkedin</span>
+              <a class="link" href="#" target="_blank" rel="noopener">linkedin.com/in/you</a>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <span>© <span id="year"></span> Jan</span>
+        <span class="footer__sep">·</span>
+        <span>Built with plain HTML &amp; CSS</span>
+      </footer>
+
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
