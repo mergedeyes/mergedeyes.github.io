@@ -415,6 +415,13 @@ a:focus-visible, button:focus-visible {
 }
 .chips li:hover { color: var(--text); border-color: #37424f; }
 
+/* A handful of chips link out to a hand-authored skill page (skills/*.html).
+   Keep every visual/hover rule above driven by the <li> itself (color,
+   border, the glow), and just make the <a> fill the li's own padding box
+   so the whole pill is clickable, not only the text. Chips with no
+   matching page stay plain <li> text, untouched. */
+.chips li a { display: block; margin: -.4rem -.8rem; padding: .4rem .8rem; }
+
 /* ── About ── */
 .prose { display: grid; gap: 1.1rem; }
 .prose p { color: var(--text-dim); font-size: 1.02rem; }
@@ -628,6 +635,16 @@ a:focus-visible, button:focus-visible {
 }
 .file-tree .tree-file a:hover { color: var(--text); background: var(--surface-2); }
 .file-tree .tree-file--active a { color: var(--accent); background: var(--surface-2); font-weight: 600; }
+
+/* ============================================================
+   Individual skill pages (skills/*.html) — hand-authored, NOT
+   touched by the project-page generator; only a handful of skill
+   chips above link out to these. Shares .readme-content for prose
+   so the look matches the generated project pages.
+   ============================================================ */
+.skill-page { padding-top: clamp(3rem, 8vh, 5rem); }
+.skill-page__head { margin: .8rem 0 1.6rem; }
+.skill-page__back { margin-top: 2.5rem; }
 
 /* ============================================================
    Responsive — rail collapses to a top bar under 900px

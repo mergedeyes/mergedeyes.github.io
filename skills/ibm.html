@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IBM Systems — Jan</title>
+  <meta name="description" content="Three years as an IBM Systems Engineer — DB2, SAN, backups, and storage." />
+  <link rel="stylesheet" href="../styles.css?v=20260829" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="layout">
+    <header class="rail" id="rail">
+      <div class="rail__top">
+        <a class="brand" href="../index.html#top">
+          <span class="brand__name">Jan</span>
+          <span class="brand__meta">systems &amp; infrastructure<br>Code, Code &amp; Code</span>
+        </a>
+        <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="nav" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+      <nav class="nav" id="nav" aria-label="Sections">
+        <a href="../index.html#projects"  data-path="~/projects">Projects</a>
+        <a href="../index.html#work"       data-path="~/work">Work</a>
+        <a href="../index.html#education"  data-path="~/education">Education</a>
+        <a href="../index.html#skills"     data-path="~/skills">Skills</a>
+        <a href="../index.html#about"      data-path="~/about">About&nbsp;Me</a>
+        <a href="../index.html#contact"    data-path="~/contact">Contact</a>
+      </nav>
+
+      <div class="rail__status">
+        <span class="dot" aria-hidden="true"></span>
+        <span>open to work</span>
+      </div>
+    </header>
+
+    <main class="main" id="main">
+      <section class="section skill-page">
+        <p class="section__path"><a href="../index.html#skills" class="link">~/skills</a> / ibm</p>
+        <div class="skill-page__head">
+          <h1 class="section__title">IBM Systems</h1>
+        </div>
+
+        <div class="readme-content">
+          <p>
+            My apprenticeship at AMETRAS dms managed service GmbH was built around IBM
+            systems. Three years as an apprentice IBM Systems Engineer working with
+            DB2, SAN storage, firewalls, backups, and switches.
+          </p>
+          <p>
+            That's where I learned what enterprise reliability actually requires:
+            backups you've tested restoring from, storage that's provisioned with
+            headroom, and databases where a schema change gets planned, not
+            improvised. DB2 administration taught me to think carefully before I touch
+            data; SAN and storage work taught me that capacity planning is a real
+            skill, not an afterthought.
+          </p>
+          <p>
+            One of the things I'm proudest of from that apprenticeship: I built the
+            monitoring setup myself. My supervisor scoped what needed watching —
+            disk space, main processor load, VPN connections — and I wrote the
+            scripts that gathered the data and formatted it for Nagios and Naemon to
+            consume, then implemented the whole pipeline. More on that on the
+            <a href="monitoring.html" class="link">Monitoring &amp; Alerting</a> page.
+          </p>
+          <p>
+            It's a different world from the smaller, faster-moving projects I build
+            outside of work, but the discipline carries over.
+          </p>
+        </div>
+
+        <p class="skill-page__back"><a href="../index.html#skills" class="link">&larr; back to Skills</a></p>
+      </section>
+
+      <footer class="footer">
+        <span>© <span id="year"></span> Jan Motulla</span>
+        <span class="footer__sep">·</span>
+        <span>Built with plain HTML &amp; CSS</span>
+      </footer>
+    </main>
+  </div>
+
+  <script src="../script.js?v=20260829"></script>
+</body>
+</html>

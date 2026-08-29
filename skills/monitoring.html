@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Monitoring &amp; Alerting — Jan</title>
+  <meta name="description" content="How Jan built a monitoring pipeline from scratch during his IBM apprenticeship — scripts, thresholds, and alerting." />
+  <link rel="stylesheet" href="../styles.css?v=20260829" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="layout">
+    <header class="rail" id="rail">
+      <div class="rail__top">
+        <a class="brand" href="../index.html#top">
+          <span class="brand__name">Jan</span>
+          <span class="brand__meta">systems &amp; infrastructure<br>Code, Code &amp; Code</span>
+        </a>
+        <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="nav" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+      <nav class="nav" id="nav" aria-label="Sections">
+        <a href="../index.html#projects"  data-path="~/projects">Projects</a>
+        <a href="../index.html#work"       data-path="~/work">Work</a>
+        <a href="../index.html#education"  data-path="~/education">Education</a>
+        <a href="../index.html#skills"     data-path="~/skills">Skills</a>
+        <a href="../index.html#about"      data-path="~/about">About&nbsp;Me</a>
+        <a href="../index.html#contact"    data-path="~/contact">Contact</a>
+      </nav>
+
+      <div class="rail__status">
+        <span class="dot" aria-hidden="true"></span>
+        <span>open to work</span>
+      </div>
+    </header>
+
+    <main class="main" id="main">
+      <section class="section skill-page">
+        <p class="section__path"><a href="../index.html#skills" class="link">~/skills</a> / monitoring</p>
+        <div class="skill-page__head">
+          <h1 class="section__title">Monitoring &amp; Alerting</h1>
+        </div>
+
+        <div class="readme-content">
+          <p>
+            I built this from scratch during my
+            <a href="ibm.html" class="link">IBM</a> apprenticeship at AMETRAS, not just
+            configured someone else's setup. My supervisor scoped it, what needed
+            checking: disk space, main processor load, VPN connections, and more, 
+            and I was in charge of actually building and running it.
+          </p>
+          <p>
+            That meant writing the scripts myself: gathering the real data from each
+            system and formatting the output the way Nagios and Naemon expect it,
+            then wiring the whole pipeline together end to end.<br>See
+            <a href="nagios.html" class="link">Nagios, Nagstamon &amp; Naemon</a> for
+            the tools themselves.
+          </p>
+          <p>
+            The underlying skill is the same wherever I land: decide what "healthy"
+            means for a system, watch for the moment it stops being true, and make
+            sure I find out fast instead of a user or a customer finding out first.
+          </p>
+        </div>
+
+        <p class="skill-page__back"><a href="../index.html#skills" class="link">&larr; back to Skills</a></p>
+      </section>
+
+      <footer class="footer">
+        <span>© <span id="year"></span> Jan Motulla</span>
+        <span class="footer__sep">·</span>
+        <span>Built with plain HTML &amp; CSS</span>
+      </footer>
+    </main>
+  </div>
+
+  <script src="../script.js?v=20260829"></script>
+</body>
+</html>

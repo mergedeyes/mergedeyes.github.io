@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nagios, Nagstamon &amp; Naemon — Jan</title>
+  <meta name="description" content="The monitoring stack behind the scenes — Nagios, Nagstamon, and Naemon." />
+  <link rel="stylesheet" href="../styles.css?v=20260829" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="layout">
+    <header class="rail" id="rail">
+      <div class="rail__top">
+        <a class="brand" href="../index.html#top">
+          <span class="brand__name">Jan</span>
+          <span class="brand__meta">systems &amp; infrastructure<br>Code, Code &amp; Code</span>
+        </a>
+        <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="nav" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+      <nav class="nav" id="nav" aria-label="Sections">
+        <a href="../index.html#projects"  data-path="~/projects">Projects</a>
+        <a href="../index.html#work"       data-path="~/work">Work</a>
+        <a href="../index.html#education"  data-path="~/education">Education</a>
+        <a href="../index.html#skills"     data-path="~/skills">Skills</a>
+        <a href="../index.html#about"      data-path="~/about">About&nbsp;Me</a>
+        <a href="../index.html#contact"    data-path="~/contact">Contact</a>
+      </nav>
+
+      <div class="rail__status">
+        <span class="dot" aria-hidden="true"></span>
+        <span>open to work</span>
+      </div>
+    </header>
+
+    <main class="main" id="main">
+      <section class="section skill-page">
+        <p class="section__path"><a href="../index.html#skills" class="link">~/skills</a> / nagios</p>
+        <div class="skill-page__head">
+          <h1 class="section__title">Nagios, Nagstamon &amp; Naemon</h1>
+        </div>
+
+        <div class="readme-content">
+          <p>
+            These three make up the monitoring stack I actually operated day to day, 
+            different tools, but one connected skill, so they get one page instead of
+            three thin ones.
+          </p>
+          <p>
+            Nagios is the classic: host/service checks, plugins, and a monitoring core
+            that's been around long enough to be genuinely battle-tested. Nagstamon
+            sits on top of it as a desktop status aggregator; a permanent, 
+            glanceable view of what's red, so I notice a
+            problem without needing to keep a browser tab open (even though I still do, because it's a neverending project. 
+            Naemon is the more advanced piece: a modern, actively developed fork of the same lineage,
+            with better performance and configuration ergonomics, and it's what I
+            migrated to during my apprenticeship, which was actually my finals project.
+          </p>
+          <p>
+            Most of what feeds them isn't off-the-shelf either. During my
+            <a href="ibm.html" class="link">IBM</a> apprenticeship at AMETRAS I wrote the
+            scripts that actually gather the data (disk space, processor load, VPN
+            status, and more, scoped by my supervisor) and format it the way Nagios
+            and Naemon expect, then implemented the whole pipeline myself. See
+            <a href="monitoring.html" class="link">Monitoring &amp; Alerting</a> for
+            how that came together.
+          </p>
+        </div>
+
+        <p class="skill-page__back"><a href="../index.html#skills" class="link">&larr; back to Skills</a></p>
+      </section>
+
+      <footer class="footer">
+        <span>© <span id="year"></span> Jan Motulla</span>
+        <span class="footer__sep">·</span>
+        <span>Built with plain HTML &amp; CSS</span>
+      </footer>
+    </main>
+  </div>
+
+  <script src="../script.js?v=20260829"></script>
+</body>
+</html>

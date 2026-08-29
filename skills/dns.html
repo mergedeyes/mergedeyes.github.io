@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Domain + DNS Management — Jan</title>
+  <meta name="description" content="Running and troubleshooting real DNS — including this site's own domain." />
+  <link rel="stylesheet" href="../styles.css?v=20260829" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="layout">
+    <header class="rail" id="rail">
+      <div class="rail__top">
+        <a class="brand" href="../index.html#top">
+          <span class="brand__name">Jan</span>
+          <span class="brand__meta">systems &amp; infrastructure<br>Code, Code &amp; Code</span>
+        </a>
+        <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="nav" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+      <nav class="nav" id="nav" aria-label="Sections">
+        <a href="../index.html#projects"  data-path="~/projects">Projects</a>
+        <a href="../index.html#work"       data-path="~/work">Work</a>
+        <a href="../index.html#education"  data-path="~/education">Education</a>
+        <a href="../index.html#skills"     data-path="~/skills">Skills</a>
+        <a href="../index.html#about"      data-path="~/about">About&nbsp;Me</a>
+        <a href="../index.html#contact"    data-path="~/contact">Contact</a>
+      </nav>
+
+      <div class="rail__status">
+        <span class="dot" aria-hidden="true"></span>
+        <span>open to work</span>
+      </div>
+    </header>
+
+    <main class="main" id="main">
+      <section class="section skill-page">
+        <p class="section__path"><a href="../index.html#skills" class="link">~/skills</a> / dns</p>
+        <div class="skill-page__head">
+          <h1 class="section__title">Domain + DNS Management</h1>
+        </div>
+
+        <div class="readme-content">
+          <p>
+            I run my own domains, so DNS isn't abstract to me. It's something I
+            configure, debug, and occasionally get paged by.
+          </p>
+          <p>
+            mergedcloud.de (this site) sits on GitHub Pages behind a custom domain,
+            which means CNAME/apex records and the occasional propagation-delay
+            debugging session. Klar is split across klarsocial.de and klarsocial.eu; 
+            two different top-level domains for the same app, which meant thinking
+            through cross-site auth as much as the DNS side of pointing both domains at
+            the right infrastructure.
+          </p>
+          <p>
+            Beyond my own projects, this overlaps with domain and DNS work I do
+            professionally: Zone files, record types, and making sure a domain change
+            doesn't take a service down.
+          </p>
+        </div>
+
+        <p class="skill-page__back"><a href="../index.html#skills" class="link">&larr; back to Skills</a></p>
+      </section>
+
+      <footer class="footer">
+        <span>© <span id="year"></span> Jan Motulla</span>
+        <span class="footer__sep">·</span>
+        <span>Built with plain HTML &amp; CSS</span>
+      </footer>
+    </main>
+  </div>
+
+  <script src="../script.js?v=20260829"></script>
+</body>
+</html>
