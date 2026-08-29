@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="layout">
+    <header class="rail" id="rail">
+      <div class="rail__top">
+        <a class="brand" href="#top">
+          <span class="brand__name">Jan</span>
+          <span class="brand__meta">systems &amp; infrastructure<br>Code, Code &amp; Code</span>
+        </a>
+        <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="nav" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+      <nav class="nav" id="nav" aria-label="Sections">
+        <a href="#projects"  data-path="~/projects">Projects</a>
+        <a href="#work"       data-path="~/work">Work</a>
+        <a href="#education"  data-path="~/education">Education</a>
+        <a href="#skills"     data-path="~/skills">Skills</a>
+        <a href="#about"      data-path="~/about">About&nbsp;Me</a>
+        <a href="#contact"    data-path="~/contact">Contact</a>
+      </nav>
+      <div class="rail__status">
+        <span class="dot" aria-hidden="true"></span>
+        <span>open to work</span>
+      </div>
+    </header>
+    <main class="main" id="main">
+      <section class="section" id="projects">
+        <div class="section__head">
+          <p class="section__path">~/projects</p>
+          <h2 class="section__title">Projects</h2>
+        </div>
+        <div class="cards">
+          <article class="card reveal">
+            <div class="card__head">
+              <h3 class="card__title">Klar</h3>
+              <span class="tag">Rust</span>
+              <span class="tag">Typescript</span>
+              <span class="tag">Bash</span>
+              <span class="tag">Docker</span>
+              <span class="tag">Infrastructure</span>
+            </div>
+            <p class="card__body">
+              Klar aka Klarsocial. A new socialmedia platform for people of the EU, where authenticity counts and algorithms have no place.
+            </p>
+            <div class="card__foot">
+              <div class="card__links">
+                <a href="https://github.com/mergedeyes/Klar-Stack" class="link">Repository</a>
+                <a href="https://www.klarsocial.de/" class="link">Live / demo</a>
+              </div>
+              <span class="license-badge">AGPL-3.0</span>
+            </div>
+          </article>
+
+          <article class="card reveal">
+            <div class="card__head">
+              <h3 class="card__title">idea</h3>
+              <span class="tag">Rust</span>
+            </div>
+            <p class="card__body">
+              A tiny command-line tool for capturing ideas before you forget them, organized by topic, stored locally as JSON.
+            </p>
+            <div class="card__foot">
+              <div class="card__links">
+                <a href="https://github.com/mergedeyes/idea" class="link">Repository</a>
+              </div>
+              <span class="license-badge">GPL-3.0</span>
+            </div>
+          </article>
+
+          <article class="card reveal">
+            <div class="card__head">
+              <h3 class="card__title">Subway Builder MapTools - A wrapper for DEPOT</h3>
+              <span class="tag">Python</span>
+            </div>
+            <p class="card__body">
+              A sophisticated wrapper for creating maps for Subway Builder. Based on the DEPOT project.
+            </p>
+            <div class="card__foot">
+              <div class="card__links">
+                <a href="https://github.com/mergedeyes/subwaybuilder_maptools" class="link">Repository</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card reveal">
+            <div class="card__head">
+              <h3 class="card__title">Yarn Calculator</h3>
+              <span class="tag">Java</span>
+            </div>
+            <p class="card__body">
+              A simple Java application designed for textile enthusiasts, knitters, and designers.
+            </p>
+            <div class="card__foot">
+              <div class="card__links">
+                <a href="https://github.com/mergedeyes/yarncalculator" class="link">Repository</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
