@@ -18,10 +18,16 @@
   --accent-ink:  #0E1116;  /* text on the accent                  */
   --signal:      #5FB8A6;  /* "healthy/up" teal — status only     */
 
-  /* ── Type ── */
-  --font-display: "Bricolage Grotesque", "Inter", system-ui, sans-serif;
-  --font-body:    "Inter", system-ui, -apple-system, sans-serif;
-  --font-mono:    "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  /* ── Type ──
+     System font stacks only — no @import/<link> to Google Fonts or any
+     other external host. --font-display and --font-body used to point
+     at two different web fonts (Bricolage Grotesque, Inter); now that
+     nothing is loaded over the network, both resolve to the same native
+     stack and headings lean on font-weight/letter-spacing instead of a
+     distinct typeface for contrast. */
+  --font-display: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-body:    system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono:    ui-monospace, "SF Mono", "Cascadia Code", Menlo, Consolas, monospace;
 
   /* ── Layout ── */
   --rail-w: 264px;
@@ -232,6 +238,8 @@ a:focus-visible, button:focus-visible {
 /* ── Cards (Projects) ── */
 .cards { display: grid; gap: 1rem; }
 .card {
+  position: relative;
+  isolation: isolate; /* keep ::before/::after's negative z-index contained to this card */
   border: 1px solid var(--border);
   background: var(--surface);
   border-radius: 12px;
@@ -239,12 +247,86 @@ a:focus-visible, button:focus-visible {
   transition: border-color .18s ease, transform .18s ease, background .18s ease;
 }
 .card:hover { border-color: #37424f; transform: translateY(-2px); background: var(--surface-2); }
+
+/* Animated gradient ring + full-interior glow, revealed on hover — same
+   "spinning conic-gradient ring" idea as a nebula/glow button, recolored
+   to the site's own accent (amber) + signal (teal) instead of a generic
+   neon palette. Shared by project cards and skill chips (.chips li),
+   scaled down for the chips since they're much smaller. Two layers per
+   element share one rotating gradient:
+     ::before — MASKED down to a crisp ring tracing the outline. Masking
+                keeps its visible pixels mostly outside the element's own
+                painted area, which matters because negative z-index does
+                NOT hide a pseudo-element behind its own element's
+                background — that background always paints first
+                regardless of z-index (learned this the hard way: an
+                earlier unmasked ::after washed the whole card in flat
+                color instead of glowing).
+     ::after  — the SAME gradient, left unmasked and blurred, filling the
+                whole interior at low opacity as a soft tinted glow; the
+                blur also softens its edge into a light outward halo.
+   `--glow-spin-angle` is what actually animates, driving both layers (on
+   both element types) in sync. Everything is paused (not just invisible)
+   until hover, and dropped entirely under reduced-motion. */
+@property --glow-spin-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+.card::before, .card::after,
+.chips li::before, .chips li::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  background: conic-gradient(from var(--glow-spin-angle), var(--accent), var(--signal), var(--accent));
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .4s ease;
+  animation: glow-spin 6s linear infinite;
+  animation-play-state: paused;
+}
+.card::before, .chips li::before {
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  z-index: -1;
+}
+.card::after, .chips li::after { z-index: -2; }
+.card::before      { border-radius: 13px; padding: 1.5px; }
+.card::after        { border-radius: 13px; filter: blur(12px); }
+.chips li::before   { border-radius: 9px; padding: 1px; }
+.chips li::after    { border-radius: 9px; filter: blur(6px); }
+
+.card:hover::before, .chips li:hover::before { opacity: 1; animation-play-state: running; }
+.card:hover::after { opacity: .18; animation-play-state: running; }
+.chips li:hover::after { opacity: .22; animation-play-state: running; }
+
+/* The interior glow tints the card, so the dimmer/muted text needs to
+   step up a shade on hover to stay readable against it — description
+   and license badge sit closest to the tint (top and bottom-right
+   corner), the two spots people mentioned losing. */
+.card:hover .card__body { color: var(--text); }
+.card:hover .license-badge { color: var(--text-dim); }
+
+@keyframes glow-spin { to { --glow-spin-angle: 360deg; } }
+@media (prefers-reduced-motion: reduce) {
+  .card::before, .card::after, .chips li::before, .chips li::after { animation: none; }
+}
 /* Cards with data-href are whole-card links to their /projects page
    (see script.js) — the pointer cursor signals that over the card
    body, while the nested <a> tags (title, Repository, Live/demo)
    already get their own pointer cursor as normal links. */
 .card[data-href] { cursor: pointer; }
-.card__head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: .7rem; flex-wrap: wrap; }
+.card__head { display: flex; align-items: center; gap: 1rem; margin-bottom: .7rem; flex-wrap: wrap; }
+/* .card__head's space-between became margin-left:auto on the tag group
+   instead: with 2+ tags, plain space-between put one tag directly under
+   the title and the rest pinned to the far right on their own wrapped
+   line (a lone item on a flex line still gets shoved to that line's far
+   edge). margin-left:auto on the whole group means the group — title
+   first, tags after — either sits flush right on the title's own line,
+   or, if it doesn't fit, wraps as one unit and is still flush right on
+   its own line, so the tags always stay together instead of splitting. */
+.card__tags { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: .5rem; margin-left: auto; }
 .card__title { font-size: 1.2rem; }
 .card__body { color: var(--text-dim); font-size: .96rem; margin-bottom: 1rem; }
 
@@ -320,6 +402,8 @@ a:focus-visible, button:focus-visible {
 .skillset__title { font-size: 1.05rem; margin-bottom: .9rem; color: var(--text); }
 .chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .55rem; }
 .chips li {
+  position: relative;
+  isolation: isolate; /* keep ::before/::after's negative z-index contained to this chip */
   font-family: var(--font-mono);
   font-size: .82rem;
   color: var(--text-dim);
@@ -371,9 +455,10 @@ a:focus-visible, button:focus-visible {
    ============================================================ */
 .project-page { padding-top: clamp(3rem, 8vh, 5rem); }
 
-/* .card__head's space-between works for a card (title left, tags
-   pushed by flex-wrap), but on its own page the title+tags should
-   just sit together and wrap naturally instead of being split apart. */
+/* On its own project page, title+tags aren't split into card__head's
+   title-left/tags-right layout (there's no .card__tags wrapper here,
+   just bare tag spans) — they should just sit together and wrap
+   naturally instead. */
 .project-page__head { justify-content: flex-start; flex-wrap: wrap; gap: .6rem 1rem; margin-bottom: 1rem; }
 .project-page__head .section__title { margin-right: .2rem; }
 .project-page__foot { margin-bottom: 2.5rem; }
