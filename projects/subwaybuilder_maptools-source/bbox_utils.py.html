@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>bbox_utils.py — Subway Builder MapTools - A wrapper for DEPOT — Jan</title>
+  <link rel="stylesheet" href="../../styles.css?v=12c75c0c" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="layout">
+    <header class="rail" id="rail">
+<div class="rail__top">
+<a class="brand" href="../../index.html#top">
+<span class="brand__name">Jan</span>
+<span class="brand__meta">systems &amp; infrastructure<br/>Code, Code &amp; Code</span>
+</a>
+<button aria-controls="nav" aria-expanded="false" aria-label="Toggle menu" class="menu-toggle" id="menuToggle">
+<span></span><span></span><span></span>
+</button>
+</div>
+<nav aria-label="Sections" class="nav" id="nav">
+<a data-path="~/projects" href="../../index.html#projects">Projects</a>
+<a data-path="~/work" href="../../index.html#work">Work</a>
+<a data-path="~/education" href="../../index.html#education">Education</a>
+<a data-path="~/skills" href="../../index.html#skills">Skills</a>
+<a data-path="~/about" href="../../index.html#about">About Me</a>
+<a data-path="~/contact" href="../../index.html#contact">Contact</a>
+</nav>
+<div class="rail__status">
+<span aria-hidden="true" class="dot"></span>
+<span>open to work</span>
+</div>
+</header>
+    <nav class="file-tree"><p class="file-tree__title">Files</p><ul class="tree"><li class="tree-file tree-file--active"><a href="bbox_utils.py.html">bbox_utils.py</a></li><li class="tree-file"><a href="build.py.html">build.py</a></li><li class="tree-file"><a href="config_utils.py.html">config_utils.py</a></li><li class="tree-file"><a href="enrich_utils.py.html">enrich_utils.py</a></li><li class="tree-file"><a href="generate_demand_qzm_local.py.html">generate_demand_qzm_local.py</a></li><li class="tree-file"><a href="open_maps.py.html">open_maps.py</a></li><li class="tree-file"><a href="publish.py.html">publish.py</a></li><li class="tree-file"><a href="rerun_enrichment.py.html">rerun_enrichment.py</a></li><li class="tree-file"><a href="run_demand_pipeline.py.html">run_demand_pipeline.py</a></li><li class="tree-file"><a href="ship.py.html">ship.py</a></li><li class="tree-file"><a href="special_demand_utils.py.html">special_demand_utils.py</a></li><li class="tree-file"><a href="zensus_utils.py.html">zensus_utils.py</a></li></ul></nav>
+    <main class="main" id="main">
+      <section class="section source-page">
+        <p class="section__path">
+          <a href="../../index.html#projects" class="link">~/projects</a> /
+          <a href="../subwaybuilder_maptools.html" class="link">subwaybuilder_maptools</a> / source
+        </p>
+        <div class="source-page__head">
+          <h1 class="section__title">bbox_utils.py</h1>
+          <a href="../subwaybuilder_maptools.html" class="link">← Back to Subway Builder MapTools - A wrapper for DEPOT</a>
+        </div>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">  1</span>
+<span class="normal">  2</span>
+<span class="normal">  3</span>
+<span class="normal">  4</span>
+<span class="normal">  5</span>
+<span class="normal">  6</span>
+<span class="normal">  7</span>
+<span class="normal">  8</span>
+<span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1">### ==== SHARED HELPER: PER-CITY MAP DATA (BBOX + SPECIAL DEMAND) JSON ====</span>
+<span class="c1">#</span>
+<span class="c1"># Bounding boxes are no longer read from .env - only CITY_CODE and RAW_BASE_DIR</span>
+<span class="c1"># are needed. Each city has a persistent</span>
+<span class="c1">#   {RAW_BASE_DIR}/{CITY_CODE}/{CITY_CODE}_MAP_DATA.json</span>
+<span class="c1"># (named for what it actually holds now, not just the bbox) file, shaped like:</span>
+<span class="c1">#   {</span>
+<span class="c1">#     "bbox": [min_lon, min_lat, max_lon, max_lat],</span>
+<span class="c1">#     "special_demand": [</span>
+<span class="c1">#       {"name": ..., "type": ..., "location": [lon, lat], "total_capacity": ...},</span>
+<span class="c1">#       ...</span>
+<span class="c1">#     ]</span>
+<span class="c1">#   }</span>
+<span class="c1">#</span>
+<span class="c1"># If no bbox is saved yet, get_bbox() either uses a CLI-supplied value or</span>
+<span class="c1"># prompts you to paste one in (e.g. copied straight from</span>
+<span class="c1"># boundingbox.klokantech.com as "min_lon,min_lat,max_lon,max_lat") and saves</span>
+<span class="c1"># it, so you never have to re-enter or re-guess it for that city again.</span>
+<span class="c1">#</span>
+<span class="c1"># special_demand_utils.py reads/writes the "special_demand" list in this same</span>
+<span class="c1"># file via load_city_json()/save_city_json() below.</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">bbox_file_path</span><span class="p">(</span><span class="n">city_code</span><span class="p">,</span> <span class="n">raw_base_dir</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">raw_base_dir</span><span class="p">,</span> <span class="n">city_code</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">city_code</span><span class="si">}</span><span class="s2">_MAP_DATA.json"</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">load_city_json</span><span class="p">(</span><span class="n">city_code</span><span class="p">,</span> <span class="n">raw_base_dir</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Returns the full per-city JSON dict (bbox + special_demand), or a fresh</span>
+<span class="sd">    skeleton if the file doesn't exist yet. Always guarantees both keys are</span>
+<span class="sd">    present, for files written before "special_demand" existed.</span>
+<span class="sd">    """</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">bbox_file_path</span><span class="p">(</span><span class="n">city_code</span><span class="p">,</span> <span class="n">raw_base_dir</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">"r"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">data</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">"bbox"</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">data</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">"special_demand"</span><span class="p">,</span> <span class="p">[])</span>
+    <span class="c1"># Which special-demand type labels the OSM scan has already covered for</span>
+    <span class="c1"># this city - lets detect_and_confirm_special_demand() tell "nothing new</span>
+    <span class="c1"># to scan for" apart from "a type was just added to TYPE_TAG_RULES and</span>
+    <span class="c1"># this city has never been scanned for it", without needing to guess from</span>
+    <span class="c1"># the contents of "special_demand" alone (a city can legitimately have</span>
+    <span class="c1"># zero of some type). Missing entirely on older files - treated as "not</span>
+    <span class="c1"># scanned for anything yet", which triggers exactly one full re-scan next</span>
+    <span class="c1"># run to catch up, merging into (not replacing) whatever's already there.</span>
+    <span class="n">data</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">"scanned_types"</span><span class="p">,</span> <span class="p">[])</span>
+    <span class="k">return</span> <span class="n">data</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">save_city_json</span><span class="p">(</span><span class="n">city_code</span><span class="p">,</span> <span class="n">raw_base_dir</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">bbox_file_path</span><span class="p">(</span><span class="n">city_code</span><span class="p">,</span> <span class="n">raw_base_dir</span><span class="p">)</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">path</span><span class="p">),</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">path</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_bbox</span><span class="p">(</span><span class="n">city_code</span><span class="p">,</span> <span class="n">raw_base_dir</span><span class="p">,</span> <span class="n">bbox_arg</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Returns (min_lon, min_lat, max_lon, max_lat) for the given city code.</span>
+
+<span class="sd">    Resolution order:</span>
+<span class="sd">      1. Already saved in {raw_base_dir}/{city_code}/{city_code}_MAP_DATA.json</span>
+<span class="sd">         - always wins if present, bbox_arg is ignored (and a note is printed).</span>
+<span class="sd">      2. bbox_arg, if provided (e.g. from a --bbox CLI flag) - saved for next time.</span>
+<span class="sd">      3. Interactive prompt (paste straight from boundingbox.klokantech.com,</span>
+<span class="sd">         e.g. "5.9559,45.818,10.4921,47.8084") - saved for next time.</span>
+<span class="sd">    """</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">load_city_json</span><span class="p">(</span><span class="n">city_code</span><span class="p">,</span> <span class="n">raw_base_dir</span><span class="p">)</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">bbox_file_path</span><span class="p">(</span><span class="n">city_code</span><span class="p">,</span> <span class="n">raw_base_dir</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="s2">"bbox"</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">bbox</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">"bbox"</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">bbox_arg</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Note: --bbox was given but '</span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">' already has a saved "</span>
+                  <span class="sa">f</span><span class="s2">"bbox - using the saved one. Delete that file (or its "</span>
+                  <span class="sa">f</span><span class="s2">"</span><span class="se">\"</span><span class="s2">bbox</span><span class="se">\"</span><span class="s2"> key) if you want to replace it."</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Using saved bbox for </span><span class="si">{</span><span class="n">city_code</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">bbox</span><span class="si">}</span><span class="s2"> (from '</span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">')"</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">bbox</span>
+
+    <span class="k">if</span> <span class="n">bbox_arg</span><span class="p">:</span>
+        <span class="n">raw</span> <span class="o">=</span> <span class="n">bbox_arg</span>
+        <span class="n">source</span> <span class="o">=</span> <span class="s2">"--bbox argument"</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\n</span><span class="s2">No bounding box saved for '</span><span class="si">{</span><span class="n">city_code</span><span class="si">}</span><span class="s2">' yet."</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Paste one below (copy straight from boundingbox.klokantech.com), e.g.:"</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"  5.9559,45.818,10.4921,47.8084"</span><span class="p">)</span>
+        <span class="n">raw</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">source</span> <span class="o">=</span> <span class="s2">"interactive prompt"</span>
+
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">raw</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">raw</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="sa">f</span><span class="s2">"BBOX for </span><span class="si">{</span><span class="n">city_code</span><span class="si">}</span><span class="s2"> (min_lon,min_lat,max_lon,max_lat): "</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="n">parts</span> <span class="o">=</span> <span class="p">[</span><span class="n">v</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">raw</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">","</span><span class="p">)]</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">4</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">"Couldn't parse that - expected exactly 4 comma-separated "</span>
+                  <span class="s2">"numbers (min_lon,min_lat,max_lon,max_lat)."</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">source</span> <span class="o">==</span> <span class="s2">"--bbox argument"</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Invalid --bbox value: '</span><span class="si">{</span><span class="n">bbox_arg</span><span class="si">}</span><span class="s2">'"</span><span class="p">)</span>
+            <span class="n">raw</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">continue</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">min_lon</span><span class="p">,</span> <span class="n">min_lat</span><span class="p">,</span> <span class="n">max_lon</span><span class="p">,</span> <span class="n">max_lat</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">parts</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">"Couldn't parse that as numbers."</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">source</span> <span class="o">==</span> <span class="s2">"--bbox argument"</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Invalid --bbox value: '</span><span class="si">{</span><span class="n">bbox_arg</span><span class="si">}</span><span class="s2">'"</span><span class="p">)</span>
+            <span class="n">raw</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">continue</span>
+        <span class="k">break</span>
+
+    <span class="n">data</span><span class="p">[</span><span class="s2">"bbox"</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">min_lon</span><span class="p">,</span> <span class="n">min_lat</span><span class="p">,</span> <span class="n">max_lon</span><span class="p">,</span> <span class="n">max_lat</span><span class="p">]</span>
+    <span class="n">save_city_json</span><span class="p">(</span><span class="n">city_code</span><span class="p">,</span> <span class="n">raw_base_dir</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Saved bbox to '</span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">' (from </span><span class="si">{</span><span class="n">source</span><span class="si">}</span><span class="s2">) - future runs for "</span>
+          <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">city_code</span><span class="si">}</span><span class="s2"> will use this automatically.</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="p">(</span><span class="n">min_lon</span><span class="p">,</span> <span class="n">min_lat</span><span class="p">,</span> <span class="n">max_lon</span><span class="p">,</span> <span class="n">max_lat</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+
+      </section>
+    </main>
+  </div>
+</body>
+</html>

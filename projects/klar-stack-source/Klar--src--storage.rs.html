@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Klar/src/storage.rs — Klar — Jan</title>
+  <link rel="stylesheet" href="../../styles.css?v=12c75c0c" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="layout">
+    <header class="rail" id="rail">
+<div class="rail__top">
+<a class="brand" href="../../index.html#top">
+<span class="brand__name">Jan</span>
+<span class="brand__meta">systems &amp; infrastructure<br/>Code, Code &amp; Code</span>
+</a>
+<button aria-controls="nav" aria-expanded="false" aria-label="Toggle menu" class="menu-toggle" id="menuToggle">
+<span></span><span></span><span></span>
+</button>
+</div>
+<nav aria-label="Sections" class="nav" id="nav">
+<a data-path="~/projects" href="../../index.html#projects">Projects</a>
+<a data-path="~/work" href="../../index.html#work">Work</a>
+<a data-path="~/education" href="../../index.html#education">Education</a>
+<a data-path="~/skills" href="../../index.html#skills">Skills</a>
+<a data-path="~/about" href="../../index.html#about">About Me</a>
+<a data-path="~/contact" href="../../index.html#contact">Contact</a>
+</nav>
+<div class="rail__status">
+<span aria-hidden="true" class="dot"></span>
+<span>open to work</span>
+</div>
+</header>
+    <nav class="file-tree"><p class="file-tree__title">Files</p><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">Klar/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">src/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">handlers/</span><ul class="tree"><li class="tree-file"><a href="Klar--src--handlers--auth.rs.html">auth.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--blocks.rs.html">blocks.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--chats.rs.html">chats.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--comment_likes.rs.html">comment_likes.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--comments.rs.html">comments.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--events.rs.html">events.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--feed.rs.html">feed.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--follows.rs.html">follows.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--health.rs.html">health.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--likes.rs.html">likes.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--notifications.rs.html">notifications.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--posts.rs.html">posts.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--reports.rs.html">reports.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--uploads.rs.html">uploads.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--users.rs.html">users.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">models/</span><ul class="tree"><li class="tree-file"><a href="Klar--src--models--chat.rs.html">chat.rs</a></li><li class="tree-file"><a href="Klar--src--models--comment.rs.html">comment.rs</a></li><li class="tree-file"><a href="Klar--src--models--event.rs.html">event.rs</a></li><li class="tree-file"><a href="Klar--src--models--like.rs.html">like.rs</a></li><li class="tree-file"><a href="Klar--src--models--media.rs.html">media.rs</a></li><li class="tree-file"><a href="Klar--src--models--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="Klar--src--models--post.rs.html">post.rs</a></li><li class="tree-file"><a href="Klar--src--models--report.rs.html">report.rs</a></li><li class="tree-file"><a href="Klar--src--models--user.rs.html">user.rs</a></li></ul></li><li class="tree-file"><a href="Klar--src--auth.rs.html">auth.rs</a></li><li class="tree-file"><a href="Klar--src--config.rs.html">config.rs</a></li><li class="tree-file"><a href="Klar--src--db.rs.html">db.rs</a></li><li class="tree-file"><a href="Klar--src--email.rs.html">email.rs</a></li><li class="tree-file"><a href="Klar--src--errors.rs.html">errors.rs</a></li><li class="tree-file"><a href="Klar--src--main.rs.html">main.rs</a></li><li class="tree-file"><a href="Klar--src--media.rs.html">media.rs</a></li><li class="tree-file"><a href="Klar--src--rate_limit.rs.html">rate_limit.rs</a></li><li class="tree-file"><a href="Klar--src--routes.rs.html">routes.rs</a></li><li class="tree-file tree-file--active"><a href="Klar--src--storage.rs.html">storage.rs</a></li><li class="tree-file"><a href="Klar--src--utils.rs.html">utils.rs</a></li></ul></li></ul></li><li class="tree-dir"><span class="tree-dir__name">klar-web/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">src/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">app/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">admin/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">reports/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--admin--reports--page.tsx.html">page.tsx</a></li></ul></li></ul></li><li class="tree-dir"><span class="tree-dir__name">api/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">health/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--api--health--route.ts.html">route.ts</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">site-access/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--api--site-access--route.ts.html">route.ts</a></li></ul></li></ul></li><li class="tree-dir"><span class="tree-dir__name">chats/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--chats--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">datenschutz/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--datenschutz--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">feed/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">discovery/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--feed--discovery--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-file"><a href="klar-web--src--app--feed--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">follow-requests/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--follow-requests--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">forgot-password/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--forgot-password--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">impressum/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--impressum--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">login/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--login--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">nutzungsbedingungen/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--nutzungsbedingungen--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">posts/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">[id]/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--posts--[id]--page.tsx.html">page.tsx</a></li></ul></li></ul></li><li class="tree-dir"><span class="tree-dir__name">register/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--register--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">resend-verification/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--resend-verification--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">reset-password/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--reset-password--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">search/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--search--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">settings/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">account/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--settings--account--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">password/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--settings--password--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">profile/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--settings--profile--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-file"><a href="klar-web--src--app--settings--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">transparenz/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--transparenz--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">users/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">[username]/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--users--[username]--page.tsx.html">page.tsx</a></li></ul></li></ul></li><li class="tree-dir"><span class="tree-dir__name">verify-email/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--verify-email--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">welcome/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--welcome--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-file"><a href="klar-web--src--app--favicon.ico.html">favicon.ico</a></li><li class="tree-file"><a href="klar-web--src--app--globals.css.html">globals.css</a></li><li class="tree-file"><a href="klar-web--src--app--layout.tsx.html">layout.tsx</a></li><li class="tree-file"><a href="klar-web--src--app--page.tsx.html">page.tsx</a></li><li class="tree-file"><a href="klar-web--src--app--robots.ts.html">robots.ts</a></li><li class="tree-file"><a href="klar-web--src--app--sitemap.ts.html">sitemap.ts</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">components/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">ui/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--components--ui--button.tsx.html">button.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--ui--card.tsx.html">card.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--ui--form.tsx.html">form.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--ui--input.tsx.html">input.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--ui--label.tsx.html">label.tsx</a></li></ul></li><li class="tree-file"><a href="klar-web--src--components--ChatWindow.tsx.html">ChatWindow.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--CreatePostModal.tsx.html">CreatePostModal.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--EditedBadge.tsx.html">EditedBadge.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--Footer.tsx.html">Footer.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--NewChatModal.tsx.html">NewChatModal.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--PostCard.tsx.html">PostCard.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--PostModal.tsx.html">PostModal.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--ReportModal.tsx.html">ReportModal.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--SmartBackButton.tsx.html">SmartBackButton.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--TopNav.tsx.html">TopNav.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--UserListModal.tsx.html">UserListModal.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">hooks/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--hooks--use-notifications.ts.html">use-notifications.ts</a></li><li class="tree-file"><a href="klar-web--src--hooks--use-smart-back.ts.html">use-smart-back.ts</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">lib/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">utils/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--lib--utils--media.ts.html">media.ts</a></li></ul></li><li class="tree-file"><a href="klar-web--src--lib--api.ts.html">api.ts</a></li><li class="tree-file"><a href="klar-web--src--lib--auth-context.tsx.html">auth-context.tsx</a></li><li class="tree-file"><a href="klar-web--src--lib--utils.ts.html">utils.ts</a></li></ul></li><li class="tree-file"><a href="klar-web--src--env.ts.html">env.ts</a></li><li class="tree-file"><a href="klar-web--src--proxy.ts.html">proxy.ts</a></li></ul></li></ul></li></ul></nav>
+    <main class="main" id="main">
+      <section class="section source-page">
+        <p class="section__path">
+          <a href="../../index.html#projects" class="link">~/projects</a> /
+          <a href="../klar-stack.html" class="link">Klar-Stack</a> / source
+        </p>
+        <div class="source-page__head">
+          <h1 class="section__title">Klar/src/storage.rs</h1>
+          <a href="../klar-stack.html" class="link">← Back to Klar</a>
+        </div>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">  1</span>
+<span class="normal">  2</span>
+<span class="normal">  3</span>
+<span class="normal">  4</span>
+<span class="normal">  5</span>
+<span class="normal">  6</span>
+<span class="normal">  7</span>
+<span class="normal">  8</span>
+<span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span>
+<span class="normal">245</span>
+<span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span>
+<span class="normal">250</span>
+<span class="normal">251</span>
+<span class="normal">252</span>
+<span class="normal">253</span>
+<span class="normal">254</span>
+<span class="normal">255</span>
+<span class="normal">256</span>
+<span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span>
+<span class="normal">262</span>
+<span class="normal">263</span>
+<span class="normal">264</span>
+<span class="normal">265</span>
+<span class="normal">266</span>
+<span class="normal">267</span>
+<span class="normal">268</span>
+<span class="normal">269</span>
+<span class="normal">270</span>
+<span class="normal">271</span>
+<span class="normal">272</span>
+<span class="normal">273</span>
+<span class="normal">274</span>
+<span class="normal">275</span>
+<span class="normal">276</span>
+<span class="normal">277</span>
+<span class="normal">278</span>
+<span class="normal">279</span>
+<span class="normal">280</span>
+<span class="normal">281</span>
+<span class="normal">282</span>
+<span class="normal">283</span>
+<span class="normal">284</span>
+<span class="normal">285</span>
+<span class="normal">286</span>
+<span class="normal">287</span>
+<span class="normal">288</span>
+<span class="normal">289</span>
+<span class="normal">290</span>
+<span class="normal">291</span>
+<span class="normal">292</span>
+<span class="normal">293</span>
+<span class="normal">294</span>
+<span class="normal">295</span>
+<span class="normal">296</span>
+<span class="normal">297</span>
+<span class="normal">298</span>
+<span class="normal">299</span>
+<span class="normal">300</span>
+<span class="normal">301</span>
+<span class="normal">302</span>
+<span class="normal">303</span>
+<span class="normal">304</span>
+<span class="normal">305</span>
+<span class="normal">306</span>
+<span class="normal">307</span>
+<span class="normal">308</span>
+<span class="normal">309</span>
+<span class="normal">310</span>
+<span class="normal">311</span>
+<span class="normal">312</span>
+<span class="normal">313</span>
+<span class="normal">314</span>
+<span class="normal">315</span>
+<span class="normal">316</span>
+<span class="normal">317</span>
+<span class="normal">318</span>
+<span class="normal">319</span>
+<span class="normal">320</span>
+<span class="normal">321</span>
+<span class="normal">322</span>
+<span class="normal">323</span>
+<span class="normal">324</span>
+<span class="normal">325</span>
+<span class="normal">326</span>
+<span class="normal">327</span>
+<span class="normal">328</span>
+<span class="normal">329</span>
+<span class="normal">330</span>
+<span class="normal">331</span>
+<span class="normal">332</span>
+<span class="normal">333</span>
+<span class="normal">334</span>
+<span class="normal">335</span>
+<span class="normal">336</span>
+<span class="normal">337</span>
+<span class="normal">338</span>
+<span class="normal">339</span>
+<span class="normal">340</span>
+<span class="normal">341</span>
+<span class="normal">342</span>
+<span class="normal">343</span>
+<span class="normal">344</span>
+<span class="normal">345</span>
+<span class="normal">346</span>
+<span class="normal">347</span>
+<span class="normal">348</span>
+<span class="normal">349</span>
+<span class="normal">350</span>
+<span class="normal">351</span>
+<span class="normal">352</span>
+<span class="normal">353</span>
+<span class="normal">354</span>
+<span class="normal">355</span>
+<span class="normal">356</span>
+<span class="normal">357</span>
+<span class="normal">358</span>
+<span class="normal">359</span>
+<span class="normal">360</span>
+<span class="normal">361</span>
+<span class="normal">362</span>
+<span class="normal">363</span>
+<span class="normal">364</span>
+<span class="normal">365</span>
+<span class="normal">366</span>
+<span class="normal">367</span>
+<span class="normal">368</span>
+<span class="normal">369</span>
+<span class="normal">370</span>
+<span class="normal">371</span>
+<span class="normal">372</span>
+<span class="normal">373</span>
+<span class="normal">374</span>
+<span class="normal">375</span>
+<span class="normal">376</span>
+<span class="normal">377</span>
+<span class="normal">378</span>
+<span class="normal">379</span>
+<span class="normal">380</span>
+<span class="normal">381</span>
+<span class="normal">382</span>
+<span class="normal">383</span>
+<span class="normal">384</span>
+<span class="normal">385</span>
+<span class="normal">386</span>
+<span class="normal">387</span>
+<span class="normal">388</span>
+<span class="normal">389</span>
+<span class="normal">390</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">use</span><span class="w"> </span><span class="n">aws_sdk_s3</span><span class="p">::{</span><span class="n">config</span><span class="p">::</span><span class="n">Credentials</span><span class="p">,</span><span class="w"> </span><span class="n">Client</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">S3Client</span><span class="p">};</span>
+<span class="k">use</span><span class="w"> </span><span class="n">aws_sdk_s3</span><span class="p">::</span><span class="n">primitives</span><span class="p">::</span><span class="n">ByteStream</span><span class="p">;</span>
+<span class="k">use</span><span class="w"> </span><span class="n">reqwest</span><span class="p">::</span><span class="n">Client</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">HttpClient</span><span class="p">;</span>
+<span class="k">use</span><span class="w"> </span><span class="k">crate</span><span class="p">::</span><span class="n">errors</span><span class="p">::</span><span class="n">AppError</span><span class="p">;</span>
+
+<span class="c1">// ─── DER WRAPPER ─────────────────────────────────────────────────────────────</span>
+<span class="c1">// Diese Struktur wird im AppState gespeichert. Sie leitet jeden Aufruf</span>
+<span class="c1">// einfach an den aktiven Provider weiter.</span>
+<span class="cp">#[derive(Clone)]</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">enum</span><span class="w"> </span><span class="nc">Storage</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">S3</span><span class="p">(</span><span class="n">S3Storage</span><span class="p">),</span>
+<span class="w">    </span><span class="n">Bunny</span><span class="p">(</span><span class="n">BunnyStorage</span><span class="p">),</span>
+<span class="w">    </span><span class="n">Local</span><span class="p">(</span><span class="n">LocalStorage</span><span class="p">),</span>
+<span class="p">}</span>
+
+<span class="k">impl</span><span class="w"> </span><span class="n">Storage</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="sd">/// Initialisiert den Storage basierend auf der .env Variable.</span>
+<span class="w">    </span><span class="sd">/// Setze STORAGE_PROVIDER=s3, um Bunny über die S3-kompatible API zu nutzen,</span>
+<span class="w">    </span><span class="sd">/// oder STORAGE_PROVIDER=local, um lokal auf die Festplatte zu schreiben</span>
+<span class="w">    </span><span class="sd">/// (siehe LocalStorage weiter unten — nur für lokale Entwicklung gedacht,</span>
+<span class="w">    </span><span class="sd">/// damit `cargo run` niemals versehentlich echte Prod-Dateien schreibt</span>
+<span class="w">    </span><span class="sd">/// oder löscht).</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">new</span><span class="p">()</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">Self</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">provider</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="p">::</span><span class="n">env</span><span class="p">::</span><span class="n">var</span><span class="p">(</span><span class="s">"STORAGE_PROVIDER"</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="n">unwrap_or_else</span><span class="p">(</span><span class="o">|</span><span class="n">_</span><span class="o">|</span><span class="w"> </span><span class="s">"bunny"</span><span class="p">.</span><span class="n">to_string</span><span class="p">())</span>
+<span class="w">            </span><span class="p">.</span><span class="n">to_lowercase</span><span class="p">();</span>
+
+<span class="w">        </span><span class="k">match</span><span class="w"> </span><span class="n">provider</span><span class="p">.</span><span class="n">as_str</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="s">"s3"</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">tracing</span><span class="p">::</span><span class="n">info</span><span class="o">!</span><span class="p">(</span><span class="s">"Storage Backend: S3 Compatible"</span><span class="p">);</span>
+<span class="w">                </span><span class="n">Storage</span><span class="p">::</span><span class="n">S3</span><span class="p">(</span><span class="n">S3Storage</span><span class="p">::</span><span class="n">new</span><span class="p">().</span><span class="k">await</span><span class="p">)</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="s">"local"</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">tracing</span><span class="p">::</span><span class="n">info</span><span class="o">!</span><span class="p">(</span><span class="s">"Storage Backend: Lokale Festplatte (nur Dev)"</span><span class="p">);</span>
+<span class="w">                </span><span class="n">Storage</span><span class="p">::</span><span class="n">Local</span><span class="p">(</span><span class="n">LocalStorage</span><span class="p">::</span><span class="n">new</span><span class="p">())</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="n">_</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">tracing</span><span class="p">::</span><span class="n">info</span><span class="o">!</span><span class="p">(</span><span class="s">"Storage Backend: Bunny.net REST API"</span><span class="p">);</span>
+<span class="w">                </span><span class="n">Storage</span><span class="p">::</span><span class="n">Bunny</span><span class="p">(</span><span class="n">BunnyStorage</span><span class="p">::</span><span class="n">new</span><span class="p">())</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">save</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="p">[</span><span class="kt">u8</span><span class="p">])</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="p">(),</span><span class="w"> </span><span class="n">AppError</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">match</span><span class="w"> </span><span class="bp">self</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">Storage</span><span class="p">::</span><span class="n">S3</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">save</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">).</span><span class="k">await</span><span class="p">,</span>
+<span class="w">            </span><span class="n">Storage</span><span class="p">::</span><span class="n">Bunny</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">save</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">).</span><span class="k">await</span><span class="p">,</span>
+<span class="w">            </span><span class="n">Storage</span><span class="p">::</span><span class="n">Local</span><span class="p">(</span><span class="n">l</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">l</span><span class="p">.</span><span class="n">save</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">).</span><span class="k">await</span><span class="p">,</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">delete</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="p">(),</span><span class="w"> </span><span class="n">AppError</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">match</span><span class="w"> </span><span class="bp">self</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">Storage</span><span class="p">::</span><span class="n">S3</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">delete</span><span class="p">(</span><span class="n">key</span><span class="p">).</span><span class="k">await</span><span class="p">,</span>
+<span class="w">            </span><span class="n">Storage</span><span class="p">::</span><span class="n">Bunny</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">delete</span><span class="p">(</span><span class="n">key</span><span class="p">).</span><span class="k">await</span><span class="p">,</span>
+<span class="w">            </span><span class="n">Storage</span><span class="p">::</span><span class="n">Local</span><span class="p">(</span><span class="n">l</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">l</span><span class="p">.</span><span class="n">delete</span><span class="p">(</span><span class="n">key</span><span class="p">).</span><span class="k">await</span><span class="p">,</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">public_url</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">String</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">match</span><span class="w"> </span><span class="bp">self</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">Storage</span><span class="p">::</span><span class="n">S3</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">public_url</span><span class="p">(</span><span class="n">key</span><span class="p">),</span>
+<span class="w">            </span><span class="n">Storage</span><span class="p">::</span><span class="n">Bunny</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">public_url</span><span class="p">(</span><span class="n">key</span><span class="p">),</span>
+<span class="w">            </span><span class="n">Storage</span><span class="p">::</span><span class="n">Local</span><span class="p">(</span><span class="n">l</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">l</span><span class="p">.</span><span class="n">public_url</span><span class="p">(</span><span class="n">key</span><span class="p">),</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="sd">/// Resolves an optional storage key into a full public URL, passing</span>
+<span class="w">    </span><span class="sd">/// None through unchanged. Most media/avatar fields are optional (not</span>
+<span class="w">    </span><span class="sd">/// every post has media yet, not every user has an avatar), so this</span>
+<span class="w">    </span><span class="sd">/// saves every call site from repeating the same Option handling</span>
+<span class="w">    </span><span class="sd">/// around public_url(). Used by the ResolveMedia impls in utils.rs.</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">resolve</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="p">:</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">key</span><span class="p">.</span><span class="n">map</span><span class="p">(</span><span class="o">|</span><span class="n">k</span><span class="o">|</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">public_url</span><span class="p">(</span><span class="o">&amp;</span><span class="n">k</span><span class="p">))</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// ─── NATIVE BUNNY REST API ───────────────────────────────────────────────────</span>
+<span class="c1">// Hinweis: Seit Bunny eine S3-kompatible API anbietet, ist dieser REST-Wrapper</span>
+<span class="c1">// redundant — S3Storage unten kann dasselbe Storage-Backend abdecken. Bleibt</span>
+<span class="c1">// vorerst als Fallback erhalten.</span>
+<span class="cp">#[derive(Clone)]</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">BunnyStorage</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">client</span><span class="p">:</span><span class="w"> </span><span class="nc">HttpClient</span><span class="p">,</span>
+<span class="w">    </span><span class="n">endpoint</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span>
+<span class="w">    </span><span class="n">bucket</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span>
+<span class="w">    </span><span class="n">api_key</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span>
+<span class="w">    </span><span class="n">public_url_base</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="k">impl</span><span class="w"> </span><span class="n">BunnyStorage</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">new</span><span class="p">()</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">Self</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">endpoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="p">::</span><span class="n">env</span><span class="p">::</span><span class="n">var</span><span class="p">(</span><span class="s">"BUNNY_STORAGE_ENDPOINT"</span><span class="p">).</span><span class="n">expect</span><span class="p">(</span><span class="s">"BUNNY_STORAGE_ENDPOINT missing"</span><span class="p">);</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">bucket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="p">::</span><span class="n">env</span><span class="p">::</span><span class="n">var</span><span class="p">(</span><span class="s">"BUNNY_STORAGE_BUCKET"</span><span class="p">).</span><span class="n">expect</span><span class="p">(</span><span class="s">"BUNNY_STORAGE_BUCKET missing"</span><span class="p">);</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">api_key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="p">::</span><span class="n">env</span><span class="p">::</span><span class="n">var</span><span class="p">(</span><span class="s">"BUNNY_STORAGE_ACCESS_KEY"</span><span class="p">).</span><span class="n">expect</span><span class="p">(</span><span class="s">"BUNNY_STORAGE_ACCESS_KEY missing"</span><span class="p">);</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">public_url_base</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="p">::</span><span class="n">env</span><span class="p">::</span><span class="n">var</span><span class="p">(</span><span class="s">"BUNNY_PUBLIC_STORAGE_URL"</span><span class="p">).</span><span class="n">expect</span><span class="p">(</span><span class="s">"BUNNY_PUBLIC_STORAGE_URL missing"</span><span class="p">);</span>
+
+<span class="w">        </span><span class="bp">Self</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">client</span><span class="p">:</span><span class="w"> </span><span class="nc">HttpClient</span><span class="p">::</span><span class="n">new</span><span class="p">(),</span>
+<span class="w">            </span><span class="n">endpoint</span><span class="p">,</span>
+<span class="w">            </span><span class="n">bucket</span><span class="p">,</span>
+<span class="w">            </span><span class="n">api_key</span><span class="p">,</span>
+<span class="w">            </span><span class="n">public_url_base</span><span class="p">,</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">save</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="p">[</span><span class="kt">u8</span><span class="p">])</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="p">(),</span><span class="w"> </span><span class="n">AppError</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="fm">format!</span><span class="p">(</span><span class="s">"{}/{}/{}"</span><span class="p">,</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">endpoint</span><span class="p">,</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">bucket</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="p">);</span>
+
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">content_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">key</span><span class="p">.</span><span class="n">ends_with</span><span class="p">(</span><span class="s">".png"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">"image/png"</span><span class="w"> </span><span class="p">}</span>
+<span class="w">            </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">key</span><span class="p">.</span><span class="n">ends_with</span><span class="p">(</span><span class="s">".webp"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">"image/webp"</span><span class="w"> </span><span class="p">}</span>
+<span class="w">            </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">"image/jpeg"</span><span class="w"> </span><span class="p">};</span>
+
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">client</span>
+<span class="w">            </span><span class="p">.</span><span class="n">put</span><span class="p">(</span><span class="o">&amp;</span><span class="n">url</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="n">header</span><span class="p">(</span><span class="s">"AccessKey"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="bp">self</span><span class="p">.</span><span class="n">api_key</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="n">header</span><span class="p">(</span><span class="s">"Content-Type"</span><span class="p">,</span><span class="w"> </span><span class="n">content_type</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="n">body</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">to_vec</span><span class="p">())</span>
+<span class="w">            </span><span class="p">.</span><span class="n">send</span><span class="p">()</span>
+<span class="w">            </span><span class="p">.</span><span class="k">await</span>
+<span class="w">            </span><span class="p">.</span><span class="n">map_err</span><span class="p">(</span><span class="o">|</span><span class="n">e</span><span class="o">|</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">tracing</span><span class="p">::</span><span class="n">error</span><span class="o">!</span><span class="p">(</span><span class="s">"Bunny API request error: {}"</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">);</span>
+<span class="w">                </span><span class="n">AppError</span><span class="p">::</span><span class="n">internal</span><span class="p">(</span><span class="s">"Upload to CDN failed"</span><span class="p">)</span>
+<span class="w">            </span><span class="p">})</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="o">!</span><span class="n">response</span><span class="p">.</span><span class="n">status</span><span class="p">().</span><span class="n">is_success</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">response</span><span class="p">.</span><span class="n">text</span><span class="p">().</span><span class="k">await</span><span class="p">.</span><span class="n">unwrap_or_default</span><span class="p">();</span>
+<span class="w">            </span><span class="n">tracing</span><span class="p">::</span><span class="n">error</span><span class="o">!</span><span class="p">(</span><span class="s">"Bunny API rejected file: {}"</span><span class="p">,</span><span class="w"> </span><span class="n">text</span><span class="p">);</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">Err</span><span class="p">(</span><span class="n">AppError</span><span class="p">::</span><span class="n">internal</span><span class="p">(</span><span class="s">"CDN rejected the file"</span><span class="p">));</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="nb">Ok</span><span class="p">(())</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">delete</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="p">(),</span><span class="w"> </span><span class="n">AppError</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="fm">format!</span><span class="p">(</span><span class="s">"{}/{}/{}"</span><span class="p">,</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">endpoint</span><span class="p">,</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">bucket</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="p">);</span>
+
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">client</span>
+<span class="w">            </span><span class="p">.</span><span class="n">delete</span><span class="p">(</span><span class="o">&amp;</span><span class="n">url</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="n">header</span><span class="p">(</span><span class="s">"AccessKey"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="bp">self</span><span class="p">.</span><span class="n">api_key</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="n">send</span><span class="p">()</span>
+<span class="w">            </span><span class="p">.</span><span class="k">await</span>
+<span class="w">            </span><span class="p">.</span><span class="n">map_err</span><span class="p">(</span><span class="o">|</span><span class="n">e</span><span class="o">|</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">tracing</span><span class="p">::</span><span class="n">error</span><span class="o">!</span><span class="p">(</span><span class="s">"Bunny API delete error: {}"</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">);</span>
+<span class="w">                </span><span class="n">AppError</span><span class="p">::</span><span class="n">internal</span><span class="p">(</span><span class="s">"Delete from CDN failed"</span><span class="p">)</span>
+<span class="w">            </span><span class="p">})</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="o">!</span><span class="n">response</span><span class="p">.</span><span class="n">status</span><span class="p">().</span><span class="n">is_success</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">tracing</span><span class="p">::</span><span class="n">error</span><span class="o">!</span><span class="p">(</span><span class="s">"Bunny API delete failed: {}"</span><span class="p">,</span><span class="w"> </span><span class="n">response</span><span class="p">.</span><span class="n">status</span><span class="p">());</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">Err</span><span class="p">(</span><span class="n">AppError</span><span class="p">::</span><span class="n">internal</span><span class="p">(</span><span class="s">"CDN could not delete file"</span><span class="p">));</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="nb">Ok</span><span class="p">(())</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">public_url</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">String</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">clean_key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">key</span><span class="p">.</span><span class="n">starts_with</span><span class="p">(</span><span class="sc">'/'</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="o">&amp;</span><span class="n">key</span><span class="p">[</span><span class="mi">1</span><span class="o">..</span><span class="p">]</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="p">};</span>
+<span class="w">        </span><span class="fm">format!</span><span class="p">(</span><span class="s">"{}/{}"</span><span class="p">,</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">public_url_base</span><span class="p">,</span><span class="w"> </span><span class="n">clean_key</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// ─── S3 COMPATIBLE API (AWS SDK) ─────────────────────────────────────────────</span>
+<span class="c1">// Konfiguriert für Bunny.net Storage über die S3-kompatible Gateway.</span>
+<span class="c1">//</span>
+<span class="c1">// Bunny-Mapping (wichtig!):</span>
+<span class="c1">//   • Access Key ID     = Name deiner Storage Zone  → identisch mit dem Bucket.</span>
+<span class="c1">//                         Darum reicht der Bucket; kein separater Access-Key nötig.</span>
+<span class="c1">//                         (Setzt du S3_STORAGE_ACCESS_KEY, wird der genutzt — so</span>
+<span class="c1">//                          funktioniert derselbe Code auch für Hetzner/AWS.)</span>
+<span class="c1">//   • Secret Access Key = Passwort deiner Storage Zone (S3_STORAGE_SECRET_ACCESS_KEY)</span>
+<span class="c1">//   • Endpoint          = https://&lt;region&gt;-s3.storage.bunnycdn.com</span>
+<span class="c1">//   • Region            = de | ny | sg | uk | se | la | jh</span>
+<span class="c1">//                         Wird aus dem Endpoint abgeleitet (override via S3_STORAGE_REGION).</span>
+<span class="c1">//   • Bunny unterstützt NUR path-style URLs → force_path_style(true).</span>
+<span class="c1">//</span>
+<span class="c1">// Benötigte .env-Variablen:</span>
+<span class="c1">//   STORAGE_PROVIDER=s3</span>
+<span class="c1">//   S3_STORAGE_ENDPOINT=https://de-s3.storage.bunnycdn.com</span>
+<span class="c1">//   S3_STORAGE_BUCKET=&lt;deine-storage-zone&gt;</span>
+<span class="c1">//   S3_STORAGE_SECRET_ACCESS_KEY=&lt;storage-zone-passwort&gt;</span>
+<span class="c1">//   S3_PUBLIC_STORAGE_URL=https://&lt;deine-pullzone&gt;.b-cdn.net   (öffentliche Reads laufen</span>
+<span class="c1">//                         über die CDN-Pull-Zone, nicht über den S3-Endpoint!)</span>
+<span class="cp">#[derive(Clone)]</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">S3Storage</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">client</span><span class="p">:</span><span class="w"> </span><span class="nc">S3Client</span><span class="p">,</span>
+<span class="w">    </span><span class="n">bucket</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span>
+<span class="w">    </span><span class="n">public_url_base</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="k">impl</span><span class="w"> </span><span class="n">S3Storage</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">new</span><span class="p">()</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">Self</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">endpoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="p">::</span><span class="n">env</span><span class="p">::</span><span class="n">var</span><span class="p">(</span><span class="s">"S3_STORAGE_ENDPOINT"</span><span class="p">).</span><span class="n">expect</span><span class="p">(</span><span class="s">"S3_STORAGE_ENDPOINT missing"</span><span class="p">);</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">bucket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="p">::</span><span class="n">env</span><span class="p">::</span><span class="n">var</span><span class="p">(</span><span class="s">"S3_STORAGE_BUCKET"</span><span class="p">).</span><span class="n">expect</span><span class="p">(</span><span class="s">"S3_STORAGE_BUCKET missing"</span><span class="p">);</span>
+
+<span class="w">        </span><span class="c1">// Bunny: Access Key ID = Storage-Zone-Name = Bucket. Fallback auf den Bucket,</span>
+<span class="w">        </span><span class="c1">// wenn kein expliziter Access-Key gesetzt ist.</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">access_key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="p">::</span><span class="n">env</span><span class="p">::</span><span class="n">var</span><span class="p">(</span><span class="s">"S3_STORAGE_ACCESS_KEY"</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="n">unwrap_or_else</span><span class="p">(</span><span class="o">|</span><span class="n">_</span><span class="o">|</span><span class="w"> </span><span class="n">bucket</span><span class="p">.</span><span class="n">clone</span><span class="p">());</span>
+
+<span class="w">        </span><span class="c1">// Secret = Storage-Zone-Passwort. Akzeptiert auch den alten Namen.</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">secret_key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="p">::</span><span class="n">env</span><span class="p">::</span><span class="n">var</span><span class="p">(</span><span class="s">"S3_STORAGE_SECRET_ACCESS_KEY"</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="n">or_else</span><span class="p">(</span><span class="o">|</span><span class="n">_</span><span class="o">|</span><span class="w"> </span><span class="n">std</span><span class="p">::</span><span class="n">env</span><span class="p">::</span><span class="n">var</span><span class="p">(</span><span class="s">"S3_STORAGE_SECRET_KEY"</span><span class="p">))</span>
+<span class="w">            </span><span class="p">.</span><span class="n">expect</span><span class="p">(</span><span class="s">"S3_STORAGE_SECRET_ACCESS_KEY missing"</span><span class="p">);</span>
+
+<span class="w">        </span><span class="c1">// Region wird für die Signatur gebraucht. Aus dem Endpoint ableiten</span>
+<span class="w">        </span><span class="c1">// (z.B. https://de-s3.storage.bunnycdn.com → "de"), override via Env.</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">region_str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="p">::</span><span class="n">env</span><span class="p">::</span><span class="n">var</span><span class="p">(</span><span class="s">"S3_STORAGE_REGION"</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="n">ok</span><span class="p">()</span>
+<span class="w">            </span><span class="p">.</span><span class="n">or_else</span><span class="p">(</span><span class="o">||</span><span class="w"> </span><span class="n">derive_region_from_endpoint</span><span class="p">(</span><span class="o">&amp;</span><span class="n">endpoint</span><span class="p">))</span>
+<span class="w">            </span><span class="p">.</span><span class="n">unwrap_or_else</span><span class="p">(</span><span class="o">||</span><span class="w"> </span><span class="s">"us-east-1"</span><span class="p">.</span><span class="n">to_string</span><span class="p">());</span>
+
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">public_url_base</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="p">::</span><span class="n">env</span><span class="p">::</span><span class="n">var</span><span class="p">(</span><span class="s">"S3_PUBLIC_STORAGE_URL"</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="n">expect</span><span class="p">(</span><span class="s">"S3_PUBLIC_STORAGE_URL missing"</span><span class="p">);</span>
+
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">credentials</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Credentials</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="n">access_key</span><span class="p">,</span><span class="w"> </span><span class="n">secret_key</span><span class="p">,</span><span class="w"> </span><span class="nb">None</span><span class="p">,</span><span class="w"> </span><span class="nb">None</span><span class="p">,</span><span class="w"> </span><span class="s">"manual"</span><span class="p">);</span>
+
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">aws_config</span><span class="p">::</span><span class="n">defaults</span><span class="p">(</span><span class="n">aws_config</span><span class="p">::</span><span class="n">BehaviorVersion</span><span class="p">::</span><span class="n">latest</span><span class="p">())</span>
+<span class="w">            </span><span class="p">.</span><span class="n">region</span><span class="p">(</span><span class="n">aws_config</span><span class="p">::</span><span class="n">Region</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="n">region_str</span><span class="p">))</span>
+<span class="w">            </span><span class="p">.</span><span class="n">credentials_provider</span><span class="p">(</span><span class="n">credentials</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="n">endpoint_url</span><span class="p">(</span><span class="n">endpoint</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="n">load</span><span class="p">()</span>
+<span class="w">            </span><span class="p">.</span><span class="k">await</span><span class="p">;</span>
+
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">s3_config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">aws_sdk_s3</span><span class="p">::</span><span class="n">config</span><span class="p">::</span><span class="n">Builder</span><span class="p">::</span><span class="n">from</span><span class="p">(</span><span class="o">&amp;</span><span class="n">config</span><span class="p">)</span>
+<span class="w">            </span><span class="c1">// WICHTIG: Bunny unterstützt nur path-style URLs.</span>
+<span class="w">            </span><span class="p">.</span><span class="n">force_path_style</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="n">build</span><span class="p">();</span>
+
+<span class="w">        </span><span class="bp">Self</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">client</span><span class="p">:</span><span class="w"> </span><span class="nc">S3Client</span><span class="p">::</span><span class="n">from_conf</span><span class="p">(</span><span class="n">s3_config</span><span class="p">),</span>
+<span class="w">            </span><span class="n">bucket</span><span class="p">,</span>
+<span class="w">            </span><span class="n">public_url_base</span><span class="p">,</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">save</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="p">[</span><span class="kt">u8</span><span class="p">])</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="p">(),</span><span class="w"> </span><span class="n">AppError</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">body</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ByteStream</span><span class="p">::</span><span class="n">from</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">to_vec</span><span class="p">());</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">content_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">key</span><span class="p">.</span><span class="n">ends_with</span><span class="p">(</span><span class="s">".png"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">"image/png"</span><span class="w"> </span><span class="p">}</span>
+<span class="w">            </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">key</span><span class="p">.</span><span class="n">ends_with</span><span class="p">(</span><span class="s">".webp"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">"image/webp"</span><span class="w"> </span><span class="p">}</span>
+<span class="w">            </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">"image/jpeg"</span><span class="w"> </span><span class="p">};</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="p">.</span><span class="n">client</span>
+<span class="w">            </span><span class="p">.</span><span class="n">put_object</span><span class="p">()</span>
+<span class="w">            </span><span class="p">.</span><span class="n">bucket</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">.</span><span class="n">bucket</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="n">key</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="n">body</span><span class="p">(</span><span class="n">body</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="n">content_type</span><span class="p">(</span><span class="n">content_type</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="n">send</span><span class="p">()</span>
+<span class="w">            </span><span class="p">.</span><span class="k">await</span>
+<span class="w">            </span><span class="p">.</span><span class="n">map_err</span><span class="p">(</span><span class="o">|</span><span class="n">e</span><span class="o">|</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">tracing</span><span class="p">::</span><span class="n">error</span><span class="o">!</span><span class="p">(</span><span class="s">"S3 upload error: {:?}"</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">);</span>
+<span class="w">                </span><span class="n">AppError</span><span class="p">::</span><span class="n">internal</span><span class="p">(</span><span class="s">"Failed to upload via S3"</span><span class="p">)</span>
+<span class="w">            </span><span class="p">})</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">        </span><span class="nb">Ok</span><span class="p">(())</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">delete</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="p">(),</span><span class="w"> </span><span class="n">AppError</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="bp">self</span><span class="p">.</span><span class="n">client</span>
+<span class="w">            </span><span class="p">.</span><span class="n">delete_object</span><span class="p">()</span>
+<span class="w">            </span><span class="p">.</span><span class="n">bucket</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">.</span><span class="n">bucket</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="n">key</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="n">send</span><span class="p">()</span>
+<span class="w">            </span><span class="p">.</span><span class="k">await</span>
+<span class="w">            </span><span class="p">.</span><span class="n">map_err</span><span class="p">(</span><span class="o">|</span><span class="n">e</span><span class="o">|</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">tracing</span><span class="p">::</span><span class="n">error</span><span class="o">!</span><span class="p">(</span><span class="s">"S3 delete error: {:?}"</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">);</span>
+<span class="w">                </span><span class="n">AppError</span><span class="p">::</span><span class="n">internal</span><span class="p">(</span><span class="s">"Failed to delete via S3"</span><span class="p">)</span>
+<span class="w">            </span><span class="p">})</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">        </span><span class="nb">Ok</span><span class="p">(())</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">public_url</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">String</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">clean_key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">key</span><span class="p">.</span><span class="n">starts_with</span><span class="p">(</span><span class="sc">'/'</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="o">&amp;</span><span class="n">key</span><span class="p">[</span><span class="mi">1</span><span class="o">..</span><span class="p">]</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="p">};</span>
+<span class="w">        </span><span class="fm">format!</span><span class="p">(</span><span class="s">"{}/{}"</span><span class="p">,</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">public_url_base</span><span class="p">,</span><span class="w"> </span><span class="n">clean_key</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="sd">/// Leitet den Bunny-Regionscode aus dem S3-Endpoint ab.</span>
+<span class="sd">/// z.B. "https://de-s3.storage.bunnycdn.com" → Some("de").</span>
+<span class="sd">/// Gibt None zurück, wenn das Muster nicht passt (dann greift der Fallback).</span>
+<span class="k">fn</span><span class="w"> </span><span class="nf">derive_region_from_endpoint</span><span class="p">(</span><span class="n">endpoint</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">host</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">endpoint</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="s">"://"</span><span class="p">).</span><span class="n">last</span><span class="p">()</span><span class="o">?</span><span class="p">;</span><span class="w">      </span><span class="c1">// de-s3.storage.bunnycdn.com</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">first_label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">host</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="sc">'.'</span><span class="p">).</span><span class="n">next</span><span class="p">()</span><span class="o">?</span><span class="p">;</span><span class="w">     </span><span class="c1">// de-s3</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">region</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">first_label</span><span class="p">.</span><span class="n">strip_suffix</span><span class="p">(</span><span class="s">"-s3"</span><span class="p">)</span><span class="o">?</span><span class="p">;</span><span class="w"> </span><span class="c1">// de</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">region</span><span class="p">.</span><span class="n">is_empty</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nb">None</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nb">Some</span><span class="p">(</span><span class="n">region</span><span class="p">.</span><span class="n">to_string</span><span class="p">())</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// ─── LOKALE FESTPLATTE (nur für lokale Entwicklung) ──────────────────────────</span>
+<span class="c1">// Kein Netzwerkzugriff, kein Bunny-Key, keine Möglichkeit, versehentlich</span>
+<span class="c1">// echte Prod-Dateien zu schreiben oder zu löschen — dafür gibt es diesen</span>
+<span class="c1">// Provider. Dateien landen unter LOCAL_STORAGE_DIR (Default "./uploads",</span>
+<span class="c1">// bereits in .gitignore), ausgeliefert über die /media-Route in routes.rs</span>
+<span class="c1">// (nur gemountet, wenn STORAGE_PROVIDER=local).</span>
+<span class="c1">//</span>
+<span class="c1">// Für realistisch aussehende Daten lokal: scripts/sync_local_media.py lädt</span>
+<span class="c1">// gezielt eine Stichprobe echter Dateien aus dem Prod-Bucket über einen</span>
+<span class="c1">// Read-only-Key in genau dieses Verzeichnis herunter, mit denselben Keys,</span>
+<span class="c1">// die auch schon in der lokal wiederhergestellten DB stehen — dieser</span>
+<span class="c1">// Storage-Provider selbst braucht dafür keine Bunny-Credentials.</span>
+<span class="c1">//</span>
+<span class="c1">// Benötigte .env-Variablen:</span>
+<span class="c1">//   STORAGE_PROVIDER=local</span>
+<span class="c1">//   LOCAL_STORAGE_DIR=./uploads              (optional, das ist der Default)</span>
+<span class="c1">//   LOCAL_STORAGE_PUBLIC_URL=http://localhost:3000</span>
+<span class="c1">//     Absichtlich eine eigene Variable statt BASE_URL — BASE_URL zeigt in</span>
+<span class="c1">//     der lokalen .env aktuell auf die echte Prod-Domain, das würde hier</span>
+<span class="c1">//     kaputte Links erzeugen.</span>
+<span class="cp">#[derive(Clone)]</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">LocalStorage</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">root</span><span class="p">:</span><span class="w"> </span><span class="nc">std</span><span class="p">::</span><span class="n">path</span><span class="p">::</span><span class="n">PathBuf</span><span class="p">,</span>
+<span class="w">    </span><span class="n">public_url_base</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="k">impl</span><span class="w"> </span><span class="n">LocalStorage</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">new</span><span class="p">()</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">Self</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">root</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="p">::</span><span class="n">env</span><span class="p">::</span><span class="n">var</span><span class="p">(</span><span class="s">"LOCAL_STORAGE_DIR"</span><span class="p">).</span><span class="n">unwrap_or_else</span><span class="p">(</span><span class="o">|</span><span class="n">_</span><span class="o">|</span><span class="w"> </span><span class="s">"./uploads"</span><span class="p">.</span><span class="n">to_string</span><span class="p">());</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">root</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="p">::</span><span class="n">path</span><span class="p">::</span><span class="n">PathBuf</span><span class="p">::</span><span class="n">from</span><span class="p">(</span><span class="n">root</span><span class="p">);</span>
+
+<span class="w">        </span><span class="n">std</span><span class="p">::</span><span class="n">fs</span><span class="p">::</span><span class="n">create_dir_all</span><span class="p">(</span><span class="o">&amp;</span><span class="n">root</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="n">unwrap_or_else</span><span class="p">(</span><span class="o">|</span><span class="n">e</span><span class="o">|</span><span class="w"> </span><span class="fm">panic!</span><span class="p">(</span><span class="s">"Konnte LOCAL_STORAGE_DIR '{}' nicht anlegen: {}"</span><span class="p">,</span><span class="w"> </span><span class="n">root</span><span class="p">.</span><span class="n">display</span><span class="p">(),</span><span class="w"> </span><span class="n">e</span><span class="p">));</span>
+
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">public_url_base</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="p">::</span><span class="n">env</span><span class="p">::</span><span class="n">var</span><span class="p">(</span><span class="s">"LOCAL_STORAGE_PUBLIC_URL"</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="n">unwrap_or_else</span><span class="p">(</span><span class="o">|</span><span class="n">_</span><span class="o">|</span><span class="w"> </span><span class="s">"http://localhost:3000"</span><span class="p">.</span><span class="n">to_string</span><span class="p">());</span>
+
+<span class="w">        </span><span class="bp">Self</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">root</span><span class="p">,</span>
+<span class="w">            </span><span class="n">public_url_base</span><span class="p">:</span><span class="w"> </span><span class="nc">format</span><span class="o">!</span><span class="p">(</span><span class="s">"{}/media"</span><span class="p">,</span><span class="w"> </span><span class="n">public_url_base</span><span class="p">.</span><span class="n">trim_end_matches</span><span class="p">(</span><span class="sc">'/'</span><span class="p">)),</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">save</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="p">[</span><span class="kt">u8</span><span class="p">])</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="p">(),</span><span class="w"> </span><span class="n">AppError</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">safe_path</span><span class="p">(</span><span class="n">key</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">path</span><span class="p">.</span><span class="n">parent</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">tokio</span><span class="p">::</span><span class="n">fs</span><span class="p">::</span><span class="n">create_dir_all</span><span class="p">(</span><span class="n">parent</span><span class="p">).</span><span class="k">await</span><span class="p">.</span><span class="n">map_err</span><span class="p">(</span><span class="o">|</span><span class="n">e</span><span class="o">|</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">tracing</span><span class="p">::</span><span class="n">error</span><span class="o">!</span><span class="p">(</span><span class="s">"Konnte Verzeichnis für {} nicht anlegen: {}"</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">);</span>
+<span class="w">                </span><span class="n">AppError</span><span class="p">::</span><span class="n">internal</span><span class="p">(</span><span class="s">"Failed to save file"</span><span class="p">)</span>
+<span class="w">            </span><span class="p">})</span><span class="o">?</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="n">tokio</span><span class="p">::</span><span class="n">fs</span><span class="p">::</span><span class="n">write</span><span class="p">(</span><span class="o">&amp;</span><span class="n">path</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">).</span><span class="k">await</span><span class="p">.</span><span class="n">map_err</span><span class="p">(</span><span class="o">|</span><span class="n">e</span><span class="o">|</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">tracing</span><span class="p">::</span><span class="n">error</span><span class="o">!</span><span class="p">(</span><span class="s">"Konnte {} nicht schreiben: {}"</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">);</span>
+<span class="w">            </span><span class="n">AppError</span><span class="p">::</span><span class="n">internal</span><span class="p">(</span><span class="s">"Failed to save file"</span><span class="p">)</span>
+<span class="w">        </span><span class="p">})</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">        </span><span class="nb">Ok</span><span class="p">(())</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">delete</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="p">(),</span><span class="w"> </span><span class="n">AppError</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">safe_path</span><span class="p">(</span><span class="n">key</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">        </span><span class="k">match</span><span class="w"> </span><span class="n">tokio</span><span class="p">::</span><span class="n">fs</span><span class="p">::</span><span class="n">remove_file</span><span class="p">(</span><span class="o">&amp;</span><span class="n">path</span><span class="p">).</span><span class="k">await</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nb">Ok</span><span class="p">(())</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nb">Ok</span><span class="p">(()),</span>
+<span class="w">            </span><span class="c1">// Datei existiert schon nicht mehr — für den Aufrufer kein</span>
+<span class="w">            </span><span class="c1">// Unterschied zu "erfolgreich gelöscht".</span>
+<span class="w">            </span><span class="nb">Err</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">kind</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">std</span><span class="p">::</span><span class="n">io</span><span class="p">::</span><span class="n">ErrorKind</span><span class="p">::</span><span class="n">NotFound</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nb">Ok</span><span class="p">(()),</span>
+<span class="w">            </span><span class="nb">Err</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">tracing</span><span class="p">::</span><span class="n">error</span><span class="o">!</span><span class="p">(</span><span class="s">"Konnte {} nicht löschen: {}"</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">);</span>
+<span class="w">                </span><span class="nb">Err</span><span class="p">(</span><span class="n">AppError</span><span class="p">::</span><span class="n">internal</span><span class="p">(</span><span class="s">"Failed to delete file"</span><span class="p">))</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">public_url</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">String</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">clean_key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">key</span><span class="p">.</span><span class="n">trim_start_matches</span><span class="p">(</span><span class="sc">'/'</span><span class="p">);</span>
+<span class="w">        </span><span class="fm">format!</span><span class="p">(</span><span class="s">"{}/{}"</span><span class="p">,</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">public_url_base</span><span class="p">,</span><span class="w"> </span><span class="n">clean_key</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="sd">/// Verhindert Path Traversal: ein Key wie "../../etc/passwd" würde</span>
+<span class="w">    </span><span class="sd">/// sonst außerhalb von `root` landen. Prüft die Komponenten des Keys</span>
+<span class="w">    </span><span class="sd">/// selbst (statt canonicalize, das eine bereits existierende Datei</span>
+<span class="w">    </span><span class="sd">/// voraussetzt), lehnt jedes ".." darin ab, bevor überhaupt auf die</span>
+<span class="w">    </span><span class="sd">/// Festplatte zugegriffen wird.</span>
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">safe_path</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="n">std</span><span class="p">::</span><span class="n">path</span><span class="p">::</span><span class="n">PathBuf</span><span class="p">,</span><span class="w"> </span><span class="n">AppError</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">trimmed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">key</span><span class="p">.</span><span class="n">trim_start_matches</span><span class="p">(</span><span class="sc">'/'</span><span class="p">);</span>
+
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">component</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">std</span><span class="p">::</span><span class="n">path</span><span class="p">::</span><span class="n">Path</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="n">trimmed</span><span class="p">).</span><span class="n">components</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="fm">matches!</span><span class="p">(</span><span class="n">component</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="p">::</span><span class="n">path</span><span class="p">::</span><span class="n">Component</span><span class="p">::</span><span class="n">ParentDir</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="nb">Err</span><span class="p">(</span><span class="n">AppError</span><span class="p">::</span><span class="n">bad_request</span><span class="p">(</span><span class="s">"Invalid file key"</span><span class="p">));</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="nb">Ok</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">root</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">trimmed</span><span class="p">))</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div></td></tr></table></div>
+
+      </section>
+    </main>
+  </div>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>rerun_enrichment.py — Subway Builder MapTools - A wrapper for DEPOT — Jan</title>
+  <link rel="stylesheet" href="../../styles.css?v=12c75c0c" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="layout">
+    <header class="rail" id="rail">
+<div class="rail__top">
+<a class="brand" href="../../index.html#top">
+<span class="brand__name">Jan</span>
+<span class="brand__meta">systems &amp; infrastructure<br/>Code, Code &amp; Code</span>
+</a>
+<button aria-controls="nav" aria-expanded="false" aria-label="Toggle menu" class="menu-toggle" id="menuToggle">
+<span></span><span></span><span></span>
+</button>
+</div>
+<nav aria-label="Sections" class="nav" id="nav">
+<a data-path="~/projects" href="../../index.html#projects">Projects</a>
+<a data-path="~/work" href="../../index.html#work">Work</a>
+<a data-path="~/education" href="../../index.html#education">Education</a>
+<a data-path="~/skills" href="../../index.html#skills">Skills</a>
+<a data-path="~/about" href="../../index.html#about">About Me</a>
+<a data-path="~/contact" href="../../index.html#contact">Contact</a>
+</nav>
+<div class="rail__status">
+<span aria-hidden="true" class="dot"></span>
+<span>open to work</span>
+</div>
+</header>
+    <nav class="file-tree"><p class="file-tree__title">Files</p><ul class="tree"><li class="tree-file"><a href="bbox_utils.py.html">bbox_utils.py</a></li><li class="tree-file"><a href="build.py.html">build.py</a></li><li class="tree-file"><a href="config_utils.py.html">config_utils.py</a></li><li class="tree-file"><a href="enrich_utils.py.html">enrich_utils.py</a></li><li class="tree-file"><a href="generate_demand_qzm_local.py.html">generate_demand_qzm_local.py</a></li><li class="tree-file"><a href="open_maps.py.html">open_maps.py</a></li><li class="tree-file"><a href="publish.py.html">publish.py</a></li><li class="tree-file tree-file--active"><a href="rerun_enrichment.py.html">rerun_enrichment.py</a></li><li class="tree-file"><a href="run_demand_pipeline.py.html">run_demand_pipeline.py</a></li><li class="tree-file"><a href="ship.py.html">ship.py</a></li><li class="tree-file"><a href="special_demand_utils.py.html">special_demand_utils.py</a></li><li class="tree-file"><a href="zensus_utils.py.html">zensus_utils.py</a></li></ul></nav>
+    <main class="main" id="main">
+      <section class="section source-page">
+        <p class="section__path">
+          <a href="../../index.html#projects" class="link">~/projects</a> /
+          <a href="../subwaybuilder_maptools.html" class="link">subwaybuilder_maptools</a> / source
+        </p>
+        <div class="source-page__head">
+          <h1 class="section__title">rerun_enrichment.py</h1>
+          <a href="../subwaybuilder_maptools.html" class="link">← Back to Subway Builder MapTools - A wrapper for DEPOT</a>
+        </div>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># EXAMPLE: re-run only the enrichment stage of the demand pipeline</span>
+<span class="c1">#</span>
+<span class="c1"># Use this after tuning RES_SIZE_RATIO/JOB_SIZE_RATIO in .env, hand-editing a</span>
+<span class="c1"># special-demand JSON file (raw_map_files/CITY_CODE/.railyard_map/</span>
+<span class="c1"># special_demand_points.json), or changing CITY_NAME/MAP_DESCRIPTION/</span>
+<span class="c1"># MAP_CREATOR - it skips the much slower OSM parsing / airport snapping /</span>
+<span class="c1"># base OSRM routing steps and just re-runs cluster/consolidate + named</span>
+<span class="c1"># special demand against the existing base checkpoint</span>
+<span class="c1"># (raw_map_files/CITY_CODE/demand_data_base.json), saves the result to</span>
+<span class="c1"># demand_data.json - same file run_demand_pipeline.py's full run writes -</span>
+<span class="c1"># and regenerates config.json from it (see config_utils.py).</span>
+<span class="c1">#</span>
+<span class="c1"># Requires run_demand_pipeline.py (DemandGen.run_all(), the full pipeline)</span>
+<span class="c1"># to have completed at least once for this city already - see its</span>
+<span class="c1"># run_enrich_only() docstring, and generate_demand_qzm_local.py's</span>
+<span class="c1"># enrich_demand() for what actually runs.</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">run_demand_pipeline</span><span class="w"> </span><span class="kn">import</span> <span class="n">demand_gen</span>
+
+<span class="n">demand_gen</span><span class="o">.</span><span class="n">run_enrich_only</span><span class="p">()</span>
+</pre></div></td></tr></table></div>
+
+      </section>
+    </main>
+  </div>
+</body>
+</html>

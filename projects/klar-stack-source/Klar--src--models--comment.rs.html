@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Klar/src/models/comment.rs — Klar — Jan</title>
+  <link rel="stylesheet" href="../../styles.css?v=12c75c0c" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="layout">
+    <header class="rail" id="rail">
+<div class="rail__top">
+<a class="brand" href="../../index.html#top">
+<span class="brand__name">Jan</span>
+<span class="brand__meta">systems &amp; infrastructure<br/>Code, Code &amp; Code</span>
+</a>
+<button aria-controls="nav" aria-expanded="false" aria-label="Toggle menu" class="menu-toggle" id="menuToggle">
+<span></span><span></span><span></span>
+</button>
+</div>
+<nav aria-label="Sections" class="nav" id="nav">
+<a data-path="~/projects" href="../../index.html#projects">Projects</a>
+<a data-path="~/work" href="../../index.html#work">Work</a>
+<a data-path="~/education" href="../../index.html#education">Education</a>
+<a data-path="~/skills" href="../../index.html#skills">Skills</a>
+<a data-path="~/about" href="../../index.html#about">About Me</a>
+<a data-path="~/contact" href="../../index.html#contact">Contact</a>
+</nav>
+<div class="rail__status">
+<span aria-hidden="true" class="dot"></span>
+<span>open to work</span>
+</div>
+</header>
+    <nav class="file-tree"><p class="file-tree__title">Files</p><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">Klar/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">src/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">handlers/</span><ul class="tree"><li class="tree-file"><a href="Klar--src--handlers--auth.rs.html">auth.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--blocks.rs.html">blocks.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--chats.rs.html">chats.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--comment_likes.rs.html">comment_likes.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--comments.rs.html">comments.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--events.rs.html">events.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--feed.rs.html">feed.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--follows.rs.html">follows.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--health.rs.html">health.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--likes.rs.html">likes.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--notifications.rs.html">notifications.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--posts.rs.html">posts.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--reports.rs.html">reports.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--uploads.rs.html">uploads.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--users.rs.html">users.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">models/</span><ul class="tree"><li class="tree-file"><a href="Klar--src--models--chat.rs.html">chat.rs</a></li><li class="tree-file tree-file--active"><a href="Klar--src--models--comment.rs.html">comment.rs</a></li><li class="tree-file"><a href="Klar--src--models--event.rs.html">event.rs</a></li><li class="tree-file"><a href="Klar--src--models--like.rs.html">like.rs</a></li><li class="tree-file"><a href="Klar--src--models--media.rs.html">media.rs</a></li><li class="tree-file"><a href="Klar--src--models--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="Klar--src--models--post.rs.html">post.rs</a></li><li class="tree-file"><a href="Klar--src--models--report.rs.html">report.rs</a></li><li class="tree-file"><a href="Klar--src--models--user.rs.html">user.rs</a></li></ul></li><li class="tree-file"><a href="Klar--src--auth.rs.html">auth.rs</a></li><li class="tree-file"><a href="Klar--src--config.rs.html">config.rs</a></li><li class="tree-file"><a href="Klar--src--db.rs.html">db.rs</a></li><li class="tree-file"><a href="Klar--src--email.rs.html">email.rs</a></li><li class="tree-file"><a href="Klar--src--errors.rs.html">errors.rs</a></li><li class="tree-file"><a href="Klar--src--main.rs.html">main.rs</a></li><li class="tree-file"><a href="Klar--src--media.rs.html">media.rs</a></li><li class="tree-file"><a href="Klar--src--rate_limit.rs.html">rate_limit.rs</a></li><li class="tree-file"><a href="Klar--src--routes.rs.html">routes.rs</a></li><li class="tree-file"><a href="Klar--src--storage.rs.html">storage.rs</a></li><li class="tree-file"><a href="Klar--src--utils.rs.html">utils.rs</a></li></ul></li></ul></li><li class="tree-dir"><span class="tree-dir__name">klar-web/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">src/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">app/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">admin/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">reports/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--admin--reports--page.tsx.html">page.tsx</a></li></ul></li></ul></li><li class="tree-dir"><span class="tree-dir__name">api/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">health/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--api--health--route.ts.html">route.ts</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">site-access/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--api--site-access--route.ts.html">route.ts</a></li></ul></li></ul></li><li class="tree-dir"><span class="tree-dir__name">chats/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--chats--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">datenschutz/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--datenschutz--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">feed/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">discovery/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--feed--discovery--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-file"><a href="klar-web--src--app--feed--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">follow-requests/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--follow-requests--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">forgot-password/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--forgot-password--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">impressum/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--impressum--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">login/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--login--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">nutzungsbedingungen/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--nutzungsbedingungen--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">posts/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">[id]/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--posts--[id]--page.tsx.html">page.tsx</a></li></ul></li></ul></li><li class="tree-dir"><span class="tree-dir__name">register/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--register--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">resend-verification/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--resend-verification--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">reset-password/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--reset-password--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">search/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--search--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">settings/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">account/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--settings--account--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">password/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--settings--password--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">profile/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--settings--profile--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-file"><a href="klar-web--src--app--settings--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">transparenz/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--transparenz--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">users/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">[username]/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--users--[username]--page.tsx.html">page.tsx</a></li></ul></li></ul></li><li class="tree-dir"><span class="tree-dir__name">verify-email/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--verify-email--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">welcome/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--welcome--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-file"><a href="klar-web--src--app--favicon.ico.html">favicon.ico</a></li><li class="tree-file"><a href="klar-web--src--app--globals.css.html">globals.css</a></li><li class="tree-file"><a href="klar-web--src--app--layout.tsx.html">layout.tsx</a></li><li class="tree-file"><a href="klar-web--src--app--page.tsx.html">page.tsx</a></li><li class="tree-file"><a href="klar-web--src--app--robots.ts.html">robots.ts</a></li><li class="tree-file"><a href="klar-web--src--app--sitemap.ts.html">sitemap.ts</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">components/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">ui/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--components--ui--button.tsx.html">button.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--ui--card.tsx.html">card.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--ui--form.tsx.html">form.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--ui--input.tsx.html">input.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--ui--label.tsx.html">label.tsx</a></li></ul></li><li class="tree-file"><a href="klar-web--src--components--ChatWindow.tsx.html">ChatWindow.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--CreatePostModal.tsx.html">CreatePostModal.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--EditedBadge.tsx.html">EditedBadge.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--Footer.tsx.html">Footer.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--NewChatModal.tsx.html">NewChatModal.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--PostCard.tsx.html">PostCard.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--PostModal.tsx.html">PostModal.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--ReportModal.tsx.html">ReportModal.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--SmartBackButton.tsx.html">SmartBackButton.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--TopNav.tsx.html">TopNav.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--UserListModal.tsx.html">UserListModal.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">hooks/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--hooks--use-notifications.ts.html">use-notifications.ts</a></li><li class="tree-file"><a href="klar-web--src--hooks--use-smart-back.ts.html">use-smart-back.ts</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">lib/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">utils/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--lib--utils--media.ts.html">media.ts</a></li></ul></li><li class="tree-file"><a href="klar-web--src--lib--api.ts.html">api.ts</a></li><li class="tree-file"><a href="klar-web--src--lib--auth-context.tsx.html">auth-context.tsx</a></li><li class="tree-file"><a href="klar-web--src--lib--utils.ts.html">utils.ts</a></li></ul></li><li class="tree-file"><a href="klar-web--src--env.ts.html">env.ts</a></li><li class="tree-file"><a href="klar-web--src--proxy.ts.html">proxy.ts</a></li></ul></li></ul></li></ul></nav>
+    <main class="main" id="main">
+      <section class="section source-page">
+        <p class="section__path">
+          <a href="../../index.html#projects" class="link">~/projects</a> /
+          <a href="../klar-stack.html" class="link">Klar-Stack</a> / source
+        </p>
+        <div class="source-page__head">
+          <h1 class="section__title">Klar/src/models/comment.rs</h1>
+          <a href="../klar-stack.html" class="link">← Back to Klar</a>
+        </div>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span></pre></div></td><td class="code"><div><pre><span></span><span class="sd">/// Comment models.</span>
+
+<span class="k">use</span><span class="w"> </span><span class="n">chrono</span><span class="p">::{</span><span class="n">DateTime</span><span class="p">,</span><span class="w"> </span><span class="n">Utc</span><span class="p">};</span>
+<span class="k">use</span><span class="w"> </span><span class="n">serde</span><span class="p">::{</span><span class="n">Deserialize</span><span class="p">,</span><span class="w"> </span><span class="n">Serialize</span><span class="p">};</span>
+<span class="k">use</span><span class="w"> </span><span class="n">uuid</span><span class="p">::</span><span class="n">Uuid</span><span class="p">;</span>
+
+<span class="cp">#[derive(Debug, Serialize, sqlx::FromRow)]</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">CommentResponse</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="nc">Uuid</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">post_id</span><span class="p">:</span><span class="w"> </span><span class="nc">Uuid</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">user_id</span><span class="p">:</span><span class="w"> </span><span class="nc">Uuid</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">username</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">avatar_url</span><span class="p">:</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">parent_comment_id</span><span class="p">:</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="n">Uuid</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">body</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">created_at</span><span class="p">:</span><span class="w"> </span><span class="nc">DateTime</span><span class="o">&lt;</span><span class="n">Utc</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">edited_at</span><span class="p">:</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="n">DateTime</span><span class="o">&lt;</span><span class="n">Utc</span><span class="o">&gt;&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">like_count</span><span class="p">:</span><span class="w"> </span><span class="kt">i64</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">liked</span><span class="p">:</span><span class="w"> </span><span class="kt">bool</span><span class="p">,</span>
+<span class="w">    </span><span class="sd">/// "visible" | "flagged" | "hidden" -- see handlers/reports.rs.</span>
+<span class="w">    </span><span class="sd">/// get_comments already excludes "hidden" comments for everyone but</span>
+<span class="w">    </span><span class="sd">/// their own author, so this field's job on the frontend is just</span>
+<span class="w">    </span><span class="sd">/// rendering the "flagged" interstitial for the author's own view.</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">moderation_status</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="cp">#[derive(Debug, Deserialize)]</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">CreateCommentRequest</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">body</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">parent_comment_id</span><span class="p">:</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="n">Uuid</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="cp">#[derive(Debug, Deserialize)]</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">EditCommentRequest</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">body</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div></td></tr></table></div>
+
+      </section>
+    </main>
+  </div>
+</body>
+</html>

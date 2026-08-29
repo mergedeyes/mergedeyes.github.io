@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Klar/src/handlers/chats.rs — Klar — Jan</title>
+  <link rel="stylesheet" href="../../styles.css?v=12c75c0c" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="layout">
+    <header class="rail" id="rail">
+<div class="rail__top">
+<a class="brand" href="../../index.html#top">
+<span class="brand__name">Jan</span>
+<span class="brand__meta">systems &amp; infrastructure<br/>Code, Code &amp; Code</span>
+</a>
+<button aria-controls="nav" aria-expanded="false" aria-label="Toggle menu" class="menu-toggle" id="menuToggle">
+<span></span><span></span><span></span>
+</button>
+</div>
+<nav aria-label="Sections" class="nav" id="nav">
+<a data-path="~/projects" href="../../index.html#projects">Projects</a>
+<a data-path="~/work" href="../../index.html#work">Work</a>
+<a data-path="~/education" href="../../index.html#education">Education</a>
+<a data-path="~/skills" href="../../index.html#skills">Skills</a>
+<a data-path="~/about" href="../../index.html#about">About Me</a>
+<a data-path="~/contact" href="../../index.html#contact">Contact</a>
+</nav>
+<div class="rail__status">
+<span aria-hidden="true" class="dot"></span>
+<span>open to work</span>
+</div>
+</header>
+    <nav class="file-tree"><p class="file-tree__title">Files</p><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">Klar/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">src/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">handlers/</span><ul class="tree"><li class="tree-file"><a href="Klar--src--handlers--auth.rs.html">auth.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--blocks.rs.html">blocks.rs</a></li><li class="tree-file tree-file--active"><a href="Klar--src--handlers--chats.rs.html">chats.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--comment_likes.rs.html">comment_likes.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--comments.rs.html">comments.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--events.rs.html">events.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--feed.rs.html">feed.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--follows.rs.html">follows.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--health.rs.html">health.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--likes.rs.html">likes.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--notifications.rs.html">notifications.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--posts.rs.html">posts.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--reports.rs.html">reports.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--uploads.rs.html">uploads.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--users.rs.html">users.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">models/</span><ul class="tree"><li class="tree-file"><a href="Klar--src--models--chat.rs.html">chat.rs</a></li><li class="tree-file"><a href="Klar--src--models--comment.rs.html">comment.rs</a></li><li class="tree-file"><a href="Klar--src--models--event.rs.html">event.rs</a></li><li class="tree-file"><a href="Klar--src--models--like.rs.html">like.rs</a></li><li class="tree-file"><a href="Klar--src--models--media.rs.html">media.rs</a></li><li class="tree-file"><a href="Klar--src--models--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="Klar--src--models--post.rs.html">post.rs</a></li><li class="tree-file"><a href="Klar--src--models--report.rs.html">report.rs</a></li><li class="tree-file"><a href="Klar--src--models--user.rs.html">user.rs</a></li></ul></li><li class="tree-file"><a href="Klar--src--auth.rs.html">auth.rs</a></li><li class="tree-file"><a href="Klar--src--config.rs.html">config.rs</a></li><li class="tree-file"><a href="Klar--src--db.rs.html">db.rs</a></li><li class="tree-file"><a href="Klar--src--email.rs.html">email.rs</a></li><li class="tree-file"><a href="Klar--src--errors.rs.html">errors.rs</a></li><li class="tree-file"><a href="Klar--src--main.rs.html">main.rs</a></li><li class="tree-file"><a href="Klar--src--media.rs.html">media.rs</a></li><li class="tree-file"><a href="Klar--src--rate_limit.rs.html">rate_limit.rs</a></li><li class="tree-file"><a href="Klar--src--routes.rs.html">routes.rs</a></li><li class="tree-file"><a href="Klar--src--storage.rs.html">storage.rs</a></li><li class="tree-file"><a href="Klar--src--utils.rs.html">utils.rs</a></li></ul></li></ul></li><li class="tree-dir"><span class="tree-dir__name">klar-web/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">src/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">app/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">admin/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">reports/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--admin--reports--page.tsx.html">page.tsx</a></li></ul></li></ul></li><li class="tree-dir"><span class="tree-dir__name">api/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">health/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--api--health--route.ts.html">route.ts</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">site-access/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--api--site-access--route.ts.html">route.ts</a></li></ul></li></ul></li><li class="tree-dir"><span class="tree-dir__name">chats/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--chats--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">datenschutz/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--datenschutz--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">feed/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">discovery/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--feed--discovery--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-file"><a href="klar-web--src--app--feed--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">follow-requests/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--follow-requests--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">forgot-password/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--forgot-password--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">impressum/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--impressum--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">login/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--login--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">nutzungsbedingungen/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--nutzungsbedingungen--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">posts/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">[id]/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--posts--[id]--page.tsx.html">page.tsx</a></li></ul></li></ul></li><li class="tree-dir"><span class="tree-dir__name">register/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--register--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">resend-verification/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--resend-verification--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">reset-password/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--reset-password--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">search/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--search--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">settings/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">account/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--settings--account--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">password/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--settings--password--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">profile/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--settings--profile--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-file"><a href="klar-web--src--app--settings--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">transparenz/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--transparenz--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">users/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">[username]/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--users--[username]--page.tsx.html">page.tsx</a></li></ul></li></ul></li><li class="tree-dir"><span class="tree-dir__name">verify-email/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--verify-email--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">welcome/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--welcome--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-file"><a href="klar-web--src--app--favicon.ico.html">favicon.ico</a></li><li class="tree-file"><a href="klar-web--src--app--globals.css.html">globals.css</a></li><li class="tree-file"><a href="klar-web--src--app--layout.tsx.html">layout.tsx</a></li><li class="tree-file"><a href="klar-web--src--app--page.tsx.html">page.tsx</a></li><li class="tree-file"><a href="klar-web--src--app--robots.ts.html">robots.ts</a></li><li class="tree-file"><a href="klar-web--src--app--sitemap.ts.html">sitemap.ts</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">components/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">ui/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--components--ui--button.tsx.html">button.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--ui--card.tsx.html">card.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--ui--form.tsx.html">form.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--ui--input.tsx.html">input.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--ui--label.tsx.html">label.tsx</a></li></ul></li><li class="tree-file"><a href="klar-web--src--components--ChatWindow.tsx.html">ChatWindow.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--CreatePostModal.tsx.html">CreatePostModal.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--EditedBadge.tsx.html">EditedBadge.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--Footer.tsx.html">Footer.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--NewChatModal.tsx.html">NewChatModal.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--PostCard.tsx.html">PostCard.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--PostModal.tsx.html">PostModal.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--ReportModal.tsx.html">ReportModal.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--SmartBackButton.tsx.html">SmartBackButton.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--TopNav.tsx.html">TopNav.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--UserListModal.tsx.html">UserListModal.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">hooks/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--hooks--use-notifications.ts.html">use-notifications.ts</a></li><li class="tree-file"><a href="klar-web--src--hooks--use-smart-back.ts.html">use-smart-back.ts</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">lib/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">utils/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--lib--utils--media.ts.html">media.ts</a></li></ul></li><li class="tree-file"><a href="klar-web--src--lib--api.ts.html">api.ts</a></li><li class="tree-file"><a href="klar-web--src--lib--auth-context.tsx.html">auth-context.tsx</a></li><li class="tree-file"><a href="klar-web--src--lib--utils.ts.html">utils.ts</a></li></ul></li><li class="tree-file"><a href="klar-web--src--env.ts.html">env.ts</a></li><li class="tree-file"><a href="klar-web--src--proxy.ts.html">proxy.ts</a></li></ul></li></ul></li></ul></nav>
+    <main class="main" id="main">
+      <section class="section source-page">
+        <p class="section__path">
+          <a href="../../index.html#projects" class="link">~/projects</a> /
+          <a href="../klar-stack.html" class="link">Klar-Stack</a> / source
+        </p>
+        <div class="source-page__head">
+          <h1 class="section__title">Klar/src/handlers/chats.rs</h1>
+          <a href="../klar-stack.html" class="link">← Back to Klar</a>
+        </div>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">  1</span>
+<span class="normal">  2</span>
+<span class="normal">  3</span>
+<span class="normal">  4</span>
+<span class="normal">  5</span>
+<span class="normal">  6</span>
+<span class="normal">  7</span>
+<span class="normal">  8</span>
+<span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span>
+<span class="normal">245</span>
+<span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span>
+<span class="normal">250</span>
+<span class="normal">251</span>
+<span class="normal">252</span>
+<span class="normal">253</span>
+<span class="normal">254</span>
+<span class="normal">255</span>
+<span class="normal">256</span>
+<span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span>
+<span class="normal">262</span>
+<span class="normal">263</span>
+<span class="normal">264</span>
+<span class="normal">265</span>
+<span class="normal">266</span>
+<span class="normal">267</span>
+<span class="normal">268</span>
+<span class="normal">269</span>
+<span class="normal">270</span>
+<span class="normal">271</span>
+<span class="normal">272</span>
+<span class="normal">273</span>
+<span class="normal">274</span>
+<span class="normal">275</span>
+<span class="normal">276</span>
+<span class="normal">277</span>
+<span class="normal">278</span>
+<span class="normal">279</span>
+<span class="normal">280</span>
+<span class="normal">281</span>
+<span class="normal">282</span>
+<span class="normal">283</span>
+<span class="normal">284</span>
+<span class="normal">285</span>
+<span class="normal">286</span>
+<span class="normal">287</span>
+<span class="normal">288</span>
+<span class="normal">289</span>
+<span class="normal">290</span>
+<span class="normal">291</span>
+<span class="normal">292</span>
+<span class="normal">293</span>
+<span class="normal">294</span>
+<span class="normal">295</span>
+<span class="normal">296</span>
+<span class="normal">297</span>
+<span class="normal">298</span>
+<span class="normal">299</span>
+<span class="normal">300</span>
+<span class="normal">301</span>
+<span class="normal">302</span>
+<span class="normal">303</span>
+<span class="normal">304</span>
+<span class="normal">305</span>
+<span class="normal">306</span>
+<span class="normal">307</span>
+<span class="normal">308</span>
+<span class="normal">309</span>
+<span class="normal">310</span>
+<span class="normal">311</span>
+<span class="normal">312</span>
+<span class="normal">313</span>
+<span class="normal">314</span>
+<span class="normal">315</span>
+<span class="normal">316</span>
+<span class="normal">317</span>
+<span class="normal">318</span>
+<span class="normal">319</span>
+<span class="normal">320</span>
+<span class="normal">321</span>
+<span class="normal">322</span>
+<span class="normal">323</span>
+<span class="normal">324</span>
+<span class="normal">325</span>
+<span class="normal">326</span>
+<span class="normal">327</span>
+<span class="normal">328</span>
+<span class="normal">329</span>
+<span class="normal">330</span>
+<span class="normal">331</span>
+<span class="normal">332</span>
+<span class="normal">333</span>
+<span class="normal">334</span>
+<span class="normal">335</span>
+<span class="normal">336</span>
+<span class="normal">337</span>
+<span class="normal">338</span>
+<span class="normal">339</span>
+<span class="normal">340</span>
+<span class="normal">341</span>
+<span class="normal">342</span>
+<span class="normal">343</span>
+<span class="normal">344</span>
+<span class="normal">345</span>
+<span class="normal">346</span>
+<span class="normal">347</span>
+<span class="normal">348</span>
+<span class="normal">349</span>
+<span class="normal">350</span>
+<span class="normal">351</span>
+<span class="normal">352</span>
+<span class="normal">353</span>
+<span class="normal">354</span>
+<span class="normal">355</span>
+<span class="normal">356</span>
+<span class="normal">357</span>
+<span class="normal">358</span>
+<span class="normal">359</span>
+<span class="normal">360</span>
+<span class="normal">361</span>
+<span class="normal">362</span>
+<span class="normal">363</span>
+<span class="normal">364</span>
+<span class="normal">365</span>
+<span class="normal">366</span>
+<span class="normal">367</span>
+<span class="normal">368</span>
+<span class="normal">369</span>
+<span class="normal">370</span>
+<span class="normal">371</span>
+<span class="normal">372</span>
+<span class="normal">373</span>
+<span class="normal">374</span>
+<span class="normal">375</span>
+<span class="normal">376</span>
+<span class="normal">377</span>
+<span class="normal">378</span>
+<span class="normal">379</span>
+<span class="normal">380</span>
+<span class="normal">381</span>
+<span class="normal">382</span>
+<span class="normal">383</span>
+<span class="normal">384</span>
+<span class="normal">385</span>
+<span class="normal">386</span>
+<span class="normal">387</span>
+<span class="normal">388</span>
+<span class="normal">389</span>
+<span class="normal">390</span>
+<span class="normal">391</span>
+<span class="normal">392</span>
+<span class="normal">393</span>
+<span class="normal">394</span>
+<span class="normal">395</span>
+<span class="normal">396</span>
+<span class="normal">397</span>
+<span class="normal">398</span>
+<span class="normal">399</span>
+<span class="normal">400</span>
+<span class="normal">401</span>
+<span class="normal">402</span>
+<span class="normal">403</span>
+<span class="normal">404</span>
+<span class="normal">405</span>
+<span class="normal">406</span>
+<span class="normal">407</span>
+<span class="normal">408</span>
+<span class="normal">409</span>
+<span class="normal">410</span>
+<span class="normal">411</span>
+<span class="normal">412</span>
+<span class="normal">413</span>
+<span class="normal">414</span>
+<span class="normal">415</span>
+<span class="normal">416</span>
+<span class="normal">417</span>
+<span class="normal">418</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">use</span><span class="w"> </span><span class="n">axum</span><span class="p">::{</span><span class="n">extract</span><span class="p">::{</span><span class="n">State</span><span class="p">,</span><span class="w"> </span><span class="n">Path</span><span class="p">},</span><span class="w"> </span><span class="n">http</span><span class="p">::</span><span class="n">StatusCode</span><span class="p">,</span><span class="w"> </span><span class="n">Json</span><span class="p">};</span>
+<span class="k">use</span><span class="w"> </span><span class="n">uuid</span><span class="p">::</span><span class="n">Uuid</span><span class="p">;</span>
+<span class="k">use</span><span class="w"> </span><span class="n">chrono</span><span class="p">::</span><span class="n">Utc</span><span class="p">;</span>
+<span class="k">use</span><span class="w"> </span><span class="k">crate</span><span class="p">::{</span><span class="n">AppState</span><span class="p">,</span><span class="w"> </span><span class="n">errors</span><span class="p">::</span><span class="n">AppError</span><span class="p">,</span><span class="w"> </span><span class="n">auth</span><span class="p">::</span><span class="n">AuthUser</span><span class="p">,</span><span class="w"> </span><span class="n">models</span><span class="p">::</span><span class="n">chat</span><span class="p">::</span><span class="o">*</span><span class="p">};</span>
+<span class="k">use</span><span class="w"> </span><span class="k">crate</span><span class="p">::</span><span class="n">handlers</span><span class="p">::</span><span class="n">notifications</span><span class="p">::{</span><span class="n">publish_notification</span><span class="p">,</span><span class="w"> </span><span class="n">NotificationEvent</span><span class="p">,</span><span class="w"> </span><span class="n">NotificationResponse</span><span class="p">};</span>
+<span class="k">use</span><span class="w"> </span><span class="k">crate</span><span class="p">::</span><span class="n">utils</span><span class="p">::{</span><span class="n">DbResultExt</span><span class="p">,</span><span class="w"> </span><span class="n">ResolveMedia</span><span class="p">};</span>
+
+<span class="k">pub</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">get_conversations</span><span class="p">(</span>
+<span class="w">    </span><span class="n">State</span><span class="p">(</span><span class="n">state</span><span class="p">):</span><span class="w"> </span><span class="nc">State</span><span class="o">&lt;</span><span class="n">AppState</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">auth</span><span class="p">:</span><span class="w"> </span><span class="nc">AuthUser</span><span class="p">,</span>
+<span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="n">Json</span><span class="o">&lt;</span><span class="nb">Vec</span><span class="o">&lt;</span><span class="n">ConversationResponse</span><span class="o">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">AppError</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Converted from the query_as! macro to a plain sqlx::query_as call</span>
+<span class="w">    </span><span class="c1">// (runtime-checked, not compile-time) so schema changes here don't</span>
+<span class="w">    </span><span class="c1">// require a cargo sqlx prepare run against a live DB to refresh the</span>
+<span class="w">    </span><span class="c1">// offline query cache before this builds in CI.</span>
+<span class="w">    </span><span class="c1">//</span>
+<span class="w">    </span><span class="c1">// The LATERAL subquery picks whichever is more recent: the last</span>
+<span class="w">    </span><span class="c1">// message in the conversation, or the last reaction on *any* message</span>
+<span class="w">    </span><span class="c1">// in it (joined back to that message for its body/sender) -- a</span>
+<span class="w">    </span><span class="c1">// reaction can be the most recent activity even though it doesn't</span>
+<span class="w">    </span><span class="c1">// create a new message row.</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">convos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sqlx</span><span class="p">::</span><span class="n">query_as</span><span class="p">::</span><span class="o">&lt;</span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="n">ConversationResponse</span><span class="o">&gt;</span><span class="p">(</span>
+<span class="w">        </span><span class="s">r#"</span>
+<span class="s">        SELECT </span>
+<span class="s">            c.id,</span>
+<span class="s">            u.id as other_user_id,</span>
+<span class="s">            u.username as other_username,</span>
+<span class="s">            u.avatar_url as other_avatar_url,</span>
+<span class="s">            la.kind as last_activity_kind,</span>
+<span class="s">            la.actor_id as last_activity_actor_id,</span>
+<span class="s">            la.message_sender_id as last_activity_message_sender_id,</span>
+<span class="s">            la.text as last_activity_text,</span>
+<span class="s">            la.emoji as last_activity_emoji,</span>
+<span class="s">            c.updated_at</span>
+<span class="s">        FROM conversations c</span>
+<span class="s">        JOIN users u ON u.id = CASE WHEN c.user1_id = $1 THEN c.user2_id ELSE c.user1_id END</span>
+<span class="s">        LEFT JOIN LATERAL (</span>
+<span class="s">            (</span>
+<span class="s">                SELECT</span>
+<span class="s">                    CASE WHEN m.reply_to_message_id IS NOT NULL THEN 'reply' ELSE 'message' END as kind,</span>
+<span class="s">                    m.sender_id as actor_id,</span>
+<span class="s">                    m.sender_id as message_sender_id,</span>
+<span class="s">                    m.body as text,</span>
+<span class="s">                    NULL::text as emoji,</span>
+<span class="s">                    m.created_at as at</span>
+<span class="s">                FROM messages m</span>
+<span class="s">                WHERE m.conversation_id = c.id</span>
+<span class="s">                ORDER BY m.created_at DESC</span>
+<span class="s">                LIMIT 1</span>
+<span class="s">            )</span>
+<span class="s">            UNION ALL</span>
+<span class="s">            (</span>
+<span class="s">                SELECT</span>
+<span class="s">                    'reaction' as kind,</span>
+<span class="s">                    mr.user_id as actor_id,</span>
+<span class="s">                    m2.sender_id as message_sender_id,</span>
+<span class="s">                    m2.body as text,</span>
+<span class="s">                    mr.emoji as emoji,</span>
+<span class="s">                    mr.created_at as at</span>
+<span class="s">                FROM message_reactions mr</span>
+<span class="s">                JOIN messages m2 ON m2.id = mr.message_id</span>
+<span class="s">                WHERE m2.conversation_id = c.id</span>
+<span class="s">                ORDER BY mr.created_at DESC</span>
+<span class="s">                LIMIT 1</span>
+<span class="s">            )</span>
+<span class="s">            ORDER BY at DESC</span>
+<span class="s">            LIMIT 1</span>
+<span class="s">        ) la ON true</span>
+<span class="s">        WHERE c.user1_id = $1 OR c.user2_id = $1</span>
+<span class="s">        ORDER BY c.updated_at DESC</span>
+<span class="s">        "#</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="n">auth</span><span class="p">.</span><span class="n">user_id</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">fetch_all</span><span class="p">(</span><span class="o">&amp;</span><span class="n">state</span><span class="p">.</span><span class="n">db</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="k">await</span>
+<span class="w">    </span><span class="p">.</span><span class="n">db_err</span><span class="p">(</span><span class="s">"Database error"</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">    </span><span class="nb">Ok</span><span class="p">(</span><span class="n">Json</span><span class="p">(</span><span class="n">convos</span><span class="p">.</span><span class="n">resolve_media</span><span class="p">(</span><span class="o">&amp;</span><span class="n">state</span><span class="p">.</span><span class="n">storage</span><span class="p">)))</span>
+<span class="p">}</span>
+
+<span class="k">pub</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">get_messages</span><span class="p">(</span>
+<span class="w">    </span><span class="n">State</span><span class="p">(</span><span class="n">state</span><span class="p">):</span><span class="w"> </span><span class="nc">State</span><span class="o">&lt;</span><span class="n">AppState</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">auth</span><span class="p">:</span><span class="w"> </span><span class="nc">AuthUser</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Path</span><span class="p">(</span><span class="n">conversation_id</span><span class="p">):</span><span class="w"> </span><span class="nc">Path</span><span class="o">&lt;</span><span class="n">Uuid</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="n">Json</span><span class="o">&lt;</span><span class="nb">Vec</span><span class="o">&lt;</span><span class="n">MessageResponse</span><span class="o">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">AppError</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">has_access</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sqlx</span><span class="p">::</span><span class="n">query</span><span class="o">!</span><span class="p">(</span>
+<span class="w">        </span><span class="s">"SELECT 1 as access FROM conversations WHERE id = $1 AND (user1_id = $2 OR user2_id = $2)"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">conversation_id</span><span class="p">,</span><span class="w"> </span><span class="n">auth</span><span class="p">.</span><span class="n">user_id</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">fetch_optional</span><span class="p">(</span><span class="o">&amp;</span><span class="n">state</span><span class="p">.</span><span class="n">db</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="k">await</span>
+<span class="w">    </span><span class="p">.</span><span class="n">db_err</span><span class="p">(</span><span class="s">"Database error"</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">has_access</span><span class="p">.</span><span class="n">is_none</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">Err</span><span class="p">(</span><span class="n">AppError</span><span class="p">::</span><span class="n">forbidden</span><span class="p">(</span><span class="s">"Access denied to this conversation"</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">messages</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sqlx</span><span class="p">::</span><span class="n">query_as</span><span class="p">::</span><span class="o">&lt;</span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="n">MessageResponse</span><span class="o">&gt;</span><span class="p">(</span>
+<span class="w">        </span><span class="s">r#"</span>
+<span class="s">        SELECT </span>
+<span class="s">            m.id, m.conversation_id, m.sender_id, m.body, m.created_at, m.edited_at, m.is_read, m.reply_to_message_id,</span>
+<span class="s">            COALESCE(</span>
+<span class="s">                (</span>
+<span class="s">                    SELECT json_agg(json_build_object('emoji', mr.emoji, 'user_id', mr.user_id, 'username', u.username))</span>
+<span class="s">                    FROM message_reactions mr</span>
+<span class="s">                    JOIN users u ON u.id = mr.user_id</span>
+<span class="s">                    WHERE mr.message_id = m.id</span>
+<span class="s">                ), </span>
+<span class="s">                '[]'::json</span>
+<span class="s">            ) as reactions</span>
+<span class="s">        FROM messages m</span>
+<span class="s">        WHERE m.conversation_id = $1</span>
+<span class="s">        ORDER BY m.created_at ASC</span>
+<span class="s">        "#</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="n">conversation_id</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">fetch_all</span><span class="p">(</span><span class="o">&amp;</span><span class="n">state</span><span class="p">.</span><span class="n">db</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="k">await</span>
+<span class="w">    </span><span class="p">.</span><span class="n">db_err</span><span class="p">(</span><span class="s">"Database error"</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">    </span><span class="nb">Ok</span><span class="p">(</span><span class="n">Json</span><span class="p">(</span><span class="n">messages</span><span class="p">))</span>
+<span class="p">}</span>
+
+<span class="k">pub</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">send_message</span><span class="p">(</span>
+<span class="w">    </span><span class="n">State</span><span class="p">(</span><span class="n">state</span><span class="p">):</span><span class="w"> </span><span class="nc">State</span><span class="o">&lt;</span><span class="n">AppState</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">auth</span><span class="p">:</span><span class="w"> </span><span class="nc">AuthUser</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Json</span><span class="p">(</span><span class="n">payload</span><span class="p">):</span><span class="w"> </span><span class="nc">Json</span><span class="o">&lt;</span><span class="n">SendMessageRequest</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="n">Json</span><span class="o">&lt;</span><span class="n">MessageResponse</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">AppError</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">auth</span><span class="p">.</span><span class="n">user_id</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">payload</span><span class="p">.</span><span class="n">receiver_id</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">Err</span><span class="p">(</span><span class="n">AppError</span><span class="p">::</span><span class="n">bad_request</span><span class="p">(</span><span class="s">"You cannot message yourself"</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">mutual_follow_count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sqlx</span><span class="p">::</span><span class="n">query</span><span class="o">!</span><span class="p">(</span>
+<span class="w">        </span><span class="s">r#"</span>
+<span class="s">        SELECT COUNT(*) as count </span>
+<span class="s">        FROM follows </span>
+<span class="s">        WHERE (follower_id = $1 AND following_id = $2)</span>
+<span class="s">           OR (follower_id = $2 AND following_id = $1)</span>
+<span class="s">        "#</span><span class="p">,</span>
+<span class="w">        </span><span class="n">auth</span><span class="p">.</span><span class="n">user_id</span><span class="p">,</span><span class="w"> </span><span class="n">payload</span><span class="p">.</span><span class="n">receiver_id</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">fetch_one</span><span class="p">(</span><span class="o">&amp;</span><span class="n">state</span><span class="p">.</span><span class="n">db</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="k">await</span>
+<span class="w">    </span><span class="p">.</span><span class="n">db_err</span><span class="p">(</span><span class="s">"Database error"</span><span class="p">)</span><span class="o">?</span>
+<span class="w">    </span><span class="p">.</span><span class="n">count</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">mutual_follow_count</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">Err</span><span class="p">(</span><span class="n">AppError</span><span class="p">::</span><span class="n">forbidden</span><span class="p">(</span><span class="s">"You can only message users who follow you back."</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">conv_record</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sqlx</span><span class="p">::</span><span class="n">query</span><span class="o">!</span><span class="p">(</span>
+<span class="w">        </span><span class="s">r#"</span>
+<span class="s">        INSERT INTO conversations (user1_id, user2_id)</span>
+<span class="s">        VALUES (least($1::uuid, $2::uuid), greatest($1::uuid, $2::uuid))</span>
+<span class="s">        ON CONFLICT (least(user1_id, user2_id), greatest(user1_id, user2_id))</span>
+<span class="s">        DO UPDATE SET updated_at = NOW()</span>
+<span class="s">        RETURNING id</span>
+<span class="s">        "#</span><span class="p">,</span>
+<span class="w">        </span><span class="n">auth</span><span class="p">.</span><span class="n">user_id</span><span class="p">,</span><span class="w"> </span><span class="n">payload</span><span class="p">.</span><span class="n">receiver_id</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">fetch_one</span><span class="p">(</span><span class="o">&amp;</span><span class="n">state</span><span class="p">.</span><span class="n">db</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="k">await</span>
+<span class="w">    </span><span class="p">.</span><span class="n">db_err</span><span class="p">(</span><span class="s">"Failed to create conversation"</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">message_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sqlx</span><span class="p">::</span><span class="n">query</span><span class="o">!</span><span class="p">(</span>
+<span class="w">        </span><span class="s">r#"</span>
+<span class="s">        INSERT INTO messages (conversation_id, sender_id, body, reply_to_message_id)</span>
+<span class="s">        VALUES ($1, $2, $3, $4)</span>
+<span class="s">        RETURNING id</span>
+<span class="s">        "#</span><span class="p">,</span>
+<span class="w">        </span><span class="n">conv_record</span><span class="p">.</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">auth</span><span class="p">.</span><span class="n">user_id</span><span class="p">,</span><span class="w"> </span><span class="n">payload</span><span class="p">.</span><span class="n">body</span><span class="p">,</span><span class="w"> </span><span class="n">payload</span><span class="p">.</span><span class="n">reply_to_message_id</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">fetch_one</span><span class="p">(</span><span class="o">&amp;</span><span class="n">state</span><span class="p">.</span><span class="n">db</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="k">await</span>
+<span class="w">    </span><span class="p">.</span><span class="n">db_err</span><span class="p">(</span><span class="s">"Failed to send message"</span><span class="p">)</span><span class="o">?</span>
+<span class="w">    </span><span class="p">.</span><span class="n">id</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sqlx</span><span class="p">::</span><span class="n">query_as</span><span class="p">::</span><span class="o">&lt;</span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="n">MessageResponse</span><span class="o">&gt;</span><span class="p">(</span>
+<span class="w">        </span><span class="s">r#"</span>
+<span class="s">        SELECT id, conversation_id, sender_id, body, created_at, edited_at, is_read, reply_to_message_id, '[]'::json as reactions</span>
+<span class="s">        FROM messages WHERE id = $1</span>
+<span class="s">        "#</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="n">message_id</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">fetch_one</span><span class="p">(</span><span class="o">&amp;</span><span class="n">state</span><span class="p">.</span><span class="n">db</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="k">await</span>
+<span class="w">    </span><span class="p">.</span><span class="n">db_err</span><span class="p">(</span><span class="s">"Database error"</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Piggyback on the same Redis-backed SSE pipeline used for</span>
+<span class="w">    </span><span class="c1">// notifications, rather than standing up a second channel/stream just</span>
+<span class="w">    </span><span class="c1">// for this. type_name "message" is never written to the `notifications`</span>
+<span class="w">    </span><span class="c1">// table (chat messages aren't persisted there) -- this is purely a</span>
+<span class="w">    </span><span class="c1">// live signal for the chat icon's unread badge; the frontend's SSE</span>
+<span class="w">    </span><span class="c1">// listener special-cases this type_name instead of adding it to the</span>
+<span class="w">    </span><span class="c1">// notification dropdown list. `id` here is the message's own id, not</span>
+<span class="w">    </span><span class="c1">// a notifications-table row id, since none exists.</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nb">Ok</span><span class="p">(</span><span class="n">actor_row</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sqlx</span><span class="p">::</span><span class="n">query_as</span><span class="p">::</span><span class="o">&lt;</span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="k">crate</span><span class="p">::</span><span class="n">models</span><span class="p">::</span><span class="n">UserRow</span><span class="o">&gt;</span><span class="p">(</span><span class="s">"SELECT * FROM users WHERE id = $1"</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="n">auth</span><span class="p">.</span><span class="n">user_id</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="n">fetch_one</span><span class="p">(</span><span class="o">&amp;</span><span class="n">state</span><span class="p">.</span><span class="n">db</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="k">await</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">event</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NotificationEvent</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">target_user_id</span><span class="p">:</span><span class="w"> </span><span class="nc">payload</span><span class="p">.</span><span class="n">receiver_id</span><span class="p">,</span>
+<span class="w">            </span><span class="n">notification</span><span class="p">:</span><span class="w"> </span><span class="nc">NotificationResponse</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="nc">message_id</span><span class="p">,</span>
+<span class="w">                </span><span class="n">type_name</span><span class="p">:</span><span class="w"> </span><span class="s">"message"</span><span class="p">.</span><span class="n">to_string</span><span class="p">(),</span>
+<span class="w">                </span><span class="n">is_read</span><span class="p">:</span><span class="w"> </span><span class="nc">false</span><span class="p">,</span>
+<span class="w">                </span><span class="n">created_at</span><span class="p">:</span><span class="w"> </span><span class="nc">Utc</span><span class="p">::</span><span class="n">now</span><span class="p">(),</span>
+<span class="w">                </span><span class="n">post_id</span><span class="p">:</span><span class="w"> </span><span class="nb">None</span><span class="p">,</span>
+<span class="w">                </span><span class="c1">// No post involved in a chat message.</span>
+<span class="w">                </span><span class="n">post_thumb_url</span><span class="p">:</span><span class="w"> </span><span class="nb">None</span><span class="p">,</span>
+<span class="w">                </span><span class="n">actor</span><span class="p">:</span><span class="w"> </span><span class="nc">crate</span><span class="p">::</span><span class="n">models</span><span class="p">::</span><span class="n">UserResponse</span><span class="p">::</span><span class="n">from</span><span class="p">(</span><span class="n">actor_row</span><span class="p">),</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">};</span>
+<span class="w">        </span><span class="c1">// Resolves actor.avatar_url internally (see publish_notification</span>
+<span class="w">        </span><span class="c1">// in notifications.rs), same as every other notification path.</span>
+<span class="w">        </span><span class="n">publish_notification</span><span class="p">(</span><span class="o">&amp;</span><span class="n">state</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">event</span><span class="p">).</span><span class="k">await</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nb">Ok</span><span class="p">(</span><span class="n">Json</span><span class="p">(</span><span class="n">message</span><span class="p">))</span>
+<span class="p">}</span>
+
+<span class="k">pub</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">edit_message</span><span class="p">(</span>
+<span class="w">    </span><span class="n">State</span><span class="p">(</span><span class="n">state</span><span class="p">):</span><span class="w"> </span><span class="nc">State</span><span class="o">&lt;</span><span class="n">AppState</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">auth</span><span class="p">:</span><span class="w"> </span><span class="nc">AuthUser</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Path</span><span class="p">(</span><span class="n">message_id</span><span class="p">):</span><span class="w"> </span><span class="nc">Path</span><span class="o">&lt;</span><span class="n">Uuid</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Json</span><span class="p">(</span><span class="n">payload</span><span class="p">):</span><span class="w"> </span><span class="nc">Json</span><span class="o">&lt;</span><span class="n">EditMessageRequest</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="n">StatusCode</span><span class="p">,</span><span class="w"> </span><span class="n">AppError</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">msg_meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sqlx</span><span class="p">::</span><span class="n">query</span><span class="o">!</span><span class="p">(</span><span class="s">"SELECT sender_id FROM messages WHERE id = $1"</span><span class="p">,</span><span class="w"> </span><span class="n">message_id</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="n">fetch_optional</span><span class="p">(</span><span class="o">&amp;</span><span class="n">state</span><span class="p">.</span><span class="n">db</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="k">await</span>
+<span class="w">        </span><span class="p">.</span><span class="n">db_err</span><span class="p">(</span><span class="s">"Database error"</span><span class="p">)</span><span class="o">?</span>
+<span class="w">        </span><span class="p">.</span><span class="n">ok_or_else</span><span class="p">(</span><span class="o">||</span><span class="w"> </span><span class="n">AppError</span><span class="p">::</span><span class="n">not_found</span><span class="p">(</span><span class="s">"Message not found"</span><span class="p">))</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">msg_meta</span><span class="p">.</span><span class="n">sender_id</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">auth</span><span class="p">.</span><span class="n">user_id</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">Err</span><span class="p">(</span><span class="n">AppError</span><span class="p">::</span><span class="n">forbidden</span><span class="p">(</span><span class="s">"You can only edit your own messages"</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">sqlx</span><span class="p">::</span><span class="n">query</span><span class="o">!</span><span class="p">(</span>
+<span class="w">        </span><span class="s">"UPDATE messages SET body = $1, edited_at = $2 WHERE id = $3"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">payload</span><span class="p">.</span><span class="n">body</span><span class="p">,</span><span class="w"> </span><span class="n">Utc</span><span class="p">::</span><span class="n">now</span><span class="p">(),</span><span class="w"> </span><span class="n">message_id</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">state</span><span class="p">.</span><span class="n">db</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="k">await</span>
+<span class="w">    </span><span class="p">.</span><span class="n">db_err</span><span class="p">(</span><span class="s">"Failed to edit message"</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">    </span><span class="nb">Ok</span><span class="p">(</span><span class="n">StatusCode</span><span class="p">::</span><span class="n">OK</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="k">pub</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">delete_message</span><span class="p">(</span>
+<span class="w">    </span><span class="n">State</span><span class="p">(</span><span class="n">state</span><span class="p">):</span><span class="w"> </span><span class="nc">State</span><span class="o">&lt;</span><span class="n">AppState</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">auth</span><span class="p">:</span><span class="w"> </span><span class="nc">AuthUser</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Path</span><span class="p">(</span><span class="n">message_id</span><span class="p">):</span><span class="w"> </span><span class="nc">Path</span><span class="o">&lt;</span><span class="n">Uuid</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="n">StatusCode</span><span class="p">,</span><span class="w"> </span><span class="n">AppError</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">msg_meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sqlx</span><span class="p">::</span><span class="n">query</span><span class="o">!</span><span class="p">(</span><span class="s">"SELECT sender_id FROM messages WHERE id = $1"</span><span class="p">,</span><span class="w"> </span><span class="n">message_id</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="n">fetch_optional</span><span class="p">(</span><span class="o">&amp;</span><span class="n">state</span><span class="p">.</span><span class="n">db</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="k">await</span>
+<span class="w">        </span><span class="p">.</span><span class="n">db_err</span><span class="p">(</span><span class="s">"Database error"</span><span class="p">)</span><span class="o">?</span>
+<span class="w">        </span><span class="p">.</span><span class="n">ok_or_else</span><span class="p">(</span><span class="o">||</span><span class="w"> </span><span class="n">AppError</span><span class="p">::</span><span class="n">not_found</span><span class="p">(</span><span class="s">"Message not found"</span><span class="p">))</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">msg_meta</span><span class="p">.</span><span class="n">sender_id</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">auth</span><span class="p">.</span><span class="n">user_id</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">Err</span><span class="p">(</span><span class="n">AppError</span><span class="p">::</span><span class="n">forbidden</span><span class="p">(</span><span class="s">"You can only delete your own messages"</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">sqlx</span><span class="p">::</span><span class="n">query</span><span class="o">!</span><span class="p">(</span><span class="s">"DELETE FROM messages WHERE id = $1"</span><span class="p">,</span><span class="w"> </span><span class="n">message_id</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">state</span><span class="p">.</span><span class="n">db</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="k">await</span>
+<span class="w">        </span><span class="p">.</span><span class="n">db_err</span><span class="p">(</span><span class="s">"Failed to delete message"</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">    </span><span class="nb">Ok</span><span class="p">(</span><span class="n">StatusCode</span><span class="p">::</span><span class="n">NO_CONTENT</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="k">pub</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">toggle_reaction</span><span class="p">(</span>
+<span class="w">    </span><span class="n">State</span><span class="p">(</span><span class="n">state</span><span class="p">):</span><span class="w"> </span><span class="nc">State</span><span class="o">&lt;</span><span class="n">AppState</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">auth</span><span class="p">:</span><span class="w"> </span><span class="nc">AuthUser</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Path</span><span class="p">(</span><span class="n">message_id</span><span class="p">):</span><span class="w"> </span><span class="nc">Path</span><span class="o">&lt;</span><span class="n">Uuid</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Json</span><span class="p">(</span><span class="n">payload</span><span class="p">):</span><span class="w"> </span><span class="nc">Json</span><span class="o">&lt;</span><span class="n">ToggleReactionRequest</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="n">StatusCode</span><span class="p">,</span><span class="w"> </span><span class="n">AppError</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">existing</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sqlx</span><span class="p">::</span><span class="n">query</span><span class="o">!</span><span class="p">(</span>
+<span class="w">        </span><span class="s">"SELECT 1 as has_reacted FROM message_reactions WHERE message_id = $1 AND user_id = $2 AND emoji = $3"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">message_id</span><span class="p">,</span><span class="w"> </span><span class="n">auth</span><span class="p">.</span><span class="n">user_id</span><span class="p">,</span><span class="w"> </span><span class="n">payload</span><span class="p">.</span><span class="n">emoji</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">fetch_optional</span><span class="p">(</span><span class="o">&amp;</span><span class="n">state</span><span class="p">.</span><span class="n">db</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="k">await</span>
+<span class="w">    </span><span class="p">.</span><span class="n">db_err</span><span class="p">(</span><span class="s">"Database error"</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">existing</span><span class="p">.</span><span class="n">is_some</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">sqlx</span><span class="p">::</span><span class="n">query</span><span class="o">!</span><span class="p">(</span>
+<span class="w">            </span><span class="s">"DELETE FROM message_reactions WHERE message_id = $1 AND user_id = $2 AND emoji = $3"</span><span class="p">,</span>
+<span class="w">            </span><span class="n">message_id</span><span class="p">,</span><span class="w"> </span><span class="n">auth</span><span class="p">.</span><span class="n">user_id</span><span class="p">,</span><span class="w"> </span><span class="n">payload</span><span class="p">.</span><span class="n">emoji</span>
+<span class="w">        </span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">state</span><span class="p">.</span><span class="n">db</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="k">await</span>
+<span class="w">        </span><span class="p">.</span><span class="n">db_err</span><span class="p">(</span><span class="s">"Failed to remove reaction"</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">sqlx</span><span class="p">::</span><span class="n">query</span><span class="o">!</span><span class="p">(</span>
+<span class="w">            </span><span class="s">"INSERT INTO message_reactions (message_id, user_id, emoji) VALUES ($1, $2, $3)"</span><span class="p">,</span>
+<span class="w">            </span><span class="n">message_id</span><span class="p">,</span><span class="w"> </span><span class="n">auth</span><span class="p">.</span><span class="n">user_id</span><span class="p">,</span><span class="w"> </span><span class="n">payload</span><span class="p">.</span><span class="n">emoji</span>
+<span class="w">        </span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">state</span><span class="p">.</span><span class="n">db</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="k">await</span>
+<span class="w">        </span><span class="p">.</span><span class="n">db_err</span><span class="p">(</span><span class="s">"Failed to add reaction"</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Look up this message's conversation + both participants -- needed</span>
+<span class="w">    </span><span class="c1">// both to notify "the other side" and to bump conversations.updated_at</span>
+<span class="w">    </span><span class="c1">// so a reaction moves the conversation to the top of the list, same as</span>
+<span class="w">    </span><span class="c1">// a new message would (otherwise the richer "X reacted to..." preview</span>
+<span class="w">    </span><span class="c1">// in get_conversations would be correct but the conversation could sit</span>
+<span class="w">    </span><span class="c1">// buried below others that are actually less recently active).</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">conv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sqlx</span><span class="p">::</span><span class="n">query_as</span><span class="p">::</span><span class="o">&lt;</span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">Uuid</span><span class="p">,</span><span class="w"> </span><span class="n">Uuid</span><span class="p">,</span><span class="w"> </span><span class="n">Uuid</span><span class="p">)</span><span class="o">&gt;</span><span class="p">(</span>
+<span class="w">        </span><span class="s">r#"</span>
+<span class="s">        SELECT c.id, c.user1_id, c.user2_id</span>
+<span class="s">        FROM conversations c</span>
+<span class="s">        JOIN messages m ON m.conversation_id = c.id</span>
+<span class="s">        WHERE m.id = $1</span>
+<span class="s">        "#</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="n">message_id</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">fetch_optional</span><span class="p">(</span><span class="o">&amp;</span><span class="n">state</span><span class="p">.</span><span class="n">db</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="k">await</span>
+<span class="w">    </span><span class="p">.</span><span class="n">ok</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="n">flatten</span><span class="p">();</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nb">Some</span><span class="p">((</span><span class="n">conversation_id</span><span class="p">,</span><span class="w"> </span><span class="n">user1_id</span><span class="p">,</span><span class="w"> </span><span class="n">user2_id</span><span class="p">))</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">conv</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">sqlx</span><span class="p">::</span><span class="n">query</span><span class="p">(</span><span class="s">"UPDATE conversations SET updated_at = NOW() WHERE id = $1"</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="n">conversation_id</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">state</span><span class="p">.</span><span class="n">db</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="k">await</span>
+<span class="w">            </span><span class="p">.</span><span class="n">ok</span><span class="p">();</span>
+
+<span class="w">        </span><span class="c1">// Reusing the same "message" SSE event type as send_message,</span>
+<span class="w">        </span><span class="c1">// rather than adding a separate "reaction" type, since the effect</span>
+<span class="w">        </span><span class="c1">// wanted is identical: bump the Chat icon's badge, and make an</span>
+<span class="w">        </span><span class="c1">// open ChatWindow on the other end live-refetch to show the</span>
+<span class="w">        </span><span class="c1">// new/removed reaction.</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">target_user_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">user1_id</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">auth</span><span class="p">.</span><span class="n">user_id</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">user2_id</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">user1_id</span><span class="w"> </span><span class="p">};</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nb">Ok</span><span class="p">(</span><span class="n">actor_row</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sqlx</span><span class="p">::</span><span class="n">query_as</span><span class="p">::</span><span class="o">&lt;</span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="k">crate</span><span class="p">::</span><span class="n">models</span><span class="p">::</span><span class="n">UserRow</span><span class="o">&gt;</span><span class="p">(</span><span class="s">"SELECT * FROM users WHERE id = $1"</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="n">auth</span><span class="p">.</span><span class="n">user_id</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="n">fetch_one</span><span class="p">(</span><span class="o">&amp;</span><span class="n">state</span><span class="p">.</span><span class="n">db</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="k">await</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="n">event</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NotificationEvent</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">target_user_id</span><span class="p">,</span>
+<span class="w">                </span><span class="n">notification</span><span class="p">:</span><span class="w"> </span><span class="nc">NotificationResponse</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="nc">message_id</span><span class="p">,</span>
+<span class="w">                    </span><span class="n">type_name</span><span class="p">:</span><span class="w"> </span><span class="s">"message"</span><span class="p">.</span><span class="n">to_string</span><span class="p">(),</span>
+<span class="w">                    </span><span class="n">is_read</span><span class="p">:</span><span class="w"> </span><span class="nc">false</span><span class="p">,</span>
+<span class="w">                    </span><span class="n">created_at</span><span class="p">:</span><span class="w"> </span><span class="nc">Utc</span><span class="p">::</span><span class="n">now</span><span class="p">(),</span>
+<span class="w">                    </span><span class="n">post_id</span><span class="p">:</span><span class="w"> </span><span class="nb">None</span><span class="p">,</span>
+<span class="w">                    </span><span class="n">post_thumb_url</span><span class="p">:</span><span class="w"> </span><span class="nb">None</span><span class="p">,</span>
+<span class="w">                    </span><span class="n">actor</span><span class="p">:</span><span class="w"> </span><span class="nc">crate</span><span class="p">::</span><span class="n">models</span><span class="p">::</span><span class="n">UserResponse</span><span class="p">::</span><span class="n">from</span><span class="p">(</span><span class="n">actor_row</span><span class="p">),</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">};</span>
+<span class="w">            </span><span class="n">publish_notification</span><span class="p">(</span><span class="o">&amp;</span><span class="n">state</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">event</span><span class="p">).</span><span class="k">await</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nb">Ok</span><span class="p">(</span><span class="n">StatusCode</span><span class="p">::</span><span class="n">OK</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="sd">/// PATCH /chats/:conversation_id/read — mark every message in this</span>
+<span class="sd">/// conversation that isn't the caller's own as read. Called by the</span>
+<span class="sd">/// frontend when a conversation is opened, so the unread badge clears.</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">mark_conversation_read</span><span class="p">(</span>
+<span class="w">    </span><span class="n">State</span><span class="p">(</span><span class="n">state</span><span class="p">):</span><span class="w"> </span><span class="nc">State</span><span class="o">&lt;</span><span class="n">AppState</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">auth</span><span class="p">:</span><span class="w"> </span><span class="nc">AuthUser</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Path</span><span class="p">(</span><span class="n">conversation_id</span><span class="p">):</span><span class="w"> </span><span class="nc">Path</span><span class="o">&lt;</span><span class="n">Uuid</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="n">StatusCode</span><span class="p">,</span><span class="w"> </span><span class="n">AppError</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">has_access</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sqlx</span><span class="p">::</span><span class="n">query_scalar</span><span class="p">::</span><span class="o">&lt;</span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="o">&gt;</span><span class="p">(</span>
+<span class="w">        </span><span class="s">"SELECT EXISTS(SELECT 1 FROM conversations WHERE id = $1 AND (user1_id = $2 OR user2_id = $2))"</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="n">conversation_id</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="n">auth</span><span class="p">.</span><span class="n">user_id</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">fetch_one</span><span class="p">(</span><span class="o">&amp;</span><span class="n">state</span><span class="p">.</span><span class="n">db</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="k">await</span>
+<span class="w">    </span><span class="p">.</span><span class="n">db_err</span><span class="p">(</span><span class="s">"Database error"</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">!</span><span class="n">has_access</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">Err</span><span class="p">(</span><span class="n">AppError</span><span class="p">::</span><span class="n">forbidden</span><span class="p">(</span><span class="s">"Access denied to this conversation"</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">sqlx</span><span class="p">::</span><span class="n">query</span><span class="p">(</span>
+<span class="w">        </span><span class="s">"UPDATE messages SET is_read = TRUE WHERE conversation_id = $1 AND sender_id != $2 AND is_read = FALSE"</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="n">conversation_id</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="n">auth</span><span class="p">.</span><span class="n">user_id</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">state</span><span class="p">.</span><span class="n">db</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="k">await</span>
+<span class="w">    </span><span class="p">.</span><span class="n">db_err</span><span class="p">(</span><span class="s">"Failed to mark conversation read"</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">    </span><span class="nb">Ok</span><span class="p">(</span><span class="n">StatusCode</span><span class="p">::</span><span class="n">NO_CONTENT</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="sd">/// GET /chats/unread-count — total unread messages across all of the</span>
+<span class="sd">/// caller's conversations, for the Chat icon's red-dot badge.</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">get_unread_count</span><span class="p">(</span>
+<span class="w">    </span><span class="n">State</span><span class="p">(</span><span class="n">state</span><span class="p">):</span><span class="w"> </span><span class="nc">State</span><span class="o">&lt;</span><span class="n">AppState</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">auth</span><span class="p">:</span><span class="w"> </span><span class="nc">AuthUser</span><span class="p">,</span>
+<span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="n">Json</span><span class="o">&lt;</span><span class="n">UnreadCountResponse</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">AppError</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sqlx</span><span class="p">::</span><span class="n">query_scalar</span><span class="p">::</span><span class="o">&lt;</span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="kt">i64</span><span class="o">&gt;</span><span class="p">(</span>
+<span class="w">        </span><span class="s">r#"</span>
+<span class="s">        SELECT COUNT(*)</span>
+<span class="s">        FROM messages m</span>
+<span class="s">        JOIN conversations c ON c.id = m.conversation_id</span>
+<span class="s">        WHERE (c.user1_id = $1 OR c.user2_id = $1)</span>
+<span class="s">          AND m.sender_id != $1</span>
+<span class="s">          AND m.is_read = FALSE</span>
+<span class="s">        "#</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="n">auth</span><span class="p">.</span><span class="n">user_id</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">fetch_one</span><span class="p">(</span><span class="o">&amp;</span><span class="n">state</span><span class="p">.</span><span class="n">db</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="k">await</span>
+<span class="w">    </span><span class="p">.</span><span class="n">db_err</span><span class="p">(</span><span class="s">"Database error"</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">    </span><span class="nb">Ok</span><span class="p">(</span><span class="n">Json</span><span class="p">(</span><span class="n">UnreadCountResponse</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="p">}))</span>
+<span class="p">}</span>
+</pre></div></td></tr></table></div>
+
+      </section>
+    </main>
+  </div>
+</body>
+</html>

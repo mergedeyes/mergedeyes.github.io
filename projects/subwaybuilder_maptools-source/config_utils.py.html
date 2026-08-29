@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>config_utils.py — Subway Builder MapTools - A wrapper for DEPOT — Jan</title>
+  <link rel="stylesheet" href="../../styles.css?v=12c75c0c" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="layout">
+    <header class="rail" id="rail">
+<div class="rail__top">
+<a class="brand" href="../../index.html#top">
+<span class="brand__name">Jan</span>
+<span class="brand__meta">systems &amp; infrastructure<br/>Code, Code &amp; Code</span>
+</a>
+<button aria-controls="nav" aria-expanded="false" aria-label="Toggle menu" class="menu-toggle" id="menuToggle">
+<span></span><span></span><span></span>
+</button>
+</div>
+<nav aria-label="Sections" class="nav" id="nav">
+<a data-path="~/projects" href="../../index.html#projects">Projects</a>
+<a data-path="~/work" href="../../index.html#work">Work</a>
+<a data-path="~/education" href="../../index.html#education">Education</a>
+<a data-path="~/skills" href="../../index.html#skills">Skills</a>
+<a data-path="~/about" href="../../index.html#about">About Me</a>
+<a data-path="~/contact" href="../../index.html#contact">Contact</a>
+</nav>
+<div class="rail__status">
+<span aria-hidden="true" class="dot"></span>
+<span>open to work</span>
+</div>
+</header>
+    <nav class="file-tree"><p class="file-tree__title">Files</p><ul class="tree"><li class="tree-file"><a href="bbox_utils.py.html">bbox_utils.py</a></li><li class="tree-file"><a href="build.py.html">build.py</a></li><li class="tree-file tree-file--active"><a href="config_utils.py.html">config_utils.py</a></li><li class="tree-file"><a href="enrich_utils.py.html">enrich_utils.py</a></li><li class="tree-file"><a href="generate_demand_qzm_local.py.html">generate_demand_qzm_local.py</a></li><li class="tree-file"><a href="open_maps.py.html">open_maps.py</a></li><li class="tree-file"><a href="publish.py.html">publish.py</a></li><li class="tree-file"><a href="rerun_enrichment.py.html">rerun_enrichment.py</a></li><li class="tree-file"><a href="run_demand_pipeline.py.html">run_demand_pipeline.py</a></li><li class="tree-file"><a href="ship.py.html">ship.py</a></li><li class="tree-file"><a href="special_demand_utils.py.html">special_demand_utils.py</a></li><li class="tree-file"><a href="zensus_utils.py.html">zensus_utils.py</a></li></ul></nav>
+    <main class="main" id="main">
+      <section class="section source-page">
+        <p class="section__path">
+          <a href="../../index.html#projects" class="link">~/projects</a> /
+          <a href="../subwaybuilder_maptools.html" class="link">subwaybuilder_maptools</a> / source
+        </p>
+        <div class="source-page__head">
+          <h1 class="section__title">config_utils.py</h1>
+          <a href="../subwaybuilder_maptools.html" class="link">← Back to Subway Builder MapTools - A wrapper for DEPOT</a>
+        </div>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">  1</span>
+<span class="normal">  2</span>
+<span class="normal">  3</span>
+<span class="normal">  4</span>
+<span class="normal">  5</span>
+<span class="normal">  6</span>
+<span class="normal">  7</span>
+<span class="normal">  8</span>
+<span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1">### ==== SHARED HELPER: config.json GENERATION ====</span>
+<span class="c1">#</span>
+<span class="c1"># config.json needs a "population" field that must exactly equal the sum of</span>
+<span class="c1"># pops[].size in demand_data.json (see depot's demand.py create_description(),</span>
+<span class="c1"># which asserts config["population"] == that sum) - so population is NEVER</span>
+<span class="c1"># typed in by hand. It's always computed fresh from demand_data.json, which</span>
+<span class="c1"># is the only way it can never silently drift out of sync again (as happened</span>
+<span class="c1"># with BER: config.json said 1,300,000 while the actual demand data summed</span>
+<span class="c1"># to 1,727,972).</span>
+<span class="c1">#</span>
+<span class="c1"># write_config() is called automatically at the end of DemandGen.run_all()</span>
+<span class="c1"># and DemandGen.run_enrich_only() (run_demand_pipeline.py) - there's no</span>
+<span class="c1"># separate script to run by hand anymore. It just needs re-running (via</span>
+<span class="c1"># rerun_enrichment.py, which triggers it too) any time MAP_DESCRIPTION/</span>
+<span class="c1"># CITY_NAME/MAP_CREATOR change in .env without a new demand run.</span>
+<span class="c1">#</span>
+<span class="c1"># "code" is never a separate .env var - it's always the same CITY_CODE</span>
+<span class="c1"># everything else in this project is already keyed on, so it can't drift</span>
+<span class="c1"># out of sync with the raw_map_files/{CITY_CODE}/ folder it's written into.</span>
+<span class="c1">#</span>
+<span class="c1"># "description" (MAP_DESCRIPTION) is a template - put the literal</span>
+<span class="c1"># placeholders {CITY_NAME} and/or {POPULATION_ROUNDED} wherever the city</span>
+<span class="c1"># name / human-readable commuter count should go, and they're substituted</span>
+<span class="c1"># with CITY_NAME and the real population rounded to the nearest 50k</span>
+<span class="c1"># (German-style thousands separator, e.g. 1.750.000).</span>
+<span class="c1">#</span>
+<span class="c1"># initialViewState is always zoom=15, bearing=0, latitude/longitude = the</span>
+<span class="c1"># center of the city's saved bbox ({CITY_CODE}_MAP_DATA.json via</span>
+<span class="c1"># bbox_utils.get_bbox()) - never read from .env.</span>
+<span class="c1">#</span>
+<span class="c1"># version is preserved as-is if config.json already exists (ship.py owns</span>
+<span class="c1"># bumping it on release) and otherwise defaults to "0.1.0" for a first run.</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">bbox_utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_bbox</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">config_file_path</span><span class="p">(</span><span class="n">city_code</span><span class="p">,</span> <span class="n">raw_base_dir</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">raw_base_dir</span><span class="p">,</span> <span class="n">city_code</span><span class="p">,</span> <span class="s2">"config.json"</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_population</span><span class="p">(</span><span class="n">demand_data_file</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Exact commuter total = sum of pops[].size in demand_data.json - this</span>
+<span class="sd">    is the number depot's create_description() asserts config["population"]</span>
+<span class="sd">    must match exactly, so it's never rounded."""</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">demand_data_file</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">"'</span><span class="si">{</span><span class="n">demand_data_file</span><span class="si">}</span><span class="s2">' not found - run the demand pipeline "</span>
+            <span class="sa">f</span><span class="s2">"first so there's demand data to sum."</span>
+        <span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">demand_data_file</span><span class="p">,</span> <span class="s2">"r"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="s2">"size"</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">"pops"</span><span class="p">]))</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">round_to_nearest_50k</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">n</span> <span class="o">/</span> <span class="mi">50000</span><span class="p">)</span> <span class="o">*</span> <span class="mi">50000</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">format_de</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""1750000 -&gt; '1.750.000' (German-style thousands separator)."""</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">n</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">"</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">","</span><span class="p">,</span> <span class="s2">"."</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">write_config</span><span class="p">(</span><span class="n">city_code</span><span class="p">,</span> <span class="n">raw_base_dir</span><span class="p">,</span> <span class="n">city_name</span><span class="p">,</span> <span class="n">description_template</span><span class="p">,</span> <span class="n">creator</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Builds and writes {raw_base_dir}/{city_code}/config.json from the given</span>
+<span class="sd">    values plus the real population summed from that city's demand_data.json</span>
+<span class="sd">    and the bbox center saved for that city. Returns the config dict.</span>
+<span class="sd">    """</span>
+    <span class="n">city_raw_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">raw_base_dir</span><span class="p">,</span> <span class="n">city_code</span><span class="p">)</span>
+    <span class="n">demand_data_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">city_raw_dir</span><span class="p">,</span> <span class="s2">"demand_data.json"</span><span class="p">)</span>
+    <span class="n">config_path</span> <span class="o">=</span> <span class="n">config_file_path</span><span class="p">(</span><span class="n">city_code</span><span class="p">,</span> <span class="n">raw_base_dir</span><span class="p">)</span>
+
+    <span class="n">population</span> <span class="o">=</span> <span class="n">compute_population</span><span class="p">(</span><span class="n">demand_data_file</span><span class="p">)</span>
+    <span class="n">population_rounded</span> <span class="o">=</span> <span class="n">round_to_nearest_50k</span><span class="p">(</span><span class="n">population</span><span class="p">)</span>
+
+    <span class="n">description</span> <span class="o">=</span> <span class="n">description_template</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
+        <span class="s2">"</span><span class="si">{CITY_NAME}</span><span class="s2">"</span><span class="p">,</span> <span class="n">city_name</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
+        <span class="s2">"</span><span class="si">{POPULATION_ROUNDED}</span><span class="s2">"</span><span class="p">,</span> <span class="n">format_de</span><span class="p">(</span><span class="n">population_rounded</span><span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="n">bbox</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">get_bbox</span><span class="p">(</span><span class="n">city_code</span><span class="p">,</span> <span class="n">raw_base_dir</span><span class="p">))</span>
+    <span class="n">center_lon</span> <span class="o">=</span> <span class="nb">round</span><span class="p">((</span><span class="n">bbox</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">bbox</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+    <span class="n">center_lat</span> <span class="o">=</span> <span class="nb">round</span><span class="p">((</span><span class="n">bbox</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">bbox</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+
+    <span class="c1"># Preserve an existing version (ship.py bumps it on release) - only</span>
+    <span class="c1"># default to a fresh "0.1.0" the first time config.json is created.</span>
+    <span class="n">version</span> <span class="o">=</span> <span class="s2">"0.1.0"</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">config_path</span><span class="p">):</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">config_path</span><span class="p">,</span> <span class="s2">"r"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">existing</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="n">version</span> <span class="o">=</span> <span class="n">existing</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"version"</span><span class="p">,</span> <span class="n">version</span><span class="p">)</span>
+
+    <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">"name"</span><span class="p">:</span> <span class="n">city_name</span><span class="p">,</span>
+        <span class="s2">"code"</span><span class="p">:</span> <span class="n">city_code</span><span class="p">,</span>
+        <span class="s2">"description"</span><span class="p">:</span> <span class="n">description</span><span class="p">,</span>
+        <span class="s2">"population"</span><span class="p">:</span> <span class="n">population</span><span class="p">,</span>
+        <span class="s2">"initialViewState"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">"zoom"</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span>
+            <span class="s2">"latitude"</span><span class="p">:</span> <span class="n">center_lat</span><span class="p">,</span>
+            <span class="s2">"longitude"</span><span class="p">:</span> <span class="n">center_lon</span><span class="p">,</span>
+            <span class="s2">"bearing"</span><span class="p">:</span> <span class="mi">0</span>
+        <span class="p">},</span>
+        <span class="s2">"creator"</span><span class="p">:</span> <span class="n">creator</span><span class="p">,</span>
+        <span class="s2">"version"</span><span class="p">:</span> <span class="n">version</span>
+    <span class="p">}</span>
+
+    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">city_raw_dir</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">config_path</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Wrote '</span><span class="si">{</span><span class="n">config_path</span><span class="si">}</span><span class="s2">':"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  population: </span><span class="si">{</span><span class="n">population</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> (rounded for description: </span><span class="si">{</span><span class="n">population_rounded</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">)"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  initialViewState: zoom=15, lat=</span><span class="si">{</span><span class="n">center_lat</span><span class="si">}</span><span class="s2">, lon=</span><span class="si">{</span><span class="n">center_lon</span><span class="si">}</span><span class="s2">, bearing=0"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  version: </span><span class="si">{</span><span class="n">version</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">config</span>
+</pre></div></td></tr></table></div>
+
+      </section>
+    </main>
+  </div>
+</body>
+</html>

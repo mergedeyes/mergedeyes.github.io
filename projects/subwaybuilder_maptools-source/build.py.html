@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>build.py — Subway Builder MapTools - A wrapper for DEPOT — Jan</title>
+  <link rel="stylesheet" href="../../styles.css?v=12c75c0c" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="layout">
+    <header class="rail" id="rail">
+<div class="rail__top">
+<a class="brand" href="../../index.html#top">
+<span class="brand__name">Jan</span>
+<span class="brand__meta">systems &amp; infrastructure<br/>Code, Code &amp; Code</span>
+</a>
+<button aria-controls="nav" aria-expanded="false" aria-label="Toggle menu" class="menu-toggle" id="menuToggle">
+<span></span><span></span><span></span>
+</button>
+</div>
+<nav aria-label="Sections" class="nav" id="nav">
+<a data-path="~/projects" href="../../index.html#projects">Projects</a>
+<a data-path="~/work" href="../../index.html#work">Work</a>
+<a data-path="~/education" href="../../index.html#education">Education</a>
+<a data-path="~/skills" href="../../index.html#skills">Skills</a>
+<a data-path="~/about" href="../../index.html#about">About Me</a>
+<a data-path="~/contact" href="../../index.html#contact">Contact</a>
+</nav>
+<div class="rail__status">
+<span aria-hidden="true" class="dot"></span>
+<span>open to work</span>
+</div>
+</header>
+    <nav class="file-tree"><p class="file-tree__title">Files</p><ul class="tree"><li class="tree-file"><a href="bbox_utils.py.html">bbox_utils.py</a></li><li class="tree-file tree-file--active"><a href="build.py.html">build.py</a></li><li class="tree-file"><a href="config_utils.py.html">config_utils.py</a></li><li class="tree-file"><a href="enrich_utils.py.html">enrich_utils.py</a></li><li class="tree-file"><a href="generate_demand_qzm_local.py.html">generate_demand_qzm_local.py</a></li><li class="tree-file"><a href="open_maps.py.html">open_maps.py</a></li><li class="tree-file"><a href="publish.py.html">publish.py</a></li><li class="tree-file"><a href="rerun_enrichment.py.html">rerun_enrichment.py</a></li><li class="tree-file"><a href="run_demand_pipeline.py.html">run_demand_pipeline.py</a></li><li class="tree-file"><a href="ship.py.html">ship.py</a></li><li class="tree-file"><a href="special_demand_utils.py.html">special_demand_utils.py</a></li><li class="tree-file"><a href="zensus_utils.py.html">zensus_utils.py</a></li></ul></nav>
+    <main class="main" id="main">
+      <section class="section source-page">
+        <p class="section__path">
+          <a href="../../index.html#projects" class="link">~/projects</a> /
+          <a href="../subwaybuilder_maptools.html" class="link">subwaybuilder_maptools</a> / source
+        </p>
+        <div class="source-page__head">
+          <h1 class="section__title">build.py</h1>
+          <a href="../subwaybuilder_maptools.html" class="link">← Back to Subway Builder MapTools - A wrapper for DEPOT</a>
+        </div>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># CUSTOM DEPOT BUILD.PY</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dotenv</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_dotenv</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">depot.maps</span><span class="w"> </span><span class="kn">import</span> <span class="n">MapGen</span>
+
+<span class="n">load_dotenv</span><span class="p">()</span>
+
+<span class="n">city_code</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">"CITY_CODE"</span><span class="p">)</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">city_code</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"CITY_CODE is missing from your .env file!"</span><span class="p">)</span>
+<span class="n">osmpbf_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">"OSMPBF"</span><span class="p">,</span> <span class="s2">"germany-latest.osm.pbf"</span><span class="p">)</span>
+<span class="n">RAW_BASE_DIR</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">"RAW_BASE_DIR"</span><span class="p">,</span> <span class="s2">"raw_map_files"</span><span class="p">)</span>
+
+<span class="c1"># BBOX is no longer read from .env - it's looked up (or interactively captured</span>
+<span class="c1"># and saved) per city code. See bbox_utils.py.</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">bbox_utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_bbox</span>
+<span class="n">bbox</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">get_bbox</span><span class="p">(</span><span class="n">city_code</span><span class="p">,</span> <span class="n">RAW_BASE_DIR</span><span class="p">))</span>
+
+<span class="n">map_builder</span> <span class="o">=</span> <span class="n">MapGen</span><span class="p">(</span>
+    <span class="n">city</span><span class="o">=</span><span class="n">city_code</span><span class="p">,</span>
+    <span class="n">bbox</span><span class="o">=</span><span class="n">bbox</span><span class="p">,</span> 
+    
+    <span class="n">osmpbf</span><span class="o">=</span><span class="n">osmpbf_file</span><span class="p">,</span> 
+    <span class="n">outputdir</span><span class="o">=</span><span class="n">RAW_BASE_DIR</span><span class="p">,</span>
+    
+    <span class="n">cities</span><span class="o">=</span><span class="p">[</span><span class="s1">'city'</span><span class="p">,</span> <span class="s1">'town'</span><span class="p">,</span> <span class="s1">'village'</span><span class="p">,</span> <span class="s1">'county'</span><span class="p">],</span>      
+    <span class="n">suburbs</span><span class="o">=</span><span class="p">[</span><span class="s1">'borough'</span><span class="p">,</span> <span class="s1">'suburb'</span><span class="p">,</span> <span class="s1">'islet'</span><span class="p">,</span> <span class="s1">'isolated_dwelling'</span><span class="p">],</span>                                         
+    <span class="n">neighborhoods</span><span class="o">=</span><span class="p">[</span><span class="s1">'neighbourhood'</span><span class="p">,</span> <span class="s1">'quarter'</span><span class="p">,</span> <span class="s1">'locality'</span><span class="p">,</span> <span class="s1">'square'</span><span class="p">,</span> <span class="s1">'hamlet'</span><span class="p">,</span> <span class="s1">'natural_region'</span><span class="p">,</span> <span class="s1">'farm'</span><span class="p">],</span>     
+    
+    <span class="n">label_name_language</span><span class="o">=</span><span class="s2">"prefer:de"</span><span class="p">,</span>
+    <span class="n">road_name_preferred_language</span><span class="o">=</span><span class="s2">"de"</span><span class="p">,</span>
+    
+    <span class="n">RAM</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span>
+    <span class="n">ncores</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">verb</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">redownload_buildings</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">create_building_foundations</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">cleanup_files</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">maxzoom</span><span class="o">=</span><span class="mi">16</span>
+<span class="p">)</span>
+
+<span class="n">map_builder</span><span class="o">.</span><span class="n">run_all</span><span class="p">()</span>
+</pre></div></td></tr></table></div>
+
+      </section>
+    </main>
+  </div>
+</body>
+</html>

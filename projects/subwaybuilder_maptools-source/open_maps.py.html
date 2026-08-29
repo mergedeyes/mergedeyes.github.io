@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>open_maps.py — Subway Builder MapTools - A wrapper for DEPOT — Jan</title>
+  <link rel="stylesheet" href="../../styles.css?v=12c75c0c" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="layout">
+    <header class="rail" id="rail">
+<div class="rail__top">
+<a class="brand" href="../../index.html#top">
+<span class="brand__name">Jan</span>
+<span class="brand__meta">systems &amp; infrastructure<br/>Code, Code &amp; Code</span>
+</a>
+<button aria-controls="nav" aria-expanded="false" aria-label="Toggle menu" class="menu-toggle" id="menuToggle">
+<span></span><span></span><span></span>
+</button>
+</div>
+<nav aria-label="Sections" class="nav" id="nav">
+<a data-path="~/projects" href="../../index.html#projects">Projects</a>
+<a data-path="~/work" href="../../index.html#work">Work</a>
+<a data-path="~/education" href="../../index.html#education">Education</a>
+<a data-path="~/skills" href="../../index.html#skills">Skills</a>
+<a data-path="~/about" href="../../index.html#about">About Me</a>
+<a data-path="~/contact" href="../../index.html#contact">Contact</a>
+</nav>
+<div class="rail__status">
+<span aria-hidden="true" class="dot"></span>
+<span>open to work</span>
+</div>
+</header>
+    <nav class="file-tree"><p class="file-tree__title">Files</p><ul class="tree"><li class="tree-file"><a href="bbox_utils.py.html">bbox_utils.py</a></li><li class="tree-file"><a href="build.py.html">build.py</a></li><li class="tree-file"><a href="config_utils.py.html">config_utils.py</a></li><li class="tree-file"><a href="enrich_utils.py.html">enrich_utils.py</a></li><li class="tree-file"><a href="generate_demand_qzm_local.py.html">generate_demand_qzm_local.py</a></li><li class="tree-file tree-file--active"><a href="open_maps.py.html">open_maps.py</a></li><li class="tree-file"><a href="publish.py.html">publish.py</a></li><li class="tree-file"><a href="rerun_enrichment.py.html">rerun_enrichment.py</a></li><li class="tree-file"><a href="run_demand_pipeline.py.html">run_demand_pipeline.py</a></li><li class="tree-file"><a href="ship.py.html">ship.py</a></li><li class="tree-file"><a href="special_demand_utils.py.html">special_demand_utils.py</a></li><li class="tree-file"><a href="zensus_utils.py.html">zensus_utils.py</a></li></ul></nav>
+    <main class="main" id="main">
+      <section class="section source-page">
+        <p class="section__path">
+          <a href="../../index.html#projects" class="link">~/projects</a> /
+          <a href="../subwaybuilder_maptools.html" class="link">subwaybuilder_maptools</a> / source
+        </p>
+        <div class="source-page__head">
+          <h1 class="section__title">open_maps.py</h1>
+          <a href="../subwaybuilder_maptools.html" class="link">← Back to Subway Builder MapTools - A wrapper for DEPOT</a>
+        </div>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">subprocess</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">signal</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dotenv</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_dotenv</span>
+<span class="c1"># Ensure Ctrl+C always works and kills this script immediately</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">signal_handler</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span> <span class="n">frame</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">[!] Exiting..."</span><span class="p">)</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">signal</span><span class="o">.</span><span class="n">signal</span><span class="p">(</span><span class="n">signal</span><span class="o">.</span><span class="n">SIGINT</span><span class="p">,</span> <span class="n">signal_handler</span><span class="p">)</span>
+
+<span class="n">load_dotenv</span><span class="p">()</span>
+
+<span class="c1"># Load configuration from environment</span>
+<span class="n">CITY_CODE</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">"CITY_CODE"</span><span class="p">)</span>
+<span class="n">CUSTOM_HUBS_JSON</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">'RAW_BASE_DIR'</span><span class="p">,</span><span class="w"> </span><span class="s1">'raw_map_files'</span><span class="p">)</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">CITY_CODE</span><span class="si">}</span><span class="s2">/custom_hubs.json"</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">open_url_detached</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Opens a URL using xdg-open in a fully detached process.</span>
+<span class="sd">    This prevents the terminal from waiting for the browser to close</span>
+<span class="sd">    and avoids deadlocks caused by icon theme or bookmark lock errors.</span>
+<span class="sd">    """</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">(</span>
+            <span class="p">[</span><span class="s2">"xdg-open"</span><span class="p">,</span> <span class="n">url</span><span class="p">],</span>
+            <span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">DEVNULL</span><span class="p">,</span>
+            <span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">DEVNULL</span><span class="p">,</span>
+            <span class="n">stdin</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">DEVNULL</span><span class="p">,</span>
+            <span class="n">start_new_session</span><span class="o">=</span><span class="kc">True</span>
+        <span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  [ERROR] Could not launch browser: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">open_airports_in_browser</span><span class="p">():</span>
+    <span class="c1"># 1. Validate the hub configuration file exists</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">CUSTOM_HUBS_JSON</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Error: '</span><span class="si">{</span><span class="n">CUSTOM_HUBS_JSON</span><span class="si">}</span><span class="s2">' not found."</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Please run the demand generation script ('generate_demand_qzm_local.py') "</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"at least once to auto-generate the configuration template."</span><span class="p">)</span>
+        <span class="k">return</span>
+
+    <span class="c1"># 2. Load the hubs configuration</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">CUSTOM_HUBS_JSON</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+    <span class="n">airports</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"airports"</span><span class="p">,</span> <span class="p">{})</span>
+    
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">airports</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"No airports found in custom_hubs.json."</span><span class="p">)</span>
+        <span class="k">return</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Opening </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">airports</span><span class="p">)</span><span class="si">}</span><span class="s2"> airport locations to their default centers..."</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Use these tabs to find your subway terminal coordinates for the overrides."</span><span class="p">)</span>
+    
+    <span class="c1"># 3. Iterate through each airport and open its default center</span>
+    <span class="k">for</span> <span class="n">ap_id</span><span class="p">,</span> <span class="n">ap_data</span> <span class="ow">in</span> <span class="n">airports</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">lat</span> <span class="o">=</span> <span class="n">ap_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"default_center_lat"</span><span class="p">)</span>
+        <span class="n">lon</span> <span class="o">=</span> <span class="n">ap_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"default_center_lon"</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="n">lat</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">lon</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">" -&gt; </span><span class="si">{</span><span class="n">ap_id</span><span class="si">}</span><span class="s2">: Missing default coordinates."</span><span class="p">)</span>
+            <span class="k">continue</span>
+            
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">" -&gt; Opening </span><span class="si">{</span><span class="n">ap_id</span><span class="si">}</span><span class="s2">: (</span><span class="si">{</span><span class="n">lat</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">lon</span><span class="si">}</span><span class="s2">)"</span><span class="p">)</span>
+        
+        <span class="c1"># Google Maps search URL (most stable API)</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"https://www.google.com/maps/search/?api=1&amp;query=</span><span class="si">{</span><span class="n">lat</span><span class="si">}</span><span class="s2">,</span><span class="si">{</span><span class="n">lon</span><span class="si">}</span><span class="s2">"</span>
+        
+        <span class="c1"># Launch detached</span>
+        <span class="n">open_url_detached</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Done. Check your browser."</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Once you have the coordinates, update 'override_lat' and 'override_lon'"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"in '</span><span class="si">{</span><span class="n">CUSTOM_HUBS_JSON</span><span class="si">}</span><span class="s2">' and run the demand script again."</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+    <span class="n">open_airports_in_browser</span><span class="p">()</span>
+</pre></div></td></tr></table></div>
+
+      </section>
+    </main>
+  </div>
+</body>
+</html>

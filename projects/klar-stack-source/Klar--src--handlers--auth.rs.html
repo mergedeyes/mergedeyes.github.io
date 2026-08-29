@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Klar/src/handlers/auth.rs — Klar — Jan</title>
+  <link rel="stylesheet" href="../../styles.css?v=12c75c0c" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="layout">
+    <header class="rail" id="rail">
+<div class="rail__top">
+<a class="brand" href="../../index.html#top">
+<span class="brand__name">Jan</span>
+<span class="brand__meta">systems &amp; infrastructure<br/>Code, Code &amp; Code</span>
+</a>
+<button aria-controls="nav" aria-expanded="false" aria-label="Toggle menu" class="menu-toggle" id="menuToggle">
+<span></span><span></span><span></span>
+</button>
+</div>
+<nav aria-label="Sections" class="nav" id="nav">
+<a data-path="~/projects" href="../../index.html#projects">Projects</a>
+<a data-path="~/work" href="../../index.html#work">Work</a>
+<a data-path="~/education" href="../../index.html#education">Education</a>
+<a data-path="~/skills" href="../../index.html#skills">Skills</a>
+<a data-path="~/about" href="../../index.html#about">About Me</a>
+<a data-path="~/contact" href="../../index.html#contact">Contact</a>
+</nav>
+<div class="rail__status">
+<span aria-hidden="true" class="dot"></span>
+<span>open to work</span>
+</div>
+</header>
+    <nav class="file-tree"><p class="file-tree__title">Files</p><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">Klar/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">src/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">handlers/</span><ul class="tree"><li class="tree-file tree-file--active"><a href="Klar--src--handlers--auth.rs.html">auth.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--blocks.rs.html">blocks.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--chats.rs.html">chats.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--comment_likes.rs.html">comment_likes.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--comments.rs.html">comments.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--events.rs.html">events.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--feed.rs.html">feed.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--follows.rs.html">follows.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--health.rs.html">health.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--likes.rs.html">likes.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--notifications.rs.html">notifications.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--posts.rs.html">posts.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--reports.rs.html">reports.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--uploads.rs.html">uploads.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--users.rs.html">users.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">models/</span><ul class="tree"><li class="tree-file"><a href="Klar--src--models--chat.rs.html">chat.rs</a></li><li class="tree-file"><a href="Klar--src--models--comment.rs.html">comment.rs</a></li><li class="tree-file"><a href="Klar--src--models--event.rs.html">event.rs</a></li><li class="tree-file"><a href="Klar--src--models--like.rs.html">like.rs</a></li><li class="tree-file"><a href="Klar--src--models--media.rs.html">media.rs</a></li><li class="tree-file"><a href="Klar--src--models--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="Klar--src--models--post.rs.html">post.rs</a></li><li class="tree-file"><a href="Klar--src--models--report.rs.html">report.rs</a></li><li class="tree-file"><a href="Klar--src--models--user.rs.html">user.rs</a></li></ul></li><li class="tree-file"><a href="Klar--src--auth.rs.html">auth.rs</a></li><li class="tree-file"><a href="Klar--src--config.rs.html">config.rs</a></li><li class="tree-file"><a href="Klar--src--db.rs.html">db.rs</a></li><li class="tree-file"><a href="Klar--src--email.rs.html">email.rs</a></li><li class="tree-file"><a href="Klar--src--errors.rs.html">errors.rs</a></li><li class="tree-file"><a href="Klar--src--main.rs.html">main.rs</a></li><li class="tree-file"><a href="Klar--src--media.rs.html">media.rs</a></li><li class="tree-file"><a href="Klar--src--rate_limit.rs.html">rate_limit.rs</a></li><li class="tree-file"><a href="Klar--src--routes.rs.html">routes.rs</a></li><li class="tree-file"><a href="Klar--src--storage.rs.html">storage.rs</a></li><li class="tree-file"><a href="Klar--src--utils.rs.html">utils.rs</a></li></ul></li></ul></li><li class="tree-dir"><span class="tree-dir__name">klar-web/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">src/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">app/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">admin/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">reports/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--admin--reports--page.tsx.html">page.tsx</a></li></ul></li></ul></li><li class="tree-dir"><span class="tree-dir__name">api/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">health/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--api--health--route.ts.html">route.ts</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">site-access/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--api--site-access--route.ts.html">route.ts</a></li></ul></li></ul></li><li class="tree-dir"><span class="tree-dir__name">chats/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--chats--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">datenschutz/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--datenschutz--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">feed/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">discovery/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--feed--discovery--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-file"><a href="klar-web--src--app--feed--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">follow-requests/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--follow-requests--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">forgot-password/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--forgot-password--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">impressum/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--impressum--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">login/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--login--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">nutzungsbedingungen/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--nutzungsbedingungen--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">posts/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">[id]/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--posts--[id]--page.tsx.html">page.tsx</a></li></ul></li></ul></li><li class="tree-dir"><span class="tree-dir__name">register/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--register--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">resend-verification/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--resend-verification--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">reset-password/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--reset-password--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">search/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--search--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">settings/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">account/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--settings--account--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">password/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--settings--password--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">profile/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--settings--profile--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-file"><a href="klar-web--src--app--settings--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">transparenz/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--transparenz--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">users/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">[username]/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--users--[username]--page.tsx.html">page.tsx</a></li></ul></li></ul></li><li class="tree-dir"><span class="tree-dir__name">verify-email/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--verify-email--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">welcome/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--welcome--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-file"><a href="klar-web--src--app--favicon.ico.html">favicon.ico</a></li><li class="tree-file"><a href="klar-web--src--app--globals.css.html">globals.css</a></li><li class="tree-file"><a href="klar-web--src--app--layout.tsx.html">layout.tsx</a></li><li class="tree-file"><a href="klar-web--src--app--page.tsx.html">page.tsx</a></li><li class="tree-file"><a href="klar-web--src--app--robots.ts.html">robots.ts</a></li><li class="tree-file"><a href="klar-web--src--app--sitemap.ts.html">sitemap.ts</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">components/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">ui/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--components--ui--button.tsx.html">button.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--ui--card.tsx.html">card.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--ui--form.tsx.html">form.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--ui--input.tsx.html">input.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--ui--label.tsx.html">label.tsx</a></li></ul></li><li class="tree-file"><a href="klar-web--src--components--ChatWindow.tsx.html">ChatWindow.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--CreatePostModal.tsx.html">CreatePostModal.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--EditedBadge.tsx.html">EditedBadge.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--Footer.tsx.html">Footer.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--NewChatModal.tsx.html">NewChatModal.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--PostCard.tsx.html">PostCard.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--PostModal.tsx.html">PostModal.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--ReportModal.tsx.html">ReportModal.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--SmartBackButton.tsx.html">SmartBackButton.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--TopNav.tsx.html">TopNav.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--UserListModal.tsx.html">UserListModal.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">hooks/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--hooks--use-notifications.ts.html">use-notifications.ts</a></li><li class="tree-file"><a href="klar-web--src--hooks--use-smart-back.ts.html">use-smart-back.ts</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">lib/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">utils/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--lib--utils--media.ts.html">media.ts</a></li></ul></li><li class="tree-file"><a href="klar-web--src--lib--api.ts.html">api.ts</a></li><li class="tree-file"><a href="klar-web--src--lib--auth-context.tsx.html">auth-context.tsx</a></li><li class="tree-file"><a href="klar-web--src--lib--utils.ts.html">utils.ts</a></li></ul></li><li class="tree-file"><a href="klar-web--src--env.ts.html">env.ts</a></li><li class="tree-file"><a href="klar-web--src--proxy.ts.html">proxy.ts</a></li></ul></li></ul></li></ul></nav>
+    <main class="main" id="main">
+      <section class="section source-page">
+        <p class="section__path">
+          <a href="../../index.html#projects" class="link">~/projects</a> /
+          <a href="../klar-stack.html" class="link">Klar-Stack</a> / source
+        </p>
+        <div class="source-page__head">
+          <h1 class="section__title">Klar/src/handlers/auth.rs</h1>
+          <a href="../klar-stack.html" class="link">← Back to Klar</a>
+        </div>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">  1</span>
+<span class="normal">  2</span>
+<span class="normal">  3</span>
+<span class="normal">  4</span>
+<span class="normal">  5</span>
+<span class="normal">  6</span>
+<span class="normal">  7</span>
+<span class="normal">  8</span>
+<span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span>
+<span class="normal">245</span>
+<span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span>
+<span class="normal">250</span>
+<span class="normal">251</span>
+<span class="normal">252</span>
+<span class="normal">253</span>
+<span class="normal">254</span>
+<span class="normal">255</span>
+<span class="normal">256</span>
+<span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span>
+<span class="normal">262</span>
+<span class="normal">263</span>
+<span class="normal">264</span>
+<span class="normal">265</span>
+<span class="normal">266</span>
+<span class="normal">267</span>
+<span class="normal">268</span>
+<span class="normal">269</span>
+<span class="normal">270</span>
+<span class="normal">271</span>
+<span class="normal">272</span>
+<span class="normal">273</span>
+<span class="normal">274</span>
+<span class="normal">275</span>
+<span class="normal">276</span>
+<span class="normal">277</span>
+<span class="normal">278</span>
+<span class="normal">279</span>
+<span class="normal">280</span>
+<span class="normal">281</span>
+<span class="normal">282</span>
+<span class="normal">283</span>
+<span class="normal">284</span>
+<span class="normal">285</span>
+<span class="normal">286</span>
+<span class="normal">287</span>
+<span class="normal">288</span>
+<span class="normal">289</span>
+<span class="normal">290</span>
+<span class="normal">291</span>
+<span class="normal">292</span>
+<span class="normal">293</span>
+<span class="normal">294</span>
+<span class="normal">295</span>
+<span class="normal">296</span>
+<span class="normal">297</span>
+<span class="normal">298</span>
+<span class="normal">299</span>
+<span class="normal">300</span>
+<span class="normal">301</span>
+<span class="normal">302</span>
+<span class="normal">303</span>
+<span class="normal">304</span>
+<span class="normal">305</span>
+<span class="normal">306</span>
+<span class="normal">307</span>
+<span class="normal">308</span>
+<span class="normal">309</span>
+<span class="normal">310</span>
+<span class="normal">311</span>
+<span class="normal">312</span>
+<span class="normal">313</span>
+<span class="normal">314</span>
+<span class="normal">315</span>
+<span class="normal">316</span>
+<span class="normal">317</span>
+<span class="normal">318</span>
+<span class="normal">319</span>
+<span class="normal">320</span>
+<span class="normal">321</span>
+<span class="normal">322</span>
+<span class="normal">323</span>
+<span class="normal">324</span>
+<span class="normal">325</span>
+<span class="normal">326</span>
+<span class="normal">327</span>
+<span class="normal">328</span>
+<span class="normal">329</span>
+<span class="normal">330</span>
+<span class="normal">331</span>
+<span class="normal">332</span>
+<span class="normal">333</span>
+<span class="normal">334</span>
+<span class="normal">335</span>
+<span class="normal">336</span>
+<span class="normal">337</span>
+<span class="normal">338</span>
+<span class="normal">339</span>
+<span class="normal">340</span>
+<span class="normal">341</span>
+<span class="normal">342</span>
+<span class="normal">343</span>
+<span class="normal">344</span>
+<span class="normal">345</span>
+<span class="normal">346</span>
+<span class="normal">347</span>
+<span class="normal">348</span>
+<span class="normal">349</span>
+<span class="normal">350</span>
+<span class="normal">351</span>
+<span class="normal">352</span>
+<span class="normal">353</span>
+<span class="normal">354</span>
+<span class="normal">355</span>
+<span class="normal">356</span>
+<span class="normal">357</span>
+<span class="normal">358</span>
+<span class="normal">359</span>
+<span class="normal">360</span>
+<span class="normal">361</span>
+<span class="normal">362</span>
+<span class="normal">363</span>
+<span class="normal">364</span>
+<span class="normal">365</span>
+<span class="normal">366</span>
+<span class="normal">367</span>
+<span class="normal">368</span>
+<span class="normal">369</span>
+<span class="normal">370</span>
+<span class="normal">371</span>
+<span class="normal">372</span>
+<span class="normal">373</span>
+<span class="normal">374</span>
+<span class="normal">375</span>
+<span class="normal">376</span>
+<span class="normal">377</span>
+<span class="normal">378</span>
+<span class="normal">379</span>
+<span class="normal">380</span>
+<span class="normal">381</span>
+<span class="normal">382</span>
+<span class="normal">383</span>
+<span class="normal">384</span>
+<span class="normal">385</span>
+<span class="normal">386</span>
+<span class="normal">387</span>
+<span class="normal">388</span>
+<span class="normal">389</span>
+<span class="normal">390</span>
+<span class="normal">391</span>
+<span class="normal">392</span>
+<span class="normal">393</span>
+<span class="normal">394</span>
+<span class="normal">395</span>
+<span class="normal">396</span>
+<span class="normal">397</span>
+<span class="normal">398</span>
+<span class="normal">399</span>
+<span class="normal">400</span>
+<span class="normal">401</span>
+<span class="normal">402</span>
+<span class="normal">403</span>
+<span class="normal">404</span>
+<span class="normal">405</span>
+<span class="normal">406</span>
+<span class="normal">407</span>
+<span class="normal">408</span>
+<span class="normal">409</span>
+<span class="normal">410</span>
+<span class="normal">411</span>
+<span class="normal">412</span>
+<span class="normal">413</span>
+<span class="normal">414</span>
+<span class="normal">415</span>
+<span class="normal">416</span>
+<span class="normal">417</span>
+<span class="normal">418</span>
+<span class="normal">419</span>
+<span class="normal">420</span>
+<span class="normal">421</span>
+<span class="normal">422</span>
+<span class="normal">423</span>
+<span class="normal">424</span>
+<span class="normal">425</span>
+<span class="normal">426</span>
+<span class="normal">427</span>
+<span class="normal">428</span>
+<span class="normal">429</span>
+<span class="normal">430</span>
+<span class="normal">431</span>
+<span class="normal">432</span>
+<span class="normal">433</span>
+<span class="normal">434</span>
+<span class="normal">435</span>
+<span class="normal">436</span>
+<span class="normal">437</span>
+<span class="normal">438</span>
+<span class="normal">439</span>
+<span class="normal">440</span>
+<span class="normal">441</span>
+<span class="normal">442</span>
+<span class="normal">443</span>
+<span class="normal">444</span>
+<span class="normal">445</span>
+<span class="normal">446</span>
+<span class="normal">447</span>
+<span class="normal">448</span>
+<span class="normal">449</span>
+<span class="normal">450</span>
+<span class="normal">451</span>
+<span class="normal">452</span>
+<span class="normal">453</span>
+<span class="normal">454</span>
+<span class="normal">455</span>
+<span class="normal">456</span>
+<span class="normal">457</span>
+<span class="normal">458</span>
+<span class="normal">459</span>
+<span class="normal">460</span>
+<span class="normal">461</span>
+<span class="normal">462</span>
+<span class="normal">463</span>
+<span class="normal">464</span>
+<span class="normal">465</span>
+<span class="normal">466</span>
+<span class="normal">467</span>
+<span class="normal">468</span>
+<span class="normal">469</span>
+<span class="normal">470</span>
+<span class="normal">471</span>
+<span class="normal">472</span>
+<span class="normal">473</span>
+<span class="normal">474</span>
+<span class="normal">475</span>
+<span class="normal">476</span>
+<span class="normal">477</span>
+<span class="normal">478</span>
+<span class="normal">479</span>
+<span class="normal">480</span>
+<span class="normal">481</span>
+<span class="normal">482</span>
+<span class="normal">483</span>
+<span class="normal">484</span>
+<span class="normal">485</span>
+<span class="normal">486</span>
+<span class="normal">487</span>
+<span class="normal">488</span>
+<span class="normal">489</span>
+<span class="normal">490</span>
+<span class="normal">491</span>
+<span class="normal">492</span>
+<span class="normal">493</span>
+<span class="normal">494</span>
+<span class="normal">495</span>
+<span class="normal">496</span>
+<span class="normal">497</span>
+<span class="normal">498</span>
+<span class="normal">499</span>
+<span class="normal">500</span>
+<span class="normal">501</span>
+<span class="normal">502</span>
+<span class="normal">503</span>
+<span class="normal">504</span>
+<span class="normal">505</span>
+<span class="normal">506</span>
+<span class="normal">507</span>
+<span class="normal">508</span>
+<span class="normal">509</span>
+<span class="normal">510</span>
+<span class="normal">511</span>
+<span class="normal">512</span>
+<span class="normal">513</span>
+<span class="normal">514</span>
+<span class="normal">515</span>
+<span class="normal">516</span>
+<span class="normal">517</span>
+<span class="normal">518</span>
+<span class="normal">519</span>
+<span class="normal">520</span>
+<span class="normal">521</span>
+<span class="normal">522</span>
+<span class="normal">523</span>
+<span class="normal">524</span>
+<span class="normal">525</span>
+<span class="normal">526</span>
+<span class="normal">527</span>
+<span class="normal">528</span>
+<span class="normal">529</span>
+<span class="normal">530</span>
+<span class="normal">531</span>
+<span class="normal">532</span>
+<span class="normal">533</span>
+<span class="normal">534</span>
+<span class="normal">535</span>
+<span class="normal">536</span>
+<span class="normal">537</span>
+<span class="normal">538</span>
+<span class="normal">539</span>
+<span class="normal">540</span>
+<span class="normal">541</span>
+<span class="normal">542</span>
+<span class="normal">543</span>
+<span class="normal">544</span>
+<span class="normal">545</span>
+<span class="normal">546</span>
+<span class="normal">547</span>
+<span class="normal">548</span>
+<span class="normal">549</span>
+<span class="normal">550</span>
+<span class="normal">551</span>
+<span class="normal">552</span>
+<span class="normal">553</span>
+<span class="normal">554</span>
+<span class="normal">555</span>
+<span class="normal">556</span>
+<span class="normal">557</span>
+<span class="normal">558</span>
+<span class="normal">559</span>
+<span class="normal">560</span>
+<span class="normal">561</span>
+<span class="normal">562</span>
+<span class="normal">563</span>
+<span class="normal">564</span>
+<span class="normal">565</span>
+<span class="normal">566</span>
+<span class="normal">567</span>
+<span class="normal">568</span>
+<span class="normal">569</span>
+<span class="normal">570</span>
+<span class="normal">571</span>
+<span class="normal">572</span>
+<span class="normal">573</span>
+<span class="normal">574</span>
+<span class="normal">575</span>
+<span class="normal">576</span>
+<span class="normal">577</span>
+<span class="normal">578</span>
+<span class="normal">579</span>
+<span class="normal">580</span>
+<span class="normal">581</span>
+<span class="normal">582</span>
+<span class="normal">583</span>
+<span class="normal">584</span>
+<span class="normal">585</span>
+<span class="normal">586</span>
+<span class="normal">587</span>
+<span class="normal">588</span>
+<span class="normal">589</span>
+<span class="normal">590</span>
+<span class="normal">591</span>
+<span class="normal">592</span>
+<span class="normal">593</span>
+<span class="normal">594</span>
+<span class="normal">595</span>
+<span class="normal">596</span>
+<span class="normal">597</span>
+<span class="normal">598</span>
+<span class="normal">599</span>
+<span class="normal">600</span>
+<span class="normal">601</span>
+<span class="normal">602</span></pre></div></td><td class="code"><div><pre><span></span><span class="sd">/// Auth handlers — registration, login, refresh, logout, email verification, password reset.</span>
+
+<span class="k">use</span><span class="w"> </span><span class="n">axum</span><span class="p">::{</span>
+<span class="w">    </span><span class="n">extract</span><span class="p">::{</span><span class="n">Query</span><span class="p">,</span><span class="w"> </span><span class="n">State</span><span class="p">},</span>
+<span class="w">    </span><span class="n">http</span><span class="p">::{</span><span class="n">HeaderMap</span><span class="p">,</span><span class="w"> </span><span class="n">HeaderValue</span><span class="p">,</span><span class="w"> </span><span class="n">StatusCode</span><span class="p">},</span>
+<span class="w">    </span><span class="n">Json</span><span class="p">,</span>
+<span class="p">};</span>
+<span class="k">use</span><span class="w"> </span><span class="n">argon2</span><span class="p">::{</span>
+<span class="w">    </span><span class="n">password_hash</span><span class="p">::{</span><span class="n">rand_core</span><span class="p">::</span><span class="n">OsRng</span><span class="p">,</span><span class="w"> </span><span class="n">SaltString</span><span class="p">,</span><span class="w"> </span><span class="n">PasswordHasher</span><span class="p">,</span><span class="w"> </span><span class="n">PasswordHash</span><span class="p">,</span><span class="w"> </span><span class="n">PasswordVerifier</span><span class="p">},</span>
+<span class="w">    </span><span class="n">Argon2</span><span class="p">,</span>
+<span class="p">};</span>
+<span class="k">use</span><span class="w"> </span><span class="n">rand</span><span class="p">::</span><span class="n">Rng</span><span class="p">;</span>
+<span class="k">use</span><span class="w"> </span><span class="n">serde</span><span class="p">::</span><span class="n">Deserialize</span><span class="p">;</span>
+
+<span class="k">use</span><span class="w"> </span><span class="k">crate</span><span class="p">::</span><span class="n">auth</span><span class="p">::{</span><span class="n">create_access_token</span><span class="p">,</span><span class="w"> </span><span class="n">generate_refresh_token</span><span class="p">,</span><span class="w"> </span><span class="n">hash_refresh_token</span><span class="p">};</span>
+<span class="k">use</span><span class="w"> </span><span class="k">crate</span><span class="p">::</span><span class="n">email</span><span class="p">::</span><span class="n">EmailService</span><span class="p">;</span>
+<span class="k">use</span><span class="w"> </span><span class="k">crate</span><span class="p">::</span><span class="n">errors</span><span class="p">::</span><span class="n">AppError</span><span class="p">;</span>
+<span class="k">use</span><span class="w"> </span><span class="k">crate</span><span class="p">::</span><span class="n">models</span><span class="p">::{</span>
+<span class="w">    </span><span class="n">AuthResponse</span><span class="p">,</span><span class="w"> </span><span class="n">LoginRequest</span><span class="p">,</span><span class="w"> </span><span class="n">RefreshResponse</span><span class="p">,</span>
+<span class="w">    </span><span class="n">RegisterRequest</span><span class="p">,</span><span class="w"> </span><span class="n">UserResponse</span><span class="p">,</span><span class="w"> </span><span class="n">UserRow</span><span class="p">,</span>
+<span class="p">};</span>
+<span class="k">use</span><span class="w"> </span><span class="k">crate</span><span class="p">::</span><span class="n">storage</span><span class="p">::</span><span class="n">Storage</span><span class="p">;</span>
+<span class="k">use</span><span class="w"> </span><span class="k">crate</span><span class="p">::</span><span class="n">utils</span><span class="p">::{</span><span class="n">DbResultExt</span><span class="p">,</span><span class="w"> </span><span class="n">ResolveMedia</span><span class="p">};</span>
+
+<span class="cp">#[derive(Clone)]</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">AppState</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">db</span><span class="p">:</span><span class="w"> </span><span class="nc">sqlx</span><span class="p">::</span><span class="n">PgPool</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">jwt_secret</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">storage</span><span class="p">:</span><span class="w"> </span><span class="nc">Storage</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">email</span><span class="p">:</span><span class="w"> </span><span class="nc">EmailService</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// Local, in-process fan-out to this replica's own SSE subscribers.</span>
+<span class="w">    </span><span class="c1">// Never written to directly from request handlers anymore — always go</span>
+<span class="w">    </span><span class="c1">// through handlers::notifications::publish_notification(), which</span>
+<span class="w">    </span><span class="c1">// PUBLISHes to Redis first so every replica (not just this one) ends</span>
+<span class="w">    </span><span class="c1">// up delivering to its own local subscribers via this same channel.</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">notification_tx</span><span class="p">:</span><span class="w"> </span><span class="nc">tokio</span><span class="p">::</span><span class="n">sync</span><span class="p">::</span><span class="n">broadcast</span><span class="p">::</span><span class="n">Sender</span><span class="o">&lt;</span><span class="k">crate</span><span class="p">::</span><span class="n">handlers</span><span class="p">::</span><span class="n">notifications</span><span class="p">::</span><span class="n">NotificationEvent</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// Cheap to clone, auto-reconnects — safe to hand a clone to every</span>
+<span class="w">    </span><span class="c1">// request handler that needs to PUBLISH a notification.</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">redis</span><span class="p">:</span><span class="w"> </span><span class="nc">redis</span><span class="p">::</span><span class="n">aio</span><span class="p">::</span><span class="n">ConnectionManager</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="sd">/// Helper to generate secure Set-Cookie headers</span>
+<span class="k">fn</span><span class="w"> </span><span class="nf">build_auth_cookies</span><span class="p">(</span><span class="n">access</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">,</span><span class="w"> </span><span class="n">refresh</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">HeaderMap</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Prüfen, ob wir in Produktion sind (z.B. über eine ENV-Variable)</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">is_prod</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="p">::</span><span class="n">env</span><span class="p">::</span><span class="n">var</span><span class="p">(</span><span class="s">"ENV"</span><span class="p">).</span><span class="n">unwrap_or_default</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">"production"</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Lokal lassen wir "Secure" weg, online erzwingen wir es.</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">secure_flag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">is_prod</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">"Secure; "</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">""</span><span class="w"> </span><span class="p">};</span>
+
+<span class="w">    </span><span class="c1">// klarsocial.eu and klarsocial.de are genuinely different top-level</span>
+<span class="w">    </span><span class="c1">// domains — different "sites" per browser same-site rules — but both</span>
+<span class="w">    </span><span class="c1">// call the same api.klarsocial.eu backend. That makes every request</span>
+<span class="w">    </span><span class="c1">// cross-site. SameSite=None (paired with Secure) is required for the</span>
+<span class="w">    </span><span class="c1">// cookie to even be considered — but a growing share of browsers</span>
+<span class="w">    </span><span class="c1">// (privacy-hardened Chromium forks, Safari ITP, Firefox ETP) block</span>
+<span class="w">    </span><span class="c1">// third-party cookies outright regardless of these attributes. Cookies</span>
+<span class="w">    </span><span class="c1">// are kept here as a best-effort/same-site convenience, but the real</span>
+<span class="w">    </span><span class="c1">// auth path for cross-site clients is the Authorization: Bearer header</span>
+<span class="w">    </span><span class="c1">// (see AuthResponse/RefreshResponse below, and auth.rs's extractor).</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">same_site</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">is_prod</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">"None"</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">"Lax"</span><span class="w"> </span><span class="p">};</span>
+
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">headers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HeaderMap</span><span class="p">::</span><span class="n">new</span><span class="p">();</span>
+
+<span class="w">    </span><span class="n">headers</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span>
+<span class="w">        </span><span class="n">axum</span><span class="p">::</span><span class="n">http</span><span class="p">::</span><span class="n">header</span><span class="p">::</span><span class="n">SET_COOKIE</span><span class="p">,</span>
+<span class="w">        </span><span class="n">HeaderValue</span><span class="p">::</span><span class="n">from_str</span><span class="p">(</span><span class="o">&amp;</span><span class="fm">format!</span><span class="p">(</span>
+<span class="w">            </span><span class="s">"klar_access_token={}; HttpOnly; {}SameSite={}; Path=/; Max-Age=900"</span><span class="p">,</span>
+<span class="w">            </span><span class="n">access</span><span class="p">,</span><span class="w"> </span><span class="n">secure_flag</span><span class="p">,</span><span class="w"> </span><span class="n">same_site</span>
+<span class="w">        </span><span class="p">)).</span><span class="n">unwrap</span><span class="p">(),</span>
+<span class="w">    </span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">headers</span><span class="p">.</span><span class="n">append</span><span class="p">(</span>
+<span class="w">        </span><span class="n">axum</span><span class="p">::</span><span class="n">http</span><span class="p">::</span><span class="n">header</span><span class="p">::</span><span class="n">SET_COOKIE</span><span class="p">,</span>
+<span class="w">        </span><span class="n">HeaderValue</span><span class="p">::</span><span class="n">from_str</span><span class="p">(</span><span class="o">&amp;</span><span class="fm">format!</span><span class="p">(</span>
+<span class="w">            </span><span class="s">"klar_refresh_token={}; HttpOnly; {}SameSite={}; Path=/; Max-Age=2592000"</span><span class="p">,</span>
+<span class="w">            </span><span class="n">refresh</span><span class="p">,</span><span class="w"> </span><span class="n">secure_flag</span><span class="p">,</span><span class="w"> </span><span class="n">same_site</span>
+<span class="w">        </span><span class="p">)).</span><span class="n">unwrap</span><span class="p">(),</span>
+<span class="w">    </span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">headers</span>
+<span class="p">}</span>
+
+<span class="k">fn</span><span class="w"> </span><span class="nf">build_clear_cookies</span><span class="p">()</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">HeaderMap</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">is_prod</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="p">::</span><span class="n">env</span><span class="p">::</span><span class="n">var</span><span class="p">(</span><span class="s">"ENV"</span><span class="p">).</span><span class="n">unwrap_or_default</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">"production"</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">secure_flag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">is_prod</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">"Secure; "</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">""</span><span class="w"> </span><span class="p">};</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">same_site</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">is_prod</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">"None"</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">"Lax"</span><span class="w"> </span><span class="p">};</span>
+
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">headers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HeaderMap</span><span class="p">::</span><span class="n">new</span><span class="p">();</span>
+<span class="w">    </span><span class="n">headers</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span>
+<span class="w">        </span><span class="n">axum</span><span class="p">::</span><span class="n">http</span><span class="p">::</span><span class="n">header</span><span class="p">::</span><span class="n">SET_COOKIE</span><span class="p">,</span>
+<span class="w">        </span><span class="n">HeaderValue</span><span class="p">::</span><span class="n">from_str</span><span class="p">(</span><span class="o">&amp;</span><span class="fm">format!</span><span class="p">(</span><span class="s">"klar_access_token=; HttpOnly; {}SameSite={}; Path=/; Max-Age=0"</span><span class="p">,</span><span class="w"> </span><span class="n">secure_flag</span><span class="p">,</span><span class="w"> </span><span class="n">same_site</span><span class="p">)).</span><span class="n">unwrap</span><span class="p">(),</span>
+<span class="w">    </span><span class="p">);</span>
+<span class="w">    </span><span class="n">headers</span><span class="p">.</span><span class="n">append</span><span class="p">(</span>
+<span class="w">        </span><span class="n">axum</span><span class="p">::</span><span class="n">http</span><span class="p">::</span><span class="n">header</span><span class="p">::</span><span class="n">SET_COOKIE</span><span class="p">,</span>
+<span class="w">        </span><span class="n">HeaderValue</span><span class="p">::</span><span class="n">from_str</span><span class="p">(</span><span class="o">&amp;</span><span class="fm">format!</span><span class="p">(</span><span class="s">"klar_refresh_token=; HttpOnly; {}SameSite={}; Path=/; Max-Age=0"</span><span class="p">,</span><span class="w"> </span><span class="n">secure_flag</span><span class="p">,</span><span class="w"> </span><span class="n">same_site</span><span class="p">)).</span><span class="n">unwrap</span><span class="p">(),</span>
+<span class="w">    </span><span class="p">);</span>
+<span class="w">    </span><span class="n">headers</span>
+<span class="p">}</span>
+
+<span class="sd">/// Generate a secure random hex token for email verification/password reset</span>
+<span class="k">fn</span><span class="w"> </span><span class="nf">generate_email_token</span><span class="p">()</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">String</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">bytes</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="kt">u8</span><span class="p">;</span><span class="w"> </span><span class="mi">32</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rand</span><span class="p">::</span><span class="n">rng</span><span class="p">().</span><span class="n">random</span><span class="p">();</span>
+<span class="w">    </span><span class="n">hex</span><span class="p">::</span><span class="n">encode</span><span class="p">(</span><span class="n">bytes</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="sd">/// Store a refresh token in the database and return the raw token for the client</span>
+<span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">create_and_store_refresh_token</span><span class="p">(</span>
+<span class="w">    </span><span class="n">pool</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">sqlx</span><span class="p">::</span><span class="n">PgPool</span><span class="p">,</span>
+<span class="w">    </span><span class="n">user_id</span><span class="p">:</span><span class="w"> </span><span class="nc">uuid</span><span class="p">::</span><span class="n">Uuid</span><span class="p">,</span>
+<span class="w">    </span><span class="n">device_info</span><span class="p">:</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;&amp;</span><span class="kt">str</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="nb">String</span><span class="p">,</span><span class="w"> </span><span class="n">AppError</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">raw_token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">generate_refresh_token</span><span class="p">();</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">token_hash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hash_refresh_token</span><span class="p">(</span><span class="o">&amp;</span><span class="n">raw_token</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">sqlx</span><span class="p">::</span><span class="n">query</span><span class="p">(</span>
+<span class="w">        </span><span class="s">r#"</span>
+<span class="s">        INSERT INTO refresh_tokens (user_id, token_hash, device_info, expires_at)</span>
+<span class="s">        VALUES ($1, $2, $3, NOW() + INTERVAL '30 days')</span>
+<span class="s">        "#</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">token_hash</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="n">device_info</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="n">pool</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="k">await</span>
+<span class="w">    </span><span class="p">.</span><span class="n">db_err_ctx</span><span class="p">(</span><span class="s">"Failed to store refresh token"</span><span class="p">,</span><span class="w"> </span><span class="s">"Failed to create session"</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">    </span><span class="nb">Ok</span><span class="p">(</span><span class="n">raw_token</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="sd">/// POST /auth/register</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">register</span><span class="p">(</span>
+<span class="w">    </span><span class="n">State</span><span class="p">(</span><span class="n">state</span><span class="p">):</span><span class="w"> </span><span class="nc">State</span><span class="o">&lt;</span><span class="n">AppState</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Json</span><span class="p">(</span><span class="n">input</span><span class="p">):</span><span class="w"> </span><span class="nc">Json</span><span class="o">&lt;</span><span class="n">RegisterRequest</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="p">(</span><span class="n">StatusCode</span><span class="p">,</span><span class="w"> </span><span class="n">HeaderMap</span><span class="p">,</span><span class="w"> </span><span class="n">Json</span><span class="o">&lt;</span><span class="n">AuthResponse</span><span class="o">&gt;</span><span class="p">),</span><span class="w"> </span><span class="n">AppError</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="n">username</span><span class="p">.</span><span class="n">is_empty</span><span class="p">()</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="n">email</span><span class="p">.</span><span class="n">is_empty</span><span class="p">()</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="n">password</span><span class="p">.</span><span class="n">is_empty</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">Err</span><span class="p">(</span><span class="n">AppError</span><span class="p">::</span><span class="n">bad_request</span><span class="p">(</span><span class="s">"All fields are required"</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// ToS/Privacy Policy consent -- enforced server-side, not just by the</span>
+<span class="w">    </span><span class="c1">// frontend form's checkbox, so a direct POST /auth/register can't skip</span>
+<span class="w">    </span><span class="c1">// it. See models/user.rs's RegisterRequest and migration</span>
+<span class="w">    </span><span class="c1">// 20260825000000_add_terms_accepted_at.sql for the full rationale.</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">!</span><span class="n">input</span><span class="p">.</span><span class="n">accept_terms</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">Err</span><span class="p">(</span><span class="n">AppError</span><span class="p">::</span><span class="n">bad_request</span><span class="p">(</span>
+<span class="w">            </span><span class="s">"You must accept the Terms of Service and Privacy Policy to register"</span>
+<span class="w">        </span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Case is preserved exactly as entered -- uniqueness and lookups are</span>
+<span class="w">    </span><span class="c1">// case-insensitive (see idx_users_username_ci), not the stored value.</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="n">username</span><span class="p">.</span><span class="n">trim</span><span class="p">().</span><span class="n">to_string</span><span class="p">();</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">username</span><span class="p">.</span><span class="n">len</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">30</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">Err</span><span class="p">(</span><span class="n">AppError</span><span class="p">::</span><span class="n">bad_request</span><span class="p">(</span><span class="s">"Username must be 30 characters or less"</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="n">password</span><span class="p">.</span><span class="n">len</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">Err</span><span class="p">(</span><span class="n">AppError</span><span class="p">::</span><span class="n">bad_request</span><span class="p">(</span><span class="s">"Password must be at least 8 characters"</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">salt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SaltString</span><span class="p">::</span><span class="n">generate</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="n">OsRng</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">argon2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Argon2</span><span class="p">::</span><span class="n">default</span><span class="p">();</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">password_hash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">argon2</span>
+<span class="w">        </span><span class="p">.</span><span class="n">hash_password</span><span class="p">(</span><span class="n">input</span><span class="p">.</span><span class="n">password</span><span class="p">.</span><span class="n">as_bytes</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="n">salt</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="n">map_err</span><span class="p">(</span><span class="o">|</span><span class="n">_</span><span class="o">|</span><span class="w"> </span><span class="n">AppError</span><span class="p">::</span><span class="n">internal</span><span class="p">(</span><span class="s">"Failed to hash password"</span><span class="p">))</span><span class="o">?</span>
+<span class="w">        </span><span class="p">.</span><span class="n">to_string</span><span class="p">();</span>
+
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sqlx</span><span class="p">::</span><span class="n">query_as</span><span class="p">::</span><span class="o">&lt;</span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="n">UserRow</span><span class="o">&gt;</span><span class="p">(</span>
+<span class="w">        </span><span class="s">"INSERT INTO users (username, email, password_hash, terms_accepted_at) VALUES ($1, $2, $3, NOW()) RETURNING *"</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">username</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">input</span><span class="p">.</span><span class="n">email</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">password_hash</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">fetch_one</span><span class="p">(</span><span class="o">&amp;</span><span class="n">state</span><span class="p">.</span><span class="n">db</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="k">await</span>
+<span class="w">    </span><span class="p">.</span><span class="n">map_err</span><span class="p">(</span><span class="o">|</span><span class="n">e</span><span class="o">|</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">msg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">to_string</span><span class="p">();</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">msg</span><span class="p">.</span><span class="n">contains</span><span class="p">(</span><span class="s">"duplicate key"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">AppError</span><span class="p">::</span><span class="n">conflict</span><span class="p">(</span><span class="s">"Username or email already taken"</span><span class="p">)</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">tracing</span><span class="p">::</span><span class="n">error</span><span class="o">!</span><span class="p">(</span><span class="s">"Failed to register user: {}"</span><span class="p">,</span><span class="w"> </span><span class="n">msg</span><span class="p">);</span>
+<span class="w">            </span><span class="n">AppError</span><span class="p">::</span><span class="n">internal</span><span class="p">(</span><span class="s">"Failed to register user"</span><span class="p">)</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">})</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">tracing</span><span class="p">::</span><span class="n">info</span><span class="o">!</span><span class="p">(</span><span class="s">"Registered user: {} ({})"</span><span class="p">,</span><span class="w"> </span><span class="n">user</span><span class="p">.</span><span class="n">username</span><span class="p">,</span><span class="w"> </span><span class="n">user</span><span class="p">.</span><span class="n">id</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Send verification email</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">email_token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">generate_email_token</span><span class="p">();</span>
+<span class="w">    </span><span class="n">sqlx</span><span class="p">::</span><span class="n">query</span><span class="p">(</span>
+<span class="w">        </span><span class="s">r#"</span>
+<span class="s">        INSERT INTO email_tokens (user_id, token, token_type, expires_at)</span>
+<span class="s">        VALUES ($1, $2, 'verification', NOW() + INTERVAL '24 hours')</span>
+<span class="s">        "#</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="n">user</span><span class="p">.</span><span class="n">id</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">email_token</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">state</span><span class="p">.</span><span class="n">db</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="k">await</span>
+<span class="w">    </span><span class="p">.</span><span class="n">db_err</span><span class="p">(</span><span class="s">"Failed to create verification token"</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">email_service</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">state</span><span class="p">.</span><span class="n">email</span><span class="p">.</span><span class="n">clone</span><span class="p">();</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">to_email</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">user</span><span class="p">.</span><span class="n">email</span><span class="p">.</span><span class="n">clone</span><span class="p">();</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">email_token</span><span class="p">.</span><span class="n">clone</span><span class="p">();</span>
+<span class="w">        </span><span class="n">tokio</span><span class="p">::</span><span class="n">spawn</span><span class="p">(</span><span class="k">async</span><span class="w"> </span><span class="k">move</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nb">Err</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">email_service</span><span class="p">.</span><span class="n">send_verification</span><span class="p">(</span><span class="o">&amp;</span><span class="n">to_email</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">token</span><span class="p">).</span><span class="k">await</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">tracing</span><span class="p">::</span><span class="n">error</span><span class="o">!</span><span class="p">(</span><span class="s">"Failed to send verification email: {}"</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Create tokens</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">access_token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">create_access_token</span><span class="p">(</span><span class="n">user</span><span class="p">.</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">state</span><span class="p">.</span><span class="n">jwt_secret</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="n">map_err</span><span class="p">(</span><span class="o">|</span><span class="n">_</span><span class="o">|</span><span class="w"> </span><span class="n">AppError</span><span class="p">::</span><span class="n">internal</span><span class="p">(</span><span class="s">"Failed to create access token"</span><span class="p">))</span><span class="o">?</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">refresh_token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">create_and_store_refresh_token</span><span class="p">(</span><span class="o">&amp;</span><span class="n">state</span><span class="p">.</span><span class="n">db</span><span class="p">,</span><span class="w"> </span><span class="n">user</span><span class="p">.</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="nb">None</span><span class="p">).</span><span class="k">await</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">    </span><span class="nb">Ok</span><span class="p">((</span>
+<span class="w">        </span><span class="n">StatusCode</span><span class="p">::</span><span class="n">CREATED</span><span class="p">,</span>
+<span class="w">        </span><span class="n">build_auth_cookies</span><span class="p">(</span><span class="o">&amp;</span><span class="n">access_token</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">refresh_token</span><span class="p">),</span>
+<span class="w">        </span><span class="n">Json</span><span class="p">(</span><span class="n">AuthResponse</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// Returned in the body now (not blanked) so cross-site clients</span>
+<span class="w">            </span><span class="c1">// that can't rely on third-party cookies can store these and</span>
+<span class="w">            </span><span class="c1">// send them explicitly via Authorization: Bearer.</span>
+<span class="w">            </span><span class="n">access_token</span><span class="p">,</span>
+<span class="w">            </span><span class="n">refresh_token</span><span class="p">,</span>
+<span class="w">            </span><span class="n">user</span><span class="p">:</span><span class="w"> </span><span class="nc">UserResponse</span><span class="p">::</span><span class="n">from</span><span class="p">(</span><span class="n">user</span><span class="p">).</span><span class="n">resolve_media</span><span class="p">(</span><span class="o">&amp;</span><span class="n">state</span><span class="p">.</span><span class="n">storage</span><span class="p">),</span>
+<span class="w">        </span><span class="p">}),</span>
+<span class="w">    </span><span class="p">))</span>
+<span class="p">}</span>
+
+<span class="sd">/// POST /auth/login</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">login</span><span class="p">(</span>
+<span class="w">    </span><span class="n">State</span><span class="p">(</span><span class="n">state</span><span class="p">):</span><span class="w"> </span><span class="nc">State</span><span class="o">&lt;</span><span class="n">AppState</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Json</span><span class="p">(</span><span class="n">input</span><span class="p">):</span><span class="w"> </span><span class="nc">Json</span><span class="o">&lt;</span><span class="n">LoginRequest</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="p">(</span><span class="n">HeaderMap</span><span class="p">,</span><span class="w"> </span><span class="n">Json</span><span class="o">&lt;</span><span class="n">AuthResponse</span><span class="o">&gt;</span><span class="p">),</span><span class="w"> </span><span class="n">AppError</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sqlx</span><span class="p">::</span><span class="n">query_as</span><span class="p">::</span><span class="o">&lt;</span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="n">UserRow</span><span class="o">&gt;</span><span class="p">(</span>
+<span class="w">        </span><span class="s">"SELECT * FROM users WHERE email = $1"</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">input</span><span class="p">.</span><span class="n">email</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">fetch_optional</span><span class="p">(</span><span class="o">&amp;</span><span class="n">state</span><span class="p">.</span><span class="n">db</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="k">await</span>
+<span class="w">    </span><span class="p">.</span><span class="n">db_err</span><span class="p">(</span><span class="s">"Database error"</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">user</span><span class="p">.</span><span class="n">ok_or_else</span><span class="p">(</span><span class="o">||</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">AppError</span><span class="p">::</span><span class="n">bad_request</span><span class="p">(</span><span class="s">"Invalid email or password"</span><span class="p">)</span>
+<span class="w">    </span><span class="p">})</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">stored_hash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">user</span><span class="p">.</span><span class="n">password_hash</span><span class="p">.</span><span class="n">as_ref</span><span class="p">().</span><span class="n">ok_or_else</span><span class="p">(</span><span class="o">||</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">AppError</span><span class="p">::</span><span class="n">bad_request</span><span class="p">(</span><span class="s">"Invalid email or password"</span><span class="p">)</span>
+<span class="w">    </span><span class="p">})</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">parsed_hash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PasswordHash</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="n">stored_hash</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="n">map_err</span><span class="p">(</span><span class="o">|</span><span class="n">_</span><span class="o">|</span><span class="w"> </span><span class="n">AppError</span><span class="p">::</span><span class="n">internal</span><span class="p">(</span><span class="s">"Failed to parse password hash"</span><span class="p">))</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">Argon2</span><span class="p">::</span><span class="n">default</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="n">verify_password</span><span class="p">(</span><span class="n">input</span><span class="p">.</span><span class="n">password</span><span class="p">.</span><span class="n">as_bytes</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="n">parsed_hash</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="n">map_err</span><span class="p">(</span><span class="o">|</span><span class="n">_</span><span class="o">|</span><span class="w"> </span><span class="n">AppError</span><span class="p">::</span><span class="n">bad_request</span><span class="p">(</span><span class="s">"Invalid email or password"</span><span class="p">))</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">access_token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">create_access_token</span><span class="p">(</span><span class="n">user</span><span class="p">.</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">state</span><span class="p">.</span><span class="n">jwt_secret</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="n">map_err</span><span class="p">(</span><span class="o">|</span><span class="n">_</span><span class="o">|</span><span class="w"> </span><span class="n">AppError</span><span class="p">::</span><span class="n">internal</span><span class="p">(</span><span class="s">"Failed to create access token"</span><span class="p">))</span><span class="o">?</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">refresh_token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">create_and_store_refresh_token</span><span class="p">(</span><span class="o">&amp;</span><span class="n">state</span><span class="p">.</span><span class="n">db</span><span class="p">,</span><span class="w"> </span><span class="n">user</span><span class="p">.</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="nb">None</span><span class="p">).</span><span class="k">await</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">tracing</span><span class="p">::</span><span class="n">info</span><span class="o">!</span><span class="p">(</span><span class="s">"User logged in: {} ({})"</span><span class="p">,</span><span class="w"> </span><span class="n">user</span><span class="p">.</span><span class="n">username</span><span class="p">,</span><span class="w"> </span><span class="n">user</span><span class="p">.</span><span class="n">id</span><span class="p">);</span>
+
+<span class="w">    </span><span class="nb">Ok</span><span class="p">((</span>
+<span class="w">        </span><span class="n">build_auth_cookies</span><span class="p">(</span><span class="o">&amp;</span><span class="n">access_token</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">refresh_token</span><span class="p">),</span>
+<span class="w">        </span><span class="n">Json</span><span class="p">(</span><span class="n">AuthResponse</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">access_token</span><span class="p">,</span>
+<span class="w">            </span><span class="n">refresh_token</span><span class="p">,</span>
+<span class="w">            </span><span class="n">user</span><span class="p">:</span><span class="w"> </span><span class="nc">UserResponse</span><span class="p">::</span><span class="n">from</span><span class="p">(</span><span class="n">user</span><span class="p">).</span><span class="n">resolve_media</span><span class="p">(</span><span class="o">&amp;</span><span class="n">state</span><span class="p">.</span><span class="n">storage</span><span class="p">),</span>
+<span class="w">        </span><span class="p">}),</span>
+<span class="w">    </span><span class="p">))</span>
+<span class="p">}</span>
+
+<span class="sd">/// Body for /auth/refresh — refresh_token is optional here because same-site</span>
+<span class="sd">/// clients rely on the httpOnly cookie instead; cross-site clients (blocked</span>
+<span class="sd">/// from receiving that cookie by third-party cookie policies) send it explicitly.</span>
+<span class="sd">/// Frontend always sends at least `{}` so this extractor never sees a truly</span>
+<span class="sd">/// empty/missing body.</span>
+<span class="cp">#[derive(Debug, Deserialize, Default)]</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">RefreshRequest</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">refresh_token</span><span class="p">:</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="sd">/// POST /auth/refresh</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">refresh</span><span class="p">(</span>
+<span class="w">    </span><span class="n">State</span><span class="p">(</span><span class="n">state</span><span class="p">):</span><span class="w"> </span><span class="nc">State</span><span class="o">&lt;</span><span class="n">AppState</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">headers</span><span class="p">:</span><span class="w"> </span><span class="nc">HeaderMap</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Json</span><span class="p">(</span><span class="n">body</span><span class="p">):</span><span class="w"> </span><span class="nc">Json</span><span class="o">&lt;</span><span class="n">RefreshRequest</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="p">(</span><span class="n">HeaderMap</span><span class="p">,</span><span class="w"> </span><span class="n">Json</span><span class="o">&lt;</span><span class="n">RefreshResponse</span><span class="o">&gt;</span><span class="p">),</span><span class="w"> </span><span class="n">AppError</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">cookie_header</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">headers</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">axum</span><span class="p">::</span><span class="n">http</span><span class="p">::</span><span class="n">header</span><span class="p">::</span><span class="n">COOKIE</span><span class="p">).</span><span class="n">and_then</span><span class="p">(</span><span class="o">|</span><span class="n">v</span><span class="o">|</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">to_str</span><span class="p">().</span><span class="n">ok</span><span class="p">());</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">cookie_token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cookie_header</span>
+<span class="w">        </span><span class="p">.</span><span class="n">and_then</span><span class="p">(</span><span class="o">|</span><span class="n">h</span><span class="o">|</span><span class="w"> </span><span class="n">h</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="sc">';'</span><span class="p">).</span><span class="n">map</span><span class="p">(</span><span class="o">|</span><span class="n">s</span><span class="o">|</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">trim</span><span class="p">()).</span><span class="n">find</span><span class="p">(</span><span class="o">|</span><span class="n">s</span><span class="o">|</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">starts_with</span><span class="p">(</span><span class="s">"klar_refresh_token="</span><span class="p">)))</span>
+<span class="w">        </span><span class="p">.</span><span class="n">and_then</span><span class="p">(</span><span class="o">|</span><span class="n">s</span><span class="o">|</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">strip_prefix</span><span class="p">(</span><span class="s">"klar_refresh_token="</span><span class="p">))</span>
+<span class="w">        </span><span class="p">.</span><span class="n">map</span><span class="p">(</span><span class="o">|</span><span class="n">s</span><span class="o">|</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">to_string</span><span class="p">());</span>
+
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">raw_refresh_token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cookie_token</span>
+<span class="w">        </span><span class="p">.</span><span class="n">or</span><span class="p">(</span><span class="n">body</span><span class="p">.</span><span class="n">refresh_token</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="n">ok_or_else</span><span class="p">(</span><span class="o">||</span><span class="w"> </span><span class="n">AppError</span><span class="p">::</span><span class="n">unauthorized</span><span class="p">(</span><span class="s">"No refresh token found"</span><span class="p">))</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">token_hash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hash_refresh_token</span><span class="p">(</span><span class="o">&amp;</span><span class="n">raw_refresh_token</span><span class="p">);</span>
+
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">token_row</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sqlx</span><span class="p">::</span><span class="n">query_as</span><span class="p">::</span><span class="o">&lt;</span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">uuid</span><span class="p">::</span><span class="n">Uuid</span><span class="p">,</span><span class="w"> </span><span class="n">uuid</span><span class="p">::</span><span class="n">Uuid</span><span class="p">)</span><span class="o">&gt;</span><span class="p">(</span>
+<span class="w">        </span><span class="s">r#"</span>
+<span class="s">        SELECT id, user_id FROM refresh_tokens</span>
+<span class="s">        WHERE token_hash = $1 AND expires_at &gt; NOW()</span>
+<span class="s">        "#</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">token_hash</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">fetch_optional</span><span class="p">(</span><span class="o">&amp;</span><span class="n">state</span><span class="p">.</span><span class="n">db</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="k">await</span>
+<span class="w">    </span><span class="p">.</span><span class="n">db_err</span><span class="p">(</span><span class="s">"Database error"</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="p">(</span><span class="n">old_token_id</span><span class="p">,</span><span class="w"> </span><span class="n">user_id</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">token_row</span>
+<span class="w">        </span><span class="p">.</span><span class="n">ok_or_else</span><span class="p">(</span><span class="o">||</span><span class="w"> </span><span class="n">AppError</span><span class="p">::</span><span class="n">unauthorized</span><span class="p">(</span><span class="s">"Invalid or expired refresh token"</span><span class="p">))</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">sqlx</span><span class="p">::</span><span class="n">query</span><span class="p">(</span><span class="s">"DELETE FROM refresh_tokens WHERE id = $1"</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="n">old_token_id</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">state</span><span class="p">.</span><span class="n">db</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="k">await</span>
+<span class="w">        </span><span class="p">.</span><span class="n">db_err_ctx</span><span class="p">(</span><span class="s">"Failed to delete old refresh token"</span><span class="p">,</span><span class="w"> </span><span class="s">"Database error"</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">access_token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">create_access_token</span><span class="p">(</span><span class="n">user_id</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">state</span><span class="p">.</span><span class="n">jwt_secret</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="n">map_err</span><span class="p">(</span><span class="o">|</span><span class="n">_</span><span class="o">|</span><span class="w"> </span><span class="n">AppError</span><span class="p">::</span><span class="n">internal</span><span class="p">(</span><span class="s">"Failed to create access token"</span><span class="p">))</span><span class="o">?</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">new_refresh_token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">create_and_store_refresh_token</span><span class="p">(</span><span class="o">&amp;</span><span class="n">state</span><span class="p">.</span><span class="n">db</span><span class="p">,</span><span class="w"> </span><span class="n">user_id</span><span class="p">,</span><span class="w"> </span><span class="nb">None</span><span class="p">).</span><span class="k">await</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">tracing</span><span class="p">::</span><span class="n">info</span><span class="o">!</span><span class="p">(</span><span class="s">"Token refreshed for user: {}"</span><span class="p">,</span><span class="w"> </span><span class="n">user_id</span><span class="p">);</span>
+
+<span class="w">    </span><span class="nb">Ok</span><span class="p">((</span>
+<span class="w">        </span><span class="n">build_auth_cookies</span><span class="p">(</span><span class="o">&amp;</span><span class="n">access_token</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">new_refresh_token</span><span class="p">),</span>
+<span class="w">        </span><span class="n">Json</span><span class="p">(</span><span class="n">RefreshResponse</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">access_token</span><span class="p">,</span>
+<span class="w">            </span><span class="n">refresh_token</span><span class="p">:</span><span class="w"> </span><span class="nc">new_refresh_token</span><span class="p">,</span>
+<span class="w">        </span><span class="p">})</span>
+<span class="w">    </span><span class="p">))</span>
+<span class="p">}</span>
+
+<span class="sd">/// Body for /auth/logout — same rationale as RefreshRequest. Frontend always</span>
+<span class="sd">/// sends at least `{}`, so this is required (not Option&lt;Json&lt;..&gt;&gt;) to avoid</span>
+<span class="sd">/// depending on axum's optional-body extractor support.</span>
+<span class="cp">#[derive(Debug, Deserialize, Default)]</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">LogoutRequest</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">refresh_token</span><span class="p">:</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="sd">/// POST /auth/logout</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">logout</span><span class="p">(</span>
+<span class="w">    </span><span class="n">State</span><span class="p">(</span><span class="n">state</span><span class="p">):</span><span class="w"> </span><span class="nc">State</span><span class="o">&lt;</span><span class="n">AppState</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">headers</span><span class="p">:</span><span class="w"> </span><span class="nc">HeaderMap</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Json</span><span class="p">(</span><span class="n">body</span><span class="p">):</span><span class="w"> </span><span class="nc">Json</span><span class="o">&lt;</span><span class="n">LogoutRequest</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="p">(</span><span class="n">HeaderMap</span><span class="p">,</span><span class="w"> </span><span class="n">Json</span><span class="o">&lt;</span><span class="n">serde_json</span><span class="p">::</span><span class="n">Value</span><span class="o">&gt;</span><span class="p">),</span><span class="w"> </span><span class="n">AppError</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">cookie_header</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">headers</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">axum</span><span class="p">::</span><span class="n">http</span><span class="p">::</span><span class="n">header</span><span class="p">::</span><span class="n">COOKIE</span><span class="p">).</span><span class="n">and_then</span><span class="p">(</span><span class="o">|</span><span class="n">v</span><span class="o">|</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">to_str</span><span class="p">().</span><span class="n">ok</span><span class="p">());</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">cookie_token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cookie_header</span>
+<span class="w">        </span><span class="p">.</span><span class="n">and_then</span><span class="p">(</span><span class="o">|</span><span class="n">h</span><span class="o">|</span><span class="w"> </span><span class="n">h</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="sc">';'</span><span class="p">).</span><span class="n">map</span><span class="p">(</span><span class="o">|</span><span class="n">s</span><span class="o">|</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">trim</span><span class="p">()).</span><span class="n">find</span><span class="p">(</span><span class="o">|</span><span class="n">s</span><span class="o">|</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">starts_with</span><span class="p">(</span><span class="s">"klar_refresh_token="</span><span class="p">)))</span>
+<span class="w">        </span><span class="p">.</span><span class="n">and_then</span><span class="p">(</span><span class="o">|</span><span class="n">s</span><span class="o">|</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">strip_prefix</span><span class="p">(</span><span class="s">"klar_refresh_token="</span><span class="p">))</span>
+<span class="w">        </span><span class="p">.</span><span class="n">map</span><span class="p">(</span><span class="o">|</span><span class="n">s</span><span class="o">|</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">to_string</span><span class="p">());</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">raw_refresh_token</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cookie_token</span><span class="p">.</span><span class="n">or</span><span class="p">(</span><span class="n">body</span><span class="p">.</span><span class="n">refresh_token</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">token_hash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hash_refresh_token</span><span class="p">(</span><span class="o">&amp;</span><span class="n">raw_refresh_token</span><span class="p">);</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sqlx</span><span class="p">::</span><span class="n">query</span><span class="p">(</span><span class="s">"DELETE FROM refresh_tokens WHERE token_hash = $1"</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">token_hash</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">state</span><span class="p">.</span><span class="n">db</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="k">await</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nb">Ok</span><span class="p">((</span>
+<span class="w">        </span><span class="n">build_clear_cookies</span><span class="p">(),</span>
+<span class="w">        </span><span class="n">Json</span><span class="p">(</span><span class="n">serde_json</span><span class="p">::</span><span class="n">json</span><span class="o">!</span><span class="p">({</span><span class="w"> </span><span class="s">"message"</span><span class="p">:</span><span class="w"> </span><span class="s">"Logged out successfully"</span><span class="w"> </span><span class="p">}))</span>
+<span class="w">    </span><span class="p">))</span>
+<span class="p">}</span>
+
+<span class="cp">#[derive(Deserialize)]</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">VerifyQuery</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">token</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="sd">/// GET /auth/verify?token=xxx</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">verify_email</span><span class="p">(</span>
+<span class="w">    </span><span class="n">State</span><span class="p">(</span><span class="n">state</span><span class="p">):</span><span class="w"> </span><span class="nc">State</span><span class="o">&lt;</span><span class="n">AppState</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Query</span><span class="p">(</span><span class="n">query</span><span class="p">):</span><span class="w"> </span><span class="nc">Query</span><span class="o">&lt;</span><span class="n">VerifyQuery</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="n">Json</span><span class="o">&lt;</span><span class="n">serde_json</span><span class="p">::</span><span class="n">Value</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">AppError</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">token_row</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sqlx</span><span class="p">::</span><span class="n">query_as</span><span class="p">::</span><span class="o">&lt;</span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">uuid</span><span class="p">::</span><span class="n">Uuid</span><span class="p">,</span><span class="w"> </span><span class="n">uuid</span><span class="p">::</span><span class="n">Uuid</span><span class="p">)</span><span class="o">&gt;</span><span class="p">(</span>
+<span class="w">        </span><span class="s">r#"</span>
+<span class="s">        SELECT id, user_id FROM email_tokens</span>
+<span class="s">        WHERE token = $1</span>
+<span class="s">          AND token_type = 'verification'</span>
+<span class="s">          AND used_at IS NULL</span>
+<span class="s">          AND expires_at &gt; NOW()</span>
+<span class="s">        "#</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">query</span><span class="p">.</span><span class="n">token</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">fetch_optional</span><span class="p">(</span><span class="o">&amp;</span><span class="n">state</span><span class="p">.</span><span class="n">db</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="k">await</span>
+<span class="w">    </span><span class="p">.</span><span class="n">db_err</span><span class="p">(</span><span class="s">"Database error"</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="p">(</span><span class="n">token_id</span><span class="p">,</span><span class="w"> </span><span class="n">user_id</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">token_row</span>
+<span class="w">        </span><span class="p">.</span><span class="n">ok_or_else</span><span class="p">(</span><span class="o">||</span><span class="w"> </span><span class="n">AppError</span><span class="p">::</span><span class="n">bad_request</span><span class="p">(</span><span class="s">"Invalid or expired verification link"</span><span class="p">))</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">sqlx</span><span class="p">::</span><span class="n">query</span><span class="p">(</span><span class="s">"UPDATE users SET email_verified = TRUE WHERE id = $1"</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">state</span><span class="p">.</span><span class="n">db</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="k">await</span>
+<span class="w">        </span><span class="p">.</span><span class="n">db_err</span><span class="p">(</span><span class="s">"Failed to verify email"</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">sqlx</span><span class="p">::</span><span class="n">query</span><span class="p">(</span><span class="s">"UPDATE email_tokens SET used_at = NOW() WHERE id = $1"</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="n">token_id</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">state</span><span class="p">.</span><span class="n">db</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="k">await</span>
+<span class="w">        </span><span class="p">.</span><span class="n">db_err</span><span class="p">(</span><span class="s">"Failed to mark token as used"</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">tracing</span><span class="p">::</span><span class="n">info</span><span class="o">!</span><span class="p">(</span><span class="s">"Email verified for user: {}"</span><span class="p">,</span><span class="w"> </span><span class="n">user_id</span><span class="p">);</span>
+
+<span class="w">    </span><span class="nb">Ok</span><span class="p">(</span><span class="n">Json</span><span class="p">(</span><span class="n">serde_json</span><span class="p">::</span><span class="n">json</span><span class="o">!</span><span class="p">({</span>
+<span class="w">        </span><span class="s">"message"</span><span class="p">:</span><span class="w"> </span><span class="s">"Email verified successfully"</span>
+<span class="w">    </span><span class="p">})))</span>
+<span class="p">}</span>
+
+<span class="cp">#[derive(Deserialize)]</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">ForgotPasswordRequest</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">email</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="sd">/// POST /auth/forgot-password</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">forgot_password</span><span class="p">(</span>
+<span class="w">    </span><span class="n">State</span><span class="p">(</span><span class="n">state</span><span class="p">):</span><span class="w"> </span><span class="nc">State</span><span class="o">&lt;</span><span class="n">AppState</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Json</span><span class="p">(</span><span class="n">input</span><span class="p">):</span><span class="w"> </span><span class="nc">Json</span><span class="o">&lt;</span><span class="n">ForgotPasswordRequest</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="n">Json</span><span class="o">&lt;</span><span class="n">serde_json</span><span class="p">::</span><span class="n">Value</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">AppError</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sqlx</span><span class="p">::</span><span class="n">query_as</span><span class="p">::</span><span class="o">&lt;</span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="n">UserRow</span><span class="o">&gt;</span><span class="p">(</span>
+<span class="w">        </span><span class="s">"SELECT * FROM users WHERE email = $1"</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">input</span><span class="p">.</span><span class="n">email</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">fetch_optional</span><span class="p">(</span><span class="o">&amp;</span><span class="n">state</span><span class="p">.</span><span class="n">db</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="k">await</span>
+<span class="w">    </span><span class="p">.</span><span class="n">db_err</span><span class="p">(</span><span class="s">"Database error"</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">user</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">user</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">sqlx</span><span class="p">::</span><span class="n">query</span><span class="p">(</span>
+<span class="w">            </span><span class="s">"UPDATE email_tokens SET used_at = NOW() WHERE user_id = $1 AND token_type = 'password_reset' AND used_at IS NULL"</span>
+<span class="w">        </span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="n">user</span><span class="p">.</span><span class="n">id</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">state</span><span class="p">.</span><span class="n">db</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="k">await</span>
+<span class="w">        </span><span class="p">.</span><span class="n">db_err_ctx</span><span class="p">(</span><span class="s">"Failed to invalidate old tokens"</span><span class="p">,</span><span class="w"> </span><span class="s">"Database error"</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">generate_email_token</span><span class="p">();</span>
+<span class="w">        </span><span class="n">sqlx</span><span class="p">::</span><span class="n">query</span><span class="p">(</span>
+<span class="w">            </span><span class="s">r#"</span>
+<span class="s">            INSERT INTO email_tokens (user_id, token, token_type, expires_at)</span>
+<span class="s">            VALUES ($1, $2, 'password_reset', NOW() + INTERVAL '1 hour')</span>
+<span class="s">            "#</span>
+<span class="w">        </span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="n">user</span><span class="p">.</span><span class="n">id</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">token</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">state</span><span class="p">.</span><span class="n">db</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="k">await</span>
+<span class="w">        </span><span class="p">.</span><span class="n">db_err</span><span class="p">(</span><span class="s">"Failed to create reset token"</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="n">email_service</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">state</span><span class="p">.</span><span class="n">email</span><span class="p">.</span><span class="n">clone</span><span class="p">();</span>
+<span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="n">to_email</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">user</span><span class="p">.</span><span class="n">email</span><span class="p">.</span><span class="n">clone</span><span class="p">();</span>
+<span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="n">reset_token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">token</span><span class="p">.</span><span class="n">clone</span><span class="p">();</span>
+<span class="w">            </span><span class="n">tokio</span><span class="p">::</span><span class="n">spawn</span><span class="p">(</span><span class="k">async</span><span class="w"> </span><span class="k">move</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nb">Err</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">email_service</span><span class="p">.</span><span class="n">send_password_reset</span><span class="p">(</span><span class="o">&amp;</span><span class="n">to_email</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">reset_token</span><span class="p">).</span><span class="k">await</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">tracing</span><span class="p">::</span><span class="n">error</span><span class="o">!</span><span class="p">(</span><span class="s">"Failed to send reset email: {}"</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">);</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">});</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nb">Ok</span><span class="p">(</span><span class="n">Json</span><span class="p">(</span><span class="n">serde_json</span><span class="p">::</span><span class="n">json</span><span class="o">!</span><span class="p">({</span>
+<span class="w">        </span><span class="s">"message"</span><span class="p">:</span><span class="w"> </span><span class="s">"If an account with that email exists, a reset link has been sent"</span>
+<span class="w">    </span><span class="p">})))</span>
+<span class="p">}</span>
+
+<span class="cp">#[derive(Deserialize)]</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">ResetPasswordRequest</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">token</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">new_password</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="sd">/// POST /auth/reset-password</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">reset_password</span><span class="p">(</span>
+<span class="w">    </span><span class="n">State</span><span class="p">(</span><span class="n">state</span><span class="p">):</span><span class="w"> </span><span class="nc">State</span><span class="o">&lt;</span><span class="n">AppState</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Json</span><span class="p">(</span><span class="n">input</span><span class="p">):</span><span class="w"> </span><span class="nc">Json</span><span class="o">&lt;</span><span class="n">ResetPasswordRequest</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="n">Json</span><span class="o">&lt;</span><span class="n">serde_json</span><span class="p">::</span><span class="n">Value</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">AppError</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="n">new_password</span><span class="p">.</span><span class="n">len</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">Err</span><span class="p">(</span><span class="n">AppError</span><span class="p">::</span><span class="n">bad_request</span><span class="p">(</span><span class="s">"Password must be at least 8 characters"</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">token_row</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sqlx</span><span class="p">::</span><span class="n">query_as</span><span class="p">::</span><span class="o">&lt;</span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">uuid</span><span class="p">::</span><span class="n">Uuid</span><span class="p">,</span><span class="w"> </span><span class="n">uuid</span><span class="p">::</span><span class="n">Uuid</span><span class="p">)</span><span class="o">&gt;</span><span class="p">(</span>
+<span class="w">        </span><span class="s">r#"</span>
+<span class="s">        SELECT id, user_id FROM email_tokens</span>
+<span class="s">        WHERE token = $1</span>
+<span class="s">          AND token_type = 'password_reset'</span>
+<span class="s">          AND used_at IS NULL</span>
+<span class="s">          AND expires_at &gt; NOW()</span>
+<span class="s">        "#</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">input</span><span class="p">.</span><span class="n">token</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">fetch_optional</span><span class="p">(</span><span class="o">&amp;</span><span class="n">state</span><span class="p">.</span><span class="n">db</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="k">await</span>
+<span class="w">    </span><span class="p">.</span><span class="n">db_err</span><span class="p">(</span><span class="s">"Database error"</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="p">(</span><span class="n">token_id</span><span class="p">,</span><span class="w"> </span><span class="n">user_id</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">token_row</span>
+<span class="w">        </span><span class="p">.</span><span class="n">ok_or_else</span><span class="p">(</span><span class="o">||</span><span class="w"> </span><span class="n">AppError</span><span class="p">::</span><span class="n">bad_request</span><span class="p">(</span><span class="s">"Invalid or expired reset link"</span><span class="p">))</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">salt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SaltString</span><span class="p">::</span><span class="n">generate</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="n">OsRng</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">argon2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Argon2</span><span class="p">::</span><span class="n">default</span><span class="p">();</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">password_hash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">argon2</span>
+<span class="w">        </span><span class="p">.</span><span class="n">hash_password</span><span class="p">(</span><span class="n">input</span><span class="p">.</span><span class="n">new_password</span><span class="p">.</span><span class="n">as_bytes</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="n">salt</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="n">map_err</span><span class="p">(</span><span class="o">|</span><span class="n">_</span><span class="o">|</span><span class="w"> </span><span class="n">AppError</span><span class="p">::</span><span class="n">internal</span><span class="p">(</span><span class="s">"Failed to hash password"</span><span class="p">))</span><span class="o">?</span>
+<span class="w">        </span><span class="p">.</span><span class="n">to_string</span><span class="p">();</span>
+
+<span class="w">    </span><span class="n">sqlx</span><span class="p">::</span><span class="n">query</span><span class="p">(</span><span class="s">"UPDATE users SET password_hash = $1 WHERE id = $2"</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">password_hash</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">state</span><span class="p">.</span><span class="n">db</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="k">await</span>
+<span class="w">        </span><span class="p">.</span><span class="n">db_err</span><span class="p">(</span><span class="s">"Failed to update password"</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">sqlx</span><span class="p">::</span><span class="n">query</span><span class="p">(</span><span class="s">"UPDATE email_tokens SET used_at = NOW() WHERE id = $1"</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="n">token_id</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">state</span><span class="p">.</span><span class="n">db</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="k">await</span>
+<span class="w">        </span><span class="p">.</span><span class="n">db_err_ctx</span><span class="p">(</span><span class="s">"Failed to mark token as used"</span><span class="p">,</span><span class="w"> </span><span class="s">"Database error"</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">sqlx</span><span class="p">::</span><span class="n">query</span><span class="p">(</span><span class="s">"DELETE FROM refresh_tokens WHERE user_id = $1"</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">state</span><span class="p">.</span><span class="n">db</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="k">await</span>
+<span class="w">        </span><span class="p">.</span><span class="n">db_err_ctx</span><span class="p">(</span><span class="s">"Failed to invalidate sessions"</span><span class="p">,</span><span class="w"> </span><span class="s">"Database error"</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">tracing</span><span class="p">::</span><span class="n">info</span><span class="o">!</span><span class="p">(</span><span class="s">"Password reset for user: {}"</span><span class="p">,</span><span class="w"> </span><span class="n">user_id</span><span class="p">);</span>
+
+<span class="w">    </span><span class="nb">Ok</span><span class="p">(</span><span class="n">Json</span><span class="p">(</span><span class="n">serde_json</span><span class="p">::</span><span class="n">json</span><span class="o">!</span><span class="p">({</span>
+<span class="w">        </span><span class="s">"message"</span><span class="p">:</span><span class="w"> </span><span class="s">"Password reset successfully. Please log in again."</span>
+<span class="w">    </span><span class="p">})))</span>
+<span class="p">}</span>
+
+<span class="sd">/// POST /auth/resend-verification</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">resend_verification</span><span class="p">(</span>
+<span class="w">    </span><span class="n">State</span><span class="p">(</span><span class="n">state</span><span class="p">):</span><span class="w"> </span><span class="nc">State</span><span class="o">&lt;</span><span class="n">AppState</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">auth</span><span class="p">:</span><span class="w"> </span><span class="nc">crate</span><span class="p">::</span><span class="n">auth</span><span class="p">::</span><span class="n">AuthUser</span><span class="p">,</span>
+<span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="n">Json</span><span class="o">&lt;</span><span class="n">serde_json</span><span class="p">::</span><span class="n">Value</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">AppError</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sqlx</span><span class="p">::</span><span class="n">query_as</span><span class="p">::</span><span class="o">&lt;</span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="n">UserRow</span><span class="o">&gt;</span><span class="p">(</span>
+<span class="w">        </span><span class="s">"SELECT * FROM users WHERE id = $1"</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="n">auth</span><span class="p">.</span><span class="n">user_id</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">fetch_one</span><span class="p">(</span><span class="o">&amp;</span><span class="n">state</span><span class="p">.</span><span class="n">db</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="k">await</span>
+<span class="w">    </span><span class="p">.</span><span class="n">db_err</span><span class="p">(</span><span class="s">"Database error"</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">user</span><span class="p">.</span><span class="n">email_verified</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">Err</span><span class="p">(</span><span class="n">AppError</span><span class="p">::</span><span class="n">bad_request</span><span class="p">(</span><span class="s">"Email is already verified"</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">sqlx</span><span class="p">::</span><span class="n">query</span><span class="p">(</span>
+<span class="w">        </span><span class="s">"UPDATE email_tokens SET used_at = NOW() WHERE user_id = $1 AND token_type = 'verification' AND used_at IS NULL"</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="n">user</span><span class="p">.</span><span class="n">id</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">state</span><span class="p">.</span><span class="n">db</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="k">await</span>
+<span class="w">    </span><span class="p">.</span><span class="n">db_err_ctx</span><span class="p">(</span><span class="s">"Failed to invalidate old tokens"</span><span class="p">,</span><span class="w"> </span><span class="s">"Database error"</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">generate_email_token</span><span class="p">();</span>
+<span class="w">    </span><span class="n">sqlx</span><span class="p">::</span><span class="n">query</span><span class="p">(</span>
+<span class="w">        </span><span class="s">r#"</span>
+<span class="s">        INSERT INTO email_tokens (user_id, token, token_type, expires_at)</span>
+<span class="s">        VALUES ($1, $2, 'verification', NOW() + INTERVAL '24 hours')</span>
+<span class="s">        "#</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="n">user</span><span class="p">.</span><span class="n">id</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">token</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">state</span><span class="p">.</span><span class="n">db</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="k">await</span>
+<span class="w">    </span><span class="p">.</span><span class="n">db_err</span><span class="p">(</span><span class="s">"Failed to create verification token"</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">email_service</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">state</span><span class="p">.</span><span class="n">email</span><span class="p">.</span><span class="n">clone</span><span class="p">();</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">to_email</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">user</span><span class="p">.</span><span class="n">email</span><span class="p">.</span><span class="n">clone</span><span class="p">();</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">verify_token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">token</span><span class="p">.</span><span class="n">clone</span><span class="p">();</span>
+<span class="w">        </span><span class="n">tokio</span><span class="p">::</span><span class="n">spawn</span><span class="p">(</span><span class="k">async</span><span class="w"> </span><span class="k">move</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nb">Err</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">email_service</span><span class="p">.</span><span class="n">send_verification</span><span class="p">(</span><span class="o">&amp;</span><span class="n">to_email</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">verify_token</span><span class="p">).</span><span class="k">await</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">tracing</span><span class="p">::</span><span class="n">error</span><span class="o">!</span><span class="p">(</span><span class="s">"Failed to send verification email: {}"</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nb">Ok</span><span class="p">(</span><span class="n">Json</span><span class="p">(</span><span class="n">serde_json</span><span class="p">::</span><span class="n">json</span><span class="o">!</span><span class="p">({</span>
+<span class="w">        </span><span class="s">"message"</span><span class="p">:</span><span class="w"> </span><span class="s">"Verification email sent"</span>
+<span class="w">    </span><span class="p">})))</span>
+<span class="p">}</span>
+</pre></div></td></tr></table></div>
+
+      </section>
+    </main>
+  </div>
+</body>
+</html>
