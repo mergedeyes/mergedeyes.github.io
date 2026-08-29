@@ -6,35 +6,38 @@ index.html that has a "Repository" link pointing at GitHub. Each page gets:
   - its README, fetched pre-rendered as HTML via the GitHub API
   - its tags (languages/stack) and license badge, copied from the card
   - a link back to the repository
+  - the site's own navbar (extracted from index.html, not hand-copied,
+    so it can never drift out of sync with the real one)
 
-Intended to run in a GitHub Action; reads GITHUB_TOKEN from the environment
-to authenticate API calls (raises the rate limit and works for private
-repos too, though none of these are private today).
+Run from the repository root (that's how the workflow invokes it):
+    python .github/scripts/generate_project_pages.py
+
+Reads GITHUB_TOKEN from the environment to authenticate API calls (raises
+the rate limit well past what four repos need, and would be required for
+private repos - not the case here, but no reason not to use it).
 """
 import os
 import re
-import sys
 from pathlib import Path
 from urllib.parse import urlparse
 
 import requests
 from bs4 import BeautifulSoup
 
-SITE_ROOT = Path(__file__).parent
+# NOTE: this file lives at .github/scripts/generate_project_pages.py, but
+# it's invoked with the repo root as the working directory (see the
+# workflow) - so SITE_ROOT must be Path.cwd(), NOT Path(__file__).parent
+# (which would resolve to .github/scripts/ and never find index.html).
+SITE_ROOT = Path.cwd()
 INDEX_HTML = SITE_ROOT / "index.html"
 PROJECTS_DIR = SITE_ROOT / "projects"
 
 GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN", "")
-API_HEADERS_JSON = {
-    "Accept": "application/vnd.github+json",
-    "X-GitHub-Api-Version": "2022-11-28",
-}
 API_HEADERS_HTML = {
     "Accept": "application/vnd.github.html+json",
     "X-GitHub-Api-Version": "2022-11-28",
 }
 if GITHUB_TOKEN:
-    API_HEADERS_JSON["Authorization"] = f"Bearer {GITHUB_TOKEN}"
     API_HEADERS_HTML["Authorization"] = f"Bearer {GITHUB_TOKEN}"
 
 
@@ -123,7 +126,7 @@ def clean_readme_html(raw_html: str) -> str:
 
     Note: GitHub rewrites relative links/images in a rendered README to
     absolute repo URLs, so this doesn't need to handle relative paths
-    itself - verified for text links; re-check if a project's README
+    itself - verified for text links; spot-check if a project's README
     ever adds relative images and they don't show up correctly.
     """
     soup = BeautifulSoup(raw_html, "html.parser")
