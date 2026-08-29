@@ -6,8 +6,9 @@ index.html that has a "Repository" link pointing at GitHub. Each page gets:
   - its README, fetched pre-rendered as HTML via the GitHub API
   - its tags (languages/stack) and license badge, copied from the card
   - a link back to the repository
-  - for opted-in projects (data-source-file="path" on the card), a
-    collapsible, syntax-highlighted view of that one source file
+  - for opted-in projects (data-source-file="path" on the card), a link
+    to a separate, wider page with that one file syntax-highlighted
+    (line-numbered, via Pygments' table gutter)
   - the site's own navbar (extracted from index.html, not hand-copied,
     so it can never drift out of sync with the real one)
 
@@ -177,7 +178,7 @@ def fetch_highlighted_source(owner: str, repo: str, path: str) -> str:
     except ClassNotFound:
         lexer = TextLexer()
 
-    formatter = HtmlFormatter(cssclass="highlight", style=InstrumentPanelStyle)
+    formatter = HtmlFormatter(cssclass="highlight", style=InstrumentPanelStyle, linenos="table")
     return highlight(code, lexer, formatter)
 
 
@@ -252,13 +253,43 @@ PAGE_TEMPLATE = """<!DOCTYPE html>
         <div class="card__foot project-page__foot">
           <div class="card__links">
             <a href="{repo_url}" class="link">Repository</a>
+            {source_link_html}
           </div>
           {license_html}
         </div>
-        {source_html}
         <div class="readme-content">
 {readme_html}
         </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
+"""
+
+SOURCE_PAGE_TEMPLATE = """<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{source_file} — {title} — Jan</title>
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="layout">
+    {rail_html}
+    <main class="main" id="main">
+      <section class="section source-page">
+        <p class="section__path">
+          <a href="../index.html#projects" class="link">~/projects</a> /
+          <a href="{slug}.html" class="link">{repo}</a> / source
+        </p>
+        <div class="source-page__head">
+          <h1 class="section__title">{source_file}</h1>
+          <a href="{slug}.html" class="link">← Back to {title}</a>
+        </div>
+        {highlighted}
       </section>
     </main>
   </div>
@@ -275,15 +306,10 @@ def render_page(project: dict, rail_html: str) -> str:
     )
     readme_html = fetch_readme_html(project["owner"], project["repo"])
 
-    source_html = ""
+    source_link_html = ""
     if project.get("source_file"):
-        highlighted = fetch_highlighted_source(project["owner"], project["repo"], project["source_file"])
-        source_html = (
-            '<details class="source-toggle">\n'
-            f'          <summary><span class="chevron">▸</span> View source (<code>{project["source_file"]}</code>)</summary>\n'
-            f'          {highlighted}\n'
-            '        </details>'
-        )
+        slug = project["repo"].lower()
+        source_link_html = f'<a href="{slug}-source.html" class="link">View source ({project["source_file"]})</a>'
 
     return PAGE_TEMPLATE.format(
         title=project["title"],
@@ -293,7 +319,19 @@ def render_page(project: dict, rail_html: str) -> str:
         license_html=license_html,
         readme_html=readme_html,
         rail_html=rail_html,
-        source_html=source_html,
+        source_link_html=source_link_html,
+    )
+
+
+def render_source_page(project: dict, rail_html: str) -> str:
+    highlighted = fetch_highlighted_source(project["owner"], project["repo"], project["source_file"])
+    return SOURCE_PAGE_TEMPLATE.format(
+        title=project["title"],
+        repo=project["repo"],
+        slug=project["repo"].lower(),
+        source_file=project["source_file"],
+        rail_html=rail_html,
+        highlighted=highlighted,
     )
 
 
@@ -315,6 +353,12 @@ def main():
         print(f"  -> {project['title']} ({project['owner']}/{project['repo']}) -> {out_path.relative_to(SITE_ROOT)}")
         page = render_page(project, rail_html)
         out_path.write_text(page, encoding="utf-8")
+
+        if project.get("source_file"):
+            source_out_path = PROJECTS_DIR / f"{slug}-source.html"
+            print(f"     -> source page -> {source_out_path.relative_to(SITE_ROOT)}")
+            source_page = render_source_page(project, rail_html)
+            source_out_path.write_text(source_page, encoding="utf-8")
 
     print(f"Generated {len(projects)} project page(s).")
 

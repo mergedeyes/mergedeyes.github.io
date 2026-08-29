@@ -422,54 +422,51 @@ a:focus-visible, button:focus-visible {
 .readme-content th { color: var(--text); background: var(--surface-2); }
 
 /* ============================================================
-   Source viewer (generated for cards with data-source-file="path" —
-   opt-in per project, not every project gets one). The <details>
-   element gives the expand/collapse "button" natively with zero JS.
+   Source page (generated for cards with data-source-file="path" —
+   opt-in per project, not every project gets one). This gets its own
+   dedicated page rather than an inline expand, specifically so it can
+   ignore the site's narrow --maxw reading column: long lines of code
+   just don't fit well at 720px.
    ============================================================ */
-.source-toggle { margin-bottom: 2rem; }
-.source-toggle summary {
-  cursor: pointer;
-  list-style: none;
-  display: inline-flex;
-  align-items: center;
-  gap: .5rem;
-  font-family: var(--font-mono);
-  font-size: .82rem;
-  color: var(--text);
-  padding: .5rem .9rem;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  transition: border-color .15s ease, background .15s ease;
+.main > .source-page { max-width: none; }
+.source-page__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
 }
-.source-toggle summary::-webkit-details-marker { display: none; }
-.source-toggle summary::marker { content: ""; }
-.source-toggle summary:hover { border-color: #37424f; background: var(--surface-2); }
-.source-toggle summary code {
-  background: none; border: 0; padding: 0; color: var(--accent);
-}
-.source-toggle .chevron {
-  display: inline-block;
-  color: var(--accent);
-  transition: transform .15s ease;
-}
-.source-toggle[open] summary .chevron { transform: rotate(90deg); }
 
 /* Pygments token colors (InstrumentPanelStyle in generate_project_pages.py) -
    generated once from that exact style class, reusing only colors already
    defined above (--accent, --signal, --text, --text-dim, --muted). Static:
-   the generator script does not rewrite this file, only /projects/*.html. */
-.source-toggle .highlight {
-  margin-top: .8rem;
+   the generator script does not rewrite this file, only /projects/*.html.
+   linenos="table" wraps everything in table.highlighttable > tr > (td.linenos,
+   td.code) - the two extra rule blocks below handle that gutter layout. */
+.source-page .highlight {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 8px;
-  padding: 1rem;
+  padding: 1.2rem 1.5rem;
   overflow-x: auto;
   font-family: var(--font-mono);
-  font-size: .86rem;
+  font-size: .88rem;
   line-height: 1.6;
+  margin-bottom: 3rem;
 }
-.source-toggle .highlight pre { margin: 0; background: none; border: 0; padding: 0; }
+.source-page .highlight pre { margin: 0; background: none; border: 0; padding: 0; }
+.source-page .highlight table.highlighttable { border-collapse: collapse; width: 100%; }
+.source-page .highlight table.highlighttable td { padding: 0; border: 0; vertical-align: top; }
+.source-page .highlight td.linenos {
+  color: var(--muted);
+  padding-right: 1rem;
+  border-right: 1px solid var(--border);
+  text-align: right;
+  white-space: nowrap;
+  user-select: none;  /* selecting/copying code shouldn't grab line numbers too */
+}
+.source-page .highlight td.code { width: 100%; padding-left: 1rem; }
 .highlight .c   { color: #7E8794; font-style: italic } /* Comment */
 .highlight .err { color: #AEB6C2 }
 .highlight .k   { color: #E3AC57; font-weight: bold } /* Keyword */
