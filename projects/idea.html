@@ -7,7 +7,31 @@
   <link rel="stylesheet" href="../styles.css" />
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
   <div class="layout">
+    <header class="rail" id="rail">
+<div class="rail__top">
+<a class="brand" href="../index.html#top">
+<span class="brand__name">Jan</span>
+<span class="brand__meta">systems &amp; infrastructure<br/>Code, Code &amp; Code</span>
+</a>
+<button aria-controls="nav" aria-expanded="false" aria-label="Toggle menu" class="menu-toggle" id="menuToggle">
+<span></span><span></span><span></span>
+</button>
+</div>
+<nav aria-label="Sections" class="nav" id="nav">
+<a data-path="~/projects" href="../index.html#projects">Projects</a>
+<a data-path="~/work" href="../index.html#work">Work</a>
+<a data-path="~/education" href="../index.html#education">Education</a>
+<a data-path="~/skills" href="../index.html#skills">Skills</a>
+<a data-path="~/about" href="../index.html#about">About Me</a>
+<a data-path="~/contact" href="../index.html#contact">Contact</a>
+</nav>
+<div class="rail__status">
+<span aria-hidden="true" class="dot"></span>
+<span>open to work</span>
+</div>
+</header>
     <main class="main" id="main">
       <section class="section project-page">
         <p class="section__path"><a href="../index.html#projects" class="link">~/projects</a> / idea</p>
