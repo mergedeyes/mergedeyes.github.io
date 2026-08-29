@@ -297,9 +297,9 @@ a:focus-visible, button:focus-visible {
 .chips li::before   { border-radius: 9px; padding: 1px; }
 .chips li::after    { border-radius: 9px; filter: blur(6px); }
 
-.card:hover::before, .chips li:hover::before { opacity: 1; animation-play-state: running; }
+.card:hover::before, .chips li:has(a):hover::before { opacity: 1; animation-play-state: running; }
 .card:hover::after { opacity: .18; animation-play-state: running; }
-.chips li:hover::after { opacity: .22; animation-play-state: running; }
+.chips li:has(a):hover::after { opacity: .22; animation-play-state: running; }
 
 /* The interior glow tints the card, so the dimmer/muted text needs to
    step up a shade on hover to stay readable against it — description
