@@ -408,7 +408,8 @@ a:focus-visible, button:focus-visible {
   overflow-x: auto;
   margin: 0 0 1.2rem;
 }
-.readme-content pre code { background: none; border: 0; padding: 0; }
+.readme-content code { overflow-wrap: anywhere; }
+.readme-content pre code { background: none; border: 0; padding: 0; overflow-wrap: normal; }
 .readme-content blockquote {
   margin: 0 0 1rem;
   padding-left: 1rem;
@@ -417,7 +418,7 @@ a:focus-visible, button:focus-visible {
 }
 .readme-content img { max-width: 100%; border-radius: 8px; }
 .readme-content hr { border: 0; border-top: 1px solid var(--border-soft); margin: 2rem 0; }
-.readme-content table { border-collapse: collapse; width: 100%; margin: 0 0 1.2rem; font-size: .92rem; }
+.readme-content table { display: block; overflow-x: auto; max-width: 100%; border-collapse: collapse; width: 100%; margin: 0 0 1.2rem; font-size: .92rem; }
 .readme-content th, .readme-content td { border: 1px solid var(--border); padding: .5rem .7rem; text-align: left; }
 .readme-content th { color: var(--text); background: var(--surface-2); }
 
@@ -547,7 +548,7 @@ a:focus-visible, button:focus-visible {
    Responsive — rail collapses to a top bar under 900px
    ============================================================ */
 @media (max-width: 900px) {
-  .layout { flex-direction: column; }
+  .layout { flex-direction: column; align-items: stretch; }
 
   .rail {
     position: sticky; top: 0; z-index: 50;
