@@ -244,7 +244,7 @@ a:focus-visible, button:focus-visible {
    body, while the nested <a> tags (title, Repository, Live/demo)
    already get their own pointer cursor as normal links. */
 .card[data-href] { cursor: pointer; }
-.card__head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: .7rem; }
+.card__head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: .7rem; flex-wrap: wrap; }
 .card__title { font-size: 1.2rem; }
 .card__body { color: var(--text-dim); font-size: .96rem; margin-bottom: 1rem; }
 
