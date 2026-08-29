@@ -460,13 +460,13 @@ a:focus-visible, button:focus-visible {
 .source-page .highlight table.highlighttable td { padding: 0; border: 0; vertical-align: top; }
 .source-page .highlight td.linenos {
   color: var(--muted);
-  padding-right: 1rem;
+  padding: 0 1.5rem 0 .5rem;
   border-right: 1px solid var(--border);
   text-align: right;
   white-space: nowrap;
   user-select: none;  /* selecting/copying code shouldn't grab line numbers too */
 }
-.source-page .highlight td.code { width: 100%; padding-left: 1rem; }
+.source-page .highlight td.code { width: 100%; padding-left: 1.5rem; }
 .highlight .c   { color: #7E8794; font-style: italic } /* Comment */
 .highlight .err { color: #AEB6C2 }
 .highlight .k   { color: #E3AC57; font-weight: bold } /* Keyword */

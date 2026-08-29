@@ -42,6 +42,12 @@ INDEX_HTML = SITE_ROOT / "index.html"
 PROJECTS_DIR = SITE_ROOT / "projects"
 
 GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN", "")
+# GITHUB_SHA is set automatically by every GitHub Actions run (no wiring
+# needed) - using it as a cache-busting query string on styles.css means
+# every commit that touches it automatically forces browsers to refetch
+# the new version, instead of relying on manual hard-refreshes.
+ASSET_VERSION = os.environ.get("GITHUB_SHA", "")[:8] or "dev"
+
 AUTH_HEADERS = {"X-GitHub-Api-Version": "2022-11-28"}
 if GITHUB_TOKEN:
     AUTH_HEADERS["Authorization"] = f"Bearer {GITHUB_TOKEN}"
@@ -237,7 +243,7 @@ PAGE_TEMPLATE = """<!DOCTYPE html>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{title} — Jan</title>
-  <link rel="stylesheet" href="../styles.css" />
+  <link rel="stylesheet" href="../styles.css?v={asset_version}" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -273,7 +279,7 @@ SOURCE_PAGE_TEMPLATE = """<!DOCTYPE html>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{source_file} — {title} — Jan</title>
-  <link rel="stylesheet" href="../styles.css" />
+  <link rel="stylesheet" href="../styles.css?v={asset_version}" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -320,6 +326,7 @@ def render_page(project: dict, rail_html: str) -> str:
         readme_html=readme_html,
         rail_html=rail_html,
         source_link_html=source_link_html,
+        asset_version=ASSET_VERSION,
     )
 
 
@@ -332,6 +339,7 @@ def render_source_page(project: dict, rail_html: str) -> str:
         source_file=project["source_file"],
         rail_html=rail_html,
         highlighted=highlighted,
+        asset_version=ASSET_VERSION,
     )
 
 
