@@ -60,6 +60,19 @@
     revealEls.forEach(function (el) { revealer.observe(el); });
   }
 
+  /* ── Clickable project cards ──
+     The whole card navigates to its data-href (the generated /projects
+     page). A click that starts on an actual link — the title, Repository,
+     or Live/demo — is left alone so that link's own target/behavior wins
+     instead of also triggering a card-wide navigation. */
+  var projectCards = Array.prototype.slice.call(document.querySelectorAll(".card[data-href]"));
+  projectCards.forEach(function (card) {
+    card.addEventListener("click", function (e) {
+      if (e.target.closest("a")) return;
+      window.location.href = card.dataset.href;
+    });
+  });
+
   /* ── Footer year ── */
   var yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();

@@ -239,6 +239,11 @@ a:focus-visible, button:focus-visible {
   transition: border-color .18s ease, transform .18s ease, background .18s ease;
 }
 .card:hover { border-color: #37424f; transform: translateY(-2px); background: var(--surface-2); }
+/* Cards with data-href are whole-card links to their /projects page
+   (see script.js) — the pointer cursor signals that over the card
+   body, while the nested <a> tags (title, Repository, Live/demo)
+   already get their own pointer cursor as normal links. */
+.card[data-href] { cursor: pointer; }
 .card__head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: .7rem; }
 .card__title { font-size: 1.2rem; }
 .card__body { color: var(--text-dim); font-size: .96rem; margin-bottom: 1rem; }

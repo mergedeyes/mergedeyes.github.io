@@ -77,11 +77,14 @@
           <h2 class="section__title">Projects</h2>
         </div>
 
-        <!-- EDIT: duplicate a <article class="card"> block for each project. -->
+        <!-- EDIT: duplicate a <article class="card"> block for each project.
+             data-href points each whole card at its generated /projects
+             page (see script.js); the Repository/Live-demo links and the
+             title link are real <a> tags and take priority over that. -->
         <div class="cards">
-          <article class="card reveal">
+          <article class="card reveal" data-href="projects/klar-stack.html">
             <div class="card__head">
-              <h3 class="card__title">Klar</h3>
+              <h3 class="card__title"><a href="projects/klar-stack.html">Klar</a></h3>
               <span class="tag">Rust</span>
               <span class="tag">Typescript</span>
               <span class="tag">Bash</span>
@@ -100,9 +103,9 @@
             </div>
           </article>
 
-          <article class="card reveal">
+          <article class="card reveal" data-href="projects/idea.html">
             <div class="card__head">
-              <h3 class="card__title">idea</h3>
+              <h3 class="card__title"><a href="projects/idea.html">idea</a></h3>
               <span class="tag">Rust</span>
             </div>
             <p class="card__body">
@@ -116,9 +119,9 @@
             </div>
           </article>
 
-          <article class="card reveal">
+          <article class="card reveal" data-href="projects/subwaybuilder_maptools.html">
             <div class="card__head">
-              <h3 class="card__title">Subway Builder MapTools - A wrapper for DEPOT</h3>
+              <h3 class="card__title"><a href="projects/subwaybuilder_maptools.html">Subway Builder MapTools - A wrapper for DEPOT</a></h3>
               <span class="tag">Python</span>
             </div>
             <p class="card__body">
@@ -132,9 +135,9 @@
             </div>
           </article>
 
-          <article class="card reveal">
+          <article class="card reveal" data-href="projects/yarncalculator.html">
             <div class="card__head">
-              <h3 class="card__title">Yarn Calculator</h3>
+              <h3 class="card__title"><a href="projects/yarncalculator.html">Yarn Calculator</a></h3>
               <span class="tag">Java</span>
             </div>
             <p class="card__body">
