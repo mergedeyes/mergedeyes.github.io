@@ -6,6 +6,8 @@ index.html that has a "Repository" link pointing at GitHub. Each page gets:
   - its README, fetched pre-rendered as HTML via the GitHub API
   - its tags (languages/stack) and license badge, copied from the card
   - a link back to the repository
+  - for opted-in projects (data-source-file="path" on the card), a
+    collapsible, syntax-highlighted view of that one source file
   - the site's own navbar (extracted from index.html, not hand-copied,
     so it can never drift out of sync with the real one)
 
@@ -23,6 +25,12 @@ from urllib.parse import urlparse
 
 import requests
 from bs4 import BeautifulSoup
+from pygments import highlight
+from pygments.formatters import HtmlFormatter
+from pygments.lexers import TextLexer, get_lexer_for_filename
+from pygments.style import Style
+from pygments.util import ClassNotFound
+from pygments.token import Comment, Keyword, Name, Operator, Punctuation, Token
 
 # NOTE: this file lives at .github/scripts/generate_project_pages.py, but
 # it's invoked with the repo root as the working directory (see the
@@ -33,12 +41,41 @@ INDEX_HTML = SITE_ROOT / "index.html"
 PROJECTS_DIR = SITE_ROOT / "projects"
 
 GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN", "")
-API_HEADERS_HTML = {
-    "Accept": "application/vnd.github.html+json",
-    "X-GitHub-Api-Version": "2022-11-28",
-}
+AUTH_HEADERS = {"X-GitHub-Api-Version": "2022-11-28"}
 if GITHUB_TOKEN:
-    API_HEADERS_HTML["Authorization"] = f"Bearer {GITHUB_TOKEN}"
+    AUTH_HEADERS["Authorization"] = f"Bearer {GITHUB_TOKEN}"
+
+API_HEADERS_HTML = {**AUTH_HEADERS, "Accept": "application/vnd.github.html+json"}
+API_HEADERS_RAW = {**AUTH_HEADERS, "Accept": "application/vnd.github.raw+json"}
+
+
+class InstrumentPanelStyle(Style):
+    """Matches the site's own palette (see styles.css :root) instead of
+    importing a generic Pygments theme - keyword gold reuses --accent,
+    strings/types reuse --signal teal, everything else stays within
+    --text/--text-dim/--muted. No new hues introduced."""
+    background_color = "#151922"  # --surface
+    styles = {
+        Token:                  "#AEB6C2",  # --text-dim (default)
+        Comment:                "italic #7E8794",  # --muted
+        Comment.Preproc:        "italic #7E8794",
+        Keyword:                "bold #E3AC57",   # --accent
+        Keyword.Constant:       "#E3AC57",
+        Keyword.Declaration:    "bold #E3AC57",
+        Keyword.Type:           "#5FB8A6",        # --signal
+        Token.Literal.String:   "#5FB8A6",        # --signal
+        Token.Literal.String.Escape: "bold #5FB8A6",
+        Token.Literal.Number:   "#E9EDF2",        # --text
+        Name:                   "#E9EDF2",
+        Name.Function:          "#E9EDF2",
+        Name.Class:             "bold #5FB8A6",
+        Name.Builtin:           "#E3AC57",
+        Name.Decorator:         "#E3AC57",
+        Name.Attribute:         "#AEB6C2",
+        Operator:               "#AEB6C2",
+        Operator.Word:          "bold #E3AC57",
+        Punctuation:            "#7E8794",
+    }
 
 
 def parse_github_repo(url: str):
@@ -95,6 +132,7 @@ def extract_projects(html: str):
             "repo": repo,
             "repo_url": repo_url,
             "license": license_text,
+            "source_file": card.get("data-source-file"),
         })
 
     return projects
@@ -117,6 +155,30 @@ def fetch_readme_html(owner: str, repo: str) -> str:
         return f"<p><em>Could not fetch README (HTTP {resp.status_code}).</em></p>"
 
     return clean_readme_html(resp.text)
+
+
+def fetch_highlighted_source(owner: str, repo: str, path: str) -> str:
+    """Fetches one file's raw content and returns it pre-highlighted as
+    HTML (Pygments, at build time) - no client-side highlighter needed
+    on the page. Falls back to plain (unhighlighted) text on any error,
+    same graceful-degradation pattern as the README fetch."""
+    url = f"https://api.github.com/repos/{owner}/{repo}/contents/{path}"
+    try:
+        resp = requests.get(url, headers=API_HEADERS_RAW, timeout=15)
+    except requests.RequestException as e:
+        return f"<p><em>Could not fetch {path}: {e}</em></p>"
+
+    if resp.status_code != 200:
+        return f"<p><em>Could not fetch {path} (HTTP {resp.status_code}).</em></p>"
+
+    code = resp.text
+    try:
+        lexer = get_lexer_for_filename(path, code)
+    except ClassNotFound:
+        lexer = TextLexer()
+
+    formatter = HtmlFormatter(cssclass="highlight", style=InstrumentPanelStyle)
+    return highlight(code, lexer, formatter)
 
 
 def clean_readme_html(raw_html: str) -> str:
@@ -193,6 +255,7 @@ PAGE_TEMPLATE = """<!DOCTYPE html>
           </div>
           {license_html}
         </div>
+        {source_html}
         <div class="readme-content">
 {readme_html}
         </div>
@@ -211,6 +274,17 @@ def render_page(project: dict, rail_html: str) -> str:
         if project["license"] else ""
     )
     readme_html = fetch_readme_html(project["owner"], project["repo"])
+
+    source_html = ""
+    if project.get("source_file"):
+        highlighted = fetch_highlighted_source(project["owner"], project["repo"], project["source_file"])
+        source_html = (
+            '<details class="source-toggle">\n'
+            f'          <summary><span class="chevron">▸</span> View source (<code>{project["source_file"]}</code>)</summary>\n'
+            f'          {highlighted}\n'
+            '        </details>'
+        )
+
     return PAGE_TEMPLATE.format(
         title=project["title"],
         repo=project["repo"],
@@ -219,6 +293,7 @@ def render_page(project: dict, rail_html: str) -> str:
         license_html=license_html,
         readme_html=readme_html,
         rail_html=rail_html,
+        source_html=source_html,
     )
 
 

@@ -80,7 +80,10 @@
         <!-- EDIT: duplicate a <article class="card"> block for each project.
              data-href points each whole card at its generated /projects
              page (see script.js); the Repository/Live-demo links and the
-             title link are real <a> tags and take priority over that. -->
+             title link are real <a> tags and take priority over that.
+             data-source-file="path/in/repo" is optional and opt-in per
+             project - adding it gives that project's page a collapsible,
+             syntax-highlighted view of that one file. -->
         <div class="cards">
           <article class="card reveal" data-href="projects/klar-stack.html">
             <div class="card__head">
@@ -103,7 +106,7 @@
             </div>
           </article>
 
-          <article class="card reveal" data-href="projects/idea.html">
+          <article class="card reveal" data-href="projects/idea.html" data-source-file="src/main.rs">
             <div class="card__head">
               <h3 class="card__title"><a href="projects/idea.html">idea</a></h3>
               <span class="tag">Rust</span>

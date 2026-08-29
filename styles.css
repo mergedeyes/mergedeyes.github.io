@@ -422,6 +422,86 @@ a:focus-visible, button:focus-visible {
 .readme-content th { color: var(--text); background: var(--surface-2); }
 
 /* ============================================================
+   Source viewer (generated for cards with data-source-file="path" —
+   opt-in per project, not every project gets one). The <details>
+   element gives the expand/collapse "button" natively with zero JS.
+   ============================================================ */
+.source-toggle { margin-bottom: 2rem; }
+.source-toggle summary {
+  cursor: pointer;
+  list-style: none;
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  font-family: var(--font-mono);
+  font-size: .82rem;
+  color: var(--text);
+  padding: .5rem .9rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  transition: border-color .15s ease, background .15s ease;
+}
+.source-toggle summary::-webkit-details-marker { display: none; }
+.source-toggle summary::marker { content: ""; }
+.source-toggle summary:hover { border-color: #37424f; background: var(--surface-2); }
+.source-toggle summary code {
+  background: none; border: 0; padding: 0; color: var(--accent);
+}
+.source-toggle .chevron {
+  display: inline-block;
+  color: var(--accent);
+  transition: transform .15s ease;
+}
+.source-toggle[open] summary .chevron { transform: rotate(90deg); }
+
+/* Pygments token colors (InstrumentPanelStyle in generate_project_pages.py) -
+   generated once from that exact style class, reusing only colors already
+   defined above (--accent, --signal, --text, --text-dim, --muted). Static:
+   the generator script does not rewrite this file, only /projects/*.html. */
+.source-toggle .highlight {
+  margin-top: .8rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: .86rem;
+  line-height: 1.6;
+}
+.source-toggle .highlight pre { margin: 0; background: none; border: 0; padding: 0; }
+.highlight .c   { color: #7E8794; font-style: italic } /* Comment */
+.highlight .err { color: #AEB6C2 }
+.highlight .k   { color: #E3AC57; font-weight: bold } /* Keyword */
+.highlight .n   { color: #E9EDF2 } /* Name */
+.highlight .o   { color: #AEB6C2 } /* Operator */
+.highlight .p   { color: #7E8794 } /* Punctuation */
+.highlight .ch, .highlight .cm, .highlight .cp,
+.highlight .cpf, .highlight .c1, .highlight .cs { color: #7E8794; font-style: italic }
+.highlight .kc, .highlight .kd, .highlight .kn,
+.highlight .kp, .highlight .kr { color: #E3AC57; font-weight: bold }
+.highlight .kt  { color: #5FB8A6; font-weight: bold } /* Keyword.Type */
+.highlight .m, .highlight .mb, .highlight .mf,
+.highlight .mh, .highlight .mi, .highlight .mo,
+.highlight .il  { color: #E9EDF2 } /* Numbers */
+.highlight .s, .highlight .sa, .highlight .sb, .highlight .sc,
+.highlight .dl, .highlight .sd, .highlight .s2, .highlight .sh,
+.highlight .si, .highlight .sx, .highlight .sr, .highlight .s1,
+.highlight .ss  { color: #5FB8A6 } /* Strings */
+.highlight .se  { color: #5FB8A6; font-weight: bold } /* String.Escape */
+.highlight .na  { color: #AEB6C2 } /* Name.Attribute */
+.highlight .nb, .highlight .bp { color: #E3AC57 } /* Name.Builtin(.Pseudo) */
+.highlight .nc  { color: #5FB8A6; font-weight: bold } /* Name.Class */
+.highlight .nd  { color: #E3AC57 } /* Name.Decorator */
+.highlight .no, .highlight .ni, .highlight .ne, .highlight .nf,
+.highlight .nl, .highlight .nn, .highlight .nx, .highlight .py,
+.highlight .nt, .highlight .nv, .highlight .fm, .highlight .vc,
+.highlight .vg, .highlight .vi, .highlight .vm { color: #E9EDF2 }
+.highlight .ow  { color: #E3AC57; font-weight: bold } /* Operator.Word */
+.highlight .pm  { color: #7E8794 }
+.highlight .w   { color: #AEB6C2 }
+
+/* ============================================================
    Responsive — rail collapses to a top bar under 900px
    ============================================================ */
 @media (max-width: 900px) {
