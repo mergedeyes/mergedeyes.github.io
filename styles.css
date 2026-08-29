@@ -443,7 +443,12 @@ a:focus-visible, button:focus-visible {
    defined above (--accent, --signal, --text, --text-dim, --muted). Static:
    the generator script does not rewrite this file, only /projects/*.html.
    linenos="table" wraps everything in table.highlighttable > tr > (td.linenos,
-   td.code) - the two extra rule blocks below handle that gutter layout. */
+   td.code). NOTE: there is deliberately no separate "table.highlighttable td"
+   reset rule here - that selector has HIGHER specificity than td.linenos/
+   td.code below (2 element-type selectors vs 1, with class counts tied),
+   so it would silently win the cascade and null out their padding/border
+   regardless of source order. Each cell rule sets everything it needs
+   directly instead. */
 .source-page .highlight {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -457,8 +462,8 @@ a:focus-visible, button:focus-visible {
 }
 .source-page .highlight pre { margin: 0; background: none; border: 0; padding: 0; }
 .source-page .highlight table.highlighttable { border-collapse: collapse; width: 100%; }
-.source-page .highlight table.highlighttable td { padding: 0; border: 0; vertical-align: top; }
 .source-page .highlight td.linenos {
+  vertical-align: top;
   color: var(--muted);
   padding: 0 1.5rem 0 .5rem;
   border-right: 1px solid var(--border);
@@ -466,7 +471,12 @@ a:focus-visible, button:focus-visible {
   white-space: nowrap;
   user-select: none;  /* selecting/copying code shouldn't grab line numbers too */
 }
-.source-page .highlight td.code { width: 100%; padding-left: 1.5rem; }
+.source-page .highlight td.code {
+  vertical-align: top;
+  width: 100%;
+  padding-left: 1.5rem;
+  border: 0;
+}
 .highlight .c   { color: #7E8794; font-style: italic } /* Comment */
 .highlight .err { color: #AEB6C2 }
 .highlight .k   { color: #E3AC57; font-weight: bold } /* Keyword */
