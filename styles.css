@@ -422,7 +422,7 @@ a:focus-visible, button:focus-visible {
 .readme-content th { color: var(--text); background: var(--surface-2); }
 
 /* ============================================================
-   Source page (generated for cards with data-source-file="path" —
+   Source page (generated for cards with data-source-file="..." —
    opt-in per project, not every project gets one). This gets its own
    dedicated page rather than an inline expand, specifically so it can
    ignore the site's narrow --maxw reading column: long lines of code
@@ -508,6 +508,41 @@ a:focus-visible, button:focus-visible {
 .highlight .pm  { color: #7E8794 }
 .highlight .w   { color: #AEB6C2 }
 
+/* ── File tree sidebar (multi-file source browsing only - a project
+   with a single data-source-file entry has no tree at all) ── */
+.file-tree {
+  flex: 0 0 240px;
+  align-self: flex-start;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  padding: 2.4rem 1.2rem;
+  border-right: 1px solid var(--border-soft);
+  font-family: var(--font-mono);
+  font-size: .82rem;
+}
+.file-tree__title {
+  font-size: .7rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  margin-bottom: 1rem;
+}
+.file-tree ul.tree { list-style: none; margin: 0; padding-left: .9rem; }
+.file-tree > ul.tree { padding-left: 0; }
+.file-tree .tree-dir__name { display: block; color: var(--muted); padding: .2rem 0; }
+.file-tree .tree-file a {
+  display: block;
+  padding: .2rem .5rem;
+  border-radius: 5px;
+  color: var(--text-dim);
+  word-break: break-all;
+  transition: color .15s ease, background .15s ease;
+}
+.file-tree .tree-file a:hover { color: var(--text); background: var(--surface-2); }
+.file-tree .tree-file--active a { color: var(--accent); background: var(--surface-2); font-weight: 600; }
+
 /* ============================================================
    Responsive — rail collapses to a top bar under 900px
    ============================================================ */
@@ -548,6 +583,19 @@ a:focus-visible, button:focus-visible {
   .rail.nav-open .menu-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
   .rail__status { display: none; }
+
+  /* A sticky, full-height file tree next to a collapsed top-bar rail
+     doesn't work - turn it into a compact scrollable block above the
+     code instead, same idea as the rail's own collapse. */
+  .file-tree {
+    position: static;
+    height: auto;
+    max-height: 240px;
+    width: 100%;
+    flex-basis: auto;
+    border-right: 0;
+    border-bottom: 1px solid var(--border);
+  }
 }
 
 /* Narrow phones — stack the timeline */

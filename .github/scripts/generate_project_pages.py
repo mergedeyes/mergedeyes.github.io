@@ -6,9 +6,12 @@ index.html that has a "Repository" link pointing at GitHub. Each page gets:
   - its README, fetched pre-rendered as HTML via the GitHub API
   - its tags (languages/stack) and license badge, copied from the card
   - a link back to the repository
-  - for opted-in projects (data-source-file="path" on the card), a link
-    to a separate, wider page with that one file syntax-highlighted
-    (line-numbered, via Pygments' table gutter)
+  - for opted-in projects (data-source-file="..." on the card), one or more
+    syntax-highlighted source files with line numbers. The attribute is a
+    comma-separated list; each entry is either a literal file path or a
+    "dir/*" wildcard that expands recursively to every file under that
+    directory. One file -> a single wide source page, same as before.
+    Two or more files -> a file-tree sidebar plus one page per file.
   - the site's own navbar (extracted from index.html, not hand-copied,
     so it can never drift out of sync with the real one)
 
@@ -52,6 +55,7 @@ AUTH_HEADERS = {"X-GitHub-Api-Version": "2022-11-28"}
 if GITHUB_TOKEN:
     AUTH_HEADERS["Authorization"] = f"Bearer {GITHUB_TOKEN}"
 
+API_HEADERS_JSON = {**AUTH_HEADERS, "Accept": "application/vnd.github+json"}
 API_HEADERS_HTML = {**AUTH_HEADERS, "Accept": "application/vnd.github.html+json"}
 API_HEADERS_RAW = {**AUTH_HEADERS, "Accept": "application/vnd.github.raw+json"}
 
@@ -132,6 +136,9 @@ def extract_projects(html: str):
         license_el = card.select_one(".license-badge")
         license_text = license_el.get_text(strip=True) if license_el else None
 
+        raw_source = card.get("data-source-file")
+        source_entries = [e.strip() for e in raw_source.split(",") if e.strip()] if raw_source else []
+
         projects.append({
             "title": title,
             "tags": tags,
@@ -139,7 +146,7 @@ def extract_projects(html: str):
             "repo": repo,
             "repo_url": repo_url,
             "license": license_text,
-            "source_file": card.get("data-source-file"),
+            "source_entries": source_entries,
         })
 
     return projects
@@ -162,6 +169,67 @@ def fetch_readme_html(owner: str, repo: str) -> str:
         return f"<p><em>Could not fetch README (HTTP {resp.status_code}).</em></p>"
 
     return clean_readme_html(resp.text)
+
+
+def get_default_branch(owner: str, repo: str):
+    """Fetches the repo's default branch name. Needed only for the Git
+    Trees API (used to resolve dir/* wildcards) - unlike the readme/
+    contents endpoints, it has no implicit 'use the default branch'
+    behavior and needs an explicit ref."""
+    url = f"https://api.github.com/repos/{owner}/{repo}"
+    try:
+        resp = requests.get(url, headers=API_HEADERS_JSON, timeout=15)
+        resp.raise_for_status()
+        return resp.json()["default_branch"]
+    except (requests.RequestException, KeyError, ValueError):
+        return None
+
+
+def fetch_repo_file_tree(owner: str, repo: str):
+    """Fetches the full recursive list of file paths (blobs only, no
+    directories) in the repo's default branch. Used only to resolve
+    dir/* wildcards in data-source-file - not called at all if every
+    entry is a literal file path, to avoid the extra API calls."""
+    branch = get_default_branch(owner, repo)
+    if not branch:
+        return []
+    url = f"https://api.github.com/repos/{owner}/{repo}/git/trees/{branch}?recursive=1"
+    try:
+        resp = requests.get(url, headers=API_HEADERS_JSON, timeout=15)
+        resp.raise_for_status()
+        data = resp.json()
+    except (requests.RequestException, ValueError):
+        return []
+    if data.get("truncated"):
+        print(f"  ! Warning: {owner}/{repo}'s file tree was truncated by GitHub's API "
+              f"(repo too large) - a dir/* wildcard may be missing some files.")
+    return [item["path"] for item in data.get("tree", []) if item.get("type") == "blob"]
+
+
+def expand_source_entries(owner: str, repo: str, entries: list) -> list:
+    """Resolves data-source-file entries into concrete file paths. An
+    entry ending in "/*" expands to every file under that directory,
+    recursively; anything else is a literal file path. The first
+    literal entry (if any) is left first in the result, so it becomes
+    the "primary" file shown on the top-level <slug>-source.html page;
+    wildcard-resolved files are appended after. De-duplicates so a file
+    matched by both a literal entry and a wildcard only appears once."""
+    literal_files = [e for e in entries if not e.endswith("/*")]
+    wildcard_prefixes = [e[:-1] for e in entries if e.endswith("/*")]  # "src/*" -> "src/"
+
+    resolved = list(literal_files)
+    if wildcard_prefixes:
+        all_files = fetch_repo_file_tree(owner, repo)
+        for prefix in wildcard_prefixes:
+            resolved.extend(f for f in all_files if f.startswith(prefix))
+
+    seen = set()
+    ordered = []
+    for f in resolved:
+        if f not in seen:
+            seen.add(f)
+            ordered.append(f)
+    return ordered
 
 
 def fetch_highlighted_source(owner: str, repo: str, path: str) -> str:
@@ -216,14 +284,17 @@ def clean_readme_html(raw_html: str) -> str:
     return "".join(str(c) for c in article.contents) if hasattr(article, "contents") else str(article)
 
 
-def extract_rail(html: str) -> str:
+def extract_rail(html: str, up: str = "../") -> str:
     """Pulls the whole <header class="rail" id="rail"> nav block out of
     index.html so project pages share the exact same navigation - single
     source of truth, nothing to remember to keep in sync by hand.
 
     In-page anchor links (#projects, #top, etc.) only make sense on
-    index.html itself; from a page under /projects/ they're rewritten to
-    point back at ../index.html#... instead.
+    index.html itself; from a generated page they're rewritten to point
+    back at index.html instead. `up` is how many directory levels to
+    climb to reach the site root - "../" for pages directly under
+    /projects/, "../../" for per-file pages nested under
+    /projects/<slug>-source/.
     """
     soup = BeautifulSoup(html, "html.parser")
     rail = soup.select_one("header.rail#rail")
@@ -232,9 +303,53 @@ def extract_rail(html: str) -> str:
 
     for a in rail.find_all("a", href=True):
         if a["href"].startswith("#"):
-            a["href"] = f"../index.html{a['href']}"
+            a["href"] = f"{up}index.html{a['href']}"
 
     return str(rail)
+
+
+def build_tree(paths: list) -> dict:
+    """Turns a flat list of file paths into a nested dict tree, e.g.
+    ["src/main.rs", "src/utils/a.rs"] ->
+    {"src": {"main.rs": None, "utils": {"a.rs": None}}}.
+    A leaf (file) maps to None; a directory maps to a dict of children."""
+    root = {}
+    for path in paths:
+        parts = path.split("/")
+        node = root
+        for part in parts[:-1]:
+            node = node.setdefault(part, {})
+        node[parts[-1]] = None
+    return root
+
+
+def safe_filename(path: str) -> str:
+    """Converts a repo-relative file path into a filesystem-safe filename
+    for its generated page, e.g. "src/handlers/auth.rs" -> "src--handlers--auth.rs"."""
+    return path.replace("/", "--")
+
+
+def render_tree_html(tree: dict, prefix: str, current_path: str, base: str) -> str:
+    """Recursively renders a file tree dict as nested <ul> HTML, with a
+    link to each file's generated page. `base` is the relative path
+    prefix needed to reach the <slug>-source/ directory from whichever
+    page this call renders onto (see generate_source_pages)."""
+    items = []
+    dirs = sorted(k for k, v in tree.items() if isinstance(v, dict))
+    files = sorted(k for k, v in tree.items() if v is None)
+
+    for name in dirs:
+        full = f"{prefix}{name}/"
+        children_html = render_tree_html(tree[name], full, current_path, base)
+        items.append(f'<li class="tree-dir"><span class="tree-dir__name">{name}/</span>{children_html}</li>')
+
+    for name in files:
+        full = f"{prefix}{name}"
+        file_page = f"{base}{safe_filename(full)}.html"
+        active = " tree-file--active" if full == current_path else ""
+        items.append(f'<li class="tree-file{active}"><a href="{file_page}">{name}</a></li>')
+
+    return f'<ul class="tree">{"".join(items)}</ul>'
 
 
 PAGE_TEMPLATE = """<!DOCTYPE html>
@@ -273,27 +388,31 @@ PAGE_TEMPLATE = """<!DOCTYPE html>
 </html>
 """
 
+# Shared by both the top-level <slug>-source.html page and each per-file
+# page under <slug>-source/ - {up}, {tree_html}, {project_href} differ by
+# how deep the page sits (0 vs 1 extra directory level).
 SOURCE_PAGE_TEMPLATE = """<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{source_file} — {title} — Jan</title>
-  <link rel="stylesheet" href="../styles.css?v={asset_version}" />
+  <title>{file_path} — {title} — Jan</title>
+  <link rel="stylesheet" href="{up}styles.css?v={asset_version}" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
   <div class="layout">
     {rail_html}
+    {tree_html}
     <main class="main" id="main">
       <section class="section source-page">
         <p class="section__path">
-          <a href="../index.html#projects" class="link">~/projects</a> /
-          <a href="{slug}.html" class="link">{repo}</a> / source
+          <a href="{up}index.html#projects" class="link">~/projects</a> /
+          <a href="{project_href}" class="link">{repo}</a> / source
         </p>
         <div class="source-page__head">
-          <h1 class="section__title">{source_file}</h1>
-          <a href="{slug}.html" class="link">← Back to {title}</a>
+          <h1 class="section__title">{file_path}</h1>
+          <a href="{project_href}" class="link">← Back to {title}</a>
         </div>
         {highlighted}
       </section>
@@ -304,7 +423,7 @@ SOURCE_PAGE_TEMPLATE = """<!DOCTYPE html>
 """
 
 
-def render_page(project: dict, rail_html: str) -> str:
+def render_page(project: dict, rail_html: str, has_source: bool) -> str:
     tags_html = "\n          ".join(f'<span class="tag">{t}</span>' for t in project["tags"])
     license_html = (
         f'<span class="license-badge">{project["license"]}</span>'
@@ -313,9 +432,11 @@ def render_page(project: dict, rail_html: str) -> str:
     readme_html = fetch_readme_html(project["owner"], project["repo"])
 
     source_link_html = ""
-    if project.get("source_file"):
+    if has_source:
         slug = project["repo"].lower()
-        source_link_html = f'<a href="{slug}-source.html" class="link">View source ({project["source_file"]})</a>'
+        files = project["_resolved_files"]
+        label = f"View source ({files[0]})" if len(files) == 1 else f"Browse source ({len(files)} files)"
+        source_link_html = f'<a href="{slug}-source.html" class="link">{label}</a>'
 
     return PAGE_TEMPLATE.format(
         title=project["title"],
@@ -330,24 +451,78 @@ def render_page(project: dict, rail_html: str) -> str:
     )
 
 
-def render_source_page(project: dict, rail_html: str) -> str:
-    highlighted = fetch_highlighted_source(project["owner"], project["repo"], project["source_file"])
+def render_source_file_page(project: dict, rail_html_for: dict, file_path: str, tree, up: str, project_href: str) -> str:
+    """Renders one file's page - used both for the single-file case
+    (up="../", project_href="<slug>.html") and for each file in the
+    multi-file case (index page: up="../", tree base includes the
+    subfolder; per-file pages: up="../../", tree base is empty since
+    they're siblings)."""
+    slug = project["repo"].lower()
+    tree_base = "" if up == "../../" else f"{slug}-source/"
+    tree_html = ""
+    if tree is not None:
+        rendered = render_tree_html(tree, "", file_path, base=tree_base)
+        tree_html = f'<nav class="file-tree"><p class="file-tree__title">Files</p>{rendered}</nav>'
+
+    highlighted = fetch_highlighted_source(project["owner"], project["repo"], file_path)
     return SOURCE_PAGE_TEMPLATE.format(
         title=project["title"],
         repo=project["repo"],
-        slug=project["repo"].lower(),
-        source_file=project["source_file"],
-        rail_html=rail_html,
+        file_path=file_path,
+        rail_html=rail_html_for[up],
+        tree_html=tree_html,
+        up=up,
+        project_href=project_href,
         highlighted=highlighted,
         asset_version=ASSET_VERSION,
     )
 
 
+def generate_source_pages(project: dict, files: list, rail_html_top: str, rail_html_nested: str, out_dir: Path, site_root: Path):
+    """Writes <slug>-source.html (and, for multiple files, <slug>-source/
+    per-file pages plus a file-tree sidebar on every one of them)."""
+    slug = project["repo"].lower()
+    rail_html_for = {"../": rail_html_top, "../../": rail_html_nested}
+
+    if len(files) == 1:
+        page = render_source_file_page(
+            project, rail_html_for, files[0], tree=None,
+            up="../", project_href=f"{slug}.html",
+        )
+        out_path = out_dir / f"{slug}-source.html"
+        out_path.write_text(page, encoding="utf-8")
+        print(f"     -> source page -> {out_path.relative_to(site_root)}")
+        return
+
+    tree = build_tree(files)
+    primary = files[0]
+
+    index_page = render_source_file_page(
+        project, rail_html_for, primary, tree=tree,
+        up="../", project_href=f"{slug}.html",
+    )
+    index_path = out_dir / f"{slug}-source.html"
+    index_path.write_text(index_page, encoding="utf-8")
+    print(f"     -> source index -> {index_path.relative_to(site_root)} ({len(files)} files)")
+
+    sub_dir = out_dir / f"{slug}-source"
+    sub_dir.mkdir(exist_ok=True)
+    for file_path in files:
+        page = render_source_file_page(
+            project, rail_html_for, file_path, tree=tree,
+            up="../../", project_href=f"../{slug}.html",
+        )
+        file_out = sub_dir / f"{safe_filename(file_path)}.html"
+        file_out.write_text(page, encoding="utf-8")
+    print(f"        {len(files)} file page(s) -> {sub_dir.relative_to(site_root)}/")
+
+
 def main():
     html = INDEX_HTML.read_text(encoding="utf-8")
     projects = extract_projects(html)
-    rail_html = extract_rail(html)
-    if not rail_html:
+    rail_html_top = extract_rail(html, up="../")
+    rail_html_nested = extract_rail(html, up="../../")
+    if not rail_html_top:
         print("  ! Warning: couldn't find <header class=\"rail\" id=\"rail\"> in index.html - generated pages will have no navbar.")
 
     if not projects:
@@ -357,16 +532,21 @@ def main():
     PROJECTS_DIR.mkdir(exist_ok=True)
     for project in projects:
         slug = project["repo"].lower()
+
+        files = []
+        if project["source_entries"]:
+            files = expand_source_entries(project["owner"], project["repo"], project["source_entries"])
+            if not files:
+                print(f"  ! '{project['title']}': data-source-file entries resolved to zero files, skipping source page(s)")
+        project["_resolved_files"] = files
+
         out_path = PROJECTS_DIR / f"{slug}.html"
         print(f"  -> {project['title']} ({project['owner']}/{project['repo']}) -> {out_path.relative_to(SITE_ROOT)}")
-        page = render_page(project, rail_html)
+        page = render_page(project, rail_html_top, has_source=bool(files))
         out_path.write_text(page, encoding="utf-8")
 
-        if project.get("source_file"):
-            source_out_path = PROJECTS_DIR / f"{slug}-source.html"
-            print(f"     -> source page -> {source_out_path.relative_to(SITE_ROOT)}")
-            source_page = render_source_page(project, rail_html)
-            source_out_path.write_text(source_page, encoding="utf-8")
+        if files:
+            generate_source_pages(project, files, rail_html_top, rail_html_nested, PROJECTS_DIR, SITE_ROOT)
 
     print(f"Generated {len(projects)} project page(s).")
 
