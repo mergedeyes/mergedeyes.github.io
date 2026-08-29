@@ -478,11 +478,15 @@ def render_source_file_page(project: dict, rail_html_for: dict, file_path: str, 
     )
 
 
-def generate_source_pages(project: dict, files: list, rail_html_top: str, rail_html_nested: str, out_dir: Path, site_root: Path):
+def generate_source_pages(project: dict, files: list, rail_html_top: str, rail_html_nested: str, out_dir: Path, site_root: Path) -> set:
     """Writes <slug>-source.html (and, for multiple files, <slug>-source/
-    per-file pages plus a file-tree sidebar on every one of them)."""
+    per-file pages plus a file-tree sidebar on every one of them). Returns
+    the set of resolved paths it wrote, so main() can tell cleanup_stale_files
+    which files in projects/ are still current and which are leftovers from
+    a data-source-file that's since been removed or narrowed."""
     slug = project["repo"].lower()
     rail_html_for = {"../": rail_html_top, "../../": rail_html_nested}
+    written = set()
 
     if len(files) == 1:
         page = render_source_file_page(
@@ -491,8 +495,9 @@ def generate_source_pages(project: dict, files: list, rail_html_top: str, rail_h
         )
         out_path = out_dir / f"{slug}-source.html"
         out_path.write_text(page, encoding="utf-8")
+        written.add(out_path.resolve())
         print(f"     -> source page -> {out_path.relative_to(site_root)}")
-        return
+        return written
 
     tree = build_tree(files)
     primary = files[0]
@@ -503,6 +508,7 @@ def generate_source_pages(project: dict, files: list, rail_html_top: str, rail_h
     )
     index_path = out_dir / f"{slug}-source.html"
     index_path.write_text(index_page, encoding="utf-8")
+    written.add(index_path.resolve())
     print(f"     -> source index -> {index_path.relative_to(site_root)} ({len(files)} files)")
 
     sub_dir = out_dir / f"{slug}-source"
@@ -514,7 +520,42 @@ def generate_source_pages(project: dict, files: list, rail_html_top: str, rail_h
         )
         file_out = sub_dir / f"{safe_filename(file_path)}.html"
         file_out.write_text(page, encoding="utf-8")
+        written.add(file_out.resolve())
     print(f"        {len(files)} file page(s) -> {sub_dir.relative_to(site_root)}/")
+    return written
+
+
+def cleanup_stale_files(projects_dir: Path, written: set, site_root: Path):
+    """Removes any *.html file under projects/ that this run didn't (re)write
+    - i.e. leftovers from a project card that got removed, or a
+    data-source-file attribute that got removed or narrowed to fewer files.
+    Nothing under projects/ is hand-authored (see repo-structure notes), so
+    anything not in `written` is safe to delete. Also removes any directory
+    (e.g. a now-empty <slug>-source/) left empty afterwards."""
+    if not projects_dir.exists():
+        return
+
+    removed = []
+    for path in sorted(projects_dir.rglob("*.html")):
+        if path.resolve() not in written:
+            path.unlink()
+            removed.append(path)
+
+    # Deepest directories first, so a parent that's only empty because we
+    # just removed its last child also gets cleaned up in the same pass.
+    for d in sorted((p for p in projects_dir.rglob("*") if p.is_dir()),
+                     key=lambda p: len(p.parts), reverse=True):
+        try:
+            d.rmdir()  # no-op unless truly empty
+        except OSError:
+            pass
+
+    if removed:
+        print(f"Removed {len(removed)} stale generated page(s) (no longer referenced from index.html):")
+        for path in removed:
+            print(f"  - {path.relative_to(site_root)}")
+    else:
+        print("No stale generated pages to remove.")
 
 
 def main():
@@ -530,6 +571,7 @@ def main():
         return
 
     PROJECTS_DIR.mkdir(exist_ok=True)
+    written = set()
     for project in projects:
         slug = project["repo"].lower()
 
@@ -544,11 +586,13 @@ def main():
         print(f"  -> {project['title']} ({project['owner']}/{project['repo']}) -> {out_path.relative_to(SITE_ROOT)}")
         page = render_page(project, rail_html_top, has_source=bool(files))
         out_path.write_text(page, encoding="utf-8")
+        written.add(out_path.resolve())
 
         if files:
-            generate_source_pages(project, files, rail_html_top, rail_html_nested, PROJECTS_DIR, SITE_ROOT)
+            written |= generate_source_pages(project, files, rail_html_top, rail_html_nested, PROJECTS_DIR, SITE_ROOT)
 
     print(f"Generated {len(projects)} project page(s).")
+    cleanup_stale_files(PROJECTS_DIR, written, SITE_ROOT)
 
 
 if __name__ == "__main__":
