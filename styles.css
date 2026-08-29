@@ -242,7 +242,12 @@ a:focus-visible, button:focus-visible {
 .card__head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: .7rem; }
 .card__title { font-size: 1.2rem; }
 .card__body { color: var(--text-dim); font-size: .96rem; margin-bottom: 1rem; }
-.card__foot { display: flex; gap: 1.3rem; flex-wrap: wrap; }
+
+/* card__foot holds two groups: the links (left) and the license badge
+   (right) — space-between keeps the badge pinned to the bottom-right
+   corner regardless of how many links a given card has. */
+.card__foot { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.card__links { display: flex; gap: 1.3rem; flex-wrap: wrap; }
 
 .tag {
   font-family: var(--font-mono);
@@ -252,6 +257,20 @@ a:focus-visible, button:focus-visible {
   padding: .2rem .55rem;
   border-radius: 999px;
   white-space: nowrap;
+}
+
+/* License indicator — visually similar to .tag (same pill shape/mono
+   font) but muted rather than accent-colored, so it reads as metadata
+   about the project rather than another tech-stack tag. */
+.license-badge {
+  font-family: var(--font-mono);
+  font-size: .68rem;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  padding: .2rem .55rem;
+  border-radius: 999px;
+  white-space: nowrap;
+  margin-left: auto;
 }
 
 /* ── Links with underline animation ── */
