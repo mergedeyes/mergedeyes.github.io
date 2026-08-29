@@ -1,0 +1,42 @@
+name: Generate project pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - index.html
+  # index.html changing isn't the only thing that can go stale - a
+  # linked repo's README can update on its own, so re-run periodically
+  # too. Remove this if you'd rather it only run on push.
+  schedule:
+    - cron: "0 6 * * *"  # every day, 06:00 UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: write  # git-auto-commit-action needs push rights
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4
+
+      - name: Generate project pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python .github/scripts/generate_project_pages.py
+
+      - name: Commit generated pages
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: regenerate project pages"
+          file_pattern: "projects/*.html"
