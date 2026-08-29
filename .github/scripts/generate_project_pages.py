@@ -7,31 +7,34 @@ index.html that has a "Repository" link pointing at GitHub. Each page gets:
   - its tags (languages/stack) and license badge, copied from the card
   - a link back to the repository
 
-Run from the repository root (that's how the workflow invokes it):
-    python .github/scripts/generate_project_pages.py
-
-Reads GITHUB_TOKEN from the environment to authenticate API calls (raises
-the rate limit well past what four repos need, and would be required for
-private repos - not the case here, but no reason not to use it).
+Intended to run in a GitHub Action; reads GITHUB_TOKEN from the environment
+to authenticate API calls (raises the rate limit and works for private
+repos too, though none of these are private today).
 """
 import os
 import re
+import sys
 from pathlib import Path
 from urllib.parse import urlparse
 
 import requests
 from bs4 import BeautifulSoup
 
-SITE_ROOT = Path.cwd()
+SITE_ROOT = Path(__file__).parent
 INDEX_HTML = SITE_ROOT / "index.html"
 PROJECTS_DIR = SITE_ROOT / "projects"
 
 GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN", "")
+API_HEADERS_JSON = {
+    "Accept": "application/vnd.github+json",
+    "X-GitHub-Api-Version": "2022-11-28",
+}
 API_HEADERS_HTML = {
     "Accept": "application/vnd.github.html+json",
     "X-GitHub-Api-Version": "2022-11-28",
 }
 if GITHUB_TOKEN:
+    API_HEADERS_JSON["Authorization"] = f"Bearer {GITHUB_TOKEN}"
     API_HEADERS_HTML["Authorization"] = f"Bearer {GITHUB_TOKEN}"
 
 
@@ -120,7 +123,7 @@ def clean_readme_html(raw_html: str) -> str:
 
     Note: GitHub rewrites relative links/images in a rendered README to
     absolute repo URLs, so this doesn't need to handle relative paths
-    itself - verified for text links; spot-check if a project's README
+    itself - verified for text links; re-check if a project's README
     ever adds relative images and they don't show up correctly.
     """
     soup = BeautifulSoup(raw_html, "html.parser")
@@ -141,6 +144,27 @@ def clean_readme_html(raw_html: str) -> str:
     return "".join(str(c) for c in article.contents) if hasattr(article, "contents") else str(article)
 
 
+def extract_rail(html: str) -> str:
+    """Pulls the whole <header class="rail" id="rail"> nav block out of
+    index.html so project pages share the exact same navigation - single
+    source of truth, nothing to remember to keep in sync by hand.
+
+    In-page anchor links (#projects, #top, etc.) only make sense on
+    index.html itself; from a page under /projects/ they're rewritten to
+    point back at ../index.html#... instead.
+    """
+    soup = BeautifulSoup(html, "html.parser")
+    rail = soup.select_one("header.rail#rail")
+    if rail is None:
+        return ""
+
+    for a in rail.find_all("a", href=True):
+        if a["href"].startswith("#"):
+            a["href"] = f"../index.html{a['href']}"
+
+    return str(rail)
+
+
 PAGE_TEMPLATE = """<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -150,7 +174,9 @@ PAGE_TEMPLATE = """<!DOCTYPE html>
   <link rel="stylesheet" href="../styles.css" />
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
   <div class="layout">
+    {rail_html}
     <main class="main" id="main">
       <section class="section project-page">
         <p class="section__path"><a href="../index.html#projects" class="link">~/projects</a> / {repo}</p>
@@ -175,7 +201,7 @@ PAGE_TEMPLATE = """<!DOCTYPE html>
 """
 
 
-def render_page(project: dict) -> str:
+def render_page(project: dict, rail_html: str) -> str:
     tags_html = "\n          ".join(f'<span class="tag">{t}</span>' for t in project["tags"])
     license_html = (
         f'<span class="license-badge">{project["license"]}</span>'
@@ -189,12 +215,16 @@ def render_page(project: dict) -> str:
         repo_url=project["repo_url"],
         license_html=license_html,
         readme_html=readme_html,
+        rail_html=rail_html,
     )
 
 
 def main():
     html = INDEX_HTML.read_text(encoding="utf-8")
     projects = extract_projects(html)
+    rail_html = extract_rail(html)
+    if not rail_html:
+        print("  ! Warning: couldn't find <header class=\"rail\" id=\"rail\"> in index.html - generated pages will have no navbar.")
 
     if not projects:
         print("No project cards with a GitHub Repository link found.")
@@ -205,7 +235,7 @@ def main():
         slug = project["repo"].lower()
         out_path = PROJECTS_DIR / f"{slug}.html"
         print(f"  -> {project['title']} ({project['owner']}/{project['repo']}) -> {out_path.relative_to(SITE_ROOT)}")
-        page = render_page(project)
+        page = render_page(project, rail_html)
         out_path.write_text(page, encoding="utf-8")
 
     print(f"Generated {len(projects)} project page(s).")

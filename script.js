@@ -1,5 +1,11 @@
 /* Small, dependency-free enhancements. Everything degrades gracefully
-   if JS is disabled — the page is fully readable without it. */
+   if JS is disabled — the page is fully readable without it.
+
+   Shared as-is by index.html and every generated /projects/*.html page
+   (they reuse the same <header class="rail"> markup), so code here has
+   to tolerate nav links whose href isn't a same-page anchor - on a
+   project page they're rewritten to "../index.html#section" instead of
+   "#section", since they need to navigate back to index.html first. */
 
 (function () {
   "use strict";
@@ -23,9 +29,18 @@
     a.addEventListener("click", closeMenu);
   });
 
-  /* ── Active section highlight ── */
+  /* ── Active section highlight ──
+     Only same-page anchors (href starting with "#") can be resolved with
+     querySelector; a relative path like "../index.html#work" is not a
+     valid CSS selector and querySelector would throw on it, which would
+     kill the rest of this script. On project pages every nav href is
+     the relative kind, so `sections` just ends up empty and this becomes
+     a no-op there — nothing to highlight against, which is correct. */
   var sections = links
-    .map(function (a) { return document.querySelector(a.getAttribute("href")); })
+    .map(function (a) {
+      var href = a.getAttribute("href");
+      return href && href.charAt(0) === "#" ? document.querySelector(href) : null;
+    })
     .filter(Boolean);
 
   if ("IntersectionObserver" in window) {
