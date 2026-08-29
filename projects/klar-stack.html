@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Klar — Jan</title>
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+  <div class="layout">
+    <main class="main" id="main">
+      <section class="section project-page">
+        <p class="section__path"><a href="../index.html#projects" class="link">~/projects</a> / Klar-Stack</p>
+        <div class="card__head project-page__head">
+          <h1 class="section__title">Klar</h1>
+          <span class="tag">Rust</span>
+          <span class="tag">Typescript</span>
+          <span class="tag">Bash</span>
+          <span class="tag">Docker</span>
+          <span class="tag">Infrastructure</span>
+        </div>
+        <div class="card__foot project-page__foot">
+          <div class="card__links">
+            <a href="https://github.com/mergedeyes/Klar-Stack" class="link">Repository</a>
+          </div>
+          <span class="license-badge">AGPL-3.0</span>
+        </div>
+        <div class="readme-content">
+<h1 class="heading-element" dir="auto">Klar — Feature List (as of 25 August 2026)</h1>
+<h2 class="heading-element" dir="auto">Accounts &amp; Auth</h2>
+<ul dir="auto">
+<li>Registration (username, email, password) with email verification link</li>
+<li>Login / logout, JWT access tokens (15 min) + refresh tokens (30 days)</li>
+<li>Cross-site auth support: tokens in <code>localStorage</code> + <code>Authorization: Bearer</code>, with httpOnly cookies as a same-site fallback (handles <code>klarsocial.eu</code> vs <code>klarsocial.de</code> being different top-level domains)</li>
+<li>Password reset (forgot password → email link → reset)</li>
+<li>Resend verification email</li>
+<li>Argon2 password hashing</li>
+<li>Change password (requires current password, invalidates all other sessions)</li>
+<li>Account deletion (cascades to posts/comments/messages/media; cleans up stored files)</li>
+<li>Self-service data export (GDPR Art. 15/20) — full JSON download of everything Klar holds about you</li>
+</ul>
+<h2 class="heading-element" dir="auto">Profile</h2>
+<ul dir="auto">
+<li>Username (case preserved as entered, case-insensitive uniqueness, 14-day change cooldown)</li>
+<li>Display name, bio, avatar (upload, resized/processed server-side)</li>
+<li>Public profile page: avatar, stats (posts/followers/following), bio</li>
+<li><strong>Private accounts</strong>: toggle in Settings; when on, posts are hidden from non-followers</li>
+<li>Follow requests for private accounts: request → pending → accept/reject (not instant-follow)
+<ul dir="auto">
+<li>Accept/decline available in the notification dropdown <em>and</em> directly on the requester's profile page</li>
+<li>Dedicated <code>/follow-requests</code> management page</li>
+</ul>
+</li>
+</ul>
+<h2 class="heading-element" dir="auto">Posts &amp; Media</h2>
+<ul dir="auto">
+<li>Create post: caption + optional photo</li>
+<li>Automatic EXIF stripping on upload (location, device info, timestamp removed)</li>
+<li>Three generated sizes per image (thumbnail/medium/full), real width/height captured for correct aspect-ratio rendering</li>
+<li>Edit caption, delete post (with real cascade cleanup of media files)</li>
+<li>Post permalink pages (<code>/posts/[id]</code>) — shareable, deep-linkable</li>
+<li>Post detail modal: comments, likes, delete (from feed, profile, or permalink)</li>
+</ul>
+<h2 class="heading-element" dir="auto">Feed</h2>
+<ul dir="auto">
+<li>Personal feed: strictly <strong>chronological</strong>, no algorithm, no ranking — deliberate product stance</li>
+<li>Fan-out-on-write (<code>feed_items</code>) for fast reads; backfilled on follow, cleaned up on unfollow</li>
+<li>Discovery feed: global, cross-user, cursor-paginated</li>
+<li>Private-account posts are excluded from the discovery feed and profile grids unless you're the owner or an accepted follower (enforced backend-side in three places: single post view, profile posts list, and the discovery feed itself)</li>
+</ul>
+<h2 class="heading-element" dir="auto">Social Graph</h2>
+<ul dir="auto">
+<li>Follow / unfollow (instant for public accounts, request-based for private ones)</li>
+<li>Followers / following lists</li>
+<li>Block / unblock (blocked users can't follow, like, or comment on your posts)</li>
+</ul>
+<h2 class="heading-element" dir="auto">Comments &amp; Likes</h2>
+<ul dir="auto">
+<li>Post likes, comment likes</li>
+<li>Comments with threaded replies</li>
+<li>Edit/delete own comments; post owners can also delete comments on their posts</li>
+</ul>
+<h2 class="heading-element" dir="auto">Notifications</h2>
+<ul dir="auto">
+<li>Types: post like, comment, comment like, follow, follow request, follow accepted</li>
+<li>Persisted history (<code>GET /notifications</code>) + real-time delivery via SSE</li>
+<li><strong>Cross-replica delivery</strong> via Redis (Upstash) pub/sub — works correctly however many backend instances are running, not just replica-count-1</li>
+<li>Notification previews: actor avatar (follows/requests) or post thumbnail (likes/comments)</li>
+<li>Clicking a notification navigates to the relevant post or profile</li>
+<li>Follow-request notifications have inline Accept/Decline buttons, not just a link</li>
+</ul>
+<h2 class="heading-element" dir="auto">Direct Messages (Chat)</h2>
+<ul dir="auto">
+<li>1:1 conversations, gated to mutual followers only</li>
+<li>Send, edit, delete messages; reply-to-message threading</li>
+<li>Emoji reactions (8-emoji picker; can react to your own or the other person's messages)</li>
+<li>Read receipts</li>
+<li>Real-time message + reaction delivery (same Redis/SSE pipeline as notifications)</li>
+<li>Unread-message badge on the Chat icon, correctly clears when actively viewing a conversation (no false positives from your own open chat)</li>
+<li>Conversation list shows the true most-recent activity — a plain message, a reply, or a reaction — with proper phrasing ("Me: ...", "X replied: ...", "X reacted 👍 to your message: ...")</li>
+<li>Avatar in conversation list/chat header links to the other person's profile; rest of the row opens the chat</li>
+</ul>
+<h2 class="heading-element" dir="auto">Search</h2>
+<ul dir="auto">
+<li>User search by username or display name</li>
+</ul>
+<h2 class="heading-element" dir="auto">Moderation &amp; Reporting</h2>
+<ul dir="auto">
+<li>Report posts, comments, or user accounts (<code>POST /reports</code>) with a fixed reason taxonomy: spam, harassment, hate speech, violence/graphic content, self-harm, sexual content, CSAM, impersonation, other</li>
+<li>Auto-moderation on submission: a CSAM report hides the content immediately, zero tolerance, no threshold; violence/self-harm/sexual-content reports flag the content (shown behind an interstitial rather than removed outright — a single report shouldn't have unilateral takedown power)</li>
+<li>Admin review queue (<code>/admin/reports</code>), critical reports sorted first: dismiss (restores visibility) or remove content outright, each with an optional internal review note</li>
+<li>Admin access gated via an <code>ADMIN_EMAILS</code> allow-list, requiring the matching account's email to also be verified (prevents someone from claiming an admin address by registering it first)</li>
+<li><em>Not yet built:</em> DSA-mandated automated "Statement of Reasons" notification to affected users, appeal/counter-notice flow, UrhDaG rights-holder copyright takedown portal</li>
+</ul>
+<h2 class="heading-element" dir="auto">Privacy &amp; Compliance</h2>
+<ul dir="auto">
+<li>Impressum, Datenschutzerklärung (privacy policy), Nutzungsbedingungen (ToS), and a plain-language <strong>Transparenz</strong> page explaining data handling in everyday terms</li>
+<li>Legal pages carry a version-controlled "Stand:" date, auto-updated by a GitHub Actions bot commit whenever the underlying legal page file changes</li>
+<li>ToS + privacy consent checkbox at registration, enforced server-side (<code>POST /auth/register</code> rejects the request with 400 if <code>accept_terms</code> isn't <code>true</code>, and 422 if it's missing entirely) — not just a client-side gate anymore. Acceptance is timestamped (<code>users.terms_accepted_at</code>) and included in the self-service data export</li>
+<li>No tracking/advertising cookies — only functional auth storage</li>
+<li>Documented sub-processors: Bunny.net (hosting/CDN/storage and self-hosted Postgres, German DC), Scaleway (transactional email, EU), Upstash (real-time notification relay, US — SCCs apply)</li>
+</ul>
+<h2 class="heading-element" dir="auto">Pre-Launch</h2>
+<ul dir="auto">
+<li>Site-wide passcode gate (<code>/welcome</code>) via Next.js <code>proxy.ts</code> — blocks the whole site except the gate page and legal pages until a shared passcode is entered; disabled automatically if no passcode is configured (e.g. local dev)</li>
+</ul>
+<h2 class="heading-element" dir="auto">Frontend/UX Details</h2>
+<ul dir="auto">
+<li>Consistent top navigation bar across all primary pages (Feed, Discovery, Search, Chats, Profile) with active-state icon highlighting</li>
+<li>Mobile-correct viewport handling (<code>dvh</code> instead of <code>vh</code>) so nav bars don't get clipped by mobile browser chrome</li>
+<li>Root URL smart-redirects to Feed (logged in) or Login (logged out)</li>
+<li>Global cursor-pointer fix for all interactive elements</li>
+</ul>
+<h2 class="heading-element" dir="auto">Backend/Infra</h2>
+<ul dir="auto">
+<li>Rust (Axum) backend, self-hosted PostgreSQL 18 in a Bunny Magic Container (Frankfurt) — TLS enforced even on loopback, connection pool retries through pod-startup races</li>
+<li>Nightly automated Postgres backups (<code>db-backup</code> sidecar → private Bunny Storage Zone, no CDN pull zone); durability handled by off-pod storage, so the sidecar itself needs no persistent volume</li>
+<li>UUIDv7 primary keys, denormalized counters (follower/following/post/like/comment counts), hash-partitioned <code>likes</code>/<code>notifications</code>, monthly-partitioned interaction event log (<code>post_events</code> — logging foundation for possible future recommendations, not used for ranking today)</li>
+<li>Bunny.net: application hosting (Magic Containers), CDN, S3-compatible object storage</li>
+<li>Redis (Upstash, TLS) for cross-replica pub/sub</li>
+<li>Multi-provider transactional email abstraction (currently live on Scaleway TEM)</li>
+<li>Per-route rate limiting (stricter on auth endpoints)</li>
+<li>GitHub Actions CI/CD: separate backend/frontend pipelines, Docker builds, auto-deploy to Bunny on push to <code>main</code></li>
+<li>Health check endpoint</li>
+</ul>
+<hr/>
+<p dir="auto"><em>Not yet built / explicitly deferred:</em> DSA Statement-of-Reasons user notifications &amp; appeal flow, UrhDaG rights-holder copyright portal, birth-date/16+ age verification enforcement, uptime monitoring/alerting, notifications for follows-of-a-reply/DM-specific push beyond what's listed above, ClickHouse-based ranking (data collection foundation exists, ranking layer doesn't).</p>
+
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

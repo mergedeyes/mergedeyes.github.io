@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>idea — Jan</title>
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+  <div class="layout">
+    <main class="main" id="main">
+      <section class="section project-page">
+        <p class="section__path"><a href="../index.html#projects" class="link">~/projects</a> / idea</p>
+        <div class="card__head project-page__head">
+          <h1 class="section__title">idea</h1>
+          <span class="tag">Rust</span>
+        </div>
+        <div class="card__foot project-page__foot">
+          <div class="card__links">
+            <a href="https://github.com/mergedeyes/idea" class="link">Repository</a>
+          </div>
+          <span class="license-badge">GPL-3.0</span>
+        </div>
+        <div class="readme-content">
+<h1 class="heading-element" dir="auto">idea</h1>
+<p dir="auto">A tiny command-line tool for capturing ideas before you forget them, organized by topic, stored locally as JSON.</p>
+<h2 class="heading-element" dir="auto">What it's for</h2>
+<p dir="auto">You're mid-task and a thought worth keeping shows up: a project idea, a thing to look up later, a line for a song. <code>idea</code> lets you get it down in one command, filed under a topic, without breaking your flow. Later you can list, search, or clean up what you've collected.</p>
+<p dir="auto">Every topic and every idea has a permanent numeric id. Ids never shift when you add or remove things elsewhere in your list, so a delete you queue up based on <code>idea list</code> output stays valid even if you add new ideas in between.</p>
+<h2 class="heading-element" dir="auto">Installation</h2>
+<p dir="auto">Requires the Rust toolchain (<code>cargo</code>). Install it via <a href="https://rustup.rs/" rel="nofollow">rustup</a> if you don't have it yet.</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="git clone https://github.com/mergedeyes/idea.git
+cd idea
+cargo build --release" dir="auto"><pre>git clone https://github.com/mergedeyes/idea.git
+<span class="pl-c1">cd</span> idea
+cargo build --release</pre></div>
+<p dir="auto">This produces a binary at <code>target/release/idea</code>. Put it somewhere on your <code>PATH</code>, for example:</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="sudo cp target/release/idea /usr/local/bin/idea" dir="auto"><pre>sudo cp target/release/idea /usr/local/bin/idea</pre></div>
+<h3 class="heading-element" dir="auto">Alternatively you can download the idea binary from the latest release page.</h3>
+<h2 class="heading-element" dir="auto">Usage</h2>
+<h3 class="heading-element" dir="auto">Add an idea</h3>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content='idea "Rust" "look into io_uring for the async runtime"' dir="auto"><pre>idea <span class="pl-s"><span class="pl-pds">"</span>Rust<span class="pl-pds">"</span></span> <span class="pl-s"><span class="pl-pds">"</span>look into io_uring for the async runtime<span class="pl-pds">"</span></span></pre></div>
+<p dir="auto">If you skip the topic, it goes under the default topic <code>no topic</code>:</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content='idea "remember to defrost the freezer"' dir="auto"><pre>idea <span class="pl-s"><span class="pl-pds">"</span>remember to defrost the freezer<span class="pl-pds">"</span></span></pre></div>
+<h3 class="heading-element" dir="auto">List everything</h3>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="idea list" dir="auto"><pre>idea list</pre></div>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="=== TOPIC 1: Rust ===
+ [1] look into io_uring for the async runtime
+ [2] understand pin/unpin
+
+=== TOPIC 2: Guitar ===
+ [1] practice barre chords"><pre class="notranslate"><code>=== TOPIC 1: Rust ===
+ [1] look into io_uring for the async runtime
+ [2] understand pin/unpin
+
+=== TOPIC 2: Guitar ===
+ [1] practice barre chords
+</code></pre></div>
+<h3 class="heading-element" dir="auto">Search</h3>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content='idea search 1 "io_uring"      # only within topic id 1
+idea search 0 "io_uring"      # across all topics
+idea search "rust" "pin"      # topics whose name contains "rust", filtered by idea text
+idea search "rust"            # all ideas in topics whose name contains "rust"' dir="auto"><pre>idea search 1 <span class="pl-s"><span class="pl-pds">"</span>io_uring<span class="pl-pds">"</span></span>      <span class="pl-c"><span class="pl-c">#</span> only within topic id 1</span>
+idea search 0 <span class="pl-s"><span class="pl-pds">"</span>io_uring<span class="pl-pds">"</span></span>      <span class="pl-c"><span class="pl-c">#</span> across all topics</span>
+idea search <span class="pl-s"><span class="pl-pds">"</span>rust<span class="pl-pds">"</span></span> <span class="pl-s"><span class="pl-pds">"</span>pin<span class="pl-pds">"</span></span>      <span class="pl-c"><span class="pl-c">#</span> topics whose name contains "rust", filtered by idea text</span>
+idea search <span class="pl-s"><span class="pl-pds">"</span>rust<span class="pl-pds">"</span></span>            <span class="pl-c"><span class="pl-c">#</span> all ideas in topics whose name contains "rust"</span></pre></div>
+<p dir="auto">The topic selector is a number (an exact topic id, or <code>0</code> for "every topic") or a case-insensitive substring match on the topic name. The idea filter, when given, is a case-insensitive substring match on the idea text.</p>
+<h3 class="heading-element" dir="auto">Delete</h3>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="idea delete 2 1        # delete idea id 1 inside topic id 2
+idea delete 2          # delete topic id 2 entirely, including its ideas" dir="auto"><pre>idea delete 2 1        <span class="pl-c"><span class="pl-c">#</span> delete idea id 1 inside topic id 2</span>
+idea delete 2          <span class="pl-c"><span class="pl-c">#</span> delete topic id 2 entirely, including its ideas</span></pre></div>
+<p dir="auto">Deleting a topic that still contains ideas asks for confirmation first (default: no):</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content='Topic "Guitar" (id 2) still has 1 idea(s) in it. Delete it and all its ideas? [y/N]:'><pre class="notranslate"><code>Topic "Guitar" (id 2) still has 1 idea(s) in it. Delete it and all its ideas? [y/N]:
+</code></pre></div>
+<p dir="auto">An empty topic deletes immediately without prompting.</p>
+<h3 class="heading-element" dir="auto">Defrag</h3>
+<p dir="auto">Deleting things leaves gaps in the numbering (e.g. topic ids <code>1, 3, 4</code> after deleting topic <code>2</code>). This is intentional, ids are permanent, not positions, so nothing else shifts. If you'd rather have the ids compact again:</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="idea defrag" dir="auto"><pre>idea defrag</pre></div>
+<p dir="auto">This renumbers all topics to <code>1, 2, 3, ...</code> and, within each topic, all its ideas to <code>1, 2, 3, ...</code>, preserving the existing relative order.</p>
+<h2 class="heading-element" dir="auto">Where data is stored</h2>
+<p dir="auto">Ideas are saved as JSON in <code>~/.config/idea/ideas.json</code>. If the file doesn't exist yet, it's created automatically on first use.</p>
+<p dir="auto">PS: If you look through the code and are wondering:
+If the file was created by an older version of this tool (the format before ids existed), it's migrated to the current format automatically the first time you run any command, and the migrated file is written back to disk immediately.</p>
+
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

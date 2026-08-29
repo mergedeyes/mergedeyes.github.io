@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yarn Calculator — Jan</title>
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+  <div class="layout">
+    <main class="main" id="main">
+      <section class="section project-page">
+        <p class="section__path"><a href="../index.html#projects" class="link">~/projects</a> / yarncalculator</p>
+        <div class="card__head project-page__head">
+          <h1 class="section__title">Yarn Calculator</h1>
+          <span class="tag">Java</span>
+        </div>
+        <div class="card__foot project-page__foot">
+          <div class="card__links">
+            <a href="https://github.com/mergedeyes/yarncalculator" class="link">Repository</a>
+          </div>
+          
+        </div>
+        <div class="readme-content">
+<h1 class="heading-element" dir="auto">Yarn Composition Calculator / Garn-Zusammensetzungs-Rechner</h1>
+<p dir="auto"><a href="#-english-documentation">🇬🇧 English Documentation</a> | <a href="#-deutsche-dokumentation">🇩🇪 Deutsche Dokumentation</a></p>
+<hr/>
+<p dir="auto"><a name="user-content--english-documentation"></a></p>
+<h2 class="heading-element" dir="auto">🇬🇧 English Documentation</h2>
+<p dir="auto">A robust Java Swing application designed for textile enthusiasts, knitters, and designers. It calculates the exact fiber composition of a project that combines multiple different yarns with varying weights and blends.</p>
+<h3 class="heading-element" dir="auto">📋 Prerequisites</h3>
+<ul dir="auto">
+<li><strong>Java Development Kit (JDK) 25</strong> or higher.
+<ul dir="auto">
+<li>This application leverages modern Java features. Please ensure you have the latest JDK installed.</li>
+<li>Download: <a href="https://adoptium.net/" rel="nofollow">Adoptium (Eclipse Temurin)</a> or <a href="https://www.oracle.com/java/technologies/downloads/" rel="nofollow">Oracle</a>.</li>
+</ul>
+</li>
+<li><strong>Fiber names: <a href="https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX%3A02011R1007-20180215" rel="nofollow">https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX%3A02011R1007-20180215</a></strong></li>
+</ul>
+<h3 class="heading-element" dir="auto">🚀 How to Run (For Windows, skip this step)</h3>
+<ol dir="auto">
+<li>Download the <code>GarnRechnerProzedural.java</code> file.</li>
+<li>Open your terminal or command prompt.</li>
+<li>Navigate to the directory containing the file.</li>
+<li>Compile the code:
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="javac GarnRechnerProzedural.java" dir="auto"><pre>javac GarnRechnerProzedural.java</pre></div>
+</li>
+<li>Run the application:
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="java GarnRechnerProzedural" dir="auto"><pre>java GarnRechnerProzedural</pre></div>
+</li>
+</ol>
+<h3 class="heading-element" dir="auto">🪟 Windows Easy Setup (ZIP &amp; Shortcut)</h3>
+<p dir="auto">If you have downloaded a ZIP file containing the program, follow these steps to set it up permanently:</p>
+<ol dir="auto">
+<li>
+<p dir="auto"><strong>Unpack:</strong></p>
+<ul dir="auto">
+<li>Right-click the downloaded ZIP file.</li>
+<li>Select "Extract All..." (or use 7-Zip/WinRAR).</li>
+<li>Choose a permanent folder where you want the program to live (e.g., <code>C:\Users\YourName\Documents\YarnCalculator</code>).</li>
+<li>Click <strong>Extract</strong>.</li>
+</ul>
+</li>
+<li>
+<p dir="auto"><strong>Verify/Create Batch File:</strong></p>
+<ul dir="auto">
+<li>Open the folder. Look for a file named <code>start.bat</code> (or similar).</li>
+<li><em>If it doesn't exist:</em> Right-click in the empty folder space &gt; New &gt; Text Document. Name it <code>start.bat</code> (make sure the file extension changes from <code>.txt</code> to <code>.bat</code>). Right-click it &gt; Edit, and paste this text:
+<div class="highlight highlight-source-batchfile notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="@echo off
+start javaw GarnRechnerProzedural
+exit" dir="auto"><pre><span class="pl-k">@</span><span class="pl-k">echo</span> <span class="pl-k">off</span>
+<span class="pl-k">start</span> javaw GarnRechnerProzedural
+<span class="pl-k">exit</span></pre></div>
+</li>
+<li>Save and close the file.</li>
+</ul>
+</li>
+<li>
+<p dir="auto"><strong>Create Desktop Shortcut:</strong></p>
+<ul dir="auto">
+<li>Right-click the <code>start.bat</code> file.</li>
+<li>Select <strong>Show more options</strong> (Windows 11) if necessary.</li>
+<li>Select <strong>Send to</strong> &gt; <strong>Desktop (create shortcut)</strong>.</li>
+</ul>
+</li>
+<li>
+<p dir="auto"><strong>Launch:</strong></p>
+<ul dir="auto">
+<li>You can now start the calculator anytime by double-clicking the new shortcut on your Desktop.</li>
+</ul>
+</li>
+</ol>
+<h3 class="heading-element" dir="auto">✨ Features</h3>
+<ul dir="auto">
+<li><strong>Multi-Yarn Calculation:</strong> Add as many yarn sources as needed. The interface automatically numbers them (Yarn 1, Yarn 2, etc.) and uses a thick border to distinguish them.</li>
+<li><strong>Weighted Calculation:</strong> Enter the specific weight (in grams) for each yarn to get a mathematically accurate total composition based on the ratio of materials.</li>
+<li><strong>Template System (JSON):</strong>
+<ul dir="auto">
+<li><strong>Yarn Templates:</strong> Save your favorite yarn blends (e.g., "Sock Wool Classic") to a local file and reuse them later.</li>
+<li><strong>Fiber Database:</strong> Manage a list of fiber types (Wool, Cotton, Silk, etc.) in a dropdown menu. You can add new ones or delete existing ones directly from the UI.</li>
+</ul>
+</li>
+<li><strong>Smart Editing:</strong>
+<ul dir="auto">
+<li><strong>Locking:</strong> Predefined templates are locked by default to prevent accidental changes.</li>
+<li><strong>Edit Mode:</strong> Clicking <strong>"Edit Yarn"</strong> unlocks the fields and switches the dropdown to <strong>"New"</strong>, allowing you to modify a preset without overwriting the original unless desired.</li>
+<li><strong>Save/Overwrite:</strong> Use <strong>"Save Yarn"</strong> to store new templates or overwrite existing ones.</li>
+</ul>
+</li>
+<li><strong>Precision Rounding:</strong> The app uses the <strong>Largest Remainder Method</strong> (Hare-Niemeyer) to ensure the calculated percentages always sum up to exactly <strong>100.0%</strong>. It minimizes statistical rounding errors better than standard rounding.</li>
+<li><strong>Excel Export:</strong> The result dialog includes a <strong>"Copy"</strong> button. This puts the data into your clipboard in a format optimized for pasting directly into Excel, Google Sheets, or other spreadsheet software (Tab-separated values).</li>
+<li><strong>Bilingual Interface:</strong> Toggle between <strong>English (EN)</strong> and <strong>German (DE)</strong> instantly via the buttons in the top-right corner.</li>
+</ul>
+<h3 class="heading-element" dir="auto">📖 Usage Guide</h3>
+<ol dir="auto">
+<li><strong>Add Yarn:</strong> Click <strong>"Add Yarn"</strong> to create a new input block.</li>
+<li><strong>Select Template:</strong>
+<ul dir="auto">
+<li>Choose a saved yarn from the dropdown menu to auto-fill fibers.</li>
+<li>Or select <strong>"New"</strong> to define a custom blend.</li>
+</ul>
+</li>
+<li><strong>Enter Weight:</strong> Input the weight in <strong>"Grams"</strong> used for this specific yarn.</li>
+<li><strong>Define Fibers:</strong>
+<ul dir="auto">
+<li>Select a fiber from the dropdown or type a new name.</li>
+<li>Enter the percentage for that fiber.</li>
+<li><strong>Buttons:</strong>
+<ul dir="auto">
+<li><strong><code>S</code> (Save):</strong> Saves the currently typed fiber name to the global dropdown list.</li>
+<li><strong><code>D</code> (Delete):</strong> Removes the selected fiber type from the global dropdown list.</li>
+<li><strong>"Remove Fiber":</strong> Removes the specific fiber row from the current yarn.</li>
+</ul>
+</li>
+<li><strong>Fill Rest:</strong> Click <strong>"Fill Rest to 100%"</strong> to automatically calculate the remaining percentage for the last row.</li>
+</ul>
+</li>
+<li><strong>Calculate:</strong> Click the <strong>"Calculate"</strong> button at the bottom.</li>
+<li><strong>Export:</strong> In the result window, click <strong>"Copy"</strong> to put the table into your clipboard.</li>
+</ol>
+<h3 class="heading-element" dir="auto">📂 Configuration Files</h3>
+<p dir="auto">The application automatically generates two JSON files in the same directory to store your data.</p>
+<h4 class="heading-element" dir="auto"><code>yarns.json</code></h4>
+<p dir="auto">Stores your saved yarn templates.</p>
+<div class="highlight highlight-source-json notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content='{
+  "Sock Wool Classic": {
+    "f0": { "name": "Virgin Wool", "percentage": 75.00 },
+    "f1": { "name": "Polyamide", "percentage": 25.00 }
+  }
+}' dir="auto"><pre>{
+  <span class="pl-ent">"Sock Wool Classic"</span>: {
+    <span class="pl-ent">"f0"</span>: { <span class="pl-ent">"name"</span>: <span class="pl-s"><span class="pl-pds">"</span>Virgin Wool<span class="pl-pds">"</span></span>, <span class="pl-ent">"percentage"</span>: <span class="pl-c1">75.00</span> },
+    <span class="pl-ent">"f1"</span>: { <span class="pl-ent">"name"</span>: <span class="pl-s"><span class="pl-pds">"</span>Polyamide<span class="pl-pds">"</span></span>, <span class="pl-ent">"percentage"</span>: <span class="pl-c1">25.00</span> }
+  }
+}</pre></div>
+<h4 class="heading-element" dir="auto"><code>fibers.json</code></h4>
+<p dir="auto">Stores the list of available fiber names for the dropdown.</p>
+<div class="highlight highlight-source-json notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content='[
+  "Cotton",
+  "Merino",
+  "Silk",
+  "Polyamide"
+]' dir="auto"><pre>[
+  <span class="pl-s"><span class="pl-pds">"</span>Cotton<span class="pl-pds">"</span></span>,
+  <span class="pl-s"><span class="pl-pds">"</span>Merino<span class="pl-pds">"</span></span>,
+  <span class="pl-s"><span class="pl-pds">"</span>Silk<span class="pl-pds">"</span></span>,
+  <span class="pl-s"><span class="pl-pds">"</span>Polyamide<span class="pl-pds">"</span></span>
+]</pre></div>
+<hr/>
+<p dir="auto"><a name="user-content--deutsche-dokumentation"></a></p>
+<h2 class="heading-element" dir="auto">🇩🇪 Deutsche Dokumentation</h2>
+<p dir="auto">Eine leistungsstarke Java-Swing-Anwendung für Textilliebhaber, Stricker und Designer. Das Programm berechnet die exakte Faserzusammensetzung eines Projekts, bei dem mehrere verschiedene Garne mit unterschiedlichen Gewichten und Mischungen kombiniert werden.</p>
+<h3 class="heading-element" dir="auto">📋 Voraussetzungen</h3>
+<ul dir="auto">
+<li><strong>Java Development Kit (JDK) 25</strong> oder höher.
+<ul dir="auto">
+<li>Die Anwendung nutzt moderne Java-Funktionen. Bitte stellen Sie sicher, dass Sie das aktuelle JDK installiert haben.</li>
+<li>Download: <a href="https://adoptium.net/" rel="nofollow">Adoptium (Eclipse Temurin)</a> oder <a href="https://www.oracle.com/java/technologies/downloads/" rel="nofollow">Oracle</a>.</li>
+</ul>
+</li>
+<li><strong>Faser-Namen: <a href="https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX%3A02011R1007-20180215" rel="nofollow">https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX%3A02011R1007-20180215</a></strong></li>
+</ul>
+<h3 class="heading-element" dir="auto">🚀 Installation &amp; Start (Für Windows, diesen Schritt überspringen)</h3>
+<ol dir="auto">
+<li>Laden Sie die Datei <code>GarnRechnerProzedural.java</code> herunter.</li>
+<li>Öffnen Sie Ihr Terminal oder die Eingabeaufforderung.</li>
+<li>Navigieren Sie in den Ordner, der die Datei enthält.</li>
+<li>Kompilieren Sie den Code:
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="javac GarnRechnerProzedural.java" dir="auto"><pre>javac GarnRechnerProzedural.java</pre></div>
+</li>
+<li>Starten Sie das Programm:
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="java GarnRechnerProzedural" dir="auto"><pre>java GarnRechnerProzedural</pre></div>
+</li>
+</ol>
+<h3 class="heading-element" dir="auto">🪟 Windows Einrichtung (ZIP &amp; Verknüpfung)</h3>
+<p dir="auto">Wenn Sie eine ZIP-Datei mit dem Programm heruntergeladen haben, folgen Sie diesen Schritten für eine dauerhafte Einrichtung:</p>
+<ol dir="auto">
+<li>
+<p dir="auto"><strong>Entpacken:</strong></p>
+<ul dir="auto">
+<li>Rechtsklick auf die heruntergeladene ZIP-Datei.</li>
+<li>Wählen Sie "Alle extrahieren..." (oder nutzen Sie 7-Zip/WinRAR).</li>
+<li>Wählen Sie einen dauerhaften Ordner, in dem das Programm liegen soll (z. B. <code>C:\Benutzer\IhrName\Dokumente\GarnRechner</code>).</li>
+<li>Klicken Sie auf <strong>Extrahieren</strong>.</li>
+</ul>
+</li>
+<li>
+<p dir="auto"><strong>Start-Datei prüfen/erstellen:</strong></p>
+<ul dir="auto">
+<li>Öffnen Sie den Ordner. Suchen Sie nach einer Datei namens <code>start.bat</code> (oder ähnlich).</li>
+<li><em>Falls nicht vorhanden:</em> Rechtsklick in den leeren Bereich &gt; Neu &gt; Textdokument. Nennen Sie es <code>start.bat</code> (bestätigen Sie die Änderung der Dateiendung von <code>.txt</code> zu <code>.bat</code>). Rechtsklick darauf &gt; Bearbeiten und folgenden Text einfügen:
+<div class="highlight highlight-source-batchfile notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="@echo off
+start javaw GarnRechnerProzedural
+exit" dir="auto"><pre><span class="pl-k">@</span><span class="pl-k">echo</span> <span class="pl-k">off</span>
+<span class="pl-k">start</span> javaw GarnRechnerProzedural
+<span class="pl-k">exit</span></pre></div>
+</li>
+<li>Speichern und schließen.</li>
+</ul>
+</li>
+<li>
+<p dir="auto"><strong>Desktop-Verknüpfung erstellen:</strong></p>
+<ul dir="auto">
+<li>Rechtsklick auf die Datei <code>start.bat</code>.</li>
+<li>Wählen Sie <strong>Weitere Optionen anzeigen</strong> (falls Windows 11).</li>
+<li>Wählen Sie <strong>Senden an</strong> &gt; <strong>Desktop (Verknüpfung erstellen)</strong>.</li>
+</ul>
+</li>
+<li>
+<p dir="auto"><strong>Starten:</strong></p>
+<ul dir="auto">
+<li>Sie können den Rechner nun jederzeit per Doppelklick auf die Verknüpfung auf Ihrem Desktop starten.</li>
+</ul>
+</li>
+</ol>
+<h3 class="heading-element" dir="auto">✨ Funktionen</h3>
+<ul dir="auto">
+<li><strong>Mehrfach-Garn-Berechnung:</strong> Fügen Sie beliebig viele Garnquellen hinzu. Die Oberfläche nummeriert diese automatisch (Garn 1, Garn 2, usw.) und hebt sie durch einen dicken Rahmen hervor.</li>
+<li><strong>Gewichtete Berechnung:</strong> Geben Sie das spezifische Gewicht (in Gramm) für jedes Garn ein, um eine mathematisch exakte Gesamtzusammensetzung basierend auf dem Materialverhältnis zu erhalten.</li>
+<li><strong>Vorlagen-System (JSON):</strong>
+<ul dir="auto">
+<li><strong>Garn-Vorlagen:</strong> Speichern Sie Ihre bevorzugten Garnmischungen (z. B. "Sockenwolle Klassik") in einer lokalen Datei, um sie später wiederzuverwenden.</li>
+<li><strong>Faser-Datenbank:</strong> Verwalten Sie eine Liste von Faserarten (Wolle, Baumwolle, Seide usw.) in einem Dropdown-Menü. Sie können neue Arten hinzufügen oder bestehende löschen.</li>
+</ul>
+</li>
+<li><strong>Intelligentes Bearbeiten:</strong>
+<ul dir="auto">
+<li><strong>Sperre:</strong> Vordefinierte Vorlagen sind standardmäßig gesperrt, um versehentliche Änderungen zu verhindern.</li>
+<li><strong>Bearbeiten-Modus:</strong> Ein Klick auf <strong>"Garn Bearbeiten"</strong> entsperrt die Felder und wechselt in den Modus <strong>"Neu"</strong>, sodass Sie eine Mischung anpassen können, ohne das Original zu überschreiben (es sei denn, Sie wünschen dies).</li>
+<li><strong>Speichern/Überschreiben:</strong> Mit <strong>"Garn Speichern"</strong> können Sie neue Vorlagen sichern oder bestehende nach einer Bestätigung überschreiben.</li>
+</ul>
+</li>
+<li><strong>Präzises Runden:</strong> Die App verwendet das <strong>Hare-Niemeyer-Verfahren</strong> (Largest Remainder Method), um sicherzustellen, dass die Endsumme der Anteile immer exakt <strong>100,0 %</strong> beträgt. Dies minimiert statistische Rundungsfehler besser als herkömmliches Runden.</li>
+<li><strong>Excel-Export:</strong> Das Ergebnisfenster enthält einen <strong>"Kopieren"</strong>-Button. Dieser kopiert die Tabelle in die Zwischenablage in einem Format, das direkt in Excel oder Google Sheets eingefügt werden kann.</li>
+<li><strong>Zweisprachige Oberfläche:</strong> Wechseln Sie über die Buttons oben rechts sofort zwischen <strong>Englisch (EN)</strong> und <strong>Deutsch (DE)</strong>.</li>
+</ul>
+<h3 class="heading-element" dir="auto">📖 Bedienungsanleitung</h3>
+<ol dir="auto">
+<li><strong>Garn hinzufügen:</strong> Klicken Sie auf <strong>"Garn hinzufügen"</strong>, um einen neuen Eingabeblock zu erstellen.</li>
+<li><strong>Vorlage wählen:</strong>
+<ul dir="auto">
+<li>Wählen Sie ein gespeichertes Garn aus dem Dropdown-Menü, um die Fasern automatisch auszufüllen.</li>
+<li>Oder lassen Sie die Auswahl auf <strong>"Neu"</strong>, um eine eigene Mischung zu definieren.</li>
+</ul>
+</li>
+<li><strong>Gewicht eingeben:</strong> Tragen Sie das Gewicht in <strong>"Gramm"</strong> ein, das von diesem Garn verwendet wird.</li>
+<li><strong>Fasern definieren:</strong>
+<ul dir="auto">
+<li>Wählen Sie eine Faser aus dem Dropdown oder tippen Sie einen neuen Namen ein.</li>
+<li>Geben Sie den prozentualen Anteil ein.</li>
+<li><strong>Buttons:</strong>
+<ul dir="auto">
+<li><strong><code>S</code> (Speichern):</strong> Speichert den aktuell eingetippten Fasernamen in die globale Dropdown-Liste.</li>
+<li><strong><code>D</code> (Löschen):</strong> Entfernt die ausgewählte Faserart aus der globalen Liste.</li>
+<li><strong>"Faser Entfernen":</strong> Entfernt die spezifische Faserzeile aus dem aktuellen Garn.</li>
+</ul>
+</li>
+<li><strong>Rest auffüllen:</strong> Klicken Sie auf <strong>"Rest auf 100%"</strong>, um den verbleibenden Anteil für die letzte Zeile automatisch zu berechnen.</li>
+</ul>
+</li>
+<li><strong>Berechnen:</strong> Klicken Sie unten auf den Button <strong>"Berechnen"</strong>.</li>
+<li><strong>Exportieren:</strong> Klicken Sie im Ergebnisfenster auf <strong>"Kopieren"</strong>, um die Tabelle in die Zwischenablage zu legen.</li>
+</ol>
+<h3 class="heading-element" dir="auto">📂 Konfigurationsdateien</h3>
+<p dir="auto">Die Anwendung erstellt automatisch zwei JSON-Dateien im selben Verzeichnis, um Ihre Daten zu speichern.</p>
+<h4 class="heading-element" dir="auto"><code>yarns.json</code></h4>
+<p dir="auto">Speichert Ihre Garn-Vorlagen.</p>
+<div class="highlight highlight-source-json notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content='{
+  "Sockenwolle Klassik": {
+    "f0": { "name": "Schurwolle", "percentage": 75.00 },
+    "f1": { "name": "Polyamid", "percentage": 25.00 }
+  }
+}' dir="auto"><pre>{
+  <span class="pl-ent">"Sockenwolle Klassik"</span>: {
+    <span class="pl-ent">"f0"</span>: { <span class="pl-ent">"name"</span>: <span class="pl-s"><span class="pl-pds">"</span>Schurwolle<span class="pl-pds">"</span></span>, <span class="pl-ent">"percentage"</span>: <span class="pl-c1">75.00</span> },
+    <span class="pl-ent">"f1"</span>: { <span class="pl-ent">"name"</span>: <span class="pl-s"><span class="pl-pds">"</span>Polyamid<span class="pl-pds">"</span></span>, <span class="pl-ent">"percentage"</span>: <span class="pl-c1">25.00</span> }
+  }
+}</pre></div>
+<h4 class="heading-element" dir="auto"><code>fibers.json</code></h4>
+<p dir="auto">Speichert die Liste der verfügbaren Fasernamen für das Dropdown-Menü.</p>
+<div class="highlight highlight-source-json notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content='[
+  "Baumwolle",
+  "Merino",
+  "Seide",
+  "Polyamid"
+]' dir="auto"><pre>[
+  <span class="pl-s"><span class="pl-pds">"</span>Baumwolle<span class="pl-pds">"</span></span>,
+  <span class="pl-s"><span class="pl-pds">"</span>Merino<span class="pl-pds">"</span></span>,
+  <span class="pl-s"><span class="pl-pds">"</span>Seide<span class="pl-pds">"</span></span>,
+  <span class="pl-s"><span class="pl-pds">"</span>Polyamid<span class="pl-pds">"</span></span>
+]</pre></div>
+
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
