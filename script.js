@@ -43,18 +43,46 @@
     })
     .filter(Boolean);
 
-  if ("IntersectionObserver" in window) {
+  function setActiveHref(href) {
+    links.forEach(function (a) {
+      a.classList.toggle("is-active", a.getAttribute("href") === href);
+    });
+  }
+
+  /* True once the page can't scroll any further down - i.e. the actual
+     bottom, not just "Contact is on screen". */
+  function isAtPageBottom() {
+    return window.innerHeight + window.scrollY
+      >= document.documentElement.scrollHeight - 2;
+  }
+
+  if ("IntersectionObserver" in window && sections.length) {
+    var lastHref = "#" + sections[sections.length - 1].id;
+
+    /* The rootMargin band below sits around the vertical middle of the
+       viewport, which works well while scrolling through normal-height
+       sections - but the last section (Contact) is short, and once the
+       page is scrolled all the way to the bottom, Contact + the footer
+       don't add up to enough height to ever push that middle band down
+       onto Contact. It never intersects, so the observer keeps reporting
+       whatever section intersected last (About Me) as still active. The
+       isAtPageBottom() check has to live INSIDE this callback, not in a
+       separate scroll listener racing against it - a separate listener
+       can win the race for a moment, but this callback fires right after
+       and, unaware anything changed, reports About Me as active again. */
     var spy = new IntersectionObserver(function (entries) {
+      if (isAtPageBottom()) { setActiveHref(lastHref); return; }
       entries.forEach(function (entry) {
         if (!entry.isIntersecting) return;
-        var id = entry.target.id;
-        links.forEach(function (a) {
-          a.classList.toggle("is-active", a.getAttribute("href") === "#" + id);
-        });
+        setActiveHref("#" + entry.target.id);
       });
     }, { rootMargin: "-45% 0px -50% 0px", threshold: 0 });
 
     sections.forEach(function (s) { spy.observe(s); });
+
+    window.addEventListener("scroll", function () {
+      if (isAtPageBottom()) setActiveHref(lastHref);
+    }, { passive: true });
   }
 
   /* ── Scroll reveal ── */

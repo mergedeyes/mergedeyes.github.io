@@ -1,0 +1,29 @@
+# Jan Motulla
+
+> Systems engineer and Rust developer based in Germany, working close to
+> the metal: Linux, networking, DNS, and monitoring/alerting, with Rust
+> as a primary language and a track toward DevOps.
+
+## About
+
+- [About Me](https://mergedcloud.de/#about): Background, what he cares about, and current focus.
+- [Contact](https://mergedcloud.de/#contact): Email and GitHub.
+- [Work](https://mergedcloud.de/#work): IT Systems Engineer at sys-fn.de; previously an IBM Systems Engineer apprentice at AMETRAS dms managed service GmbH.
+- [Education](https://mergedcloud.de/#education): IT Systems Engineer apprenticeship (Elektronik Schule Tettnang); earlier Foto- und Medientechnischer Assistent (Willi-Burth-Schule).
+
+## Projects
+
+- [Klar](https://mergedcloud.de/projects/klar-stack.html): A social media platform for the EU, built with Rust, TypeScript, Bash, and Docker.
+- [idea](https://mergedcloud.de/projects/idea.html): A command-line tool for capturing ideas, written in Rust.
+- [Subway Builder MapTools](https://mergedcloud.de/projects/subwaybuilder_maptools.html): A Python wrapper for building maps for Subway Builder, based on the DEPOT project.
+- [Yarn Calculator](https://mergedcloud.de/projects/yarncalculator.html): A Java app that calculates fiber composition across combined yarns.
+
+## Skills
+
+- [Linux](https://mergedcloud.de/skills/linux.html)
+- [Domain + DNS Management](https://mergedcloud.de/skills/dns.html)
+- [Networking](https://mergedcloud.de/skills/networking.html)
+- [IBM Systems](https://mergedcloud.de/skills/ibm.html)
+- [Monitoring & Alerting](https://mergedcloud.de/skills/monitoring.html)
+- [Nginx](https://mergedcloud.de/skills/nginx.html)
+- [Nagios, Nagstamon & Naemon](https://mergedcloud.de/skills/nagios.html)

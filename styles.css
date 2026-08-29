@@ -318,15 +318,38 @@ a:focus-visible, button:focus-visible {
    already get their own pointer cursor as normal links. */
 .card[data-href] { cursor: pointer; }
 .card__head { display: flex; align-items: center; gap: 1rem; margin-bottom: .7rem; flex-wrap: wrap; }
-/* .card__head's space-between became margin-left:auto on the tag group
-   instead: with 2+ tags, plain space-between put one tag directly under
-   the title and the rest pinned to the far right on their own wrapped
-   line (a lone item on a flex line still gets shoved to that line's far
-   edge). margin-left:auto on the whole group means the group — title
-   first, tags after — either sits flush right on the title's own line,
-   or, if it doesn't fit, wraps as one unit and is still flush right on
-   its own line, so the tags always stay together instead of splitting. */
-.card__tags { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: .5rem; margin-left: auto; }
+/* The rule above is still what the generated project-page headers use
+   (.project-page__head, further down) - title and tags as flat flex
+   siblings that just wrap together, no right-pinning needed there since
+   it's a full detail page, not a compact card. Compact CARDS want
+   something fussier: title pinned left, and the tag cluster sharing the
+   title's own line as far as it fits, with any extra tags wrapping onto
+   their own row(s) directly underneath - still flush right, never their
+   own separate line below an otherwise-mostly-empty title row. Flexbox
+   can't express "share this line, then wrap below" between two flex
+   siblings (the tag group either fits and shares the line, or doesn't
+   and moves as a whole unit to a new line - no partial split), so cards
+   override .card__head to plain block flow and use a right float for
+   .card__tags instead: normal text (the title) wraps around a preceding
+   float, at any width, splitting itself only as needed. This ONLY
+   applies inside an actual .card - .project-page__head has no .card
+   ancestor and no .card__tags wrapper (bare <span class="tag"> siblings
+   instead), so it's untouched and keeps the flex rule above. Floats have
+   no effect on elements that are themselves flex items, which is exactly
+   why .card__head has to stop being display:flex for this to work at
+   all - and why .card__tags now has to come BEFORE .card__title in the
+   markup (a float only affects the flow of content that follows it). */
+.card > .card__head { display: block; }
+.card > .card__head::after { content: ""; display: table; clear: both; }
+.card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: .5rem;
+  float: right;
+  max-width: 70%;
+  margin-left: .8rem;
+}
 .card__title { font-size: 1.2rem; }
 .card__body { color: var(--text-dim); font-size: .96rem; margin-bottom: 1rem; }
 

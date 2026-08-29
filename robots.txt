@@ -1,0 +1,11 @@
+# mergedcloud.de - Jan Motulla's personal site.
+# Everything is welcome to crawl, including AI assistants/crawlers
+# (GPTBot, ClaudeBot, CCBot, etc.) - the whole point of this site is
+# to be findable. The generated per-file source browser pages are
+# excluded since they're raw code listings, not content worth
+# surfacing in search results.
+User-agent: *
+Allow: /
+Disallow: /projects/*-source*
+
+Sitemap: https://mergedcloud.de/sitemap.xml

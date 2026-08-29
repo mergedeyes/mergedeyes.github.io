@@ -13,7 +13,34 @@
   <meta property="og:description" content="Systems engineer and Rust developer working close to the metal and living inside the terminal." />
   <meta property="og:type" content="website" />
 
-  <link rel="stylesheet" href="styles.css?v=20260829" />
+  <link rel="stylesheet" href="styles.css?v=20260829b" />
+
+  <!-- Structured data for search engines / AI crawlers - see llms.txt,
+       robots.txt, and sitemap.xml alongside this file for the rest of
+       the SEO setup. Kept in sync by hand with the Work/Education
+       sections above; no build step touches this. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Jan Motulla",
+    "url": "https://mergedcloud.de/",
+    "email": "mailto:jan-motulla@mergedcloud.de",
+    "jobTitle": "IT Systems Engineer",
+    "alumniOf": [
+      { "@type": "EducationalOrganization", "name": "Elektronik Schule Tettnang" },
+      { "@type": "EducationalOrganization", "name": "Willi-Burth-Schule" }
+    ],
+    "sameAs": [
+      "https://github.com/mergedeyes"
+    ],
+    "knowsAbout": [
+      "Rust", "Python", "Java", "TypeScript", "Bash", "Linux",
+      "Networking", "DNS Management", "Docker", "CI/CD", "Nginx",
+      "Monitoring and Alerting"
+    ]
+  }
+  </script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -83,7 +110,6 @@
         <div class="cards">
           <article class="card reveal" data-href="projects/klar-stack.html" data-source-file="Klar/src/main.rs, Klar/migrations/*, Klar/src/*, klar-web/src/*">
             <div class="card__head">
-              <h3 class="card__title"><a href="projects/klar-stack.html">Klar</a></h3>
               <div class="card__tags">
                 <span class="tag">Rust</span>
                 <span class="tag">Typescript</span>
@@ -91,6 +117,7 @@
                 <span class="tag">Docker</span>
                 <span class="tag">Infrastructure</span>
               </div>
+              <h3 class="card__title"><a href="projects/klar-stack.html">Klar</a></h3>
             </div>
             <p class="card__body">
               Klar aka Klarsocial. A new socialmedia platform for people of the EU, where authenticity counts and algorithms have no place.
@@ -106,10 +133,10 @@
 
           <article class="card reveal" data-href="projects/idea.html" data-source-file="src/main.rs">
             <div class="card__head">
-              <h3 class="card__title"><a href="projects/idea.html">idea</a></h3>
               <div class="card__tags">
                 <span class="tag">Rust</span>
               </div>
+              <h3 class="card__title"><a href="projects/idea.html">idea</a></h3>
             </div>
             <p class="card__body">
               A tiny command-line tool for capturing ideas before you forget them, organized by topic, stored locally as JSON.
@@ -124,10 +151,10 @@
 
           <article class="card reveal" data-href="projects/subwaybuilder_maptools.html" data-source-file="run_demand_pipeline.py, build.py, generate_demand_qzm_local.py, ship.py, publish.py, bbox_utils.py, config_utils.py, enrich_utils.py, open_maps.py, rerun_enrichment.py, special_demand_utils.py, zensus_utils.py">
             <div class="card__head">
-              <h3 class="card__title"><a href="projects/subwaybuilder_maptools.html">Subway Builder MapTools - A wrapper for DEPOT</a></h3>
               <div class="card__tags">
                 <span class="tag">Python</span>
               </div>
+              <h3 class="card__title"><a href="projects/subwaybuilder_maptools.html">Subway Builder MapTools - A wrapper for DEPOT</a></h3>
             </div>
             <p class="card__body">
               A sophisticated wrapper for creating maps for Subway Builder. Based on the DEPOT project.
@@ -142,10 +169,10 @@
 
           <article class="card reveal" data-href="projects/yarncalculator.html" data-source-file="GarnRechnerProzedural.java">
             <div class="card__head">
-              <h3 class="card__title"><a href="projects/yarncalculator.html">Yarn Calculator</a></h3>
               <div class="card__tags">
                 <span class="tag">Java</span>
               </div>
+              <h3 class="card__title"><a href="projects/yarncalculator.html">Yarn Calculator</a></h3>
             </div>
             <p class="card__body">
               A simple Java application designed for textile enthusiasts, knitters, and designers. It calculates the exact fiber composition of a project that combines multiple different yarns with varying weights and blends.
@@ -353,6 +380,6 @@
     </main>
   </div>
 
-  <script src="script.js?v=20260829"></script>
+  <script src="script.js?v=20260829b"></script>
 </body>
 </html>
