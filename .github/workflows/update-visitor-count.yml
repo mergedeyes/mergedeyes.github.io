@@ -1,0 +1,35 @@
+name: Update visitor count
+
+on:
+  # GitHub's traffic API only keeps a rolling 14-day window, so this needs
+  # to run comfortably more often than every 14 days to never miss a day.
+  schedule:
+    - cron: "0 */6 * * *"  # every 6 hours
+  workflow_dispatch: {}
+
+permissions:
+  contents: write  # git-auto-commit-action needs push rights
+
+jobs:
+  update-count:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Update visitor count
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: python .github/scripts/update_visitor_count.py
+
+      - name: Commit updated count
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: update visitor count"
+          file_pattern: ".github/data/visitor-count.json index.html"
