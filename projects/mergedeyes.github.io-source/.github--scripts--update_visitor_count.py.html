@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>.github/scripts/update_visitor_count.py — Personal Website — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=d9cad8a4" />
+  <link rel="stylesheet" href="../../styles.css?v=24aeb1a3" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -217,7 +217,11 @@
 <span class="normal">172</span>
 <span class="normal">173</span>
 <span class="normal">174</span>
-<span class="normal">175</span></pre></div></td><td class="code"><div><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span></pre></div></td><td class="code"><div><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
 <span class="sd">"""</span>
 <span class="sd">Updates the site's visitor counter using GoatCounter analytics.</span>
 
@@ -347,7 +351,11 @@
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"updated </span><span class="si">{</span><span class="n">VISITOR_DATA_HTML_FILE</span><span class="si">}</span><span class="s2"> with </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">daily</span><span class="p">)</span><span class="si">}</span><span class="s2"> day(s) of data"</span><span class="p">)</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
-    <span class="n">token</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"GOATCOUNTER_TOKEN"</span><span class="p">)</span>
+    <span class="c1"># .strip() guards against a stray trailing newline/space getting baked</span>
+    <span class="c1"># into the GitHub Actions secret when it was copy-pasted -- that byte</span>
+    <span class="c1"># makes the token silently not match anything server-side (seen in the</span>
+    <span class="c1"># wild: valid token, still 401/404, because of an invisible \n at the end).</span>
+    <span class="n">token</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"GOATCOUNTER_TOKEN"</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">token</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">"error: GOATCOUNTER_TOKEN is not set."</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span>
         <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
