@@ -133,9 +133,15 @@ def main():
 
     for entry in sorted(views, key=lambda v: v["timestamp"]):
         day = entry["timestamp"][:10]  # "YYYY-MM-DDT00:00:00Z" -> "YYYY-MM-DD"
+        # Always (re)record the day's count in `daily`, even for a day already
+        # folded into `total` by an earlier run - the traffic API only ever
+        # exposes a rolling 14-day window, so this is the one chance to backfill
+        # `daily` for any day still visible in it. `total` itself must still
+        # only grow for days newer than last_counted_date, or a day already
+        # counted once would get counted again.
+        daily[day] = entry["count"]
         if day > last_counted:
             new_total += entry["count"]
-            daily[day] = daily.get(day, 0) + entry["count"]
             last_counted = day
 
     state["total"] = new_total
