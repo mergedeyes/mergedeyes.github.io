@@ -46,7 +46,7 @@ def fetch_daily_stats(token):
     start_date = (datetime.datetime.now(datetime.UTC) - datetime.timedelta(days=30)).strftime("%Y-%m-%dT00:00:00Z")
     end_date = datetime.datetime.now(datetime.UTC).strftime("%Y-%m-%dT23:59:59Z")
     
-    url = f"https://{GOATCOUNTER_DOMAIN}/api/v0/stats/total?start={start_date}&end={end_date}"
+    url = f"https://{GOATCOUNTER_DOMAIN}/api/v0/stats/total?start={start_date}&end={end_date}&access-token={token}"
     
     req = urllib.request.Request(
         url,
