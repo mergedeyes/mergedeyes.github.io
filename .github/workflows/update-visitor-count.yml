@@ -5,6 +5,18 @@ on:
     - cron: "*/30 * * * *"
   workflow_dispatch: {}
 
+# Shared with generate-project-pages.yml's concurrency group below:
+# that workflow triggers on every push this one makes (via workflow_run
+# AND push:branches:[main]), so the two were racing to commit+push
+# almost every single time this workflow succeeded -- confirmed in git
+# history: zero successful visitor-count.json commits survived since
+# the GoatCounter migration, every one lost to a non-fast-forward push
+# rejection. Same group name on both workflows means GitHub queues them
+# against EACH OTHER, not just against re-runs of the same workflow.
+concurrency:
+  group: main-branch-writes
+  cancel-in-progress: false
+
 permissions:
   contents: write  # git-auto-commit-action needs push rights
 

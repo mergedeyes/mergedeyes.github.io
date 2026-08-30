@@ -14,6 +14,17 @@ on:
     - cron: "5 0 * * *"  # every day, 00:00 UTC
   workflow_dispatch: {}
 
+# Shared with update-visitor-count.yml's concurrency group: this workflow
+# triggers on every push update-visitor-count.yml makes (workflow_run
+# below, plus push:branches:[main] above), so the two raced to commit+
+# push at nearly the same time on almost every run -- see the comment
+# in update-visitor-count.yml for the full story. Same group name on
+# both means GitHub queues them against each other instead of letting
+# both write to main concurrently.
+concurrency:
+  group: main-branch-writes
+  cancel-in-progress: false
+
 permissions:
   contents: write  # git-auto-commit-action needs push rights
 
