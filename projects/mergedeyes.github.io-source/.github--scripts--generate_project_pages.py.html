@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>.github/scripts/generate_project_pages.py — Personal Website — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=97c5c713" />
+  <link rel="stylesheet" href="../../styles.css?v=4e6172ad" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -43,605 +43,1045 @@
           <h1 class="section__title">.github/scripts/generate_project_pages.py</h1>
           <a href="../mergedeyes.github.io.html" class="link">← Back to Personal Website</a>
         </div>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">  1</span>
-<span class="normal">  2</span>
-<span class="normal">  3</span>
-<span class="normal">  4</span>
-<span class="normal">  5</span>
-<span class="normal">  6</span>
-<span class="normal">  7</span>
-<span class="normal">  8</span>
-<span class="normal">  9</span>
-<span class="normal"> 10</span>
-<span class="normal"> 11</span>
-<span class="normal"> 12</span>
-<span class="normal"> 13</span>
-<span class="normal"> 14</span>
-<span class="normal"> 15</span>
-<span class="normal"> 16</span>
-<span class="normal"> 17</span>
-<span class="normal"> 18</span>
-<span class="normal"> 19</span>
-<span class="normal"> 20</span>
-<span class="normal"> 21</span>
-<span class="normal"> 22</span>
-<span class="normal"> 23</span>
-<span class="normal"> 24</span>
-<span class="normal"> 25</span>
-<span class="normal"> 26</span>
-<span class="normal"> 27</span>
-<span class="normal"> 28</span>
-<span class="normal"> 29</span>
-<span class="normal"> 30</span>
-<span class="normal"> 31</span>
-<span class="normal"> 32</span>
-<span class="normal"> 33</span>
-<span class="normal"> 34</span>
-<span class="normal"> 35</span>
-<span class="normal"> 36</span>
-<span class="normal"> 37</span>
-<span class="normal"> 38</span>
-<span class="normal"> 39</span>
-<span class="normal"> 40</span>
-<span class="normal"> 41</span>
-<span class="normal"> 42</span>
-<span class="normal"> 43</span>
-<span class="normal"> 44</span>
-<span class="normal"> 45</span>
-<span class="normal"> 46</span>
-<span class="normal"> 47</span>
-<span class="normal"> 48</span>
-<span class="normal"> 49</span>
-<span class="normal"> 50</span>
-<span class="normal"> 51</span>
-<span class="normal"> 52</span>
-<span class="normal"> 53</span>
-<span class="normal"> 54</span>
-<span class="normal"> 55</span>
-<span class="normal"> 56</span>
-<span class="normal"> 57</span>
-<span class="normal"> 58</span>
-<span class="normal"> 59</span>
-<span class="normal"> 60</span>
-<span class="normal"> 61</span>
-<span class="normal"> 62</span>
-<span class="normal"> 63</span>
-<span class="normal"> 64</span>
-<span class="normal"> 65</span>
-<span class="normal"> 66</span>
-<span class="normal"> 67</span>
-<span class="normal"> 68</span>
-<span class="normal"> 69</span>
-<span class="normal"> 70</span>
-<span class="normal"> 71</span>
-<span class="normal"> 72</span>
-<span class="normal"> 73</span>
-<span class="normal"> 74</span>
-<span class="normal"> 75</span>
-<span class="normal"> 76</span>
-<span class="normal"> 77</span>
-<span class="normal"> 78</span>
-<span class="normal"> 79</span>
-<span class="normal"> 80</span>
-<span class="normal"> 81</span>
-<span class="normal"> 82</span>
-<span class="normal"> 83</span>
-<span class="normal"> 84</span>
-<span class="normal"> 85</span>
-<span class="normal"> 86</span>
-<span class="normal"> 87</span>
-<span class="normal"> 88</span>
-<span class="normal"> 89</span>
-<span class="normal"> 90</span>
-<span class="normal"> 91</span>
-<span class="normal"> 92</span>
-<span class="normal"> 93</span>
-<span class="normal"> 94</span>
-<span class="normal"> 95</span>
-<span class="normal"> 96</span>
-<span class="normal"> 97</span>
-<span class="normal"> 98</span>
-<span class="normal"> 99</span>
-<span class="normal">100</span>
-<span class="normal">101</span>
-<span class="normal">102</span>
-<span class="normal">103</span>
-<span class="normal">104</span>
-<span class="normal">105</span>
-<span class="normal">106</span>
-<span class="normal">107</span>
-<span class="normal">108</span>
-<span class="normal">109</span>
-<span class="normal">110</span>
-<span class="normal">111</span>
-<span class="normal">112</span>
-<span class="normal">113</span>
-<span class="normal">114</span>
-<span class="normal">115</span>
-<span class="normal">116</span>
-<span class="normal">117</span>
-<span class="normal">118</span>
-<span class="normal">119</span>
-<span class="normal">120</span>
-<span class="normal">121</span>
-<span class="normal">122</span>
-<span class="normal">123</span>
-<span class="normal">124</span>
-<span class="normal">125</span>
-<span class="normal">126</span>
-<span class="normal">127</span>
-<span class="normal">128</span>
-<span class="normal">129</span>
-<span class="normal">130</span>
-<span class="normal">131</span>
-<span class="normal">132</span>
-<span class="normal">133</span>
-<span class="normal">134</span>
-<span class="normal">135</span>
-<span class="normal">136</span>
-<span class="normal">137</span>
-<span class="normal">138</span>
-<span class="normal">139</span>
-<span class="normal">140</span>
-<span class="normal">141</span>
-<span class="normal">142</span>
-<span class="normal">143</span>
-<span class="normal">144</span>
-<span class="normal">145</span>
-<span class="normal">146</span>
-<span class="normal">147</span>
-<span class="normal">148</span>
-<span class="normal">149</span>
-<span class="normal">150</span>
-<span class="normal">151</span>
-<span class="normal">152</span>
-<span class="normal">153</span>
-<span class="normal">154</span>
-<span class="normal">155</span>
-<span class="normal">156</span>
-<span class="normal">157</span>
-<span class="normal">158</span>
-<span class="normal">159</span>
-<span class="normal">160</span>
-<span class="normal">161</span>
-<span class="normal">162</span>
-<span class="normal">163</span>
-<span class="normal">164</span>
-<span class="normal">165</span>
-<span class="normal">166</span>
-<span class="normal">167</span>
-<span class="normal">168</span>
-<span class="normal">169</span>
-<span class="normal">170</span>
-<span class="normal">171</span>
-<span class="normal">172</span>
-<span class="normal">173</span>
-<span class="normal">174</span>
-<span class="normal">175</span>
-<span class="normal">176</span>
-<span class="normal">177</span>
-<span class="normal">178</span>
-<span class="normal">179</span>
-<span class="normal">180</span>
-<span class="normal">181</span>
-<span class="normal">182</span>
-<span class="normal">183</span>
-<span class="normal">184</span>
-<span class="normal">185</span>
-<span class="normal">186</span>
-<span class="normal">187</span>
-<span class="normal">188</span>
-<span class="normal">189</span>
-<span class="normal">190</span>
-<span class="normal">191</span>
-<span class="normal">192</span>
-<span class="normal">193</span>
-<span class="normal">194</span>
-<span class="normal">195</span>
-<span class="normal">196</span>
-<span class="normal">197</span>
-<span class="normal">198</span>
-<span class="normal">199</span>
-<span class="normal">200</span>
-<span class="normal">201</span>
-<span class="normal">202</span>
-<span class="normal">203</span>
-<span class="normal">204</span>
-<span class="normal">205</span>
-<span class="normal">206</span>
-<span class="normal">207</span>
-<span class="normal">208</span>
-<span class="normal">209</span>
-<span class="normal">210</span>
-<span class="normal">211</span>
-<span class="normal">212</span>
-<span class="normal">213</span>
-<span class="normal">214</span>
-<span class="normal">215</span>
-<span class="normal">216</span>
-<span class="normal">217</span>
-<span class="normal">218</span>
-<span class="normal">219</span>
-<span class="normal">220</span>
-<span class="normal">221</span>
-<span class="normal">222</span>
-<span class="normal">223</span>
-<span class="normal">224</span>
-<span class="normal">225</span>
-<span class="normal">226</span>
-<span class="normal">227</span>
-<span class="normal">228</span>
-<span class="normal">229</span>
-<span class="normal">230</span>
-<span class="normal">231</span>
-<span class="normal">232</span>
-<span class="normal">233</span>
-<span class="normal">234</span>
-<span class="normal">235</span>
-<span class="normal">236</span>
-<span class="normal">237</span>
-<span class="normal">238</span>
-<span class="normal">239</span>
-<span class="normal">240</span>
-<span class="normal">241</span>
-<span class="normal">242</span>
-<span class="normal">243</span>
-<span class="normal">244</span>
-<span class="normal">245</span>
-<span class="normal">246</span>
-<span class="normal">247</span>
-<span class="normal">248</span>
-<span class="normal">249</span>
-<span class="normal">250</span>
-<span class="normal">251</span>
-<span class="normal">252</span>
-<span class="normal">253</span>
-<span class="normal">254</span>
-<span class="normal">255</span>
-<span class="normal">256</span>
-<span class="normal">257</span>
-<span class="normal">258</span>
-<span class="normal">259</span>
-<span class="normal">260</span>
-<span class="normal">261</span>
-<span class="normal">262</span>
-<span class="normal">263</span>
-<span class="normal">264</span>
-<span class="normal">265</span>
-<span class="normal">266</span>
-<span class="normal">267</span>
-<span class="normal">268</span>
-<span class="normal">269</span>
-<span class="normal">270</span>
-<span class="normal">271</span>
-<span class="normal">272</span>
-<span class="normal">273</span>
-<span class="normal">274</span>
-<span class="normal">275</span>
-<span class="normal">276</span>
-<span class="normal">277</span>
-<span class="normal">278</span>
-<span class="normal">279</span>
-<span class="normal">280</span>
-<span class="normal">281</span>
-<span class="normal">282</span>
-<span class="normal">283</span>
-<span class="normal">284</span>
-<span class="normal">285</span>
-<span class="normal">286</span>
-<span class="normal">287</span>
-<span class="normal">288</span>
-<span class="normal">289</span>
-<span class="normal">290</span>
-<span class="normal">291</span>
-<span class="normal">292</span>
-<span class="normal">293</span>
-<span class="normal">294</span>
-<span class="normal">295</span>
-<span class="normal">296</span>
-<span class="normal">297</span>
-<span class="normal">298</span>
-<span class="normal">299</span>
-<span class="normal">300</span>
-<span class="normal">301</span>
-<span class="normal">302</span>
-<span class="normal">303</span>
-<span class="normal">304</span>
-<span class="normal">305</span>
-<span class="normal">306</span>
-<span class="normal">307</span>
-<span class="normal">308</span>
-<span class="normal">309</span>
-<span class="normal">310</span>
-<span class="normal">311</span>
-<span class="normal">312</span>
-<span class="normal">313</span>
-<span class="normal">314</span>
-<span class="normal">315</span>
-<span class="normal">316</span>
-<span class="normal">317</span>
-<span class="normal">318</span>
-<span class="normal">319</span>
-<span class="normal">320</span>
-<span class="normal">321</span>
-<span class="normal">322</span>
-<span class="normal">323</span>
-<span class="normal">324</span>
-<span class="normal">325</span>
-<span class="normal">326</span>
-<span class="normal">327</span>
-<span class="normal">328</span>
-<span class="normal">329</span>
-<span class="normal">330</span>
-<span class="normal">331</span>
-<span class="normal">332</span>
-<span class="normal">333</span>
-<span class="normal">334</span>
-<span class="normal">335</span>
-<span class="normal">336</span>
-<span class="normal">337</span>
-<span class="normal">338</span>
-<span class="normal">339</span>
-<span class="normal">340</span>
-<span class="normal">341</span>
-<span class="normal">342</span>
-<span class="normal">343</span>
-<span class="normal">344</span>
-<span class="normal">345</span>
-<span class="normal">346</span>
-<span class="normal">347</span>
-<span class="normal">348</span>
-<span class="normal">349</span>
-<span class="normal">350</span>
-<span class="normal">351</span>
-<span class="normal">352</span>
-<span class="normal">353</span>
-<span class="normal">354</span>
-<span class="normal">355</span>
-<span class="normal">356</span>
-<span class="normal">357</span>
-<span class="normal">358</span>
-<span class="normal">359</span>
-<span class="normal">360</span>
-<span class="normal">361</span>
-<span class="normal">362</span>
-<span class="normal">363</span>
-<span class="normal">364</span>
-<span class="normal">365</span>
-<span class="normal">366</span>
-<span class="normal">367</span>
-<span class="normal">368</span>
-<span class="normal">369</span>
-<span class="normal">370</span>
-<span class="normal">371</span>
-<span class="normal">372</span>
-<span class="normal">373</span>
-<span class="normal">374</span>
-<span class="normal">375</span>
-<span class="normal">376</span>
-<span class="normal">377</span>
-<span class="normal">378</span>
-<span class="normal">379</span>
-<span class="normal">380</span>
-<span class="normal">381</span>
-<span class="normal">382</span>
-<span class="normal">383</span>
-<span class="normal">384</span>
-<span class="normal">385</span>
-<span class="normal">386</span>
-<span class="normal">387</span>
-<span class="normal">388</span>
-<span class="normal">389</span>
-<span class="normal">390</span>
-<span class="normal">391</span>
-<span class="normal">392</span>
-<span class="normal">393</span>
-<span class="normal">394</span>
-<span class="normal">395</span>
-<span class="normal">396</span>
-<span class="normal">397</span>
-<span class="normal">398</span>
-<span class="normal">399</span>
-<span class="normal">400</span>
-<span class="normal">401</span>
-<span class="normal">402</span>
-<span class="normal">403</span>
-<span class="normal">404</span>
-<span class="normal">405</span>
-<span class="normal">406</span>
-<span class="normal">407</span>
-<span class="normal">408</span>
-<span class="normal">409</span>
-<span class="normal">410</span>
-<span class="normal">411</span>
-<span class="normal">412</span>
-<span class="normal">413</span>
-<span class="normal">414</span>
-<span class="normal">415</span>
-<span class="normal">416</span>
-<span class="normal">417</span>
-<span class="normal">418</span>
-<span class="normal">419</span>
-<span class="normal">420</span>
-<span class="normal">421</span>
-<span class="normal">422</span>
-<span class="normal">423</span>
-<span class="normal">424</span>
-<span class="normal">425</span>
-<span class="normal">426</span>
-<span class="normal">427</span>
-<span class="normal">428</span>
-<span class="normal">429</span>
-<span class="normal">430</span>
-<span class="normal">431</span>
-<span class="normal">432</span>
-<span class="normal">433</span>
-<span class="normal">434</span>
-<span class="normal">435</span>
-<span class="normal">436</span>
-<span class="normal">437</span>
-<span class="normal">438</span>
-<span class="normal">439</span>
-<span class="normal">440</span>
-<span class="normal">441</span>
-<span class="normal">442</span>
-<span class="normal">443</span>
-<span class="normal">444</span>
-<span class="normal">445</span>
-<span class="normal">446</span>
-<span class="normal">447</span>
-<span class="normal">448</span>
-<span class="normal">449</span>
-<span class="normal">450</span>
-<span class="normal">451</span>
-<span class="normal">452</span>
-<span class="normal">453</span>
-<span class="normal">454</span>
-<span class="normal">455</span>
-<span class="normal">456</span>
-<span class="normal">457</span>
-<span class="normal">458</span>
-<span class="normal">459</span>
-<span class="normal">460</span>
-<span class="normal">461</span>
-<span class="normal">462</span>
-<span class="normal">463</span>
-<span class="normal">464</span>
-<span class="normal">465</span>
-<span class="normal">466</span>
-<span class="normal">467</span>
-<span class="normal">468</span>
-<span class="normal">469</span>
-<span class="normal">470</span>
-<span class="normal">471</span>
-<span class="normal">472</span>
-<span class="normal">473</span>
-<span class="normal">474</span>
-<span class="normal">475</span>
-<span class="normal">476</span>
-<span class="normal">477</span>
-<span class="normal">478</span>
-<span class="normal">479</span>
-<span class="normal">480</span>
-<span class="normal">481</span>
-<span class="normal">482</span>
-<span class="normal">483</span>
-<span class="normal">484</span>
-<span class="normal">485</span>
-<span class="normal">486</span>
-<span class="normal">487</span>
-<span class="normal">488</span>
-<span class="normal">489</span>
-<span class="normal">490</span>
-<span class="normal">491</span>
-<span class="normal">492</span>
-<span class="normal">493</span>
-<span class="normal">494</span>
-<span class="normal">495</span>
-<span class="normal">496</span>
-<span class="normal">497</span>
-<span class="normal">498</span>
-<span class="normal">499</span>
-<span class="normal">500</span>
-<span class="normal">501</span>
-<span class="normal">502</span>
-<span class="normal">503</span>
-<span class="normal">504</span>
-<span class="normal">505</span>
-<span class="normal">506</span>
-<span class="normal">507</span>
-<span class="normal">508</span>
-<span class="normal">509</span>
-<span class="normal">510</span>
-<span class="normal">511</span>
-<span class="normal">512</span>
-<span class="normal">513</span>
-<span class="normal">514</span>
-<span class="normal">515</span>
-<span class="normal">516</span>
-<span class="normal">517</span>
-<span class="normal">518</span>
-<span class="normal">519</span>
-<span class="normal">520</span>
-<span class="normal">521</span>
-<span class="normal">522</span>
-<span class="normal">523</span>
-<span class="normal">524</span>
-<span class="normal">525</span>
-<span class="normal">526</span>
-<span class="normal">527</span>
-<span class="normal">528</span>
-<span class="normal">529</span>
-<span class="normal">530</span>
-<span class="normal">531</span>
-<span class="normal">532</span>
-<span class="normal">533</span>
-<span class="normal">534</span>
-<span class="normal">535</span>
-<span class="normal">536</span>
-<span class="normal">537</span>
-<span class="normal">538</span>
-<span class="normal">539</span>
-<span class="normal">540</span>
-<span class="normal">541</span>
-<span class="normal">542</span>
-<span class="normal">543</span>
-<span class="normal">544</span>
-<span class="normal">545</span>
-<span class="normal">546</span>
-<span class="normal">547</span>
-<span class="normal">548</span>
-<span class="normal">549</span>
-<span class="normal">550</span>
-<span class="normal">551</span>
-<span class="normal">552</span>
-<span class="normal">553</span>
-<span class="normal">554</span>
-<span class="normal">555</span>
-<span class="normal">556</span>
-<span class="normal">557</span>
-<span class="normal">558</span>
-<span class="normal">559</span>
-<span class="normal">560</span>
-<span class="normal">561</span>
-<span class="normal">562</span>
-<span class="normal">563</span>
-<span class="normal">564</span>
-<span class="normal">565</span>
-<span class="normal">566</span>
-<span class="normal">567</span>
-<span class="normal">568</span>
-<span class="normal">569</span>
-<span class="normal">570</span>
-<span class="normal">571</span>
-<span class="normal">572</span>
-<span class="normal">573</span>
-<span class="normal">574</span>
-<span class="normal">575</span>
-<span class="normal">576</span>
-<span class="normal">577</span>
-<span class="normal">578</span>
-<span class="normal">579</span>
-<span class="normal">580</span>
-<span class="normal">581</span>
-<span class="normal">582</span>
-<span class="normal">583</span>
-<span class="normal">584</span>
-<span class="normal">585</span>
-<span class="normal">586</span>
-<span class="normal">587</span>
-<span class="normal">588</span>
-<span class="normal">589</span>
-<span class="normal">590</span>
-<span class="normal">591</span>
-<span class="normal">592</span>
-<span class="normal">593</span>
-<span class="normal">594</span>
-<span class="normal">595</span>
-<span class="normal">596</span>
-<span class="normal">597</span>
-<span class="normal">598</span>
-<span class="normal">599</span></pre></div></td><td class="code"><div><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">   1</span>
+<span class="normal">   2</span>
+<span class="normal">   3</span>
+<span class="normal">   4</span>
+<span class="normal">   5</span>
+<span class="normal">   6</span>
+<span class="normal">   7</span>
+<span class="normal">   8</span>
+<span class="normal">   9</span>
+<span class="normal">  10</span>
+<span class="normal">  11</span>
+<span class="normal">  12</span>
+<span class="normal">  13</span>
+<span class="normal">  14</span>
+<span class="normal">  15</span>
+<span class="normal">  16</span>
+<span class="normal">  17</span>
+<span class="normal">  18</span>
+<span class="normal">  19</span>
+<span class="normal">  20</span>
+<span class="normal">  21</span>
+<span class="normal">  22</span>
+<span class="normal">  23</span>
+<span class="normal">  24</span>
+<span class="normal">  25</span>
+<span class="normal">  26</span>
+<span class="normal">  27</span>
+<span class="normal">  28</span>
+<span class="normal">  29</span>
+<span class="normal">  30</span>
+<span class="normal">  31</span>
+<span class="normal">  32</span>
+<span class="normal">  33</span>
+<span class="normal">  34</span>
+<span class="normal">  35</span>
+<span class="normal">  36</span>
+<span class="normal">  37</span>
+<span class="normal">  38</span>
+<span class="normal">  39</span>
+<span class="normal">  40</span>
+<span class="normal">  41</span>
+<span class="normal">  42</span>
+<span class="normal">  43</span>
+<span class="normal">  44</span>
+<span class="normal">  45</span>
+<span class="normal">  46</span>
+<span class="normal">  47</span>
+<span class="normal">  48</span>
+<span class="normal">  49</span>
+<span class="normal">  50</span>
+<span class="normal">  51</span>
+<span class="normal">  52</span>
+<span class="normal">  53</span>
+<span class="normal">  54</span>
+<span class="normal">  55</span>
+<span class="normal">  56</span>
+<span class="normal">  57</span>
+<span class="normal">  58</span>
+<span class="normal">  59</span>
+<span class="normal">  60</span>
+<span class="normal">  61</span>
+<span class="normal">  62</span>
+<span class="normal">  63</span>
+<span class="normal">  64</span>
+<span class="normal">  65</span>
+<span class="normal">  66</span>
+<span class="normal">  67</span>
+<span class="normal">  68</span>
+<span class="normal">  69</span>
+<span class="normal">  70</span>
+<span class="normal">  71</span>
+<span class="normal">  72</span>
+<span class="normal">  73</span>
+<span class="normal">  74</span>
+<span class="normal">  75</span>
+<span class="normal">  76</span>
+<span class="normal">  77</span>
+<span class="normal">  78</span>
+<span class="normal">  79</span>
+<span class="normal">  80</span>
+<span class="normal">  81</span>
+<span class="normal">  82</span>
+<span class="normal">  83</span>
+<span class="normal">  84</span>
+<span class="normal">  85</span>
+<span class="normal">  86</span>
+<span class="normal">  87</span>
+<span class="normal">  88</span>
+<span class="normal">  89</span>
+<span class="normal">  90</span>
+<span class="normal">  91</span>
+<span class="normal">  92</span>
+<span class="normal">  93</span>
+<span class="normal">  94</span>
+<span class="normal">  95</span>
+<span class="normal">  96</span>
+<span class="normal">  97</span>
+<span class="normal">  98</span>
+<span class="normal">  99</span>
+<span class="normal"> 100</span>
+<span class="normal"> 101</span>
+<span class="normal"> 102</span>
+<span class="normal"> 103</span>
+<span class="normal"> 104</span>
+<span class="normal"> 105</span>
+<span class="normal"> 106</span>
+<span class="normal"> 107</span>
+<span class="normal"> 108</span>
+<span class="normal"> 109</span>
+<span class="normal"> 110</span>
+<span class="normal"> 111</span>
+<span class="normal"> 112</span>
+<span class="normal"> 113</span>
+<span class="normal"> 114</span>
+<span class="normal"> 115</span>
+<span class="normal"> 116</span>
+<span class="normal"> 117</span>
+<span class="normal"> 118</span>
+<span class="normal"> 119</span>
+<span class="normal"> 120</span>
+<span class="normal"> 121</span>
+<span class="normal"> 122</span>
+<span class="normal"> 123</span>
+<span class="normal"> 124</span>
+<span class="normal"> 125</span>
+<span class="normal"> 126</span>
+<span class="normal"> 127</span>
+<span class="normal"> 128</span>
+<span class="normal"> 129</span>
+<span class="normal"> 130</span>
+<span class="normal"> 131</span>
+<span class="normal"> 132</span>
+<span class="normal"> 133</span>
+<span class="normal"> 134</span>
+<span class="normal"> 135</span>
+<span class="normal"> 136</span>
+<span class="normal"> 137</span>
+<span class="normal"> 138</span>
+<span class="normal"> 139</span>
+<span class="normal"> 140</span>
+<span class="normal"> 141</span>
+<span class="normal"> 142</span>
+<span class="normal"> 143</span>
+<span class="normal"> 144</span>
+<span class="normal"> 145</span>
+<span class="normal"> 146</span>
+<span class="normal"> 147</span>
+<span class="normal"> 148</span>
+<span class="normal"> 149</span>
+<span class="normal"> 150</span>
+<span class="normal"> 151</span>
+<span class="normal"> 152</span>
+<span class="normal"> 153</span>
+<span class="normal"> 154</span>
+<span class="normal"> 155</span>
+<span class="normal"> 156</span>
+<span class="normal"> 157</span>
+<span class="normal"> 158</span>
+<span class="normal"> 159</span>
+<span class="normal"> 160</span>
+<span class="normal"> 161</span>
+<span class="normal"> 162</span>
+<span class="normal"> 163</span>
+<span class="normal"> 164</span>
+<span class="normal"> 165</span>
+<span class="normal"> 166</span>
+<span class="normal"> 167</span>
+<span class="normal"> 168</span>
+<span class="normal"> 169</span>
+<span class="normal"> 170</span>
+<span class="normal"> 171</span>
+<span class="normal"> 172</span>
+<span class="normal"> 173</span>
+<span class="normal"> 174</span>
+<span class="normal"> 175</span>
+<span class="normal"> 176</span>
+<span class="normal"> 177</span>
+<span class="normal"> 178</span>
+<span class="normal"> 179</span>
+<span class="normal"> 180</span>
+<span class="normal"> 181</span>
+<span class="normal"> 182</span>
+<span class="normal"> 183</span>
+<span class="normal"> 184</span>
+<span class="normal"> 185</span>
+<span class="normal"> 186</span>
+<span class="normal"> 187</span>
+<span class="normal"> 188</span>
+<span class="normal"> 189</span>
+<span class="normal"> 190</span>
+<span class="normal"> 191</span>
+<span class="normal"> 192</span>
+<span class="normal"> 193</span>
+<span class="normal"> 194</span>
+<span class="normal"> 195</span>
+<span class="normal"> 196</span>
+<span class="normal"> 197</span>
+<span class="normal"> 198</span>
+<span class="normal"> 199</span>
+<span class="normal"> 200</span>
+<span class="normal"> 201</span>
+<span class="normal"> 202</span>
+<span class="normal"> 203</span>
+<span class="normal"> 204</span>
+<span class="normal"> 205</span>
+<span class="normal"> 206</span>
+<span class="normal"> 207</span>
+<span class="normal"> 208</span>
+<span class="normal"> 209</span>
+<span class="normal"> 210</span>
+<span class="normal"> 211</span>
+<span class="normal"> 212</span>
+<span class="normal"> 213</span>
+<span class="normal"> 214</span>
+<span class="normal"> 215</span>
+<span class="normal"> 216</span>
+<span class="normal"> 217</span>
+<span class="normal"> 218</span>
+<span class="normal"> 219</span>
+<span class="normal"> 220</span>
+<span class="normal"> 221</span>
+<span class="normal"> 222</span>
+<span class="normal"> 223</span>
+<span class="normal"> 224</span>
+<span class="normal"> 225</span>
+<span class="normal"> 226</span>
+<span class="normal"> 227</span>
+<span class="normal"> 228</span>
+<span class="normal"> 229</span>
+<span class="normal"> 230</span>
+<span class="normal"> 231</span>
+<span class="normal"> 232</span>
+<span class="normal"> 233</span>
+<span class="normal"> 234</span>
+<span class="normal"> 235</span>
+<span class="normal"> 236</span>
+<span class="normal"> 237</span>
+<span class="normal"> 238</span>
+<span class="normal"> 239</span>
+<span class="normal"> 240</span>
+<span class="normal"> 241</span>
+<span class="normal"> 242</span>
+<span class="normal"> 243</span>
+<span class="normal"> 244</span>
+<span class="normal"> 245</span>
+<span class="normal"> 246</span>
+<span class="normal"> 247</span>
+<span class="normal"> 248</span>
+<span class="normal"> 249</span>
+<span class="normal"> 250</span>
+<span class="normal"> 251</span>
+<span class="normal"> 252</span>
+<span class="normal"> 253</span>
+<span class="normal"> 254</span>
+<span class="normal"> 255</span>
+<span class="normal"> 256</span>
+<span class="normal"> 257</span>
+<span class="normal"> 258</span>
+<span class="normal"> 259</span>
+<span class="normal"> 260</span>
+<span class="normal"> 261</span>
+<span class="normal"> 262</span>
+<span class="normal"> 263</span>
+<span class="normal"> 264</span>
+<span class="normal"> 265</span>
+<span class="normal"> 266</span>
+<span class="normal"> 267</span>
+<span class="normal"> 268</span>
+<span class="normal"> 269</span>
+<span class="normal"> 270</span>
+<span class="normal"> 271</span>
+<span class="normal"> 272</span>
+<span class="normal"> 273</span>
+<span class="normal"> 274</span>
+<span class="normal"> 275</span>
+<span class="normal"> 276</span>
+<span class="normal"> 277</span>
+<span class="normal"> 278</span>
+<span class="normal"> 279</span>
+<span class="normal"> 280</span>
+<span class="normal"> 281</span>
+<span class="normal"> 282</span>
+<span class="normal"> 283</span>
+<span class="normal"> 284</span>
+<span class="normal"> 285</span>
+<span class="normal"> 286</span>
+<span class="normal"> 287</span>
+<span class="normal"> 288</span>
+<span class="normal"> 289</span>
+<span class="normal"> 290</span>
+<span class="normal"> 291</span>
+<span class="normal"> 292</span>
+<span class="normal"> 293</span>
+<span class="normal"> 294</span>
+<span class="normal"> 295</span>
+<span class="normal"> 296</span>
+<span class="normal"> 297</span>
+<span class="normal"> 298</span>
+<span class="normal"> 299</span>
+<span class="normal"> 300</span>
+<span class="normal"> 301</span>
+<span class="normal"> 302</span>
+<span class="normal"> 303</span>
+<span class="normal"> 304</span>
+<span class="normal"> 305</span>
+<span class="normal"> 306</span>
+<span class="normal"> 307</span>
+<span class="normal"> 308</span>
+<span class="normal"> 309</span>
+<span class="normal"> 310</span>
+<span class="normal"> 311</span>
+<span class="normal"> 312</span>
+<span class="normal"> 313</span>
+<span class="normal"> 314</span>
+<span class="normal"> 315</span>
+<span class="normal"> 316</span>
+<span class="normal"> 317</span>
+<span class="normal"> 318</span>
+<span class="normal"> 319</span>
+<span class="normal"> 320</span>
+<span class="normal"> 321</span>
+<span class="normal"> 322</span>
+<span class="normal"> 323</span>
+<span class="normal"> 324</span>
+<span class="normal"> 325</span>
+<span class="normal"> 326</span>
+<span class="normal"> 327</span>
+<span class="normal"> 328</span>
+<span class="normal"> 329</span>
+<span class="normal"> 330</span>
+<span class="normal"> 331</span>
+<span class="normal"> 332</span>
+<span class="normal"> 333</span>
+<span class="normal"> 334</span>
+<span class="normal"> 335</span>
+<span class="normal"> 336</span>
+<span class="normal"> 337</span>
+<span class="normal"> 338</span>
+<span class="normal"> 339</span>
+<span class="normal"> 340</span>
+<span class="normal"> 341</span>
+<span class="normal"> 342</span>
+<span class="normal"> 343</span>
+<span class="normal"> 344</span>
+<span class="normal"> 345</span>
+<span class="normal"> 346</span>
+<span class="normal"> 347</span>
+<span class="normal"> 348</span>
+<span class="normal"> 349</span>
+<span class="normal"> 350</span>
+<span class="normal"> 351</span>
+<span class="normal"> 352</span>
+<span class="normal"> 353</span>
+<span class="normal"> 354</span>
+<span class="normal"> 355</span>
+<span class="normal"> 356</span>
+<span class="normal"> 357</span>
+<span class="normal"> 358</span>
+<span class="normal"> 359</span>
+<span class="normal"> 360</span>
+<span class="normal"> 361</span>
+<span class="normal"> 362</span>
+<span class="normal"> 363</span>
+<span class="normal"> 364</span>
+<span class="normal"> 365</span>
+<span class="normal"> 366</span>
+<span class="normal"> 367</span>
+<span class="normal"> 368</span>
+<span class="normal"> 369</span>
+<span class="normal"> 370</span>
+<span class="normal"> 371</span>
+<span class="normal"> 372</span>
+<span class="normal"> 373</span>
+<span class="normal"> 374</span>
+<span class="normal"> 375</span>
+<span class="normal"> 376</span>
+<span class="normal"> 377</span>
+<span class="normal"> 378</span>
+<span class="normal"> 379</span>
+<span class="normal"> 380</span>
+<span class="normal"> 381</span>
+<span class="normal"> 382</span>
+<span class="normal"> 383</span>
+<span class="normal"> 384</span>
+<span class="normal"> 385</span>
+<span class="normal"> 386</span>
+<span class="normal"> 387</span>
+<span class="normal"> 388</span>
+<span class="normal"> 389</span>
+<span class="normal"> 390</span>
+<span class="normal"> 391</span>
+<span class="normal"> 392</span>
+<span class="normal"> 393</span>
+<span class="normal"> 394</span>
+<span class="normal"> 395</span>
+<span class="normal"> 396</span>
+<span class="normal"> 397</span>
+<span class="normal"> 398</span>
+<span class="normal"> 399</span>
+<span class="normal"> 400</span>
+<span class="normal"> 401</span>
+<span class="normal"> 402</span>
+<span class="normal"> 403</span>
+<span class="normal"> 404</span>
+<span class="normal"> 405</span>
+<span class="normal"> 406</span>
+<span class="normal"> 407</span>
+<span class="normal"> 408</span>
+<span class="normal"> 409</span>
+<span class="normal"> 410</span>
+<span class="normal"> 411</span>
+<span class="normal"> 412</span>
+<span class="normal"> 413</span>
+<span class="normal"> 414</span>
+<span class="normal"> 415</span>
+<span class="normal"> 416</span>
+<span class="normal"> 417</span>
+<span class="normal"> 418</span>
+<span class="normal"> 419</span>
+<span class="normal"> 420</span>
+<span class="normal"> 421</span>
+<span class="normal"> 422</span>
+<span class="normal"> 423</span>
+<span class="normal"> 424</span>
+<span class="normal"> 425</span>
+<span class="normal"> 426</span>
+<span class="normal"> 427</span>
+<span class="normal"> 428</span>
+<span class="normal"> 429</span>
+<span class="normal"> 430</span>
+<span class="normal"> 431</span>
+<span class="normal"> 432</span>
+<span class="normal"> 433</span>
+<span class="normal"> 434</span>
+<span class="normal"> 435</span>
+<span class="normal"> 436</span>
+<span class="normal"> 437</span>
+<span class="normal"> 438</span>
+<span class="normal"> 439</span>
+<span class="normal"> 440</span>
+<span class="normal"> 441</span>
+<span class="normal"> 442</span>
+<span class="normal"> 443</span>
+<span class="normal"> 444</span>
+<span class="normal"> 445</span>
+<span class="normal"> 446</span>
+<span class="normal"> 447</span>
+<span class="normal"> 448</span>
+<span class="normal"> 449</span>
+<span class="normal"> 450</span>
+<span class="normal"> 451</span>
+<span class="normal"> 452</span>
+<span class="normal"> 453</span>
+<span class="normal"> 454</span>
+<span class="normal"> 455</span>
+<span class="normal"> 456</span>
+<span class="normal"> 457</span>
+<span class="normal"> 458</span>
+<span class="normal"> 459</span>
+<span class="normal"> 460</span>
+<span class="normal"> 461</span>
+<span class="normal"> 462</span>
+<span class="normal"> 463</span>
+<span class="normal"> 464</span>
+<span class="normal"> 465</span>
+<span class="normal"> 466</span>
+<span class="normal"> 467</span>
+<span class="normal"> 468</span>
+<span class="normal"> 469</span>
+<span class="normal"> 470</span>
+<span class="normal"> 471</span>
+<span class="normal"> 472</span>
+<span class="normal"> 473</span>
+<span class="normal"> 474</span>
+<span class="normal"> 475</span>
+<span class="normal"> 476</span>
+<span class="normal"> 477</span>
+<span class="normal"> 478</span>
+<span class="normal"> 479</span>
+<span class="normal"> 480</span>
+<span class="normal"> 481</span>
+<span class="normal"> 482</span>
+<span class="normal"> 483</span>
+<span class="normal"> 484</span>
+<span class="normal"> 485</span>
+<span class="normal"> 486</span>
+<span class="normal"> 487</span>
+<span class="normal"> 488</span>
+<span class="normal"> 489</span>
+<span class="normal"> 490</span>
+<span class="normal"> 491</span>
+<span class="normal"> 492</span>
+<span class="normal"> 493</span>
+<span class="normal"> 494</span>
+<span class="normal"> 495</span>
+<span class="normal"> 496</span>
+<span class="normal"> 497</span>
+<span class="normal"> 498</span>
+<span class="normal"> 499</span>
+<span class="normal"> 500</span>
+<span class="normal"> 501</span>
+<span class="normal"> 502</span>
+<span class="normal"> 503</span>
+<span class="normal"> 504</span>
+<span class="normal"> 505</span>
+<span class="normal"> 506</span>
+<span class="normal"> 507</span>
+<span class="normal"> 508</span>
+<span class="normal"> 509</span>
+<span class="normal"> 510</span>
+<span class="normal"> 511</span>
+<span class="normal"> 512</span>
+<span class="normal"> 513</span>
+<span class="normal"> 514</span>
+<span class="normal"> 515</span>
+<span class="normal"> 516</span>
+<span class="normal"> 517</span>
+<span class="normal"> 518</span>
+<span class="normal"> 519</span>
+<span class="normal"> 520</span>
+<span class="normal"> 521</span>
+<span class="normal"> 522</span>
+<span class="normal"> 523</span>
+<span class="normal"> 524</span>
+<span class="normal"> 525</span>
+<span class="normal"> 526</span>
+<span class="normal"> 527</span>
+<span class="normal"> 528</span>
+<span class="normal"> 529</span>
+<span class="normal"> 530</span>
+<span class="normal"> 531</span>
+<span class="normal"> 532</span>
+<span class="normal"> 533</span>
+<span class="normal"> 534</span>
+<span class="normal"> 535</span>
+<span class="normal"> 536</span>
+<span class="normal"> 537</span>
+<span class="normal"> 538</span>
+<span class="normal"> 539</span>
+<span class="normal"> 540</span>
+<span class="normal"> 541</span>
+<span class="normal"> 542</span>
+<span class="normal"> 543</span>
+<span class="normal"> 544</span>
+<span class="normal"> 545</span>
+<span class="normal"> 546</span>
+<span class="normal"> 547</span>
+<span class="normal"> 548</span>
+<span class="normal"> 549</span>
+<span class="normal"> 550</span>
+<span class="normal"> 551</span>
+<span class="normal"> 552</span>
+<span class="normal"> 553</span>
+<span class="normal"> 554</span>
+<span class="normal"> 555</span>
+<span class="normal"> 556</span>
+<span class="normal"> 557</span>
+<span class="normal"> 558</span>
+<span class="normal"> 559</span>
+<span class="normal"> 560</span>
+<span class="normal"> 561</span>
+<span class="normal"> 562</span>
+<span class="normal"> 563</span>
+<span class="normal"> 564</span>
+<span class="normal"> 565</span>
+<span class="normal"> 566</span>
+<span class="normal"> 567</span>
+<span class="normal"> 568</span>
+<span class="normal"> 569</span>
+<span class="normal"> 570</span>
+<span class="normal"> 571</span>
+<span class="normal"> 572</span>
+<span class="normal"> 573</span>
+<span class="normal"> 574</span>
+<span class="normal"> 575</span>
+<span class="normal"> 576</span>
+<span class="normal"> 577</span>
+<span class="normal"> 578</span>
+<span class="normal"> 579</span>
+<span class="normal"> 580</span>
+<span class="normal"> 581</span>
+<span class="normal"> 582</span>
+<span class="normal"> 583</span>
+<span class="normal"> 584</span>
+<span class="normal"> 585</span>
+<span class="normal"> 586</span>
+<span class="normal"> 587</span>
+<span class="normal"> 588</span>
+<span class="normal"> 589</span>
+<span class="normal"> 590</span>
+<span class="normal"> 591</span>
+<span class="normal"> 592</span>
+<span class="normal"> 593</span>
+<span class="normal"> 594</span>
+<span class="normal"> 595</span>
+<span class="normal"> 596</span>
+<span class="normal"> 597</span>
+<span class="normal"> 598</span>
+<span class="normal"> 599</span>
+<span class="normal"> 600</span>
+<span class="normal"> 601</span>
+<span class="normal"> 602</span>
+<span class="normal"> 603</span>
+<span class="normal"> 604</span>
+<span class="normal"> 605</span>
+<span class="normal"> 606</span>
+<span class="normal"> 607</span>
+<span class="normal"> 608</span>
+<span class="normal"> 609</span>
+<span class="normal"> 610</span>
+<span class="normal"> 611</span>
+<span class="normal"> 612</span>
+<span class="normal"> 613</span>
+<span class="normal"> 614</span>
+<span class="normal"> 615</span>
+<span class="normal"> 616</span>
+<span class="normal"> 617</span>
+<span class="normal"> 618</span>
+<span class="normal"> 619</span>
+<span class="normal"> 620</span>
+<span class="normal"> 621</span>
+<span class="normal"> 622</span>
+<span class="normal"> 623</span>
+<span class="normal"> 624</span>
+<span class="normal"> 625</span>
+<span class="normal"> 626</span>
+<span class="normal"> 627</span>
+<span class="normal"> 628</span>
+<span class="normal"> 629</span>
+<span class="normal"> 630</span>
+<span class="normal"> 631</span>
+<span class="normal"> 632</span>
+<span class="normal"> 633</span>
+<span class="normal"> 634</span>
+<span class="normal"> 635</span>
+<span class="normal"> 636</span>
+<span class="normal"> 637</span>
+<span class="normal"> 638</span>
+<span class="normal"> 639</span>
+<span class="normal"> 640</span>
+<span class="normal"> 641</span>
+<span class="normal"> 642</span>
+<span class="normal"> 643</span>
+<span class="normal"> 644</span>
+<span class="normal"> 645</span>
+<span class="normal"> 646</span>
+<span class="normal"> 647</span>
+<span class="normal"> 648</span>
+<span class="normal"> 649</span>
+<span class="normal"> 650</span>
+<span class="normal"> 651</span>
+<span class="normal"> 652</span>
+<span class="normal"> 653</span>
+<span class="normal"> 654</span>
+<span class="normal"> 655</span>
+<span class="normal"> 656</span>
+<span class="normal"> 657</span>
+<span class="normal"> 658</span>
+<span class="normal"> 659</span>
+<span class="normal"> 660</span>
+<span class="normal"> 661</span>
+<span class="normal"> 662</span>
+<span class="normal"> 663</span>
+<span class="normal"> 664</span>
+<span class="normal"> 665</span>
+<span class="normal"> 666</span>
+<span class="normal"> 667</span>
+<span class="normal"> 668</span>
+<span class="normal"> 669</span>
+<span class="normal"> 670</span>
+<span class="normal"> 671</span>
+<span class="normal"> 672</span>
+<span class="normal"> 673</span>
+<span class="normal"> 674</span>
+<span class="normal"> 675</span>
+<span class="normal"> 676</span>
+<span class="normal"> 677</span>
+<span class="normal"> 678</span>
+<span class="normal"> 679</span>
+<span class="normal"> 680</span>
+<span class="normal"> 681</span>
+<span class="normal"> 682</span>
+<span class="normal"> 683</span>
+<span class="normal"> 684</span>
+<span class="normal"> 685</span>
+<span class="normal"> 686</span>
+<span class="normal"> 687</span>
+<span class="normal"> 688</span>
+<span class="normal"> 689</span>
+<span class="normal"> 690</span>
+<span class="normal"> 691</span>
+<span class="normal"> 692</span>
+<span class="normal"> 693</span>
+<span class="normal"> 694</span>
+<span class="normal"> 695</span>
+<span class="normal"> 696</span>
+<span class="normal"> 697</span>
+<span class="normal"> 698</span>
+<span class="normal"> 699</span>
+<span class="normal"> 700</span>
+<span class="normal"> 701</span>
+<span class="normal"> 702</span>
+<span class="normal"> 703</span>
+<span class="normal"> 704</span>
+<span class="normal"> 705</span>
+<span class="normal"> 706</span>
+<span class="normal"> 707</span>
+<span class="normal"> 708</span>
+<span class="normal"> 709</span>
+<span class="normal"> 710</span>
+<span class="normal"> 711</span>
+<span class="normal"> 712</span>
+<span class="normal"> 713</span>
+<span class="normal"> 714</span>
+<span class="normal"> 715</span>
+<span class="normal"> 716</span>
+<span class="normal"> 717</span>
+<span class="normal"> 718</span>
+<span class="normal"> 719</span>
+<span class="normal"> 720</span>
+<span class="normal"> 721</span>
+<span class="normal"> 722</span>
+<span class="normal"> 723</span>
+<span class="normal"> 724</span>
+<span class="normal"> 725</span>
+<span class="normal"> 726</span>
+<span class="normal"> 727</span>
+<span class="normal"> 728</span>
+<span class="normal"> 729</span>
+<span class="normal"> 730</span>
+<span class="normal"> 731</span>
+<span class="normal"> 732</span>
+<span class="normal"> 733</span>
+<span class="normal"> 734</span>
+<span class="normal"> 735</span>
+<span class="normal"> 736</span>
+<span class="normal"> 737</span>
+<span class="normal"> 738</span>
+<span class="normal"> 739</span>
+<span class="normal"> 740</span>
+<span class="normal"> 741</span>
+<span class="normal"> 742</span>
+<span class="normal"> 743</span>
+<span class="normal"> 744</span>
+<span class="normal"> 745</span>
+<span class="normal"> 746</span>
+<span class="normal"> 747</span>
+<span class="normal"> 748</span>
+<span class="normal"> 749</span>
+<span class="normal"> 750</span>
+<span class="normal"> 751</span>
+<span class="normal"> 752</span>
+<span class="normal"> 753</span>
+<span class="normal"> 754</span>
+<span class="normal"> 755</span>
+<span class="normal"> 756</span>
+<span class="normal"> 757</span>
+<span class="normal"> 758</span>
+<span class="normal"> 759</span>
+<span class="normal"> 760</span>
+<span class="normal"> 761</span>
+<span class="normal"> 762</span>
+<span class="normal"> 763</span>
+<span class="normal"> 764</span>
+<span class="normal"> 765</span>
+<span class="normal"> 766</span>
+<span class="normal"> 767</span>
+<span class="normal"> 768</span>
+<span class="normal"> 769</span>
+<span class="normal"> 770</span>
+<span class="normal"> 771</span>
+<span class="normal"> 772</span>
+<span class="normal"> 773</span>
+<span class="normal"> 774</span>
+<span class="normal"> 775</span>
+<span class="normal"> 776</span>
+<span class="normal"> 777</span>
+<span class="normal"> 778</span>
+<span class="normal"> 779</span>
+<span class="normal"> 780</span>
+<span class="normal"> 781</span>
+<span class="normal"> 782</span>
+<span class="normal"> 783</span>
+<span class="normal"> 784</span>
+<span class="normal"> 785</span>
+<span class="normal"> 786</span>
+<span class="normal"> 787</span>
+<span class="normal"> 788</span>
+<span class="normal"> 789</span>
+<span class="normal"> 790</span>
+<span class="normal"> 791</span>
+<span class="normal"> 792</span>
+<span class="normal"> 793</span>
+<span class="normal"> 794</span>
+<span class="normal"> 795</span>
+<span class="normal"> 796</span>
+<span class="normal"> 797</span>
+<span class="normal"> 798</span>
+<span class="normal"> 799</span>
+<span class="normal"> 800</span>
+<span class="normal"> 801</span>
+<span class="normal"> 802</span>
+<span class="normal"> 803</span>
+<span class="normal"> 804</span>
+<span class="normal"> 805</span>
+<span class="normal"> 806</span>
+<span class="normal"> 807</span>
+<span class="normal"> 808</span>
+<span class="normal"> 809</span>
+<span class="normal"> 810</span>
+<span class="normal"> 811</span>
+<span class="normal"> 812</span>
+<span class="normal"> 813</span>
+<span class="normal"> 814</span>
+<span class="normal"> 815</span>
+<span class="normal"> 816</span>
+<span class="normal"> 817</span>
+<span class="normal"> 818</span>
+<span class="normal"> 819</span>
+<span class="normal"> 820</span>
+<span class="normal"> 821</span>
+<span class="normal"> 822</span>
+<span class="normal"> 823</span>
+<span class="normal"> 824</span>
+<span class="normal"> 825</span>
+<span class="normal"> 826</span>
+<span class="normal"> 827</span>
+<span class="normal"> 828</span>
+<span class="normal"> 829</span>
+<span class="normal"> 830</span>
+<span class="normal"> 831</span>
+<span class="normal"> 832</span>
+<span class="normal"> 833</span>
+<span class="normal"> 834</span>
+<span class="normal"> 835</span>
+<span class="normal"> 836</span>
+<span class="normal"> 837</span>
+<span class="normal"> 838</span>
+<span class="normal"> 839</span>
+<span class="normal"> 840</span>
+<span class="normal"> 841</span>
+<span class="normal"> 842</span>
+<span class="normal"> 843</span>
+<span class="normal"> 844</span>
+<span class="normal"> 845</span>
+<span class="normal"> 846</span>
+<span class="normal"> 847</span>
+<span class="normal"> 848</span>
+<span class="normal"> 849</span>
+<span class="normal"> 850</span>
+<span class="normal"> 851</span>
+<span class="normal"> 852</span>
+<span class="normal"> 853</span>
+<span class="normal"> 854</span>
+<span class="normal"> 855</span>
+<span class="normal"> 856</span>
+<span class="normal"> 857</span>
+<span class="normal"> 858</span>
+<span class="normal"> 859</span>
+<span class="normal"> 860</span>
+<span class="normal"> 861</span>
+<span class="normal"> 862</span>
+<span class="normal"> 863</span>
+<span class="normal"> 864</span>
+<span class="normal"> 865</span>
+<span class="normal"> 866</span>
+<span class="normal"> 867</span>
+<span class="normal"> 868</span>
+<span class="normal"> 869</span>
+<span class="normal"> 870</span>
+<span class="normal"> 871</span>
+<span class="normal"> 872</span>
+<span class="normal"> 873</span>
+<span class="normal"> 874</span>
+<span class="normal"> 875</span>
+<span class="normal"> 876</span>
+<span class="normal"> 877</span>
+<span class="normal"> 878</span>
+<span class="normal"> 879</span>
+<span class="normal"> 880</span>
+<span class="normal"> 881</span>
+<span class="normal"> 882</span>
+<span class="normal"> 883</span>
+<span class="normal"> 884</span>
+<span class="normal"> 885</span>
+<span class="normal"> 886</span>
+<span class="normal"> 887</span>
+<span class="normal"> 888</span>
+<span class="normal"> 889</span>
+<span class="normal"> 890</span>
+<span class="normal"> 891</span>
+<span class="normal"> 892</span>
+<span class="normal"> 893</span>
+<span class="normal"> 894</span>
+<span class="normal"> 895</span>
+<span class="normal"> 896</span>
+<span class="normal"> 897</span>
+<span class="normal"> 898</span>
+<span class="normal"> 899</span>
+<span class="normal"> 900</span>
+<span class="normal"> 901</span>
+<span class="normal"> 902</span>
+<span class="normal"> 903</span>
+<span class="normal"> 904</span>
+<span class="normal"> 905</span>
+<span class="normal"> 906</span>
+<span class="normal"> 907</span>
+<span class="normal"> 908</span>
+<span class="normal"> 909</span>
+<span class="normal"> 910</span>
+<span class="normal"> 911</span>
+<span class="normal"> 912</span>
+<span class="normal"> 913</span>
+<span class="normal"> 914</span>
+<span class="normal"> 915</span>
+<span class="normal"> 916</span>
+<span class="normal"> 917</span>
+<span class="normal"> 918</span>
+<span class="normal"> 919</span>
+<span class="normal"> 920</span>
+<span class="normal"> 921</span>
+<span class="normal"> 922</span>
+<span class="normal"> 923</span>
+<span class="normal"> 924</span>
+<span class="normal"> 925</span>
+<span class="normal"> 926</span>
+<span class="normal"> 927</span>
+<span class="normal"> 928</span>
+<span class="normal"> 929</span>
+<span class="normal"> 930</span>
+<span class="normal"> 931</span>
+<span class="normal"> 932</span>
+<span class="normal"> 933</span>
+<span class="normal"> 934</span>
+<span class="normal"> 935</span>
+<span class="normal"> 936</span>
+<span class="normal"> 937</span>
+<span class="normal"> 938</span>
+<span class="normal"> 939</span>
+<span class="normal"> 940</span>
+<span class="normal"> 941</span>
+<span class="normal"> 942</span>
+<span class="normal"> 943</span>
+<span class="normal"> 944</span>
+<span class="normal"> 945</span>
+<span class="normal"> 946</span>
+<span class="normal"> 947</span>
+<span class="normal"> 948</span>
+<span class="normal"> 949</span>
+<span class="normal"> 950</span>
+<span class="normal"> 951</span>
+<span class="normal"> 952</span>
+<span class="normal"> 953</span>
+<span class="normal"> 954</span>
+<span class="normal"> 955</span>
+<span class="normal"> 956</span>
+<span class="normal"> 957</span>
+<span class="normal"> 958</span>
+<span class="normal"> 959</span>
+<span class="normal"> 960</span>
+<span class="normal"> 961</span>
+<span class="normal"> 962</span>
+<span class="normal"> 963</span>
+<span class="normal"> 964</span>
+<span class="normal"> 965</span>
+<span class="normal"> 966</span>
+<span class="normal"> 967</span>
+<span class="normal"> 968</span>
+<span class="normal"> 969</span>
+<span class="normal"> 970</span>
+<span class="normal"> 971</span>
+<span class="normal"> 972</span>
+<span class="normal"> 973</span>
+<span class="normal"> 974</span>
+<span class="normal"> 975</span>
+<span class="normal"> 976</span>
+<span class="normal"> 977</span>
+<span class="normal"> 978</span>
+<span class="normal"> 979</span>
+<span class="normal"> 980</span>
+<span class="normal"> 981</span>
+<span class="normal"> 982</span>
+<span class="normal"> 983</span>
+<span class="normal"> 984</span>
+<span class="normal"> 985</span>
+<span class="normal"> 986</span>
+<span class="normal"> 987</span>
+<span class="normal"> 988</span>
+<span class="normal"> 989</span>
+<span class="normal"> 990</span>
+<span class="normal"> 991</span>
+<span class="normal"> 992</span>
+<span class="normal"> 993</span>
+<span class="normal"> 994</span>
+<span class="normal"> 995</span>
+<span class="normal"> 996</span>
+<span class="normal"> 997</span>
+<span class="normal"> 998</span>
+<span class="normal"> 999</span>
+<span class="normal">1000</span>
+<span class="normal">1001</span>
+<span class="normal">1002</span>
+<span class="normal">1003</span>
+<span class="normal">1004</span>
+<span class="normal">1005</span>
+<span class="normal">1006</span>
+<span class="normal">1007</span>
+<span class="normal">1008</span>
+<span class="normal">1009</span>
+<span class="normal">1010</span>
+<span class="normal">1011</span>
+<span class="normal">1012</span>
+<span class="normal">1013</span>
+<span class="normal">1014</span>
+<span class="normal">1015</span>
+<span class="normal">1016</span>
+<span class="normal">1017</span>
+<span class="normal">1018</span>
+<span class="normal">1019</span>
+<span class="normal">1020</span>
+<span class="normal">1021</span>
+<span class="normal">1022</span>
+<span class="normal">1023</span>
+<span class="normal">1024</span>
+<span class="normal">1025</span>
+<span class="normal">1026</span>
+<span class="normal">1027</span>
+<span class="normal">1028</span>
+<span class="normal">1029</span>
+<span class="normal">1030</span>
+<span class="normal">1031</span>
+<span class="normal">1032</span>
+<span class="normal">1033</span>
+<span class="normal">1034</span>
+<span class="normal">1035</span>
+<span class="normal">1036</span>
+<span class="normal">1037</span>
+<span class="normal">1038</span>
+<span class="normal">1039</span></pre></div></td><td class="code"><div><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
 <span class="sd">"""</span>
 <span class="sd">Generates a standalone HTML page under /projects for every project card in</span>
 <span class="sd">index.html that has a "Repository" link pointing at GitHub. Each page gets:</span>
@@ -649,6 +1089,10 @@
 <span class="sd">  - its README, fetched pre-rendered as HTML via the GitHub API</span>
 <span class="sd">  - its tags (languages/stack) and license badge, copied from the card</span>
 <span class="sd">  - a link back to the repository</span>
+<span class="sd">  - a "Commit history" page listing every commit (title, short id, date,</span>
+<span class="sd">    author), each card linking straight out to that commit on GitHub -</span>
+<span class="sd">    generated for every project with a Repository link, unlike the</span>
+<span class="sd">    source browser below which is opt-in</span>
 <span class="sd">  - for opted-in projects (data-source-file="..." on the card), one or more</span>
 <span class="sd">    syntax-highlighted source files with line numbers. The attribute is a</span>
 <span class="sd">    comma-separated list; each entry is either a literal file path or a</span>
@@ -658,15 +1102,41 @@
 <span class="sd">  - the site's own navbar (extracted from index.html, not hand-copied,</span>
 <span class="sd">    so it can never drift out of sync with the real one)</span>
 
+<span class="sd">Change-skip caching (added 2026-08-30): re-fetching everything from GitHub</span>
+<span class="sd">on every run (every push to main, the daily cron, manual dispatch) got</span>
+<span class="sd">wasteful once commit history was added on top of the README/source-browser</span>
+<span class="sd">fetches - most runs touch zero repos. .github/data/project-pages-cache.json</span>
+<span class="sd">tracks, per project, the repo's last-seen `pushed_at` and (for the source</span>
+<span class="sd">browser) each file's git blob sha. A project whose repo hasn't been pushed</span>
+<span class="sd">to since the cache entry was written skips re-fetching its README, source</span>
+<span class="sd">files, and commits entirely - the content is read back out of the already-</span>
+<span class="sd">published page for that project instead (see extract_readme_html/</span>
+<span class="sd">extract_highlighted/extract_commit_cards) rather than duplicated into the</span>
+<span class="sd">cache file itself, so there's only ever one copy of the actual content.</span>
+<span class="sd">Two things always still happen even when a repo is unchanged: the page is</span>
+<span class="sd">still re-rendered (so an index.html-only edit - a retitled card, a changed</span>
+<span class="sd">tag - is never missed just because the linked repo stayed quiet), and</span>
+<span class="sd">individual source files are additionally checked file-by-file via blob sha</span>
+<span class="sd">(so a big repo where one file changed doesn't force every file to be</span>
+<span class="sd">re-fetched), and the commit history is extended incrementally - only</span>
+<span class="sd">commits newer than the last known one are fetched, then prepended onto the</span>
+<span class="sd">previously-rendered cards - instead of re-walking the whole history every</span>
+<span class="sd">time. See fetch_commits_since()'s docstring for exactly how that degrades</span>
+<span class="sd">if a repo's history is ever rewritten (force-push/rebase) or an API call</span>
+<span class="sd">fails outright.</span>
+
 <span class="sd">Run from the repository root (that's how the workflow invokes it):</span>
 <span class="sd">    python .github/scripts/generate_project_pages.py</span>
 
 <span class="sd">Reads GITHUB_TOKEN from the environment to authenticate API calls (raises</span>
-<span class="sd">the rate limit well past what four repos need, and would be required for</span>
+<span class="sd">the rate limit well past what these repos need, and would be required for</span>
 <span class="sd">private repos - not the case here, but no reason not to use it).</span>
 <span class="sd">"""</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">html</span><span class="w"> </span><span class="kn">import</span> <span class="n">escape</span> <span class="k">as</span> <span class="n">html_escape</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">urllib.parse</span><span class="w"> </span><span class="kn">import</span> <span class="n">urlparse</span>
 
@@ -686,6 +1156,7 @@
 <span class="n">SITE_ROOT</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span>
 <span class="n">INDEX_HTML</span> <span class="o">=</span> <span class="n">SITE_ROOT</span> <span class="o">/</span> <span class="s2">"index.html"</span>
 <span class="n">PROJECTS_DIR</span> <span class="o">=</span> <span class="n">SITE_ROOT</span> <span class="o">/</span> <span class="s2">"projects"</span>
+<span class="n">CACHE_PATH</span> <span class="o">=</span> <span class="n">SITE_ROOT</span> <span class="o">/</span> <span class="s2">".github"</span> <span class="o">/</span> <span class="s2">"data"</span> <span class="o">/</span> <span class="s2">"project-pages-cache.json"</span>
 
 <span class="n">GITHUB_TOKEN</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"GITHUB_TOKEN"</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span>
 <span class="c1"># GITHUB_SHA is set automatically by every GitHub Actions run (no wiring</span>
@@ -730,6 +1201,94 @@
         <span class="n">Operator</span><span class="o">.</span><span class="n">Word</span><span class="p">:</span>          <span class="s2">"bold #E3AC57"</span><span class="p">,</span>
         <span class="n">Punctuation</span><span class="p">:</span>            <span class="s2">"#7E8794"</span><span class="p">,</span>
     <span class="p">}</span>
+
+
+<span class="c1"># ============================================================</span>
+<span class="c1"># Build cache (see the module docstring above)</span>
+<span class="c1"># ============================================================</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">load_cache</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Loads the per-project build cache. Missing/corrupt/unreadable file</span>
+<span class="sd">    -&gt; empty cache, which just means every project gets treated as</span>
+<span class="sd">    changed on this run (same as the very first run ever) - never a hard</span>
+<span class="sd">    failure."""</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">CACHE_PATH</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+        <span class="k">return</span> <span class="p">{}</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">CACHE_PATH</span><span class="o">.</span><span class="n">read_text</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">))</span>
+    <span class="k">except</span> <span class="p">(</span><span class="ne">OSError</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">JSONDecodeError</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  ! Warning: could not read </span><span class="si">{</span><span class="n">CACHE_PATH</span><span class="o">.</span><span class="n">relative_to</span><span class="p">(</span><span class="n">SITE_ROOT</span><span class="p">)</span><span class="si">}</span><span class="s2">, starting fresh (this run will re-fetch everything)."</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">{}</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">save_cache</span><span class="p">(</span><span class="n">cache</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+    <span class="n">CACHE_PATH</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">CACHE_PATH</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">cache</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">+</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_extract_between</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">start_marker</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">end_marker</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">start_marker</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">start</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="n">start</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">start_marker</span><span class="p">)</span>
+    <span class="n">end</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">end_marker</span><span class="p">,</span> <span class="n">start</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">end</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span> <span class="ow">or</span> <span class="n">end</span> <span class="o">&lt;</span> <span class="n">start</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">return</span> <span class="n">text</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">extract_readme_html</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="n">Path</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Reads a previously generated &lt;slug&gt;.html back and pulls the inner</span>
+<span class="sd">    HTML of its .readme-content div out verbatim (plain string slicing</span>
+<span class="sd">    against the exact template markup, not a parse-and-reserialize round</span>
+<span class="sd">    trip through BeautifulSoup, so a reused README's bytes come back</span>
+<span class="sd">    identical to what's already published - a round trip risks subtle</span>
+<span class="sd">    re-serialization differences, e.g. attribute quoting, that would show</span>
+<span class="sd">    up as spurious no-op diffs every run). Returns None (falls back to a</span>
+<span class="sd">    fresh API fetch) if the file doesn't exist or doesn't look like it</span>
+<span class="sd">    was expected to - always safe, just costs an extra API call."""</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">read_text</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">OSError</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">return</span> <span class="n">_extract_between</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="s1">'&lt;div class="readme-content"&gt;</span><span class="se">\n</span><span class="s1">'</span><span class="p">,</span> <span class="s1">'</span><span class="se">\n</span><span class="s1">        &lt;/div&gt;</span><span class="se">\n</span><span class="s1">      &lt;/section&gt;'</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">extract_highlighted</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="n">Path</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Same idea as extract_readme_html, for a single source file's</span>
+<span class="sd">    Pygments-highlighted block on a previously generated source page."""</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">read_text</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">OSError</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="n">head_idx</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'class="source-page__head"&gt;'</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">head_idx</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="n">close_marker</span> <span class="o">=</span> <span class="s2">"&lt;/div&gt;</span><span class="se">\n</span><span class="s2">        "</span>
+    <span class="n">close_idx</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">close_marker</span><span class="p">,</span> <span class="n">head_idx</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">close_idx</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="n">content_start</span> <span class="o">=</span> <span class="n">close_idx</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">close_marker</span><span class="p">)</span>
+    <span class="n">end</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">      &lt;/section&gt;"</span><span class="p">,</span> <span class="n">content_start</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">end</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span> <span class="ow">or</span> <span class="n">end</span> <span class="o">&lt;</span> <span class="n">content_start</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">return</span> <span class="n">text</span><span class="p">[</span><span class="n">content_start</span><span class="p">:</span><span class="n">end</span><span class="p">]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">extract_commit_cards</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="n">Path</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Same idea again, for the rendered commit-card HTML on a previously</span>
+<span class="sd">    generated &lt;slug&gt;-commits.html."""</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">read_text</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">OSError</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">return</span> <span class="n">_extract_between</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="s1">'&lt;div class="cards commits-list"&gt;</span><span class="se">\n</span><span class="s1">'</span><span class="p">,</span> <span class="s1">'</span><span class="se">\n</span><span class="s1">        &lt;/div&gt;</span><span class="se">\n</span><span class="s1">      &lt;/section&gt;'</span><span class="p">)</span>
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">parse_github_repo</span><span class="p">(</span><span class="n">url</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
@@ -795,6 +1354,24 @@
     <span class="k">return</span> <span class="n">projects</span>
 
 
+<span class="k">def</span><span class="w"> </span><span class="nf">fetch_repo_meta</span><span class="p">(</span><span class="n">owner</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">repo</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Fetches the repo's pushed_at timestamp and default branch in one</span>
+<span class="sd">    cheap call - pushed_at is the change-skip signal (see module</span>
+<span class="sd">    docstring), default_branch feeds the Git Trees API (which, unlike the</span>
+<span class="sd">    readme/contents endpoints, has no implicit 'use the default branch'</span>
+<span class="sd">    behavior). Returns None on any failure; callers treat that the same</span>
+<span class="sd">    as "definitely changed, fetch for real" since a cache can't be</span>
+<span class="sd">    trusted to still be valid without a fresh pushed_at to compare."""</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"https://api.github.com/repos/</span><span class="si">{</span><span class="n">owner</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">repo</span><span class="si">}</span><span class="s2">"</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">resp</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">API_HEADERS_JSON</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+        <span class="n">resp</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s2">"pushed_at"</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"pushed_at"</span><span class="p">),</span> <span class="s2">"default_branch"</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"default_branch"</span><span class="p">)}</span>
+    <span class="k">except</span> <span class="p">(</span><span class="n">requests</span><span class="o">.</span><span class="n">RequestException</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+
 <span class="k">def</span><span class="w"> </span><span class="nf">fetch_readme_html</span><span class="p">(</span><span class="n">owner</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">repo</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">"""Fetches the repo's README already rendered to GitHub-flavored HTML</span>
 <span class="sd">    (no local markdown parser needed at all). Returns a friendly fallback</span>
@@ -814,45 +1391,40 @@
     <span class="k">return</span> <span class="n">clean_readme_html</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">get_default_branch</span><span class="p">(</span><span class="n">owner</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">repo</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""Fetches the repo's default branch name. Needed only for the Git</span>
-<span class="sd">    Trees API (used to resolve dir/* wildcards) - unlike the readme/</span>
-<span class="sd">    contents endpoints, it has no implicit 'use the default branch'</span>
-<span class="sd">    behavior and needs an explicit ref."""</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"https://api.github.com/repos/</span><span class="si">{</span><span class="n">owner</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">repo</span><span class="si">}</span><span class="s2">"</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">resp</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">API_HEADERS_JSON</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
-        <span class="n">resp</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
-        <span class="k">return</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">"default_branch"</span><span class="p">]</span>
-    <span class="k">except</span> <span class="p">(</span><span class="n">requests</span><span class="o">.</span><span class="n">RequestException</span><span class="p">,</span> <span class="ne">KeyError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">):</span>
-        <span class="k">return</span> <span class="kc">None</span>
-
-
-<span class="k">def</span><span class="w"> </span><span class="nf">fetch_repo_file_tree</span><span class="p">(</span><span class="n">owner</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">repo</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""Fetches the full recursive list of file paths (blobs only, no</span>
-<span class="sd">    directories) in the repo's default branch. Used only to resolve</span>
-<span class="sd">    dir/* wildcards in data-source-file - not called at all if every</span>
-<span class="sd">    entry is a literal file path, to avoid the extra API calls."""</span>
-    <span class="n">branch</span> <span class="o">=</span> <span class="n">get_default_branch</span><span class="p">(</span><span class="n">owner</span><span class="p">,</span> <span class="n">repo</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">fetch_repo_file_tree</span><span class="p">(</span><span class="n">owner</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">repo</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">branch</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Fetches the full recursive file listing (blobs only, no</span>
+<span class="sd">    directories) of the given branch as a {path: blob_sha} dict - used</span>
+<span class="sd">    both to resolve dir/* wildcards in data-source-file and, via the</span>
+<span class="sd">    blob sha, to know which individual files actually changed since the</span>
+<span class="sd">    last build (see the module docstring). branch is passed in rather</span>
+<span class="sd">    than looked up here so a caller who already has it from</span>
+<span class="sd">    fetch_repo_meta doesn't pay for it twice."""</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">branch</span><span class="p">:</span>
-        <span class="k">return</span> <span class="p">[]</span>
+        <span class="k">return</span> <span class="p">{}</span>
     <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"https://api.github.com/repos/</span><span class="si">{</span><span class="n">owner</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">repo</span><span class="si">}</span><span class="s2">/git/trees/</span><span class="si">{</span><span class="n">branch</span><span class="si">}</span><span class="s2">?recursive=1"</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">resp</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">API_HEADERS_JSON</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
         <span class="n">resp</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
         <span class="n">data</span> <span class="o">=</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
     <span class="k">except</span> <span class="p">(</span><span class="n">requests</span><span class="o">.</span><span class="n">RequestException</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">):</span>
-        <span class="k">return</span> <span class="p">[]</span>
+        <span class="k">return</span> <span class="p">{}</span>
     <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"truncated"</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  ! Warning: </span><span class="si">{</span><span class="n">owner</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">repo</span><span class="si">}</span><span class="s2">'s file tree was truncated by GitHub's API "</span>
               <span class="sa">f</span><span class="s2">"(repo too large) - a dir/* wildcard may be missing some files."</span><span class="p">)</span>
-    <span class="k">return</span> <span class="p">[</span><span class="n">item</span><span class="p">[</span><span class="s2">"path"</span><span class="p">]</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"tree"</span><span class="p">,</span> <span class="p">[])</span> <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"type"</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"blob"</span><span class="p">]</span>
+    <span class="k">return</span> <span class="p">{</span><span class="n">item</span><span class="p">[</span><span class="s2">"path"</span><span class="p">]:</span> <span class="n">item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"sha"</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"tree"</span><span class="p">,</span> <span class="p">[])</span> <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"type"</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"blob"</span><span class="p">}</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">expand_source_entries</span><span class="p">(</span><span class="n">owner</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">repo</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">entries</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">"""Resolves data-source-file entries into concrete file paths. An</span>
-<span class="sd">    entry ending in "/*" expands to every file under that directory,</span>
-<span class="sd">    recursively; anything else is a literal file path. The first</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">expand_source_entries</span><span class="p">(</span><span class="n">entries</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">file_tree</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Resolves data-source-file entries into concrete file paths against</span>
+<span class="sd">    an already-fetched {path: blob_sha} tree (see fetch_repo_file_tree) -</span>
+<span class="sd">    this stays a pure function with no API calls of its own; the caller</span>
+<span class="sd">    decides whether/when the tree is even worth fetching (see main() -</span>
+<span class="sd">    an unchanged repo with the same data-source-file entries as last</span>
+<span class="sd">    time skips the tree fetch entirely and reuses the cached file list).</span>
+<span class="sd">    An entry ending in "/*" expands to every file under that directory,</span>
+<span class="sd">    recursively; anything else is a literal file path (kept even if it's</span>
+<span class="sd">    not in file_tree, so a typo'd path still gets attempted and fails</span>
+<span class="sd">    gracefully at fetch time rather than silently vanishing). The first</span>
 <span class="sd">    literal entry (if any) is left first in the result, so it becomes</span>
 <span class="sd">    the "primary" file shown on the top-level &lt;slug&gt;-source.html page;</span>
 <span class="sd">    wildcard-resolved files are appended after. De-duplicates so a file</span>
@@ -861,10 +1433,8 @@
     <span class="n">wildcard_prefixes</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">entries</span> <span class="k">if</span> <span class="n">e</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">"/*"</span><span class="p">)]</span>  <span class="c1"># "src/*" -&gt; "src/"</span>
 
     <span class="n">resolved</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">literal_files</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">wildcard_prefixes</span><span class="p">:</span>
-        <span class="n">all_files</span> <span class="o">=</span> <span class="n">fetch_repo_file_tree</span><span class="p">(</span><span class="n">owner</span><span class="p">,</span> <span class="n">repo</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">prefix</span> <span class="ow">in</span> <span class="n">wildcard_prefixes</span><span class="p">:</span>
-            <span class="n">resolved</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">all_files</span> <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">prefix</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">prefix</span> <span class="ow">in</span> <span class="n">wildcard_prefixes</span><span class="p">:</span>
+        <span class="n">resolved</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">file_tree</span> <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">prefix</span><span class="p">))</span>
 
     <span class="n">seen</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
     <span class="n">ordered</span> <span class="o">=</span> <span class="p">[]</span>
@@ -897,6 +1467,120 @@
 
     <span class="n">formatter</span> <span class="o">=</span> <span class="n">HtmlFormatter</span><span class="p">(</span><span class="n">cssclass</span><span class="o">=</span><span class="s2">"highlight"</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">InstrumentPanelStyle</span><span class="p">,</span> <span class="n">linenos</span><span class="o">=</span><span class="s2">"table"</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">highlight</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">lexer</span><span class="p">,</span> <span class="n">formatter</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">format_commit_date</span><span class="p">(</span><span class="n">iso_date</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Formats a GitHub API commit date ("2026-08-29T12:34:56Z") into a</span>
+<span class="sd">    short human-readable form ("29 Aug 2026"). Falls back to the raw</span>
+<span class="sd">    string on anything unexpected rather than raising."""</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">iso_date</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">""</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">dt</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">iso_date</span><span class="p">,</span> <span class="s2">"%Y-%m-</span><span class="si">%d</span><span class="s2">T%H:%M:%SZ"</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">iso_date</span>
+    <span class="k">return</span> <span class="n">dt</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">"</span><span class="si">%d</span><span class="s2"> %b %Y"</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">fetch_commits_since</span><span class="p">(</span><span class="n">owner</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">repo</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">known_newest_sha</span><span class="p">,</span> <span class="n">max_commits</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">300</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Fetches commits newer than known_newest_sha (paginating from the</span>
+<span class="sd">    top and stopping the moment that sha shows up) instead of always</span>
+<span class="sd">    re-walking the whole history - once a project is cached, this is</span>
+<span class="sd">    usually just one API call, since most runs add only a handful of</span>
+<span class="sd">    commits since the last build. Returns (commits, status):</span>
+<span class="sd">      - "ok"        - completed cleanly. commits is either the first</span>
+<span class="sd">                       max_commits (known_newest_sha was None - first</span>
+<span class="sd">                       time caching this project) or just the new ones</span>
+<span class="sd">                       on top of it (often empty - "pushed_at changed</span>
+<span class="sd">                       but nothing new landed on the default branch" is</span>
+<span class="sd">                       a normal, cheap-to-detect case, e.g. a push to a</span>
+<span class="sd">                       different branch, or a tag).</span>
+<span class="sd">      - "rewritten" - known_newest_sha was never found within</span>
+<span class="sd">                       max_commits worth of history. Either the default</span>
+<span class="sd">                       branch's history was rewritten (force-push /</span>
+<span class="sd">                       rebase / squash - none of the new shas match the</span>
+<span class="sd">                       old one) or the repo has genuinely gained more</span>
+<span class="sd">                       than max_commits new commits since the last build</span>
+<span class="sd">                       (essentially never, for a personal project). The</span>
+<span class="sd">                       previously-cached cards can't be trusted to</span>
+<span class="sd">                       prepend onto, so commits here is a full, capped</span>
+<span class="sd">                       fetch meant to replace them outright.</span>
+<span class="sd">      - "failed"    - a request errored or returned non-200 before this</span>
+<span class="sd">                       could reach a conclusion, AND known_newest_sha was</span>
+<span class="sd">                       set (there's a cache worth protecting) - commits</span>
+<span class="sd">                       may be partial. The caller should keep whatever it</span>
+<span class="sd">                       already had rather than treat an empty result here</span>
+<span class="sd">                       as "nothing changed".</span>
+<span class="sd">    A failure on a first-ever fetch (known_newest_sha is None) reports</span>
+<span class="sd">    "ok" with a possibly-empty/partial list instead, matching this</span>
+<span class="sd">    script's usual one-broken-repo-shouldn't-fail-the-run posture - the</span>
+<span class="sd">    caller just skips writing a commits page for that project.</span>
+<span class="sd">    """</span>
+    <span class="n">commits</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">page</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">per_page</span> <span class="o">=</span> <span class="mi">100</span>
+    <span class="n">found_known</span> <span class="o">=</span> <span class="n">known_newest_sha</span> <span class="ow">is</span> <span class="kc">None</span>
+
+    <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">commits</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">max_commits</span><span class="p">:</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"https://api.github.com/repos/</span><span class="si">{</span><span class="n">owner</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">repo</span><span class="si">}</span><span class="s2">/commits"</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">resp</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+                <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">API_HEADERS_JSON</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span>
+                <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s2">"per_page"</span><span class="p">:</span> <span class="n">per_page</span><span class="p">,</span> <span class="s2">"page"</span><span class="p">:</span> <span class="n">page</span><span class="p">},</span>
+            <span class="p">)</span>
+        <span class="k">except</span> <span class="n">requests</span><span class="o">.</span><span class="n">RequestException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  ! Could not fetch commits for </span><span class="si">{</span><span class="n">owner</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">repo</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">commits</span><span class="p">,</span> <span class="p">(</span><span class="s2">"ok"</span> <span class="k">if</span> <span class="n">found_known</span> <span class="k">else</span> <span class="s2">"failed"</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">resp</span><span class="o">.</span><span class="n">status_code</span> <span class="o">!=</span> <span class="mi">200</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  ! Could not fetch commits for </span><span class="si">{</span><span class="n">owner</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">repo</span><span class="si">}</span><span class="s2"> (HTTP </span><span class="si">{</span><span class="n">resp</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2">)."</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">commits</span><span class="p">,</span> <span class="p">(</span><span class="s2">"ok"</span> <span class="k">if</span> <span class="n">found_known</span> <span class="k">else</span> <span class="s2">"failed"</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">batch</span> <span class="o">=</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">commits</span><span class="p">,</span> <span class="p">(</span><span class="s2">"ok"</span> <span class="k">if</span> <span class="n">found_known</span> <span class="k">else</span> <span class="s2">"failed"</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">batch</span><span class="p">:</span>
+            <span class="k">break</span>
+
+        <span class="n">stop</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">batch</span><span class="p">:</span>
+            <span class="n">sha</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"sha"</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">known_newest_sha</span> <span class="ow">and</span> <span class="n">sha</span> <span class="o">==</span> <span class="n">known_newest_sha</span><span class="p">:</span>
+                <span class="n">found_known</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="n">stop</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="k">break</span>
+            <span class="n">commit</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"commit"</span><span class="p">,</span> <span class="p">{})</span> <span class="ow">or</span> <span class="p">{}</span>
+            <span class="n">author_info</span> <span class="o">=</span> <span class="n">commit</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"author"</span><span class="p">)</span> <span class="ow">or</span> <span class="p">{}</span>
+            <span class="n">message</span> <span class="o">=</span> <span class="p">(</span><span class="n">commit</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"message"</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">""</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="n">commits</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+                <span class="s2">"sha"</span><span class="p">:</span> <span class="n">sha</span><span class="p">,</span>
+                <span class="s2">"short_sha"</span><span class="p">:</span> <span class="n">sha</span><span class="p">[:</span><span class="mi">7</span><span class="p">],</span>
+                <span class="s2">"title"</span><span class="p">:</span> <span class="n">message</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="n">message</span> <span class="k">else</span> <span class="s2">"(no commit message)"</span><span class="p">,</span>
+                <span class="s2">"author"</span><span class="p">:</span> <span class="n">author_info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"name"</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">"Unknown"</span><span class="p">,</span>
+                <span class="s2">"date"</span><span class="p">:</span> <span class="n">format_commit_date</span><span class="p">(</span><span class="n">author_info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"date"</span><span class="p">,</span> <span class="s2">""</span><span class="p">)),</span>
+                <span class="s2">"html_url"</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"html_url"</span><span class="p">)</span> <span class="ow">or</span> <span class="sa">f</span><span class="s2">"https://github.com/</span><span class="si">{</span><span class="n">owner</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">repo</span><span class="si">}</span><span class="s2">/commit/</span><span class="si">{</span><span class="n">sha</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
+            <span class="p">})</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">commits</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">max_commits</span><span class="p">:</span>
+                <span class="n">stop</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="k">break</span>
+
+        <span class="k">if</span> <span class="n">stop</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">batch</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">per_page</span><span class="p">:</span>
+            <span class="k">break</span>
+        <span class="n">page</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">commits</span><span class="p">,</span> <span class="p">(</span><span class="s2">"ok"</span> <span class="k">if</span> <span class="n">found_known</span> <span class="k">else</span> <span class="s2">"rewritten"</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">render_commit_card</span><span class="p">(</span><span class="n">commit</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">"""&lt;a class="card commit-card" href="</span><span class="si">{</span><span class="n">commit</span><span class="p">[</span><span class="s1">'html_url'</span><span class="p">]</span><span class="si">}</span><span class="s2">"&gt;</span>
+<span class="s2">            &lt;div class="card__head"&gt;</span>
+<span class="s2">              &lt;div class="card__tags"&gt;&lt;span class="tag"&gt;</span><span class="si">{</span><span class="n">commit</span><span class="p">[</span><span class="s1">'short_sha'</span><span class="p">]</span><span class="si">}</span><span class="s2">&lt;/span&gt;&lt;/div&gt;</span>
+<span class="s2">              &lt;h3 class="card__title"&gt;</span><span class="si">{</span><span class="n">html_escape</span><span class="p">(</span><span class="n">commit</span><span class="p">[</span><span class="s1">'title'</span><span class="p">])</span><span class="si">}</span><span class="s2">&lt;/h3&gt;</span>
+<span class="s2">            &lt;/div&gt;</span>
+<span class="s2">            &lt;div class="card__foot commit-card__foot"&gt;</span>
+<span class="s2">              &lt;span class="commit-card__author"&gt;</span><span class="si">{</span><span class="n">html_escape</span><span class="p">(</span><span class="n">commit</span><span class="p">[</span><span class="s1">'author'</span><span class="p">])</span><span class="si">}</span><span class="s2">&lt;/span&gt;</span>
+<span class="s2">              &lt;span class="commit-card__date"&gt;</span><span class="si">{</span><span class="n">commit</span><span class="p">[</span><span class="s1">'date'</span><span class="p">]</span><span class="si">}</span><span class="s2">&lt;/span&gt;</span>
+<span class="s2">            &lt;/div&gt;</span>
+<span class="s2">          &lt;/a&gt;"""</span>
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">clean_readme_html</span><span class="p">(</span><span class="n">raw_html</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
@@ -1018,6 +1702,7 @@
 <span class="s2">          &lt;div class="card__links"&gt;</span>
 <span class="s2">            &lt;a href="</span><span class="si">{repo_url}</span><span class="s2">" class="link"&gt;Repository&lt;/a&gt;</span>
 <span class="s2">            </span><span class="si">{source_link_html}</span>
+<span class="s2">            </span><span class="si">{commits_link_html}</span>
 <span class="s2">          &lt;/div&gt;</span>
 <span class="s2">          </span><span class="si">{license_html}</span>
 <span class="s2">        &lt;/div&gt;</span>
@@ -1065,21 +1750,63 @@
 <span class="s2">&lt;/html&gt;</span>
 <span class="s2">"""</span>
 
+<span class="c1"># Commit history page - one per project, generated unconditionally for</span>
+<span class="c1"># every card with a Repository link (unlike the source browser, this</span>
+<span class="c1"># isn't opt-in via data-source-file). Reuses the same .card visual</span>
+<span class="c1"># language as project cards/skill chips, per the brief - one card per</span>
+<span class="c1"># commit, the whole card a real link out to that commit on GitHub, and</span>
+<span class="c1"># the "title + back link" head row reuses .source-page__head as-is.</span>
+<span class="n">COMMITS_PAGE_TEMPLATE</span> <span class="o">=</span> <span class="s2">"""&lt;!DOCTYPE html&gt;</span>
+<span class="s2">&lt;html lang="en"&gt;</span>
+<span class="s2">&lt;head&gt;</span>
+<span class="s2">  &lt;meta charset="UTF-8" /&gt;</span>
+<span class="s2">  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;</span>
+<span class="s2">  &lt;title&gt;Commits — </span><span class="si">{title}</span><span class="s2"> — Jan&lt;/title&gt;</span>
+<span class="s2">  &lt;link rel="stylesheet" href="../styles.css?v=</span><span class="si">{asset_version}</span><span class="s2">" /&gt;</span>
+<span class="s2">&lt;/head&gt;</span>
+<span class="s2">&lt;body&gt;</span>
+<span class="s2">  &lt;a class="skip-link" href="#main"&gt;Skip to content&lt;/a&gt;</span>
+<span class="s2">  &lt;div class="layout"&gt;</span>
+<span class="s2">    </span><span class="si">{rail_html}</span>
+<span class="s2">    &lt;main class="main" id="main"&gt;</span>
+<span class="s2">      &lt;section class="section commits-page"&gt;</span>
+<span class="s2">        &lt;p class="section__path"&gt;</span>
+<span class="s2">          &lt;a href="../index.html#projects" class="link"&gt;~/projects&lt;/a&gt; /</span>
+<span class="s2">          &lt;a href="</span><span class="si">{project_href}</span><span class="s2">" class="link"&gt;</span><span class="si">{repo}</span><span class="s2">&lt;/a&gt; / commits</span>
+<span class="s2">        &lt;/p&gt;</span>
+<span class="s2">        &lt;div class="source-page__head"&gt;</span>
+<span class="s2">          &lt;h1 class="section__title"&gt;Commit history&lt;/h1&gt;</span>
+<span class="s2">          &lt;a href="</span><span class="si">{project_href}</span><span class="s2">" class="link"&gt;← Back to </span><span class="si">{title}</span><span class="s2">&lt;/a&gt;</span>
+<span class="s2">        &lt;/div&gt;</span>
+<span class="s2">        &lt;div class="cards commits-list"&gt;</span>
+<span class="si">{commit_cards_html}</span>
+<span class="s2">        &lt;/div&gt;</span>
+<span class="s2">      &lt;/section&gt;</span>
+<span class="s2">    &lt;/main&gt;</span>
+<span class="s2">  &lt;/div&gt;</span>
+<span class="s2">&lt;/body&gt;</span>
+<span class="s2">&lt;/html&gt;</span>
+<span class="s2">"""</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">render_page</span><span class="p">(</span><span class="n">project</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">rail_html</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">has_source</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">render_page</span><span class="p">(</span><span class="n">project</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">rail_html</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">has_source</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span> <span class="n">readme_html</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">commit_count</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
     <span class="n">tags_html</span> <span class="o">=</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">          "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="sa">f</span><span class="s1">'&lt;span class="tag"&gt;</span><span class="si">{</span><span class="n">t</span><span class="si">}</span><span class="s1">&lt;/span&gt;'</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">project</span><span class="p">[</span><span class="s2">"tags"</span><span class="p">])</span>
     <span class="n">license_html</span> <span class="o">=</span> <span class="p">(</span>
         <span class="sa">f</span><span class="s1">'&lt;span class="license-badge"&gt;</span><span class="si">{</span><span class="n">project</span><span class="p">[</span><span class="s2">"license"</span><span class="p">]</span><span class="si">}</span><span class="s1">&lt;/span&gt;'</span>
         <span class="k">if</span> <span class="n">project</span><span class="p">[</span><span class="s2">"license"</span><span class="p">]</span> <span class="k">else</span> <span class="s2">""</span>
     <span class="p">)</span>
-    <span class="n">readme_html</span> <span class="o">=</span> <span class="n">fetch_readme_html</span><span class="p">(</span><span class="n">project</span><span class="p">[</span><span class="s2">"owner"</span><span class="p">],</span> <span class="n">project</span><span class="p">[</span><span class="s2">"repo"</span><span class="p">])</span>
+    <span class="n">slug</span> <span class="o">=</span> <span class="n">project</span><span class="p">[</span><span class="s2">"repo"</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
 
     <span class="n">source_link_html</span> <span class="o">=</span> <span class="s2">""</span>
     <span class="k">if</span> <span class="n">has_source</span><span class="p">:</span>
-        <span class="n">slug</span> <span class="o">=</span> <span class="n">project</span><span class="p">[</span><span class="s2">"repo"</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
         <span class="n">files</span> <span class="o">=</span> <span class="n">project</span><span class="p">[</span><span class="s2">"_resolved_files"</span><span class="p">]</span>
         <span class="n">label</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"View source (</span><span class="si">{</span><span class="n">files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">)"</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">files</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">else</span> <span class="sa">f</span><span class="s2">"Browse source (</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">files</span><span class="p">)</span><span class="si">}</span><span class="s2"> files)"</span>
         <span class="n">source_link_html</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">'&lt;a href="</span><span class="si">{</span><span class="n">slug</span><span class="si">}</span><span class="s1">-source.html" class="link"&gt;</span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s1">&lt;/a&gt;'</span>
+
+    <span class="n">commits_link_html</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="sa">f</span><span class="s1">'&lt;a href="</span><span class="si">{</span><span class="n">slug</span><span class="si">}</span><span class="s1">-commits.html" class="link"&gt;Commit history (</span><span class="si">{</span><span class="n">commit_count</span><span class="si">}</span><span class="s1">)&lt;/a&gt;'</span>
+        <span class="k">if</span> <span class="n">commit_count</span> <span class="k">else</span> <span class="s2">""</span>
+    <span class="p">)</span>
 
     <span class="k">return</span> <span class="n">PAGE_TEMPLATE</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
         <span class="n">title</span><span class="o">=</span><span class="n">project</span><span class="p">[</span><span class="s2">"title"</span><span class="p">],</span>
@@ -1090,16 +1817,31 @@
         <span class="n">readme_html</span><span class="o">=</span><span class="n">readme_html</span><span class="p">,</span>
         <span class="n">rail_html</span><span class="o">=</span><span class="n">rail_html</span><span class="p">,</span>
         <span class="n">source_link_html</span><span class="o">=</span><span class="n">source_link_html</span><span class="p">,</span>
+        <span class="n">commits_link_html</span><span class="o">=</span><span class="n">commits_link_html</span><span class="p">,</span>
         <span class="n">asset_version</span><span class="o">=</span><span class="n">ASSET_VERSION</span><span class="p">,</span>
     <span class="p">)</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">render_source_file_page</span><span class="p">(</span><span class="n">project</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">rail_html_for</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">file_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">tree</span><span class="p">,</span> <span class="n">up</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">project_href</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">render_commits_page</span><span class="p">(</span><span class="n">project</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">rail_html</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">commit_cards_html</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="n">slug</span> <span class="o">=</span> <span class="n">project</span><span class="p">[</span><span class="s2">"repo"</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">COMMITS_PAGE_TEMPLATE</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+        <span class="n">title</span><span class="o">=</span><span class="n">project</span><span class="p">[</span><span class="s2">"title"</span><span class="p">],</span>
+        <span class="n">repo</span><span class="o">=</span><span class="n">project</span><span class="p">[</span><span class="s2">"repo"</span><span class="p">],</span>
+        <span class="n">rail_html</span><span class="o">=</span><span class="n">rail_html</span><span class="p">,</span>
+        <span class="n">project_href</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">slug</span><span class="si">}</span><span class="s2">.html"</span><span class="p">,</span>
+        <span class="n">commit_cards_html</span><span class="o">=</span><span class="n">commit_cards_html</span><span class="p">,</span>
+        <span class="n">asset_version</span><span class="o">=</span><span class="n">ASSET_VERSION</span><span class="p">,</span>
+    <span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">render_source_file_page</span><span class="p">(</span><span class="n">project</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">rail_html_for</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">file_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">tree</span><span class="p">,</span> <span class="n">up</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">project_href</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">highlighted</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">"""Renders one file's page - used both for the single-file case</span>
 <span class="sd">    (up="../", project_href="&lt;slug&gt;.html") and for each file in the</span>
 <span class="sd">    multi-file case (index page: up="../", tree base includes the</span>
 <span class="sd">    subfolder; per-file pages: up="../../", tree base is empty since</span>
-<span class="sd">    they're siblings)."""</span>
+<span class="sd">    they're siblings). `highlighted` is already-resolved HTML (either</span>
+<span class="sd">    freshly fetched or reused from the previous build - see</span>
+<span class="sd">    generate_source_pages), not fetched here."""</span>
     <span class="n">slug</span> <span class="o">=</span> <span class="n">project</span><span class="p">[</span><span class="s2">"repo"</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
     <span class="n">tree_base</span> <span class="o">=</span> <span class="s2">""</span> <span class="k">if</span> <span class="n">up</span> <span class="o">==</span> <span class="s2">"../../"</span> <span class="k">else</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">slug</span><span class="si">}</span><span class="s2">-source/"</span>
     <span class="n">tree_html</span> <span class="o">=</span> <span class="s2">""</span>
@@ -1107,7 +1849,6 @@
         <span class="n">rendered</span> <span class="o">=</span> <span class="n">render_tree_html</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="s2">""</span><span class="p">,</span> <span class="n">file_path</span><span class="p">,</span> <span class="n">base</span><span class="o">=</span><span class="n">tree_base</span><span class="p">)</span>
         <span class="n">tree_html</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">'&lt;nav class="file-tree"&gt;&lt;p class="file-tree__title"&gt;Files&lt;/p&gt;</span><span class="si">{</span><span class="n">rendered</span><span class="si">}</span><span class="s1">&lt;/nav&gt;'</span>
 
-    <span class="n">highlighted</span> <span class="o">=</span> <span class="n">fetch_highlighted_source</span><span class="p">(</span><span class="n">project</span><span class="p">[</span><span class="s2">"owner"</span><span class="p">],</span> <span class="n">project</span><span class="p">[</span><span class="s2">"repo"</span><span class="p">],</span> <span class="n">file_path</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">SOURCE_PAGE_TEMPLATE</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
         <span class="n">title</span><span class="o">=</span><span class="n">project</span><span class="p">[</span><span class="s2">"title"</span><span class="p">],</span>
         <span class="n">repo</span><span class="o">=</span><span class="n">project</span><span class="p">[</span><span class="s2">"repo"</span><span class="p">],</span>
@@ -1121,50 +1862,79 @@
     <span class="p">)</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">generate_source_pages</span><span class="p">(</span><span class="n">project</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">files</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">rail_html_top</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">rail_html_nested</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">site_root</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">set</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">generate_source_pages</span><span class="p">(</span><span class="n">project</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">files</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">rail_html_top</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">rail_html_nested</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">site_root</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">blob_shas</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">cached_files</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">set</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">"""Writes &lt;slug&gt;-source.html (and, for multiple files, &lt;slug&gt;-source/</span>
-<span class="sd">    per-file pages plus a file-tree sidebar on every one of them). Returns</span>
-<span class="sd">    the set of resolved paths it wrote, so main() can tell cleanup_stale_files</span>
-<span class="sd">    which files in projects/ are still current and which are leftovers from</span>
-<span class="sd">    a data-source-file that's since been removed or narrowed."""</span>
+<span class="sd">    per-file pages plus a file-tree sidebar on every one of them).</span>
+
+<span class="sd">    For each file, reuses last build's highlighted HTML (read back from</span>
+<span class="sd">    its own already-published page - see extract_highlighted) instead of</span>
+<span class="sd">    re-fetching+re-highlighting it, but ONLY when that exact file's git</span>
+<span class="sd">    blob sha hasn't changed (blob_shas is this run's {path: sha}, from</span>
+<span class="sd">    fetch_repo_file_tree; cached_files is the same shape from last run's</span>
+<span class="sd">    cache) - so within one repo, only the files that actually changed</span>
+<span class="sd">    get re-fetched, not the whole source browser at once.</span>
+
+<span class="sd">    Returns the set of resolved paths it wrote, so main() can tell</span>
+<span class="sd">    cleanup_stale_files which files in projects/ are still current and</span>
+<span class="sd">    which are leftovers from a data-source-file that's since been</span>
+<span class="sd">    removed or narrowed."""</span>
     <span class="n">slug</span> <span class="o">=</span> <span class="n">project</span><span class="p">[</span><span class="s2">"repo"</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="n">owner</span><span class="p">,</span> <span class="n">repo</span> <span class="o">=</span> <span class="n">project</span><span class="p">[</span><span class="s2">"owner"</span><span class="p">],</span> <span class="n">project</span><span class="p">[</span><span class="s2">"repo"</span><span class="p">]</span>
     <span class="n">rail_html_for</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"../"</span><span class="p">:</span> <span class="n">rail_html_top</span><span class="p">,</span> <span class="s2">"../../"</span><span class="p">:</span> <span class="n">rail_html_nested</span><span class="p">}</span>
     <span class="n">written</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="n">stats</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"reused"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"fetched"</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_highlighted</span><span class="p">(</span><span class="n">file_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">existing_page_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="n">old_sha</span> <span class="o">=</span> <span class="n">cached_files</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+        <span class="n">new_sha</span> <span class="o">=</span> <span class="n">blob_shas</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">old_sha</span> <span class="ow">and</span> <span class="n">new_sha</span> <span class="ow">and</span> <span class="n">old_sha</span> <span class="o">==</span> <span class="n">new_sha</span><span class="p">:</span>
+            <span class="n">cached</span> <span class="o">=</span> <span class="n">extract_highlighted</span><span class="p">(</span><span class="n">existing_page_path</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">cached</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">stats</span><span class="p">[</span><span class="s2">"reused"</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="k">return</span> <span class="n">cached</span>
+        <span class="n">stats</span><span class="p">[</span><span class="s2">"fetched"</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">fetch_highlighted_source</span><span class="p">(</span><span class="n">owner</span><span class="p">,</span> <span class="n">repo</span><span class="p">,</span> <span class="n">file_path</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">files</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">out_path</span> <span class="o">=</span> <span class="n">out_dir</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">slug</span><span class="si">}</span><span class="s2">-source.html"</span>
+        <span class="n">highlighted</span> <span class="o">=</span> <span class="n">get_highlighted</span><span class="p">(</span><span class="n">files</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">out_path</span><span class="p">)</span>
         <span class="n">page</span> <span class="o">=</span> <span class="n">render_source_file_page</span><span class="p">(</span>
             <span class="n">project</span><span class="p">,</span> <span class="n">rail_html_for</span><span class="p">,</span> <span class="n">files</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">tree</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-            <span class="n">up</span><span class="o">=</span><span class="s2">"../"</span><span class="p">,</span> <span class="n">project_href</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">slug</span><span class="si">}</span><span class="s2">.html"</span><span class="p">,</span>
+            <span class="n">up</span><span class="o">=</span><span class="s2">"../"</span><span class="p">,</span> <span class="n">project_href</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">slug</span><span class="si">}</span><span class="s2">.html"</span><span class="p">,</span> <span class="n">highlighted</span><span class="o">=</span><span class="n">highlighted</span><span class="p">,</span>
         <span class="p">)</span>
-        <span class="n">out_path</span> <span class="o">=</span> <span class="n">out_dir</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">slug</span><span class="si">}</span><span class="s2">-source.html"</span>
         <span class="n">out_path</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="n">page</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span>
         <span class="n">written</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">out_path</span><span class="o">.</span><span class="n">resolve</span><span class="p">())</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"     -&gt; source page -&gt; </span><span class="si">{</span><span class="n">out_path</span><span class="o">.</span><span class="n">relative_to</span><span class="p">(</span><span class="n">site_root</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"     -&gt; source page -&gt; </span><span class="si">{</span><span class="n">out_path</span><span class="o">.</span><span class="n">relative_to</span><span class="p">(</span><span class="n">site_root</span><span class="p">)</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="s1">'reused'</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">stats</span><span class="p">[</span><span class="s1">'reused'</span><span class="p">]</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">'fetched'</span><span class="si">}</span><span class="s2">)"</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">written</span>
 
     <span class="n">tree</span> <span class="o">=</span> <span class="n">build_tree</span><span class="p">(</span><span class="n">files</span><span class="p">)</span>
     <span class="n">primary</span> <span class="o">=</span> <span class="n">files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">sub_dir</span> <span class="o">=</span> <span class="n">out_dir</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">slug</span><span class="si">}</span><span class="s2">-source"</span>
+    <span class="n">sub_dir</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># Resolve every file's content BEFORE writing anything - get_highlighted</span>
+    <span class="c1"># reads each file's existing per-file page, which the loop below is</span>
+    <span class="c1"># about to overwrite.</span>
+    <span class="n">highlighted_by_file</span> <span class="o">=</span> <span class="p">{</span><span class="n">f</span><span class="p">:</span> <span class="n">get_highlighted</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">sub_dir</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">safe_filename</span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="si">}</span><span class="s2">.html"</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">files</span><span class="p">}</span>
 
     <span class="n">index_page</span> <span class="o">=</span> <span class="n">render_source_file_page</span><span class="p">(</span>
         <span class="n">project</span><span class="p">,</span> <span class="n">rail_html_for</span><span class="p">,</span> <span class="n">primary</span><span class="p">,</span> <span class="n">tree</span><span class="o">=</span><span class="n">tree</span><span class="p">,</span>
-        <span class="n">up</span><span class="o">=</span><span class="s2">"../"</span><span class="p">,</span> <span class="n">project_href</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">slug</span><span class="si">}</span><span class="s2">.html"</span><span class="p">,</span>
+        <span class="n">up</span><span class="o">=</span><span class="s2">"../"</span><span class="p">,</span> <span class="n">project_href</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">slug</span><span class="si">}</span><span class="s2">.html"</span><span class="p">,</span> <span class="n">highlighted</span><span class="o">=</span><span class="n">highlighted_by_file</span><span class="p">[</span><span class="n">primary</span><span class="p">],</span>
     <span class="p">)</span>
     <span class="n">index_path</span> <span class="o">=</span> <span class="n">out_dir</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">slug</span><span class="si">}</span><span class="s2">-source.html"</span>
     <span class="n">index_path</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="n">index_page</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span>
     <span class="n">written</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">index_path</span><span class="o">.</span><span class="n">resolve</span><span class="p">())</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"     -&gt; source index -&gt; </span><span class="si">{</span><span class="n">index_path</span><span class="o">.</span><span class="n">relative_to</span><span class="p">(</span><span class="n">site_root</span><span class="p">)</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">files</span><span class="p">)</span><span class="si">}</span><span class="s2"> files)"</span><span class="p">)</span>
 
-    <span class="n">sub_dir</span> <span class="o">=</span> <span class="n">out_dir</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">slug</span><span class="si">}</span><span class="s2">-source"</span>
-    <span class="n">sub_dir</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">file_path</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
         <span class="n">page</span> <span class="o">=</span> <span class="n">render_source_file_page</span><span class="p">(</span>
             <span class="n">project</span><span class="p">,</span> <span class="n">rail_html_for</span><span class="p">,</span> <span class="n">file_path</span><span class="p">,</span> <span class="n">tree</span><span class="o">=</span><span class="n">tree</span><span class="p">,</span>
-            <span class="n">up</span><span class="o">=</span><span class="s2">"../../"</span><span class="p">,</span> <span class="n">project_href</span><span class="o">=</span><span class="sa">f</span><span class="s2">"../</span><span class="si">{</span><span class="n">slug</span><span class="si">}</span><span class="s2">.html"</span><span class="p">,</span>
+            <span class="n">up</span><span class="o">=</span><span class="s2">"../../"</span><span class="p">,</span> <span class="n">project_href</span><span class="o">=</span><span class="sa">f</span><span class="s2">"../</span><span class="si">{</span><span class="n">slug</span><span class="si">}</span><span class="s2">.html"</span><span class="p">,</span> <span class="n">highlighted</span><span class="o">=</span><span class="n">highlighted_by_file</span><span class="p">[</span><span class="n">file_path</span><span class="p">],</span>
         <span class="p">)</span>
         <span class="n">file_out</span> <span class="o">=</span> <span class="n">sub_dir</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">safe_filename</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span><span class="si">}</span><span class="s2">.html"</span>
         <span class="n">file_out</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="n">page</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span>
         <span class="n">written</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">file_out</span><span class="o">.</span><span class="n">resolve</span><span class="p">())</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"        </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">files</span><span class="p">)</span><span class="si">}</span><span class="s2"> file page(s) -&gt; </span><span class="si">{</span><span class="n">sub_dir</span><span class="o">.</span><span class="n">relative_to</span><span class="p">(</span><span class="n">site_root</span><span class="p">)</span><span class="si">}</span><span class="s2">/"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"        </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">files</span><span class="p">)</span><span class="si">}</span><span class="s2"> file page(s) -&gt; </span><span class="si">{</span><span class="n">sub_dir</span><span class="o">.</span><span class="n">relative_to</span><span class="p">(</span><span class="n">site_root</span><span class="p">)</span><span class="si">}</span><span class="s2">/ (</span><span class="si">{</span><span class="n">stats</span><span class="p">[</span><span class="s1">'fetched'</span><span class="p">]</span><span class="si">}</span><span class="s2"> fetched, </span><span class="si">{</span><span class="n">stats</span><span class="p">[</span><span class="s1">'reused'</span><span class="p">]</span><span class="si">}</span><span class="s2"> reused)"</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">written</span>
 
 
@@ -1214,28 +1984,138 @@
         <span class="k">return</span>
 
     <span class="n">PROJECTS_DIR</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">cache</span> <span class="o">=</span> <span class="n">load_cache</span><span class="p">()</span>
     <span class="n">written</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+
     <span class="k">for</span> <span class="n">project</span> <span class="ow">in</span> <span class="n">projects</span><span class="p">:</span>
         <span class="n">slug</span> <span class="o">=</span> <span class="n">project</span><span class="p">[</span><span class="s2">"repo"</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="n">owner</span><span class="p">,</span> <span class="n">repo</span> <span class="o">=</span> <span class="n">project</span><span class="p">[</span><span class="s2">"owner"</span><span class="p">],</span> <span class="n">project</span><span class="p">[</span><span class="s2">"repo"</span><span class="p">]</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">owner</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">repo</span><span class="si">}</span><span class="s2">"</span>
+        <span class="n">cache_entry</span> <span class="o">=</span> <span class="n">cache</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="p">{})</span>
+        <span class="n">out_path</span> <span class="o">=</span> <span class="n">PROJECTS_DIR</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">slug</span><span class="si">}</span><span class="s2">.html"</span>
+        <span class="n">existing_commits_path</span> <span class="o">=</span> <span class="n">PROJECTS_DIR</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">slug</span><span class="si">}</span><span class="s2">-commits.html"</span>
 
+        <span class="n">meta</span> <span class="o">=</span> <span class="n">fetch_repo_meta</span><span class="p">(</span><span class="n">owner</span><span class="p">,</span> <span class="n">repo</span><span class="p">)</span>
+        <span class="n">pushed_at</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"pushed_at"</span><span class="p">)</span> <span class="k">if</span> <span class="n">meta</span> <span class="k">else</span> <span class="kc">None</span>
+        <span class="n">default_branch</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"default_branch"</span><span class="p">)</span> <span class="k">if</span> <span class="n">meta</span> <span class="k">else</span> <span class="kc">None</span>
+        <span class="c1"># No pushed_at (repo-meta call failed) -&gt; can't trust a cache</span>
+        <span class="c1"># comparison either way, so treat it as changed and fetch for</span>
+        <span class="c1"># real - same safe-by-default behavior this script has always</span>
+        <span class="c1"># had for a failed call.</span>
+        <span class="n">repo_unchanged</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">pushed_at</span><span class="p">)</span> <span class="ow">and</span> <span class="n">pushed_at</span> <span class="o">==</span> <span class="n">cache_entry</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"pushed_at"</span><span class="p">)</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  -&gt; </span><span class="si">{</span><span class="n">project</span><span class="p">[</span><span class="s1">'title'</span><span class="p">]</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">owner</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">repo</span><span class="si">}</span><span class="s2">) -&gt; </span><span class="si">{</span><span class="n">out_path</span><span class="o">.</span><span class="n">relative_to</span><span class="p">(</span><span class="n">SITE_ROOT</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span>
+              <span class="o">+</span> <span class="p">(</span><span class="s2">" (repo unchanged since last build)"</span> <span class="k">if</span> <span class="n">repo_unchanged</span> <span class="k">else</span> <span class="s2">""</span><span class="p">))</span>
+
+        <span class="c1"># ---------------------------------------------------------- README</span>
+        <span class="n">readme_html</span> <span class="o">=</span> <span class="n">extract_readme_html</span><span class="p">(</span><span class="n">out_path</span><span class="p">)</span> <span class="k">if</span> <span class="n">repo_unchanged</span> <span class="k">else</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">readme_html</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">readme_html</span> <span class="o">=</span> <span class="n">fetch_readme_html</span><span class="p">(</span><span class="n">owner</span><span class="p">,</span> <span class="n">repo</span><span class="p">)</span>
+
+        <span class="c1"># ---------------------------------------------------------- source files</span>
         <span class="n">files</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">blob_shas</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">cached_files</span> <span class="o">=</span> <span class="n">cache_entry</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"files"</span><span class="p">,</span> <span class="p">{})</span>
         <span class="k">if</span> <span class="n">project</span><span class="p">[</span><span class="s2">"source_entries"</span><span class="p">]:</span>
-            <span class="n">files</span> <span class="o">=</span> <span class="n">expand_source_entries</span><span class="p">(</span><span class="n">project</span><span class="p">[</span><span class="s2">"owner"</span><span class="p">],</span> <span class="n">project</span><span class="p">[</span><span class="s2">"repo"</span><span class="p">],</span> <span class="n">project</span><span class="p">[</span><span class="s2">"source_entries"</span><span class="p">])</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="n">files</span><span class="p">:</span>
-                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  ! '</span><span class="si">{</span><span class="n">project</span><span class="p">[</span><span class="s1">'title'</span><span class="p">]</span><span class="si">}</span><span class="s2">': data-source-file entries resolved to zero files, skipping source page(s)"</span><span class="p">)</span>
+            <span class="n">same_entries</span> <span class="o">=</span> <span class="n">cache_entry</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"source_entries"</span><span class="p">)</span> <span class="o">==</span> <span class="n">project</span><span class="p">[</span><span class="s2">"source_entries"</span><span class="p">]</span>
+            <span class="n">reuse_file_list</span> <span class="o">=</span> <span class="n">repo_unchanged</span> <span class="ow">and</span> <span class="n">same_entries</span> <span class="ow">and</span> <span class="n">cached_files</span>
+            <span class="k">if</span> <span class="n">reuse_file_list</span><span class="p">:</span>
+                <span class="c1"># Nothing was pushed and the same entries were requested</span>
+                <span class="c1"># last time, so the resolved file list can't have</span>
+                <span class="c1"># changed either - skip the tree fetch entirely.</span>
+                <span class="n">blob_shas</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">cached_files</span><span class="p">)</span>
+                <span class="n">files</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">blob_shas</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+            <span class="k">elif</span> <span class="ow">not</span> <span class="n">default_branch</span> <span class="ow">and</span> <span class="n">same_entries</span> <span class="ow">and</span> <span class="n">cached_files</span><span class="p">:</span>
+                <span class="c1"># The repo-meta call failed outright (no branch to query</span>
+                <span class="c1"># the tree with, and no reliable pushed_at to compare</span>
+                <span class="c1"># against either) - rather than resolving dir/* wildcards</span>
+                <span class="c1"># against an empty tree (which would silently drop every</span>
+                <span class="c1"># wildcard-matched file and, via cleanup_stale_files,</span>
+                <span class="c1"># delete their already-published pages), fall back to</span>
+                <span class="c1"># last known-good file list. Same reasoning as the</span>
+                <span class="c1"># "failed" status on commits below: a transient API</span>
+                <span class="c1"># hiccup should never destroy content that was fine</span>
+                <span class="c1"># yesterday.</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  ! '</span><span class="si">{</span><span class="n">project</span><span class="p">[</span><span class="s1">'title'</span><span class="p">]</span><span class="si">}</span><span class="s2">': could not reach the GitHub API for repo info - reusing last known file list instead of resolving dir/* wildcards against nothing"</span><span class="p">)</span>
+                <span class="n">blob_shas</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">cached_files</span><span class="p">)</span>
+                <span class="n">files</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">blob_shas</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">file_tree</span> <span class="o">=</span> <span class="n">fetch_repo_file_tree</span><span class="p">(</span><span class="n">owner</span><span class="p">,</span> <span class="n">repo</span><span class="p">,</span> <span class="n">default_branch</span><span class="p">)</span>
+                <span class="n">files</span> <span class="o">=</span> <span class="n">expand_source_entries</span><span class="p">(</span><span class="n">project</span><span class="p">[</span><span class="s2">"source_entries"</span><span class="p">],</span> <span class="n">file_tree</span><span class="p">)</span>
+                <span class="n">blob_shas</span> <span class="o">=</span> <span class="p">{</span><span class="n">f</span><span class="p">:</span> <span class="n">file_tree</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">files</span><span class="p">}</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">files</span><span class="p">:</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  ! '</span><span class="si">{</span><span class="n">project</span><span class="p">[</span><span class="s1">'title'</span><span class="p">]</span><span class="si">}</span><span class="s2">': data-source-file entries resolved to zero files, skipping source page(s)"</span><span class="p">)</span>
         <span class="n">project</span><span class="p">[</span><span class="s2">"_resolved_files"</span><span class="p">]</span> <span class="o">=</span> <span class="n">files</span>
 
-        <span class="n">out_path</span> <span class="o">=</span> <span class="n">PROJECTS_DIR</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">slug</span><span class="si">}</span><span class="s2">.html"</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  -&gt; </span><span class="si">{</span><span class="n">project</span><span class="p">[</span><span class="s1">'title'</span><span class="p">]</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">project</span><span class="p">[</span><span class="s1">'owner'</span><span class="p">]</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">project</span><span class="p">[</span><span class="s1">'repo'</span><span class="p">]</span><span class="si">}</span><span class="s2">) -&gt; </span><span class="si">{</span><span class="n">out_path</span><span class="o">.</span><span class="n">relative_to</span><span class="p">(</span><span class="n">SITE_ROOT</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-        <span class="n">page</span> <span class="o">=</span> <span class="n">render_page</span><span class="p">(</span><span class="n">project</span><span class="p">,</span> <span class="n">rail_html_top</span><span class="p">,</span> <span class="n">has_source</span><span class="o">=</span><span class="nb">bool</span><span class="p">(</span><span class="n">files</span><span class="p">))</span>
+        <span class="c1"># ---------------------------------------------------------- commits</span>
+        <span class="n">cached_newest_sha</span> <span class="o">=</span> <span class="n">cache_entry</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"newest_commit_sha"</span><span class="p">)</span>
+        <span class="n">cached_commit_count</span> <span class="o">=</span> <span class="n">cache_entry</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"commit_count"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">commit_cards_html</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">commit_count</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">newest_commit_sha</span> <span class="o">=</span> <span class="n">cached_newest_sha</span>
+
+        <span class="k">if</span> <span class="n">repo_unchanged</span> <span class="ow">and</span> <span class="n">cached_commit_count</span><span class="p">:</span>
+            <span class="n">commit_cards_html</span> <span class="o">=</span> <span class="n">extract_commit_cards</span><span class="p">(</span><span class="n">existing_commits_path</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">commit_cards_html</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">commit_count</span> <span class="o">=</span> <span class="n">cached_commit_count</span>
+
+        <span class="k">if</span> <span class="n">commit_cards_html</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">new_commits</span><span class="p">,</span> <span class="n">status</span> <span class="o">=</span> <span class="n">fetch_commits_since</span><span class="p">(</span><span class="n">owner</span><span class="p">,</span> <span class="n">repo</span><span class="p">,</span> <span class="n">cached_newest_sha</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">status</span> <span class="o">==</span> <span class="s2">"failed"</span> <span class="ow">and</span> <span class="n">cached_commit_count</span><span class="p">:</span>
+                <span class="n">commit_cards_html</span> <span class="o">=</span> <span class="n">extract_commit_cards</span><span class="p">(</span><span class="n">existing_commits_path</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">commit_cards_html</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">commit_count</span> <span class="o">=</span> <span class="n">cached_commit_count</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  ! '</span><span class="si">{</span><span class="n">project</span><span class="p">[</span><span class="s1">'title'</span><span class="p">]</span><span class="si">}</span><span class="s2">': could not refresh commit history this run (API error) - kept the existing page"</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">status</span> <span class="o">==</span> <span class="s2">"rewritten"</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  ! '</span><span class="si">{</span><span class="n">project</span><span class="p">[</span><span class="s1">'title'</span><span class="p">]</span><span class="si">}</span><span class="s2">': previous newest commit not found in current history "</span>
+                      <span class="sa">f</span><span class="s2">"(force-push/rebase on the default branch?) - rebuilding the commits page from scratch"</span><span class="p">)</span>
+                <span class="n">commit_cards_html</span> <span class="o">=</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="sa">f</span><span class="s2">"          </span><span class="si">{</span><span class="n">render_commit_card</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">new_commits</span><span class="p">)</span>
+                <span class="n">commit_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">new_commits</span><span class="p">)</span>
+                <span class="n">newest_commit_sha</span> <span class="o">=</span> <span class="n">new_commits</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">"sha"</span><span class="p">]</span> <span class="k">if</span> <span class="n">new_commits</span> <span class="k">else</span> <span class="kc">None</span>
+            <span class="k">else</span><span class="p">:</span>  <span class="c1"># "ok": first-ever fetch, or genuinely nothing new since cached_newest_sha</span>
+                <span class="n">previous_cards_html</span> <span class="o">=</span> <span class="n">extract_commit_cards</span><span class="p">(</span><span class="n">existing_commits_path</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">""</span>
+                <span class="n">new_cards_html</span> <span class="o">=</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="sa">f</span><span class="s2">"          </span><span class="si">{</span><span class="n">render_commit_card</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">new_commits</span><span class="p">)</span>
+                <span class="n">combined</span> <span class="o">=</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="p">(</span><span class="n">new_cards_html</span><span class="p">,</span> <span class="n">previous_cards_html</span><span class="p">)</span> <span class="k">if</span> <span class="n">p</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">combined</span><span class="p">:</span>
+                    <span class="n">commit_cards_html</span> <span class="o">=</span> <span class="n">combined</span>
+                    <span class="n">commit_count</span> <span class="o">=</span> <span class="n">cached_commit_count</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">new_commits</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">new_commits</span><span class="p">:</span>
+                    <span class="n">newest_commit_sha</span> <span class="o">=</span> <span class="n">new_commits</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">"sha"</span><span class="p">]</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"     -&gt; </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">new_commits</span><span class="p">)</span><span class="si">}</span><span class="s2"> new commit(s) since last build"</span><span class="p">)</span>
+
+        <span class="c1"># ---------------------------------------------------------- render + write</span>
+        <span class="n">page</span> <span class="o">=</span> <span class="n">render_page</span><span class="p">(</span><span class="n">project</span><span class="p">,</span> <span class="n">rail_html_top</span><span class="p">,</span> <span class="n">has_source</span><span class="o">=</span><span class="nb">bool</span><span class="p">(</span><span class="n">files</span><span class="p">),</span> <span class="n">readme_html</span><span class="o">=</span><span class="n">readme_html</span><span class="p">,</span> <span class="n">commit_count</span><span class="o">=</span><span class="n">commit_count</span><span class="p">)</span>
         <span class="n">out_path</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="n">page</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span>
         <span class="n">written</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">out_path</span><span class="o">.</span><span class="n">resolve</span><span class="p">())</span>
 
         <span class="k">if</span> <span class="n">files</span><span class="p">:</span>
-            <span class="n">written</span> <span class="o">|=</span> <span class="n">generate_source_pages</span><span class="p">(</span><span class="n">project</span><span class="p">,</span> <span class="n">files</span><span class="p">,</span> <span class="n">rail_html_top</span><span class="p">,</span> <span class="n">rail_html_nested</span><span class="p">,</span> <span class="n">PROJECTS_DIR</span><span class="p">,</span> <span class="n">SITE_ROOT</span><span class="p">)</span>
+            <span class="n">written</span> <span class="o">|=</span> <span class="n">generate_source_pages</span><span class="p">(</span><span class="n">project</span><span class="p">,</span> <span class="n">files</span><span class="p">,</span> <span class="n">rail_html_top</span><span class="p">,</span> <span class="n">rail_html_nested</span><span class="p">,</span> <span class="n">PROJECTS_DIR</span><span class="p">,</span> <span class="n">SITE_ROOT</span><span class="p">,</span> <span class="n">blob_shas</span><span class="p">,</span> <span class="n">cached_files</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">commit_count</span> <span class="ow">and</span> <span class="n">commit_cards_html</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">commits_page</span> <span class="o">=</span> <span class="n">render_commits_page</span><span class="p">(</span><span class="n">project</span><span class="p">,</span> <span class="n">rail_html_top</span><span class="p">,</span> <span class="n">commit_cards_html</span><span class="p">)</span>
+            <span class="n">existing_commits_path</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="n">commits_page</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span>
+            <span class="n">written</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">existing_commits_path</span><span class="o">.</span><span class="n">resolve</span><span class="p">())</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"     -&gt; commit history (</span><span class="si">{</span><span class="n">commit_count</span><span class="si">}</span><span class="s2"> commits) -&gt; </span><span class="si">{</span><span class="n">existing_commits_path</span><span class="o">.</span><span class="n">relative_to</span><span class="p">(</span><span class="n">SITE_ROOT</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  ! '</span><span class="si">{</span><span class="n">project</span><span class="p">[</span><span class="s1">'title'</span><span class="p">]</span><span class="si">}</span><span class="s2">': could not fetch commit history, skipping commits page"</span><span class="p">)</span>
+
+        <span class="c1"># ---------------------------------------------------------- update cache</span>
+        <span class="c1"># Only trust/persist a cache entry when this run actually got a</span>
+        <span class="c1"># real pushed_at back - a failed repo-meta call leaves whatever</span>
+        <span class="c1"># was cached before untouched, so the next run can still compare</span>
+        <span class="c1"># against a known-good timestamp instead of losing all history.</span>
+        <span class="k">if</span> <span class="n">pushed_at</span><span class="p">:</span>
+            <span class="n">cache</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">"pushed_at"</span><span class="p">:</span> <span class="n">pushed_at</span><span class="p">,</span>
+                <span class="s2">"source_entries"</span><span class="p">:</span> <span class="n">project</span><span class="p">[</span><span class="s2">"source_entries"</span><span class="p">],</span>
+                <span class="s2">"files"</span><span class="p">:</span> <span class="n">blob_shas</span><span class="p">,</span>
+                <span class="s2">"newest_commit_sha"</span><span class="p">:</span> <span class="n">newest_commit_sha</span><span class="p">,</span>
+                <span class="s2">"commit_count"</span><span class="p">:</span> <span class="n">commit_count</span><span class="p">,</span>
+            <span class="p">}</span>
 
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Generated </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">projects</span><span class="p">)</span><span class="si">}</span><span class="s2"> project page(s)."</span><span class="p">)</span>
     <span class="n">cleanup_stale_files</span><span class="p">(</span><span class="n">PROJECTS_DIR</span><span class="p">,</span> <span class="n">written</span><span class="p">,</span> <span class="n">SITE_ROOT</span><span class="p">)</span>
+    <span class="n">save_cache</span><span class="p">(</span><span class="n">cache</span><span class="p">)</span>
 
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
