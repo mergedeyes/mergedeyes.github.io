@@ -1,13 +1,17 @@
 name: Generate project pages
 
 on:
+  workflow_run:
+    workflows: ["Update visitor count"] # Must match the exact 'name:' of the generator workflow
+    types:
+      - completed
   push:
     branches: [main]
   # index.html changing isn't the only thing that can go stale - a
   # linked repo's README can update on its own, so re-run periodically
   # too. Remove this if you'd rather it only run on push.
   schedule:
-    - cron: "0 6 * * *"  # every day, 06:00 UTC
+    - cron: "5 0 * * *"  # every day, 00:00 UTC
   workflow_dispatch: {}
 
 permissions:
@@ -15,6 +19,7 @@ permissions:
 
 jobs:
   generate:
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
