@@ -1,0 +1,1 @@
+[![Generate project pages](https://github.com/mergedeyes/mergedeyes.github.io/actions/workflows/generate-project-pages.yml/badge.svg?event=push)](https://github.com/mergedeyes/mergedeyes.github.io/actions/workflows/generate-project-pages.yml)
