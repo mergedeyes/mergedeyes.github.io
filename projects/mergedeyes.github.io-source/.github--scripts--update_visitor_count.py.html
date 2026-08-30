@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>.github/scripts/update_visitor_count.py — Personal Website — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=72e40d28" />
+  <link rel="stylesheet" href="../../styles.css?v=12f26a2e" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -194,7 +194,13 @@
 <span class="normal">149</span>
 <span class="normal">150</span>
 <span class="normal">151</span>
-<span class="normal">152</span></pre></div></td><td class="code"><div><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span></pre></div></td><td class="code"><div><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
 <span class="sd">"""</span>
 <span class="sd">Updates the site's visitor counter.</span>
 
@@ -329,9 +335,15 @@
 
     <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">views</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">v</span><span class="p">:</span> <span class="n">v</span><span class="p">[</span><span class="s2">"timestamp"</span><span class="p">]):</span>
         <span class="n">day</span> <span class="o">=</span> <span class="n">entry</span><span class="p">[</span><span class="s2">"timestamp"</span><span class="p">][:</span><span class="mi">10</span><span class="p">]</span>  <span class="c1"># "YYYY-MM-DDT00:00:00Z" -&gt; "YYYY-MM-DD"</span>
+        <span class="c1"># Always (re)record the day's count in `daily`, even for a day already</span>
+        <span class="c1"># folded into `total` by an earlier run - the traffic API only ever</span>
+        <span class="c1"># exposes a rolling 14-day window, so this is the one chance to backfill</span>
+        <span class="c1"># `daily` for any day still visible in it. `total` itself must still</span>
+        <span class="c1"># only grow for days newer than last_counted_date, or a day already</span>
+        <span class="c1"># counted once would get counted again.</span>
+        <span class="n">daily</span><span class="p">[</span><span class="n">day</span><span class="p">]</span> <span class="o">=</span> <span class="n">entry</span><span class="p">[</span><span class="s2">"count"</span><span class="p">]</span>
         <span class="k">if</span> <span class="n">day</span> <span class="o">&gt;</span> <span class="n">last_counted</span><span class="p">:</span>
             <span class="n">new_total</span> <span class="o">+=</span> <span class="n">entry</span><span class="p">[</span><span class="s2">"count"</span><span class="p">]</span>
-            <span class="n">daily</span><span class="p">[</span><span class="n">day</span><span class="p">]</span> <span class="o">=</span> <span class="n">daily</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">day</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">entry</span><span class="p">[</span><span class="s2">"count"</span><span class="p">]</span>
             <span class="n">last_counted</span> <span class="o">=</span> <span class="n">day</span>
 
     <span class="n">state</span><span class="p">[</span><span class="s2">"total"</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_total</span>
