@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>.github/workflows/update-visitor-count.yml — Personal Website — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=24aeb1a3" />
+  <link rel="stylesheet" href="../../styles.css?v=3684bde6" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -75,12 +75,36 @@
 <span class="normal">30</span>
 <span class="normal">31</span>
 <span class="normal">32</span>
-<span class="normal">33</span></pre></div></td><td class="code"><div><pre><span></span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Update visitor count</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span></pre></div></td><td class="code"><div><pre><span></span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Update visitor count</span>
 
 <span class="nt">on</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">schedule</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">cron</span><span class="p">:</span><span class="w"> </span><span class="s">"*/30</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*"</span>
 <span class="w">  </span><span class="nt">workflow_dispatch</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+
+<span class="c1"># Shared with generate-project-pages.yml's concurrency group below:</span>
+<span class="c1"># that workflow triggers on every push this one makes (via workflow_run</span>
+<span class="c1"># AND push:branches:[main]), so the two were racing to commit+push</span>
+<span class="c1"># almost every single time this workflow succeeded -- confirmed in git</span>
+<span class="c1"># history: zero successful visitor-count.json commits survived since</span>
+<span class="c1"># the GoatCounter migration, every one lost to a non-fast-forward push</span>
+<span class="c1"># rejection. Same group name on both workflows means GitHub queues them</span>
+<span class="c1"># against EACH OTHER, not just against re-runs of the same workflow.</span>
+<span class="nt">concurrency</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main-branch-writes</span>
+<span class="w">  </span><span class="nt">cancel-in-progress</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 
 <span class="nt">permissions</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">contents</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">write</span><span class="w">  </span><span class="c1"># git-auto-commit-action needs push rights</span>
