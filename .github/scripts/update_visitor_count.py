@@ -15,9 +15,15 @@ get skipped or double-counted (a wider gap would silently lose days for
 which GitHub has since rolled the data off - unavoidable given what the
 API provides).
 
-Requires GITHUB_TOKEN and GITHUB_REPOSITORY in the environment, as set
-automatically inside a GitHub Actions job. Reads/writes only local files
-in the repo checkout plus one call to api.github.com.
+Requires TRAFFIC_PAT and GITHUB_REPOSITORY in the environment. TRAFFIC_PAT
+must be a personal access token with permission to read this repo's
+traffic stats (classic PAT with the "repo" scope, or a fine-grained PAT
+with "Administration: Read-only" on this repository) - the default
+Actions-issued GITHUB_TOKEN cannot call the traffic API no matter what is
+granted under `permissions:` in the workflow, since traffic/views sits
+under repo administration rather than the standard Actions permission
+set. Reads/writes only local files in the repo checkout plus one call to
+api.github.com.
 """
 
 import json
@@ -82,7 +88,16 @@ def patch_footer(total):
 
 def main():
     repo = os.environ["GITHUB_REPOSITORY"]
-    token = os.environ["GITHUB_TOKEN"]
+    token = os.environ.get("TRAFFIC_PAT")
+    if not token:
+        print(
+            "error: TRAFFIC_PAT is not set. The default GITHUB_TOKEN cannot read "
+            "this repo's traffic stats - add a personal access token (classic PAT "
+            "with 'repo' scope, or fine-grained PAT with 'Administration: "
+            "Read-only') as the TRAFFIC_PAT repository secret.",
+            file=sys.stderr,
+        )
+        sys.exit(1)
 
     state = load_state()
     data = fetch_traffic_views(repo, token)
