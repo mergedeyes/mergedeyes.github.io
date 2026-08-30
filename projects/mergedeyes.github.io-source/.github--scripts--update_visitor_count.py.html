@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>.github/scripts/update_visitor_count.py — Personal Website — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=43ac9076" />
+  <link rel="stylesheet" href="../../styles.css?v=2aaa6e5f" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -236,8 +236,8 @@
 
 <span class="k">def</span><span class="w"> </span><span class="nf">fetch_daily_stats</span><span class="p">(</span><span class="n">token</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Fetches the last 30 days of daily traffic for the chart."""</span>
-    <span class="n">start_date</span> <span class="o">=</span> <span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span> <span class="o">-</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">30</span><span class="p">))</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">"%Y-%m-</span><span class="si">%d</span><span class="s2">T00:00:00Z"</span><span class="p">)</span>
-    <span class="n">end_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">"%Y-%m-</span><span class="si">%d</span><span class="s2">T23:59:59Z"</span><span class="p">)</span>
+    <span class="n">start_date</span> <span class="o">=</span> <span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">UTC</span><span class="p">)</span> <span class="o">-</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">30</span><span class="p">))</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">"%Y-%m-</span><span class="si">%d</span><span class="s2">T00:00:00Z"</span><span class="p">)</span>
+    <span class="n">end_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">UTC</span><span class="p">)</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">"%Y-%m-</span><span class="si">%d</span><span class="s2">T23:59:59Z"</span><span class="p">)</span>
     
     <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"https://</span><span class="si">{</span><span class="n">GOATCOUNTER_DOMAIN</span><span class="si">}</span><span class="s2">/api/v0/stats/total?start=</span><span class="si">{</span><span class="n">start_date</span><span class="si">}</span><span class="s2">&amp;end=</span><span class="si">{</span><span class="n">end_date</span><span class="si">}</span><span class="s2">"</span>
     
