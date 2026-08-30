@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>.github/workflows/update-visitor-count.yml — Personal Website — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=05225b4e" />
+  <link rel="stylesheet" href="../../styles.css?v=b7ac0070" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -103,7 +103,7 @@
 
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Update visitor count</span>
 <span class="w">        </span><span class="nt">env</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">GITHUB_TOKEN</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.GITHUB_TOKEN }}</span>
+<span class="w">          </span><span class="nt">TRAFFIC_PAT</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.TRAFFIC_PAT }}</span>
 <span class="w">          </span><span class="nt">GITHUB_REPOSITORY</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ github.repository }}</span>
 <span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python .github/scripts/update_visitor_count.py</span>
 
