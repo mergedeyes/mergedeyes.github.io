@@ -128,7 +128,11 @@ def patch_visitor_chart(daily):
         print(f"updated {VISITOR_DATA_HTML_FILE} with {len(daily)} day(s) of data")
 
 def main():
-    token = os.environ.get("GOATCOUNTER_TOKEN")
+    # .strip() guards against a stray trailing newline/space getting baked
+    # into the GitHub Actions secret when it was copy-pasted -- that byte
+    # makes the token silently not match anything server-side (seen in the
+    # wild: valid token, still 401/404, because of an invisible \n at the end).
+    token = os.environ.get("GOATCOUNTER_TOKEN", "").strip()
     if not token:
         print("error: GOATCOUNTER_TOKEN is not set.", file=sys.stderr)
         sys.exit(1)
