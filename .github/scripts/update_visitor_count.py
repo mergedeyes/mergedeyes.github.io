@@ -1,29 +1,18 @@
 #!/usr/bin/env python3
 """
-Updates the site's visitor counter.
+Updates the site's visitor counter using GoatCounter analytics.
 
-GitHub's traffic API (`/repos/{owner}/{repo}/traffic/views`) only ever
-reports the last 14 days of daily page-view counts for a repository - it
-does not keep a running lifetime total. To get a lifetime counter for the
-footer, this script keeps its own small state file
-(.github/data/visitor-count.json) recording a cumulative total plus the
-most recent date it has already folded into that total, and each run only
-adds in days newer than that.
+This script fetches real website traffic data to update the static HTML files,
+keeping the site entirely free of client-side API requests. It performs two tasks:
+1. Fetches the all-time lifetime visitor count via the public `TOTAL.json` 
+   endpoint and patches it into the footer of `index.html`.
+2. Fetches the last 30 days of daily visitor stats via the authenticated 
+   `/api/v0/stats/total` endpoint, merges them into the local cache 
+   (.github/data/visitor-count.json), and embeds the JSON payload into 
+   `visitors.html` for the chart rendering.
 
-As long as this workflow runs at least once every 14 days, no day's views
-get skipped or double-counted (a wider gap would silently lose days for
-which GitHub has since rolled the data off - unavoidable given what the
-API provides).
-
-Requires TRAFFIC_PAT and GITHUB_REPOSITORY in the environment. TRAFFIC_PAT
-must be a personal access token with permission to read this repo's
-traffic stats (classic PAT with the "repo" scope, or a fine-grained PAT
-with "Administration: Read-only" on this repository) - the default
-Actions-issued GITHUB_TOKEN cannot call the traffic API no matter what is
-granted under `permissions:` in the workflow, since traffic/views sits
-under repo administration rather than the standard Actions permission
-set. Reads/writes only local files in the repo checkout plus one call to
-api.github.com.
+Requires GOATCOUNTER_TOKEN in the environment. This must be a GoatCounter API 
+token with 'statistics' permissions. 
 """
 
 import json
@@ -32,32 +21,49 @@ import re
 import sys
 import urllib.request
 import urllib.error
+import datetime
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 STATE_PATH = os.path.join(REPO_ROOT, ".github", "data", "visitor-count.json")
 HTML_FILES_WITH_COUNTER = ["index.html"]
 VISITOR_DATA_HTML_FILE = "visitors.html"
+GOATCOUNTER_DOMAIN = "mergedeyes.goatcounter.com"
 
+def fetch_goatcounter_total():
+    """Fetches the all-time total pageviews for the footer."""
+    url = f"https://{GOATCOUNTER_DOMAIN}/counter/TOTAL.json"
+    req = urllib.request.Request(url, headers={"User-Agent": "mergedcloud-visitor-counter"})
+    try:
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            data = json.load(resp)
+            return int(data["count"].replace(",", ""))
+    except Exception as e:
+        print(f"Failed to fetch GoatCounter total: {e}", file=sys.stderr)
+        return None
 
-def fetch_traffic_views(repo, token):
-    url = f"https://api.github.com/repos/{repo}/traffic/views?per=day"
+def fetch_daily_stats(token):
+    """Fetches the last 30 days of daily traffic for the chart."""
+    start_date = (datetime.datetime.utcnow() - datetime.timedelta(days=30)).strftime("%Y-%m-%dT00:00:00Z")
+    end_date = datetime.datetime.utcnow().strftime("%Y-%m-%dT23:59:59Z")
+    
+    url = f"https://{GOATCOUNTER_DOMAIN}/api/v0/stats/total?start={start_date}&end={end_date}"
+    
     req = urllib.request.Request(
         url,
         headers={
             "Authorization": f"Bearer {token}",
-            "Accept": "application/vnd.github+json",
-            "X-GitHub-Api-Version": "2022-11-28",
-            "User-Agent": "mergedcloud-visitor-counter",
+            "Content-Type": "application/json",
+            "User-Agent": "mergedcloud-visitor-counter"
         },
     )
     try:
         with urllib.request.urlopen(req, timeout=30) as resp:
-            return json.load(resp)
+            data = json.load(resp)
+            return data.get("stats", [])
     except urllib.error.HTTPError as e:
         body = e.read().decode("utf-8", "replace")
-        print(f"GitHub traffic API request failed: {e.code} {e.reason}\n{body}", file=sys.stderr)
+        print(f"GoatCounter API request failed: {e.code} {e.reason}\n{body}", file=sys.stderr)
         sys.exit(1)
-
 
 def load_state():
     with open(STATE_PATH, encoding="utf-8") as f:
@@ -109,50 +115,35 @@ def patch_visitor_chart(daily):
             f.write(new_html)
         print(f"updated {VISITOR_DATA_HTML_FILE} with {len(daily)} day(s) of data")
 
-
 def main():
-    repo = os.environ["GITHUB_REPOSITORY"]
-    token = os.environ.get("TRAFFIC_PAT")
+    token = os.environ.get("GOATCOUNTER_TOKEN")
     if not token:
-        print(
-            "error: TRAFFIC_PAT is not set. The default GITHUB_TOKEN cannot read "
-            "this repo's traffic stats - add a personal access token (classic PAT "
-            "with 'repo' scope, or fine-grained PAT with 'Administration: "
-            "Read-only') as the TRAFFIC_PAT repository secret.",
-            file=sys.stderr,
-        )
+        print("error: GOATCOUNTER_TOKEN is not set.", file=sys.stderr)
         sys.exit(1)
 
     state = load_state()
-    data = fetch_traffic_views(repo, token)
-    views = data.get("views", [])
 
-    daily = state.setdefault("daily", {})
-    new_total = state["total"]
-    last_counted = state["last_counted_date"]
+    # Get overall total for the footer
+    new_total = fetch_goatcounter_total()
+    if new_total is None:
+        new_total = state.get("total", 0)
 
-    for entry in sorted(views, key=lambda v: v["timestamp"]):
-        day = entry["timestamp"][:10]  # "YYYY-MM-DDT00:00:00Z" -> "YYYY-MM-DD"
-        # Always (re)record the day's count in `daily`, even for a day already
-        # folded into `total` by an earlier run - the traffic API only ever
-        # exposes a rolling 14-day window, so this is the one chance to backfill
-        # `daily` for any day still visible in it. `total` itself must still
-        # only grow for days newer than last_counted_date, or a day already
-        # counted once would get counted again.
-        daily[day] = entry["count"]
-        if day > last_counted:
-            new_total += entry["count"]
-            last_counted = day
+    # Get daily stats for the chart
+    daily_stats = fetch_daily_stats(token)
+    daily_cache = state.setdefault("daily", {})
+
+    for stat in daily_stats:
+        day_str = stat.get("day", "")[:10]  # Format: "YYYY-MM-DD"
+        if day_str:
+            daily_cache[day_str] = stat.get("daily", 0)
 
     state["total"] = new_total
-    state["last_counted_date"] = last_counted
-    state["daily"] = daily
+    state["daily"] = daily_cache
     save_state(state)
 
     patch_footer(new_total)
-    patch_visitor_chart(daily)
-    print(f"visitor count total: {new_total} (as of {last_counted})")
-
+    patch_visitor_chart(daily_cache)
+    print(f"visitor count total: {new_total}")
 
 if __name__ == "__main__":
     main()

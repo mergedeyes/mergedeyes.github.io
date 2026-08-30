@@ -1,10 +1,8 @@
 name: Update visitor count
 
 on:
-  # GitHub's traffic API only keeps a rolling 14-day window, so this needs
-  # to run comfortably more often than every 14 days to never miss a day.
   schedule:
-    - cron: "0 */6 * * *"  # every 6 hours
+    - cron: "*/30 * * * *"
   workflow_dispatch: {}
 
 permissions:
@@ -24,7 +22,7 @@ jobs:
 
       - name: Update visitor count
         env:
-          TRAFFIC_PAT: ${{ secrets.TRAFFIC_PAT }}
+          GOATCOUNTER_TOKEN: ${{ secrets.GOATCOUNTER_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
         run: python .github/scripts/update_visitor_count.py
 
