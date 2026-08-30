@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Personal Website — Jan</title>
-  <link rel="stylesheet" href="../styles.css?v=38ba536e" />
+  <link rel="stylesheet" href="../styles.css?v=d9cad8a4" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -46,7 +46,7 @@
           <div class="card__links">
             <a href="https://github.com/mergedeyes/mergedeyes.github.io" class="link">Repository</a>
             <a href="mergedeyes.github.io-source.html" class="link">Browse source (21 files)</a>
-            <a href="mergedeyes.github.io-commits.html" class="link">Commit history (106)</a>
+            <a href="mergedeyes.github.io-commits.html" class="link">Commit history (109)</a>
           </div>
           <span class="license-badge">GPL-3.0</span>
         </div>
@@ -54,6 +54,32 @@
 <p dir="auto"><a href="https://github.com/mergedeyes/mergedeyes.github.io/actions/workflows/generate-project-pages.yml"><img alt="Generate project pages" src="https://github.com/mergedeyes/mergedeyes.github.io/actions/workflows/generate-project-pages.yml/badge.svg?event=push" style="max-width: 100%;"/></a>
 <a href="https://github.com/mergedeyes/mergedeyes.github.io/actions/workflows/jekyll-gh-pages.yml"><img alt="Deploy Jekyll with GitHub Pages" src="https://github.com/mergedeyes/mergedeyes.github.io/actions/workflows/jekyll-gh-pages.yml/badge.svg" style="max-width: 100%;"/></a>
 <a href="https://github.com/mergedeyes/mergedeyes.github.io/actions/workflows/update-visitor-count.yml"><img alt="Update visitor count" src="https://github.com/mergedeyes/mergedeyes.github.io/actions/workflows/update-visitor-count.yml/badge.svg" style="max-width: 100%;"/></a></p>
+<h1 class="heading-element" dir="auto">mergedcloud.de</h1>
+<p dir="auto">Source for my personal site, <strong><a href="https://mergedcloud.de/" rel="nofollow">mergedcloud.de</a></strong> — a systems engineer / Rust developer portfolio: projects, work history, skills, and a bit about me.</p>
+<h2 class="heading-element" dir="auto">Stack</h2>
+<p dir="auto">Plain HTML, CSS, and JavaScript. No framework, no build step, no bundler, no npm install. Fonts are system stacks, not web fonts. The only thing that leaves the browser at all is one analytics script (GoatCounter, for the visit counter) — everything else, including that counter's own numbers, is baked into the static HTML at commit time rather than fetched client-side.</p>
+<h2 class="heading-element" dir="auto">Structure</h2>
+<ul dir="auto">
+<li><code>index.html</code>, <code>styles.css</code>, <code>script.js</code> — the whole site: hero, projects, work, education, skills, about, contact.</li>
+<li><code>skills/*.html</code> — hand-written pages for a handful of skills, linked from chips in the skills section.</li>
+<li><code>visitors.html</code>, <code>visitors.js</code> — a visits-per-day chart (plain inline SVG, no charting library).</li>
+<li><code>404.html</code> — not found page.</li>
+<li><code>sitemap.xml</code>, <code>robots.txt</code>, <code>llms.txt</code> — SEO and AI-crawler discoverability.</li>
+<li><code>projects/*.html</code> — one page per project card, <strong>auto-generated, never hand-edited</strong> (see below).</li>
+<li><code>.github/workflows/</code>, <code>.github/scripts/</code> — the automation that keeps the generated pages and stats current.</li>
+</ul>
+<h2 class="heading-element" dir="auto">Automation</h2>
+<p dir="auto">Three GitHub Actions workflows do the recurring work:</p>
+<ul dir="auto">
+<li><strong>Generate project pages</strong> (<code>generate-project-pages.yml</code>, on push / daily / on demand) — for every project card in <code>index.html</code> with a GitHub "Repository" link, builds a page from that repo's README (fetched via the GitHub API), an optional syntax-highlighted source browser (opt-in per card via <code>data-source-file="..."</code>), and a full commit history — one card per commit, linking straight out to GitHub. A small build cache (<code>.github/data/project-pages-cache.json</code>) means a repo that hasn't been pushed to since the last run gets skipped entirely rather than re-fetched, and a repo that <em>did</em> change only re-fetches the individual files and commits that actually moved.</li>
+<li><strong>Update visitor count</strong> (<code>update-visitor-count.yml</code>, every 30 min) — pulls totals and daily stats from GoatCounter and patches them straight into <code>index.html</code>'s footer and <code>visitors.html</code>'s chart data.</li>
+<li><strong>Deploy Jekyll with GitHub Pages</strong> (<code>jekyll-gh-pages.yml</code>) — builds and publishes the site once the project-pages workflow finishes.</li>
+</ul>
+<p dir="auto">Running the project-page generator yourself needs Python 3 and <code>pip install requests beautifulsoup4 pygments</code>, plus a <code>GITHUB_TOKEN</code> in the environment (raises the GitHub API rate limit; the workflow gets this automatically, a local run needs it set by hand).</p>
+<h2 class="heading-element" dir="auto">Local preview</h2>
+<p dir="auto">Serve the folder rather than opening <code>index.html</code> directly — some browsers apply strict MIME-type checks to a <code>file://</code> stylesheet and silently refuse to apply it:</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="python3 -m http.server" dir="auto"><pre>python3 -m http.server</pre></div>
+<p dir="auto">then open <code>http://localhost:8000/</code>.</p>
 
         </div>
       </section>

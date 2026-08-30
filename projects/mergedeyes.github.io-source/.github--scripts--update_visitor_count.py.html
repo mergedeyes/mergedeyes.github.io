@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>.github/scripts/update_visitor_count.py — Personal Website — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=38ba536e" />
+  <link rel="stylesheet" href="../../styles.css?v=d9cad8a4" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -191,21 +191,47 @@
 <span class="normal">146</span>
 <span class="normal">147</span>
 <span class="normal">148</span>
-<span class="normal">149</span></pre></div></td><td class="code"><div><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span></pre></div></td><td class="code"><div><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
 <span class="sd">"""</span>
 <span class="sd">Updates the site's visitor counter using GoatCounter analytics.</span>
 
 <span class="sd">This script fetches real website traffic data to update the static HTML files,</span>
 <span class="sd">keeping the site entirely free of client-side API requests. It performs two tasks:</span>
-<span class="sd">1. Fetches the all-time lifetime visitor count via the public `TOTAL.json` </span>
+<span class="sd">1. Fetches the all-time lifetime visitor count via the public `TOTAL.json`</span>
 <span class="sd">   endpoint and patches it into the footer of `index.html`.</span>
-<span class="sd">2. Fetches the last 30 days of daily visitor stats via the authenticated </span>
-<span class="sd">   `/api/v0/stats/total` endpoint, merges them into the local cache </span>
-<span class="sd">   (.github/data/visitor-count.json), and embeds the JSON payload into </span>
+<span class="sd">2. Fetches the last 30 days of daily visitor stats via the authenticated</span>
+<span class="sd">   `/api/v0/stats/total` endpoint, merges them into the local cache</span>
+<span class="sd">   (.github/data/visitor-count.json), and embeds the JSON payload into</span>
 <span class="sd">   `visitors.html` for the chart rendering.</span>
 
-<span class="sd">Requires GOATCOUNTER_TOKEN in the environment. This must be a GoatCounter API </span>
-<span class="sd">token with 'statistics' permissions. </span>
+<span class="sd">Requires GOATCOUNTER_TOKEN in the environment. This must be a GoatCounter API</span>
+<span class="sd">token with 'statistics' permissions.</span>
 <span class="sd">"""</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
@@ -235,12 +261,21 @@
         <span class="k">return</span> <span class="kc">None</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">fetch_daily_stats</span><span class="p">(</span><span class="n">token</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""Fetches the last 30 days of daily traffic for the chart."""</span>
+<span class="w">    </span><span class="sd">"""Fetches the last 30 days of daily traffic for the chart.</span>
+
+<span class="sd">    Returns None on failure instead of exiting the process, so that the</span>
+<span class="sd">    caller can still patch whatever data DID succeed (e.g. the public</span>
+<span class="sd">    lifetime total) even when this authenticated call fails -- a bad or</span>
+<span class="sd">    revoked token shouldn't also block the footer count from updating.</span>
+<span class="sd">    """</span>
     <span class="n">start_date</span> <span class="o">=</span> <span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">UTC</span><span class="p">)</span> <span class="o">-</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">30</span><span class="p">))</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">"%Y-%m-</span><span class="si">%d</span><span class="s2">T00:00:00Z"</span><span class="p">)</span>
     <span class="n">end_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">UTC</span><span class="p">)</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">"%Y-%m-</span><span class="si">%d</span><span class="s2">T23:59:59Z"</span><span class="p">)</span>
-    
-    <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"https://</span><span class="si">{</span><span class="n">GOATCOUNTER_DOMAIN</span><span class="si">}</span><span class="s2">/api/v0/stats/total?start=</span><span class="si">{</span><span class="n">start_date</span><span class="si">}</span><span class="s2">&amp;end=</span><span class="si">{</span><span class="n">end_date</span><span class="si">}</span><span class="s2">&amp;access-token=</span><span class="si">{</span><span class="n">token</span><span class="si">}</span><span class="s2">"</span>
-    
+
+    <span class="c1"># Auth goes only via the Authorization header (per GoatCounter's API docs).</span>
+    <span class="c1"># A token must never be put in the URL's query string: query strings get</span>
+    <span class="c1"># written to CI logs, proxy logs, and browser history verbatim.</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"https://</span><span class="si">{</span><span class="n">GOATCOUNTER_DOMAIN</span><span class="si">}</span><span class="s2">/api/v0/stats/total?start=</span><span class="si">{</span><span class="n">start_date</span><span class="si">}</span><span class="s2">&amp;end=</span><span class="si">{</span><span class="n">end_date</span><span class="si">}</span><span class="s2">"</span>
+
     <span class="n">req</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span>
         <span class="n">url</span><span class="p">,</span>
         <span class="n">headers</span><span class="o">=</span><span class="p">{</span>
@@ -256,7 +291,10 @@
     <span class="k">except</span> <span class="n">urllib</span><span class="o">.</span><span class="n">error</span><span class="o">.</span><span class="n">HTTPError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
         <span class="n">body</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">"utf-8"</span><span class="p">,</span> <span class="s2">"replace"</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"GoatCounter API request failed: </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">code</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">reason</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="n">body</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span>
-        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">except</span> <span class="n">urllib</span><span class="o">.</span><span class="n">error</span><span class="o">.</span><span class="n">URLError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"GoatCounter API request failed: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">load_state</span><span class="p">():</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">STATE_PATH</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
@@ -321,14 +359,19 @@
     <span class="k">if</span> <span class="n">new_total</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">new_total</span> <span class="o">=</span> <span class="n">state</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"total"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 
-    <span class="c1"># Get daily stats for the chart</span>
+    <span class="c1"># Get daily stats for the chart. This can fail independently of the</span>
+    <span class="c1"># public total above (e.g. a bad/revoked API token) -- don't let that</span>
+    <span class="c1"># stop the footer count (and whatever cached daily data we already</span>
+    <span class="c1"># have) from still being written out.</span>
     <span class="n">daily_stats</span> <span class="o">=</span> <span class="n">fetch_daily_stats</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
     <span class="n">daily_cache</span> <span class="o">=</span> <span class="n">state</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">"daily"</span><span class="p">,</span> <span class="p">{})</span>
+    <span class="n">daily_stats_ok</span> <span class="o">=</span> <span class="n">daily_stats</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
 
-    <span class="k">for</span> <span class="n">stat</span> <span class="ow">in</span> <span class="n">daily_stats</span><span class="p">:</span>
-        <span class="n">day_str</span> <span class="o">=</span> <span class="n">stat</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"day"</span><span class="p">,</span> <span class="s2">""</span><span class="p">)[:</span><span class="mi">10</span><span class="p">]</span>  <span class="c1"># Format: "YYYY-MM-DD"</span>
-        <span class="k">if</span> <span class="n">day_str</span><span class="p">:</span>
-            <span class="n">daily_cache</span><span class="p">[</span><span class="n">day_str</span><span class="p">]</span> <span class="o">=</span> <span class="n">stat</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"daily"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">daily_stats_ok</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">stat</span> <span class="ow">in</span> <span class="n">daily_stats</span><span class="p">:</span>
+            <span class="n">day_str</span> <span class="o">=</span> <span class="n">stat</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"day"</span><span class="p">,</span> <span class="s2">""</span><span class="p">)[:</span><span class="mi">10</span><span class="p">]</span>  <span class="c1"># Format: "YYYY-MM-DD"</span>
+            <span class="k">if</span> <span class="n">day_str</span><span class="p">:</span>
+                <span class="n">daily_cache</span><span class="p">[</span><span class="n">day_str</span><span class="p">]</span> <span class="o">=</span> <span class="n">stat</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"daily"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 
     <span class="n">state</span><span class="p">[</span><span class="s2">"total"</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_total</span>
     <span class="n">state</span><span class="p">[</span><span class="s2">"daily"</span><span class="p">]</span> <span class="o">=</span> <span class="n">daily_cache</span>
@@ -337,6 +380,15 @@
     <span class="n">patch_footer</span><span class="p">(</span><span class="n">new_total</span><span class="p">)</span>
     <span class="n">patch_visitor_chart</span><span class="p">(</span><span class="n">daily_cache</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"visitor count total: </span><span class="si">{</span><span class="n">new_total</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">daily_stats_ok</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span>
+            <span class="s2">"warning: daily stats fetch failed (see error above) -- "</span>
+            <span class="s2">"footer total was still updated, but chart data is stale/unchanged. "</span>
+            <span class="s2">"Check GOATCOUNTER_TOKEN."</span><span class="p">,</span>
+            <span class="n">file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
