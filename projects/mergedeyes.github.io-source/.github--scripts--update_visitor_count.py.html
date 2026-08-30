@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>.github/scripts/update_visitor_count.py — Personal Website — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=1c122c01" />
+  <link rel="stylesheet" href="../../styles.css?v=43ac9076" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -191,41 +191,21 @@
 <span class="normal">146</span>
 <span class="normal">147</span>
 <span class="normal">148</span>
-<span class="normal">149</span>
-<span class="normal">150</span>
-<span class="normal">151</span>
-<span class="normal">152</span>
-<span class="normal">153</span>
-<span class="normal">154</span>
-<span class="normal">155</span>
-<span class="normal">156</span>
-<span class="normal">157</span>
-<span class="normal">158</span></pre></div></td><td class="code"><div><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="normal">149</span></pre></div></td><td class="code"><div><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
 <span class="sd">"""</span>
-<span class="sd">Updates the site's visitor counter.</span>
+<span class="sd">Updates the site's visitor counter using GoatCounter analytics.</span>
 
-<span class="sd">GitHub's traffic API (`/repos/{owner}/{repo}/traffic/views`) only ever</span>
-<span class="sd">reports the last 14 days of daily page-view counts for a repository - it</span>
-<span class="sd">does not keep a running lifetime total. To get a lifetime counter for the</span>
-<span class="sd">footer, this script keeps its own small state file</span>
-<span class="sd">(.github/data/visitor-count.json) recording a cumulative total plus the</span>
-<span class="sd">most recent date it has already folded into that total, and each run only</span>
-<span class="sd">adds in days newer than that.</span>
+<span class="sd">This script fetches real website traffic data to update the static HTML files,</span>
+<span class="sd">keeping the site entirely free of client-side API requests. It performs two tasks:</span>
+<span class="sd">1. Fetches the all-time lifetime visitor count via the public `TOTAL.json` </span>
+<span class="sd">   endpoint and patches it into the footer of `index.html`.</span>
+<span class="sd">2. Fetches the last 30 days of daily visitor stats via the authenticated </span>
+<span class="sd">   `/api/v0/stats/total` endpoint, merges them into the local cache </span>
+<span class="sd">   (.github/data/visitor-count.json), and embeds the JSON payload into </span>
+<span class="sd">   `visitors.html` for the chart rendering.</span>
 
-<span class="sd">As long as this workflow runs at least once every 14 days, no day's views</span>
-<span class="sd">get skipped or double-counted (a wider gap would silently lose days for</span>
-<span class="sd">which GitHub has since rolled the data off - unavoidable given what the</span>
-<span class="sd">API provides).</span>
-
-<span class="sd">Requires TRAFFIC_PAT and GITHUB_REPOSITORY in the environment. TRAFFIC_PAT</span>
-<span class="sd">must be a personal access token with permission to read this repo's</span>
-<span class="sd">traffic stats (classic PAT with the "repo" scope, or a fine-grained PAT</span>
-<span class="sd">with "Administration: Read-only" on this repository) - the default</span>
-<span class="sd">Actions-issued GITHUB_TOKEN cannot call the traffic API no matter what is</span>
-<span class="sd">granted under `permissions:` in the workflow, since traffic/views sits</span>
-<span class="sd">under repo administration rather than the standard Actions permission</span>
-<span class="sd">set. Reads/writes only local files in the repo checkout plus one call to</span>
-<span class="sd">api.github.com.</span>
+<span class="sd">Requires GOATCOUNTER_TOKEN in the environment. This must be a GoatCounter API </span>
+<span class="sd">token with 'statistics' permissions. </span>
 <span class="sd">"""</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
@@ -234,32 +214,49 @@
 <span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">urllib.request</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">urllib.error</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">datetime</span>
 
 <span class="n">REPO_ROOT</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))))</span>
 <span class="n">STATE_PATH</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">REPO_ROOT</span><span class="p">,</span> <span class="s2">".github"</span><span class="p">,</span> <span class="s2">"data"</span><span class="p">,</span> <span class="s2">"visitor-count.json"</span><span class="p">)</span>
 <span class="n">HTML_FILES_WITH_COUNTER</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"index.html"</span><span class="p">]</span>
 <span class="n">VISITOR_DATA_HTML_FILE</span> <span class="o">=</span> <span class="s2">"visitors.html"</span>
+<span class="n">GOATCOUNTER_DOMAIN</span> <span class="o">=</span> <span class="s2">"mergedeyes.goatcounter.com"</span>
 
+<span class="k">def</span><span class="w"> </span><span class="nf">fetch_goatcounter_total</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">"""Fetches the all-time total pageviews for the footer."""</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"https://</span><span class="si">{</span><span class="n">GOATCOUNTER_DOMAIN</span><span class="si">}</span><span class="s2">/counter/TOTAL.json"</span>
+    <span class="n">req</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">"User-Agent"</span><span class="p">:</span> <span class="s2">"mergedcloud-visitor-counter"</span><span class="p">})</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span> <span class="k">as</span> <span class="n">resp</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">resp</span><span class="p">)</span>
+            <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">"count"</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">","</span><span class="p">,</span> <span class="s2">""</span><span class="p">))</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Failed to fetch GoatCounter total: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">fetch_traffic_views</span><span class="p">(</span><span class="n">repo</span><span class="p">,</span> <span class="n">token</span><span class="p">):</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"https://api.github.com/repos/</span><span class="si">{</span><span class="n">repo</span><span class="si">}</span><span class="s2">/traffic/views?per=day"</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">fetch_daily_stats</span><span class="p">(</span><span class="n">token</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Fetches the last 30 days of daily traffic for the chart."""</span>
+    <span class="n">start_date</span> <span class="o">=</span> <span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span> <span class="o">-</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">30</span><span class="p">))</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">"%Y-%m-</span><span class="si">%d</span><span class="s2">T00:00:00Z"</span><span class="p">)</span>
+    <span class="n">end_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">"%Y-%m-</span><span class="si">%d</span><span class="s2">T23:59:59Z"</span><span class="p">)</span>
+    
+    <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"https://</span><span class="si">{</span><span class="n">GOATCOUNTER_DOMAIN</span><span class="si">}</span><span class="s2">/api/v0/stats/total?start=</span><span class="si">{</span><span class="n">start_date</span><span class="si">}</span><span class="s2">&amp;end=</span><span class="si">{</span><span class="n">end_date</span><span class="si">}</span><span class="s2">"</span>
+    
     <span class="n">req</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span>
         <span class="n">url</span><span class="p">,</span>
         <span class="n">headers</span><span class="o">=</span><span class="p">{</span>
             <span class="s2">"Authorization"</span><span class="p">:</span> <span class="sa">f</span><span class="s2">"Bearer </span><span class="si">{</span><span class="n">token</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
-            <span class="s2">"Accept"</span><span class="p">:</span> <span class="s2">"application/vnd.github+json"</span><span class="p">,</span>
-            <span class="s2">"X-GitHub-Api-Version"</span><span class="p">:</span> <span class="s2">"2022-11-28"</span><span class="p">,</span>
-            <span class="s2">"User-Agent"</span><span class="p">:</span> <span class="s2">"mergedcloud-visitor-counter"</span><span class="p">,</span>
+            <span class="s2">"Content-Type"</span><span class="p">:</span> <span class="s2">"application/json"</span><span class="p">,</span>
+            <span class="s2">"User-Agent"</span><span class="p">:</span> <span class="s2">"mergedcloud-visitor-counter"</span>
         <span class="p">},</span>
     <span class="p">)</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="k">with</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span> <span class="k">as</span> <span class="n">resp</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">resp</span><span class="p">)</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">resp</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"stats"</span><span class="p">,</span> <span class="p">[])</span>
     <span class="k">except</span> <span class="n">urllib</span><span class="o">.</span><span class="n">error</span><span class="o">.</span><span class="n">HTTPError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
         <span class="n">body</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">"utf-8"</span><span class="p">,</span> <span class="s2">"replace"</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"GitHub traffic API request failed: </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">code</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">reason</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="n">body</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"GoatCounter API request failed: </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">code</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">reason</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="n">body</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span>
         <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-
 
 <span class="k">def</span><span class="w"> </span><span class="nf">load_state</span><span class="p">():</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">STATE_PATH</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
@@ -311,50 +308,35 @@
             <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">new_html</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"updated </span><span class="si">{</span><span class="n">VISITOR_DATA_HTML_FILE</span><span class="si">}</span><span class="s2"> with </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">daily</span><span class="p">)</span><span class="si">}</span><span class="s2"> day(s) of data"</span><span class="p">)</span>
 
-
 <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
-    <span class="n">repo</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"GITHUB_REPOSITORY"</span><span class="p">]</span>
-    <span class="n">token</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"TRAFFIC_PAT"</span><span class="p">)</span>
+    <span class="n">token</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"GOATCOUNTER_TOKEN"</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">token</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span>
-            <span class="s2">"error: TRAFFIC_PAT is not set. The default GITHUB_TOKEN cannot read "</span>
-            <span class="s2">"this repo's traffic stats - add a personal access token (classic PAT "</span>
-            <span class="s2">"with 'repo' scope, or fine-grained PAT with 'Administration: "</span>
-            <span class="s2">"Read-only') as the TRAFFIC_PAT repository secret."</span><span class="p">,</span>
-            <span class="n">file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">,</span>
-        <span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"error: GOATCOUNTER_TOKEN is not set."</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span>
         <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
     <span class="n">state</span> <span class="o">=</span> <span class="n">load_state</span><span class="p">()</span>
-    <span class="n">data</span> <span class="o">=</span> <span class="n">fetch_traffic_views</span><span class="p">(</span><span class="n">repo</span><span class="p">,</span> <span class="n">token</span><span class="p">)</span>
-    <span class="n">views</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"views"</span><span class="p">,</span> <span class="p">[])</span>
 
-    <span class="n">daily</span> <span class="o">=</span> <span class="n">state</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">"daily"</span><span class="p">,</span> <span class="p">{})</span>
-    <span class="n">new_total</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="s2">"total"</span><span class="p">]</span>
-    <span class="n">last_counted</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="s2">"last_counted_date"</span><span class="p">]</span>
+    <span class="c1"># Get overall total for the footer</span>
+    <span class="n">new_total</span> <span class="o">=</span> <span class="n">fetch_goatcounter_total</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">new_total</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">new_total</span> <span class="o">=</span> <span class="n">state</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"total"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 
-    <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">views</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">v</span><span class="p">:</span> <span class="n">v</span><span class="p">[</span><span class="s2">"timestamp"</span><span class="p">]):</span>
-        <span class="n">day</span> <span class="o">=</span> <span class="n">entry</span><span class="p">[</span><span class="s2">"timestamp"</span><span class="p">][:</span><span class="mi">10</span><span class="p">]</span>  <span class="c1"># "YYYY-MM-DDT00:00:00Z" -&gt; "YYYY-MM-DD"</span>
-        <span class="c1"># Always (re)record the day's count in `daily`, even for a day already</span>
-        <span class="c1"># folded into `total` by an earlier run - the traffic API only ever</span>
-        <span class="c1"># exposes a rolling 14-day window, so this is the one chance to backfill</span>
-        <span class="c1"># `daily` for any day still visible in it. `total` itself must still</span>
-        <span class="c1"># only grow for days newer than last_counted_date, or a day already</span>
-        <span class="c1"># counted once would get counted again.</span>
-        <span class="n">daily</span><span class="p">[</span><span class="n">day</span><span class="p">]</span> <span class="o">=</span> <span class="n">entry</span><span class="p">[</span><span class="s2">"count"</span><span class="p">]</span>
-        <span class="k">if</span> <span class="n">day</span> <span class="o">&gt;</span> <span class="n">last_counted</span><span class="p">:</span>
-            <span class="n">new_total</span> <span class="o">+=</span> <span class="n">entry</span><span class="p">[</span><span class="s2">"count"</span><span class="p">]</span>
-            <span class="n">last_counted</span> <span class="o">=</span> <span class="n">day</span>
+    <span class="c1"># Get daily stats for the chart</span>
+    <span class="n">daily_stats</span> <span class="o">=</span> <span class="n">fetch_daily_stats</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
+    <span class="n">daily_cache</span> <span class="o">=</span> <span class="n">state</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">"daily"</span><span class="p">,</span> <span class="p">{})</span>
+
+    <span class="k">for</span> <span class="n">stat</span> <span class="ow">in</span> <span class="n">daily_stats</span><span class="p">:</span>
+        <span class="n">day_str</span> <span class="o">=</span> <span class="n">stat</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"day"</span><span class="p">,</span> <span class="s2">""</span><span class="p">)[:</span><span class="mi">10</span><span class="p">]</span>  <span class="c1"># Format: "YYYY-MM-DD"</span>
+        <span class="k">if</span> <span class="n">day_str</span><span class="p">:</span>
+            <span class="n">daily_cache</span><span class="p">[</span><span class="n">day_str</span><span class="p">]</span> <span class="o">=</span> <span class="n">stat</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"daily"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 
     <span class="n">state</span><span class="p">[</span><span class="s2">"total"</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_total</span>
-    <span class="n">state</span><span class="p">[</span><span class="s2">"last_counted_date"</span><span class="p">]</span> <span class="o">=</span> <span class="n">last_counted</span>
-    <span class="n">state</span><span class="p">[</span><span class="s2">"daily"</span><span class="p">]</span> <span class="o">=</span> <span class="n">daily</span>
+    <span class="n">state</span><span class="p">[</span><span class="s2">"daily"</span><span class="p">]</span> <span class="o">=</span> <span class="n">daily_cache</span>
     <span class="n">save_state</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
 
     <span class="n">patch_footer</span><span class="p">(</span><span class="n">new_total</span><span class="p">)</span>
-    <span class="n">patch_visitor_chart</span><span class="p">(</span><span class="n">daily</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"visitor count total: </span><span class="si">{</span><span class="n">new_total</span><span class="si">}</span><span class="s2"> (as of </span><span class="si">{</span><span class="n">last_counted</span><span class="si">}</span><span class="s2">)"</span><span class="p">)</span>
-
+    <span class="n">patch_visitor_chart</span><span class="p">(</span><span class="n">daily_cache</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"visitor count total: </span><span class="si">{</span><span class="n">new_total</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
