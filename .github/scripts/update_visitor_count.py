@@ -4,15 +4,15 @@ Updates the site's visitor counter using GoatCounter analytics.
 
 This script fetches real website traffic data to update the static HTML files,
 keeping the site entirely free of client-side API requests. It performs two tasks:
-1. Fetches the all-time lifetime visitor count via the public `TOTAL.json` 
+1. Fetches the all-time lifetime visitor count via the public `TOTAL.json`
    endpoint and patches it into the footer of `index.html`.
-2. Fetches the last 30 days of daily visitor stats via the authenticated 
-   `/api/v0/stats/total` endpoint, merges them into the local cache 
-   (.github/data/visitor-count.json), and embeds the JSON payload into 
+2. Fetches the last 30 days of daily visitor stats via the authenticated
+   `/api/v0/stats/total` endpoint, merges them into the local cache
+   (.github/data/visitor-count.json), and embeds the JSON payload into
    `visitors.html` for the chart rendering.
 
-Requires GOATCOUNTER_TOKEN in the environment. This must be a GoatCounter API 
-token with 'statistics' permissions. 
+Requires GOATCOUNTER_TOKEN in the environment. This must be a GoatCounter API
+token with 'statistics' permissions.
 """
 
 import json
@@ -42,12 +42,21 @@ def fetch_goatcounter_total():
         return None
 
 def fetch_daily_stats(token):
-    """Fetches the last 30 days of daily traffic for the chart."""
+    """Fetches the last 30 days of daily traffic for the chart.
+
+    Returns None on failure instead of exiting the process, so that the
+    caller can still patch whatever data DID succeed (e.g. the public
+    lifetime total) even when this authenticated call fails -- a bad or
+    revoked token shouldn't also block the footer count from updating.
+    """
     start_date = (datetime.datetime.now(datetime.UTC) - datetime.timedelta(days=30)).strftime("%Y-%m-%dT00:00:00Z")
     end_date = datetime.datetime.now(datetime.UTC).strftime("%Y-%m-%dT23:59:59Z")
-    
-    url = f"https://{GOATCOUNTER_DOMAIN}/api/v0/stats/total?start={start_date}&end={end_date}&access-token={token}"
-    
+
+    # Auth goes only via the Authorization header (per GoatCounter's API docs).
+    # A token must never be put in the URL's query string: query strings get
+    # written to CI logs, proxy logs, and browser history verbatim.
+    url = f"https://{GOATCOUNTER_DOMAIN}/api/v0/stats/total?start={start_date}&end={end_date}"
+
     req = urllib.request.Request(
         url,
         headers={
@@ -63,7 +72,10 @@ def fetch_daily_stats(token):
     except urllib.error.HTTPError as e:
         body = e.read().decode("utf-8", "replace")
         print(f"GoatCounter API request failed: {e.code} {e.reason}\n{body}", file=sys.stderr)
-        sys.exit(1)
+        return None
+    except urllib.error.URLError as e:
+        print(f"GoatCounter API request failed: {e}", file=sys.stderr)
+        return None
 
 def load_state():
     with open(STATE_PATH, encoding="utf-8") as f:
@@ -128,14 +140,19 @@ def main():
     if new_total is None:
         new_total = state.get("total", 0)
 
-    # Get daily stats for the chart
+    # Get daily stats for the chart. This can fail independently of the
+    # public total above (e.g. a bad/revoked API token) -- don't let that
+    # stop the footer count (and whatever cached daily data we already
+    # have) from still being written out.
     daily_stats = fetch_daily_stats(token)
     daily_cache = state.setdefault("daily", {})
+    daily_stats_ok = daily_stats is not None
 
-    for stat in daily_stats:
-        day_str = stat.get("day", "")[:10]  # Format: "YYYY-MM-DD"
-        if day_str:
-            daily_cache[day_str] = stat.get("daily", 0)
+    if daily_stats_ok:
+        for stat in daily_stats:
+            day_str = stat.get("day", "")[:10]  # Format: "YYYY-MM-DD"
+            if day_str:
+                daily_cache[day_str] = stat.get("daily", 0)
 
     state["total"] = new_total
     state["daily"] = daily_cache
@@ -144,6 +161,15 @@ def main():
     patch_footer(new_total)
     patch_visitor_chart(daily_cache)
     print(f"visitor count total: {new_total}")
+
+    if not daily_stats_ok:
+        print(
+            "warning: daily stats fetch failed (see error above) -- "
+            "footer total was still updated, but chart data is stale/unchanged. "
+            "Check GOATCOUNTER_TOKEN.",
+            file=sys.stderr,
+        )
+        sys.exit(1)
 
 if __name__ == "__main__":
     main()
