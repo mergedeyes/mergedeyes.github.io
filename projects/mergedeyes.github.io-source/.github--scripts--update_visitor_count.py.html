@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>.github/scripts/update_visitor_count.py — Personal Website — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=05225b4e" />
+  <link rel="stylesheet" href="../../styles.css?v=b7ac0070" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -151,7 +151,22 @@
 <span class="normal">106</span>
 <span class="normal">107</span>
 <span class="normal">108</span>
-<span class="normal">109</span></pre></div></td><td class="code"><div><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span></pre></div></td><td class="code"><div><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
 <span class="sd">"""</span>
 <span class="sd">Updates the site's visitor counter.</span>
 
@@ -168,9 +183,15 @@
 <span class="sd">which GitHub has since rolled the data off - unavoidable given what the</span>
 <span class="sd">API provides).</span>
 
-<span class="sd">Requires GITHUB_TOKEN and GITHUB_REPOSITORY in the environment, as set</span>
-<span class="sd">automatically inside a GitHub Actions job. Reads/writes only local files</span>
-<span class="sd">in the repo checkout plus one call to api.github.com.</span>
+<span class="sd">Requires TRAFFIC_PAT and GITHUB_REPOSITORY in the environment. TRAFFIC_PAT</span>
+<span class="sd">must be a personal access token with permission to read this repo's</span>
+<span class="sd">traffic stats (classic PAT with the "repo" scope, or a fine-grained PAT</span>
+<span class="sd">with "Administration: Read-only" on this repository) - the default</span>
+<span class="sd">Actions-issued GITHUB_TOKEN cannot call the traffic API no matter what is</span>
+<span class="sd">granted under `permissions:` in the workflow, since traffic/views sits</span>
+<span class="sd">under repo administration rather than the standard Actions permission</span>
+<span class="sd">set. Reads/writes only local files in the repo checkout plus one call to</span>
+<span class="sd">api.github.com.</span>
 <span class="sd">"""</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
@@ -235,7 +256,16 @@
 
 <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
     <span class="n">repo</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"GITHUB_REPOSITORY"</span><span class="p">]</span>
-    <span class="n">token</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"GITHUB_TOKEN"</span><span class="p">]</span>
+    <span class="n">token</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"TRAFFIC_PAT"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">token</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span>
+            <span class="s2">"error: TRAFFIC_PAT is not set. The default GITHUB_TOKEN cannot read "</span>
+            <span class="s2">"this repo's traffic stats - add a personal access token (classic PAT "</span>
+            <span class="s2">"with 'repo' scope, or fine-grained PAT with 'Administration: "</span>
+            <span class="s2">"Read-only') as the TRAFFIC_PAT repository secret."</span><span class="p">,</span>
+            <span class="n">file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
     <span class="n">state</span> <span class="o">=</span> <span class="n">load_state</span><span class="p">()</span>
     <span class="n">data</span> <span class="o">=</span> <span class="n">fetch_traffic_views</span><span class="p">(</span><span class="n">repo</span><span class="p">,</span> <span class="n">token</span><span class="p">)</span>
