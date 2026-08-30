@@ -1,3 +1,3 @@
 [![Generate project pages](https://github.com/mergedeyes/mergedeyes.github.io/actions/workflows/generate-project-pages.yml/badge.svg?event=push)](https://github.com/mergedeyes/mergedeyes.github.io/actions/workflows/generate-project-pages.yml)
-[![pages-build-deployment](https://github.com/mergedeyes/mergedeyes.github.io/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/mergedeyes/mergedeyes.github.io/actions/workflows/pages/pages-build-deployment)
+[![Deploy Jekyll with GitHub Pages](https://github.com/mergedeyes/mergedeyes.github.io/actions/workflows/jekyll-gh-pages.yml/badge.svg)](https://github.com/mergedeyes/mergedeyes.github.io/actions/workflows/jekyll-gh-pages.yml)
 [![Update visitor count](https://github.com/mergedeyes/mergedeyes.github.io/actions/workflows/update-visitor-count.yml/badge.svg)](https://github.com/mergedeyes/mergedeyes.github.io/actions/workflows/update-visitor-count.yml)
