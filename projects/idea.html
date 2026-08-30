@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>idea — Jan</title>
-  <link rel="stylesheet" href="../styles.css?v=4e6172ad" />
+  <link rel="stylesheet" href="../styles.css?v=e0146dfa" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -43,7 +43,7 @@
           <div class="card__links">
             <a href="https://github.com/mergedeyes/idea" class="link">Repository</a>
             <a href="idea-source.html" class="link">View source (src/main.rs)</a>
-            <a href="idea-commits.html" class="link">Commit history (8)</a>
+            <a href="idea-commits.html" class="link">Commit history (9)</a>
           </div>
           <span class="license-badge">GPL-3.0</span>
         </div>
@@ -52,7 +52,7 @@
 <p dir="auto">A tiny command-line tool for capturing ideas before you forget them, organized by topic, stored locally as JSON.</p>
 <h2 class="heading-element" dir="auto">What it's for</h2>
 <p dir="auto">You're mid-task and a thought worth keeping shows up: a project idea, a thing to look up later, a line for a song. <code>idea</code> lets you get it down in one command, filed under a topic, without breaking your flow. Later you can list, search, or clean up what you've collected.</p>
-<p dir="auto">Every topic and every idea has a permanent numeric id. Ids never shift when you add or remove things elsewhere in your list, so a delete you queue up based on <code>idea list</code> output stays valid even if you add new ideas in between.</p>
+<p dir="auto">Every topic and every idea has a permanent numeric id, but that id is only unique among its own siblings - a topic's direct sub-topics number their own 1, 2, 3, ..., and each topic's own ideas number their own 1, 2, 3, ..., independently of every other topic (see Ids below). Ids never shift when you add or remove things elsewhere in your list, so a delete you queue up based on <code>idea list</code> output stays valid even if you add new ideas in between.</p>
 <h2 class="heading-element" dir="auto">Installation</h2>
 <p dir="auto">Requires the Rust toolchain (<code>cargo</code>). Install it via <a href="https://rustup.rs/" rel="nofollow">rustup</a> if you don't have it yet.</p>
 <div class="highlight highlight-source-shell notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="git clone https://github.com/mergedeyes/idea.git
@@ -71,6 +71,9 @@ cargo build --release</pre></div>
 <p dir="auto">You can also give a chain of topic names to file an idea under a sub-topic, walked/created the
 same way as <code>add-topic</code> (see Sub-topics below):</p>
 <div class="highlight highlight-source-shell notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content='idea Programming Rust WebDev "look into async traits"' dir="auto"><pre>idea Programming Rust WebDev <span class="pl-s"><span class="pl-pds">"</span>look into async traits<span class="pl-pds">"</span></span></pre></div>
+<p dir="auto">If every topic argument is a number instead, it's treated as an existing topic's id chain (see
+Ids below), not a name:</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content='idea 2 1 "look into async traits"     # files under whatever topic is at id chain "2 1"' dir="auto"><pre>idea 2 1 <span class="pl-s"><span class="pl-pds">"</span>look into async traits<span class="pl-pds">"</span></span>     <span class="pl-c"><span class="pl-c">#</span> files under whatever topic is at id chain "2 1"</span></pre></div>
 <h3 class="heading-element" dir="auto">List everything</h3>
 <div class="highlight highlight-source-shell notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="idea list" dir="auto"><pre>idea list</pre></div>
 <div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="=== TOPIC 1: Rust ===
@@ -85,25 +88,25 @@ same way as <code>add-topic</code> (see Sub-topics below):</p>
 === TOPIC 2: Guitar ===
  [1] practice barre chords
 </code></pre></div>
+<p dir="auto">A nested topic's header shows its full id chain, not just its own local id - see Ids below.</p>
 <h3 class="heading-element" dir="auto">Search</h3>
-<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content='idea search 1 "io_uring"      # only within topic id 1
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content='idea search 1 "io_uring"      # only within top-level topic id 1 (and its sub-topics)
 idea search 0 "io_uring"      # across all topics
 idea search "rust" "pin"      # topics whose name contains "rust", filtered by idea text
-idea search "rust"            # topics AND ideas searched for "rust" at once' dir="auto"><pre>idea search 1 <span class="pl-s"><span class="pl-pds">"</span>io_uring<span class="pl-pds">"</span></span>      <span class="pl-c"><span class="pl-c">#</span> only within topic id 1</span>
+idea search "rust"            # topics AND ideas searched for "rust" at once' dir="auto"><pre>idea search 1 <span class="pl-s"><span class="pl-pds">"</span>io_uring<span class="pl-pds">"</span></span>      <span class="pl-c"><span class="pl-c">#</span> only within top-level topic id 1 (and its sub-topics)</span>
 idea search 0 <span class="pl-s"><span class="pl-pds">"</span>io_uring<span class="pl-pds">"</span></span>      <span class="pl-c"><span class="pl-c">#</span> across all topics</span>
 idea search <span class="pl-s"><span class="pl-pds">"</span>rust<span class="pl-pds">"</span></span> <span class="pl-s"><span class="pl-pds">"</span>pin<span class="pl-pds">"</span></span>      <span class="pl-c"><span class="pl-c">#</span> topics whose name contains "rust", filtered by idea text</span>
 idea search <span class="pl-s"><span class="pl-pds">"</span>rust<span class="pl-pds">"</span></span>            <span class="pl-c"><span class="pl-c">#</span> topics AND ideas searched for "rust" at once</span></pre></div>
 <p dir="auto">The topic selector is a number (an exact topic id, or <code>0</code> for "every topic") or a case-insensitive substring match on the topic name. The idea filter, when given, is a case-insensitive substring match on the idea text.</p>
 <p dir="auto">With a single search argument, it's matched against both topics and ideas at once: a topic whose name (or id) matches has all of its ideas listed, and any idea whose text matches is listed regardless of its topic.</p>
+<p dir="auto">Unlike <code>edit</code>/<code>delete</code>, a numeric search selector is a single id, not a chain - so it matches that id wherever it occurs in the tree. Since ids are only unique among their own siblings, that can match more than one topic if two of them (under different parents) happen to share the same local id; each match is printed with its own full id chain so they're easy to tell apart.</p>
 <h3 class="heading-element" dir="auto">Edit</h3>
-<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="idea edit 1      # rename topic id 1
-idea edit 1 2    # edit the text of idea id 2 in topic id 1" dir="auto"><pre>idea edit 1      <span class="pl-c"><span class="pl-c">#</span> rename topic id 1</span>
-idea edit 1 2    <span class="pl-c"><span class="pl-c">#</span> edit the text of idea id 2 in topic id 1</span></pre></div>
-<p dir="auto">One id after <code>edit</code> renames a topic; two ids edit a specific idea's text. Either way, the
-current name/text opens pre-filled on the line, ready to edit: change what you want and press
-Enter to save, or clear the line (or press Ctrl-C/Ctrl-D) to abort without changing anything.
-Since topic ids are unique across the whole tree (see Sub-topics below), this works on a topic
-at any depth.</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="idea edit 1        # rename top-level topic id 1
+idea edit 1 2       # edit idea id 2 in topic 1, or (if no such idea) rename its direct sub-topic id 2
+idea edit 1 2 3     # one level deeper: id 3 inside topic 2, inside topic 1" dir="auto"><pre>idea edit 1        <span class="pl-c"><span class="pl-c">#</span> rename top-level topic id 1</span>
+idea edit 1 2       <span class="pl-c"><span class="pl-c">#</span> edit idea id 2 in topic 1, or (if no such idea) rename its direct sub-topic id 2</span>
+idea edit 1 2 3     <span class="pl-c"><span class="pl-c">#</span> one level deeper: id 3 inside topic 2, inside topic 1</span></pre></div>
+<p dir="auto">One id renames a top-level topic. Two or more ids walk a chain of topic ids one level at a time down to the second-to-last one, then try the very last id as an idea living directly in it; if there's no such idea, it's tried as a direct sub-topic instead and renamed (see Ids below for how the chain works). Either way, the current name/text opens pre-filled on the line, ready to edit: change what you want and press Enter to save, or clear the line (or press Ctrl-C/Ctrl-D) to abort without changing anything.</p>
 <h3 class="heading-element" dir="auto">Sub-topics</h3>
 <p dir="auto">Topics can nest inside other topics:</p>
 <div class="highlight highlight-source-shell notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="idea add-topic Programming Rust WebDev" dir="auto"><pre>idea add-topic Programming Rust WebDev</pre></div>
@@ -113,32 +116,38 @@ created as a sub-topic of the previous one. So if <code>Programming</code> alrea
 <code>WebDev</code> don't, this adds <code>Programming &gt; Rust &gt; WebDev</code> as a new chain of sub-topics under the
 existing <code>Programming</code> topic. Running it again with names that all already exist just walks
 down the chain without creating anything.</p>
-<p dir="auto"><code>idea list</code> shows sub-topics indented under their parent. Every id (topic or idea) still
-behaves the way it does everywhere else in this tool: topic ids are unique across the entire
-tree, so <code>search</code>, <code>edit</code>, and <code>delete</code> all reach a sub-topic just by its id, no matter how
-deep it's nested.</p>
+<p dir="auto"><code>idea list</code> shows sub-topics indented under their parent, each labeled with its full id chain -
+see Ids below.</p>
 <p dir="auto">Adding an idea works the same way: <code>idea "&lt;topic&gt;" "&lt;idea&gt;"</code> still matches/creates a single
-top-level topic by name, exactly like before sub-topics existed - unless <code>&lt;topic&gt;</code> is a number,
-in which case it addresses an existing topic's id at any depth. Give more than one topic name
-before the idea text (<code>idea &lt;T1&gt; &lt;T2&gt; ... "&lt;idea&gt;"</code>) and it's walked/created as a chain just
-like <code>add-topic</code>, then the idea is filed under the last topic in the chain.</p>
+top-level topic by name, exactly like before sub-topics existed - unless every <code>&lt;topic&gt;</code> argument
+is a number, in which case it's treated as an existing topic's id chain (see Ids). Give more than
+one topic name before the idea text (<code>idea &lt;T1&gt; &lt;T2&gt; ... "&lt;idea&gt;"</code>) and it's walked/created as a
+chain just like <code>add-topic</code>, then the idea is filed under the last topic in the chain.</p>
+<h3 class="heading-element" dir="auto">Ids</h3>
+<p dir="auto">A topic id is only unique among its own siblings - the same way an idea id is only unique within its own topic. The first sub-topic you create under any topic gets id 1, no matter how many topics or sub-topics already exist elsewhere in your list; the same is true one level further down, and so on. This keeps numbers small and meaningful (the 2nd sub-topic under "Work" is id 2, not some arbitrary number that also depends on everything else you've ever filed).</p>
+<p dir="auto">Because of that, reaching anything below the top level means giving the whole chain of ids down to it, one per level:</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="idea edit 2 4       # the topic (or idea) numbered 4, directly inside top-level topic 2
+idea edit 2 4 6     # one level deeper: id 6, directly inside topic 4, which is inside topic 2" dir="auto"><pre>idea edit 2 4       <span class="pl-c"><span class="pl-c">#</span> the topic (or idea) numbered 4, directly inside top-level topic 2</span>
+idea edit 2 4 6     <span class="pl-c"><span class="pl-c">#</span> one level deeper: id 6, directly inside topic 4, which is inside topic 2</span></pre></div>
+<p dir="auto">A single id on its own always means a top-level topic. <code>idea list</code> prints every topic's full id chain (e.g. <code>TOPIC 2 4: WebDev</code>), so you never have to count levels by hand - just read the chain straight off the listing and pass it to <code>edit</code>/<code>delete</code>.</p>
+<p dir="auto">The <em>last</em> id in a chain is tried as an idea living directly in the topic reached by the ids before it; if there's no such idea, it's tried as a direct sub-topic instead. That's how <code>idea edit 2 4</code> can mean either "idea 4 in topic 2" or "rename sub-topic 4 of topic 2", and how <code>idea delete ...</code> picks between deleting an idea or an entire sub-topic. If a topic happens to have <em>both</em> an idea and a direct sub-topic with the same id, the idea wins - address the sub-topic afterward (or after <code>defrag</code>) once that collision is gone.</p>
+<p dir="auto"><code>idea search</code>'s numeric selector doesn't take a chain (see Search above) - it's the one place a bare id can match more than one topic.</p>
 <h3 class="heading-element" dir="auto">Delete</h3>
 <div class="highlight highlight-source-shell notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="idea delete 2 1        # delete idea id 1 inside topic id 2
-idea delete 2 4        # topic 2 has no idea id 4, so this deletes sub-topic id 4 instead
-idea delete 2          # delete topic id 2 entirely, including its ideas and any sub-topics" dir="auto"><pre>idea delete 2 1        <span class="pl-c"><span class="pl-c">#</span> delete idea id 1 inside topic id 2</span>
-idea delete 2 4        <span class="pl-c"><span class="pl-c">#</span> topic 2 has no idea id 4, so this deletes sub-topic id 4 instead</span>
-idea delete 2          <span class="pl-c"><span class="pl-c">#</span> delete topic id 2 entirely, including its ideas and any sub-topics</span></pre></div>
-<p dir="auto">The two-id form tries the second id as an idea living directly in that topic first; if there's
-no such idea, it tries it as a sub-topic nested anywhere inside that topic instead. Either way,
-deleting a topic (directly, or found this way) that still contains ideas or sub-topics asks for
-confirmation first (default: no):</p>
+idea delete 2 4        # topic 2 has no idea id 4, so this deletes its direct sub-topic id 4 instead
+idea delete 2          # delete topic id 2 entirely, including its ideas and any sub-topics
+idea delete 2 4 6      # one level deeper: delete idea/sub-topic 6 inside topic 4, inside topic 2" dir="auto"><pre>idea delete 2 1        <span class="pl-c"><span class="pl-c">#</span> delete idea id 1 inside topic id 2</span>
+idea delete 2 4        <span class="pl-c"><span class="pl-c">#</span> topic 2 has no idea id 4, so this deletes its direct sub-topic id 4 instead</span>
+idea delete 2          <span class="pl-c"><span class="pl-c">#</span> delete topic id 2 entirely, including its ideas and any sub-topics</span>
+idea delete 2 4 6      <span class="pl-c"><span class="pl-c">#</span> one level deeper: delete idea/sub-topic 6 inside topic 4, inside topic 2</span></pre></div>
+<p dir="auto">Same chain rules as <code>edit</code> (see Ids above). Either way, deleting a topic (directly, or found this way) that still contains ideas or sub-topics asks for confirmation first (default: no):</p>
 <div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content='Topic "Guitar" (id 2) still has 1 idea(s) in it (counting sub-topics). Delete it and everything inside? [y/N]:'><pre class="notranslate"><code>Topic "Guitar" (id 2) still has 1 idea(s) in it (counting sub-topics). Delete it and everything inside? [y/N]:
 </code></pre></div>
 <p dir="auto">An empty topic (no ideas, no sub-topics) deletes immediately without prompting.</p>
 <h3 class="heading-element" dir="auto">Defrag</h3>
-<p dir="auto">Deleting things leaves gaps in the numbering (e.g. topic ids <code>1, 3, 4</code> after deleting topic <code>2</code>). This is intentional, ids are permanent, not positions, so nothing else shifts. If you'd rather have the ids compact again:</p>
+<p dir="auto">Deleting things leaves gaps in the numbering (e.g. topic ids <code>1, 3, 4</code> after deleting topic <code>2</code> from among its siblings). This is intentional, ids are permanent, not positions, so nothing else shifts. If you'd rather have the ids compact again:</p>
 <div class="highlight highlight-source-shell notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="idea defrag" dir="auto"><pre>idea defrag</pre></div>
-<p dir="auto">This renumbers all topics to <code>1, 2, 3, ...</code> and, within each topic, all its ideas to <code>1, 2, 3, ...</code>, preserving the existing relative order.</p>
+<p dir="auto">This renumbers every topic's direct sub-topics back to <code>1, 2, 3, ...</code> and every topic's own ideas back to <code>1, 2, 3, ...</code>, independently at every level, preserving each level's existing relative order.</p>
 <h2 class="heading-element" dir="auto">Where data is stored</h2>
 <p dir="auto">Ideas are saved as JSON in <code>~/.config/idea/ideas.json</code>. If the file doesn't exist yet, it's created automatically on first use.</p>
 <p dir="auto">PS: If you look through the code and are wondering:
