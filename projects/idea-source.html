@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>src/main.rs — idea — Jan</title>
-  <link rel="stylesheet" href="../styles.css?v=12f26a2e" />
+  <link rel="stylesheet" href="../styles.css?v=97c5c713" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -443,7 +443,396 @@
 <span class="normal">398</span>
 <span class="normal">399</span>
 <span class="normal">400</span>
-<span class="normal">401</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">use</span><span class="w"> </span><span class="n">std</span><span class="p">::{</span>
+<span class="normal">401</span>
+<span class="normal">402</span>
+<span class="normal">403</span>
+<span class="normal">404</span>
+<span class="normal">405</span>
+<span class="normal">406</span>
+<span class="normal">407</span>
+<span class="normal">408</span>
+<span class="normal">409</span>
+<span class="normal">410</span>
+<span class="normal">411</span>
+<span class="normal">412</span>
+<span class="normal">413</span>
+<span class="normal">414</span>
+<span class="normal">415</span>
+<span class="normal">416</span>
+<span class="normal">417</span>
+<span class="normal">418</span>
+<span class="normal">419</span>
+<span class="normal">420</span>
+<span class="normal">421</span>
+<span class="normal">422</span>
+<span class="normal">423</span>
+<span class="normal">424</span>
+<span class="normal">425</span>
+<span class="normal">426</span>
+<span class="normal">427</span>
+<span class="normal">428</span>
+<span class="normal">429</span>
+<span class="normal">430</span>
+<span class="normal">431</span>
+<span class="normal">432</span>
+<span class="normal">433</span>
+<span class="normal">434</span>
+<span class="normal">435</span>
+<span class="normal">436</span>
+<span class="normal">437</span>
+<span class="normal">438</span>
+<span class="normal">439</span>
+<span class="normal">440</span>
+<span class="normal">441</span>
+<span class="normal">442</span>
+<span class="normal">443</span>
+<span class="normal">444</span>
+<span class="normal">445</span>
+<span class="normal">446</span>
+<span class="normal">447</span>
+<span class="normal">448</span>
+<span class="normal">449</span>
+<span class="normal">450</span>
+<span class="normal">451</span>
+<span class="normal">452</span>
+<span class="normal">453</span>
+<span class="normal">454</span>
+<span class="normal">455</span>
+<span class="normal">456</span>
+<span class="normal">457</span>
+<span class="normal">458</span>
+<span class="normal">459</span>
+<span class="normal">460</span>
+<span class="normal">461</span>
+<span class="normal">462</span>
+<span class="normal">463</span>
+<span class="normal">464</span>
+<span class="normal">465</span>
+<span class="normal">466</span>
+<span class="normal">467</span>
+<span class="normal">468</span>
+<span class="normal">469</span>
+<span class="normal">470</span>
+<span class="normal">471</span>
+<span class="normal">472</span>
+<span class="normal">473</span>
+<span class="normal">474</span>
+<span class="normal">475</span>
+<span class="normal">476</span>
+<span class="normal">477</span>
+<span class="normal">478</span>
+<span class="normal">479</span>
+<span class="normal">480</span>
+<span class="normal">481</span>
+<span class="normal">482</span>
+<span class="normal">483</span>
+<span class="normal">484</span>
+<span class="normal">485</span>
+<span class="normal">486</span>
+<span class="normal">487</span>
+<span class="normal">488</span>
+<span class="normal">489</span>
+<span class="normal">490</span>
+<span class="normal">491</span>
+<span class="normal">492</span>
+<span class="normal">493</span>
+<span class="normal">494</span>
+<span class="normal">495</span>
+<span class="normal">496</span>
+<span class="normal">497</span>
+<span class="normal">498</span>
+<span class="normal">499</span>
+<span class="normal">500</span>
+<span class="normal">501</span>
+<span class="normal">502</span>
+<span class="normal">503</span>
+<span class="normal">504</span>
+<span class="normal">505</span>
+<span class="normal">506</span>
+<span class="normal">507</span>
+<span class="normal">508</span>
+<span class="normal">509</span>
+<span class="normal">510</span>
+<span class="normal">511</span>
+<span class="normal">512</span>
+<span class="normal">513</span>
+<span class="normal">514</span>
+<span class="normal">515</span>
+<span class="normal">516</span>
+<span class="normal">517</span>
+<span class="normal">518</span>
+<span class="normal">519</span>
+<span class="normal">520</span>
+<span class="normal">521</span>
+<span class="normal">522</span>
+<span class="normal">523</span>
+<span class="normal">524</span>
+<span class="normal">525</span>
+<span class="normal">526</span>
+<span class="normal">527</span>
+<span class="normal">528</span>
+<span class="normal">529</span>
+<span class="normal">530</span>
+<span class="normal">531</span>
+<span class="normal">532</span>
+<span class="normal">533</span>
+<span class="normal">534</span>
+<span class="normal">535</span>
+<span class="normal">536</span>
+<span class="normal">537</span>
+<span class="normal">538</span>
+<span class="normal">539</span>
+<span class="normal">540</span>
+<span class="normal">541</span>
+<span class="normal">542</span>
+<span class="normal">543</span>
+<span class="normal">544</span>
+<span class="normal">545</span>
+<span class="normal">546</span>
+<span class="normal">547</span>
+<span class="normal">548</span>
+<span class="normal">549</span>
+<span class="normal">550</span>
+<span class="normal">551</span>
+<span class="normal">552</span>
+<span class="normal">553</span>
+<span class="normal">554</span>
+<span class="normal">555</span>
+<span class="normal">556</span>
+<span class="normal">557</span>
+<span class="normal">558</span>
+<span class="normal">559</span>
+<span class="normal">560</span>
+<span class="normal">561</span>
+<span class="normal">562</span>
+<span class="normal">563</span>
+<span class="normal">564</span>
+<span class="normal">565</span>
+<span class="normal">566</span>
+<span class="normal">567</span>
+<span class="normal">568</span>
+<span class="normal">569</span>
+<span class="normal">570</span>
+<span class="normal">571</span>
+<span class="normal">572</span>
+<span class="normal">573</span>
+<span class="normal">574</span>
+<span class="normal">575</span>
+<span class="normal">576</span>
+<span class="normal">577</span>
+<span class="normal">578</span>
+<span class="normal">579</span>
+<span class="normal">580</span>
+<span class="normal">581</span>
+<span class="normal">582</span>
+<span class="normal">583</span>
+<span class="normal">584</span>
+<span class="normal">585</span>
+<span class="normal">586</span>
+<span class="normal">587</span>
+<span class="normal">588</span>
+<span class="normal">589</span>
+<span class="normal">590</span>
+<span class="normal">591</span>
+<span class="normal">592</span>
+<span class="normal">593</span>
+<span class="normal">594</span>
+<span class="normal">595</span>
+<span class="normal">596</span>
+<span class="normal">597</span>
+<span class="normal">598</span>
+<span class="normal">599</span>
+<span class="normal">600</span>
+<span class="normal">601</span>
+<span class="normal">602</span>
+<span class="normal">603</span>
+<span class="normal">604</span>
+<span class="normal">605</span>
+<span class="normal">606</span>
+<span class="normal">607</span>
+<span class="normal">608</span>
+<span class="normal">609</span>
+<span class="normal">610</span>
+<span class="normal">611</span>
+<span class="normal">612</span>
+<span class="normal">613</span>
+<span class="normal">614</span>
+<span class="normal">615</span>
+<span class="normal">616</span>
+<span class="normal">617</span>
+<span class="normal">618</span>
+<span class="normal">619</span>
+<span class="normal">620</span>
+<span class="normal">621</span>
+<span class="normal">622</span>
+<span class="normal">623</span>
+<span class="normal">624</span>
+<span class="normal">625</span>
+<span class="normal">626</span>
+<span class="normal">627</span>
+<span class="normal">628</span>
+<span class="normal">629</span>
+<span class="normal">630</span>
+<span class="normal">631</span>
+<span class="normal">632</span>
+<span class="normal">633</span>
+<span class="normal">634</span>
+<span class="normal">635</span>
+<span class="normal">636</span>
+<span class="normal">637</span>
+<span class="normal">638</span>
+<span class="normal">639</span>
+<span class="normal">640</span>
+<span class="normal">641</span>
+<span class="normal">642</span>
+<span class="normal">643</span>
+<span class="normal">644</span>
+<span class="normal">645</span>
+<span class="normal">646</span>
+<span class="normal">647</span>
+<span class="normal">648</span>
+<span class="normal">649</span>
+<span class="normal">650</span>
+<span class="normal">651</span>
+<span class="normal">652</span>
+<span class="normal">653</span>
+<span class="normal">654</span>
+<span class="normal">655</span>
+<span class="normal">656</span>
+<span class="normal">657</span>
+<span class="normal">658</span>
+<span class="normal">659</span>
+<span class="normal">660</span>
+<span class="normal">661</span>
+<span class="normal">662</span>
+<span class="normal">663</span>
+<span class="normal">664</span>
+<span class="normal">665</span>
+<span class="normal">666</span>
+<span class="normal">667</span>
+<span class="normal">668</span>
+<span class="normal">669</span>
+<span class="normal">670</span>
+<span class="normal">671</span>
+<span class="normal">672</span>
+<span class="normal">673</span>
+<span class="normal">674</span>
+<span class="normal">675</span>
+<span class="normal">676</span>
+<span class="normal">677</span>
+<span class="normal">678</span>
+<span class="normal">679</span>
+<span class="normal">680</span>
+<span class="normal">681</span>
+<span class="normal">682</span>
+<span class="normal">683</span>
+<span class="normal">684</span>
+<span class="normal">685</span>
+<span class="normal">686</span>
+<span class="normal">687</span>
+<span class="normal">688</span>
+<span class="normal">689</span>
+<span class="normal">690</span>
+<span class="normal">691</span>
+<span class="normal">692</span>
+<span class="normal">693</span>
+<span class="normal">694</span>
+<span class="normal">695</span>
+<span class="normal">696</span>
+<span class="normal">697</span>
+<span class="normal">698</span>
+<span class="normal">699</span>
+<span class="normal">700</span>
+<span class="normal">701</span>
+<span class="normal">702</span>
+<span class="normal">703</span>
+<span class="normal">704</span>
+<span class="normal">705</span>
+<span class="normal">706</span>
+<span class="normal">707</span>
+<span class="normal">708</span>
+<span class="normal">709</span>
+<span class="normal">710</span>
+<span class="normal">711</span>
+<span class="normal">712</span>
+<span class="normal">713</span>
+<span class="normal">714</span>
+<span class="normal">715</span>
+<span class="normal">716</span>
+<span class="normal">717</span>
+<span class="normal">718</span>
+<span class="normal">719</span>
+<span class="normal">720</span>
+<span class="normal">721</span>
+<span class="normal">722</span>
+<span class="normal">723</span>
+<span class="normal">724</span>
+<span class="normal">725</span>
+<span class="normal">726</span>
+<span class="normal">727</span>
+<span class="normal">728</span>
+<span class="normal">729</span>
+<span class="normal">730</span>
+<span class="normal">731</span>
+<span class="normal">732</span>
+<span class="normal">733</span>
+<span class="normal">734</span>
+<span class="normal">735</span>
+<span class="normal">736</span>
+<span class="normal">737</span>
+<span class="normal">738</span>
+<span class="normal">739</span>
+<span class="normal">740</span>
+<span class="normal">741</span>
+<span class="normal">742</span>
+<span class="normal">743</span>
+<span class="normal">744</span>
+<span class="normal">745</span>
+<span class="normal">746</span>
+<span class="normal">747</span>
+<span class="normal">748</span>
+<span class="normal">749</span>
+<span class="normal">750</span>
+<span class="normal">751</span>
+<span class="normal">752</span>
+<span class="normal">753</span>
+<span class="normal">754</span>
+<span class="normal">755</span>
+<span class="normal">756</span>
+<span class="normal">757</span>
+<span class="normal">758</span>
+<span class="normal">759</span>
+<span class="normal">760</span>
+<span class="normal">761</span>
+<span class="normal">762</span>
+<span class="normal">763</span>
+<span class="normal">764</span>
+<span class="normal">765</span>
+<span class="normal">766</span>
+<span class="normal">767</span>
+<span class="normal">768</span>
+<span class="normal">769</span>
+<span class="normal">770</span>
+<span class="normal">771</span>
+<span class="normal">772</span>
+<span class="normal">773</span>
+<span class="normal">774</span>
+<span class="normal">775</span>
+<span class="normal">776</span>
+<span class="normal">777</span>
+<span class="normal">778</span>
+<span class="normal">779</span>
+<span class="normal">780</span>
+<span class="normal">781</span>
+<span class="normal">782</span>
+<span class="normal">783</span>
+<span class="normal">784</span>
+<span class="normal">785</span>
+<span class="normal">786</span>
+<span class="normal">787</span>
+<span class="normal">788</span>
+<span class="normal">789</span>
+<span class="normal">790</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">use</span><span class="w"> </span><span class="n">std</span><span class="p">::{</span>
 <span class="w">    </span><span class="n">env</span><span class="p">::</span><span class="n">args</span><span class="p">,</span><span class="w"> </span><span class="c1">// Arguments</span>
 <span class="w">    </span><span class="n">process</span><span class="p">::</span><span class="n">exit</span><span class="p">,</span><span class="w"> </span><span class="c1">// Exiting prematurely</span>
 <span class="w">    </span><span class="n">fs</span><span class="p">::</span><span class="n">File</span><span class="p">,</span><span class="w"> </span><span class="c1">// File tools, like create</span>
@@ -451,6 +840,7 @@
 <span class="w">    </span><span class="n">io</span><span class="p">::{</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">Write</span><span class="p">},</span><span class="w"> </span><span class="c1">// For interactive y/N confirmation prompts</span>
 <span class="p">};</span>
 <span class="k">use</span><span class="w"> </span><span class="n">serde</span><span class="p">::{</span><span class="n">Deserialize</span><span class="p">,</span><span class="w"> </span><span class="n">Serialize</span><span class="p">};</span>
+<span class="k">use</span><span class="w"> </span><span class="n">rustyline</span><span class="p">::</span><span class="n">DefaultEditor</span><span class="p">;</span>
 
 <span class="cp">#[derive(Serialize, Deserialize, Debug, Clone)]</span>
 <span class="k">struct</span><span class="w"> </span><span class="nc">Idea</span><span class="w"> </span><span class="p">{</span>
@@ -463,6 +853,9 @@
 <span class="w">    </span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="kt">u64</span><span class="p">,</span>
 <span class="w">    </span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span>
 <span class="w">    </span><span class="n">ideas</span><span class="p">:</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="n">Idea</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// Nested topics. Missing in files written before sub-topics existed; serde fills those in as empty.</span>
+<span class="w">    </span><span class="cp">#[serde(default)]</span>
+<span class="w">    </span><span class="n">sub_topics</span><span class="p">:</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="n">Topic</span><span class="o">&gt;</span><span class="p">,</span>
 <span class="p">}</span>
 
 <span class="k">type</span><span class="w"> </span><span class="nc">Store</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="n">Topic</span><span class="o">&gt;</span><span class="p">;</span>
@@ -472,17 +865,39 @@
 <span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">"About: idea is a simple cli tool that lets you save important ideas, that you might forget about in 20s ..."</span><span class="p">);</span>
 <span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">"Usage:"</span><span class="p">);</span>
 <span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">"  idea </span><span class="se">\"</span><span class="s">&lt;Topic&gt;</span><span class="se">\"</span><span class="s"> </span><span class="se">\"</span><span class="s">&lt;Idea&gt;</span><span class="se">\"</span><span class="s">           Save a new idea under a topic (default topic: </span><span class="se">\"</span><span class="s">no topic</span><span class="se">\"</span><span class="s">)"</span><span class="p">);</span>
+<span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">"  idea &lt;T1&gt; &lt;T2&gt; ... </span><span class="se">\"</span><span class="s">&lt;Idea&gt;</span><span class="se">\"</span><span class="s">       Save under a chain of (sub-)topics, walked/created like add-topic"</span><span class="p">);</span>
 <span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">"  idea list                          List all topics and ideas, with their ids"</span><span class="p">);</span>
 <span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">"  idea search &lt;topic&gt; [idea]         Search topics/ideas (see below)"</span><span class="p">);</span>
-<span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">"  idea delete &lt;topic_id&gt;              Delete an entire topic, including all its ideas"</span><span class="p">);</span>
-<span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">"  idea delete &lt;topic_id&gt; &lt;idea_id&gt;   Delete a specific idea by id"</span><span class="p">);</span>
+<span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">"  idea edit &lt;topic_id&gt;                Rename a topic (opens the current name to edit)"</span><span class="p">);</span>
+<span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">"  idea edit &lt;topic_id&gt; &lt;idea_id&gt;     Edit an idea's text (opens the current text to edit)"</span><span class="p">);</span>
+<span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">"  idea add-topic &lt;name&gt; [&lt;name&gt; ...] Create/walk a chain of (sub-)topics, see below"</span><span class="p">);</span>
+<span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">"  idea delete &lt;topic_id&gt;              Delete a topic (and everything nested in it)"</span><span class="p">);</span>
+<span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">"  idea delete &lt;topic_id&gt; &lt;id&gt;        Delete an idea by id, or (if no such idea) a nested"</span><span class="p">);</span>
+<span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">"                                      sub-topic by id, from inside that topic"</span><span class="p">);</span>
 <span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">"  idea defrag                        Renumber all ids to close gaps (1, 2, 3, ...), order preserved"</span><span class="p">);</span>
 <span class="w">    </span><span class="fm">println!</span><span class="p">();</span>
 <span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">"Search forms:"</span><span class="p">);</span>
-<span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">"  idea search 1 </span><span class="se">\"</span><span class="s">foo</span><span class="se">\"</span><span class="s">       Search for </span><span class="se">\"</span><span class="s">foo</span><span class="se">\"</span><span class="s"> only within topic id 1"</span><span class="p">);</span>
+<span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">"  idea search 1 </span><span class="se">\"</span><span class="s">foo</span><span class="se">\"</span><span class="s">       Search for </span><span class="se">\"</span><span class="s">foo</span><span class="se">\"</span><span class="s"> only within topic id 1 (and its sub-topics)"</span><span class="p">);</span>
 <span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">"  idea search 0 </span><span class="se">\"</span><span class="s">foo</span><span class="se">\"</span><span class="s">       Search for </span><span class="se">\"</span><span class="s">foo</span><span class="se">\"</span><span class="s"> across all topics"</span><span class="p">);</span>
 <span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">"  idea search </span><span class="se">\"</span><span class="s">work</span><span class="se">\"</span><span class="s"> </span><span class="se">\"</span><span class="s">foo</span><span class="se">\"</span><span class="s">  Search for </span><span class="se">\"</span><span class="s">foo</span><span class="se">\"</span><span class="s"> within topics whose name contains </span><span class="se">\"</span><span class="s">work</span><span class="se">\"</span><span class="s">"</span><span class="p">);</span>
-<span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">"  idea search </span><span class="se">\"</span><span class="s">work</span><span class="se">\"</span><span class="s">        List all ideas in topics whose name contains </span><span class="se">\"</span><span class="s">work</span><span class="se">\"</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">"  idea search </span><span class="se">\"</span><span class="s">work</span><span class="se">\"</span><span class="s">        Search topics AND idea text for </span><span class="se">\"</span><span class="s">work</span><span class="se">\"</span><span class="s"> at the same time"</span><span class="p">);</span>
+<span class="w">    </span><span class="fm">println!</span><span class="p">();</span>
+<span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">"Topic ids are unique across the whole tree, including sub-topics, so 'idea edit &lt;id&gt; ...',"</span><span class="p">);</span>
+<span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">"'idea delete &lt;id&gt; ...' and 'idea search &lt;id&gt; ...' all work on a topic at any depth by its id."</span><span class="p">);</span>
+<span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">"'idea edit' opens the current name/text pre-filled on the line: edit it and press Enter to"</span><span class="p">);</span>
+<span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">"save, or clear the line (or press Ctrl-C/Ctrl-D) to abort without changing anything."</span><span class="p">);</span>
+<span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">"If a single &lt;topic&gt; in 'idea </span><span class="se">\"</span><span class="s">&lt;topic&gt;</span><span class="se">\"</span><span class="s"> </span><span class="se">\"</span><span class="s">&lt;idea&gt;</span><span class="se">\"</span><span class="s">' is a number, it's treated as an existing"</span><span class="p">);</span>
+<span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">"topic's id (found at any depth); otherwise it's matched/created by name (see below)."</span><span class="p">);</span>
+<span class="w">    </span><span class="fm">println!</span><span class="p">();</span>
+<span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">"Sub-topics:"</span><span class="p">);</span>
+<span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">"  idea add-topic Programming Rust WebDev"</span><span class="p">);</span>
+<span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">"  idea Programming Rust WebDev </span><span class="se">\"</span><span class="s">look into async traits</span><span class="se">\"</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">"      Both walk a chain of names left to right the same way: a name that already exists"</span><span class="p">);</span>
+<span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">"      (checked among the current level's own children) becomes the parent for the next name;"</span><span class="p">);</span>
+<span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">"      a name that doesn't exist yet is created as a sub-topic of the previous one. So if"</span><span class="p">);</span>
+<span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">"      </span><span class="se">\"</span><span class="s">Programming</span><span class="se">\"</span><span class="s"> already exists but </span><span class="se">\"</span><span class="s">Rust</span><span class="se">\"</span><span class="s"> and </span><span class="se">\"</span><span class="s">WebDev</span><span class="se">\"</span><span class="s"> don't, both commands add"</span><span class="p">);</span>
+<span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">"      Programming &gt; Rust &gt; WebDev as a new chain of sub-topics under </span><span class="se">\"</span><span class="s">Programming</span><span class="se">\"</span><span class="s"> - the"</span><span class="p">);</span>
+<span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">"      first just creates the chain, the second also files an idea under the last topic in it."</span><span class="p">);</span>
 <span class="w">    </span><span class="fm">println!</span><span class="p">();</span>
 <span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">"Ideas are saved as json in '~/.config/idea/ideas.json'."</span><span class="p">);</span>
 <span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">"Topic and idea ids are permanent: a new one gets (current highest id in its scope) + 1, and"</span><span class="p">);</span>
@@ -505,7 +920,7 @@
 <span class="w">                </span><span class="p">}</span>
 <span class="w">            </span><span class="p">}</span>
 <span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="n">store</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">Topic</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="nc">next_topic_id</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="nc">topic_name</span><span class="p">,</span><span class="w"> </span><span class="n">ideas</span><span class="w"> </span><span class="p">});</span>
+<span class="w">        </span><span class="n">store</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">Topic</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="nc">next_topic_id</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="nc">topic_name</span><span class="p">,</span><span class="w"> </span><span class="n">ideas</span><span class="p">,</span><span class="w"> </span><span class="n">sub_topics</span><span class="p">:</span><span class="w"> </span><span class="nb">Vec</span><span class="p">::</span><span class="n">new</span><span class="p">()</span><span class="w"> </span><span class="p">});</span>
 <span class="w">        </span><span class="n">next_topic_id</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="n">store</span>
@@ -566,18 +981,134 @@
 <span class="w">    </span><span class="n">items</span><span class="p">.</span><span class="n">iter</span><span class="p">().</span><span class="n">map</span><span class="p">(</span><span class="n">id_of</span><span class="p">).</span><span class="n">max</span><span class="p">().</span><span class="n">unwrap_or</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span>
 <span class="p">}</span>
 
-<span class="k">fn</span><span class="w"> </span><span class="nf">add_idea</span><span class="p">(</span><span class="n">store</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">mut</span><span class="w"> </span><span class="n">Store</span><span class="p">,</span><span class="w"> </span><span class="n">topic_name</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">,</span><span class="w"> </span><span class="n">idea_text</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">topic</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">store</span><span class="p">.</span><span class="n">iter_mut</span><span class="p">().</span><span class="n">find</span><span class="p">(</span><span class="o">|</span><span class="n">t</span><span class="o">|</span><span class="w"> </span><span class="n">t</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">topic_name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">new_idea_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">next_id</span><span class="p">(</span><span class="o">&amp;</span><span class="n">topic</span><span class="p">.</span><span class="n">ideas</span><span class="p">,</span><span class="w"> </span><span class="o">|</span><span class="n">i</span><span class="o">|</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">id</span><span class="p">);</span>
-<span class="w">        </span><span class="n">topic</span><span class="p">.</span><span class="n">ideas</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">Idea</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="nc">new_idea_id</span><span class="p">,</span><span class="w"> </span><span class="n">text</span><span class="p">:</span><span class="w"> </span><span class="nc">idea_text</span><span class="p">.</span><span class="n">to_string</span><span class="p">()</span><span class="w"> </span><span class="p">});</span>
-<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">new_topic_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">next_id</span><span class="p">(</span><span class="n">store</span><span class="p">,</span><span class="w"> </span><span class="o">|</span><span class="n">t</span><span class="o">|</span><span class="w"> </span><span class="n">t</span><span class="p">.</span><span class="n">id</span><span class="p">);</span>
-<span class="w">        </span><span class="n">store</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">Topic</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="nc">new_topic_id</span><span class="p">,</span>
-<span class="w">            </span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="nc">topic_name</span><span class="p">.</span><span class="n">to_string</span><span class="p">(),</span>
-<span class="w">            </span><span class="n">ideas</span><span class="p">:</span><span class="w"> </span><span class="nc">vec</span><span class="o">!</span><span class="p">[</span><span class="n">Idea</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">text</span><span class="p">:</span><span class="w"> </span><span class="nc">idea_text</span><span class="p">.</span><span class="n">to_string</span><span class="p">()</span><span class="w"> </span><span class="p">}],</span>
-<span class="w">        </span><span class="p">});</span>
+<span class="c1">// Highest topic id anywhere in the tree (including sub-topics, at any depth).</span>
+<span class="k">fn</span><span class="w"> </span><span class="nf">max_topic_id</span><span class="p">(</span><span class="n">topics</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="p">[</span><span class="n">Topic</span><span class="p">])</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="kt">u64</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">topics</span>
+<span class="w">        </span><span class="p">.</span><span class="n">iter</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="n">map</span><span class="p">(</span><span class="o">|</span><span class="n">t</span><span class="o">|</span><span class="w"> </span><span class="n">t</span><span class="p">.</span><span class="n">id</span><span class="p">.</span><span class="n">max</span><span class="p">(</span><span class="n">max_topic_id</span><span class="p">(</span><span class="o">&amp;</span><span class="n">t</span><span class="p">.</span><span class="n">sub_topics</span><span class="p">)))</span>
+<span class="w">        </span><span class="p">.</span><span class="n">max</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="n">unwrap_or</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="k">fn</span><span class="w"> </span><span class="nf">next_topic_id</span><span class="p">(</span><span class="n">topics</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="p">[</span><span class="n">Topic</span><span class="p">])</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="kt">u64</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">max_topic_id</span><span class="p">(</span><span class="n">topics</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span>
+<span class="p">}</span>
+
+<span class="c1">// Finds a topic by id anywhere in the tree (a topic itself, or nested at any depth in its sub-topics).</span>
+<span class="k">fn</span><span class="w"> </span><span class="nf">find_topic</span><span class="o">&lt;'</span><span class="na">a</span><span class="o">&gt;</span><span class="p">(</span><span class="n">topics</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="o">'</span><span class="na">a</span><span class="w"> </span><span class="p">[</span><span class="n">Topic</span><span class="p">],</span><span class="w"> </span><span class="n">topic_id</span><span class="p">:</span><span class="w"> </span><span class="kt">u64</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;&amp;'</span><span class="na">a</span><span class="w"> </span><span class="n">Topic</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">topic</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">topics</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">topic</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">topic_id</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">topic</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">found</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">find_topic</span><span class="p">(</span><span class="o">&amp;</span><span class="n">topic</span><span class="p">.</span><span class="n">sub_topics</span><span class="p">,</span><span class="w"> </span><span class="n">topic_id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">found</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="nb">None</span>
+<span class="p">}</span>
+
+<span class="k">fn</span><span class="w"> </span><span class="nf">find_topic_mut</span><span class="o">&lt;'</span><span class="na">a</span><span class="o">&gt;</span><span class="p">(</span><span class="n">topics</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="o">'</span><span class="na">a</span><span class="w"> </span><span class="nc">mut</span><span class="w"> </span><span class="p">[</span><span class="n">Topic</span><span class="p">],</span><span class="w"> </span><span class="n">topic_id</span><span class="p">:</span><span class="w"> </span><span class="kt">u64</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;&amp;'</span><span class="na">a</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">Topic</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">topic</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">topics</span><span class="p">.</span><span class="n">iter_mut</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">topic</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">topic_id</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">topic</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">found</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">find_topic_mut</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="n">topic</span><span class="p">.</span><span class="n">sub_topics</span><span class="p">,</span><span class="w"> </span><span class="n">topic_id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">found</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="nb">None</span>
+<span class="p">}</span>
+
+<span class="c1">// Removes and returns a topic by id from wherever it lives in the tree (top level or nested).</span>
+<span class="k">fn</span><span class="w"> </span><span class="nf">remove_topic_by_id</span><span class="p">(</span><span class="n">topics</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">mut</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="n">Topic</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">topic_id</span><span class="p">:</span><span class="w"> </span><span class="kt">u64</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="n">Topic</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">topics</span><span class="p">.</span><span class="n">iter</span><span class="p">().</span><span class="n">position</span><span class="p">(</span><span class="o">|</span><span class="n">t</span><span class="o">|</span><span class="w"> </span><span class="n">t</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">topic_id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">topics</span><span class="p">.</span><span class="n">remove</span><span class="p">(</span><span class="n">pos</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">topic</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">topics</span><span class="p">.</span><span class="n">iter_mut</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">found</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">remove_topic_by_id</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="n">topic</span><span class="p">.</span><span class="n">sub_topics</span><span class="p">,</span><span class="w"> </span><span class="n">topic_id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">found</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="nb">None</span>
+<span class="p">}</span>
+
+<span class="c1">// Total idea count in a topic, including all ideas in every sub-topic beneath it.</span>
+<span class="k">fn</span><span class="w"> </span><span class="nf">count_ideas_recursive</span><span class="p">(</span><span class="n">topic</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">Topic</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="kt">usize</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">topic</span><span class="p">.</span><span class="n">ideas</span><span class="p">.</span><span class="n">len</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">topic</span><span class="p">.</span><span class="n">sub_topics</span><span class="p">.</span><span class="n">iter</span><span class="p">().</span><span class="n">map</span><span class="p">(</span><span class="n">count_ideas_recursive</span><span class="p">).</span><span class="n">sum</span><span class="p">::</span><span class="o">&lt;</span><span class="kt">usize</span><span class="o">&gt;</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="c1">// Total number of sub-topics beneath a topic (not counting the topic itself), at any depth.</span>
+<span class="k">fn</span><span class="w"> </span><span class="nf">count_sub_topics_recursive</span><span class="p">(</span><span class="n">topic</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">Topic</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="kt">usize</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">topic</span><span class="p">.</span><span class="n">sub_topics</span><span class="p">.</span><span class="n">iter</span><span class="p">().</span><span class="n">map</span><span class="p">(</span><span class="o">|</span><span class="n">t</span><span class="o">|</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">count_sub_topics_recursive</span><span class="p">(</span><span class="n">t</span><span class="p">)).</span><span class="n">sum</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="c1">// Walks a chain of topic names left to right, starting at `topics` (the top level, on the</span>
+<span class="c1">// first call). A name that already exists among the current level's own children becomes the</span>
+<span class="c1">// parent context for the next name; a name that doesn't exist yet is created as a new</span>
+<span class="c1">// sub-topic of the previous one in the chain (or at the top level, for the very first name).</span>
+<span class="c1">// Returns a mutable reference to the topic named by the *last* element of `names`.</span>
+<span class="k">fn</span><span class="w"> </span><span class="nf">walk_topic_chain</span><span class="o">&lt;'</span><span class="na">a</span><span class="o">&gt;</span><span class="p">(</span>
+<span class="w">    </span><span class="n">topics</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="o">'</span><span class="na">a</span><span class="w"> </span><span class="nc">mut</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="n">Topic</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">names</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="p">[</span><span class="nb">String</span><span class="p">],</span>
+<span class="w">    </span><span class="n">next_id_counter</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">mut</span><span class="w"> </span><span class="kt">u64</span><span class="p">,</span>
+<span class="w">    </span><span class="n">depth</span><span class="p">:</span><span class="w"> </span><span class="kt">usize</span><span class="p">,</span>
+<span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="kp">&amp;</span><span class="o">'</span><span class="na">a</span><span class="w"> </span><span class="nc">mut</span><span class="w"> </span><span class="n">Topic</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">names</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">pos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">match</span><span class="w"> </span><span class="n">topics</span><span class="p">.</span><span class="n">iter</span><span class="p">().</span><span class="n">position</span><span class="p">(</span><span class="o">|</span><span class="n">t</span><span class="o">|</span><span class="w"> </span><span class="o">&amp;</span><span class="n">t</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nb">Some</span><span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="fm">println!</span><span class="p">(</span><span class="s">"Found existing topic </span><span class="se">\"</span><span class="s">{}</span><span class="se">\"</span><span class="s"> (id {})."</span><span class="p">,</span><span class="w"> </span><span class="n">topics</span><span class="p">[</span><span class="n">p</span><span class="p">].</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">topics</span><span class="p">[</span><span class="n">p</span><span class="p">].</span><span class="n">id</span><span class="p">);</span>
+<span class="w">            </span><span class="n">p</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="nb">None</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="n">new_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">next_id_counter</span><span class="p">;</span>
+<span class="w">            </span><span class="o">*</span><span class="n">next_id_counter</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">            </span><span class="n">topics</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">Topic</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="nc">new_id</span><span class="p">,</span>
+<span class="w">                </span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="nc">name</span><span class="p">.</span><span class="n">clone</span><span class="p">(),</span>
+<span class="w">                </span><span class="n">ideas</span><span class="p">:</span><span class="w"> </span><span class="nb">Vec</span><span class="p">::</span><span class="n">new</span><span class="p">(),</span>
+<span class="w">                </span><span class="n">sub_topics</span><span class="p">:</span><span class="w"> </span><span class="nb">Vec</span><span class="p">::</span><span class="n">new</span><span class="p">(),</span>
+<span class="w">            </span><span class="p">});</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="n">depth</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="fm">println!</span><span class="p">(</span><span class="s">"Created topic </span><span class="se">\"</span><span class="s">{}</span><span class="se">\"</span><span class="s"> (id {})."</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">new_id</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="fm">println!</span><span class="p">(</span><span class="s">"Created sub-topic </span><span class="se">\"</span><span class="s">{}</span><span class="se">\"</span><span class="s"> (id {})."</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">new_id</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="n">topics</span><span class="p">.</span><span class="n">len</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">names</span><span class="p">.</span><span class="n">len</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="n">topics</span><span class="p">[</span><span class="n">pos</span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">walk_topic_chain</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="n">topics</span><span class="p">[</span><span class="n">pos</span><span class="p">].</span><span class="n">sub_topics</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">names</span><span class="p">[</span><span class="mi">1</span><span class="o">..</span><span class="p">],</span><span class="w"> </span><span class="n">next_id_counter</span><span class="p">,</span><span class="w"> </span><span class="n">depth</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">fn</span><span class="w"> </span><span class="nf">add_topic_chain</span><span class="p">(</span><span class="n">store</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">mut</span><span class="w"> </span><span class="n">Store</span><span class="p">,</span><span class="w"> </span><span class="n">names</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="p">[</span><span class="nb">String</span><span class="p">])</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">next_id_counter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">next_topic_id</span><span class="p">(</span><span class="n">store</span><span class="p">);</span>
+<span class="w">    </span><span class="n">walk_topic_chain</span><span class="p">(</span><span class="n">store</span><span class="p">,</span><span class="w"> </span><span class="n">names</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="n">next_id_counter</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// `topic_path` is one or more topic names forming a chain, e.g. ["Programming", "Rust"]. A</span>
+<span class="c1">// single-segment path that parses as a number addresses an existing topic anywhere in the tree</span>
+<span class="c1">// by id. Otherwise the path is walked/created exactly like `add-topic` (existing names are</span>
+<span class="c1">// reused, missing ones are created as sub-topics of the previous segment), and the idea is</span>
+<span class="c1">// added to the topic named by the last segment.</span>
+<span class="k">fn</span><span class="w"> </span><span class="nf">add_idea</span><span class="p">(</span><span class="n">store</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">mut</span><span class="w"> </span><span class="n">Store</span><span class="p">,</span><span class="w"> </span><span class="n">topic_path</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="p">[</span><span class="nb">String</span><span class="p">],</span><span class="w"> </span><span class="n">idea_text</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">topic_path</span><span class="p">.</span><span class="n">len</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nb">Ok</span><span class="p">(</span><span class="n">topic_id</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">topic_path</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">parse</span><span class="p">::</span><span class="o">&lt;</span><span class="kt">u64</span><span class="o">&gt;</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">topic</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">find_topic_mut</span><span class="p">(</span><span class="n">store</span><span class="p">,</span><span class="w"> </span><span class="n">topic_id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="kd">let</span><span class="w"> </span><span class="n">new_idea_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">next_id</span><span class="p">(</span><span class="o">&amp;</span><span class="n">topic</span><span class="p">.</span><span class="n">ideas</span><span class="p">,</span><span class="w"> </span><span class="o">|</span><span class="n">i</span><span class="o">|</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">id</span><span class="p">);</span>
+<span class="w">                </span><span class="n">topic</span><span class="p">.</span><span class="n">ideas</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">Idea</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="nc">new_idea_id</span><span class="p">,</span><span class="w"> </span><span class="n">text</span><span class="p">:</span><span class="w"> </span><span class="nc">idea_text</span><span class="p">.</span><span class="n">to_string</span><span class="p">()</span><span class="w"> </span><span class="p">});</span>
+<span class="w">                </span><span class="k">return</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="c1">// No topic has that id (yet) - fall through and treat it as a literal topic name.</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">next_id_counter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">next_topic_id</span><span class="p">(</span><span class="n">store</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">topic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">walk_topic_chain</span><span class="p">(</span><span class="n">store</span><span class="p">,</span><span class="w"> </span><span class="n">topic_path</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="n">next_id_counter</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">new_idea_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">next_id</span><span class="p">(</span><span class="o">&amp;</span><span class="n">topic</span><span class="p">.</span><span class="n">ideas</span><span class="p">,</span><span class="w"> </span><span class="o">|</span><span class="n">i</span><span class="o">|</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">id</span><span class="p">);</span>
+<span class="w">    </span><span class="n">topic</span><span class="p">.</span><span class="n">ideas</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">Idea</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="nc">new_idea_id</span><span class="p">,</span><span class="w"> </span><span class="n">text</span><span class="p">:</span><span class="w"> </span><span class="nc">idea_text</span><span class="p">.</span><span class="n">to_string</span><span class="p">()</span><span class="w"> </span><span class="p">});</span>
 <span class="p">}</span>
 
 <span class="k">fn</span><span class="w"> </span><span class="nf">list_ideas</span><span class="p">(</span><span class="n">store</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">Store</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -587,11 +1118,19 @@
 <span class="w">        </span><span class="k">return</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">topic</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">store</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="fm">println!</span><span class="p">(</span><span class="s">"=== TOPIC {}: {} ==="</span><span class="p">,</span><span class="w"> </span><span class="n">topic</span><span class="p">.</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">topic</span><span class="p">.</span><span class="n">name</span><span class="p">);</span>
-<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">idea</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="o">&amp;</span><span class="n">topic</span><span class="p">.</span><span class="n">ideas</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="fm">println!</span><span class="p">(</span><span class="s">" [{}] {}"</span><span class="p">,</span><span class="w"> </span><span class="n">idea</span><span class="p">.</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">idea</span><span class="p">.</span><span class="n">text</span><span class="p">);</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="fm">println!</span><span class="p">();</span>
+<span class="w">        </span><span class="n">print_topic</span><span class="p">(</span><span class="n">topic</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">fn</span><span class="w"> </span><span class="nf">print_topic</span><span class="p">(</span><span class="n">topic</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">Topic</span><span class="p">,</span><span class="w"> </span><span class="n">depth</span><span class="p">:</span><span class="w"> </span><span class="kt">usize</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">indent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"  "</span><span class="p">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">depth</span><span class="p">);</span>
+<span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">"{}=== TOPIC {}: {} ==="</span><span class="p">,</span><span class="w"> </span><span class="n">indent</span><span class="p">,</span><span class="w"> </span><span class="n">topic</span><span class="p">.</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">topic</span><span class="p">.</span><span class="n">name</span><span class="p">);</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">idea</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="o">&amp;</span><span class="n">topic</span><span class="p">.</span><span class="n">ideas</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="fm">println!</span><span class="p">(</span><span class="s">"{} [{}] {}"</span><span class="p">,</span><span class="w"> </span><span class="n">indent</span><span class="p">,</span><span class="w"> </span><span class="n">idea</span><span class="p">.</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">idea</span><span class="p">.</span><span class="n">text</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="fm">println!</span><span class="p">();</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">sub</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="o">&amp;</span><span class="n">topic</span><span class="p">.</span><span class="n">sub_topics</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">print_topic</span><span class="p">(</span><span class="n">sub</span><span class="p">,</span><span class="w"> </span><span class="n">depth</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 
@@ -609,39 +1148,117 @@
 
 <span class="k">fn</span><span class="w"> </span><span class="nf">search_ideas</span><span class="p">(</span><span class="n">store</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">Store</span><span class="p">,</span><span class="w"> </span><span class="n">topic_selector</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">,</span><span class="w"> </span><span class="n">idea_query</span><span class="p">:</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;&amp;</span><span class="kt">str</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">found_any</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">topic</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">store</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="o">!</span><span class="n">matches_topic_selector</span><span class="p">(</span><span class="n">topic_selector</span><span class="p">,</span><span class="w"> </span><span class="n">topic</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">continue</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">header_printed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
-<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">idea</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="o">&amp;</span><span class="n">topic</span><span class="p">.</span><span class="n">ideas</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="n">idea_matches</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">match</span><span class="w"> </span><span class="n">idea_query</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nb">Some</span><span class="p">(</span><span class="n">query</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">idea</span><span class="p">.</span><span class="n">text</span><span class="p">.</span><span class="n">to_lowercase</span><span class="p">().</span><span class="n">contains</span><span class="p">(</span><span class="n">query</span><span class="p">.</span><span class="n">to_lowercase</span><span class="p">().</span><span class="n">as_str</span><span class="p">()),</span>
-<span class="w">                </span><span class="nb">None</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">            </span><span class="p">};</span>
-<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="n">idea_matches</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="o">!</span><span class="n">header_printed</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                    </span><span class="fm">println!</span><span class="p">(</span><span class="s">"=== TOPIC {}: {} ==="</span><span class="p">,</span><span class="w"> </span><span class="n">topic</span><span class="p">.</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">topic</span><span class="p">.</span><span class="n">name</span><span class="p">);</span>
-<span class="w">                    </span><span class="n">header_printed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
-<span class="w">                </span><span class="p">}</span>
-<span class="w">                </span><span class="fm">println!</span><span class="p">(</span><span class="s">" [{}] {}"</span><span class="p">,</span><span class="w"> </span><span class="n">idea</span><span class="p">.</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">idea</span><span class="p">.</span><span class="n">text</span><span class="p">);</span>
-<span class="w">                </span><span class="n">found_any</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">header_printed</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="fm">println!</span><span class="p">();</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">search_ideas_recursive</span><span class="p">(</span><span class="n">store</span><span class="p">,</span><span class="w"> </span><span class="n">topic_selector</span><span class="p">,</span><span class="w"> </span><span class="n">idea_query</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="n">found_any</span><span class="p">);</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">!</span><span class="n">found_any</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="fm">println!</span><span class="p">(</span><span class="s">"No matching ideas found."</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 
-<span class="k">fn</span><span class="w"> </span><span class="nf">delete_idea</span><span class="p">(</span><span class="n">store</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">mut</span><span class="w"> </span><span class="n">Store</span><span class="p">,</span><span class="w"> </span><span class="n">topic_id</span><span class="p">:</span><span class="w"> </span><span class="kt">u64</span><span class="p">,</span><span class="w"> </span><span class="n">idea_id</span><span class="p">:</span><span class="w"> </span><span class="kt">u64</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="p">(</span><span class="nb">String</span><span class="p">,</span><span class="w"> </span><span class="nb">String</span><span class="p">),</span><span class="w"> </span><span class="nb">String</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">topic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">store</span>
+<span class="c1">// A topic matches on its own (via matches_topic_selector) or by inheriting a match from an</span>
+<span class="c1">// ancestor that already matched; either way every idea under it is then a candidate, filtered</span>
+<span class="c1">// further by idea_query. The walk still recurses into every topic's sub-topics regardless of</span>
+<span class="c1">// whether that topic matched, so a sub-topic can match the selector on its own too.</span>
+<span class="k">fn</span><span class="w"> </span><span class="nf">search_ideas_recursive</span><span class="p">(</span>
+<span class="w">    </span><span class="n">topics</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="p">[</span><span class="n">Topic</span><span class="p">],</span>
+<span class="w">    </span><span class="n">topic_selector</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">,</span>
+<span class="w">    </span><span class="n">idea_query</span><span class="p">:</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;&amp;</span><span class="kt">str</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">inherited_match</span><span class="p">:</span><span class="w"> </span><span class="kt">bool</span><span class="p">,</span>
+<span class="w">    </span><span class="n">depth</span><span class="p">:</span><span class="w"> </span><span class="kt">usize</span><span class="p">,</span>
+<span class="w">    </span><span class="n">found_any</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">mut</span><span class="w"> </span><span class="kt">bool</span><span class="p">,</span>
+<span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">indent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"  "</span><span class="p">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">depth</span><span class="p">);</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">topic</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">topics</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">topic_matches</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">inherited_match</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">matches_topic_selector</span><span class="p">(</span><span class="n">topic_selector</span><span class="p">,</span><span class="w"> </span><span class="n">topic</span><span class="p">);</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">header_printed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">topic_matches</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="n">idea</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="o">&amp;</span><span class="n">topic</span><span class="p">.</span><span class="n">ideas</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="kd">let</span><span class="w"> </span><span class="n">idea_matches</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">match</span><span class="w"> </span><span class="n">idea_query</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nb">Some</span><span class="p">(</span><span class="n">query</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">idea</span><span class="p">.</span><span class="n">text</span><span class="p">.</span><span class="n">to_lowercase</span><span class="p">().</span><span class="n">contains</span><span class="p">(</span><span class="n">query</span><span class="p">.</span><span class="n">to_lowercase</span><span class="p">().</span><span class="n">as_str</span><span class="p">()),</span>
+<span class="w">                    </span><span class="nb">None</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                </span><span class="p">};</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="n">idea_matches</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="o">!</span><span class="n">header_printed</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="fm">println!</span><span class="p">(</span><span class="s">"{}=== TOPIC {}: {} ==="</span><span class="p">,</span><span class="w"> </span><span class="n">indent</span><span class="p">,</span><span class="w"> </span><span class="n">topic</span><span class="p">.</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">topic</span><span class="p">.</span><span class="n">name</span><span class="p">);</span>
+<span class="w">                        </span><span class="n">header_printed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                    </span><span class="fm">println!</span><span class="p">(</span><span class="s">"{} [{}] {}"</span><span class="p">,</span><span class="w"> </span><span class="n">indent</span><span class="p">,</span><span class="w"> </span><span class="n">idea</span><span class="p">.</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">idea</span><span class="p">.</span><span class="n">text</span><span class="p">);</span>
+<span class="w">                    </span><span class="o">*</span><span class="n">found_any</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">header_printed</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="fm">println!</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">search_ideas_recursive</span><span class="p">(</span><span class="o">&amp;</span><span class="n">topic</span><span class="p">.</span><span class="n">sub_topics</span><span class="p">,</span><span class="w"> </span><span class="n">topic_selector</span><span class="p">,</span><span class="w"> </span><span class="n">idea_query</span><span class="p">,</span><span class="w"> </span><span class="n">topic_matches</span><span class="p">,</span><span class="w"> </span><span class="n">depth</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">found_any</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// A single search argument is matched against both topics and ideas at once: a topic that</span>
+<span class="c1">// matches the query (by id or name substring) has all of its ideas listed, and any idea whose</span>
+<span class="c1">// text contains the query is listed regardless of whether its topic matched. Just like</span>
+<span class="c1">// search_ideas_recursive, a match is inherited by descendants, and the walk always continues</span>
+<span class="c1">// into sub-topics so a nested topic can match independently too.</span>
+<span class="k">fn</span><span class="w"> </span><span class="nf">search_all</span><span class="p">(</span><span class="n">store</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">Store</span><span class="p">,</span><span class="w"> </span><span class="n">query</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">found_any</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">    </span><span class="n">search_all_recursive</span><span class="p">(</span><span class="n">store</span><span class="p">,</span><span class="w"> </span><span class="n">query</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="n">found_any</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">!</span><span class="n">found_any</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="fm">println!</span><span class="p">(</span><span class="s">"No matching ideas found."</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">fn</span><span class="w"> </span><span class="nf">search_all_recursive</span><span class="p">(</span><span class="n">topics</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="p">[</span><span class="n">Topic</span><span class="p">],</span><span class="w"> </span><span class="n">query</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">,</span><span class="w"> </span><span class="n">inherited_match</span><span class="p">:</span><span class="w"> </span><span class="kt">bool</span><span class="p">,</span><span class="w"> </span><span class="n">depth</span><span class="p">:</span><span class="w"> </span><span class="kt">usize</span><span class="p">,</span><span class="w"> </span><span class="n">found_any</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">mut</span><span class="w"> </span><span class="kt">bool</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">indent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"  "</span><span class="p">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">depth</span><span class="p">);</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">topic</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">topics</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">topic_matches</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">inherited_match</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">matches_topic_selector</span><span class="p">(</span><span class="n">query</span><span class="p">,</span><span class="w"> </span><span class="n">topic</span><span class="p">);</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">header_printed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">idea</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="o">&amp;</span><span class="n">topic</span><span class="p">.</span><span class="n">ideas</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="n">idea_matches</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">topic_matches</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">idea</span><span class="p">.</span><span class="n">text</span><span class="p">.</span><span class="n">to_lowercase</span><span class="p">().</span><span class="n">contains</span><span class="p">(</span><span class="n">query</span><span class="p">.</span><span class="n">to_lowercase</span><span class="p">().</span><span class="n">as_str</span><span class="p">());</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="n">idea_matches</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="o">!</span><span class="n">header_printed</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="fm">println!</span><span class="p">(</span><span class="s">"{}=== TOPIC {}: {} ==="</span><span class="p">,</span><span class="w"> </span><span class="n">indent</span><span class="p">,</span><span class="w"> </span><span class="n">topic</span><span class="p">.</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">topic</span><span class="p">.</span><span class="n">name</span><span class="p">);</span>
+<span class="w">                    </span><span class="n">header_printed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">                </span><span class="fm">println!</span><span class="p">(</span><span class="s">"{} [{}] {}"</span><span class="p">,</span><span class="w"> </span><span class="n">indent</span><span class="p">,</span><span class="w"> </span><span class="n">idea</span><span class="p">.</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">idea</span><span class="p">.</span><span class="n">text</span><span class="p">);</span>
+<span class="w">                </span><span class="o">*</span><span class="n">found_any</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">header_printed</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="fm">println!</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">search_all_recursive</span><span class="p">(</span><span class="o">&amp;</span><span class="n">topic</span><span class="p">.</span><span class="n">sub_topics</span><span class="p">,</span><span class="w"> </span><span class="n">query</span><span class="p">,</span><span class="w"> </span><span class="n">topic_matches</span><span class="p">,</span><span class="w"> </span><span class="n">depth</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">found_any</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">fn</span><span class="w"> </span><span class="nf">edit_topic</span><span class="p">(</span><span class="n">store</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">mut</span><span class="w"> </span><span class="n">Store</span><span class="p">,</span><span class="w"> </span><span class="n">topic_id</span><span class="p">:</span><span class="w"> </span><span class="kt">u64</span><span class="p">,</span><span class="w"> </span><span class="n">new_name</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="nb">String</span><span class="p">,</span><span class="w"> </span><span class="nb">String</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">topic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">find_topic_mut</span><span class="p">(</span><span class="n">store</span><span class="p">,</span><span class="w"> </span><span class="n">topic_id</span><span class="p">).</span><span class="n">ok_or_else</span><span class="p">(</span><span class="o">||</span><span class="w"> </span><span class="fm">format!</span><span class="p">(</span><span class="s">"No topic found with id {}."</span><span class="p">,</span><span class="w"> </span><span class="n">topic_id</span><span class="p">))</span><span class="o">?</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">old_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">topic</span><span class="p">.</span><span class="n">name</span><span class="p">.</span><span class="n">clone</span><span class="p">();</span>
+<span class="w">    </span><span class="n">topic</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new_name</span><span class="p">.</span><span class="n">to_string</span><span class="p">();</span>
+<span class="w">    </span><span class="nb">Ok</span><span class="p">(</span><span class="n">old_name</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="k">fn</span><span class="w"> </span><span class="nf">edit_idea</span><span class="p">(</span><span class="n">store</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">mut</span><span class="w"> </span><span class="n">Store</span><span class="p">,</span><span class="w"> </span><span class="n">topic_id</span><span class="p">:</span><span class="w"> </span><span class="kt">u64</span><span class="p">,</span><span class="w"> </span><span class="n">idea_id</span><span class="p">:</span><span class="w"> </span><span class="kt">u64</span><span class="p">,</span><span class="w"> </span><span class="n">new_text</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="p">(</span><span class="nb">String</span><span class="p">,</span><span class="w"> </span><span class="nb">String</span><span class="p">),</span><span class="w"> </span><span class="nb">String</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">topic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">find_topic_mut</span><span class="p">(</span><span class="n">store</span><span class="p">,</span><span class="w"> </span><span class="n">topic_id</span><span class="p">).</span><span class="n">ok_or_else</span><span class="p">(</span><span class="o">||</span><span class="w"> </span><span class="fm">format!</span><span class="p">(</span><span class="s">"No topic found with id {}."</span><span class="p">,</span><span class="w"> </span><span class="n">topic_id</span><span class="p">))</span><span class="o">?</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">topic_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">topic</span><span class="p">.</span><span class="n">name</span><span class="p">.</span><span class="n">clone</span><span class="p">();</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">idea_count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">topic</span><span class="p">.</span><span class="n">ideas</span><span class="p">.</span><span class="n">len</span><span class="p">();</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">idea</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">topic</span>
+<span class="w">        </span><span class="p">.</span><span class="n">ideas</span>
 <span class="w">        </span><span class="p">.</span><span class="n">iter_mut</span><span class="p">()</span>
-<span class="w">        </span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="o">|</span><span class="n">t</span><span class="o">|</span><span class="w"> </span><span class="n">t</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">topic_id</span><span class="p">)</span>
-<span class="w">        </span><span class="p">.</span><span class="n">ok_or_else</span><span class="p">(</span><span class="o">||</span><span class="w"> </span><span class="fm">format!</span><span class="p">(</span><span class="s">"No topic found with id {}."</span><span class="p">,</span><span class="w"> </span><span class="n">topic_id</span><span class="p">))</span><span class="o">?</span><span class="p">;</span>
+<span class="w">        </span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="o">|</span><span class="n">i</span><span class="o">|</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">idea_id</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="n">ok_or_else</span><span class="p">(</span><span class="o">||</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="fm">format!</span><span class="p">(</span>
+<span class="w">                </span><span class="s">"No idea found with id {} in topic '{}' ({} idea(s))."</span><span class="p">,</span>
+<span class="w">                </span><span class="n">idea_id</span><span class="p">,</span>
+<span class="w">                </span><span class="n">topic_name</span><span class="p">,</span>
+<span class="w">                </span><span class="n">idea_count</span>
+<span class="w">            </span><span class="p">)</span>
+<span class="w">        </span><span class="p">})</span><span class="o">?</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">old_text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">idea</span><span class="p">.</span><span class="n">text</span><span class="p">.</span><span class="n">clone</span><span class="p">();</span>
+<span class="w">    </span><span class="n">idea</span><span class="p">.</span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new_text</span><span class="p">.</span><span class="n">to_string</span><span class="p">();</span>
+<span class="w">    </span><span class="nb">Ok</span><span class="p">((</span><span class="n">topic_name</span><span class="p">,</span><span class="w"> </span><span class="n">old_text</span><span class="p">))</span>
+<span class="p">}</span>
+
+<span class="k">fn</span><span class="w"> </span><span class="nf">delete_idea</span><span class="p">(</span><span class="n">store</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">mut</span><span class="w"> </span><span class="n">Store</span><span class="p">,</span><span class="w"> </span><span class="n">topic_id</span><span class="p">:</span><span class="w"> </span><span class="kt">u64</span><span class="p">,</span><span class="w"> </span><span class="n">idea_id</span><span class="p">:</span><span class="w"> </span><span class="kt">u64</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="p">(</span><span class="nb">String</span><span class="p">,</span><span class="w"> </span><span class="nb">String</span><span class="p">),</span><span class="w"> </span><span class="nb">String</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">topic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">find_topic_mut</span><span class="p">(</span><span class="n">store</span><span class="p">,</span><span class="w"> </span><span class="n">topic_id</span><span class="p">).</span><span class="n">ok_or_else</span><span class="p">(</span><span class="o">||</span><span class="w"> </span><span class="fm">format!</span><span class="p">(</span><span class="s">"No topic found with id {}."</span><span class="p">,</span><span class="w"> </span><span class="n">topic_id</span><span class="p">))</span><span class="o">?</span><span class="p">;</span>
 <span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">pos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">topic</span>
 <span class="w">        </span><span class="p">.</span><span class="n">ideas</span>
 <span class="w">        </span><span class="p">.</span><span class="n">iter</span><span class="p">()</span>
@@ -659,11 +1276,7 @@
 <span class="p">}</span>
 
 <span class="k">fn</span><span class="w"> </span><span class="nf">delete_topic</span><span class="p">(</span><span class="n">store</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">mut</span><span class="w"> </span><span class="n">Store</span><span class="p">,</span><span class="w"> </span><span class="n">topic_id</span><span class="p">:</span><span class="w"> </span><span class="kt">u64</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="n">Topic</span><span class="p">,</span><span class="w"> </span><span class="nb">String</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">pos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">store</span>
-<span class="w">        </span><span class="p">.</span><span class="n">iter</span><span class="p">()</span>
-<span class="w">        </span><span class="p">.</span><span class="n">position</span><span class="p">(</span><span class="o">|</span><span class="n">t</span><span class="o">|</span><span class="w"> </span><span class="n">t</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">topic_id</span><span class="p">)</span>
-<span class="w">        </span><span class="p">.</span><span class="n">ok_or_else</span><span class="p">(</span><span class="o">||</span><span class="w"> </span><span class="fm">format!</span><span class="p">(</span><span class="s">"No topic found with id {}."</span><span class="p">,</span><span class="w"> </span><span class="n">topic_id</span><span class="p">))</span><span class="o">?</span><span class="p">;</span>
-<span class="w">    </span><span class="nb">Ok</span><span class="p">(</span><span class="n">store</span><span class="p">.</span><span class="n">remove</span><span class="p">(</span><span class="n">pos</span><span class="p">))</span>
+<span class="w">    </span><span class="n">remove_topic_by_id</span><span class="p">(</span><span class="n">store</span><span class="p">,</span><span class="w"> </span><span class="n">topic_id</span><span class="p">).</span><span class="n">ok_or_else</span><span class="p">(</span><span class="o">||</span><span class="w"> </span><span class="fm">format!</span><span class="p">(</span><span class="s">"No topic found with id {}."</span><span class="p">,</span><span class="w"> </span><span class="n">topic_id</span><span class="p">))</span>
 <span class="p">}</span>
 
 <span class="k">fn</span><span class="w"> </span><span class="nf">confirm</span><span class="p">(</span><span class="n">prompt</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="p">{</span>
@@ -685,7 +1298,7 @@
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">};</span>
 
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">topic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">match</span><span class="w"> </span><span class="n">store</span><span class="p">.</span><span class="n">iter</span><span class="p">().</span><span class="n">find</span><span class="p">(</span><span class="o">|</span><span class="n">t</span><span class="o">|</span><span class="w"> </span><span class="n">t</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">topic_id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">topic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">match</span><span class="w"> </span><span class="n">find_topic</span><span class="p">(</span><span class="n">store</span><span class="p">,</span><span class="w"> </span><span class="n">topic_id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nb">Some</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">t</span><span class="p">,</span>
 <span class="w">        </span><span class="nb">None</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="fm">println!</span><span class="p">(</span><span class="s">"Error: No topic found with id {}."</span><span class="p">,</span><span class="w"> </span><span class="n">topic_id</span><span class="p">);</span>
@@ -693,12 +1306,22 @@
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">};</span>
 
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">!</span><span class="n">topic</span><span class="p">.</span><span class="n">ideas</span><span class="p">.</span><span class="n">is_empty</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">idea_count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">count_ideas_recursive</span><span class="p">(</span><span class="n">topic</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">sub_topic_count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">count_sub_topics_recursive</span><span class="p">(</span><span class="n">topic</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">idea_count</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">sub_topic_count</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">parts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Vec</span><span class="p">::</span><span class="n">new</span><span class="p">();</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">idea_count</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">parts</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="fm">format!</span><span class="p">(</span><span class="s">"{} idea(s)"</span><span class="p">,</span><span class="w"> </span><span class="n">idea_count</span><span class="p">));</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">sub_topic_count</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">parts</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="fm">format!</span><span class="p">(</span><span class="s">"{} sub-topic(s)"</span><span class="p">,</span><span class="w"> </span><span class="n">sub_topic_count</span><span class="p">));</span>
+<span class="w">        </span><span class="p">}</span>
 <span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">proceed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">confirm</span><span class="p">(</span><span class="o">&amp;</span><span class="fm">format!</span><span class="p">(</span>
-<span class="w">            </span><span class="s">"Topic </span><span class="se">\"</span><span class="s">{}</span><span class="se">\"</span><span class="s"> (id {}) still has {} idea(s) in it. Delete it and all its ideas?"</span><span class="p">,</span>
+<span class="w">            </span><span class="s">"Topic </span><span class="se">\"</span><span class="s">{}</span><span class="se">\"</span><span class="s"> (id {}) still has {} in it (counting sub-topics). Delete it and everything inside?"</span><span class="p">,</span>
 <span class="w">            </span><span class="n">topic</span><span class="p">.</span><span class="n">name</span><span class="p">,</span>
 <span class="w">            </span><span class="n">topic</span><span class="p">.</span><span class="n">id</span><span class="p">,</span>
-<span class="w">            </span><span class="n">topic</span><span class="p">.</span><span class="n">ideas</span><span class="p">.</span><span class="n">len</span><span class="p">()</span>
+<span class="w">            </span><span class="n">parts</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="s">" and "</span><span class="p">)</span>
 <span class="w">        </span><span class="p">));</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="o">!</span><span class="n">proceed</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="fm">println!</span><span class="p">(</span><span class="s">"Aborted. Nothing was deleted."</span><span class="p">);</span>
@@ -707,12 +1330,14 @@
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="k">match</span><span class="w"> </span><span class="n">delete_topic</span><span class="p">(</span><span class="n">store</span><span class="p">,</span><span class="w"> </span><span class="n">topic_id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nb">Ok</span><span class="p">(</span><span class="n">topic</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="fm">println!</span><span class="p">(</span>
-<span class="w">            </span><span class="s">"Deleted topic </span><span class="se">\"</span><span class="s">{}</span><span class="se">\"</span><span class="s"> (id {}) and {} idea(s) inside it."</span><span class="p">,</span>
-<span class="w">            </span><span class="n">topic</span><span class="p">.</span><span class="n">name</span><span class="p">,</span>
-<span class="w">            </span><span class="n">topic_id</span><span class="p">,</span>
-<span class="w">            </span><span class="n">topic</span><span class="p">.</span><span class="n">ideas</span><span class="p">.</span><span class="n">len</span><span class="p">()</span>
-<span class="w">        </span><span class="p">),</span>
+<span class="w">        </span><span class="nb">Ok</span><span class="p">(</span><span class="n">removed</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="n">idea_count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">count_ideas_recursive</span><span class="p">(</span><span class="o">&amp;</span><span class="n">removed</span><span class="p">);</span>
+<span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="n">sub_topic_count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">count_sub_topics_recursive</span><span class="p">(</span><span class="o">&amp;</span><span class="n">removed</span><span class="p">);</span>
+<span class="w">            </span><span class="fm">println!</span><span class="p">(</span>
+<span class="w">                </span><span class="s">"Deleted topic </span><span class="se">\"</span><span class="s">{}</span><span class="se">\"</span><span class="s"> (id {}), {} idea(s) and {} sub-topic(s) inside it."</span><span class="p">,</span>
+<span class="w">                </span><span class="n">removed</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">topic_id</span><span class="p">,</span><span class="w"> </span><span class="n">idea_count</span><span class="p">,</span><span class="w"> </span><span class="n">sub_topic_count</span>
+<span class="w">            </span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
 <span class="w">        </span><span class="nb">Err</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="fm">println!</span><span class="p">(</span><span class="s">"Error: {}"</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">);</span>
 <span class="w">            </span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
@@ -720,7 +1345,97 @@
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 
-<span class="k">fn</span><span class="w"> </span><span class="nf">run_delete</span><span class="p">(</span><span class="n">store</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">mut</span><span class="w"> </span><span class="n">Store</span><span class="p">,</span><span class="w"> </span><span class="n">topic_id_str</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">,</span><span class="w"> </span><span class="n">idea_id_str</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="c1">// `idea delete &lt;topic_id&gt; &lt;second_id&gt;` first tries `second_id` as an idea id living directly</span>
+<span class="c1">// in `topic_id`'s own ideas (the historical behavior). If there's no such idea, it tries</span>
+<span class="c1">// `second_id` as a topic id nested anywhere inside `topic_id`'s subtree instead, and if that</span>
+<span class="c1">// matches, deletes that whole sub-topic (with the same confirmation flow as a normal topic</span>
+<span class="c1">// delete). This lets a chain like `idea delete &lt;parent&gt; &lt;child&gt;` reach a sub-topic directly.</span>
+<span class="k">fn</span><span class="w"> </span><span class="nf">run_delete</span><span class="p">(</span><span class="n">store</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">mut</span><span class="w"> </span><span class="n">Store</span><span class="p">,</span><span class="w"> </span><span class="n">topic_id_str</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">,</span><span class="w"> </span><span class="n">second_id_str</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">topic_id</span><span class="p">:</span><span class="w"> </span><span class="kt">u64</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">match</span><span class="w"> </span><span class="n">topic_id_str</span><span class="p">.</span><span class="n">parse</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nb">Ok</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">n</span><span class="p">,</span>
+<span class="w">        </span><span class="n">_</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="fm">println!</span><span class="p">(</span><span class="s">"Error: topic id must be a positive integer."</span><span class="p">);</span>
+<span class="w">            </span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">second_id</span><span class="p">:</span><span class="w"> </span><span class="kt">u64</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">match</span><span class="w"> </span><span class="n">second_id_str</span><span class="p">.</span><span class="n">parse</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nb">Ok</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">n</span><span class="p">,</span>
+<span class="w">        </span><span class="n">_</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="fm">println!</span><span class="p">(</span><span class="s">"Error: id must be a positive integer."</span><span class="p">);</span>
+<span class="w">            </span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">};</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nb">Ok</span><span class="p">((</span><span class="n">topic</span><span class="p">,</span><span class="w"> </span><span class="n">idea</span><span class="p">))</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">delete_idea</span><span class="p">(</span><span class="n">store</span><span class="p">,</span><span class="w"> </span><span class="n">topic_id</span><span class="p">,</span><span class="w"> </span><span class="n">second_id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="fm">println!</span><span class="p">(</span><span class="s">"Deleted idea [{}] </span><span class="se">\"</span><span class="s">{}</span><span class="se">\"</span><span class="s"> from topic </span><span class="se">\"</span><span class="s">{}</span><span class="se">\"</span><span class="s">."</span><span class="p">,</span><span class="w"> </span><span class="n">second_id</span><span class="p">,</span><span class="w"> </span><span class="n">idea</span><span class="p">,</span><span class="w"> </span><span class="n">topic</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">topic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">match</span><span class="w"> </span><span class="n">find_topic</span><span class="p">(</span><span class="n">store</span><span class="p">,</span><span class="w"> </span><span class="n">topic_id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nb">Some</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">t</span><span class="p">,</span>
+<span class="w">        </span><span class="nb">None</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="fm">println!</span><span class="p">(</span><span class="s">"Error: No topic found with id {}."</span><span class="p">,</span><span class="w"> </span><span class="n">topic_id</span><span class="p">);</span>
+<span class="w">            </span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">is_nested_sub_topic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">find_topic</span><span class="p">(</span><span class="o">&amp;</span><span class="n">topic</span><span class="p">.</span><span class="n">sub_topics</span><span class="p">,</span><span class="w"> </span><span class="n">second_id</span><span class="p">).</span><span class="n">is_some</span><span class="p">();</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">!</span><span class="n">is_nested_sub_topic</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="fm">println!</span><span class="p">(</span>
+<span class="w">            </span><span class="s">"Error: No idea and no sub-topic found with id {} in topic '{}' ({} idea(s), {} sub-topic(s))."</span><span class="p">,</span>
+<span class="w">            </span><span class="n">second_id</span><span class="p">,</span>
+<span class="w">            </span><span class="n">topic</span><span class="p">.</span><span class="n">name</span><span class="p">,</span>
+<span class="w">            </span><span class="n">topic</span><span class="p">.</span><span class="n">ideas</span><span class="p">.</span><span class="n">len</span><span class="p">(),</span>
+<span class="w">            </span><span class="n">count_sub_topics_recursive</span><span class="p">(</span><span class="n">topic</span><span class="p">)</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">        </span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">run_delete_topic</span><span class="p">(</span><span class="n">store</span><span class="p">,</span><span class="w"> </span><span class="n">second_id_str</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Opens a line pre-filled with `current`, ready for the user to edit in place; Enter accepts</span>
+<span class="c1">// the (possibly changed) line, Ctrl-C/Ctrl-D or any editor error is treated as a cancel.</span>
+<span class="k">fn</span><span class="w"> </span><span class="nf">prompt_edit</span><span class="p">(</span><span class="n">prompt</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">,</span><span class="w"> </span><span class="n">current</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">editor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DefaultEditor</span><span class="p">::</span><span class="n">new</span><span class="p">().</span><span class="n">ok</span><span class="p">()</span><span class="o">?</span><span class="p">;</span>
+<span class="w">    </span><span class="n">editor</span><span class="p">.</span><span class="n">readline_with_initial</span><span class="p">(</span><span class="n">prompt</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">current</span><span class="p">,</span><span class="w"> </span><span class="s">""</span><span class="p">)).</span><span class="n">ok</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="k">fn</span><span class="w"> </span><span class="nf">run_edit_topic</span><span class="p">(</span><span class="n">store</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">mut</span><span class="w"> </span><span class="n">Store</span><span class="p">,</span><span class="w"> </span><span class="n">topic_id_str</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">topic_id</span><span class="p">:</span><span class="w"> </span><span class="kt">u64</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">match</span><span class="w"> </span><span class="n">topic_id_str</span><span class="p">.</span><span class="n">parse</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nb">Ok</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">n</span><span class="p">,</span>
+<span class="w">        </span><span class="n">_</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="fm">println!</span><span class="p">(</span><span class="s">"Error: topic id must be a positive integer."</span><span class="p">);</span>
+<span class="w">            </span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">};</span>
+
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">current_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">match</span><span class="w"> </span><span class="n">find_topic</span><span class="p">(</span><span class="n">store</span><span class="p">,</span><span class="w"> </span><span class="n">topic_id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nb">Some</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">t</span><span class="p">.</span><span class="n">name</span><span class="p">.</span><span class="n">clone</span><span class="p">(),</span>
+<span class="w">        </span><span class="nb">None</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="fm">println!</span><span class="p">(</span><span class="s">"Error: No topic found with id {}."</span><span class="p">,</span><span class="w"> </span><span class="n">topic_id</span><span class="p">);</span>
+<span class="w">            </span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">};</span>
+
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">new_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">match</span><span class="w"> </span><span class="n">prompt_edit</span><span class="p">(</span><span class="s">"Topic name: "</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">current_name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nb">Some</span><span class="p">(</span><span class="n">text</span><span class="p">)</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="o">!</span><span class="n">text</span><span class="p">.</span><span class="n">trim</span><span class="p">().</span><span class="n">is_empty</span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">text</span><span class="p">,</span>
+<span class="w">        </span><span class="n">_</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="fm">println!</span><span class="p">(</span><span class="s">"Aborted. Nothing was changed."</span><span class="p">);</span>
+<span class="w">            </span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">};</span>
+
+<span class="w">    </span><span class="k">match</span><span class="w"> </span><span class="n">edit_topic</span><span class="p">(</span><span class="n">store</span><span class="p">,</span><span class="w"> </span><span class="n">topic_id</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">new_name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nb">Ok</span><span class="p">(</span><span class="n">old_name</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="fm">println!</span><span class="p">(</span><span class="s">"Renamed topic </span><span class="se">\"</span><span class="s">{}</span><span class="se">\"</span><span class="s"> (id {}) to </span><span class="se">\"</span><span class="s">{}</span><span class="se">\"</span><span class="s">."</span><span class="p">,</span><span class="w"> </span><span class="n">old_name</span><span class="p">,</span><span class="w"> </span><span class="n">topic_id</span><span class="p">,</span><span class="w"> </span><span class="n">new_name</span><span class="p">),</span>
+<span class="w">        </span><span class="nb">Err</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="fm">println!</span><span class="p">(</span><span class="s">"Error: {}"</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">);</span>
+<span class="w">            </span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">fn</span><span class="w"> </span><span class="nf">run_edit</span><span class="p">(</span><span class="n">store</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">mut</span><span class="w"> </span><span class="n">Store</span><span class="p">,</span><span class="w"> </span><span class="n">topic_id_str</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">,</span><span class="w"> </span><span class="n">idea_id_str</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">topic_id</span><span class="p">:</span><span class="w"> </span><span class="kt">u64</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">match</span><span class="w"> </span><span class="n">topic_id_str</span><span class="p">.</span><span class="n">parse</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nb">Ok</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">n</span><span class="p">,</span>
 <span class="w">        </span><span class="n">_</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
@@ -736,8 +1451,39 @@
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">};</span>
 
-<span class="w">    </span><span class="k">match</span><span class="w"> </span><span class="n">delete_idea</span><span class="p">(</span><span class="n">store</span><span class="p">,</span><span class="w"> </span><span class="n">topic_id</span><span class="p">,</span><span class="w"> </span><span class="n">idea_id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nb">Ok</span><span class="p">((</span><span class="n">topic</span><span class="p">,</span><span class="w"> </span><span class="n">idea</span><span class="p">))</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="fm">println!</span><span class="p">(</span><span class="s">"Deleted idea [{}] </span><span class="se">\"</span><span class="s">{}</span><span class="se">\"</span><span class="s"> from topic </span><span class="se">\"</span><span class="s">{}</span><span class="se">\"</span><span class="s">."</span><span class="p">,</span><span class="w"> </span><span class="n">idea_id</span><span class="p">,</span><span class="w"> </span><span class="n">idea</span><span class="p">,</span><span class="w"> </span><span class="n">topic</span><span class="p">),</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">topic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">match</span><span class="w"> </span><span class="n">find_topic</span><span class="p">(</span><span class="n">store</span><span class="p">,</span><span class="w"> </span><span class="n">topic_id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nb">Some</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">t</span><span class="p">,</span>
+<span class="w">        </span><span class="nb">None</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="fm">println!</span><span class="p">(</span><span class="s">"Error: No topic found with id {}."</span><span class="p">,</span><span class="w"> </span><span class="n">topic_id</span><span class="p">);</span>
+<span class="w">            </span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">current_text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">match</span><span class="w"> </span><span class="n">topic</span><span class="p">.</span><span class="n">ideas</span><span class="p">.</span><span class="n">iter</span><span class="p">().</span><span class="n">find</span><span class="p">(</span><span class="o">|</span><span class="n">i</span><span class="o">|</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">idea_id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nb">Some</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">text</span><span class="p">.</span><span class="n">clone</span><span class="p">(),</span>
+<span class="w">        </span><span class="nb">None</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="fm">println!</span><span class="p">(</span>
+<span class="w">                </span><span class="s">"Error: No idea found with id {} in topic '{}' ({} idea(s))."</span><span class="p">,</span>
+<span class="w">                </span><span class="n">idea_id</span><span class="p">,</span>
+<span class="w">                </span><span class="n">topic</span><span class="p">.</span><span class="n">name</span><span class="p">,</span>
+<span class="w">                </span><span class="n">topic</span><span class="p">.</span><span class="n">ideas</span><span class="p">.</span><span class="n">len</span><span class="p">()</span>
+<span class="w">            </span><span class="p">);</span>
+<span class="w">            </span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">};</span>
+
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">new_text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">match</span><span class="w"> </span><span class="n">prompt_edit</span><span class="p">(</span><span class="s">"Idea: "</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">current_text</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nb">Some</span><span class="p">(</span><span class="n">text</span><span class="p">)</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="o">!</span><span class="n">text</span><span class="p">.</span><span class="n">trim</span><span class="p">().</span><span class="n">is_empty</span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">text</span><span class="p">,</span>
+<span class="w">        </span><span class="n">_</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="fm">println!</span><span class="p">(</span><span class="s">"Aborted. Nothing was changed."</span><span class="p">);</span>
+<span class="w">            </span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">};</span>
+
+<span class="w">    </span><span class="k">match</span><span class="w"> </span><span class="n">edit_idea</span><span class="p">(</span><span class="n">store</span><span class="p">,</span><span class="w"> </span><span class="n">topic_id</span><span class="p">,</span><span class="w"> </span><span class="n">idea_id</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">new_text</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nb">Ok</span><span class="p">((</span><span class="n">topic</span><span class="p">,</span><span class="w"> </span><span class="n">old_text</span><span class="p">))</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="fm">println!</span><span class="p">(</span>
+<span class="w">            </span><span class="s">"Edited idea [{}] in topic </span><span class="se">\"</span><span class="s">{}</span><span class="se">\"</span><span class="s">: </span><span class="se">\"</span><span class="s">{}</span><span class="se">\"</span><span class="s"> -&gt; </span><span class="se">\"</span><span class="s">{}</span><span class="se">\"</span><span class="s">."</span><span class="p">,</span>
+<span class="w">            </span><span class="n">idea_id</span><span class="p">,</span><span class="w"> </span><span class="n">topic</span><span class="p">,</span><span class="w"> </span><span class="n">old_text</span><span class="p">,</span><span class="w"> </span><span class="n">new_text</span>
+<span class="w">        </span><span class="p">),</span>
 <span class="w">        </span><span class="nb">Err</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="fm">println!</span><span class="p">(</span><span class="s">"Error: {}"</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">);</span>
 <span class="w">            </span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
@@ -745,15 +1491,24 @@
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 
-<span class="c1">// Renumbers every topic id and every idea id (within its topic) to 1, 2, 3, ..., closing any gaps left by deletions. Relative order (by current id) is preserved.</span>
+<span class="c1">// Renumbers every topic id (globally unique across the whole tree, pre-order: a topic before</span>
+<span class="c1">// its sub-topics, siblings in their current id order) and every idea id (within its own topic)</span>
+<span class="c1">// to 1, 2, 3, ..., closing any gaps left by deletions.</span>
 <span class="k">fn</span><span class="w"> </span><span class="nf">defrag</span><span class="p">(</span><span class="n">store</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">mut</span><span class="w"> </span><span class="n">Store</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">store</span><span class="p">.</span><span class="n">sort_by_key</span><span class="p">(</span><span class="o">|</span><span class="n">t</span><span class="o">|</span><span class="w"> </span><span class="n">t</span><span class="p">.</span><span class="n">id</span><span class="p">);</span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">topic_index</span><span class="p">,</span><span class="w"> </span><span class="n">topic</span><span class="p">)</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">store</span><span class="p">.</span><span class="n">iter_mut</span><span class="p">().</span><span class="n">enumerate</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">topic</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">topic_index</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="kt">u64</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">next_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="k">u64</span><span class="p">;</span>
+<span class="w">    </span><span class="n">defrag_topics</span><span class="p">(</span><span class="n">store</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="n">next_id</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">fn</span><span class="w"> </span><span class="nf">defrag_topics</span><span class="p">(</span><span class="n">topics</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">mut</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="n">Topic</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">next_id</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">mut</span><span class="w"> </span><span class="kt">u64</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">topics</span><span class="p">.</span><span class="n">sort_by_key</span><span class="p">(</span><span class="o">|</span><span class="n">t</span><span class="o">|</span><span class="w"> </span><span class="n">t</span><span class="p">.</span><span class="n">id</span><span class="p">);</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">topic</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">topics</span><span class="p">.</span><span class="n">iter_mut</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">topic</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">next_id</span><span class="p">;</span>
+<span class="w">        </span><span class="o">*</span><span class="n">next_id</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 <span class="w">        </span><span class="n">topic</span><span class="p">.</span><span class="n">ideas</span><span class="p">.</span><span class="n">sort_by_key</span><span class="p">(</span><span class="o">|</span><span class="n">i</span><span class="o">|</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">id</span><span class="p">);</span>
 <span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">idea_index</span><span class="p">,</span><span class="w"> </span><span class="n">idea</span><span class="p">)</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">topic</span><span class="p">.</span><span class="n">ideas</span><span class="p">.</span><span class="n">iter_mut</span><span class="p">().</span><span class="n">enumerate</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="n">idea</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">idea_index</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="kt">u64</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">defrag_topics</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="n">topic</span><span class="p">.</span><span class="n">sub_topics</span><span class="p">,</span><span class="w"> </span><span class="n">next_id</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 
@@ -780,7 +1535,7 @@
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">arguments</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">"search"</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">match</span><span class="w"> </span><span class="n">arguments</span><span class="p">.</span><span class="n">len</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="mi">3</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="n">search_ideas</span><span class="p">(</span><span class="o">&amp;</span><span class="n">store</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">arguments</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="w"> </span><span class="nb">None</span><span class="p">);</span>
+<span class="w">                </span><span class="n">search_all</span><span class="p">(</span><span class="o">&amp;</span><span class="n">store</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">arguments</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
 <span class="w">                </span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
 <span class="w">            </span><span class="p">}</span>
 <span class="w">            </span><span class="mi">4</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
@@ -793,6 +1548,38 @@
 <span class="w">                </span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
 <span class="w">            </span><span class="p">}</span>
 <span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">arguments</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">"edit"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">match</span><span class="w"> </span><span class="n">arguments</span><span class="p">.</span><span class="n">len</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="mi">3</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">run_edit_topic</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="n">store</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">arguments</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
+<span class="w">                </span><span class="n">save_store</span><span class="p">(</span><span class="o">&amp;</span><span class="n">path</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">store</span><span class="p">);</span>
+<span class="w">                </span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="mi">4</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">run_edit</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="n">store</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">arguments</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="w"> </span><span class="o">&amp;</span><span class="n">arguments</span><span class="p">[</span><span class="mi">3</span><span class="p">]);</span>
+<span class="w">                </span><span class="n">save_store</span><span class="p">(</span><span class="o">&amp;</span><span class="n">path</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">store</span><span class="p">);</span>
+<span class="w">                </span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="n">_</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="fm">println!</span><span class="p">(</span><span class="s">"Error: Invalid usage of edit."</span><span class="p">);</span>
+<span class="w">                </span><span class="n">print_help</span><span class="p">();</span>
+<span class="w">                </span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">arguments</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">"add-topic"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">arguments</span><span class="p">.</span><span class="n">len</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="fm">println!</span><span class="p">(</span><span class="s">"Error: Invalid usage of add-topic."</span><span class="p">);</span>
+<span class="w">            </span><span class="n">print_help</span><span class="p">();</span>
+<span class="w">            </span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">names</span><span class="p">:</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">arguments</span><span class="p">[</span><span class="mi">2</span><span class="o">..</span><span class="p">].</span><span class="n">to_vec</span><span class="p">();</span>
+<span class="w">        </span><span class="n">add_topic_chain</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="n">store</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">names</span><span class="p">);</span>
+<span class="w">        </span><span class="n">save_store</span><span class="p">(</span><span class="o">&amp;</span><span class="n">path</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">store</span><span class="p">);</span>
+<span class="w">        </span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">arguments</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">"delete"</span><span class="w"> </span><span class="p">{</span>
@@ -822,25 +1609,16 @@
 <span class="w">        </span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="p">(</span><span class="n">topic</span><span class="p">,</span><span class="w"> </span><span class="n">idea</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">match</span><span class="w"> </span><span class="n">arguments</span><span class="p">.</span><span class="n">len</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="mi">2</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="n">default_topic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"no topic"</span><span class="p">.</span><span class="n">to_string</span><span class="p">();</span>
-<span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="n">user_idea</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">arguments</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">clone</span><span class="p">();</span>
-<span class="w">            </span><span class="p">(</span><span class="n">default_topic</span><span class="p">,</span><span class="w"> </span><span class="n">user_idea</span><span class="p">)</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="mi">3</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="n">user_topic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">arguments</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">clone</span><span class="p">();</span>
-<span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="n">user_idea</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">arguments</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="n">clone</span><span class="p">();</span>
-<span class="w">            </span><span class="p">(</span><span class="n">user_topic</span><span class="p">,</span><span class="w"> </span><span class="n">user_idea</span><span class="p">)</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="n">_</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="fm">println!</span><span class="p">(</span><span class="s">"Error: Invalid number of arguments."</span><span class="p">);</span>
-<span class="w">            </span><span class="n">print_help</span><span class="p">();</span>
-<span class="w">            </span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// Everything but the last argument is a topic path (walked/created just like add-topic);</span>
+<span class="w">    </span><span class="c1">// the last argument is the idea text. `idea "text"` alone falls back to "no topic".</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="p">(</span><span class="n">topic_path</span><span class="p">,</span><span class="w"> </span><span class="n">idea_text</span><span class="p">):</span><span class="w"> </span><span class="p">(</span><span class="nb">Vec</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="nb">String</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">arguments</span><span class="p">.</span><span class="n">len</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="p">(</span><span class="fm">vec!</span><span class="p">[</span><span class="s">"no topic"</span><span class="p">.</span><span class="n">to_string</span><span class="p">()],</span><span class="w"> </span><span class="n">arguments</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">clone</span><span class="p">())</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">last</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">arguments</span><span class="p">.</span><span class="n">len</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">        </span><span class="p">(</span><span class="n">arguments</span><span class="p">[</span><span class="mi">1</span><span class="o">..</span><span class="n">last</span><span class="p">].</span><span class="n">to_vec</span><span class="p">(),</span><span class="w"> </span><span class="n">arguments</span><span class="p">[</span><span class="n">last</span><span class="p">].</span><span class="n">clone</span><span class="p">())</span>
 <span class="w">    </span><span class="p">};</span>
 
-<span class="w">    </span><span class="n">add_idea</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="n">store</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">topic</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">idea</span><span class="p">);</span>
+<span class="w">    </span><span class="n">add_idea</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="n">store</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">topic_path</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">idea_text</span><span class="p">);</span>
 <span class="w">    </span><span class="n">save_store</span><span class="p">(</span><span class="o">&amp;</span><span class="n">path</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">store</span><span class="p">);</span>
 <span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">"Saved your idea!"</span><span class="p">);</span>
 <span class="p">}</span>
