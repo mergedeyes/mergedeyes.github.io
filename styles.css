@@ -471,6 +471,14 @@ a:focus-visible, button:focus-visible {
   display: flex; gap: .6rem; flex-wrap: wrap;
 }
 .footer__sep { color: var(--border); }
+.footer a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-color: var(--border);
+  transition: color .15s ease, text-decoration-color .15s ease;
+}
+.footer a:hover { color: var(--text); text-decoration-color: var(--accent); }
 
 /* ── Scroll reveal ── */
 .reveal { opacity: 0; transform: translateY(14px); transition: opacity .5s ease, transform .5s ease; }
@@ -670,6 +678,106 @@ a:focus-visible, button:focus-visible {
 .skill-page__back { margin-top: 2.5rem; }
 
 /* ============================================================
+   Visitors page (visitors.html) — per-day traffic chart. The daily
+   figures live in a JSON blob embedded in the page and patched at
+   commit time by update_visitor_count.py; the chart itself is plain
+   inline SVG built by visitors.js, no client-side network requests
+   and no charting library.
+   ============================================================ */
+.stats-page { padding-top: clamp(3rem, 8vh, 5rem); }
+.stats-page__head { margin: .8rem 0 1.6rem; }
+.stats-page__lead { color: var(--text-dim); font-size: 1.02rem; margin: .6rem 0 0; }
+
+.stats-controls {
+  display: flex; gap: .5rem; flex-wrap: wrap;
+  margin-bottom: 1.6rem;
+}
+.range-btn {
+  font-family: var(--font-mono);
+  font-size: .78rem;
+  color: var(--text-dim);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: .4rem 1rem;
+  cursor: pointer;
+  transition: color .15s ease, border-color .15s ease, background-color .15s ease;
+}
+.range-btn:hover { color: var(--text); border-color: #37424f; }
+.range-btn.is-active { color: var(--accent-ink); background: var(--accent); border-color: var(--accent); }
+
+.stats-summary {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
+  margin-bottom: 1.8rem;
+}
+.stat-tile {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: 12px;
+  padding: 1rem 1.1rem;
+  display: flex; flex-direction: column; gap: .3rem;
+}
+.stat-tile__label {
+  font-family: var(--font-mono);
+  font-size: .72rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+.stat-tile__value { font-size: 1.6rem; font-weight: 600; color: var(--text); }
+.stat-tile__meta { font-family: var(--font-mono); font-size: .74rem; color: var(--text-dim); }
+
+.chart-wrap { position: relative; margin-bottom: 1rem; }
+.chart {
+  width: 100%; height: auto; display: block;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: 12px;
+}
+.chart-grid { stroke: var(--border-soft); stroke-width: 1; }
+.chart-axis-label { font-family: var(--font-mono); font-size: 9px; fill: var(--muted); }
+.chart-area { fill: var(--accent); opacity: .1; stroke: none; }
+.chart-line { fill: none; stroke: var(--accent); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.chart-dot { fill: var(--accent); stroke: var(--bg); stroke-width: 2; }
+.chart-hover-dot { fill: var(--accent); stroke: var(--bg); stroke-width: 2; pointer-events: none; }
+.chart-crosshair { stroke: var(--border); stroke-width: 1; pointer-events: none; }
+.chart-hit { cursor: crosshair; }
+.chart-empty { fill: var(--muted); font-family: var(--font-mono); font-size: 13px; }
+
+.chart-tooltip {
+  position: absolute;
+  transform: translate(-50%, -120%);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: .4rem .6rem;
+  font-family: var(--font-mono);
+  font-size: .74rem;
+  pointer-events: none;
+  white-space: nowrap;
+  display: flex; flex-direction: column; gap: .1rem;
+  z-index: 5;
+}
+.chart-tooltip__date { color: var(--text-dim); }
+.chart-tooltip__value { color: var(--text); font-weight: 600; }
+
+.table-toggle {
+  font-family: var(--font-mono);
+  font-size: .78rem;
+  color: var(--accent);
+  background: none; border: none; padding: 0;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.table-wrap { margin-top: 1rem; max-height: 320px; overflow-y: auto; border: 1px solid var(--border); border-radius: 12px; }
+.data-table { width: 100%; border-collapse: collapse; font-family: var(--font-mono); font-size: .82rem; }
+.data-table th, .data-table td { padding: .5rem .8rem; text-align: left; border-bottom: 1px solid var(--border-soft); }
+.data-table th { color: var(--text); background: var(--surface-2); position: sticky; top: 0; }
+.data-table td { color: var(--text-dim); }
+.data-table td:last-child, .data-table th:last-child { text-align: right; font-variant-numeric: tabular-nums; }
+
+/* ============================================================
    Responsive — rail collapses to a top bar under 900px
    ============================================================ */
 @media (max-width: 900px) {
@@ -728,4 +836,5 @@ a:focus-visible, button:focus-visible {
 @media (max-width: 560px) {
   .entry { grid-template-columns: 1fr; gap: .35rem; }
   .card__foot { gap: 1rem; }
+  .stats-summary { grid-template-columns: 1fr; }
 }

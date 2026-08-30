@@ -36,6 +36,7 @@ import urllib.error
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 STATE_PATH = os.path.join(REPO_ROOT, ".github", "data", "visitor-count.json")
 HTML_FILES_WITH_COUNTER = ["index.html"]
+VISITOR_DATA_HTML_FILE = "visitors.html"
 
 
 def fetch_traffic_views(repo, token):
@@ -86,6 +87,29 @@ def patch_footer(total):
             print(f"updated {name} -> {formatted}")
 
 
+def patch_visitor_chart(daily):
+    """Patch the per-day visits JSON embedded in visitors.html so the
+    chart page has fresh data with zero client-side network requests."""
+    path = os.path.join(REPO_ROOT, VISITOR_DATA_HTML_FILE)
+    if not os.path.isfile(path):
+        print(f"warning: {VISITOR_DATA_HTML_FILE} not found, skipping chart data patch", file=sys.stderr)
+        return
+    with open(path, encoding="utf-8") as f:
+        html = f.read()
+    payload = json.dumps(dict(sorted(daily.items())), separators=(",", ":"))
+    pattern = re.compile(
+        r'(<script type="application/json" id="visitor-daily-data">)[^<]*(</script>)'
+    )
+    new_html, count = pattern.subn(lambda m: m.group(1) + payload + m.group(2), html)
+    if count == 0:
+        print(f"warning: no visitor-daily-data placeholder found in {VISITOR_DATA_HTML_FILE}", file=sys.stderr)
+        return
+    if new_html != html:
+        with open(path, "w", encoding="utf-8") as f:
+            f.write(new_html)
+        print(f"updated {VISITOR_DATA_HTML_FILE} with {len(daily)} day(s) of data")
+
+
 def main():
     repo = os.environ["GITHUB_REPOSITORY"]
     token = os.environ.get("TRAFFIC_PAT")
@@ -103,6 +127,7 @@ def main():
     data = fetch_traffic_views(repo, token)
     views = data.get("views", [])
 
+    daily = state.setdefault("daily", {})
     new_total = state["total"]
     last_counted = state["last_counted_date"]
 
@@ -110,13 +135,16 @@ def main():
         day = entry["timestamp"][:10]  # "YYYY-MM-DDT00:00:00Z" -> "YYYY-MM-DD"
         if day > last_counted:
             new_total += entry["count"]
+            daily[day] = daily.get(day, 0) + entry["count"]
             last_counted = day
 
     state["total"] = new_total
     state["last_counted_date"] = last_counted
+    state["daily"] = daily
     save_state(state)
 
     patch_footer(new_total)
+    patch_visitor_chart(daily)
     print(f"visitor count total: {new_total} (as of {last_counted})")
 
 

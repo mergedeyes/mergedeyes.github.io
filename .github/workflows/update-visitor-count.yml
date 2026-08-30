@@ -32,4 +32,4 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "chore: update visitor count"
-          file_pattern: ".github/data/visitor-count.json index.html"
+          file_pattern: ".github/data/visitor-count.json index.html visitors.html"

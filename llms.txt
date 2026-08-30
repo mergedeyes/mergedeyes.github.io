@@ -27,3 +27,7 @@
 - [Monitoring & Alerting](https://mergedcloud.de/skills/monitoring.html)
 - [Nginx](https://mergedcloud.de/skills/nginx.html)
 - [Nagios, Nagstamon & Naemon](https://mergedcloud.de/skills/nagios.html)
+
+## Site
+
+- [Visitors](https://mergedcloud.de/visitors.html): Daily visits chart with 7-day, 4-week, 1-year, and all-time views.
