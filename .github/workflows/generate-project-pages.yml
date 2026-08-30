@@ -37,4 +37,9 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "chore: regenerate project pages"
-          file_pattern: "projects/*.html"
+          # .github/data/project-pages-cache.json is the change-skip
+          # build cache (see generate_project_pages.py's module
+          # docstring) - it has to be committed back too, or every run
+          # starts from an empty cache and re-fetches everything from
+          # GitHub again, defeating the whole point of it.
+          file_pattern: "projects/*.html .github/data/project-pages-cache.json"

@@ -501,6 +501,25 @@ a:focus-visible, button:focus-visible {
 .project-page__head .section__title { margin-right: .2rem; }
 .project-page__foot { margin-bottom: 2.5rem; }
 
+/* ============================================================
+   Commit history page (generated per project, next to the source
+   browser link - see generate_project_pages.py). One card per
+   commit, reusing the same .card visual language as project cards/
+   skill chips; the whole card is a real link out to that commit on
+   GitHub, so it needs no separate "view" link inside it. The head
+   row (title + "back to project" link) reuses .source-page__head
+   as-is, no new CSS needed for that part.
+   ============================================================ */
+.commits-list { margin-top: 2rem; }
+.commit-card { display: block; }
+.commit-card .card__title { font-size: 1.05rem; }
+.commit-card__foot {
+  font-family: var(--font-mono);
+  font-size: .78rem;
+  color: var(--muted);
+}
+.commit-card__author { color: var(--text-dim); }
+
 .readme-content { color: var(--text-dim); font-size: .98rem; }
 .readme-content h1,
 .readme-content h2,
