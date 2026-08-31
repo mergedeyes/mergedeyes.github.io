@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>.github/scripts/update_visitor_count.py — Personal Website — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=f9e656fc" />
+  <link rel="stylesheet" href="../../styles.css?v=72b8124a" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -224,31 +224,52 @@
 <span class="normal">179</span>
 <span class="normal">180</span>
 <span class="normal">181</span>
-<span class="normal">182</span></pre></div></td><td class="code"><div><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span></pre></div></td><td class="code"><div><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
 <span class="sd">"""</span>
 <span class="sd">Updates the site's visitor counter using GoatCounter analytics.</span>
 
 <span class="sd">This script fetches real website traffic data to update the static HTML files,</span>
-<span class="sd">keeping the site entirely free of client-side API requests. It makes a single</span>
-<span class="sd">authenticated call to `/api/v0/stats/total`, requesting a date range that</span>
-<span class="sd">starts well before this site (or GoatCounter itself) could possibly have any</span>
-<span class="sd">real history. Per GoatCounter's API schema, that endpoint's `total` field is</span>
-<span class="sd">"total visitors for the requested date range" -- not a separate all-time</span>
-<span class="sd">figure -- so a wide-enough range makes it double as the lifetime total. That</span>
-<span class="sd">one response is then used for two things:</span>
-<span class="sd">1. The all-time lifetime total, patched into the footer of `index.html`.</span>
-<span class="sd">2. The per-day breakdown (`stats`), merged into the local cache</span>
-<span class="sd">   (.github/data/visitor-count.json) and embedded into `visitors.html` for</span>
-<span class="sd">   the chart rendering.</span>
+<span class="sd">keeping the site entirely free of client-side API requests. Each run makes a</span>
+<span class="sd">single authenticated call to `/api/v0/stats/total` for only the last</span>
+<span class="sd">LOOKBACK_DAYS days (small, cheap request) and merges those days into the</span>
+<span class="sd">local day-by-day cache (.github/data/visitor-count.json). Older days already</span>
+<span class="sd">in the cache are left untouched -- they're not re-fetched every run, only the</span>
+<span class="sd">last few days are, since a day's count can still be rising until it's fully</span>
+<span class="sd">past. Re-fetching each day a few times before it ages out of the lookback</span>
+<span class="sd">window (once per run while it's "recent") lets its GoatCounter-reported count</span>
+<span class="sd">settle to its true final value before the script stops touching it.</span>
 
-<span class="sd">This used to also hit the public, unauthenticated `/counter/TOTAL.json`</span>
-<span class="sd">endpoint for the footer total, to avoid needing a token for that half. That</span>
-<span class="sd">endpoint turned out to be considerably less reliable in practice (repeatedly</span>
-<span class="sd">403'd, seemingly rate-limited per-site rather than per-caller -- it 403'd</span>
-<span class="sd">from unrelated networks too) than the authenticated stats endpoint, which</span>
-<span class="sd">has been solid. Since the authenticated call already returns everything the</span>
-<span class="sd">public one did (and more), the public call was dropped entirely rather than</span>
-<span class="sd">kept as a fallback -- one reliable request beats one reliable + one flaky.</span>
+<span class="sd">The all-time lifetime total (patched into index.html's footer) is NOT asked</span>
+<span class="sd">of the API directly -- GoatCounter's `total` field for this endpoint is</span>
+<span class="sd">"total visitors for the requested date range", so a 3-day request would only</span>
+<span class="sd">ever give a 3-day total, not a lifetime one. Instead it's derived by summing</span>
+<span class="sd">every day this script has ever recorded in the local cache. That's accurate</span>
+<span class="sd">as long as each day gets captured at least once while numbers are being</span>
+<span class="sd">reported for it; it's also self-consistent and never needs a separate</span>
+<span class="sd">wide-range request. (An earlier version of this script requested a decade-</span>
+<span class="sd">plus-wide range every run specifically to get the API's own `total` field</span>
+<span class="sd">for this; that worked but re-fetched the site's entire history on every run</span>
+<span class="sd">for no benefit once the local cache already had it, which is what this</span>
+<span class="sd">lookback-window approach avoids while keeping the same result.)</span>
+
+<span class="sd">Before that, an even earlier version used the public, unauthenticated</span>
+<span class="sd">`/counter/TOTAL.json` endpoint for the footer total, to avoid needing a</span>
+<span class="sd">token for that half. That endpoint turned out to be considerably less</span>
+<span class="sd">reliable in practice (repeatedly 403'd, seemingly rate-limited per-site</span>
+<span class="sd">rather than per-caller) than the authenticated stats endpoint, which has</span>
+<span class="sd">been solid -- another reason to get everything from the one call that works.</span>
 
 <span class="sd">Requires GOATCOUNTER_TOKEN in the environment. This must be a GoatCounter API</span>
 <span class="sd">token with 'statistics' permissions.</span>
@@ -268,24 +289,24 @@
 <span class="n">VISITOR_DATA_HTML_FILE</span> <span class="o">=</span> <span class="s2">"visitors.html"</span>
 <span class="n">GOATCOUNTER_DOMAIN</span> <span class="o">=</span> <span class="s2">"mergedeyes.goatcounter.com"</span>
 
-<span class="c1"># Start of the "all time" range used to compute the lifetime total. Picked</span>
-<span class="c1"># to comfortably predate any real site history (and GoatCounter itself,</span>
-<span class="c1"># which didn't exist yet) rather than trying to track the site's actual</span>
-<span class="c1"># creation date -- it only needs to be "early enough", not exact.</span>
-<span class="n">ALL_TIME_START</span> <span class="o">=</span> <span class="s2">"2015-01-01T00:00:00Z"</span>
+<span class="c1"># How many trailing days to re-fetch on every run. Small on purpose: older</span>
+<span class="c1"># days are considered settled and aren't re-queried, so this only needs to</span>
+<span class="c1"># cover "how long can a day's count still be changing after it started" --</span>
+<span class="c1"># 3 days is generous headroom for that, not a meaningful history depth.</span>
+<span class="n">LOOKBACK_DAYS</span> <span class="o">=</span> <span class="mi">3</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">fetch_goatcounter_stats</span><span class="p">(</span><span class="n">token</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""Fetches all-time-to-date stats in one authenticated call.</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">fetch_recent_stats</span><span class="p">(</span><span class="n">token</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Fetches the last LOOKBACK_DAYS days of per-day stats.</span>
 
-<span class="sd">    Returns a dict with "total" (all-time lifetime total, see module</span>
-<span class="sd">    docstring) and "stats" (per-day breakdown, one entry per day since</span>
-<span class="sd">    ALL_TIME_START) on success, or None on failure. Returning None instead</span>
-<span class="sd">    of exiting lets the caller fall back to whatever was cached from the</span>
-<span class="sd">    last successful run, rather than clobbering good data with a failure.</span>
+<span class="sd">    Returns the list of per-day stat entries (GoatCounter's `stats` array)</span>
+<span class="sd">    on success, or None on failure. Returning None instead of exiting lets</span>
+<span class="sd">    the caller fall back to whatever was cached from the last successful</span>
+<span class="sd">    run, rather than clobbering good data with a failure.</span>
 <span class="sd">    """</span>
+    <span class="n">start_date</span> <span class="o">=</span> <span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">UTC</span><span class="p">)</span> <span class="o">-</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="n">LOOKBACK_DAYS</span><span class="p">))</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">"%Y-%m-</span><span class="si">%d</span><span class="s2">T00:00:00Z"</span><span class="p">)</span>
     <span class="n">end_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">UTC</span><span class="p">)</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">"%Y-%m-</span><span class="si">%d</span><span class="s2">T23:59:59Z"</span><span class="p">)</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"https://</span><span class="si">{</span><span class="n">GOATCOUNTER_DOMAIN</span><span class="si">}</span><span class="s2">/api/v0/stats/total?start=</span><span class="si">{</span><span class="n">ALL_TIME_START</span><span class="si">}</span><span class="s2">&amp;end=</span><span class="si">{</span><span class="n">end_date</span><span class="si">}</span><span class="s2">"</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"https://</span><span class="si">{</span><span class="n">GOATCOUNTER_DOMAIN</span><span class="si">}</span><span class="s2">/api/v0/stats/total?start=</span><span class="si">{</span><span class="n">start_date</span><span class="si">}</span><span class="s2">&amp;end=</span><span class="si">{</span><span class="n">end_date</span><span class="si">}</span><span class="s2">"</span>
 
     <span class="c1"># Auth goes only via the Authorization header (per GoatCounter's API docs).</span>
     <span class="c1"># A token must never be put in the URL's query string: query strings get</span>
@@ -300,7 +321,7 @@
     <span class="p">)</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="k">with</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span> <span class="k">as</span> <span class="n">resp</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">resp</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">resp</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"stats"</span><span class="p">,</span> <span class="p">[])</span>
     <span class="k">except</span> <span class="n">urllib</span><span class="o">.</span><span class="n">error</span><span class="o">.</span><span class="n">HTTPError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
         <span class="n">body</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">"utf-8"</span><span class="p">,</span> <span class="s2">"replace"</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"GoatCounter API request failed: </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">code</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">reason</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="n">body</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span>
@@ -373,19 +394,21 @@
     <span class="n">state</span> <span class="o">=</span> <span class="n">load_state</span><span class="p">()</span>
     <span class="n">daily_cache</span> <span class="o">=</span> <span class="n">state</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">"daily"</span><span class="p">,</span> <span class="p">{})</span>
 
-    <span class="n">result</span> <span class="o">=</span> <span class="n">fetch_goatcounter_stats</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
-    <span class="n">ok</span> <span class="o">=</span> <span class="n">result</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+    <span class="n">recent_stats</span> <span class="o">=</span> <span class="n">fetch_recent_stats</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
+    <span class="n">ok</span> <span class="o">=</span> <span class="n">recent_stats</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
 
     <span class="k">if</span> <span class="n">ok</span><span class="p">:</span>
-        <span class="n">new_total</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"total"</span><span class="p">,</span> <span class="n">state</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"total"</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-        <span class="k">for</span> <span class="n">stat</span> <span class="ow">in</span> <span class="n">result</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"stats"</span><span class="p">,</span> <span class="p">[]):</span>
+        <span class="k">for</span> <span class="n">stat</span> <span class="ow">in</span> <span class="n">recent_stats</span><span class="p">:</span>
             <span class="n">day_str</span> <span class="o">=</span> <span class="n">stat</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"day"</span><span class="p">,</span> <span class="s2">""</span><span class="p">)[:</span><span class="mi">10</span><span class="p">]</span>  <span class="c1"># Format: "YYYY-MM-DD"</span>
             <span class="k">if</span> <span class="n">day_str</span><span class="p">:</span>
                 <span class="n">daily_cache</span><span class="p">[</span><span class="n">day_str</span><span class="p">]</span> <span class="o">=</span> <span class="n">stat</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"daily"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="c1"># Fall back to whatever was cached from the last successful run --</span>
-        <span class="c1"># a failed fetch shouldn't wipe out good data or write bogus zeros.</span>
-        <span class="n">new_total</span> <span class="o">=</span> <span class="n">state</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"total"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="c1"># else: leave daily_cache exactly as loaded -- a failed fetch shouldn't</span>
+    <span class="c1"># wipe out good data or write bogus zeros over the last few days.</span>
+
+    <span class="n">daily_cache</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">daily_cache</span><span class="o">.</span><span class="n">items</span><span class="p">()))</span>
+    <span class="c1"># The lifetime total is derived from our own cache, not asked of the</span>
+    <span class="c1"># API directly -- see module docstring for why.</span>
+    <span class="n">new_total</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">daily_cache</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
 
     <span class="n">state</span><span class="p">[</span><span class="s2">"total"</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_total</span>
     <span class="n">state</span><span class="p">[</span><span class="s2">"daily"</span><span class="p">]</span> <span class="o">=</span> <span class="n">daily_cache</span>
@@ -398,8 +421,9 @@
     <span class="k">if</span> <span class="ow">not</span> <span class="n">ok</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span>
             <span class="s2">"warning: GoatCounter stats fetch failed (see error above) -- "</span>
-            <span class="s2">"footer total and chart data are both stale/unchanged this run. "</span>
-            <span class="s2">"Check GOATCOUNTER_TOKEN."</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s2">"the last </span><span class="si">{</span><span class="n">LOOKBACK_DAYS</span><span class="si">}</span><span class="s2"> day(s) are stale/unchanged this run "</span>
+            <span class="s2">"(older days and the total are computed from what's already "</span>
+            <span class="s2">"cached, so they're unaffected). Check GOATCOUNTER_TOKEN."</span><span class="p">,</span>
             <span class="n">file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>

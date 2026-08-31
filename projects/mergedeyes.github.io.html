@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Personal Website — Jan</title>
-  <link rel="stylesheet" href="../styles.css?v=f9e656fc" />
+  <link rel="stylesheet" href="../styles.css?v=72b8124a" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -46,7 +46,7 @@
           <div class="card__links">
             <a href="https://github.com/mergedeyes/mergedeyes.github.io" class="link">Repository</a>
             <a href="mergedeyes.github.io-source.html" class="link">Browse source (21 files)</a>
-            <a href="mergedeyes.github.io-commits.html" class="link">Commit history (120)</a>
+            <a href="mergedeyes.github.io-commits.html" class="link">Commit history (123)</a>
           </div>
           <span class="license-badge">GPL-3.0</span>
         </div>
@@ -72,7 +72,7 @@
 <p dir="auto">Three GitHub Actions workflows do the recurring work:</p>
 <ul dir="auto">
 <li><strong>Generate project pages</strong> (<code>generate-project-pages.yml</code>, on push / daily / on demand) — for every project card in <code>index.html</code> with a GitHub "Repository" link, builds a page from that repo's README (fetched via the GitHub API), an optional syntax-highlighted source browser (opt-in per card via <code>data-source-file="..."</code>), and a full commit history — one card per commit, linking straight out to GitHub. A small build cache (<code>.github/data/project-pages-cache.json</code>) means a repo that hasn't been pushed to since the last run gets skipped entirely rather than re-fetched, and a repo that <em>did</em> change only re-fetches the individual files and commits that actually moved.</li>
-<li><strong>Update visitor count</strong> (<code>update-visitor-count.yml</code>, every 30 min) — pulls totals and daily stats from GoatCounter and patches them straight into <code>index.html</code>'s footer and <code>visitors.html</code>'s chart data.</li>
+<li><strong>Update visitor count</strong> (<code>update-visitor-count.yml</code>, every 30 min) — fetches just the last 3 days of stats from GoatCounter (small, cheap request) and merges them into a local day-by-day cache (<code>.github/data/visitor-count.json</code>). The lifetime total patched into <code>index.html</code>'s footer is derived by summing that cache rather than asked of the API directly (GoatCounter's <code>total</code> field only covers the requested date range), and the per-day breakdown is patched into <code>visitors.html</code>'s chart data.</li>
 <li><strong>Deploy Jekyll with GitHub Pages</strong> (<code>jekyll-gh-pages.yml</code>) — builds and publishes the site once the project-pages workflow finishes.</li>
 </ul>
 <p dir="auto">Running the project-page generator yourself needs Python 3 and <code>pip install requests beautifulsoup4 pygments</code>, plus a <code>GITHUB_TOKEN</code> in the environment (raises the GitHub API rate limit; the workflow gets this automatically, a local run needs it set by hand).</p>
