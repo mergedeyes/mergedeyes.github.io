@@ -3,26 +3,35 @@
 Updates the site's visitor counter using GoatCounter analytics.
 
 This script fetches real website traffic data to update the static HTML files,
-keeping the site entirely free of client-side API requests. It makes a single
-authenticated call to `/api/v0/stats/total`, requesting a date range that
-starts well before this site (or GoatCounter itself) could possibly have any
-real history. Per GoatCounter's API schema, that endpoint's `total` field is
-"total visitors for the requested date range" -- not a separate all-time
-figure -- so a wide-enough range makes it double as the lifetime total. That
-one response is then used for two things:
-1. The all-time lifetime total, patched into the footer of `index.html`.
-2. The per-day breakdown (`stats`), merged into the local cache
-   (.github/data/visitor-count.json) and embedded into `visitors.html` for
-   the chart rendering.
+keeping the site entirely free of client-side API requests. Each run makes a
+single authenticated call to `/api/v0/stats/total` for only the last
+LOOKBACK_DAYS days (small, cheap request) and merges those days into the
+local day-by-day cache (.github/data/visitor-count.json). Older days already
+in the cache are left untouched -- they're not re-fetched every run, only the
+last few days are, since a day's count can still be rising until it's fully
+past. Re-fetching each day a few times before it ages out of the lookback
+window (once per run while it's "recent") lets its GoatCounter-reported count
+settle to its true final value before the script stops touching it.
 
-This used to also hit the public, unauthenticated `/counter/TOTAL.json`
-endpoint for the footer total, to avoid needing a token for that half. That
-endpoint turned out to be considerably less reliable in practice (repeatedly
-403'd, seemingly rate-limited per-site rather than per-caller -- it 403'd
-from unrelated networks too) than the authenticated stats endpoint, which
-has been solid. Since the authenticated call already returns everything the
-public one did (and more), the public call was dropped entirely rather than
-kept as a fallback -- one reliable request beats one reliable + one flaky.
+The all-time lifetime total (patched into index.html's footer) is NOT asked
+of the API directly -- GoatCounter's `total` field for this endpoint is
+"total visitors for the requested date range", so a 3-day request would only
+ever give a 3-day total, not a lifetime one. Instead it's derived by summing
+every day this script has ever recorded in the local cache. That's accurate
+as long as each day gets captured at least once while numbers are being
+reported for it; it's also self-consistent and never needs a separate
+wide-range request. (An earlier version of this script requested a decade-
+plus-wide range every run specifically to get the API's own `total` field
+for this; that worked but re-fetched the site's entire history on every run
+for no benefit once the local cache already had it, which is what this
+lookback-window approach avoids while keeping the same result.)
+
+Before that, an even earlier version used the public, unauthenticated
+`/counter/TOTAL.json` endpoint for the footer total, to avoid needing a
+token for that half. That endpoint turned out to be considerably less
+reliable in practice (repeatedly 403'd, seemingly rate-limited per-site
+rather than per-caller) than the authenticated stats endpoint, which has
+been solid -- another reason to get everything from the one call that works.
 
 Requires GOATCOUNTER_TOKEN in the environment. This must be a GoatCounter API
 token with 'statistics' permissions.
@@ -42,24 +51,24 @@ HTML_FILES_WITH_COUNTER = ["index.html"]
 VISITOR_DATA_HTML_FILE = "visitors.html"
 GOATCOUNTER_DOMAIN = "mergedeyes.goatcounter.com"
 
-# Start of the "all time" range used to compute the lifetime total. Picked
-# to comfortably predate any real site history (and GoatCounter itself,
-# which didn't exist yet) rather than trying to track the site's actual
-# creation date -- it only needs to be "early enough", not exact.
-ALL_TIME_START = "2015-01-01T00:00:00Z"
+# How many trailing days to re-fetch on every run. Small on purpose: older
+# days are considered settled and aren't re-queried, so this only needs to
+# cover "how long can a day's count still be changing after it started" --
+# 3 days is generous headroom for that, not a meaningful history depth.
+LOOKBACK_DAYS = 3
 
 
-def fetch_goatcounter_stats(token):
-    """Fetches all-time-to-date stats in one authenticated call.
+def fetch_recent_stats(token):
+    """Fetches the last LOOKBACK_DAYS days of per-day stats.
 
-    Returns a dict with "total" (all-time lifetime total, see module
-    docstring) and "stats" (per-day breakdown, one entry per day since
-    ALL_TIME_START) on success, or None on failure. Returning None instead
-    of exiting lets the caller fall back to whatever was cached from the
-    last successful run, rather than clobbering good data with a failure.
+    Returns the list of per-day stat entries (GoatCounter's `stats` array)
+    on success, or None on failure. Returning None instead of exiting lets
+    the caller fall back to whatever was cached from the last successful
+    run, rather than clobbering good data with a failure.
     """
+    start_date = (datetime.datetime.now(datetime.UTC) - datetime.timedelta(days=LOOKBACK_DAYS)).strftime("%Y-%m-%dT00:00:00Z")
     end_date = datetime.datetime.now(datetime.UTC).strftime("%Y-%m-%dT23:59:59Z")
-    url = f"https://{GOATCOUNTER_DOMAIN}/api/v0/stats/total?start={ALL_TIME_START}&end={end_date}"
+    url = f"https://{GOATCOUNTER_DOMAIN}/api/v0/stats/total?start={start_date}&end={end_date}"
 
     # Auth goes only via the Authorization header (per GoatCounter's API docs).
     # A token must never be put in the URL's query string: query strings get
@@ -74,7 +83,7 @@ def fetch_goatcounter_stats(token):
     )
     try:
         with urllib.request.urlopen(req, timeout=30) as resp:
-            return json.load(resp)
+            return json.load(resp).get("stats", [])
     except urllib.error.HTTPError as e:
         body = e.read().decode("utf-8", "replace")
         print(f"GoatCounter API request failed: {e.code} {e.reason}\n{body}", file=sys.stderr)
@@ -147,19 +156,21 @@ def main():
     state = load_state()
     daily_cache = state.setdefault("daily", {})
 
-    result = fetch_goatcounter_stats(token)
-    ok = result is not None
+    recent_stats = fetch_recent_stats(token)
+    ok = recent_stats is not None
 
     if ok:
-        new_total = result.get("total", state.get("total", 0))
-        for stat in result.get("stats", []):
+        for stat in recent_stats:
             day_str = stat.get("day", "")[:10]  # Format: "YYYY-MM-DD"
             if day_str:
                 daily_cache[day_str] = stat.get("daily", 0)
-    else:
-        # Fall back to whatever was cached from the last successful run --
-        # a failed fetch shouldn't wipe out good data or write bogus zeros.
-        new_total = state.get("total", 0)
+    # else: leave daily_cache exactly as loaded -- a failed fetch shouldn't
+    # wipe out good data or write bogus zeros over the last few days.
+
+    daily_cache = dict(sorted(daily_cache.items()))
+    # The lifetime total is derived from our own cache, not asked of the
+    # API directly -- see module docstring for why.
+    new_total = sum(daily_cache.values())
 
     state["total"] = new_total
     state["daily"] = daily_cache
@@ -172,8 +183,9 @@ def main():
     if not ok:
         print(
             "warning: GoatCounter stats fetch failed (see error above) -- "
-            "footer total and chart data are both stale/unchanged this run. "
-            "Check GOATCOUNTER_TOKEN.",
+            f"the last {LOOKBACK_DAYS} day(s) are stale/unchanged this run "
+            "(older days and the total are computed from what's already "
+            "cached, so they're unaffected). Check GOATCOUNTER_TOKEN.",
             file=sys.stderr,
         )
         sys.exit(1)
