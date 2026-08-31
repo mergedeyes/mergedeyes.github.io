@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>.github/workflows/bump-aur.yml — idea — Jan</title>
+  <link rel="stylesheet" href="../../styles.css?v=23787e93" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="layout">
+    <header class="rail" id="rail">
+<div class="rail__top">
+<a class="brand" href="../../index.html#top">
+<span class="brand__name">Jan</span>
+<span class="brand__meta">systems &amp; infrastructure<br/>Code, Code &amp; Code</span>
+</a>
+<button aria-controls="nav" aria-expanded="false" aria-label="Toggle menu" class="menu-toggle" id="menuToggle">
+<span></span><span></span><span></span>
+</button>
+</div>
+<nav aria-label="Sections" class="nav" id="nav">
+<a data-path="~/projects" href="../../index.html#projects">Projects</a>
+<a data-path="~/work" href="../../index.html#work">Work</a>
+<a data-path="~/education" href="../../index.html#education">Education</a>
+<a data-path="~/skills" href="../../index.html#skills">Skills</a>
+<a data-path="~/about" href="../../index.html#about">About Me</a>
+<a data-path="~/contact" href="../../index.html#contact">Contact</a>
+</nav>
+<div class="rail__status">
+<span aria-hidden="true" class="dot"></span>
+<span>open to work</span>
+</div>
+</header>
+    <nav class="file-tree"><p class="file-tree__title">Files</p><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">.github/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">workflows/</span><ul class="tree"><li class="tree-file tree-file--active"><a href=".github--workflows--bump-aur.yml.html">bump-aur.yml</a></li></ul></li></ul></li><li class="tree-dir"><span class="tree-dir__name">src/</span><ul class="tree"><li class="tree-file"><a href="src--main.rs.html">main.rs</a></li></ul></li></ul></nav>
+    <main class="main" id="main">
+      <section class="section source-page">
+        <p class="section__path">
+          <a href="../../index.html#projects" class="link">~/projects</a> /
+          <a href="../idea.html" class="link">idea</a> / source
+        </p>
+        <div class="source-page__head">
+          <h1 class="section__title">.github/workflows/bump-aur.yml</h1>
+          <a href="../idea.html" class="link">← Back to idea</a>
+        </div>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span>
+<span class="normal">84</span>
+<span class="normal">85</span>
+<span class="normal">86</span>
+<span class="normal">87</span>
+<span class="normal">88</span>
+<span class="normal">89</span>
+<span class="normal">90</span>
+<span class="normal">91</span>
+<span class="normal">92</span>
+<span class="normal">93</span>
+<span class="normal">94</span></pre></div></td><td class="code"><div><pre><span></span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Test &amp; propose AUR bump</span>
+
+<span class="c1"># Runs on every idea GitHub release. Does the boring, error-prone parts</span>
+<span class="c1"># (bump version, recompute checksums, rebuild, regen .SRCINFO) AND actually</span>
+<span class="c1"># tests the result (real build + namcap + REUSE check) in a clean Arch</span>
+<span class="c1"># container. Opens a PR on idea-aur instead of pushing straight to AUR --</span>
+<span class="c1"># the actual AUR push is a separate, human-triggered step (publish-aur.yml</span>
+<span class="c1"># in idea-aur), so this workflow never holds AUR push credentials at all.</span>
+
+<span class="nt">on</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">release</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">types</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">published</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="nt">workflow_dispatch</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">inputs</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">pkgver</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">"Version</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">bump</span><span class="nv"> </span><span class="s">idea-aur</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">(defaults</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">this</span><span class="nv"> </span><span class="s">release's</span><span class="nv"> </span><span class="s">tag)"</span>
+<span class="w">        </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+
+<span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">bump-and-test</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="w">    </span><span class="nt">container</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">archlinux:latest</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install build tools</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">          </span><span class="no">pacman -Syu --noconfirm --needed base-devel git openssh pacman-contrib namcap devtools sudo</span>
+<span class="w">          </span><span class="no">useradd -m builder</span>
+<span class="w">          </span><span class="no">echo "builder ALL=(ALL) NOPASSWD: ALL" &gt;&gt; /etc/sudoers</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Checkout idea-aur</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v4</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">repository</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mergedeyes/idea-aur</span>
+<span class="w">          </span><span class="nt">token</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.IDEA_AUR_PUSH_TOKEN }}</span>
+<span class="w">          </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">idea-aur</span>
+<span class="w">          </span><span class="nt">ref</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Determine version</span>
+<span class="w">        </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ver</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">          </span><span class="no">RAW="${{ github.event.inputs.pkgver || github.event.release.tag_name }}"</span>
+<span class="w">          </span><span class="no">echo "pkgver=${RAW#v}" &gt;&gt; "$GITHUB_OUTPUT"</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Fix workspace ownership</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">chown -R builder:builder "$GITHUB_WORKSPACE"</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bump pkgver, reset pkgrel</span>
+<span class="w">        </span><span class="nt">working-directory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">idea-aur</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">          </span><span class="no">sed -i "s/^pkgver=.*/pkgver=${{ steps.ver.outputs.pkgver }}/" PKGBUILD</span>
+<span class="w">          </span><span class="no">sed -i "s/^pkgrel=.*/pkgrel=1/" PKGBUILD</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">REUSE / license compliance</span>
+<span class="w">        </span><span class="nt">working-directory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">idea-aur</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pkgctl license check</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Update checksums</span>
+<span class="w">        </span><span class="nt">working-directory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">idea-aur</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sudo -u builder updpkgsums</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Build package</span>
+<span class="w">        </span><span class="nt">working-directory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">idea-aur</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sudo -u builder makepkg --syncdeps --noconfirm --clean</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Regenerate .SRCINFO</span>
+<span class="w">        </span><span class="nt">working-directory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">idea-aur</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sudo -u builder makepkg --printsrcinfo &gt; .SRCINFO</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">namcap - PKGBUILD</span>
+<span class="w">        </span><span class="nt">working-directory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">idea-aur</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">namcap PKGBUILD</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">namcap - built package</span>
+<span class="w">        </span><span class="nt">working-directory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">idea-aur</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">namcap idea-*-x86_64.pkg.tar.zst</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Commit and open PR</span>
+<span class="w">        </span><span class="nt">working-directory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">idea-aur</span>
+<span class="w">        </span><span class="nt">env</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">GH_TOKEN</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.IDEA_AUR_PUSH_TOKEN }}</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">          </span><span class="no">git config --global --add safe.directory "$GITHUB_WORKSPACE/idea-aur"</span>
+<span class="w">          </span><span class="no">git config user.name "idea-release-bot"</span>
+<span class="w">          </span><span class="no">git config user.email "actions@users.noreply.github.com"</span>
+<span class="w">          </span><span class="no">BRANCH="bump-${{ steps.ver.outputs.pkgver }}"</span>
+<span class="w">          </span><span class="no">git checkout -b "$BRANCH"</span>
+<span class="w">          </span><span class="no">git add PKGBUILD .SRCINFO</span>
+<span class="w">          </span><span class="no">git commit -m "Bump to ${{ steps.ver.outputs.pkgver }}"</span>
+<span class="w">          </span><span class="no">git push origin "$BRANCH"</span>
+<span class="w">          </span><span class="no">gh pr create --repo mergedeyes/idea-aur \</span>
+<span class="w">            </span><span class="no">--base main --head "$BRANCH" \</span>
+<span class="w">            </span><span class="no">--title "Bump to ${{ steps.ver.outputs.pkgver }}" \</span>
+<span class="w">            </span><span class="no">--body "Automated bump for the ${{ steps.ver.outputs.pkgver }} release. Build, namcap (PKGBUILD + built package), and REUSE compliance all passed in this run. Merging this triggers the publish-to-AUR workflow."</span>
+</pre></div></td></tr></table></div>
+
+      </section>
+    </main>
+  </div>
+</body>
+</html>

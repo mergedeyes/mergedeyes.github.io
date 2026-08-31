@@ -140,28 +140,28 @@
     ]
   },
   "mergedeyes/idea": {
-    "commit_count": 9,
+    "commit_count": 12,
     "files": {
+      ".github/workflows/bump-aur.yml": "546779fa57e5791625c257ff9e82ffef4c9d4cd4",
       "src/main.rs": "5fc9ecb503d29e964399bea78fffbf40d6bbac21"
     },
-    "newest_commit_sha": "e97e01a943183d881c89ea3fc54cfe1aaee116d0",
-    "pushed_at": "2026-08-30T20:32:41Z",
+    "newest_commit_sha": "80fa483b432c7e0af9645ef626c0029a27d26f0a",
+    "pushed_at": "2026-08-31T23:52:35Z",
     "source_entries": [
-      "src/main.rs"
+      "src/main.rs",
+      ".github/*"
     ]
   },
   "mergedeyes/mergedeyes.github.io": {
-    "commit_count": 132,
+    "commit_count": 135,
     "files": {
-      ".github/data/project-pages-cache.json": "ccb94ea1ec414f4946196e70f16645527396c3ef",
-      ".github/data/visitor-count.json": "144f2fa966d654bf9b21817009b34cb24908dc3a",
       ".github/scripts/generate_project_pages.py": "0e06796e9c292f1d34a91cc0bdb78e8a961b61bc",
       ".github/scripts/update_visitor_count.py": "a5bd7f745105fd5ce623d98718043fbed6d5b5fb",
       ".github/workflows/generate-project-pages.yml": "03fbf5e277331dc1a38df986a05a913afe5e129f",
       ".github/workflows/jekyll-gh-pages.yml": "e5d903dc63d17f68658e3d4b9726c19f748ce746",
       ".github/workflows/update-visitor-count.yml": "cfa9ea2eacc02b9ef3719ce9ed8dca0b2171e967",
       "404.html": "cacf9aed64339b7d314de8914fbb917252c8fb6f",
-      "index.html": "c837a983d017b0020c290ad670693cd5427b66a3",
+      "index.html": "d6afacd54ee389b082408cdf9d8ff315f40ac4ef",
       "llms.txt": "05d657ae6bfa0a8793b786bca19f3d285a9aad0e",
       "robots.txt": "24e94cbe9371b8c9d1dbf6a17bebea38cb49a552",
       "script.js": "33ef7fe1d0edc6c40d9d7e4658544c1845ec1a52",
@@ -175,15 +175,16 @@
       "skills/nginx.html": "80c4b61efb0493e6411b8b9caab170e3db5d80dd",
       "styles.css": "46aeb1c9e9445d077414b7d5f448dddf7dd9c178"
     },
-    "newest_commit_sha": "6bd88caaa385dd9aaa2cac82e283b7bad4eaf325",
-    "pushed_at": "2026-08-31T20:27:36Z",
+    "newest_commit_sha": "23787e9321772a68f6d3fcd0c0b862de1b8bc99f",
+    "pushed_at": "2026-08-31T23:57:16Z",
     "source_entries": [
       "index.html",
       "404.html",
       "styles.css",
       "script.js",
       "skills/*",
-      ".github/*",
+      ".github/scripts/*",
+      ".github/workflows/*",
       "llms.txt",
       "robots.txt",
       "sitemap.xml"
