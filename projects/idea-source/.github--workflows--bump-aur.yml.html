@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>.github/workflows/bump-aur.yml — idea — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=23787e93" />
+  <link rel="stylesheet" href="../../styles.css?v=0f6e21a5" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -162,7 +162,7 @@
 <span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install build tools</span>
 <span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">          </span><span class="no">pacman -Syu --noconfirm --needed base-devel git openssh pacman-contrib namcap devtools sudo</span>
+<span class="w">          </span><span class="no">pacman -Syu --noconfirm --needed base-devel git openssh pacman-contrib namcap devtools sudo github-cli</span>
 <span class="w">          </span><span class="no">useradd -m builder</span>
 <span class="w">          </span><span class="no">echo "builder ALL=(ALL) NOPASSWD: ALL" &gt;&gt; /etc/sudoers</span>
 
@@ -225,7 +225,7 @@
 <span class="w">          </span><span class="no">git checkout -b "$BRANCH"</span>
 <span class="w">          </span><span class="no">git add PKGBUILD .SRCINFO</span>
 <span class="w">          </span><span class="no">git commit -m "Bump to ${{ steps.ver.outputs.pkgver }}"</span>
-<span class="w">          </span><span class="no">git push origin "$BRANCH"</span>
+<span class="w">          </span><span class="no">git push --force origin "$BRANCH"</span>
 <span class="w">          </span><span class="no">gh pr create --repo mergedeyes/idea-aur \</span>
 <span class="w">            </span><span class="no">--base main --head "$BRANCH" \</span>
 <span class="w">            </span><span class="no">--title "Bump to ${{ steps.ver.outputs.pkgver }}" \</span>

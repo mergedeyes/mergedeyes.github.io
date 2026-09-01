@@ -140,20 +140,20 @@
     ]
   },
   "mergedeyes/idea": {
-    "commit_count": 12,
+    "commit_count": 13,
     "files": {
-      ".github/workflows/bump-aur.yml": "546779fa57e5791625c257ff9e82ffef4c9d4cd4",
+      ".github/workflows/bump-aur.yml": "e939f7ba50b0477234527c7b0d365ec60683da3d",
       "src/main.rs": "5fc9ecb503d29e964399bea78fffbf40d6bbac21"
     },
-    "newest_commit_sha": "80fa483b432c7e0af9645ef626c0029a27d26f0a",
-    "pushed_at": "2026-08-31T23:52:35Z",
+    "newest_commit_sha": "4c2b7453764e3e472a2d602470ec54d6750116b2",
+    "pushed_at": "2026-08-31T23:59:00Z",
     "source_entries": [
       "src/main.rs",
       ".github/*"
     ]
   },
   "mergedeyes/mergedeyes.github.io": {
-    "commit_count": 135,
+    "commit_count": 137,
     "files": {
       ".github/scripts/generate_project_pages.py": "0e06796e9c292f1d34a91cc0bdb78e8a961b61bc",
       ".github/scripts/update_visitor_count.py": "a5bd7f745105fd5ce623d98718043fbed6d5b5fb",
@@ -175,8 +175,8 @@
       "skills/nginx.html": "80c4b61efb0493e6411b8b9caab170e3db5d80dd",
       "styles.css": "46aeb1c9e9445d077414b7d5f448dddf7dd9c178"
     },
-    "newest_commit_sha": "23787e9321772a68f6d3fcd0c0b862de1b8bc99f",
-    "pushed_at": "2026-08-31T23:57:16Z",
+    "newest_commit_sha": "0f6e21a5a9c1d71a932d162765a532bb32fe4fba",
+    "pushed_at": "2026-09-01T00:05:30Z",
     "source_entries": [
       "index.html",
       "404.html",
