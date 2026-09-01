@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>.github/scripts/update_visitor_count.py — Personal Website — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=0f6e21a5" />
+  <link rel="stylesheet" href="../../styles.css?v=0b3fb3c6" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -32,7 +32,7 @@
 <span>open to work</span>
 </div>
 </header>
-    <nav class="file-tree"><p class="file-tree__title">Files</p><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">.github/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">scripts/</span><ul class="tree"><li class="tree-file"><a href=".github--scripts--generate_project_pages.py.html">generate_project_pages.py</a></li><li class="tree-file tree-file--active"><a href=".github--scripts--update_visitor_count.py.html">update_visitor_count.py</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">workflows/</span><ul class="tree"><li class="tree-file"><a href=".github--workflows--generate-project-pages.yml.html">generate-project-pages.yml</a></li><li class="tree-file"><a href=".github--workflows--jekyll-gh-pages.yml.html">jekyll-gh-pages.yml</a></li><li class="tree-file"><a href=".github--workflows--update-visitor-count.yml.html">update-visitor-count.yml</a></li></ul></li></ul></li><li class="tree-dir"><span class="tree-dir__name">skills/</span><ul class="tree"><li class="tree-file"><a href="skills--dns.html.html">dns.html</a></li><li class="tree-file"><a href="skills--ibm.html.html">ibm.html</a></li><li class="tree-file"><a href="skills--linux.html.html">linux.html</a></li><li class="tree-file"><a href="skills--monitoring.html.html">monitoring.html</a></li><li class="tree-file"><a href="skills--nagios.html.html">nagios.html</a></li><li class="tree-file"><a href="skills--networking.html.html">networking.html</a></li><li class="tree-file"><a href="skills--nginx.html.html">nginx.html</a></li></ul></li><li class="tree-file"><a href="404.html.html">404.html</a></li><li class="tree-file"><a href="index.html.html">index.html</a></li><li class="tree-file"><a href="llms.txt.html">llms.txt</a></li><li class="tree-file"><a href="robots.txt.html">robots.txt</a></li><li class="tree-file"><a href="script.js.html">script.js</a></li><li class="tree-file"><a href="sitemap.xml.html">sitemap.xml</a></li><li class="tree-file"><a href="styles.css.html">styles.css</a></li></ul></nav>
+    <nav class="file-tree"><p class="file-tree__title">Files</p><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">.github/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">scripts/</span><ul class="tree"><li class="tree-file"><a href="github--scripts--generate_project_pages.py.html">generate_project_pages.py</a></li><li class="tree-file tree-file--active"><a href="github--scripts--update_visitor_count.py.html">update_visitor_count.py</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">workflows/</span><ul class="tree"><li class="tree-file"><a href="github--workflows--generate-project-pages.yml.html">generate-project-pages.yml</a></li><li class="tree-file"><a href="github--workflows--jekyll-gh-pages.yml.html">jekyll-gh-pages.yml</a></li><li class="tree-file"><a href="github--workflows--update-visitor-count.yml.html">update-visitor-count.yml</a></li></ul></li></ul></li><li class="tree-dir"><span class="tree-dir__name">skills/</span><ul class="tree"><li class="tree-file"><a href="skills--dns.html.html">dns.html</a></li><li class="tree-file"><a href="skills--ibm.html.html">ibm.html</a></li><li class="tree-file"><a href="skills--linux.html.html">linux.html</a></li><li class="tree-file"><a href="skills--monitoring.html.html">monitoring.html</a></li><li class="tree-file"><a href="skills--nagios.html.html">nagios.html</a></li><li class="tree-file"><a href="skills--networking.html.html">networking.html</a></li><li class="tree-file"><a href="skills--nginx.html.html">nginx.html</a></li></ul></li><li class="tree-file"><a href="404.html.html">404.html</a></li><li class="tree-file"><a href="index.html.html">index.html</a></li><li class="tree-file"><a href="llms.txt.html">llms.txt</a></li><li class="tree-file"><a href="robots.txt.html">robots.txt</a></li><li class="tree-file"><a href="script.js.html">script.js</a></li><li class="tree-file"><a href="sitemap.xml.html">sitemap.xml</a></li><li class="tree-file"><a href="styles.css.html">styles.css</a></li></ul></nav>
     <main class="main" id="main">
       <section class="section source-page">
         <p class="section__path">
@@ -236,7 +236,17 @@
 <span class="normal">191</span>
 <span class="normal">192</span>
 <span class="normal">193</span>
-<span class="normal">194</span></pre></div></td><td class="code"><div><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span></pre></div></td><td class="code"><div><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
 <span class="sd">"""</span>
 <span class="sd">Updates the site's visitor counter using GoatCounter analytics.</span>
 
@@ -398,9 +408,19 @@
     <span class="n">ok</span> <span class="o">=</span> <span class="n">recent_stats</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
 
     <span class="k">if</span> <span class="n">ok</span><span class="p">:</span>
+        <span class="c1"># GoatCounter buckets "day" by the site's configured timezone, not</span>
+        <span class="c1"># UTC -- the request window above is built entirely in UTC, so close</span>
+        <span class="c1"># to a UTC/site-local midnight boundary GoatCounter can hand back a</span>
+        <span class="c1"># day label that's a calendar day ahead of what this script (running</span>
+        <span class="c1"># in UTC) considers "today". Discard any such not-actually-arrived-</span>
+        <span class="c1"># yet day rather than caching a premature (usually all-zero) entry</span>
+        <span class="c1"># for a date that hasn't happened yet from this script's own</span>
+        <span class="c1"># reference point -- it'll get picked up for real once UTC catches</span>
+        <span class="c1"># up to it and it falls inside a future run's LOOKBACK_DAYS window.</span>
+        <span class="n">today_str</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">UTC</span><span class="p">)</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">"%Y-%m-</span><span class="si">%d</span><span class="s2">"</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">stat</span> <span class="ow">in</span> <span class="n">recent_stats</span><span class="p">:</span>
             <span class="n">day_str</span> <span class="o">=</span> <span class="n">stat</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"day"</span><span class="p">,</span> <span class="s2">""</span><span class="p">)[:</span><span class="mi">10</span><span class="p">]</span>  <span class="c1"># Format: "YYYY-MM-DD"</span>
-            <span class="k">if</span> <span class="n">day_str</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">day_str</span> <span class="ow">and</span> <span class="n">day_str</span> <span class="o">&lt;=</span> <span class="n">today_str</span><span class="p">:</span>
                 <span class="n">daily_cache</span><span class="p">[</span><span class="n">day_str</span><span class="p">]</span> <span class="o">=</span> <span class="n">stat</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"daily"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
     <span class="c1"># else: leave daily_cache exactly as loaded -- a failed fetch shouldn't</span>
     <span class="c1"># wipe out good data or write bogus zeros over the last few days.</span>

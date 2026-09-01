@@ -139,11 +139,24 @@
       "klar-web/src/*"
     ]
   },
-  "mergedeyes/mergedeyes.github.io": {
-    "commit_count": 137,
+  "mergedeyes/idea": {
+    "commit_count": 13,
     "files": {
-      ".github/scripts/generate_project_pages.py": "0e06796e9c292f1d34a91cc0bdb78e8a961b61bc",
-      ".github/scripts/update_visitor_count.py": "a5bd7f745105fd5ce623d98718043fbed6d5b5fb",
+      ".github/workflows/bump-aur.yml": "e939f7ba50b0477234527c7b0d365ec60683da3d",
+      "src/main.rs": "5fc9ecb503d29e964399bea78fffbf40d6bbac21"
+    },
+    "newest_commit_sha": "4c2b7453764e3e472a2d602470ec54d6750116b2",
+    "pushed_at": "2026-08-31T23:59:00Z",
+    "source_entries": [
+      "src/main.rs",
+      ".github/*"
+    ]
+  },
+  "mergedeyes/mergedeyes.github.io": {
+    "commit_count": 139,
+    "files": {
+      ".github/scripts/generate_project_pages.py": "6095b4953a2612d6e7362ebc0bd4ce980d440917",
+      ".github/scripts/update_visitor_count.py": "6b3f83843602f650466aef1cce25e691f1e2d4dc",
       ".github/workflows/generate-project-pages.yml": "03fbf5e277331dc1a38df986a05a913afe5e129f",
       ".github/workflows/jekyll-gh-pages.yml": "e5d903dc63d17f68658e3d4b9726c19f748ce746",
       ".github/workflows/update-visitor-count.yml": "cfa9ea2eacc02b9ef3719ce9ed8dca0b2171e967",
@@ -162,8 +175,8 @@
       "skills/nginx.html": "80c4b61efb0493e6411b8b9caab170e3db5d80dd",
       "styles.css": "46aeb1c9e9445d077414b7d5f448dddf7dd9c178"
     },
-    "newest_commit_sha": "0f6e21a5a9c1d71a932d162765a532bb32fe4fba",
-    "pushed_at": "2026-09-01T00:05:30Z",
+    "newest_commit_sha": "0b3fb3c69fd6d681441eff42792adfad433f59a7",
+    "pushed_at": "2026-09-01T00:22:53Z",
     "source_entries": [
       "index.html",
       "404.html",
