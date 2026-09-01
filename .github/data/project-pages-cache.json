@@ -139,19 +139,6 @@
       "klar-web/src/*"
     ]
   },
-  "mergedeyes/idea": {
-    "commit_count": 13,
-    "files": {
-      ".github/workflows/bump-aur.yml": "e939f7ba50b0477234527c7b0d365ec60683da3d",
-      "src/main.rs": "5fc9ecb503d29e964399bea78fffbf40d6bbac21"
-    },
-    "newest_commit_sha": "4c2b7453764e3e472a2d602470ec54d6750116b2",
-    "pushed_at": "2026-08-31T23:59:00Z",
-    "source_entries": [
-      "src/main.rs",
-      ".github/*"
-    ]
-  },
   "mergedeyes/mergedeyes.github.io": {
     "commit_count": 137,
     "files": {

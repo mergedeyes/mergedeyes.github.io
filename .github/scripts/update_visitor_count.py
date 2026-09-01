@@ -160,9 +160,19 @@ def main():
     ok = recent_stats is not None
 
     if ok:
+        # GoatCounter buckets "day" by the site's configured timezone, not
+        # UTC -- the request window above is built entirely in UTC, so close
+        # to a UTC/site-local midnight boundary GoatCounter can hand back a
+        # day label that's a calendar day ahead of what this script (running
+        # in UTC) considers "today". Discard any such not-actually-arrived-
+        # yet day rather than caching a premature (usually all-zero) entry
+        # for a date that hasn't happened yet from this script's own
+        # reference point -- it'll get picked up for real once UTC catches
+        # up to it and it falls inside a future run's LOOKBACK_DAYS window.
+        today_str = datetime.datetime.now(datetime.UTC).strftime("%Y-%m-%d")
         for stat in recent_stats:
             day_str = stat.get("day", "")[:10]  # Format: "YYYY-MM-DD"
-            if day_str:
+            if day_str and day_str <= today_str:
                 daily_cache[day_str] = stat.get("daily", 0)
     # else: leave daily_cache exactly as loaded -- a failed fetch shouldn't
     # wipe out good data or write bogus zeros over the last few days.

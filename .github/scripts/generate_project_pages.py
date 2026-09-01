@@ -569,8 +569,20 @@ def build_tree(paths: list) -> dict:
 
 def safe_filename(path: str) -> str:
     """Converts a repo-relative file path into a filesystem-safe filename
-    for its generated page, e.g. "src/handlers/auth.rs" -> "src--handlers--auth.rs"."""
-    return path.replace("/", "--")
+    for its generated page, e.g. "src/handlers/auth.rs" -> "src--handlers--auth.rs".
+
+    Strips a single leading "." from the result (e.g. ".github/workflows/x.yml"
+    -> "github--workflows--x.yml") so the generated filename never itself
+    starts with a literal dot. GitHub Pages' explicit Jekyll build step
+    (jekyll-gh-pages.yml, actions/jekyll-build-pages@v1) silently drops any
+    file whose name starts with "." from its output -- 404ing the page --
+    regardless of this repo's .nojekyll file, which only disables GitHub
+    Pages' own *automatic* Jekyll auto-detection pipeline and has no effect
+    on an explicitly invoked `jekyll build` command run from a workflow."""
+    name = path.replace("/", "--")
+    if name.startswith("."):
+        name = name[1:]
+    return name
 
 
 def render_tree_html(tree: dict, prefix: str, current_path: str, base: str) -> str:
