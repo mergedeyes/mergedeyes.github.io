@@ -153,7 +153,7 @@
     ]
   },
   "mergedeyes/mergedeyes.github.io": {
-    "commit_count": 243,
+    "commit_count": 245,
     "files": {
       ".github/scripts/generate_project_pages.py": "6095b4953a2612d6e7362ebc0bd4ce980d440917",
       ".github/scripts/update_visitor_count.py": "6b3f83843602f650466aef1cce25e691f1e2d4dc",
@@ -161,7 +161,7 @@
       ".github/workflows/jekyll-gh-pages.yml": "e5d903dc63d17f68658e3d4b9726c19f748ce746",
       ".github/workflows/update-visitor-count.yml": "cfa9ea2eacc02b9ef3719ce9ed8dca0b2171e967",
       "404.html": "cacf9aed64339b7d314de8914fbb917252c8fb6f",
-      "index.html": "ad0303bbf5db98bd213b2cd8a1352f378583105d",
+      "index.html": "1181f46dc6d2382d04381095349fad03289384eb",
       "llms.txt": "05d657ae6bfa0a8793b786bca19f3d285a9aad0e",
       "robots.txt": "24e94cbe9371b8c9d1dbf6a17bebea38cb49a552",
       "script.js": "33ef7fe1d0edc6c40d9d7e4658544c1845ec1a52",
@@ -175,8 +175,8 @@
       "skills/nginx.html": "80c4b61efb0493e6411b8b9caab170e3db5d80dd",
       "styles.css": "46aeb1c9e9445d077414b7d5f448dddf7dd9c178"
     },
-    "newest_commit_sha": "964d25a0b9743e0110d27b96ac08fc2e0645efad",
-    "pushed_at": "2026-09-11T01:22:36Z",
+    "newest_commit_sha": "7f9d3bef6f2cab6c1c62334d25d6997c302a34ea",
+    "pushed_at": "2026-09-11T01:24:45Z",
     "source_entries": [
       "index.html",
       "404.html",
@@ -221,6 +221,64 @@
       "rerun_enrichment.py",
       "special_demand_utils.py",
       "zensus_utils.py"
+    ]
+  },
+  "mergedeyes/terminaal": {
+    "commit_count": 3,
+    "files": {
+      "Cargo.lock": "ffe4a262a59683c4e5dd87231fea17b90aaddbe5",
+      "Cargo.toml": "d6adb7c34cd28377959d751399a018aebba764ec",
+      "LICENSE": "0ad25db4bd1d86c452db3f9602ccdbe172438f52",
+      "assets/terminaal.desktop": "02c94ccb7f06db0ebf26ab8029a809af7d7a1136",
+      "assets/terminaal_icon_128.png": "9c6b67ed436e3ab5fc8760f8c949222bc557b56e",
+      "assets/terminaal_logo.png": "bb932b3161fef8d89fbeb18f4c969cce331793e9",
+      "assets/terminaal_splash_640.gif": "ce7abdcfbee732a31f0facfc1987f2867b6dd385",
+      "assets/terminaal_taa.gif": "25da6fb9b6aa7bff23e21764100ecd6df2602719",
+      "install.sh": "f63921cf9d09fdfa69a5fa0678c4b5f8419dd14f",
+      "locales/de.ftl": "ebd6b554ba651f18e5773cc1651a3c3dbdb6ebfe",
+      "locales/en.ftl": "44d75d6db140c197fa2b25ccc6d224fd34651202",
+      "src/app.rs": "85fbe3ac277e7897fe5a146b958df5a14fdbdc84",
+      "src/config.rs": "45dc5f0b6abf1d34918858d434f90573a5585355",
+      "src/gpu.rs": "3f86082e68a2d9540eb815091c13079057b01528",
+      "src/i18n.rs": "5243e86a5094880ef9e340c4a9855e02a8911891",
+      "src/input.rs": "b3a72ae058a9e0cfb12eba115a0133cc8b6e9297",
+      "src/main.rs": "4c605fd9540525d1c5b3bf6c23214ccbd3c37a20",
+      "src/render/grid.rs": "e0180b849f7187a3859c8edbd119d547a44a1af1",
+      "src/render/mod.rs": "2ce54c9c6a94683545a07c787b01f48c355c25c7",
+      "src/render/palette.rs": "3f0893a4383af569c516952aa1daf7b390c7d75c",
+      "src/render/quad.rs": "5960b342725b121123bec687a9840138bcf5a5f8",
+      "src/render/quad.wgsl": "b37b2e89b2aa891ee90d6d3bf4bec9c28b703561",
+      "src/render/tab_bar.rs": "18eb7efa9e83628d51515ddaf4805feb2c69eae5",
+      "src/render/text.rs": "d2c42974146253c440b40f4a293ce574b3388c32",
+      "src/shells/launch.rs": "70c680235d2e4232f028a8a5de9cdb852a41d617",
+      "src/shells/managed.rs": "51fa1278cf0fd637a403e3630e410c16daf4a78a",
+      "src/shells/mod.rs": "b69b6e617c22331dbdaf69997cfd1e48d0b823ec",
+      "src/ssh/connection.rs": "9d27a5eeee402386343dd95975c78834fe7c787d",
+      "src/ssh/forward.rs": "3fcf81ba4bb9a9a39155415a1aed7d9f57715224",
+      "src/ssh/keys.rs": "d447eeb604604aefda478f5be62a877cb37f42b1",
+      "src/ssh/mod.rs": "03855892216d60063cb8526f162811133b3001cc",
+      "src/ssh/options.rs": "c36288bbedbece1ae9168f6a0b555ac54f437388",
+      "src/terminal/listener.rs": "05adb47c923a2f47c122277bb942e47c68abfbc4",
+      "src/terminal/mod.rs": "85d221a91ef4a4d522ff9cfcb3c9ee020a026218",
+      "src/terminal/session.rs": "f0a5897d3b1b99d4162af8b243018f2fc25c1a4c",
+      "src/ui/keys_panel.rs": "f060d44099c84551cab213160a7fffb5b9d423a3",
+      "src/ui/mod.rs": "cfeec62149aaf804066aedc8bbbd29142b51133d",
+      "src/ui/sidebar.rs": "4d957d5a293655f23f5a7b467cb5926e91f7c73a",
+      "src/ui/splash.rs": "4d53e3a38f94ae4809181c157a14fecb0e2e0c78",
+      "src/ui/ssh_panel.rs": "4eddf8527b761b4d19632241b15c9981574ce87f",
+      "src/ui/theme.rs": "9acae16ab3b310f6b4abf15f8428206bdfe1c736",
+      "src/ui/widgets.rs": "19cfbda2c5eae940315ea678c9bf991a2d25ba3e"
+    },
+    "newest_commit_sha": "91d76f8b5024c54b8d30245465b43c4456a95c84",
+    "pushed_at": "2026-09-11T01:08:14Z",
+    "source_entries": [
+      "src/*",
+      "assets/*",
+      "locales/*",
+      "Cargo.toml",
+      "Cargo.lock",
+      "install.sh",
+      "LICENSE"
     ]
   },
   "mergedeyes/yarncalculator": {

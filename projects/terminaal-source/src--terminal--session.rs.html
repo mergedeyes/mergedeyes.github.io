@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>src/terminal/session.rs — terminaal — Jan</title>
+  <link rel="stylesheet" href="../../styles.css?v=7f9d3bef" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="layout">
+    <header class="rail" id="rail">
+<div class="rail__top">
+<a class="brand" href="../../index.html#top">
+<span class="brand__name">Jan</span>
+<span class="brand__meta">systems &amp; infrastructure<br/>Code, Code &amp; Code</span>
+</a>
+<button aria-controls="nav" aria-expanded="false" aria-label="Toggle menu" class="menu-toggle" id="menuToggle">
+<span></span><span></span><span></span>
+</button>
+</div>
+<nav aria-label="Sections" class="nav" id="nav">
+<a data-path="~/projects" href="../../index.html#projects">Projects</a>
+<a data-path="~/work" href="../../index.html#work">Work</a>
+<a data-path="~/education" href="../../index.html#education">Education</a>
+<a data-path="~/skills" href="../../index.html#skills">Skills</a>
+<a data-path="~/about" href="../../index.html#about">About Me</a>
+<a data-path="~/contact" href="../../index.html#contact">Contact</a>
+</nav>
+<div class="rail__status">
+<span aria-hidden="true" class="dot"></span>
+<span>open to work</span>
+</div>
+</header>
+    <nav class="file-tree"><p class="file-tree__title">Files</p><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">assets/</span><ul class="tree"><li class="tree-file"><a href="assets--terminaal.desktop.html">terminaal.desktop</a></li><li class="tree-file"><a href="assets--terminaal_icon_128.png.html">terminaal_icon_128.png</a></li><li class="tree-file"><a href="assets--terminaal_logo.png.html">terminaal_logo.png</a></li><li class="tree-file"><a href="assets--terminaal_splash_640.gif.html">terminaal_splash_640.gif</a></li><li class="tree-file"><a href="assets--terminaal_taa.gif.html">terminaal_taa.gif</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">locales/</span><ul class="tree"><li class="tree-file"><a href="locales--de.ftl.html">de.ftl</a></li><li class="tree-file"><a href="locales--en.ftl.html">en.ftl</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">src/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">render/</span><ul class="tree"><li class="tree-file"><a href="src--render--grid.rs.html">grid.rs</a></li><li class="tree-file"><a href="src--render--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="src--render--palette.rs.html">palette.rs</a></li><li class="tree-file"><a href="src--render--quad.rs.html">quad.rs</a></li><li class="tree-file"><a href="src--render--quad.wgsl.html">quad.wgsl</a></li><li class="tree-file"><a href="src--render--tab_bar.rs.html">tab_bar.rs</a></li><li class="tree-file"><a href="src--render--text.rs.html">text.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">shells/</span><ul class="tree"><li class="tree-file"><a href="src--shells--launch.rs.html">launch.rs</a></li><li class="tree-file"><a href="src--shells--managed.rs.html">managed.rs</a></li><li class="tree-file"><a href="src--shells--mod.rs.html">mod.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">ssh/</span><ul class="tree"><li class="tree-file"><a href="src--ssh--connection.rs.html">connection.rs</a></li><li class="tree-file"><a href="src--ssh--forward.rs.html">forward.rs</a></li><li class="tree-file"><a href="src--ssh--keys.rs.html">keys.rs</a></li><li class="tree-file"><a href="src--ssh--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="src--ssh--options.rs.html">options.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">terminal/</span><ul class="tree"><li class="tree-file"><a href="src--terminal--listener.rs.html">listener.rs</a></li><li class="tree-file"><a href="src--terminal--mod.rs.html">mod.rs</a></li><li class="tree-file tree-file--active"><a href="src--terminal--session.rs.html">session.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">ui/</span><ul class="tree"><li class="tree-file"><a href="src--ui--keys_panel.rs.html">keys_panel.rs</a></li><li class="tree-file"><a href="src--ui--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="src--ui--sidebar.rs.html">sidebar.rs</a></li><li class="tree-file"><a href="src--ui--splash.rs.html">splash.rs</a></li><li class="tree-file"><a href="src--ui--ssh_panel.rs.html">ssh_panel.rs</a></li><li class="tree-file"><a href="src--ui--theme.rs.html">theme.rs</a></li><li class="tree-file"><a href="src--ui--widgets.rs.html">widgets.rs</a></li></ul></li><li class="tree-file"><a href="src--app.rs.html">app.rs</a></li><li class="tree-file"><a href="src--config.rs.html">config.rs</a></li><li class="tree-file"><a href="src--gpu.rs.html">gpu.rs</a></li><li class="tree-file"><a href="src--i18n.rs.html">i18n.rs</a></li><li class="tree-file"><a href="src--input.rs.html">input.rs</a></li><li class="tree-file"><a href="src--main.rs.html">main.rs</a></li></ul></li><li class="tree-file"><a href="Cargo.lock.html">Cargo.lock</a></li><li class="tree-file"><a href="Cargo.toml.html">Cargo.toml</a></li><li class="tree-file"><a href="LICENSE.html">LICENSE</a></li><li class="tree-file"><a href="install.sh.html">install.sh</a></li></ul></nav>
+    <main class="main" id="main">
+      <section class="section source-page">
+        <p class="section__path">
+          <a href="../../index.html#projects" class="link">~/projects</a> /
+          <a href="../terminaal.html" class="link">terminaal</a> / source
+        </p>
+        <div class="source-page__head">
+          <h1 class="section__title">src/terminal/session.rs</h1>
+          <a href="../terminaal.html" class="link">← Back to terminaal</a>
+        </div>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">  1</span>
+<span class="normal">  2</span>
+<span class="normal">  3</span>
+<span class="normal">  4</span>
+<span class="normal">  5</span>
+<span class="normal">  6</span>
+<span class="normal">  7</span>
+<span class="normal">  8</span>
+<span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span></pre></div></td><td class="code"><div><pre><span></span><span class="sd">//! One terminal session: an `alacritty_terminal::Term` (the "brain" --</span>
+<span class="sd">//! grid, cursor, VT parser state) plus whatever feeds it bytes:</span>
+<span class="sd">//!</span>
+<span class="sd">//! - a local PTY running a shell, pumped by alacritty_terminal's own</span>
+<span class="sd">//!   event loop, or</span>
+<span class="sd">//! - an SSH channel, pumped by our worker thread in `ssh::connection`.</span>
+<span class="sd">//!</span>
+<span class="sd">//! Everything in `render/` and `input.rs` only ever sees `term`,</span>
+<span class="sd">//! `send_input` and `resize`, so it works the same for both.</span>
+
+<span class="k">use</span><span class="w"> </span><span class="n">std</span><span class="p">::</span><span class="n">sync</span><span class="p">::</span><span class="n">Arc</span><span class="p">;</span>
+
+<span class="k">use</span><span class="w"> </span><span class="n">alacritty_terminal</span><span class="p">::</span><span class="n">event</span><span class="p">::{</span><span class="n">Notify</span><span class="p">,</span><span class="w"> </span><span class="n">OnResize</span><span class="p">,</span><span class="w"> </span><span class="n">WindowSize</span><span class="p">};</span>
+<span class="k">use</span><span class="w"> </span><span class="n">alacritty_terminal</span><span class="p">::</span><span class="n">event_loop</span><span class="p">::{</span><span class="n">EventLoop</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">PtyEventLoop</span><span class="p">,</span><span class="w"> </span><span class="n">Notifier</span><span class="p">};</span>
+<span class="k">use</span><span class="w"> </span><span class="n">alacritty_terminal</span><span class="p">::</span><span class="n">grid</span><span class="p">::</span><span class="n">Dimensions</span><span class="p">;</span>
+<span class="k">use</span><span class="w"> </span><span class="n">alacritty_terminal</span><span class="p">::</span><span class="n">sync</span><span class="p">::</span><span class="n">FairMutex</span><span class="p">;</span>
+<span class="k">use</span><span class="w"> </span><span class="n">alacritty_terminal</span><span class="p">::</span><span class="n">term</span><span class="p">::{</span><span class="n">Config</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">TermConfig</span><span class="p">,</span><span class="w"> </span><span class="n">Term</span><span class="p">};</span>
+<span class="k">use</span><span class="w"> </span><span class="n">alacritty_terminal</span><span class="p">::</span><span class="n">tty</span><span class="p">;</span>
+
+<span class="k">use</span><span class="w"> </span><span class="k">crate</span><span class="p">::</span><span class="n">shells</span><span class="p">::</span><span class="n">launch</span><span class="p">::</span><span class="n">Launch</span><span class="p">;</span>
+<span class="k">use</span><span class="w"> </span><span class="k">crate</span><span class="p">::</span><span class="n">ssh</span><span class="p">::</span><span class="n">SshTarget</span><span class="p">;</span>
+<span class="k">use</span><span class="w"> </span><span class="k">crate</span><span class="p">::</span><span class="n">ssh</span><span class="p">::</span><span class="n">connection</span><span class="p">::{</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">SshHandle</span><span class="p">};</span>
+<span class="k">use</span><span class="w"> </span><span class="k">crate</span><span class="p">::</span><span class="n">terminal</span><span class="p">::</span><span class="n">listener</span><span class="p">::</span><span class="n">EventProxyListener</span><span class="p">;</span>
+
+<span class="sd">/// Terminal grid size, in cells. Implements `Dimensions` so it can be</span>
+<span class="sd">/// handed straight to `Term::new` / `Term::resize`.</span>
+<span class="cp">#[derive(Clone, Copy, Debug, PartialEq, Eq)]</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">GridSize</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">columns</span><span class="p">:</span><span class="w"> </span><span class="kt">usize</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">screen_lines</span><span class="p">:</span><span class="w"> </span><span class="kt">usize</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="k">impl</span><span class="w"> </span><span class="n">Dimensions</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">GridSize</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">total_lines</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="kt">usize</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="bp">self</span><span class="p">.</span><span class="n">screen_lines</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">screen_lines</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="kt">usize</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="bp">self</span><span class="p">.</span><span class="n">screen_lines</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">columns</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="kt">usize</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="bp">self</span><span class="p">.</span><span class="n">columns</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">pub</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">TerminalSession</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">term</span><span class="p">:</span><span class="w"> </span><span class="nc">Arc</span><span class="o">&lt;</span><span class="n">FairMutex</span><span class="o">&lt;</span><span class="n">Term</span><span class="o">&lt;</span><span class="n">EventProxyListener</span><span class="o">&gt;&gt;&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">backend</span><span class="p">:</span><span class="w"> </span><span class="nc">Backend</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="k">enum</span><span class="w"> </span><span class="nc">Backend</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Local</span><span class="p">(</span><span class="n">Notifier</span><span class="p">),</span>
+<span class="w">    </span><span class="n">Ssh</span><span class="p">(</span><span class="n">SshHandle</span><span class="p">),</span>
+<span class="p">}</span>
+
+<span class="k">impl</span><span class="w"> </span><span class="n">TerminalSession</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="sd">/// Spawn `launch` (a local shell, see `shells::launch`) in a PTY and</span>
+<span class="w">    </span><span class="sd">/// start pumping its output into a fresh `Term`.</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">spawn_local_shell</span><span class="p">(</span>
+<span class="w">        </span><span class="n">listener</span><span class="p">:</span><span class="w"> </span><span class="nc">EventProxyListener</span><span class="p">,</span>
+<span class="w">        </span><span class="n">launch</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">Launch</span><span class="p">,</span>
+<span class="w">        </span><span class="n">size</span><span class="p">:</span><span class="w"> </span><span class="nc">GridSize</span><span class="p">,</span>
+<span class="w">        </span><span class="n">cell_width</span><span class="p">:</span><span class="w"> </span><span class="kt">f32</span><span class="p">,</span>
+<span class="w">        </span><span class="n">cell_height</span><span class="p">:</span><span class="w"> </span><span class="kt">f32</span><span class="p">,</span>
+<span class="w">        </span><span class="n">scrollback</span><span class="p">:</span><span class="w"> </span><span class="kt">usize</span><span class="p">,</span>
+<span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">std</span><span class="p">::</span><span class="n">io</span><span class="p">::</span><span class="nb">Result</span><span class="o">&lt;</span><span class="bp">Self</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">tty</span><span class="p">::</span><span class="n">setup_env</span><span class="p">();</span>
+
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">term</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new_term</span><span class="p">(</span><span class="o">&amp;</span><span class="n">listener</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">,</span><span class="w"> </span><span class="n">scrollback</span><span class="p">);</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">options</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tty</span><span class="p">::</span><span class="n">Options</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">shell</span><span class="p">:</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">tty</span><span class="p">::</span><span class="n">Shell</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="n">launch</span><span class="p">.</span><span class="n">program</span><span class="p">.</span><span class="n">clone</span><span class="p">(),</span><span class="w"> </span><span class="n">launch</span><span class="p">.</span><span class="n">args</span><span class="p">.</span><span class="n">clone</span><span class="p">())),</span>
+<span class="w">            </span><span class="n">env</span><span class="p">:</span><span class="w"> </span><span class="nc">launch</span><span class="p">.</span><span class="n">env</span><span class="p">.</span><span class="n">clone</span><span class="p">(),</span>
+<span class="w">            </span><span class="o">..</span><span class="n">tty</span><span class="p">::</span><span class="n">Options</span><span class="p">::</span><span class="n">default</span><span class="p">()</span>
+<span class="w">        </span><span class="p">};</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">pty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tty</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="o">&amp;</span><span class="n">options</span><span class="p">,</span><span class="w"> </span><span class="n">window_size</span><span class="p">(</span><span class="n">size</span><span class="p">,</span><span class="w"> </span><span class="n">cell_width</span><span class="p">,</span><span class="w"> </span><span class="n">cell_height</span><span class="p">),</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">pty_event_loop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PtyEventLoop</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="n">term</span><span class="p">.</span><span class="n">clone</span><span class="p">(),</span><span class="w"> </span><span class="n">listener</span><span class="p">,</span><span class="w"> </span><span class="n">pty</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">notifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Notifier</span><span class="p">(</span><span class="n">pty_event_loop</span><span class="p">.</span><span class="n">channel</span><span class="p">());</span>
+<span class="w">        </span><span class="c1">// Runs the PTY read/write loop on its own thread for the lifetime</span>
+<span class="w">        </span><span class="c1">// of the process; we don't need the join handle for the MVP.</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pty_event_loop</span><span class="p">.</span><span class="n">spawn</span><span class="p">();</span>
+
+<span class="w">        </span><span class="nb">Ok</span><span class="p">(</span><span class="bp">Self</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">term</span><span class="p">,</span><span class="w"> </span><span class="n">backend</span><span class="p">:</span><span class="w"> </span><span class="nc">Backend</span><span class="p">::</span><span class="n">Local</span><span class="p">(</span><span class="n">notifier</span><span class="p">)</span><span class="w"> </span><span class="p">})</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="sd">/// Connect to `target` over SSH. Returns right away -- connecting,</span>
+<span class="w">    </span><span class="sd">/// prompts and errors all play out inside the tab.</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">connect_ssh</span><span class="p">(</span>
+<span class="w">        </span><span class="n">listener</span><span class="p">:</span><span class="w"> </span><span class="nc">EventProxyListener</span><span class="p">,</span>
+<span class="w">        </span><span class="n">target</span><span class="p">:</span><span class="w"> </span><span class="nc">SshTarget</span><span class="p">,</span>
+<span class="w">        </span><span class="n">size</span><span class="p">:</span><span class="w"> </span><span class="nc">GridSize</span><span class="p">,</span>
+<span class="w">        </span><span class="n">cell_width</span><span class="p">:</span><span class="w"> </span><span class="kt">f32</span><span class="p">,</span>
+<span class="w">        </span><span class="n">cell_height</span><span class="p">:</span><span class="w"> </span><span class="kt">f32</span><span class="p">,</span>
+<span class="w">        </span><span class="n">scrollback</span><span class="p">:</span><span class="w"> </span><span class="kt">usize</span><span class="p">,</span>
+<span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">std</span><span class="p">::</span><span class="n">io</span><span class="p">::</span><span class="nb">Result</span><span class="o">&lt;</span><span class="bp">Self</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">term</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new_term</span><span class="p">(</span><span class="o">&amp;</span><span class="n">listener</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">,</span><span class="w"> </span><span class="n">scrollback</span><span class="p">);</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">handle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">connection</span><span class="p">::</span><span class="n">spawn</span><span class="p">(</span><span class="n">target</span><span class="p">,</span><span class="w"> </span><span class="n">term</span><span class="p">.</span><span class="n">clone</span><span class="p">(),</span><span class="w"> </span><span class="n">listener</span><span class="p">,</span><span class="w"> </span><span class="n">window_size</span><span class="p">(</span><span class="n">size</span><span class="p">,</span><span class="w"> </span><span class="n">cell_width</span><span class="p">,</span><span class="w"> </span><span class="n">cell_height</span><span class="p">))</span><span class="o">?</span><span class="p">;</span>
+<span class="w">        </span><span class="nb">Ok</span><span class="p">(</span><span class="bp">Self</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">term</span><span class="p">,</span><span class="w"> </span><span class="n">backend</span><span class="p">:</span><span class="w"> </span><span class="nc">Backend</span><span class="p">::</span><span class="n">Ssh</span><span class="p">(</span><span class="n">handle</span><span class="p">)</span><span class="w"> </span><span class="p">})</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="sd">/// Send raw bytes (already encoded by `input.rs`, or a reply to a</span>
+<span class="w">    </span><span class="sd">/// PTY-write/color/size request from `app.rs`) to the shell.</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">send_input</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">bytes</span><span class="p">:</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="kt">u8</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">match</span><span class="w"> </span><span class="o">&amp;</span><span class="bp">self</span><span class="p">.</span><span class="n">backend</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">Backend</span><span class="p">::</span><span class="n">Local</span><span class="p">(</span><span class="n">notifier</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">notifier</span><span class="p">.</span><span class="n">notify</span><span class="p">(</span><span class="n">bytes</span><span class="p">),</span>
+<span class="w">            </span><span class="n">Backend</span><span class="p">::</span><span class="n">Ssh</span><span class="p">(</span><span class="n">handle</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">handle</span><span class="p">.</span><span class="n">send_input</span><span class="p">(</span><span class="n">bytes</span><span class="p">),</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="sd">/// Tell both the `Term` and the shell's PTY about a new size.</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">resize</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">:</span><span class="w"> </span><span class="nc">GridSize</span><span class="p">,</span><span class="w"> </span><span class="n">cell_width</span><span class="p">:</span><span class="w"> </span><span class="kt">f32</span><span class="p">,</span><span class="w"> </span><span class="n">cell_height</span><span class="p">:</span><span class="w"> </span><span class="kt">f32</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="bp">self</span><span class="p">.</span><span class="n">term</span><span class="p">.</span><span class="n">lock</span><span class="p">().</span><span class="n">resize</span><span class="p">(</span><span class="n">size</span><span class="p">);</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">window_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">window_size</span><span class="p">(</span><span class="n">size</span><span class="p">,</span><span class="w"> </span><span class="n">cell_width</span><span class="p">,</span><span class="w"> </span><span class="n">cell_height</span><span class="p">);</span>
+<span class="w">        </span><span class="k">match</span><span class="w"> </span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">backend</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">Backend</span><span class="p">::</span><span class="n">Local</span><span class="p">(</span><span class="n">notifier</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">notifier</span><span class="p">.</span><span class="n">on_resize</span><span class="p">(</span><span class="n">window_size</span><span class="p">),</span>
+<span class="w">            </span><span class="n">Backend</span><span class="p">::</span><span class="n">Ssh</span><span class="p">(</span><span class="n">handle</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">handle</span><span class="p">.</span><span class="n">resize</span><span class="p">(</span><span class="n">window_size</span><span class="p">),</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">fn</span><span class="w"> </span><span class="nf">new_term</span><span class="p">(</span><span class="n">listener</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">EventProxyListener</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">:</span><span class="w"> </span><span class="nc">GridSize</span><span class="p">,</span><span class="w"> </span><span class="n">scrollback</span><span class="p">:</span><span class="w"> </span><span class="kt">usize</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">Arc</span><span class="o">&lt;</span><span class="n">FairMutex</span><span class="o">&lt;</span><span class="n">Term</span><span class="o">&lt;</span><span class="n">EventProxyListener</span><span class="o">&gt;&gt;&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TermConfig</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">scrolling_history</span><span class="p">:</span><span class="w"> </span><span class="nc">scrollback</span><span class="p">,</span><span class="w"> </span><span class="o">..</span><span class="n">TermConfig</span><span class="p">::</span><span class="n">default</span><span class="p">()</span><span class="w"> </span><span class="p">};</span>
+<span class="w">    </span><span class="n">Arc</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="n">FairMutex</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="n">Term</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="n">config</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">size</span><span class="p">,</span><span class="w"> </span><span class="n">listener</span><span class="p">.</span><span class="n">clone</span><span class="p">())))</span>
+<span class="p">}</span>
+
+<span class="k">fn</span><span class="w"> </span><span class="nf">window_size</span><span class="p">(</span><span class="n">size</span><span class="p">:</span><span class="w"> </span><span class="nc">GridSize</span><span class="p">,</span><span class="w"> </span><span class="n">cell_width</span><span class="p">:</span><span class="w"> </span><span class="kt">f32</span><span class="p">,</span><span class="w"> </span><span class="n">cell_height</span><span class="p">:</span><span class="w"> </span><span class="kt">f32</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">WindowSize</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">WindowSize</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">num_lines</span><span class="p">:</span><span class="w"> </span><span class="nc">size</span><span class="p">.</span><span class="n">screen_lines</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="kt">u16</span><span class="p">,</span>
+<span class="w">        </span><span class="n">num_cols</span><span class="p">:</span><span class="w"> </span><span class="nc">size</span><span class="p">.</span><span class="n">columns</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="kt">u16</span><span class="p">,</span>
+<span class="w">        </span><span class="n">cell_width</span><span class="p">:</span><span class="w"> </span><span class="nc">cell_width</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="kt">u16</span><span class="p">,</span>
+<span class="w">        </span><span class="n">cell_height</span><span class="p">:</span><span class="w"> </span><span class="nc">cell_height</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="kt">u16</span><span class="p">,</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div></td></tr></table></div>
+
+      </section>
+    </main>
+  </div>
+</body>
+</html>

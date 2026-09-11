@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>locales/en.ftl — terminaal — Jan</title>
+  <link rel="stylesheet" href="../../styles.css?v=7f9d3bef" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="layout">
+    <header class="rail" id="rail">
+<div class="rail__top">
+<a class="brand" href="../../index.html#top">
+<span class="brand__name">Jan</span>
+<span class="brand__meta">systems &amp; infrastructure<br/>Code, Code &amp; Code</span>
+</a>
+<button aria-controls="nav" aria-expanded="false" aria-label="Toggle menu" class="menu-toggle" id="menuToggle">
+<span></span><span></span><span></span>
+</button>
+</div>
+<nav aria-label="Sections" class="nav" id="nav">
+<a data-path="~/projects" href="../../index.html#projects">Projects</a>
+<a data-path="~/work" href="../../index.html#work">Work</a>
+<a data-path="~/education" href="../../index.html#education">Education</a>
+<a data-path="~/skills" href="../../index.html#skills">Skills</a>
+<a data-path="~/about" href="../../index.html#about">About Me</a>
+<a data-path="~/contact" href="../../index.html#contact">Contact</a>
+</nav>
+<div class="rail__status">
+<span aria-hidden="true" class="dot"></span>
+<span>open to work</span>
+</div>
+</header>
+    <nav class="file-tree"><p class="file-tree__title">Files</p><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">assets/</span><ul class="tree"><li class="tree-file"><a href="assets--terminaal.desktop.html">terminaal.desktop</a></li><li class="tree-file"><a href="assets--terminaal_icon_128.png.html">terminaal_icon_128.png</a></li><li class="tree-file"><a href="assets--terminaal_logo.png.html">terminaal_logo.png</a></li><li class="tree-file"><a href="assets--terminaal_splash_640.gif.html">terminaal_splash_640.gif</a></li><li class="tree-file"><a href="assets--terminaal_taa.gif.html">terminaal_taa.gif</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">locales/</span><ul class="tree"><li class="tree-file"><a href="locales--de.ftl.html">de.ftl</a></li><li class="tree-file tree-file--active"><a href="locales--en.ftl.html">en.ftl</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">src/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">render/</span><ul class="tree"><li class="tree-file"><a href="src--render--grid.rs.html">grid.rs</a></li><li class="tree-file"><a href="src--render--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="src--render--palette.rs.html">palette.rs</a></li><li class="tree-file"><a href="src--render--quad.rs.html">quad.rs</a></li><li class="tree-file"><a href="src--render--quad.wgsl.html">quad.wgsl</a></li><li class="tree-file"><a href="src--render--tab_bar.rs.html">tab_bar.rs</a></li><li class="tree-file"><a href="src--render--text.rs.html">text.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">shells/</span><ul class="tree"><li class="tree-file"><a href="src--shells--launch.rs.html">launch.rs</a></li><li class="tree-file"><a href="src--shells--managed.rs.html">managed.rs</a></li><li class="tree-file"><a href="src--shells--mod.rs.html">mod.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">ssh/</span><ul class="tree"><li class="tree-file"><a href="src--ssh--connection.rs.html">connection.rs</a></li><li class="tree-file"><a href="src--ssh--forward.rs.html">forward.rs</a></li><li class="tree-file"><a href="src--ssh--keys.rs.html">keys.rs</a></li><li class="tree-file"><a href="src--ssh--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="src--ssh--options.rs.html">options.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">terminal/</span><ul class="tree"><li class="tree-file"><a href="src--terminal--listener.rs.html">listener.rs</a></li><li class="tree-file"><a href="src--terminal--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="src--terminal--session.rs.html">session.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">ui/</span><ul class="tree"><li class="tree-file"><a href="src--ui--keys_panel.rs.html">keys_panel.rs</a></li><li class="tree-file"><a href="src--ui--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="src--ui--sidebar.rs.html">sidebar.rs</a></li><li class="tree-file"><a href="src--ui--splash.rs.html">splash.rs</a></li><li class="tree-file"><a href="src--ui--ssh_panel.rs.html">ssh_panel.rs</a></li><li class="tree-file"><a href="src--ui--theme.rs.html">theme.rs</a></li><li class="tree-file"><a href="src--ui--widgets.rs.html">widgets.rs</a></li></ul></li><li class="tree-file"><a href="src--app.rs.html">app.rs</a></li><li class="tree-file"><a href="src--config.rs.html">config.rs</a></li><li class="tree-file"><a href="src--gpu.rs.html">gpu.rs</a></li><li class="tree-file"><a href="src--i18n.rs.html">i18n.rs</a></li><li class="tree-file"><a href="src--input.rs.html">input.rs</a></li><li class="tree-file"><a href="src--main.rs.html">main.rs</a></li></ul></li><li class="tree-file"><a href="Cargo.lock.html">Cargo.lock</a></li><li class="tree-file"><a href="Cargo.toml.html">Cargo.toml</a></li><li class="tree-file"><a href="LICENSE.html">LICENSE</a></li><li class="tree-file"><a href="install.sh.html">install.sh</a></li></ul></nav>
+    <main class="main" id="main">
+      <section class="section source-page">
+        <p class="section__path">
+          <a href="../../index.html#projects" class="link">~/projects</a> /
+          <a href="../terminaal.html" class="link">terminaal</a> / source
+        </p>
+        <div class="source-page__head">
+          <h1 class="section__title">locales/en.ftl</h1>
+          <a href="../terminaal.html" class="link">← Back to terminaal</a>
+        </div>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">  1</span>
+<span class="normal">  2</span>
+<span class="normal">  3</span>
+<span class="normal">  4</span>
+<span class="normal">  5</span>
+<span class="normal">  6</span>
+<span class="normal">  7</span>
+<span class="normal">  8</span>
+<span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span>
+<span class="normal">245</span>
+<span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span>
+<span class="normal">250</span>
+<span class="normal">251</span>
+<span class="normal">252</span>
+<span class="normal">253</span>
+<span class="normal">254</span>
+<span class="normal">255</span>
+<span class="normal">256</span>
+<span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span>
+<span class="normal">262</span>
+<span class="normal">263</span>
+<span class="normal">264</span>
+<span class="normal">265</span>
+<span class="normal">266</span>
+<span class="normal">267</span>
+<span class="normal">268</span>
+<span class="normal">269</span>
+<span class="normal">270</span>
+<span class="normal">271</span>
+<span class="normal">272</span>
+<span class="normal">273</span>
+<span class="normal">274</span>
+<span class="normal">275</span>
+<span class="normal">276</span>
+<span class="normal">277</span>
+<span class="normal">278</span>
+<span class="normal">279</span>
+<span class="normal">280</span>
+<span class="normal">281</span>
+<span class="normal">282</span>
+<span class="normal">283</span>
+<span class="normal">284</span>
+<span class="normal">285</span>
+<span class="normal">286</span>
+<span class="normal">287</span>
+<span class="normal">288</span>
+<span class="normal">289</span>
+<span class="normal">290</span>
+<span class="normal">291</span>
+<span class="normal">292</span>
+<span class="normal">293</span>
+<span class="normal">294</span>
+<span class="normal">295</span>
+<span class="normal">296</span>
+<span class="normal">297</span>
+<span class="normal">298</span>
+<span class="normal">299</span>
+<span class="normal">300</span>
+<span class="normal">301</span>
+<span class="normal">302</span>
+<span class="normal">303</span>
+<span class="normal">304</span>
+<span class="normal">305</span>
+<span class="normal">306</span>
+<span class="normal">307</span>
+<span class="normal">308</span>
+<span class="normal">309</span>
+<span class="normal">310</span>
+<span class="normal">311</span>
+<span class="normal">312</span>
+<span class="normal">313</span>
+<span class="normal">314</span>
+<span class="normal">315</span>
+<span class="normal">316</span>
+<span class="normal">317</span>
+<span class="normal">318</span>
+<span class="normal">319</span>
+<span class="normal">320</span>
+<span class="normal">321</span>
+<span class="normal">322</span>
+<span class="normal">323</span>
+<span class="normal">324</span>
+<span class="normal">325</span>
+<span class="normal">326</span>
+<span class="normal">327</span>
+<span class="normal">328</span>
+<span class="normal">329</span>
+<span class="normal">330</span>
+<span class="normal">331</span>
+<span class="normal">332</span>
+<span class="normal">333</span>
+<span class="normal">334</span>
+<span class="normal">335</span>
+<span class="normal">336</span>
+<span class="normal">337</span>
+<span class="normal">338</span>
+<span class="normal">339</span>
+<span class="normal">340</span>
+<span class="normal">341</span>
+<span class="normal">342</span>
+<span class="normal">343</span>
+<span class="normal">344</span>
+<span class="normal">345</span>
+<span class="normal">346</span>
+<span class="normal">347</span>
+<span class="normal">348</span>
+<span class="normal">349</span>
+<span class="normal">350</span>
+<span class="normal">351</span>
+<span class="normal">352</span>
+<span class="normal">353</span>
+<span class="normal">354</span>
+<span class="normal">355</span>
+<span class="normal">356</span>
+<span class="normal">357</span>
+<span class="normal">358</span>
+<span class="normal">359</span>
+<span class="normal">360</span>
+<span class="normal">361</span>
+<span class="normal">362</span>
+<span class="normal">363</span>
+<span class="normal">364</span>
+<span class="normal">365</span></pre></div></td><td class="code"><div><pre><span></span># Terminaal – English texts.
+#
+# Fluent syntax: https://projectfluent.org/fluent/guide/
+# Every message here must exist in de.ftl too, with the same arguments
+# (checked by `cargo test`). Terminal colors, and spaces or line breaks
+# around a whole message, are added by the code.
+
+## Common
+
+common-save = Save
+common-cancel = Cancel
+common-delete = Delete
+common-edit = Edit
+common-remove = Remove
+common-no = No
+common-reload = Reload
+common-default = Default
+common-name-missing = The name is missing.
+common-saved = Saved “{ $name }”.
+common-deleted = Deleted “{ $name }”.
+common-home-unset = $HOME is not set.
+common-file-unreadable = Could not read { $path }: { $err }
+common-file-invalid = { $path } is invalid: { $err }
+
+## Command line
+
+cli-usage = Usage: terminaal [--connect [USER@]HOST]
+cli-unknown-argument = Unknown argument '{ $arg }'.
+cli-unexpected-argument = Unexpected argument '{ $arg }'.
+cli-connect-needs-host = --connect needs a host name.
+cli-unknown-host = No saved or ~/.ssh/config host named '{ $host }'.
+
+## Config file
+
+config-invalid-toml = { $path } is not valid TOML: { $err }
+
+## Actions carried out by the app
+
+app-shell-start-failed = Could not start { $shell }: { $err }
+app-ssh-tab-failed = Could not open an SSH tab for { $target }: { $err }
+app-default-shell-set = { $shell } is now the default shell for new tabs.
+app-language-changed = Language changed.
+
+## Sidebar
+
+sidebar-keys = Keys
+sidebar-settings = Settings
+
+## Sidebar: settings
+
+settings-language = Language
+settings-language-auto = Automatic · { $language }
+settings-language-auto-hint = Follows the system locale (LANG): German for a German locale, English otherwise
+settings-language-note = Applies right away. Saved as “language” in ~/.config/terminaal/config.toml.
+
+## Sidebar: shells, aliases and functions
+
+shells-installed = Installed shells
+shells-double-click = Double-click opens a new tab
+shells-new-tab = ▶  New tab
+shells-new-tab-hint = Opens a new tab with { $shell }
+shells-make-default = ★  Make default
+shells-make-default-hint = New tabs (Ctrl+Shift+T, “+”) start with this shell
+shells-managed-title = Aliases &amp; functions · { $shell }
+shells-managed-unsupported = Terminaal can't manage aliases or functions for { $shell } – fish, bash and zsh are supported.
+shells-managed-file-hint = Only loaded in Terminaal, not in other terminals. Changes apply to newly opened tabs.
+shells-save-failed = Saving failed: { $err }
+shells-aliases = Aliases ({ $count })
+shells-functions = Functions ({ $count })
+shells-no-aliases = No aliases yet.
+shells-no-functions = No functions yet.
+shells-add-alias = +  Add alias
+shells-add-function = +  Add function
+shells-new-alias = New alias
+shells-edit-alias = Edit alias
+shells-new-function = New function
+shells-edit-function = Edit function
+shells-command = Command
+shells-body = Body
+shells-args-fish = Arguments are in $argv.
+shells-args-posix = Arguments: $1, $2, … or "$@".
+shells-no-entry-open = No entry open.
+shells-command-missing = The command is missing.
+shells-body-missing = The body is missing.
+shells-name-taken = “{ $name }” already exists ({ $kind }).
+shells-saved = Saved “{ $name }” – applies to new { $shell } tabs.
+
+## Managed alias/function files (shells/managed.rs)
+
+managed-alias = alias
+managed-function = function
+managed-unsupported = this shell is not supported
+managed-invalid-name = Only letters, digits and _ . : + - are allowed (and no - at the start).
+managed-header =
+    # Aliases and functions for Terminaal.
+    #
+    # Managed by Terminaal and only loaded in Terminaal. The blocks between
+    # the markers may be edited by hand as well; anything outside of them
+    # is lost the next time the sidebar saves this file.
+
+## Sidebar: SSH hosts
+
+ssh-store-unreadable = { $file } is unreadable – nothing is saved until “Reload”.
+ssh-auto-key = Automatic (agent, ~/.ssh/id_*)
+ssh-files-key = IdentityFile (see Advanced)
+ssh-saved-hosts = Saved hosts
+ssh-double-click-connects = Double-click connects
+ssh-no-hosts = No saved hosts yet.
+ssh-add-host = +  Add host
+ssh-from-config = From ~/.ssh/config
+ssh-connect = ▶  Connect
+ssh-connect-as = Connect as { $login }
+ssh-adopt = Adopt
+ssh-adopt-hint = Copy into the saved hosts and edit
+ssh-secrets-note = Passwords and passphrases are never saved; the tab asks for them. Host keys are checked against ~/.ssh/known_hosts.
+ssh-via = { $address } · via { $jump }
+ssh-more-logins =
+    { $count -&gt;
+        [one] +1 login
+       *[other] +{ $count } logins
+    }
+ssh-is-jump-host = “{ $name }” is the jump host of { $hosts } – change that first.
+
+## Sidebar: host form
+
+host-new = New host
+host-edit = Edit host
+host-host-hint = server.example.com or 192.168.1.10
+host-name-optional = Name (optional)
+host-name-hint = same as host
+host-jump = Jump host (ProxyJump)
+host-jump-none = None
+host-no-host-open = No host open.
+host-missing = The host is missing.
+host-has-spaces = The host must not contain spaces.
+host-bad-port = The port must be a number between 1 and 65535.
+host-name-taken = There already is a host named “{ $name }”.
+host-bad-user = A user name must contain neither spaces nor @.
+host-login-twice = The login “{ $login }” is listed twice.
+host-jumps-itself = A host can't jump via itself.
+host-jump-and-proxy = Jump host and ProxyCommand exclude each other – clear one of them.
+host-not-a-number = { $label }: “{ $value }” is not a whole number.
+host-login = Login
+host-login-more = Additional { $index }
+host-remove-login = Remove login
+host-make-default-login = Make default – double-click and jump host use this login
+host-user-hint = User (default: { $user })
+host-add-login = +  Another login
+host-add-login-hint = Another user or key for the same host
+host-keys-hint = Create your own keys in the “Keys” section.
+host-forwards =
+    { $count -&gt;
+        [0] Port forwarding
+       *[other] Port forwarding ({ $count })
+    }
+host-forward-local = Local
+host-forward-remote = Remote
+host-forward-local-hint = LocalForward: a port here leads to a target the server can reach
+host-forward-remote-hint = RemoteForward: a port on the server leads to a target this machine can reach
+host-remove-forward = Remove forward
+host-local-listen-hint = Port here, e.g. 8080
+host-local-target-hint = Target as seen from the server, e.g. localhost:5432
+host-remote-listen-hint = Port on the server, e.g. 9000
+host-remote-target-hint = Target as seen from here, e.g. localhost:3000
+host-add-forward = +  Forward
+host-forwards-note = Active while the tab is connected. The port may be preceded by an address, e.g. *:8080 for all network interfaces.
+host-forward-missing-port = Forward { $row } is missing the port.
+host-forward-missing-target = Forward { $row } is missing the target.
+host-forward-invalid = Forward { $row }: { $err }
+host-advanced =
+    { $count -&gt;
+        [0] Advanced
+       *[other] Advanced ({ $count } set)
+    }
+
+## Sidebar: host form, advanced options
+
+adv-connection = Connection
+adv-connect-timeout = Connect timeout in s
+adv-connect-timeout-name = Connect timeout
+adv-alive-interval = Keepalive every … s (0 = off)
+adv-alive-interval-name = Keepalive interval
+adv-alive-count = Give up after … unanswered keepalives
+adv-alive-count-name = Unanswered keepalives
+adv-compression = Compression
+adv-compression-hint = Compression – helps on slow links
+adv-address-family = Address family
+adv-proxy-command = Proxy command instead of TCP
+adv-proxy-command-hint = e.g. nc -X connect -x proxy:3128 %h %p
+adv-auth = Authentication
+adv-identity-files = Key files, one per line
+adv-identity-files-note = Used by logins with “Automatic” as their key.
+adv-identities-only = Offer only configured keys
+adv-identities-only-hint = IdentitiesOnly – no other keys from the agent
+adv-agent-socket = Agent socket
+adv-agent-socket-hint = $SSH_AUTH_SOCK · none = no agent
+adv-methods = Methods in this order
+adv-host-key = Host key
+adv-unknown-host-keys = Unknown host keys
+adv-changed-host-key-note = A changed host key always aborts the connection.
+adv-known-hosts-file = known_hosts file
+adv-session = Session
+adv-remote-command = Command instead of login shell
+adv-remote-command-hint = e.g. tmux new -A -s main
+adv-set-env = Environment variables, one NAME=value per line
+adv-set-env-hint = LANG=en_US.UTF-8
+adv-send-env = Pass on local variables
+adv-env-note = The server only takes what its AcceptEnv list allows. TERM=… sets the terminal type.
+adv-algorithms = Algorithms
+adv-kex = Key exchange
+adv-host-key-types = Host key types
+adv-ciphers = Encryption
+adv-macs = Integrity
+adv-algorithms-note = Empty = default. +list appends, -list removes, ^list moves to the front; * and ? are allowed.
+
+## SSH options (ssh/options.rs)
+
+opt-family-any = IPv4 and IPv6
+opt-family-inet = IPv4 only
+opt-family-inet6 = IPv6 only
+opt-check-ask = Ask (ask)
+opt-check-accept-new = Save new ones without asking (accept-new)
+opt-check-yes = Known hosts only (yes)
+opt-unknown-method = PreferredAuthentications: unknown method “{ $name }”.
+opt-no-method = PreferredAuthentications names no method Terminaal supports (publickey, keyboard-interactive, password).
+opt-no-algorithm = none of the algorithms “{ $spec }” is supported (possible: { $supported })
+opt-list-empty = { $keyword }: the list is empty.
+opt-forward-invalid = { $keyword } “{ $spec }”: { $reason }
+opt-forward-unix = Unix sockets are not supported
+opt-forward-socks = dynamic forwarding (SOCKS) is not supported
+opt-forward-syntax = expected [address:]port target:port
+opt-forward-port = invalid port
+opt-forward-port-zero = port 0 only works with RemoteForward
+opt-forward-target-port = invalid target port
+opt-forward-target-missing = the target is missing
+opt-setenv-syntax = SetEnv “{ $entry }”: expected NAME=value.
+opt-setenv-name = SetEnv “{ $entry }”: “{ $name }” is not a valid variable name.
+
+## Resolving hosts (ssh/mod.rs)
+
+catalog-jump-and-proxy = “{ $name }” has both ProxyJump and ProxyCommand – only one of them works.
+catalog-jump-loop = The ProxyJump chain via “{ $name }” is too long or goes in circles.
+catalog-key-gone = The key “{ $key }” of “{ $host }” no longer exists.
+catalog-bad-jump = Invalid jump host “{ $spec }” – expected a host name from the list or [user@]host[:port].
+
+## Key store (ssh/keys.rs)
+
+keystore-public-invalid = The public key of “{ $name }” is invalid: { $err }
+keystore-no-source = “{ $name }” has neither a file nor an agent key.
+keystore-unreadable-file = { $path } is not a readable OpenSSH key: { $err }
+keystore-generate-failed = Could not generate the key: { $err }
+keystore-exists = { $path } already exists.
+keystore-delete-failed = could not delete { $path }: { $err }
+keystore-no-agent = No SSH agent found ($SSH_AUTH_SOCK is not set).
+keystore-agent-unreachable = SSH agent not reachable: { $err }
+
+## Sidebar: keys
+
+keys-unreadable = unreadable
+keys-badge-agent = Agent
+keys-badge-file = File
+keys-click-details = Click for details
+keys-none = No keys yet.
+keys-generate = +  Generate
+keys-add-file = +  File
+keys-add-file-hint = Add an existing key file
+keys-from-agent = +  From agent
+keys-from-agent-hint = Take over a key from the SSH agent, e.g. 1Password
+keys-note = New keys: Ed25519 in OpenSSH format. Passphrases are never saved. “Remove” deletes the entry – and, if you confirm, the files of keys generated here; other key files never.
+keys-unknown = unknown
+keys-type = Type: { $algorithm }
+keys-comment-line = Comment: { $comment }
+keys-file-line = File: { $file }
+keys-agent-only = Only in the SSH agent.
+keys-used-by = Used by: { $hosts }
+keys-delete-files-question = “{ $name }” is removed from Terminaal. Delete the key files too?
+keys-delete-files = Delete files
+keys-keep-files = Keep files
+keys-copy-public = 📋  Copy public key
+keys-rename = Rename
+keys-copied = Copied the public key of “{ $name }” – add it to ~/.ssh/authorized_keys on the server.
+keys-still-used = “{ $name }” is still used by { $hosts }.
+keys-removed-with-files = Removed “{ $name }” and deleted its key files.
+keys-removed-but = Removed “{ $name }”, but { $err }
+keys-removed-file-kept = Removed “{ $name }” – the key file itself is kept.
+keys-removed = Removed “{ $name }”.
+keys-new-title = New key (Ed25519)
+keys-name-hint = Work
+keys-comment = Comment
+keys-location = Location
+keys-passphrase-optional = Passphrase (optional)
+keys-passphrase-repeat = Repeat passphrase
+keys-no-passphrase-note = Without a passphrase the key is stored unencrypted on disk.
+keys-add-file-title = Add key file
+keys-private-file = Private key file
+keys-agent-title = Key from the SSH agent
+keys-agent-empty = The agent has no keys.
+keys-no-comment = (no comment)
+keys-rename-title = Rename key
+keys-new-name = New name
+keys-rename-note = Hosts using the key are updated too.
+keys-no-form = No form open.
+keys-passphrase-mismatch = The passphrases don't match.
+keys-location-missing = The location is missing.
+keys-generated = Generated “{ $name }” ({ $path }). Add the public key to ~/.ssh/authorized_keys on the server.
+keys-file-missing = The file is missing.
+keys-added = Added “{ $name }”.
+keys-choose-from-list = Please choose a key from the list.
+keys-agent-duplicate = This key already exists as “{ $name }”.
+keys-taken-over = Took over “{ $name }”.
+keys-gone = The key no longer exists.
+keys-renamed = Renamed “{ $old }” to “{ $new }”.
+keys-name-taken = There already is a key named “{ $name }”.
+
+## SSH connection, shown in the tab (ssh/connection.rs)
+
+conn-ssh-error = SSH error: { $err }
+conn-io-error = I/O error: { $err }
+conn-any-key-closes = Press any key to close the tab.
+conn-connecting = Connecting to { $target } …
+conn-connecting-via = Connecting to { $target } via { $hops } …
+conn-tunnel-failed = { $hop } could not open a tunnel to { $host }:{ $port }: { $err }
+conn-handshake-failed = SSH handshake with { $hop } failed: { $err }
+conn-proxy-says = ProxyCommand says: { $output }
+conn-session-closed = Terminaal: session closed
+conn-tunnel-closed = Terminaal: tunnel closed
+conn-resolve-failed = Could not resolve { $host }: { $err }
+conn-connect-failed = Connection to { $host }:{ $port } failed: { $err }
+conn-no-address = No address found for { $host } ({ $family }).
+conn-proxy-start-failed = Could not start ProxyCommand “{ $command }”: { $err }
+conn-no-host-key = The server sent no host key.
+conn-unknown-type = unknown
+conn-host-key-changed =
+    WARNING: The host key of { $entry } has changed!
+    This may be an attack (man-in-the-middle) – or the server was set up anew.
+    New { $kind } fingerprint: { $fingerprint }
+    Connection aborted. If the change is expected, remove the old entry with
+      ssh-keygen -R '{ $entry }'{ $file_option }
+conn-host-key-refused = The host key of “{ $entry }” is not in { $file }, and StrictHostKeyChecking only allows known hosts.
+    { $kind } fingerprint: { $fingerprint }
+conn-host-key-question =
+    The authenticity of “{ $entry }” can't be established.
+    { $kind } fingerprint: { $fingerprint }
+    Connect and save the host key in { $file }? (yes/no):
+conn-host-key-rejected = Aborted: host key not confirmed.
+conn-known-hosts-failed = Could not add to { $file }: { $err }
+conn-host-key-saved = Saved the host key of “{ $entry }” ({ $kind }, { $fingerprint }) in { $file }.
+conn-denied = Permission denied.
+conn-password-prompt = Password for { $target }:
+conn-auth-failed = Login as { $user } at { $host } failed (offered by the server: { $methods }).
+conn-auth-failed-preferred = Login as { $user } at { $host } failed (offered by the server: { $methods }; PreferredAuthentications: { $preferred }).
+conn-max-auth-tries = The SSH agent tried { $count } keys – many servers give up after a few attempts (MaxAuthTries). Fix: assign the host a fixed key in the “SSH” section.
+conn-key-file-missing = Key file { $path } not found.
+conn-wrong-passphrase = Wrong passphrase.
+conn-passphrase-prompt = Passphrase for { $path }:
+conn-keepalive-dead = Connection lost: { $target } stopped responding ({ $count } keepalives unanswered).
+conn-lost = Connection lost: { $err }
+conn-algorithms-failed = { $keyword } for { $hop }: { $err }
+conn-unknown-key-type = unknown key type
+
+## Port forwarding (ssh/forward.rs)
+
+forward-up = Forwarding { $forward }
+forward-failed = Forwarding { $forward } failed: { $err }
+forward-no-address = no address found
+</pre></div></td></tr></table></div>
+
+      </section>
+    </main>
+  </div>
+</body>
+</html>

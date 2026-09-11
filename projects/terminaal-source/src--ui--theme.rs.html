@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>src/ui/theme.rs — terminaal — Jan</title>
+  <link rel="stylesheet" href="../../styles.css?v=7f9d3bef" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="layout">
+    <header class="rail" id="rail">
+<div class="rail__top">
+<a class="brand" href="../../index.html#top">
+<span class="brand__name">Jan</span>
+<span class="brand__meta">systems &amp; infrastructure<br/>Code, Code &amp; Code</span>
+</a>
+<button aria-controls="nav" aria-expanded="false" aria-label="Toggle menu" class="menu-toggle" id="menuToggle">
+<span></span><span></span><span></span>
+</button>
+</div>
+<nav aria-label="Sections" class="nav" id="nav">
+<a data-path="~/projects" href="../../index.html#projects">Projects</a>
+<a data-path="~/work" href="../../index.html#work">Work</a>
+<a data-path="~/education" href="../../index.html#education">Education</a>
+<a data-path="~/skills" href="../../index.html#skills">Skills</a>
+<a data-path="~/about" href="../../index.html#about">About Me</a>
+<a data-path="~/contact" href="../../index.html#contact">Contact</a>
+</nav>
+<div class="rail__status">
+<span aria-hidden="true" class="dot"></span>
+<span>open to work</span>
+</div>
+</header>
+    <nav class="file-tree"><p class="file-tree__title">Files</p><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">assets/</span><ul class="tree"><li class="tree-file"><a href="assets--terminaal.desktop.html">terminaal.desktop</a></li><li class="tree-file"><a href="assets--terminaal_icon_128.png.html">terminaal_icon_128.png</a></li><li class="tree-file"><a href="assets--terminaal_logo.png.html">terminaal_logo.png</a></li><li class="tree-file"><a href="assets--terminaal_splash_640.gif.html">terminaal_splash_640.gif</a></li><li class="tree-file"><a href="assets--terminaal_taa.gif.html">terminaal_taa.gif</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">locales/</span><ul class="tree"><li class="tree-file"><a href="locales--de.ftl.html">de.ftl</a></li><li class="tree-file"><a href="locales--en.ftl.html">en.ftl</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">src/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">render/</span><ul class="tree"><li class="tree-file"><a href="src--render--grid.rs.html">grid.rs</a></li><li class="tree-file"><a href="src--render--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="src--render--palette.rs.html">palette.rs</a></li><li class="tree-file"><a href="src--render--quad.rs.html">quad.rs</a></li><li class="tree-file"><a href="src--render--quad.wgsl.html">quad.wgsl</a></li><li class="tree-file"><a href="src--render--tab_bar.rs.html">tab_bar.rs</a></li><li class="tree-file"><a href="src--render--text.rs.html">text.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">shells/</span><ul class="tree"><li class="tree-file"><a href="src--shells--launch.rs.html">launch.rs</a></li><li class="tree-file"><a href="src--shells--managed.rs.html">managed.rs</a></li><li class="tree-file"><a href="src--shells--mod.rs.html">mod.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">ssh/</span><ul class="tree"><li class="tree-file"><a href="src--ssh--connection.rs.html">connection.rs</a></li><li class="tree-file"><a href="src--ssh--forward.rs.html">forward.rs</a></li><li class="tree-file"><a href="src--ssh--keys.rs.html">keys.rs</a></li><li class="tree-file"><a href="src--ssh--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="src--ssh--options.rs.html">options.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">terminal/</span><ul class="tree"><li class="tree-file"><a href="src--terminal--listener.rs.html">listener.rs</a></li><li class="tree-file"><a href="src--terminal--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="src--terminal--session.rs.html">session.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">ui/</span><ul class="tree"><li class="tree-file"><a href="src--ui--keys_panel.rs.html">keys_panel.rs</a></li><li class="tree-file"><a href="src--ui--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="src--ui--sidebar.rs.html">sidebar.rs</a></li><li class="tree-file"><a href="src--ui--splash.rs.html">splash.rs</a></li><li class="tree-file"><a href="src--ui--ssh_panel.rs.html">ssh_panel.rs</a></li><li class="tree-file tree-file--active"><a href="src--ui--theme.rs.html">theme.rs</a></li><li class="tree-file"><a href="src--ui--widgets.rs.html">widgets.rs</a></li></ul></li><li class="tree-file"><a href="src--app.rs.html">app.rs</a></li><li class="tree-file"><a href="src--config.rs.html">config.rs</a></li><li class="tree-file"><a href="src--gpu.rs.html">gpu.rs</a></li><li class="tree-file"><a href="src--i18n.rs.html">i18n.rs</a></li><li class="tree-file"><a href="src--input.rs.html">input.rs</a></li><li class="tree-file"><a href="src--main.rs.html">main.rs</a></li></ul></li><li class="tree-file"><a href="Cargo.lock.html">Cargo.lock</a></li><li class="tree-file"><a href="Cargo.toml.html">Cargo.toml</a></li><li class="tree-file"><a href="LICENSE.html">LICENSE</a></li><li class="tree-file"><a href="install.sh.html">install.sh</a></li></ul></nav>
+    <main class="main" id="main">
+      <section class="section source-page">
+        <p class="section__path">
+          <a href="../../index.html#projects" class="link">~/projects</a> /
+          <a href="../terminaal.html" class="link">terminaal</a> / source
+        </p>
+        <div class="source-page__head">
+          <h1 class="section__title">src/ui/theme.rs</h1>
+          <a href="../terminaal.html" class="link">← Back to terminaal</a>
+        </div>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span></pre></div></td><td class="code"><div><pre><span></span><span class="sd">//! Colors and sizes for the egui chrome, matching the tab bar</span>
+<span class="sd">//! (`render::tab_bar`) so sidebar and tab bar read as one piece.</span>
+
+<span class="k">use</span><span class="w"> </span><span class="n">egui</span><span class="p">::{</span><span class="n">Color32</span><span class="p">,</span><span class="w"> </span><span class="n">CornerRadius</span><span class="p">,</span><span class="w"> </span><span class="n">FontFamily</span><span class="p">,</span><span class="w"> </span><span class="n">FontId</span><span class="p">,</span><span class="w"> </span><span class="n">Stroke</span><span class="p">,</span><span class="w"> </span><span class="n">TextStyle</span><span class="p">,</span><span class="w"> </span><span class="n">ThemePreference</span><span class="p">,</span><span class="w"> </span><span class="n">Visuals</span><span class="p">,</span><span class="w"> </span><span class="n">vec2</span><span class="p">};</span>
+
+<span class="k">pub</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">BG</span><span class="p">:</span><span class="w"> </span><span class="nc">Color32</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Color32</span><span class="p">::</span><span class="n">from_rgb</span><span class="p">(</span><span class="mi">22</span><span class="p">,</span><span class="w"> </span><span class="mi">22</span><span class="p">,</span><span class="w"> </span><span class="mi">22</span><span class="p">);</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">ROW_BG</span><span class="p">:</span><span class="w"> </span><span class="nc">Color32</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Color32</span><span class="p">::</span><span class="n">from_rgb</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span><span class="w"> </span><span class="mi">28</span><span class="p">,</span><span class="w"> </span><span class="mi">28</span><span class="p">);</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">HOVER_BG</span><span class="p">:</span><span class="w"> </span><span class="nc">Color32</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Color32</span><span class="p">::</span><span class="n">from_rgb</span><span class="p">(</span><span class="mi">36</span><span class="p">,</span><span class="w"> </span><span class="mi">36</span><span class="p">,</span><span class="w"> </span><span class="mi">36</span><span class="p">);</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">SELECTED_BG</span><span class="p">:</span><span class="w"> </span><span class="nc">Color32</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Color32</span><span class="p">::</span><span class="n">from_rgb</span><span class="p">(</span><span class="mi">33</span><span class="p">,</span><span class="w"> </span><span class="mi">41</span><span class="p">,</span><span class="w"> </span><span class="mi">54</span><span class="p">);</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">BORDER</span><span class="p">:</span><span class="w"> </span><span class="nc">Color32</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Color32</span><span class="p">::</span><span class="n">from_rgb</span><span class="p">(</span><span class="mi">48</span><span class="p">,</span><span class="w"> </span><span class="mi">48</span><span class="p">,</span><span class="w"> </span><span class="mi">48</span><span class="p">);</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">ACCENT</span><span class="p">:</span><span class="w"> </span><span class="nc">Color32</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Color32</span><span class="p">::</span><span class="n">from_rgb</span><span class="p">(</span><span class="mi">59</span><span class="p">,</span><span class="w"> </span><span class="mi">142</span><span class="p">,</span><span class="w"> </span><span class="mi">234</span><span class="p">);</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">TEXT</span><span class="p">:</span><span class="w"> </span><span class="nc">Color32</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Color32</span><span class="p">::</span><span class="n">from_rgb</span><span class="p">(</span><span class="mi">229</span><span class="p">,</span><span class="w"> </span><span class="mi">229</span><span class="p">,</span><span class="w"> </span><span class="mi">229</span><span class="p">);</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">TEXT_WEAK</span><span class="p">:</span><span class="w"> </span><span class="nc">Color32</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Color32</span><span class="p">::</span><span class="n">from_rgb</span><span class="p">(</span><span class="mi">135</span><span class="p">,</span><span class="w"> </span><span class="mi">135</span><span class="p">,</span><span class="w"> </span><span class="mi">135</span><span class="p">);</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">ERROR</span><span class="p">:</span><span class="w"> </span><span class="nc">Color32</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Color32</span><span class="p">::</span><span class="n">from_rgb</span><span class="p">(</span><span class="mi">241</span><span class="p">,</span><span class="w"> </span><span class="mi">76</span><span class="p">,</span><span class="w"> </span><span class="mi">76</span><span class="p">);</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">SUCCESS</span><span class="p">:</span><span class="w"> </span><span class="nc">Color32</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Color32</span><span class="p">::</span><span class="n">from_rgb</span><span class="p">(</span><span class="mi">35</span><span class="p">,</span><span class="w"> </span><span class="mi">209</span><span class="p">,</span><span class="w"> </span><span class="mi">139</span><span class="p">);</span>
+
+<span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">apply</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">egui</span><span class="p">::</span><span class="n">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Always dark, regardless of the desktop theme egui_winit reports,</span>
+<span class="w">    </span><span class="c1">// since the terminal itself is dark too.</span>
+<span class="w">    </span><span class="n">ctx</span><span class="p">.</span><span class="n">set_theme</span><span class="p">(</span><span class="n">ThemePreference</span><span class="p">::</span><span class="n">Dark</span><span class="p">);</span>
+
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">visuals</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Visuals</span><span class="p">::</span><span class="n">dark</span><span class="p">();</span>
+<span class="w">    </span><span class="n">visuals</span><span class="p">.</span><span class="n">panel_fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">BG</span><span class="p">;</span>
+<span class="w">    </span><span class="n">visuals</span><span class="p">.</span><span class="n">window_fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">BG</span><span class="p">;</span>
+<span class="w">    </span><span class="n">visuals</span><span class="p">.</span><span class="n">extreme_bg_color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Color32</span><span class="p">::</span><span class="n">from_rgb</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">);</span>
+<span class="w">    </span><span class="n">visuals</span><span class="p">.</span><span class="n">faint_bg_color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ROW_BG</span><span class="p">;</span>
+<span class="w">    </span><span class="n">visuals</span><span class="p">.</span><span class="n">hyperlink_color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ACCENT</span><span class="p">;</span>
+<span class="w">    </span><span class="n">visuals</span><span class="p">.</span><span class="n">error_fg_color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ERROR</span><span class="p">;</span>
+<span class="w">    </span><span class="n">visuals</span><span class="p">.</span><span class="n">selection</span><span class="p">.</span><span class="n">bg_fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Color32</span><span class="p">::</span><span class="n">from_rgb</span><span class="p">(</span><span class="mi">38</span><span class="p">,</span><span class="w"> </span><span class="mi">79</span><span class="p">,</span><span class="w"> </span><span class="mi">120</span><span class="p">);</span>
+<span class="w">    </span><span class="n">visuals</span><span class="p">.</span><span class="n">selection</span><span class="p">.</span><span class="n">stroke</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Stroke</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">);</span>
+
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">widgets</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="n">visuals</span><span class="p">.</span><span class="n">widgets</span><span class="p">;</span>
+<span class="w">    </span><span class="n">widgets</span><span class="p">.</span><span class="n">noninteractive</span><span class="p">.</span><span class="n">bg_stroke</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Stroke</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="n">BORDER</span><span class="p">);</span>
+<span class="w">    </span><span class="n">widgets</span><span class="p">.</span><span class="n">noninteractive</span><span class="p">.</span><span class="n">fg_stroke</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Stroke</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">);</span>
+<span class="w">    </span><span class="n">widgets</span><span class="p">.</span><span class="n">inactive</span><span class="p">.</span><span class="n">bg_fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HOVER_BG</span><span class="p">;</span>
+<span class="w">    </span><span class="n">widgets</span><span class="p">.</span><span class="n">inactive</span><span class="p">.</span><span class="n">weak_bg_fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HOVER_BG</span><span class="p">;</span>
+<span class="w">    </span><span class="n">widgets</span><span class="p">.</span><span class="n">inactive</span><span class="p">.</span><span class="n">fg_stroke</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Stroke</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">);</span>
+<span class="w">    </span><span class="n">widgets</span><span class="p">.</span><span class="n">hovered</span><span class="p">.</span><span class="n">bg_fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">BORDER</span><span class="p">;</span>
+<span class="w">    </span><span class="n">widgets</span><span class="p">.</span><span class="n">hovered</span><span class="p">.</span><span class="n">weak_bg_fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">BORDER</span><span class="p">;</span>
+<span class="w">    </span><span class="n">widgets</span><span class="p">.</span><span class="n">hovered</span><span class="p">.</span><span class="n">bg_stroke</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Stroke</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="n">Color32</span><span class="p">::</span><span class="n">from_rgb</span><span class="p">(</span><span class="mi">72</span><span class="p">,</span><span class="w"> </span><span class="mi">72</span><span class="p">,</span><span class="w"> </span><span class="mi">72</span><span class="p">));</span>
+<span class="w">    </span><span class="n">widgets</span><span class="p">.</span><span class="n">active</span><span class="p">.</span><span class="n">bg_fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ACCENT</span><span class="p">;</span>
+<span class="w">    </span><span class="n">widgets</span><span class="p">.</span><span class="n">active</span><span class="p">.</span><span class="n">weak_bg_fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ACCENT</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="n">widgets</span><span class="p">.</span><span class="n">noninteractive</span><span class="p">,</span>
+<span class="w">        </span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="n">widgets</span><span class="p">.</span><span class="n">inactive</span><span class="p">,</span>
+<span class="w">        </span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="n">widgets</span><span class="p">.</span><span class="n">hovered</span><span class="p">,</span>
+<span class="w">        </span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="n">widgets</span><span class="p">.</span><span class="n">active</span><span class="p">,</span>
+<span class="w">        </span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="n">widgets</span><span class="p">.</span><span class="n">open</span><span class="p">,</span>
+<span class="w">    </span><span class="p">]</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">w</span><span class="p">.</span><span class="n">corner_radius</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CornerRadius</span><span class="p">::</span><span class="n">same</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">ctx</span><span class="p">.</span><span class="n">set_visuals_of</span><span class="p">(</span><span class="n">egui</span><span class="p">::</span><span class="n">Theme</span><span class="p">::</span><span class="n">Dark</span><span class="p">,</span><span class="w"> </span><span class="n">visuals</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">ctx</span><span class="p">.</span><span class="n">all_styles_mut</span><span class="p">(</span><span class="o">|</span><span class="n">style</span><span class="o">|</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">style</span><span class="p">.</span><span class="n">text_styles</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">(</span><span class="n">TextStyle</span><span class="p">::</span><span class="n">Small</span><span class="p">,</span><span class="w"> </span><span class="n">FontId</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="mf">11.0</span><span class="p">,</span><span class="w"> </span><span class="n">FontFamily</span><span class="p">::</span><span class="n">Proportional</span><span class="p">)),</span>
+<span class="w">            </span><span class="p">(</span><span class="n">TextStyle</span><span class="p">::</span><span class="n">Body</span><span class="p">,</span><span class="w"> </span><span class="n">FontId</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="mf">14.0</span><span class="p">,</span><span class="w"> </span><span class="n">FontFamily</span><span class="p">::</span><span class="n">Proportional</span><span class="p">)),</span>
+<span class="w">            </span><span class="p">(</span><span class="n">TextStyle</span><span class="p">::</span><span class="n">Button</span><span class="p">,</span><span class="w"> </span><span class="n">FontId</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="mf">14.0</span><span class="p">,</span><span class="w"> </span><span class="n">FontFamily</span><span class="p">::</span><span class="n">Proportional</span><span class="p">)),</span>
+<span class="w">            </span><span class="p">(</span><span class="n">TextStyle</span><span class="p">::</span><span class="n">Heading</span><span class="p">,</span><span class="w"> </span><span class="n">FontId</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="mf">17.0</span><span class="p">,</span><span class="w"> </span><span class="n">FontFamily</span><span class="p">::</span><span class="n">Proportional</span><span class="p">)),</span>
+<span class="w">            </span><span class="p">(</span><span class="n">TextStyle</span><span class="p">::</span><span class="n">Monospace</span><span class="p">,</span><span class="w"> </span><span class="n">FontId</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="mf">13.0</span><span class="p">,</span><span class="w"> </span><span class="n">FontFamily</span><span class="p">::</span><span class="n">Monospace</span><span class="p">)),</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">        </span><span class="p">.</span><span class="n">into</span><span class="p">();</span>
+<span class="w">        </span><span class="n">style</span><span class="p">.</span><span class="n">spacing</span><span class="p">.</span><span class="n">item_spacing</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vec2</span><span class="p">(</span><span class="mf">8.0</span><span class="p">,</span><span class="w"> </span><span class="mf">6.0</span><span class="p">);</span>
+<span class="w">        </span><span class="n">style</span><span class="p">.</span><span class="n">spacing</span><span class="p">.</span><span class="n">button_padding</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vec2</span><span class="p">(</span><span class="mf">10.0</span><span class="p">,</span><span class="w"> </span><span class="mf">4.0</span><span class="p">);</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="p">}</span>
+</pre></div></td></tr></table></div>
+
+      </section>
+    </main>
+  </div>
+</body>
+</html>

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>terminaal — Jan</title>
+  <link rel="stylesheet" href="../styles.css?v=7f9d3bef" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="layout">
+    <header class="rail" id="rail">
+<div class="rail__top">
+<a class="brand" href="../index.html#top">
+<span class="brand__name">Jan</span>
+<span class="brand__meta">systems &amp; infrastructure<br/>Code, Code &amp; Code</span>
+</a>
+<button aria-controls="nav" aria-expanded="false" aria-label="Toggle menu" class="menu-toggle" id="menuToggle">
+<span></span><span></span><span></span>
+</button>
+</div>
+<nav aria-label="Sections" class="nav" id="nav">
+<a data-path="~/projects" href="../index.html#projects">Projects</a>
+<a data-path="~/work" href="../index.html#work">Work</a>
+<a data-path="~/education" href="../index.html#education">Education</a>
+<a data-path="~/skills" href="../index.html#skills">Skills</a>
+<a data-path="~/about" href="../index.html#about">About Me</a>
+<a data-path="~/contact" href="../index.html#contact">Contact</a>
+</nav>
+<div class="rail__status">
+<span aria-hidden="true" class="dot"></span>
+<span>open to work</span>
+</div>
+</header>
+    <main class="main" id="main">
+      <section class="section project-page">
+        <p class="section__path"><a href="../index.html#projects" class="link">~/projects</a> / terminaal</p>
+        <div class="card__head project-page__head">
+          <h1 class="section__title">terminaal</h1>
+          <span class="tag">Rust</span>
+        </div>
+        <div class="card__foot project-page__foot">
+          <div class="card__links">
+            <a href="https://github.com/mergedeyes/terminaal" class="link">Repository</a>
+            <a href="terminaal-source.html" class="link">Browse source (42 files)</a>
+            <a href="terminaal-commits.html" class="link">Commit history (3)</a>
+          </div>
+          <span class="license-badge">AGPL-3.0</span>
+        </div>
+        <div class="readme-content">
+<p align="center" dir="auto">
+<a href="assets/terminaal_logo.png" rel="noopener noreferrer" target="_blank"><img alt="Terminaal logo" src="assets/terminaal_logo.png" style="max-width: 100%;" width="160"/></a>
+</p>
+<h1 align="center" class="heading-element" dir="auto">Terminaal</h1>
+<p align="center" dir="auto">
+  A GPU-rendered terminal emulator for Linux with a built-in SSH manager.<br/>
+  Written in Rust. English and German UI.
+</p>
+<hr/>
+<p dir="auto">Terminaal combines an everyday terminal with Termius-style host management
+in the style of Tabby/Terminus. You can open local shells and SSH sessions side by side in tabs, keep your hosts, logins and keys
+in a sidebar, and never have secrets written to disk.</p>
+<blockquote>
+<p dir="auto"><strong>Status:</strong> under active development. It's used as a daily driver on
+Linux (Wayland and X11). Expect rough edges, and expect the config format to change.</p>
+</blockquote>
+<h2 class="heading-element" dir="auto">Features</h2>
+<h3 class="heading-element" dir="auto">Terminal</h3>
+<ul dir="auto">
+<li>Custom <strong>wgpu</strong> renderer for the terminal grid; VT parsing by
+<a href="https://crates.io/crates/alacritty_terminal" rel="nofollow"><code>alacritty_terminal</code></a></li>
+<li>Redraws only when something changes (output, input, cursor blink), so it stays
+idle when you do</li>
+<li>Multiple tabs, each a local shell or an SSH session; a clickable tab bar</li>
+<li>Scrollback with the mouse wheel, mouse selection, clipboard copy and paste</li>
+<li>Optional start-up animation</li>
+</ul>
+<h3 class="heading-element" dir="auto">Shells</h3>
+<ul dir="auto">
+<li>Choose any shell listed in <code>/etc/shells</code> for a new tab, and set a default</li>
+<li>Manage <strong>aliases and functions</strong> for fish, bash and zsh from the sidebar.
+They live in a separate file that only Terminaal loads, so your other
+terminals are unaffected:
+<code>~/.config/fish/terminaal.fish</code>, <code>~/.bash_terminaal</code>, <code>$ZDOTDIR/.zsh_terminaal</code></li>
+</ul>
+<h3 class="heading-element" dir="auto">SSH</h3>
+<ul dir="auto">
+<li>Saved hosts plus the hosts from your <strong><code>~/.ssh/config</code></strong>, read-only or
+copied over to edit. Supports <code>Include</code>, <code>Match</code>, <code>%</code> tokens and more</li>
+<li><strong>Several logins per host</strong> (user + key), with one as the default</li>
+<li><strong>ProxyJump</strong> chains and <strong>ProxyCommand</strong></li>
+<li><strong>Port forwarding</strong> (<code>LocalForward</code>, <code>RemoteForward</code>)</li>
+<li>Per-host options, grouped in the form with their <code>ssh_config</code> keyword:
+timeouts, keepalives, compression, address family, authentication order,
+<code>StrictHostKeyChecking</code>, <code>RemoteCommand</code>, <code>SetEnv</code>/<code>SendEnv</code>, and the
+algorithm lists (kex, host key, ciphers, MACs)</li>
+<li>Host keys are checked against <code>~/.ssh/known_hosts</code>, and new entries are appended,
+never rewritten</li>
+<li>Host-key prompts, passphrases and passwords are asked <strong>inside the tab</strong>,
+like OpenSSH does. Nothing secret is ever stored</li>
+</ul>
+<h3 class="heading-element" dir="auto">Keys</h3>
+<ul dir="auto">
+<li>Generate <strong>Ed25519</strong> keys (optionally with a passphrase) in OpenSSH
+format, add existing key files, or take over keys from your <strong>SSH agent</strong>
+(e.g. 1Password)</li>
+<li>Copy the public key with one click, and rename keys; hosts that use a key follow the rename</li>
+<li>Only keys generated in Terminaal can have their files deleted, and only
+after asking</li>
+</ul>
+<h3 class="heading-element" dir="auto">Languages</h3>
+<ul dir="auto">
+<li>English and German, via <a href="https://projectfluent.org/" rel="nofollow">Project Fluent</a>.
+The default follows your system locale (German for a German locale, English
+otherwise). Switch it any time in the sidebar under <strong>⚙</strong></li>
+</ul>
+<h2 class="heading-element" dir="auto">Installation</h2>
+<p dir="auto">Terminaal is built from source.</p>
+<p dir="auto"><strong>Requirements</strong></p>
+<ul dir="auto">
+<li>Rust <strong>1.88</strong> or newer (<a href="https://rustup.rs/" rel="nofollow">rustup</a>)</li>
+<li>A C compiler, <code>pkg-config</code>, and the OpenSSL and zlib development headers
+(for libssh2). On Debian/Ubuntu: <code>sudo apt install build-essential pkg-config libssl-dev zlib1g-dev</code></li>
+<li>A GPU driver with Vulkan or OpenGL support</li>
+<li><a href="https://imagemagick.org/" rel="nofollow">ImageMagick</a> (<code>magick</code>), only for <code>install.sh</code>,
+which scales the icons</li>
+</ul>
+<p dir="auto"><strong>Install for the current user</strong></p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="git clone https://github.com/mergedeyes/terminaal terminaal
+cd terminaal
+./install.sh" dir="auto"><pre>git clone https://github.com/mergedeyes/terminaal terminaal
+<span class="pl-c1">cd</span> terminaal
+./install.sh</pre></div>
+<p dir="auto">This installs a release build to <code>~/.cargo/bin/terminaal</code>, plus a desktop entry and
+icons under <code>~/.local/share</code>, so Terminaal appears in your app launcher.</p>
+<markdown-accessiblity-table><table>
+<thead>
+<tr>
+<th>Command</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>./install.sh</code></td>
+<td>Binary, desktop entry and icons</td>
+</tr>
+<tr>
+<td><code>./install.sh --no-binary</code></td>
+<td>Desktop entry and icons only</td>
+</tr>
+<tr>
+<td><code>./install.sh --uninstall</code></td>
+<td>Removes all of the above</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto">Run <code>./install.sh</code> again after updating the source; the launcher always starts the installed binary.</p>
+<p dir="auto"><strong>Just try it</strong></p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="cargo run --release" dir="auto"><pre>cargo run --release</pre></div>
+<h2 class="heading-element" dir="auto">Usage</h2>
+<h3 class="heading-element" dir="auto">Keyboard shortcuts</h3>
+<markdown-accessiblity-table><table>
+<thead>
+<tr>
+<th>Shortcut</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>T</kbd></td>
+<td>New tab with the default shell</td>
+</tr>
+<tr>
+<td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>W</kbd></td>
+<td>Close tab</td>
+</tr>
+<tr>
+<td><kbd>Ctrl</kbd>+<kbd>Tab</kbd> / <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Tab</kbd></td>
+<td>Next / previous tab</td>
+</tr>
+<tr>
+<td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>B</kbd></td>
+<td>Show or hide the sidebar</td>
+</tr>
+<tr>
+<td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>C</kbd> / <kbd>V</kbd></td>
+<td>Copy / paste</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto">Tabs can also be closed with a middle click; the ☰ button in the tab bar
+toggles the sidebar as well.</p>
+<h3 class="heading-element" dir="auto">Command line</h3>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="terminaal                          # a local shell
+terminaal --connect myserver       # connect to a saved or ~/.ssh/config host
+terminaal --connect admin@myserver # ...using that host's login for &quot;admin&quot;" dir="auto"><pre>terminaal                          <span class="pl-c"><span class="pl-c">#</span> a local shell</span>
+terminaal --connect myserver       <span class="pl-c"><span class="pl-c">#</span> connect to a saved or ~/.ssh/config host</span>
+terminaal --connect admin@myserver <span class="pl-c"><span class="pl-c">#</span> ...using that host's login for "admin"</span></pre></div>
+<h2 class="heading-element" dir="auto">Configuration</h2>
+<p dir="auto">Everything is optional. Terminaal reads <code>~/.config/terminaal/config.toml</code>.
+A missing or broken file just means defaults, never a failed start.</p>
+<div class="highlight highlight-source-toml notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content='font_size = 15.0              # logical pixels
+line_height_factor = 1.25
+padding = 8.0                 # around the terminal grid
+scrollback_lines = 10000
+default_width = 1000.0        # window size at start
+default_height = 650.0
+cursor_blink = true
+cursor_blink_interval_ms = 600
+tab_bar = true
+sidebar = true                # show the sidebar at start
+sidebar_width = 300.0
+splash = true                 # start-up animation
+# shell = "/usr/bin/fish"     # default shell for new tabs (default: $SHELL)
+# language = "en"             # "en" or "de" (default: from your locale)' dir="auto"><pre><span class="pl-smi">font_size</span> = <span class="pl-c1">15.0</span>              <span class="pl-c"><span class="pl-c">#</span> logical pixels</span>
+<span class="pl-smi">line_height_factor</span> = <span class="pl-c1">1.25</span>
+<span class="pl-smi">padding</span> = <span class="pl-c1">8.0</span>                 <span class="pl-c"><span class="pl-c">#</span> around the terminal grid</span>
+<span class="pl-smi">scrollback_lines</span> = <span class="pl-c1">10000</span>
+<span class="pl-smi">default_width</span> = <span class="pl-c1">1000.0</span>        <span class="pl-c"><span class="pl-c">#</span> window size at start</span>
+<span class="pl-smi">default_height</span> = <span class="pl-c1">650.0</span>
+<span class="pl-smi">cursor_blink</span> = <span class="pl-c1">true</span>
+<span class="pl-smi">cursor_blink_interval_ms</span> = <span class="pl-c1">600</span>
+<span class="pl-smi">tab_bar</span> = <span class="pl-c1">true</span>
+<span class="pl-smi">sidebar</span> = <span class="pl-c1">true</span>                <span class="pl-c"><span class="pl-c">#</span> show the sidebar at start</span>
+<span class="pl-smi">sidebar_width</span> = <span class="pl-c1">300.0</span>
+<span class="pl-smi">splash</span> = <span class="pl-c1">true</span>                 <span class="pl-c"><span class="pl-c">#</span> start-up animation</span>
+<span class="pl-c"><span class="pl-c">#</span> shell = "/usr/bin/fish"     # default shell for new tabs (default: $SHELL)</span>
+<span class="pl-c"><span class="pl-c">#</span> language = "en"             # "en" or "de" (default: from your locale)</span></pre></div>
+<p dir="auto"><code>shell</code> and <code>language</code> can also be set from the sidebar. When they are,
+Terminaal edits just that line and keeps your comments and formatting.</p>
+<p dir="auto">Next to it, Terminaal keeps its own files. None of them holds anything secret:</p>
+<markdown-accessiblity-table><table>
+<thead>
+<tr>
+<th>File</th>
+<th>Contents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>hosts.toml</code></td>
+<td>Saved SSH hosts, logins and options</td>
+</tr>
+<tr>
+<td><code>keys.toml</code></td>
+<td>Named keys: file paths, or the public half of agent keys</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<h2 class="heading-element" dir="auto">Translations</h2>
+<p dir="auto">The texts live in <a href="locales/"><code>locales/</code></a>, one <a href="https://projectfluent.org/fluent/guide/" rel="nofollow">Fluent</a>
+file per language, and are compiled into the binary. To improve a
+translation, edit the <code>.ftl</code> file. <code>cargo test</code> checks that every
+language has the same messages with the same arguments.</p>
+<p dir="auto">To add a language, copy <code>locales/en.ftl</code>, translate it, and register it
+in <code>Language</code> in <a href="src/i18n.rs"><code>src/i18n.rs</code></a>, which takes a few lines.</p>
+<h2 class="heading-element" dir="auto">Known limitations</h2>
+<ul dir="auto">
+<li>Linux only for now</li>
+<li>SSH is based on libssh2, which can't do agent forwarding (<code>ForwardAgent</code>).
+<code>DynamicForward</code> (SOCKS), Unix-socket forwarding and <code>ControlMaster</code> aren't
+supported either</li>
+<li>Only Ed25519 keys can be generated. Existing RSA/ECDSA keys work</li>
+<li><code>Match exec</code> in <code>~/.ssh/config</code> is never evaluated, on purpose</li>
+</ul>
+<h2 class="heading-element" dir="auto">Roadmap</h2>
+<ul class="contains-task-list">
+<li class="task-list-item"><input aria-label="Completed task" checked="" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Local terminal core, tabs and sessions</li>
+<li class="task-list-item"><input aria-label="Completed task" checked="" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Shell management with per-shell aliases and functions</li>
+<li class="task-list-item"><input aria-label="Completed task" checked="" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> SSH sessions, host manager, keys, per-host options</li>
+<li class="task-list-item"><input aria-label="Incomplete task" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Configurable keyboard shortcuts for every action</li>
+<li class="task-list-item"><input aria-label="Incomplete task" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Appearance: translucency, COSMIC theme sync, font choice, themes</li>
+</ul>
+<h2 class="heading-element" dir="auto">Development</h2>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="cargo run                        # dev build
+cargo run -- --connect myserver  # pass arguments after --
+cargo test
+cargo clippy --all-targets       # should stay warning-free
+RUST_LOG=terminaal=debug cargo run   # per-frame timing
+RUST_LOG=terminaal=trace cargo run   # plus the SSH worker's timeline" dir="auto"><pre>cargo run                        <span class="pl-c"><span class="pl-c">#</span> dev build</span>
+cargo run -- --connect myserver  <span class="pl-c"><span class="pl-c">#</span> pass arguments after --</span>
+cargo <span class="pl-c1">test</span>
+cargo clippy --all-targets       <span class="pl-c"><span class="pl-c">#</span> should stay warning-free</span>
+RUST_LOG=terminaal=debug cargo run   <span class="pl-c"><span class="pl-c">#</span> per-frame timing</span>
+RUST_LOG=terminaal=trace cargo run   <span class="pl-c"><span class="pl-c">#</span> plus the SSH worker's timeline</span></pre></div>
+<p dir="auto">Code comments are in English. User-facing text goes in <code>locales/*.ftl</code>,
+never inline in the code.</p>
+
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
