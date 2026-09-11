@@ -153,7 +153,7 @@
     ]
   },
   "mergedeyes/mergedeyes.github.io": {
-    "commit_count": 255,
+    "commit_count": 257,
     "files": {
       ".github/scripts/generate_project_pages.py": "6095b4953a2612d6e7362ebc0bd4ce980d440917",
       ".github/scripts/update_visitor_count.py": "6b3f83843602f650466aef1cce25e691f1e2d4dc",
@@ -161,7 +161,7 @@
       ".github/workflows/jekyll-gh-pages.yml": "e5d903dc63d17f68658e3d4b9726c19f748ce746",
       ".github/workflows/update-visitor-count.yml": "cfa9ea2eacc02b9ef3719ce9ed8dca0b2171e967",
       "404.html": "cacf9aed64339b7d314de8914fbb917252c8fb6f",
-      "index.html": "7c189c03f5b9c4f05bd93816bcb25312d5a16033",
+      "index.html": "7f8053149a94a272714fe10f7265ce5f317a6430",
       "llms.txt": "05d657ae6bfa0a8793b786bca19f3d285a9aad0e",
       "robots.txt": "24e94cbe9371b8c9d1dbf6a17bebea38cb49a552",
       "script.js": "33ef7fe1d0edc6c40d9d7e4658544c1845ec1a52",
@@ -175,8 +175,8 @@
       "skills/nginx.html": "80c4b61efb0493e6411b8b9caab170e3db5d80dd",
       "styles.css": "46aeb1c9e9445d077414b7d5f448dddf7dd9c178"
     },
-    "newest_commit_sha": "0acdc79dff726669aef3b838da2b96b6b5e26581",
-    "pushed_at": "2026-09-11T19:01:08Z",
+    "newest_commit_sha": "7755d5b0b1ec7d66e543f697e5340d9fd5c253e4",
+    "pushed_at": "2026-09-11T19:34:59Z",
     "source_entries": [
       "index.html",
       "404.html",
@@ -224,15 +224,15 @@
     ]
   },
   "mergedeyes/terminaal": {
-    "commit_count": 12,
+    "commit_count": 14,
     "files": {
       "Cargo.lock": "ffe4a262a59683c4e5dd87231fea17b90aaddbe5",
       "Cargo.toml": "d6adb7c34cd28377959d751399a018aebba764ec",
-      "LICENSE": "0ad25db4bd1d86c452db3f9602ccdbe172438f52",
+      "LICENSE": "f288702d2fa16d3cdf0035b15a9fcbc552cd88e7",
       "assets/terminaal.desktop": "02c94ccb7f06db0ebf26ab8029a809af7d7a1136",
       "install.sh": "f63921cf9d09fdfa69a5fa0678c4b5f8419dd14f",
-      "locales/de.ftl": "e1e0d8d1b4a38e77d04e018e72d6197a46feedd1",
-      "locales/en.ftl": "ea7f71b5ed1aedcdcd3162653da0a1744235724b",
+      "locales/de.ftl": "fb575ea1812ecb203b0b3f7b894b58a1f6b932c8",
+      "locales/en.ftl": "ba351495f0fc7f5639c9c9bfc9fc686e2a7db457",
       "src/app.rs": "fb521d43727b829926111541e72c6ecc9c63396e",
       "src/config.rs": "abae57d86ad0ca2747f3cefed5b43b85f58ea541",
       "src/gpu.rs": "3f86082e68a2d9540eb815091c13079057b01528",
@@ -251,10 +251,11 @@
       "src/shells/mod.rs": "b69b6e617c22331dbdaf69997cfd1e48d0b823ec",
       "src/shortcuts.rs": "543c37bcd803a4c83e487b6eb3a4801e32555d7e",
       "src/ssh/connection.rs": "9d27a5eeee402386343dd95975c78834fe7c787d",
-      "src/ssh/forward.rs": "3fcf81ba4bb9a9a39155415a1aed7d9f57715224",
+      "src/ssh/forward.rs": "fe7133fcec6438e15cd8936ee6dc3d954cb9be01",
       "src/ssh/keys.rs": "d447eeb604604aefda478f5be62a877cb37f42b1",
-      "src/ssh/mod.rs": "03855892216d60063cb8526f162811133b3001cc",
-      "src/ssh/options.rs": "c36288bbedbece1ae9168f6a0b555ac54f437388",
+      "src/ssh/mod.rs": "e4871c61672579eebd4c05da690120284c2dfbdc",
+      "src/ssh/options.rs": "d030a0273c49d6823ef9dd3a8bf7a7705abfafa8",
+      "src/ssh/socks.rs": "0f32fbab40ca4c2490fedf468f7cdf48551ac431",
       "src/terminal/listener.rs": "05adb47c923a2f47c122277bb942e47c68abfbc4",
       "src/terminal/mod.rs": "85d221a91ef4a4d522ff9cfcb3c9ee020a026218",
       "src/terminal/session.rs": "ffbf33f9d4258f7226eb378a490a785982f14de6",
@@ -264,12 +265,12 @@
       "src/ui/settings_panel.rs": "a2cc9381d15e3fdd0422c7c8c2d5f86280999040",
       "src/ui/sidebar.rs": "bba2329a3461eec8d86bddf3bbe25601b02f439a",
       "src/ui/splash.rs": "4d53e3a38f94ae4809181c157a14fecb0e2e0c78",
-      "src/ui/ssh_panel.rs": "4eddf8527b761b4d19632241b15c9981574ce87f",
+      "src/ui/ssh_panel.rs": "cbca3db975ee88debb3b30f2f8c9b74d799dcac8",
       "src/ui/theme.rs": "9acae16ab3b310f6b4abf15f8428206bdfe1c736",
       "src/ui/widgets.rs": "19cfbda2c5eae940315ea678c9bf991a2d25ba3e"
     },
-    "newest_commit_sha": "6ecf0cb837eba7605d2181ae4fd261050accb208",
-    "pushed_at": "2026-09-11T16:49:02Z",
+    "newest_commit_sha": "64fffce5a78f2c1e98d433702f341288bf42b13c",
+    "pushed_at": "2026-09-11T19:33:11Z",
     "source_entries": [
       "src/*",
       "assets/terminaal.desktop",

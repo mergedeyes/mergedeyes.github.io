@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Terminaal — Jan</title>
-  <link rel="stylesheet" href="../styles.css?v=0acdc79d" />
+  <link rel="stylesheet" href="../styles.css?v=7755d5b0" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -38,14 +38,16 @@
         <div class="card__head project-page__head">
           <h1 class="section__title">Terminaal</h1>
           <span class="tag">Rust</span>
+          <span class="tag">Fluent</span>
+          <span class="tag">TOML</span>
         </div>
         <div class="card__foot project-page__foot">
           <div class="card__links">
             <a href="https://github.com/mergedeyes/terminaal" class="link">Repository</a>
-            <a href="terminaal-source.html" class="link">Browse source (41 files)</a>
-            <a href="terminaal-commits.html" class="link">Commit history (12)</a>
+            <a href="terminaal-source.html" class="link">Browse source (42 files)</a>
+            <a href="terminaal-commits.html" class="link">Commit history (14)</a>
           </div>
-          <span class="license-badge">AGPL-3.0</span>
+          <span class="license-badge">GPL-3.0</span>
         </div>
         <div class="readme-content">
 <p align="center" dir="auto">
@@ -53,7 +55,7 @@
 </p>
 <h1 align="center" class="heading-element" dir="auto">Terminaal</h1>
 <p align="center" dir="auto">
-  A GPU-rendered terminal emulator for Linux with a built-in SSH manager.<br/>
+  A GPU-rendered terminal emulator for COSMIC with a built-in SSH manager.<br/>
   Written in Rust. English and German UI.
 </p>
 <hr/>
@@ -68,7 +70,7 @@ Linux (Wayland and X11). Expect rough edges, and expect the config format to cha
 <p dir="auto"><strong>DISCLAIMER:</strong> This project is coded mostly by Claude Code, I do make all decisions though; every feature was planned by me.</p>
 </blockquote>
 <p dir="auto"><strong>SCREENSHOTS:</strong>
-<a href="https://private-user-images.githubusercontent.com/131465956/650455550-8b66f2ea-c9c3-42c5-9f1c-5429d2435855.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3ODkxNTI0MTksIm5iZiI6MTc4OTE1MjExOSwicGF0aCI6Ii8xMzE0NjU5NTYvNjUwNDU1NTUwLThiNjZmMmVhLWM5YzMtNDJjNS05ZjFjLTU0MjlkMjQzNTg1NS5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwOTExJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDkxMVQxODQxNTlaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0wMTRjZDQ1Y2M2MzdiNzA4NTEzNjFhNjZmNTAyMTA3NTllNWFlM2I5OGExOWU4Y2IyN2ZjM2M4NzIzNTlhZmQ4JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZwbmcifQ.PNALX_8vTqGCdCtNnE85l-FdfPKCrm8oRHp2F6AE1yk" rel="noopener noreferrer" target="_blank"><img alt="image" class="js-gh-image-fallback" height="1082" src="https://private-user-images.githubusercontent.com/131465956/650455550-8b66f2ea-c9c3-42c5-9f1c-5429d2435855.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3ODkxNTI0MTksIm5iZiI6MTc4OTE1MjExOSwicGF0aCI6Ii8xMzE0NjU5NTYvNjUwNDU1NTUwLThiNjZmMmVhLWM5YzMtNDJjNS05ZjFjLTU0MjlkMjQzNTg1NS5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwOTExJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDkxMVQxODQxNTlaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0wMTRjZDQ1Y2M2MzdiNzA4NTEzNjFhNjZmNTAyMTA3NTllNWFlM2I5OGExOWU4Y2IyN2ZjM2M4NzIzNTlhZmQ4JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZwbmcifQ.PNALX_8vTqGCdCtNnE85l-FdfPKCrm8oRHp2F6AE1yk" style="max-width: 100%; height: auto; max-height: 1082px;; aspect-ratio: 2000 / 1082; background-color: var(--bgColor-muted); border-radius: 6px" width="2000"/></a></p>
+<a href="https://private-user-images.githubusercontent.com/131465956/650455550-8b66f2ea-c9c3-42c5-9f1c-5429d2435855.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3ODkxNTU2MTEsIm5iZiI6MTc4OTE1NTMxMSwicGF0aCI6Ii8xMzE0NjU5NTYvNjUwNDU1NTUwLThiNjZmMmVhLWM5YzMtNDJjNS05ZjFjLTU0MjlkMjQzNTg1NS5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwOTExJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDkxMVQxOTM1MTFaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0xNWM4NmU4OTg1YjRlOWFkNDY5MTUwMDk5ZDA1YzI0NDc3NmYxM2ZmMDZjZWVjOWUwMTk0ZGIzZDE1Y2FlMTVkJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZwbmcifQ.6Wfri5q67nzf3S-g6odx4ym4kKI9OCWyFgGcSJmINAo" rel="noopener noreferrer" target="_blank"><img alt="image" class="js-gh-image-fallback" height="1082" src="https://private-user-images.githubusercontent.com/131465956/650455550-8b66f2ea-c9c3-42c5-9f1c-5429d2435855.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3ODkxNTU2MTEsIm5iZiI6MTc4OTE1NTMxMSwicGF0aCI6Ii8xMzE0NjU5NTYvNjUwNDU1NTUwLThiNjZmMmVhLWM5YzMtNDJjNS05ZjFjLTU0MjlkMjQzNTg1NS5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwOTExJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDkxMVQxOTM1MTFaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0xNWM4NmU4OTg1YjRlOWFkNDY5MTUwMDk5ZDA1YzI0NDc3NmYxM2ZmMDZjZWVjOWUwMTk0ZGIzZDE1Y2FlMTVkJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZwbmcifQ.6Wfri5q67nzf3S-g6odx4ym4kKI9OCWyFgGcSJmINAo" style="max-width: 100%; height: auto; max-height: 1082px;; aspect-ratio: 2000 / 1082; background-color: var(--bgColor-muted); border-radius: 6px" width="2000"/></a></p>
 <h2 class="heading-element" dir="auto">Features</h2>
 <h3 class="heading-element" dir="auto">Terminal</h3>
 <ul dir="auto">
@@ -101,7 +103,10 @@ terminals are unaffected:
 copied over to edit. Supports <code>Include</code>, <code>Match</code>, <code>%</code> tokens and more</li>
 <li><strong>Several logins per host</strong> (user + key), with one as the default</li>
 <li><strong>ProxyJump</strong> chains and <strong>ProxyCommand</strong></li>
-<li><strong>Port forwarding</strong> (<code>LocalForward</code>, <code>RemoteForward</code>)</li>
+<li><strong>Port forwarding</strong>: <code>LocalForward</code>, <code>RemoteForward</code> and <code>DynamicForward</code>
+(a SOCKS 4/4a/5 proxy; a <code>RemoteForward</code> with only a port runs one on the
+server). Unix socket paths work on either side, except for the server
+listening on one</li>
 <li>Per-host options, grouped in the form with their <code>ssh_config</code> keyword:
 timeouts, keepalives, compression, address family, authentication order,
 <code>StrictHostKeyChecking</code>, <code>RemoteCommand</code>, <code>SetEnv</code>/<code>SendEnv</code>, and the
@@ -324,8 +329,8 @@ in <code>Language</code> in <a href="src/i18n.rs"><code>src/i18n.rs</code></a>, 
 <h2 class="heading-element" dir="auto">Known limitations</h2>
 <ul dir="auto">
 <li>Linux only for now</li>
-<li>SSH is based on libssh2, which can't do agent forwarding (<code>ForwardAgent</code>).
-<code>DynamicForward</code> (SOCKS), Unix-socket forwarding and <code>ControlMaster</code> aren't
+<li>SSH is based on libssh2, which can't do agent forwarding (<code>ForwardAgent</code>)
+or have the server listen on a Unix socket. <code>ControlMaster</code> isn't
 supported either</li>
 <li>Only Ed25519 keys can be generated. Existing RSA/ECDSA keys work</li>
 <li><code>Match exec</code> in <code>~/.ssh/config</code> is never evaluated, on purpose</li>
