@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>src/shortcuts.rs — Terminaal — Jan</title>
+  <link rel="stylesheet" href="../../styles.css?v=25b97049" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="layout">
+    <header class="rail" id="rail">
+<div class="rail__top">
+<a class="brand" href="../../index.html#top">
+<span class="brand__name">Jan</span>
+<span class="brand__meta">systems &amp; infrastructure<br/>Code, Code &amp; Code</span>
+</a>
+<button aria-controls="nav" aria-expanded="false" aria-label="Toggle menu" class="menu-toggle" id="menuToggle">
+<span></span><span></span><span></span>
+</button>
+</div>
+<nav aria-label="Sections" class="nav" id="nav">
+<a data-path="~/projects" href="../../index.html#projects">Projects</a>
+<a data-path="~/work" href="../../index.html#work">Work</a>
+<a data-path="~/education" href="../../index.html#education">Education</a>
+<a data-path="~/skills" href="../../index.html#skills">Skills</a>
+<a data-path="~/about" href="../../index.html#about">About Me</a>
+<a data-path="~/contact" href="../../index.html#contact">Contact</a>
+</nav>
+<div class="rail__status">
+<span aria-hidden="true" class="dot"></span>
+<span>open to work</span>
+</div>
+</header>
+    <nav class="file-tree"><p class="file-tree__title">Files</p><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">assets/</span><ul class="tree"><li class="tree-file"><a href="assets--*.desktop.html">*.desktop</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">locales/</span><ul class="tree"><li class="tree-file"><a href="locales--de.ftl.html">de.ftl</a></li><li class="tree-file"><a href="locales--en.ftl.html">en.ftl</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">src/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">render/</span><ul class="tree"><li class="tree-file"><a href="src--render--grid.rs.html">grid.rs</a></li><li class="tree-file"><a href="src--render--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="src--render--palette.rs.html">palette.rs</a></li><li class="tree-file"><a href="src--render--quad.rs.html">quad.rs</a></li><li class="tree-file"><a href="src--render--quad.wgsl.html">quad.wgsl</a></li><li class="tree-file"><a href="src--render--tab_bar.rs.html">tab_bar.rs</a></li><li class="tree-file"><a href="src--render--text.rs.html">text.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">shells/</span><ul class="tree"><li class="tree-file"><a href="src--shells--launch.rs.html">launch.rs</a></li><li class="tree-file"><a href="src--shells--managed.rs.html">managed.rs</a></li><li class="tree-file"><a href="src--shells--mod.rs.html">mod.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">ssh/</span><ul class="tree"><li class="tree-file"><a href="src--ssh--connection.rs.html">connection.rs</a></li><li class="tree-file"><a href="src--ssh--forward.rs.html">forward.rs</a></li><li class="tree-file"><a href="src--ssh--keys.rs.html">keys.rs</a></li><li class="tree-file"><a href="src--ssh--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="src--ssh--options.rs.html">options.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">terminal/</span><ul class="tree"><li class="tree-file"><a href="src--terminal--listener.rs.html">listener.rs</a></li><li class="tree-file"><a href="src--terminal--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="src--terminal--session.rs.html">session.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">ui/</span><ul class="tree"><li class="tree-file"><a href="src--ui--context_menu.rs.html">context_menu.rs</a></li><li class="tree-file"><a href="src--ui--keys_panel.rs.html">keys_panel.rs</a></li><li class="tree-file"><a href="src--ui--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="src--ui--settings_panel.rs.html">settings_panel.rs</a></li><li class="tree-file"><a href="src--ui--sidebar.rs.html">sidebar.rs</a></li><li class="tree-file"><a href="src--ui--splash.rs.html">splash.rs</a></li><li class="tree-file"><a href="src--ui--ssh_panel.rs.html">ssh_panel.rs</a></li><li class="tree-file"><a href="src--ui--theme.rs.html">theme.rs</a></li><li class="tree-file"><a href="src--ui--widgets.rs.html">widgets.rs</a></li></ul></li><li class="tree-file"><a href="src--app.rs.html">app.rs</a></li><li class="tree-file"><a href="src--config.rs.html">config.rs</a></li><li class="tree-file"><a href="src--gpu.rs.html">gpu.rs</a></li><li class="tree-file"><a href="src--i18n.rs.html">i18n.rs</a></li><li class="tree-file"><a href="src--input.rs.html">input.rs</a></li><li class="tree-file"><a href="src--main.rs.html">main.rs</a></li><li class="tree-file tree-file--active"><a href="src--shortcuts.rs.html">shortcuts.rs</a></li></ul></li><li class="tree-file"><a href="Cargo.lock.html">Cargo.lock</a></li><li class="tree-file"><a href="Cargo.toml.html">Cargo.toml</a></li><li class="tree-file"><a href="LICENSE.html">LICENSE</a></li><li class="tree-file"><a href="install.sh.html">install.sh</a></li></ul></nav>
+    <main class="main" id="main">
+      <section class="section source-page">
+        <p class="section__path">
+          <a href="../../index.html#projects" class="link">~/projects</a> /
+          <a href="../terminaal.html" class="link">terminaal</a> / source
+        </p>
+        <div class="source-page__head">
+          <h1 class="section__title">src/shortcuts.rs</h1>
+          <a href="../terminaal.html" class="link">← Back to Terminaal</a>
+        </div>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">  1</span>
+<span class="normal">  2</span>
+<span class="normal">  3</span>
+<span class="normal">  4</span>
+<span class="normal">  5</span>
+<span class="normal">  6</span>
+<span class="normal">  7</span>
+<span class="normal">  8</span>
+<span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span>
+<span class="normal">245</span>
+<span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span>
+<span class="normal">250</span>
+<span class="normal">251</span>
+<span class="normal">252</span>
+<span class="normal">253</span>
+<span class="normal">254</span>
+<span class="normal">255</span>
+<span class="normal">256</span>
+<span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span>
+<span class="normal">262</span>
+<span class="normal">263</span>
+<span class="normal">264</span>
+<span class="normal">265</span>
+<span class="normal">266</span>
+<span class="normal">267</span>
+<span class="normal">268</span>
+<span class="normal">269</span>
+<span class="normal">270</span>
+<span class="normal">271</span>
+<span class="normal">272</span>
+<span class="normal">273</span>
+<span class="normal">274</span>
+<span class="normal">275</span>
+<span class="normal">276</span>
+<span class="normal">277</span>
+<span class="normal">278</span>
+<span class="normal">279</span>
+<span class="normal">280</span>
+<span class="normal">281</span>
+<span class="normal">282</span>
+<span class="normal">283</span>
+<span class="normal">284</span>
+<span class="normal">285</span>
+<span class="normal">286</span>
+<span class="normal">287</span>
+<span class="normal">288</span>
+<span class="normal">289</span>
+<span class="normal">290</span>
+<span class="normal">291</span>
+<span class="normal">292</span>
+<span class="normal">293</span>
+<span class="normal">294</span>
+<span class="normal">295</span>
+<span class="normal">296</span>
+<span class="normal">297</span>
+<span class="normal">298</span>
+<span class="normal">299</span>
+<span class="normal">300</span>
+<span class="normal">301</span>
+<span class="normal">302</span>
+<span class="normal">303</span>
+<span class="normal">304</span>
+<span class="normal">305</span>
+<span class="normal">306</span>
+<span class="normal">307</span>
+<span class="normal">308</span>
+<span class="normal">309</span>
+<span class="normal">310</span>
+<span class="normal">311</span>
+<span class="normal">312</span>
+<span class="normal">313</span>
+<span class="normal">314</span>
+<span class="normal">315</span>
+<span class="normal">316</span>
+<span class="normal">317</span>
+<span class="normal">318</span>
+<span class="normal">319</span>
+<span class="normal">320</span>
+<span class="normal">321</span>
+<span class="normal">322</span>
+<span class="normal">323</span>
+<span class="normal">324</span>
+<span class="normal">325</span>
+<span class="normal">326</span>
+<span class="normal">327</span>
+<span class="normal">328</span>
+<span class="normal">329</span>
+<span class="normal">330</span>
+<span class="normal">331</span>
+<span class="normal">332</span>
+<span class="normal">333</span>
+<span class="normal">334</span>
+<span class="normal">335</span>
+<span class="normal">336</span>
+<span class="normal">337</span>
+<span class="normal">338</span>
+<span class="normal">339</span>
+<span class="normal">340</span>
+<span class="normal">341</span>
+<span class="normal">342</span>
+<span class="normal">343</span>
+<span class="normal">344</span>
+<span class="normal">345</span>
+<span class="normal">346</span>
+<span class="normal">347</span>
+<span class="normal">348</span>
+<span class="normal">349</span>
+<span class="normal">350</span>
+<span class="normal">351</span>
+<span class="normal">352</span>
+<span class="normal">353</span>
+<span class="normal">354</span>
+<span class="normal">355</span>
+<span class="normal">356</span>
+<span class="normal">357</span>
+<span class="normal">358</span>
+<span class="normal">359</span>
+<span class="normal">360</span>
+<span class="normal">361</span>
+<span class="normal">362</span>
+<span class="normal">363</span>
+<span class="normal">364</span>
+<span class="normal">365</span>
+<span class="normal">366</span>
+<span class="normal">367</span>
+<span class="normal">368</span>
+<span class="normal">369</span>
+<span class="normal">370</span>
+<span class="normal">371</span>
+<span class="normal">372</span>
+<span class="normal">373</span>
+<span class="normal">374</span>
+<span class="normal">375</span>
+<span class="normal">376</span>
+<span class="normal">377</span>
+<span class="normal">378</span>
+<span class="normal">379</span>
+<span class="normal">380</span>
+<span class="normal">381</span>
+<span class="normal">382</span>
+<span class="normal">383</span>
+<span class="normal">384</span>
+<span class="normal">385</span>
+<span class="normal">386</span>
+<span class="normal">387</span>
+<span class="normal">388</span>
+<span class="normal">389</span>
+<span class="normal">390</span>
+<span class="normal">391</span>
+<span class="normal">392</span>
+<span class="normal">393</span>
+<span class="normal">394</span>
+<span class="normal">395</span>
+<span class="normal">396</span>
+<span class="normal">397</span>
+<span class="normal">398</span>
+<span class="normal">399</span>
+<span class="normal">400</span>
+<span class="normal">401</span>
+<span class="normal">402</span>
+<span class="normal">403</span>
+<span class="normal">404</span>
+<span class="normal">405</span>
+<span class="normal">406</span>
+<span class="normal">407</span>
+<span class="normal">408</span>
+<span class="normal">409</span>
+<span class="normal">410</span>
+<span class="normal">411</span>
+<span class="normal">412</span>
+<span class="normal">413</span>
+<span class="normal">414</span>
+<span class="normal">415</span>
+<span class="normal">416</span>
+<span class="normal">417</span>
+<span class="normal">418</span>
+<span class="normal">419</span>
+<span class="normal">420</span>
+<span class="normal">421</span>
+<span class="normal">422</span>
+<span class="normal">423</span>
+<span class="normal">424</span>
+<span class="normal">425</span>
+<span class="normal">426</span>
+<span class="normal">427</span>
+<span class="normal">428</span>
+<span class="normal">429</span>
+<span class="normal">430</span>
+<span class="normal">431</span>
+<span class="normal">432</span>
+<span class="normal">433</span>
+<span class="normal">434</span>
+<span class="normal">435</span>
+<span class="normal">436</span>
+<span class="normal">437</span>
+<span class="normal">438</span>
+<span class="normal">439</span>
+<span class="normal">440</span>
+<span class="normal">441</span>
+<span class="normal">442</span>
+<span class="normal">443</span>
+<span class="normal">444</span>
+<span class="normal">445</span>
+<span class="normal">446</span>
+<span class="normal">447</span>
+<span class="normal">448</span>
+<span class="normal">449</span>
+<span class="normal">450</span>
+<span class="normal">451</span>
+<span class="normal">452</span>
+<span class="normal">453</span>
+<span class="normal">454</span>
+<span class="normal">455</span>
+<span class="normal">456</span>
+<span class="normal">457</span>
+<span class="normal">458</span>
+<span class="normal">459</span>
+<span class="normal">460</span>
+<span class="normal">461</span>
+<span class="normal">462</span>
+<span class="normal">463</span>
+<span class="normal">464</span>
+<span class="normal">465</span>
+<span class="normal">466</span>
+<span class="normal">467</span>
+<span class="normal">468</span>
+<span class="normal">469</span>
+<span class="normal">470</span>
+<span class="normal">471</span>
+<span class="normal">472</span>
+<span class="normal">473</span>
+<span class="normal">474</span>
+<span class="normal">475</span>
+<span class="normal">476</span>
+<span class="normal">477</span>
+<span class="normal">478</span>
+<span class="normal">479</span>
+<span class="normal">480</span>
+<span class="normal">481</span>
+<span class="normal">482</span>
+<span class="normal">483</span>
+<span class="normal">484</span>
+<span class="normal">485</span>
+<span class="normal">486</span>
+<span class="normal">487</span>
+<span class="normal">488</span>
+<span class="normal">489</span>
+<span class="normal">490</span>
+<span class="normal">491</span>
+<span class="normal">492</span>
+<span class="normal">493</span>
+<span class="normal">494</span>
+<span class="normal">495</span>
+<span class="normal">496</span>
+<span class="normal">497</span>
+<span class="normal">498</span>
+<span class="normal">499</span>
+<span class="normal">500</span>
+<span class="normal">501</span>
+<span class="normal">502</span>
+<span class="normal">503</span>
+<span class="normal">504</span>
+<span class="normal">505</span>
+<span class="normal">506</span>
+<span class="normal">507</span>
+<span class="normal">508</span>
+<span class="normal">509</span>
+<span class="normal">510</span>
+<span class="normal">511</span>
+<span class="normal">512</span>
+<span class="normal">513</span>
+<span class="normal">514</span>
+<span class="normal">515</span>
+<span class="normal">516</span>
+<span class="normal">517</span>
+<span class="normal">518</span>
+<span class="normal">519</span>
+<span class="normal">520</span>
+<span class="normal">521</span>
+<span class="normal">522</span>
+<span class="normal">523</span>
+<span class="normal">524</span>
+<span class="normal">525</span>
+<span class="normal">526</span>
+<span class="normal">527</span>
+<span class="normal">528</span>
+<span class="normal">529</span>
+<span class="normal">530</span>
+<span class="normal">531</span>
+<span class="normal">532</span>
+<span class="normal">533</span>
+<span class="normal">534</span>
+<span class="normal">535</span>
+<span class="normal">536</span>
+<span class="normal">537</span>
+<span class="normal">538</span>
+<span class="normal">539</span>
+<span class="normal">540</span>
+<span class="normal">541</span>
+<span class="normal">542</span>
+<span class="normal">543</span>
+<span class="normal">544</span>
+<span class="normal">545</span>
+<span class="normal">546</span>
+<span class="normal">547</span>
+<span class="normal">548</span>
+<span class="normal">549</span>
+<span class="normal">550</span>
+<span class="normal">551</span>
+<span class="normal">552</span>
+<span class="normal">553</span>
+<span class="normal">554</span>
+<span class="normal">555</span>
+<span class="normal">556</span>
+<span class="normal">557</span>
+<span class="normal">558</span>
+<span class="normal">559</span>
+<span class="normal">560</span>
+<span class="normal">561</span>
+<span class="normal">562</span>
+<span class="normal">563</span>
+<span class="normal">564</span>
+<span class="normal">565</span>
+<span class="normal">566</span>
+<span class="normal">567</span>
+<span class="normal">568</span>
+<span class="normal">569</span>
+<span class="normal">570</span>
+<span class="normal">571</span>
+<span class="normal">572</span>
+<span class="normal">573</span>
+<span class="normal">574</span>
+<span class="normal">575</span>
+<span class="normal">576</span>
+<span class="normal">577</span>
+<span class="normal">578</span>
+<span class="normal">579</span>
+<span class="normal">580</span>
+<span class="normal">581</span>
+<span class="normal">582</span>
+<span class="normal">583</span>
+<span class="normal">584</span>
+<span class="normal">585</span>
+<span class="normal">586</span>
+<span class="normal">587</span>
+<span class="normal">588</span>
+<span class="normal">589</span>
+<span class="normal">590</span>
+<span class="normal">591</span>
+<span class="normal">592</span>
+<span class="normal">593</span>
+<span class="normal">594</span>
+<span class="normal">595</span>
+<span class="normal">596</span>
+<span class="normal">597</span>
+<span class="normal">598</span>
+<span class="normal">599</span>
+<span class="normal">600</span>
+<span class="normal">601</span>
+<span class="normal">602</span>
+<span class="normal">603</span>
+<span class="normal">604</span>
+<span class="normal">605</span>
+<span class="normal">606</span>
+<span class="normal">607</span>
+<span class="normal">608</span>
+<span class="normal">609</span>
+<span class="normal">610</span>
+<span class="normal">611</span>
+<span class="normal">612</span>
+<span class="normal">613</span>
+<span class="normal">614</span>
+<span class="normal">615</span>
+<span class="normal">616</span>
+<span class="normal">617</span>
+<span class="normal">618</span>
+<span class="normal">619</span>
+<span class="normal">620</span>
+<span class="normal">621</span>
+<span class="normal">622</span>
+<span class="normal">623</span>
+<span class="normal">624</span>
+<span class="normal">625</span>
+<span class="normal">626</span>
+<span class="normal">627</span>
+<span class="normal">628</span>
+<span class="normal">629</span>
+<span class="normal">630</span>
+<span class="normal">631</span>
+<span class="normal">632</span>
+<span class="normal">633</span></pre></div></td><td class="code"><div><pre><span></span><span class="sd">//! Keyboard shortcuts: what they can do ([`Action`]), key combinations</span>
+<span class="sd">//! ([`KeyCombo`]) and which combination does what ([`Keymap`]).</span>
+<span class="sd">//!</span>
+<span class="sd">//! Configured under `[shortcuts]` in config.toml, one entry per action:</span>
+<span class="sd">//! `new_tab = "Ctrl+Shift+T"`, several combinations as an array, `[]` for</span>
+<span class="sd">//! none. Actions without an entry keep their defaults. Keys are matched as</span>
+<span class="sd">//! the layout labels them without modifiers (`key_without_modifiers`), so</span>
+<span class="sd">//! Shift doesn't turn `,` into `;` and Ctrl+Shift+T is the T key.</span>
+
+<span class="k">use</span><span class="w"> </span><span class="n">std</span><span class="p">::</span><span class="n">borrow</span><span class="p">::</span><span class="n">Cow</span><span class="p">;</span>
+<span class="k">use</span><span class="w"> </span><span class="n">std</span><span class="p">::</span><span class="n">collections</span><span class="p">::</span><span class="n">BTreeMap</span><span class="p">;</span>
+<span class="k">use</span><span class="w"> </span><span class="n">std</span><span class="p">::</span><span class="n">fmt</span><span class="p">;</span>
+
+<span class="k">use</span><span class="w"> </span><span class="n">serde</span><span class="p">::</span><span class="n">Deserialize</span><span class="p">;</span>
+<span class="k">use</span><span class="w"> </span><span class="n">winit</span><span class="p">::</span><span class="n">event</span><span class="p">::</span><span class="n">KeyEvent</span><span class="p">;</span>
+<span class="k">use</span><span class="w"> </span><span class="n">winit</span><span class="p">::</span><span class="n">keyboard</span><span class="p">::{</span><span class="n">Key</span><span class="p">,</span><span class="w"> </span><span class="n">ModifiersState</span><span class="p">,</span><span class="w"> </span><span class="n">NamedKey</span><span class="p">};</span>
+<span class="k">use</span><span class="w"> </span><span class="n">winit</span><span class="p">::</span><span class="n">platform</span><span class="p">::</span><span class="n">modifier_supplement</span><span class="p">::</span><span class="n">KeyEventExtModifierSupplement</span><span class="p">;</span>
+
+<span class="k">use</span><span class="w"> </span><span class="k">crate</span><span class="p">::</span><span class="n">i18n</span><span class="p">::</span><span class="n">t</span><span class="p">;</span>
+
+<span class="cp">#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">enum</span><span class="w"> </span><span class="nc">Action</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">NewTab</span><span class="p">,</span>
+<span class="w">    </span><span class="n">CloseTab</span><span class="p">,</span>
+<span class="w">    </span><span class="n">NextTab</span><span class="p">,</span>
+<span class="w">    </span><span class="n">PreviousTab</span><span class="p">,</span>
+<span class="w">    </span><span class="sd">/// Tab 1 to 9, counted from the left.</span>
+<span class="w">    </span><span class="n">SelectTab</span><span class="p">(</span><span class="kt">u8</span><span class="p">),</span>
+<span class="w">    </span><span class="n">MoveTabLeft</span><span class="p">,</span>
+<span class="w">    </span><span class="n">MoveTabRight</span><span class="p">,</span>
+<span class="w">    </span><span class="n">ToggleSidebar</span><span class="p">,</span>
+<span class="w">    </span><span class="n">OpenSettings</span><span class="p">,</span>
+<span class="w">    </span><span class="nb">Copy</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Paste</span><span class="p">,</span>
+<span class="w">    </span><span class="n">PasteAndRun</span><span class="p">,</span>
+<span class="w">    </span><span class="n">ScrollPageUp</span><span class="p">,</span>
+<span class="w">    </span><span class="n">ScrollPageDown</span><span class="p">,</span>
+<span class="w">    </span><span class="n">ScrollToTop</span><span class="p">,</span>
+<span class="w">    </span><span class="n">ScrollToBottom</span><span class="p">,</span>
+<span class="w">    </span><span class="n">FontBigger</span><span class="p">,</span>
+<span class="w">    </span><span class="n">FontSmaller</span><span class="p">,</span>
+<span class="w">    </span><span class="n">FontReset</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="sd">/// Where an action is listed on the settings page.</span>
+<span class="cp">#[derive(Clone, Copy, Debug, PartialEq, Eq)]</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">enum</span><span class="w"> </span><span class="nc">Group</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Tabs</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Window</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Clipboard</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Scrolling</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Font</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="k">impl</span><span class="w"> </span><span class="n">Group</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">ALL</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">Group</span><span class="p">;</span><span class="w"> </span><span class="mi">5</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">Group</span><span class="p">::</span><span class="n">Tabs</span><span class="p">,</span><span class="w"> </span><span class="n">Group</span><span class="p">::</span><span class="n">Window</span><span class="p">,</span><span class="w"> </span><span class="n">Group</span><span class="p">::</span><span class="n">Clipboard</span><span class="p">,</span><span class="w"> </span><span class="n">Group</span><span class="p">::</span><span class="n">Scrolling</span><span class="p">,</span><span class="w"> </span><span class="n">Group</span><span class="p">::</span><span class="n">Font</span><span class="p">];</span>
+
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">label</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">String</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">match</span><span class="w"> </span><span class="bp">self</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">Group</span><span class="p">::</span><span class="n">Tabs</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">t</span><span class="o">!</span><span class="p">(</span><span class="s">"shortcuts-group-tabs"</span><span class="p">),</span>
+<span class="w">            </span><span class="n">Group</span><span class="p">::</span><span class="n">Window</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">t</span><span class="o">!</span><span class="p">(</span><span class="s">"shortcuts-group-window"</span><span class="p">),</span>
+<span class="w">            </span><span class="n">Group</span><span class="p">::</span><span class="n">Clipboard</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">t</span><span class="o">!</span><span class="p">(</span><span class="s">"shortcuts-group-clipboard"</span><span class="p">),</span>
+<span class="w">            </span><span class="n">Group</span><span class="p">::</span><span class="n">Scrolling</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">t</span><span class="o">!</span><span class="p">(</span><span class="s">"shortcuts-group-scroll"</span><span class="p">),</span>
+<span class="w">            </span><span class="n">Group</span><span class="p">::</span><span class="n">Font</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">t</span><span class="o">!</span><span class="p">(</span><span class="s">"shortcuts-group-font"</span><span class="p">),</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">impl</span><span class="w"> </span><span class="n">Action</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="sd">/// Every action, in the order the settings page lists them. A</span>
+<span class="w">    </span><span class="sd">/// combination bound to several belongs to the first.</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">ALL</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">Action</span><span class="p">;</span><span class="w"> </span><span class="mi">27</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="n">Action</span><span class="p">::</span><span class="n">NewTab</span><span class="p">,</span>
+<span class="w">        </span><span class="n">Action</span><span class="p">::</span><span class="n">CloseTab</span><span class="p">,</span>
+<span class="w">        </span><span class="n">Action</span><span class="p">::</span><span class="n">NextTab</span><span class="p">,</span>
+<span class="w">        </span><span class="n">Action</span><span class="p">::</span><span class="n">PreviousTab</span><span class="p">,</span>
+<span class="w">        </span><span class="n">Action</span><span class="p">::</span><span class="n">SelectTab</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">        </span><span class="n">Action</span><span class="p">::</span><span class="n">SelectTab</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
+<span class="w">        </span><span class="n">Action</span><span class="p">::</span><span class="n">SelectTab</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span>
+<span class="w">        </span><span class="n">Action</span><span class="p">::</span><span class="n">SelectTab</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span>
+<span class="w">        </span><span class="n">Action</span><span class="p">::</span><span class="n">SelectTab</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span>
+<span class="w">        </span><span class="n">Action</span><span class="p">::</span><span class="n">SelectTab</span><span class="p">(</span><span class="mi">6</span><span class="p">),</span>
+<span class="w">        </span><span class="n">Action</span><span class="p">::</span><span class="n">SelectTab</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span>
+<span class="w">        </span><span class="n">Action</span><span class="p">::</span><span class="n">SelectTab</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span>
+<span class="w">        </span><span class="n">Action</span><span class="p">::</span><span class="n">SelectTab</span><span class="p">(</span><span class="mi">9</span><span class="p">),</span>
+<span class="w">        </span><span class="n">Action</span><span class="p">::</span><span class="n">MoveTabLeft</span><span class="p">,</span>
+<span class="w">        </span><span class="n">Action</span><span class="p">::</span><span class="n">MoveTabRight</span><span class="p">,</span>
+<span class="w">        </span><span class="n">Action</span><span class="p">::</span><span class="n">ToggleSidebar</span><span class="p">,</span>
+<span class="w">        </span><span class="n">Action</span><span class="p">::</span><span class="n">OpenSettings</span><span class="p">,</span>
+<span class="w">        </span><span class="n">Action</span><span class="p">::</span><span class="nb">Copy</span><span class="p">,</span>
+<span class="w">        </span><span class="n">Action</span><span class="p">::</span><span class="n">Paste</span><span class="p">,</span>
+<span class="w">        </span><span class="n">Action</span><span class="p">::</span><span class="n">PasteAndRun</span><span class="p">,</span>
+<span class="w">        </span><span class="n">Action</span><span class="p">::</span><span class="n">ScrollPageUp</span><span class="p">,</span>
+<span class="w">        </span><span class="n">Action</span><span class="p">::</span><span class="n">ScrollPageDown</span><span class="p">,</span>
+<span class="w">        </span><span class="n">Action</span><span class="p">::</span><span class="n">ScrollToTop</span><span class="p">,</span>
+<span class="w">        </span><span class="n">Action</span><span class="p">::</span><span class="n">ScrollToBottom</span><span class="p">,</span>
+<span class="w">        </span><span class="n">Action</span><span class="p">::</span><span class="n">FontBigger</span><span class="p">,</span>
+<span class="w">        </span><span class="n">Action</span><span class="p">::</span><span class="n">FontSmaller</span><span class="p">,</span>
+<span class="w">        </span><span class="n">Action</span><span class="p">::</span><span class="n">FontReset</span><span class="p">,</span>
+<span class="w">    </span><span class="p">];</span>
+
+<span class="w">    </span><span class="sd">/// The action's key under `[shortcuts]`.</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">Cow</span><span class="o">&lt;'</span><span class="nb">static</span><span class="p">,</span><span class="w"> </span><span class="kt">str</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Cow</span><span class="p">::</span><span class="n">Borrowed</span><span class="p">(</span><span class="k">match</span><span class="w"> </span><span class="bp">self</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">Action</span><span class="p">::</span><span class="n">NewTab</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">"new_tab"</span><span class="p">,</span>
+<span class="w">            </span><span class="n">Action</span><span class="p">::</span><span class="n">CloseTab</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">"close_tab"</span><span class="p">,</span>
+<span class="w">            </span><span class="n">Action</span><span class="p">::</span><span class="n">NextTab</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">"next_tab"</span><span class="p">,</span>
+<span class="w">            </span><span class="n">Action</span><span class="p">::</span><span class="n">PreviousTab</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">"previous_tab"</span><span class="p">,</span>
+<span class="w">            </span><span class="n">Action</span><span class="p">::</span><span class="n">SelectTab</span><span class="p">(</span><span class="n">number</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">Cow</span><span class="p">::</span><span class="n">Owned</span><span class="p">(</span><span class="fm">format!</span><span class="p">(</span><span class="s">"tab_{number}"</span><span class="p">)),</span>
+<span class="w">            </span><span class="n">Action</span><span class="p">::</span><span class="n">MoveTabLeft</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">"move_tab_left"</span><span class="p">,</span>
+<span class="w">            </span><span class="n">Action</span><span class="p">::</span><span class="n">MoveTabRight</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">"move_tab_right"</span><span class="p">,</span>
+<span class="w">            </span><span class="n">Action</span><span class="p">::</span><span class="n">ToggleSidebar</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">"toggle_sidebar"</span><span class="p">,</span>
+<span class="w">            </span><span class="n">Action</span><span class="p">::</span><span class="n">OpenSettings</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">"open_settings"</span><span class="p">,</span>
+<span class="w">            </span><span class="n">Action</span><span class="p">::</span><span class="nb">Copy</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">"copy"</span><span class="p">,</span>
+<span class="w">            </span><span class="n">Action</span><span class="p">::</span><span class="n">Paste</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">"paste"</span><span class="p">,</span>
+<span class="w">            </span><span class="n">Action</span><span class="p">::</span><span class="n">PasteAndRun</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">"paste_and_run"</span><span class="p">,</span>
+<span class="w">            </span><span class="n">Action</span><span class="p">::</span><span class="n">ScrollPageUp</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">"scroll_page_up"</span><span class="p">,</span>
+<span class="w">            </span><span class="n">Action</span><span class="p">::</span><span class="n">ScrollPageDown</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">"scroll_page_down"</span><span class="p">,</span>
+<span class="w">            </span><span class="n">Action</span><span class="p">::</span><span class="n">ScrollToTop</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">"scroll_to_top"</span><span class="p">,</span>
+<span class="w">            </span><span class="n">Action</span><span class="p">::</span><span class="n">ScrollToBottom</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">"scroll_to_bottom"</span><span class="p">,</span>
+<span class="w">            </span><span class="n">Action</span><span class="p">::</span><span class="n">FontBigger</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">"font_bigger"</span><span class="p">,</span>
+<span class="w">            </span><span class="n">Action</span><span class="p">::</span><span class="n">FontSmaller</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">"font_smaller"</span><span class="p">,</span>
+<span class="w">            </span><span class="n">Action</span><span class="p">::</span><span class="n">FontReset</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">"font_reset"</span><span class="p">,</span>
+<span class="w">        </span><span class="p">})</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">from_name</span><span class="p">(</span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="bp">Self</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="bp">Self</span><span class="p">::</span><span class="n">ALL</span><span class="p">.</span><span class="n">into_iter</span><span class="p">().</span><span class="n">find</span><span class="p">(</span><span class="o">|</span><span class="n">action</span><span class="o">|</span><span class="w"> </span><span class="n">action</span><span class="p">.</span><span class="n">name</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">name</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">label</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">String</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">match</span><span class="w"> </span><span class="bp">self</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">Action</span><span class="p">::</span><span class="n">NewTab</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">t</span><span class="o">!</span><span class="p">(</span><span class="s">"shortcut-new-tab"</span><span class="p">),</span>
+<span class="w">            </span><span class="n">Action</span><span class="p">::</span><span class="n">CloseTab</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">t</span><span class="o">!</span><span class="p">(</span><span class="s">"shortcut-close-tab"</span><span class="p">),</span>
+<span class="w">            </span><span class="n">Action</span><span class="p">::</span><span class="n">NextTab</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">t</span><span class="o">!</span><span class="p">(</span><span class="s">"shortcut-next-tab"</span><span class="p">),</span>
+<span class="w">            </span><span class="n">Action</span><span class="p">::</span><span class="n">PreviousTab</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">t</span><span class="o">!</span><span class="p">(</span><span class="s">"shortcut-previous-tab"</span><span class="p">),</span>
+<span class="w">            </span><span class="n">Action</span><span class="p">::</span><span class="n">SelectTab</span><span class="p">(</span><span class="n">number</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">t</span><span class="o">!</span><span class="p">(</span><span class="s">"shortcut-select-tab"</span><span class="p">,</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">u32</span><span class="p">::</span><span class="n">from</span><span class="p">(</span><span class="n">number</span><span class="p">)),</span>
+<span class="w">            </span><span class="n">Action</span><span class="p">::</span><span class="n">MoveTabLeft</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">t</span><span class="o">!</span><span class="p">(</span><span class="s">"shortcut-move-tab-left"</span><span class="p">),</span>
+<span class="w">            </span><span class="n">Action</span><span class="p">::</span><span class="n">MoveTabRight</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">t</span><span class="o">!</span><span class="p">(</span><span class="s">"shortcut-move-tab-right"</span><span class="p">),</span>
+<span class="w">            </span><span class="n">Action</span><span class="p">::</span><span class="n">ToggleSidebar</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">t</span><span class="o">!</span><span class="p">(</span><span class="s">"shortcut-toggle-sidebar"</span><span class="p">),</span>
+<span class="w">            </span><span class="n">Action</span><span class="p">::</span><span class="n">OpenSettings</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">t</span><span class="o">!</span><span class="p">(</span><span class="s">"shortcut-open-settings"</span><span class="p">),</span>
+<span class="w">            </span><span class="n">Action</span><span class="p">::</span><span class="nb">Copy</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">t</span><span class="o">!</span><span class="p">(</span><span class="s">"shortcut-copy"</span><span class="p">),</span>
+<span class="w">            </span><span class="n">Action</span><span class="p">::</span><span class="n">Paste</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">t</span><span class="o">!</span><span class="p">(</span><span class="s">"shortcut-paste"</span><span class="p">),</span>
+<span class="w">            </span><span class="n">Action</span><span class="p">::</span><span class="n">PasteAndRun</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">t</span><span class="o">!</span><span class="p">(</span><span class="s">"shortcut-paste-and-run"</span><span class="p">),</span>
+<span class="w">            </span><span class="n">Action</span><span class="p">::</span><span class="n">ScrollPageUp</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">t</span><span class="o">!</span><span class="p">(</span><span class="s">"shortcut-scroll-page-up"</span><span class="p">),</span>
+<span class="w">            </span><span class="n">Action</span><span class="p">::</span><span class="n">ScrollPageDown</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">t</span><span class="o">!</span><span class="p">(</span><span class="s">"shortcut-scroll-page-down"</span><span class="p">),</span>
+<span class="w">            </span><span class="n">Action</span><span class="p">::</span><span class="n">ScrollToTop</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">t</span><span class="o">!</span><span class="p">(</span><span class="s">"shortcut-scroll-to-top"</span><span class="p">),</span>
+<span class="w">            </span><span class="n">Action</span><span class="p">::</span><span class="n">ScrollToBottom</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">t</span><span class="o">!</span><span class="p">(</span><span class="s">"shortcut-scroll-to-bottom"</span><span class="p">),</span>
+<span class="w">            </span><span class="n">Action</span><span class="p">::</span><span class="n">FontBigger</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">t</span><span class="o">!</span><span class="p">(</span><span class="s">"shortcut-font-bigger"</span><span class="p">),</span>
+<span class="w">            </span><span class="n">Action</span><span class="p">::</span><span class="n">FontSmaller</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">t</span><span class="o">!</span><span class="p">(</span><span class="s">"shortcut-font-smaller"</span><span class="p">),</span>
+<span class="w">            </span><span class="n">Action</span><span class="p">::</span><span class="n">FontReset</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">t</span><span class="o">!</span><span class="p">(</span><span class="s">"shortcut-font-reset"</span><span class="p">),</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">group</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">Group</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">match</span><span class="w"> </span><span class="bp">self</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">Action</span><span class="p">::</span><span class="n">NewTab</span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="n">Action</span><span class="p">::</span><span class="n">CloseTab</span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="n">Action</span><span class="p">::</span><span class="n">NextTab</span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="n">Action</span><span class="p">::</span><span class="n">PreviousTab</span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="n">Action</span><span class="p">::</span><span class="n">SelectTab</span><span class="p">(</span><span class="n">_</span><span class="p">)</span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="n">Action</span><span class="p">::</span><span class="n">MoveTabLeft</span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="n">Action</span><span class="p">::</span><span class="n">MoveTabRight</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">Group</span><span class="p">::</span><span class="n">Tabs</span><span class="p">,</span>
+<span class="w">            </span><span class="n">Action</span><span class="p">::</span><span class="n">ToggleSidebar</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Action</span><span class="p">::</span><span class="n">OpenSettings</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">Group</span><span class="p">::</span><span class="n">Window</span><span class="p">,</span>
+<span class="w">            </span><span class="n">Action</span><span class="p">::</span><span class="nb">Copy</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Action</span><span class="p">::</span><span class="n">Paste</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Action</span><span class="p">::</span><span class="n">PasteAndRun</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">Group</span><span class="p">::</span><span class="n">Clipboard</span><span class="p">,</span>
+<span class="w">            </span><span class="n">Action</span><span class="p">::</span><span class="n">ScrollPageUp</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Action</span><span class="p">::</span><span class="n">ScrollPageDown</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Action</span><span class="p">::</span><span class="n">ScrollToTop</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Action</span><span class="p">::</span><span class="n">ScrollToBottom</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">Group</span><span class="p">::</span><span class="n">Scrolling</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="n">Action</span><span class="p">::</span><span class="n">FontBigger</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Action</span><span class="p">::</span><span class="n">FontSmaller</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Action</span><span class="p">::</span><span class="n">FontReset</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">Group</span><span class="p">::</span><span class="n">Font</span><span class="p">,</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="sd">/// Also works while a widget in the sidebar or the settings tab has</span>
+<span class="w">    </span><span class="sd">/// the keyboard. The others act on the terminal and leave the key to</span>
+<span class="w">    </span><span class="sd">/// egui then (Ctrl+Shift+V in a text field pastes there).</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">is_global</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="o">!</span><span class="fm">matches!</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">group</span><span class="p">(),</span><span class="w"> </span><span class="n">Group</span><span class="p">::</span><span class="n">Clipboard</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Group</span><span class="p">::</span><span class="n">Scrolling</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">defaults</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="n">KeyCombo</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">combos</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="p">[</span><span class="o">&amp;</span><span class="kt">str</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">match</span><span class="w"> </span><span class="bp">self</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">Action</span><span class="p">::</span><span class="n">NewTab</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="p">[</span><span class="s">"Ctrl+Shift+T"</span><span class="p">],</span>
+<span class="w">            </span><span class="n">Action</span><span class="p">::</span><span class="n">CloseTab</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="p">[</span><span class="s">"Ctrl+Shift+W"</span><span class="p">],</span>
+<span class="w">            </span><span class="n">Action</span><span class="p">::</span><span class="n">NextTab</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="p">[</span><span class="s">"Ctrl+Tab"</span><span class="p">],</span>
+<span class="w">            </span><span class="n">Action</span><span class="p">::</span><span class="n">PreviousTab</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="p">[</span><span class="s">"Ctrl+Shift+Tab"</span><span class="p">],</span>
+<span class="w">            </span><span class="n">Action</span><span class="p">::</span><span class="n">SelectTab</span><span class="p">(</span><span class="n">number</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="kd">let</span><span class="w"> </span><span class="n">digit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">char</span><span class="p">::</span><span class="n">from</span><span class="p">(</span><span class="sc">b'0'</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">number</span><span class="p">);</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="fm">vec!</span><span class="p">[</span><span class="n">KeyCombo</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">alt</span><span class="p">:</span><span class="w"> </span><span class="nc">true</span><span class="p">,</span><span class="w"> </span><span class="o">..</span><span class="n">KeyCombo</span><span class="p">::</span><span class="n">plain</span><span class="p">(</span><span class="n">KeyName</span><span class="p">::</span><span class="n">Char</span><span class="p">(</span><span class="n">digit</span><span class="p">))</span><span class="w"> </span><span class="p">}];</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="n">Action</span><span class="p">::</span><span class="n">MoveTabLeft</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="p">[</span><span class="s">"Ctrl+Shift+PageUp"</span><span class="p">],</span>
+<span class="w">            </span><span class="n">Action</span><span class="p">::</span><span class="n">MoveTabRight</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="p">[</span><span class="s">"Ctrl+Shift+PageDown"</span><span class="p">],</span>
+<span class="w">            </span><span class="n">Action</span><span class="p">::</span><span class="n">ToggleSidebar</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="p">[</span><span class="s">"Ctrl+Shift+B"</span><span class="p">],</span>
+<span class="w">            </span><span class="n">Action</span><span class="p">::</span><span class="n">OpenSettings</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="p">[</span><span class="s">"Ctrl+,"</span><span class="p">],</span>
+<span class="w">            </span><span class="n">Action</span><span class="p">::</span><span class="nb">Copy</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="p">[</span><span class="s">"Ctrl+Shift+C"</span><span class="p">],</span>
+<span class="w">            </span><span class="n">Action</span><span class="p">::</span><span class="n">Paste</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="p">[</span><span class="s">"Ctrl+Shift+V"</span><span class="p">],</span>
+<span class="w">            </span><span class="n">Action</span><span class="p">::</span><span class="n">PasteAndRun</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="p">[],</span>
+<span class="w">            </span><span class="n">Action</span><span class="p">::</span><span class="n">ScrollPageUp</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="p">[</span><span class="s">"Shift+PageUp"</span><span class="p">],</span>
+<span class="w">            </span><span class="n">Action</span><span class="p">::</span><span class="n">ScrollPageDown</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="p">[</span><span class="s">"Shift+PageDown"</span><span class="p">],</span>
+<span class="w">            </span><span class="n">Action</span><span class="p">::</span><span class="n">ScrollToTop</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="p">[</span><span class="s">"Shift+Home"</span><span class="p">],</span>
+<span class="w">            </span><span class="n">Action</span><span class="p">::</span><span class="n">ScrollToBottom</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="p">[</span><span class="s">"Shift+End"</span><span class="p">],</span>
+<span class="w">            </span><span class="c1">// `+` sits on its own key on a German layout, on `=` on a US one.</span>
+<span class="w">            </span><span class="n">Action</span><span class="p">::</span><span class="n">FontBigger</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="p">[</span><span class="s">"Ctrl+Plus"</span><span class="p">,</span><span class="w"> </span><span class="s">"Ctrl+="</span><span class="p">],</span>
+<span class="w">            </span><span class="n">Action</span><span class="p">::</span><span class="n">FontSmaller</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="p">[</span><span class="s">"Ctrl+Minus"</span><span class="p">],</span>
+<span class="w">            </span><span class="n">Action</span><span class="p">::</span><span class="n">FontReset</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="p">[</span><span class="s">"Ctrl+0"</span><span class="p">],</span>
+<span class="w">        </span><span class="p">};</span>
+<span class="w">        </span><span class="n">combos</span><span class="p">.</span><span class="n">iter</span><span class="p">().</span><span class="n">map</span><span class="p">(</span><span class="o">|</span><span class="n">text</span><span class="o">|</span><span class="w"> </span><span class="n">KeyCombo</span><span class="p">::</span><span class="n">parse</span><span class="p">(</span><span class="n">text</span><span class="p">).</span><span class="n">expect</span><span class="p">(</span><span class="s">"default shortcut parses"</span><span class="p">)).</span><span class="n">collect</span><span class="p">()</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cp">#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">enum</span><span class="w"> </span><span class="nc">KeyName</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="sd">/// A character key, lowercase.</span>
+<span class="w">    </span><span class="n">Char</span><span class="p">(</span><span class="kt">char</span><span class="p">),</span>
+<span class="w">    </span><span class="n">Named</span><span class="p">(</span><span class="n">NamedKey</span><span class="p">),</span>
+<span class="p">}</span>
+
+<span class="cp">#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">KeyCombo</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">ctrl</span><span class="p">:</span><span class="w"> </span><span class="kt">bool</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">shift</span><span class="p">:</span><span class="w"> </span><span class="kt">bool</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">alt</span><span class="p">:</span><span class="w"> </span><span class="kt">bool</span><span class="p">,</span>
+<span class="w">    </span><span class="sd">/// Super, the Windows key.</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">logo</span><span class="p">:</span><span class="w"> </span><span class="kt">bool</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">key</span><span class="p">:</span><span class="w"> </span><span class="nc">KeyName</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="sd">/// Named keys a shortcut can use: the key, its name in config.toml, and</span>
+<span class="sd">/// other spellings accepted there.</span>
+<span class="k">const</span><span class="w"> </span><span class="n">NAMED</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="p">[(</span><span class="n">NamedKey</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="kt">str</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="p">[</span><span class="o">&amp;</span><span class="kt">str</span><span class="p">])]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="p">[</span>
+<span class="w">    </span><span class="p">(</span><span class="n">NamedKey</span><span class="p">::</span><span class="n">Tab</span><span class="p">,</span><span class="w"> </span><span class="s">"Tab"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="p">[]),</span>
+<span class="w">    </span><span class="p">(</span><span class="n">NamedKey</span><span class="p">::</span><span class="n">Enter</span><span class="p">,</span><span class="w"> </span><span class="s">"Enter"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="p">[</span><span class="s">"Return"</span><span class="p">]),</span>
+<span class="w">    </span><span class="p">(</span><span class="n">NamedKey</span><span class="p">::</span><span class="n">Escape</span><span class="p">,</span><span class="w"> </span><span class="s">"Escape"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="p">[</span><span class="s">"Esc"</span><span class="p">]),</span>
+<span class="w">    </span><span class="p">(</span><span class="n">NamedKey</span><span class="p">::</span><span class="n">Space</span><span class="p">,</span><span class="w"> </span><span class="s">"Space"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="p">[]),</span>
+<span class="w">    </span><span class="p">(</span><span class="n">NamedKey</span><span class="p">::</span><span class="n">Backspace</span><span class="p">,</span><span class="w"> </span><span class="s">"Backspace"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="p">[]),</span>
+<span class="w">    </span><span class="p">(</span><span class="n">NamedKey</span><span class="p">::</span><span class="n">Delete</span><span class="p">,</span><span class="w"> </span><span class="s">"Delete"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="p">[</span><span class="s">"Del"</span><span class="p">]),</span>
+<span class="w">    </span><span class="p">(</span><span class="n">NamedKey</span><span class="p">::</span><span class="n">Insert</span><span class="p">,</span><span class="w"> </span><span class="s">"Insert"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="p">[</span><span class="s">"Ins"</span><span class="p">]),</span>
+<span class="w">    </span><span class="p">(</span><span class="n">NamedKey</span><span class="p">::</span><span class="n">Home</span><span class="p">,</span><span class="w"> </span><span class="s">"Home"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="p">[]),</span>
+<span class="w">    </span><span class="p">(</span><span class="n">NamedKey</span><span class="p">::</span><span class="n">End</span><span class="p">,</span><span class="w"> </span><span class="s">"End"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="p">[]),</span>
+<span class="w">    </span><span class="p">(</span><span class="n">NamedKey</span><span class="p">::</span><span class="n">PageUp</span><span class="p">,</span><span class="w"> </span><span class="s">"PageUp"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="p">[</span><span class="s">"PgUp"</span><span class="p">]),</span>
+<span class="w">    </span><span class="p">(</span><span class="n">NamedKey</span><span class="p">::</span><span class="n">PageDown</span><span class="p">,</span><span class="w"> </span><span class="s">"PageDown"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="p">[</span><span class="s">"PgDn"</span><span class="p">]),</span>
+<span class="w">    </span><span class="p">(</span><span class="n">NamedKey</span><span class="p">::</span><span class="n">ArrowUp</span><span class="p">,</span><span class="w"> </span><span class="s">"Up"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="p">[</span><span class="s">"ArrowUp"</span><span class="p">]),</span>
+<span class="w">    </span><span class="p">(</span><span class="n">NamedKey</span><span class="p">::</span><span class="n">ArrowDown</span><span class="p">,</span><span class="w"> </span><span class="s">"Down"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="p">[</span><span class="s">"ArrowDown"</span><span class="p">]),</span>
+<span class="w">    </span><span class="p">(</span><span class="n">NamedKey</span><span class="p">::</span><span class="n">ArrowLeft</span><span class="p">,</span><span class="w"> </span><span class="s">"Left"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="p">[</span><span class="s">"ArrowLeft"</span><span class="p">]),</span>
+<span class="w">    </span><span class="p">(</span><span class="n">NamedKey</span><span class="p">::</span><span class="n">ArrowRight</span><span class="p">,</span><span class="w"> </span><span class="s">"Right"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="p">[</span><span class="s">"ArrowRight"</span><span class="p">]),</span>
+<span class="w">    </span><span class="p">(</span><span class="n">NamedKey</span><span class="p">::</span><span class="n">F1</span><span class="p">,</span><span class="w"> </span><span class="s">"F1"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="p">[]),</span>
+<span class="w">    </span><span class="p">(</span><span class="n">NamedKey</span><span class="p">::</span><span class="n">F2</span><span class="p">,</span><span class="w"> </span><span class="s">"F2"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="p">[]),</span>
+<span class="w">    </span><span class="p">(</span><span class="n">NamedKey</span><span class="p">::</span><span class="n">F3</span><span class="p">,</span><span class="w"> </span><span class="s">"F3"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="p">[]),</span>
+<span class="w">    </span><span class="p">(</span><span class="n">NamedKey</span><span class="p">::</span><span class="n">F4</span><span class="p">,</span><span class="w"> </span><span class="s">"F4"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="p">[]),</span>
+<span class="w">    </span><span class="p">(</span><span class="n">NamedKey</span><span class="p">::</span><span class="n">F5</span><span class="p">,</span><span class="w"> </span><span class="s">"F5"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="p">[]),</span>
+<span class="w">    </span><span class="p">(</span><span class="n">NamedKey</span><span class="p">::</span><span class="n">F6</span><span class="p">,</span><span class="w"> </span><span class="s">"F6"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="p">[]),</span>
+<span class="w">    </span><span class="p">(</span><span class="n">NamedKey</span><span class="p">::</span><span class="n">F7</span><span class="p">,</span><span class="w"> </span><span class="s">"F7"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="p">[]),</span>
+<span class="w">    </span><span class="p">(</span><span class="n">NamedKey</span><span class="p">::</span><span class="n">F8</span><span class="p">,</span><span class="w"> </span><span class="s">"F8"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="p">[]),</span>
+<span class="w">    </span><span class="p">(</span><span class="n">NamedKey</span><span class="p">::</span><span class="n">F9</span><span class="p">,</span><span class="w"> </span><span class="s">"F9"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="p">[]),</span>
+<span class="w">    </span><span class="p">(</span><span class="n">NamedKey</span><span class="p">::</span><span class="n">F10</span><span class="p">,</span><span class="w"> </span><span class="s">"F10"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="p">[]),</span>
+<span class="w">    </span><span class="p">(</span><span class="n">NamedKey</span><span class="p">::</span><span class="n">F11</span><span class="p">,</span><span class="w"> </span><span class="s">"F11"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="p">[]),</span>
+<span class="w">    </span><span class="p">(</span><span class="n">NamedKey</span><span class="p">::</span><span class="n">F12</span><span class="p">,</span><span class="w"> </span><span class="s">"F12"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="p">[]),</span>
+<span class="p">];</span>
+
+<span class="sd">/// Character keys with a name in config.toml: `+` separates the parts,</span>
+<span class="sd">/// and `Ctrl+Minus` reads better than `Ctrl+-`. Only the first two are</span>
+<span class="sd">/// written that way.</span>
+<span class="k">const</span><span class="w"> </span><span class="n">CHAR_NAMES</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="p">[(</span><span class="kt">char</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="kt">str</span><span class="p">)]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="p">[(</span><span class="sc">'+'</span><span class="p">,</span><span class="w"> </span><span class="s">"Plus"</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="sc">'-'</span><span class="p">,</span><span class="w"> </span><span class="s">"Minus"</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="sc">','</span><span class="p">,</span><span class="w"> </span><span class="s">"Comma"</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="sc">'.'</span><span class="p">,</span><span class="w"> </span><span class="s">"Period"</span><span class="p">)];</span>
+
+<span class="k">impl</span><span class="w"> </span><span class="n">KeyCombo</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="sd">/// Escape on its own: cancels recording a shortcut.</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">ESCAPE</span><span class="p">:</span><span class="w"> </span><span class="nc">Self</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">Self</span><span class="p">::</span><span class="n">plain</span><span class="p">(</span><span class="n">KeyName</span><span class="p">::</span><span class="n">Named</span><span class="p">(</span><span class="n">NamedKey</span><span class="p">::</span><span class="n">Escape</span><span class="p">));</span>
+
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">plain</span><span class="p">(</span><span class="n">key</span><span class="p">:</span><span class="w"> </span><span class="nc">KeyName</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">Self</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="bp">Self</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">ctrl</span><span class="p">:</span><span class="w"> </span><span class="nc">false</span><span class="p">,</span><span class="w"> </span><span class="n">shift</span><span class="p">:</span><span class="w"> </span><span class="nc">false</span><span class="p">,</span><span class="w"> </span><span class="n">alt</span><span class="p">:</span><span class="w"> </span><span class="nc">false</span><span class="p">,</span><span class="w"> </span><span class="n">logo</span><span class="p">:</span><span class="w"> </span><span class="nc">false</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="sd">/// `Ctrl+Shift+T`, `Alt+1`, `Ctrl+Plus`: any modifiers (Ctrl, Shift,</span>
+<span class="w">    </span><span class="sd">/// Alt, Super) and one key, joined by `+`, in any case.</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">parse</span><span class="p">(</span><span class="n">text</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="bp">Self</span><span class="p">,</span><span class="w"> </span><span class="nb">String</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">text</span><span class="p">.</span><span class="n">trim</span><span class="p">();</span>
+<span class="w">        </span><span class="c1">// `Ctrl++`: the key itself is a plus.</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="p">(</span><span class="n">modifiers</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">match</span><span class="w"> </span><span class="n">text</span><span class="p">.</span><span class="n">strip_suffix</span><span class="p">(</span><span class="s">"++"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nb">Some</span><span class="p">(</span><span class="n">modifiers</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">modifiers</span><span class="p">,</span><span class="w"> </span><span class="s">"+"</span><span class="p">),</span>
+<span class="w">            </span><span class="nb">None</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">text</span><span class="p">.</span><span class="n">rsplit_once</span><span class="p">(</span><span class="sc">'+'</span><span class="p">).</span><span class="n">unwrap_or</span><span class="p">((</span><span class="s">""</span><span class="p">,</span><span class="w"> </span><span class="n">text</span><span class="p">)),</span>
+<span class="w">        </span><span class="p">};</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">combo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">Self</span><span class="p">::</span><span class="n">plain</span><span class="p">(</span><span class="n">parse_key</span><span class="p">(</span><span class="n">key</span><span class="p">.</span><span class="n">trim</span><span class="p">()).</span><span class="n">ok_or_else</span><span class="p">(</span><span class="o">||</span><span class="w"> </span><span class="fm">format!</span><span class="p">(</span><span class="s">"unknown key {key:?} in {text:?}"</span><span class="p">))</span><span class="o">?</span><span class="p">);</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">modifier</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">modifiers</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="sc">'+'</span><span class="p">).</span><span class="n">map</span><span class="p">(</span><span class="kt">str</span><span class="p">::</span><span class="n">trim</span><span class="p">).</span><span class="n">filter</span><span class="p">(</span><span class="o">|</span><span class="n">m</span><span class="o">|</span><span class="w"> </span><span class="o">!</span><span class="n">m</span><span class="p">.</span><span class="n">is_empty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">match</span><span class="w"> </span><span class="n">modifier</span><span class="p">.</span><span class="n">to_ascii_lowercase</span><span class="p">().</span><span class="n">as_str</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="s">"ctrl"</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s">"control"</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">combo</span><span class="p">.</span><span class="n">ctrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"shift"</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">combo</span><span class="p">.</span><span class="n">shift</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"alt"</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">combo</span><span class="p">.</span><span class="n">alt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"super"</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s">"meta"</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s">"logo"</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s">"win"</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">combo</span><span class="p">.</span><span class="n">logo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                </span><span class="n">_</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">Err</span><span class="p">(</span><span class="fm">format!</span><span class="p">(</span><span class="s">"unknown modifier {modifier:?} in {text:?}"</span><span class="p">)),</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="nb">Ok</span><span class="p">(</span><span class="n">combo</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="sd">/// The combination a key press makes; `None` for a modifier on its</span>
+<span class="w">    </span><span class="sd">/// own and keys a shortcut can't use.</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">from_event</span><span class="p">(</span><span class="n">event</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">KeyEvent</span><span class="p">,</span><span class="w"> </span><span class="n">modifiers</span><span class="p">:</span><span class="w"> </span><span class="nc">ModifiersState</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="bp">Self</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">match</span><span class="w"> </span><span class="n">event</span><span class="p">.</span><span class="n">key_without_modifiers</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">Key</span><span class="p">::</span><span class="n">Character</span><span class="p">(</span><span class="n">text</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">chars</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">text</span><span class="p">.</span><span class="n">chars</span><span class="p">();</span>
+<span class="w">                </span><span class="k">match</span><span class="w"> </span><span class="p">(</span><span class="n">chars</span><span class="p">.</span><span class="n">next</span><span class="p">(),</span><span class="w"> </span><span class="n">chars</span><span class="p">.</span><span class="n">next</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="p">(</span><span class="nb">Some</span><span class="p">(</span><span class="n">c</span><span class="p">),</span><span class="w"> </span><span class="nb">None</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">KeyName</span><span class="p">::</span><span class="n">Char</span><span class="p">(</span><span class="n">lowercase</span><span class="p">(</span><span class="n">c</span><span class="p">)),</span>
+<span class="w">                    </span><span class="n">_</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">None</span><span class="p">,</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="n">Key</span><span class="p">::</span><span class="n">Named</span><span class="p">(</span><span class="n">named</span><span class="p">)</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">NAMED</span><span class="p">.</span><span class="n">iter</span><span class="p">().</span><span class="n">any</span><span class="p">(</span><span class="o">|</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="o">..</span><span class="p">)</span><span class="o">|</span><span class="w"> </span><span class="o">*</span><span class="n">key</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">named</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">KeyName</span><span class="p">::</span><span class="n">Named</span><span class="p">(</span><span class="n">named</span><span class="p">),</span>
+<span class="w">            </span><span class="n">_</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">None</span><span class="p">,</span>
+<span class="w">        </span><span class="p">};</span>
+<span class="w">        </span><span class="nb">Some</span><span class="p">(</span><span class="bp">Self</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">ctrl</span><span class="p">:</span><span class="w"> </span><span class="nc">modifiers</span><span class="p">.</span><span class="n">control_key</span><span class="p">(),</span>
+<span class="w">            </span><span class="n">shift</span><span class="p">:</span><span class="w"> </span><span class="nc">modifiers</span><span class="p">.</span><span class="n">shift_key</span><span class="p">(),</span>
+<span class="w">            </span><span class="n">alt</span><span class="p">:</span><span class="w"> </span><span class="nc">modifiers</span><span class="p">.</span><span class="n">alt_key</span><span class="p">(),</span>
+<span class="w">            </span><span class="n">logo</span><span class="p">:</span><span class="w"> </span><span class="nc">modifiers</span><span class="p">.</span><span class="n">super_key</span><span class="p">(),</span>
+<span class="w">            </span><span class="n">key</span><span class="p">,</span>
+<span class="w">        </span><span class="p">})</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="sd">/// Binding this leaves normal typing alone: it takes Ctrl, Alt or</span>
+<span class="w">    </span><span class="sd">/// Super, is an F key, or Shift with a navigation key (Shift+PageUp).</span>
+<span class="w">    </span><span class="sd">/// A letter, Shift+letter, Enter or Tab would take keys away from the</span>
+<span class="w">    </span><span class="sd">/// terminal. Only recording on the settings page checks this -- what</span>
+<span class="w">    </span><span class="sd">/// config.toml says is the user's call.</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">leaves_typing_alone</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">ctrl</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">alt</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">logo</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">KeyName</span><span class="p">::</span><span class="n">Named</span><span class="p">(</span><span class="n">key</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">key</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="p">};</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">f_key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="fm">matches!</span><span class="p">(</span>
+<span class="w">            </span><span class="n">key</span><span class="p">,</span>
+<span class="w">            </span><span class="n">NamedKey</span><span class="p">::</span><span class="n">F1</span>
+<span class="w">                </span><span class="o">|</span><span class="w"> </span><span class="n">NamedKey</span><span class="p">::</span><span class="n">F2</span>
+<span class="w">                </span><span class="o">|</span><span class="w"> </span><span class="n">NamedKey</span><span class="p">::</span><span class="n">F3</span>
+<span class="w">                </span><span class="o">|</span><span class="w"> </span><span class="n">NamedKey</span><span class="p">::</span><span class="n">F4</span>
+<span class="w">                </span><span class="o">|</span><span class="w"> </span><span class="n">NamedKey</span><span class="p">::</span><span class="n">F5</span>
+<span class="w">                </span><span class="o">|</span><span class="w"> </span><span class="n">NamedKey</span><span class="p">::</span><span class="n">F6</span>
+<span class="w">                </span><span class="o">|</span><span class="w"> </span><span class="n">NamedKey</span><span class="p">::</span><span class="n">F7</span>
+<span class="w">                </span><span class="o">|</span><span class="w"> </span><span class="n">NamedKey</span><span class="p">::</span><span class="n">F8</span>
+<span class="w">                </span><span class="o">|</span><span class="w"> </span><span class="n">NamedKey</span><span class="p">::</span><span class="n">F9</span>
+<span class="w">                </span><span class="o">|</span><span class="w"> </span><span class="n">NamedKey</span><span class="p">::</span><span class="n">F10</span>
+<span class="w">                </span><span class="o">|</span><span class="w"> </span><span class="n">NamedKey</span><span class="p">::</span><span class="n">F11</span>
+<span class="w">                </span><span class="o">|</span><span class="w"> </span><span class="n">NamedKey</span><span class="p">::</span><span class="n">F12</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">navigation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="fm">matches!</span><span class="p">(</span>
+<span class="w">            </span><span class="n">key</span><span class="p">,</span>
+<span class="w">            </span><span class="n">NamedKey</span><span class="p">::</span><span class="n">PageUp</span>
+<span class="w">                </span><span class="o">|</span><span class="w"> </span><span class="n">NamedKey</span><span class="p">::</span><span class="n">PageDown</span>
+<span class="w">                </span><span class="o">|</span><span class="w"> </span><span class="n">NamedKey</span><span class="p">::</span><span class="n">Home</span>
+<span class="w">                </span><span class="o">|</span><span class="w"> </span><span class="n">NamedKey</span><span class="p">::</span><span class="n">End</span>
+<span class="w">                </span><span class="o">|</span><span class="w"> </span><span class="n">NamedKey</span><span class="p">::</span><span class="n">Insert</span>
+<span class="w">                </span><span class="o">|</span><span class="w"> </span><span class="n">NamedKey</span><span class="p">::</span><span class="n">Delete</span>
+<span class="w">                </span><span class="o">|</span><span class="w"> </span><span class="n">NamedKey</span><span class="p">::</span><span class="n">ArrowUp</span>
+<span class="w">                </span><span class="o">|</span><span class="w"> </span><span class="n">NamedKey</span><span class="p">::</span><span class="n">ArrowDown</span>
+<span class="w">                </span><span class="o">|</span><span class="w"> </span><span class="n">NamedKey</span><span class="p">::</span><span class="n">ArrowLeft</span>
+<span class="w">                </span><span class="o">|</span><span class="w"> </span><span class="n">NamedKey</span><span class="p">::</span><span class="n">ArrowRight</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">        </span><span class="n">f_key</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">shift</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">navigation</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="sd">/// As shown in the UI, e.g. `Strg+Umschalt+T` in German.</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">label</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">String</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">parts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Vec</span><span class="p">::</span><span class="n">new</span><span class="p">();</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">on</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">ctrl</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="o">!</span><span class="p">(</span><span class="s">"key-ctrl"</span><span class="p">)),</span>
+<span class="w">            </span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">shift</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="o">!</span><span class="p">(</span><span class="s">"key-shift"</span><span class="p">)),</span>
+<span class="w">            </span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">alt</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="o">!</span><span class="p">(</span><span class="s">"key-alt"</span><span class="p">)),</span>
+<span class="w">            </span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">logo</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="o">!</span><span class="p">(</span><span class="s">"key-super"</span><span class="p">)),</span>
+<span class="w">        </span><span class="p">]</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">parts</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">name</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">parts</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="k">match</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">key</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">KeyName</span><span class="p">::</span><span class="n">Char</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">uppercase</span><span class="p">(</span><span class="n">c</span><span class="p">),</span>
+<span class="w">            </span><span class="n">KeyName</span><span class="p">::</span><span class="n">Named</span><span class="p">(</span><span class="n">key</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="k">match</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">NamedKey</span><span class="p">::</span><span class="n">Space</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">t</span><span class="o">!</span><span class="p">(</span><span class="s">"key-space"</span><span class="p">),</span>
+<span class="w">                </span><span class="n">NamedKey</span><span class="p">::</span><span class="n">Backspace</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">t</span><span class="o">!</span><span class="p">(</span><span class="s">"key-backspace"</span><span class="p">),</span>
+<span class="w">                </span><span class="n">NamedKey</span><span class="p">::</span><span class="n">Delete</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">t</span><span class="o">!</span><span class="p">(</span><span class="s">"key-delete"</span><span class="p">),</span>
+<span class="w">                </span><span class="n">NamedKey</span><span class="p">::</span><span class="n">Insert</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">t</span><span class="o">!</span><span class="p">(</span><span class="s">"key-insert"</span><span class="p">),</span>
+<span class="w">                </span><span class="n">NamedKey</span><span class="p">::</span><span class="n">Home</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">t</span><span class="o">!</span><span class="p">(</span><span class="s">"key-home"</span><span class="p">),</span>
+<span class="w">                </span><span class="n">NamedKey</span><span class="p">::</span><span class="n">End</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">t</span><span class="o">!</span><span class="p">(</span><span class="s">"key-end"</span><span class="p">),</span>
+<span class="w">                </span><span class="n">NamedKey</span><span class="p">::</span><span class="n">PageUp</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">t</span><span class="o">!</span><span class="p">(</span><span class="s">"key-page-up"</span><span class="p">),</span>
+<span class="w">                </span><span class="n">NamedKey</span><span class="p">::</span><span class="n">PageDown</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">t</span><span class="o">!</span><span class="p">(</span><span class="s">"key-page-down"</span><span class="p">),</span>
+<span class="w">                </span><span class="n">NamedKey</span><span class="p">::</span><span class="n">ArrowUp</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">"↑"</span><span class="p">.</span><span class="n">into</span><span class="p">(),</span>
+<span class="w">                </span><span class="n">NamedKey</span><span class="p">::</span><span class="n">ArrowDown</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">"↓"</span><span class="p">.</span><span class="n">into</span><span class="p">(),</span>
+<span class="w">                </span><span class="n">NamedKey</span><span class="p">::</span><span class="n">ArrowLeft</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">"←"</span><span class="p">.</span><span class="n">into</span><span class="p">(),</span>
+<span class="w">                </span><span class="n">NamedKey</span><span class="p">::</span><span class="n">ArrowRight</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">"→"</span><span class="p">.</span><span class="n">into</span><span class="p">(),</span>
+<span class="w">                </span><span class="n">_</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">named_name</span><span class="p">(</span><span class="n">key</span><span class="p">).</span><span class="n">into</span><span class="p">(),</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">        </span><span class="p">});</span>
+<span class="w">        </span><span class="n">parts</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="s">"+"</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="sd">/// As written in config.toml: `Ctrl+Shift+T`, `Ctrl+Plus`.</span>
+<span class="k">impl</span><span class="w"> </span><span class="n">fmt</span><span class="p">::</span><span class="n">Display</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">KeyCombo</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">fmt</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">f</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">mut</span><span class="w"> </span><span class="n">fmt</span><span class="p">::</span><span class="n">Formatter</span><span class="o">&lt;'</span><span class="nb">_</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">fmt</span><span class="p">::</span><span class="nb">Result</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">on</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">[(</span><span class="bp">self</span><span class="p">.</span><span class="n">ctrl</span><span class="p">,</span><span class="w"> </span><span class="s">"Ctrl"</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">shift</span><span class="p">,</span><span class="w"> </span><span class="s">"Shift"</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">alt</span><span class="p">,</span><span class="w"> </span><span class="s">"Alt"</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">logo</span><span class="p">,</span><span class="w"> </span><span class="s">"Super"</span><span class="p">)]</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="fm">write!</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="s">"{name}+"</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">match</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">key</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">KeyName</span><span class="p">::</span><span class="n">Char</span><span class="p">(</span><span class="sc">'+'</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">f</span><span class="p">.</span><span class="n">write_str</span><span class="p">(</span><span class="s">"Plus"</span><span class="p">),</span>
+<span class="w">            </span><span class="n">KeyName</span><span class="p">::</span><span class="n">Char</span><span class="p">(</span><span class="sc">'-'</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">f</span><span class="p">.</span><span class="n">write_str</span><span class="p">(</span><span class="s">"Minus"</span><span class="p">),</span>
+<span class="w">            </span><span class="n">KeyName</span><span class="p">::</span><span class="n">Char</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">f</span><span class="p">.</span><span class="n">write_str</span><span class="p">(</span><span class="o">&amp;</span><span class="n">uppercase</span><span class="p">(</span><span class="n">c</span><span class="p">)),</span>
+<span class="w">            </span><span class="n">KeyName</span><span class="p">::</span><span class="n">Named</span><span class="p">(</span><span class="n">key</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">f</span><span class="p">.</span><span class="n">write_str</span><span class="p">(</span><span class="n">named_name</span><span class="p">(</span><span class="n">key</span><span class="p">)),</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">fn</span><span class="w"> </span><span class="nf">parse_key</span><span class="p">(</span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="n">KeyName</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">named</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NAMED</span><span class="p">.</span><span class="n">iter</span><span class="p">().</span><span class="n">find</span><span class="p">(</span><span class="o">|</span><span class="p">(</span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="n">canonical</span><span class="p">,</span><span class="w"> </span><span class="n">aliases</span><span class="p">)</span><span class="o">|</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">canonical</span><span class="p">.</span><span class="n">eq_ignore_ascii_case</span><span class="p">(</span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">aliases</span><span class="p">.</span><span class="n">iter</span><span class="p">().</span><span class="n">any</span><span class="p">(</span><span class="o">|</span><span class="n">alias</span><span class="o">|</span><span class="w"> </span><span class="n">alias</span><span class="p">.</span><span class="n">eq_ignore_ascii_case</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="o">&amp;</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="o">..</span><span class="p">))</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">named</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">KeyName</span><span class="p">::</span><span class="n">Named</span><span class="p">(</span><span class="n">key</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="o">&amp;</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="n">_</span><span class="p">))</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CHAR_NAMES</span><span class="p">.</span><span class="n">iter</span><span class="p">().</span><span class="n">find</span><span class="p">(</span><span class="o">|</span><span class="p">(</span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="n">char_name</span><span class="p">)</span><span class="o">|</span><span class="w"> </span><span class="n">char_name</span><span class="p">.</span><span class="n">eq_ignore_ascii_case</span><span class="p">(</span><span class="n">name</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">KeyName</span><span class="p">::</span><span class="n">Char</span><span class="p">(</span><span class="n">c</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">chars</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">.</span><span class="n">chars</span><span class="p">();</span>
+<span class="w">    </span><span class="k">match</span><span class="w"> </span><span class="p">(</span><span class="n">chars</span><span class="p">.</span><span class="n">next</span><span class="p">(),</span><span class="w"> </span><span class="n">chars</span><span class="p">.</span><span class="n">next</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="p">(</span><span class="nb">Some</span><span class="p">(</span><span class="n">c</span><span class="p">),</span><span class="w"> </span><span class="nb">None</span><span class="p">)</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="o">!</span><span class="n">c</span><span class="p">.</span><span class="n">is_whitespace</span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">KeyName</span><span class="p">::</span><span class="n">Char</span><span class="p">(</span><span class="n">lowercase</span><span class="p">(</span><span class="n">c</span><span class="p">))),</span>
+<span class="w">        </span><span class="n">_</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nb">None</span><span class="p">,</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">fn</span><span class="w"> </span><span class="nf">named_name</span><span class="p">(</span><span class="n">key</span><span class="p">:</span><span class="w"> </span><span class="nc">NamedKey</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="kp">&amp;</span><span class="o">'</span><span class="nb">static</span><span class="w"> </span><span class="kt">str</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">NAMED</span><span class="p">.</span><span class="n">iter</span><span class="p">().</span><span class="n">find</span><span class="p">(</span><span class="o">|</span><span class="p">(</span><span class="n">named</span><span class="p">,</span><span class="w"> </span><span class="o">..</span><span class="p">)</span><span class="o">|</span><span class="w"> </span><span class="o">*</span><span class="n">named</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">key</span><span class="p">).</span><span class="n">map_or</span><span class="p">(</span><span class="s">"?"</span><span class="p">,</span><span class="w"> </span><span class="o">|</span><span class="p">(</span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">_</span><span class="p">)</span><span class="o">|</span><span class="w"> </span><span class="n">name</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="sd">/// Unless that takes more than one character (`ß` → `SS`).</span>
+<span class="k">fn</span><span class="w"> </span><span class="nf">uppercase</span><span class="p">(</span><span class="n">c</span><span class="p">:</span><span class="w"> </span><span class="kt">char</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">String</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">upper</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">to_uppercase</span><span class="p">().</span><span class="n">collect</span><span class="p">();</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">upper</span><span class="p">.</span><span class="n">chars</span><span class="p">().</span><span class="n">count</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">upper</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">to_string</span><span class="p">()</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">fn</span><span class="w"> </span><span class="nf">lowercase</span><span class="p">(</span><span class="n">c</span><span class="p">:</span><span class="w"> </span><span class="kt">char</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">lower</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">to_lowercase</span><span class="p">();</span>
+<span class="w">    </span><span class="k">match</span><span class="w"> </span><span class="p">(</span><span class="n">lower</span><span class="p">.</span><span class="n">next</span><span class="p">(),</span><span class="w"> </span><span class="n">lower</span><span class="p">.</span><span class="n">next</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="p">(</span><span class="nb">Some</span><span class="p">(</span><span class="n">lower</span><span class="p">),</span><span class="w"> </span><span class="nb">None</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">lower</span><span class="p">,</span>
+<span class="w">        </span><span class="n">_</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">c</span><span class="p">,</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="sd">/// A `[shortcuts]` entry as written in config.toml.</span>
+<span class="cp">#[derive(Clone, Debug, Deserialize, PartialEq)]</span>
+<span class="cp">#[serde(untagged)]</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">enum</span><span class="w"> </span><span class="nc">Bindings</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">One</span><span class="p">(</span><span class="nb">String</span><span class="p">),</span>
+<span class="w">    </span><span class="n">Many</span><span class="p">(</span><span class="nb">Vec</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="p">),</span>
+<span class="w">    </span><span class="sd">/// Neither -- warned about, then the defaults apply. Keeps a typo</span>
+<span class="w">    </span><span class="sd">/// here from failing the whole config.</span>
+<span class="w">    </span><span class="n">Other</span><span class="p">(</span><span class="n">toml</span><span class="p">::</span><span class="n">Value</span><span class="p">),</span>
+<span class="p">}</span>
+
+<span class="k">impl</span><span class="w"> </span><span class="n">Bindings</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="sd">/// How `combos` are written: one as a string, else an array.</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">of</span><span class="p">(</span><span class="n">combos</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="p">[</span><span class="n">KeyCombo</span><span class="p">])</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">Self</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">match</span><span class="w"> </span><span class="n">combos</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="p">[</span><span class="n">one</span><span class="p">]</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="bp">Self</span><span class="p">::</span><span class="n">One</span><span class="p">(</span><span class="n">one</span><span class="p">.</span><span class="n">to_string</span><span class="p">()),</span>
+<span class="w">            </span><span class="n">_</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="bp">Self</span><span class="p">::</span><span class="n">Many</span><span class="p">(</span><span class="n">combos</span><span class="p">.</span><span class="n">iter</span><span class="p">().</span><span class="n">map</span><span class="p">(</span><span class="n">KeyCombo</span><span class="p">::</span><span class="n">to_string</span><span class="p">).</span><span class="n">collect</span><span class="p">()),</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="sd">/// Which combination does what.</span>
+<span class="cp">#[derive(Clone, Debug)]</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">Keymap</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="sd">/// Every action with its combinations, in [`Action::ALL`]'s order.</span>
+<span class="w">    </span><span class="n">bindings</span><span class="p">:</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="p">(</span><span class="n">Action</span><span class="p">,</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="n">KeyCombo</span><span class="o">&gt;</span><span class="p">)</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="k">impl</span><span class="w"> </span><span class="n">Keymap</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="sd">/// From config.toml's `[shortcuts]`: the defaults, replaced per action.</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">new</span><span class="p">(</span><span class="n">config</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">BTreeMap</span><span class="o">&lt;</span><span class="nb">String</span><span class="p">,</span><span class="w"> </span><span class="n">Bindings</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">Self</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">config</span><span class="p">.</span><span class="n">keys</span><span class="p">().</span><span class="n">filter</span><span class="p">(</span><span class="o">|</span><span class="n">name</span><span class="o">|</span><span class="w"> </span><span class="n">Action</span><span class="p">::</span><span class="n">from_name</span><span class="p">(</span><span class="n">name</span><span class="p">).</span><span class="n">is_none</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">log</span><span class="p">::</span><span class="n">warn</span><span class="o">!</span><span class="p">(</span><span class="s">"unknown shortcut {name:?} in config"</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">bindings</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Action</span><span class="p">::</span><span class="n">ALL</span>
+<span class="w">            </span><span class="p">.</span><span class="n">into_iter</span><span class="p">()</span>
+<span class="w">            </span><span class="p">.</span><span class="n">map</span><span class="p">(</span><span class="o">|</span><span class="n">action</span><span class="o">|</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="kd">let</span><span class="w"> </span><span class="n">combos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">match</span><span class="w"> </span><span class="n">config</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">action</span><span class="p">.</span><span class="n">name</span><span class="p">().</span><span class="n">as_ref</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nb">None</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">action</span><span class="p">.</span><span class="n">defaults</span><span class="p">(),</span>
+<span class="w">                    </span><span class="nb">Some</span><span class="p">(</span><span class="n">Bindings</span><span class="p">::</span><span class="n">One</span><span class="p">(</span><span class="n">text</span><span class="p">))</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">parse_all</span><span class="p">(</span><span class="n">action</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="p">::</span><span class="n">slice</span><span class="p">::</span><span class="n">from_ref</span><span class="p">(</span><span class="n">text</span><span class="p">)),</span>
+<span class="w">                    </span><span class="nb">Some</span><span class="p">(</span><span class="n">Bindings</span><span class="p">::</span><span class="n">Many</span><span class="p">(</span><span class="n">texts</span><span class="p">))</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">parse_all</span><span class="p">(</span><span class="n">action</span><span class="p">,</span><span class="w"> </span><span class="n">texts</span><span class="p">),</span>
+<span class="w">                    </span><span class="nb">Some</span><span class="p">(</span><span class="n">Bindings</span><span class="p">::</span><span class="n">Other</span><span class="p">(</span><span class="n">value</span><span class="p">))</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="n">log</span><span class="p">::</span><span class="n">warn</span><span class="o">!</span><span class="p">(</span><span class="s">"shortcut {}: expected a string or a list of strings, got {value}"</span><span class="p">,</span><span class="w"> </span><span class="n">action</span><span class="p">.</span><span class="n">name</span><span class="p">());</span>
+<span class="w">                        </span><span class="n">action</span><span class="p">.</span><span class="n">defaults</span><span class="p">()</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                </span><span class="p">};</span>
+<span class="w">                </span><span class="p">(</span><span class="n">action</span><span class="p">,</span><span class="w"> </span><span class="n">combos</span><span class="p">)</span>
+<span class="w">            </span><span class="p">})</span>
+<span class="w">            </span><span class="p">.</span><span class="n">collect</span><span class="p">();</span>
+<span class="w">        </span><span class="bp">Self</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">bindings</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="sd">/// What `combo` does, if anything.</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">action</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">combo</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">KeyCombo</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="n">Action</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="bp">self</span><span class="p">.</span><span class="n">bindings</span><span class="p">.</span><span class="n">iter</span><span class="p">().</span><span class="n">find</span><span class="p">(</span><span class="o">|</span><span class="p">(</span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="n">combos</span><span class="p">)</span><span class="o">|</span><span class="w"> </span><span class="n">combos</span><span class="p">.</span><span class="n">contains</span><span class="p">(</span><span class="n">combo</span><span class="p">)).</span><span class="n">map</span><span class="p">(</span><span class="o">|</span><span class="p">(</span><span class="n">action</span><span class="p">,</span><span class="w"> </span><span class="n">_</span><span class="p">)</span><span class="o">|</span><span class="w"> </span><span class="o">*</span><span class="n">action</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">combos</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">action</span><span class="p">:</span><span class="w"> </span><span class="nc">Action</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="kp">&amp;</span><span class="p">[</span><span class="n">KeyCombo</span><span class="p">]</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="bp">self</span><span class="p">.</span><span class="n">bindings</span><span class="p">.</span><span class="n">iter</span><span class="p">().</span><span class="n">find</span><span class="p">(</span><span class="o">|</span><span class="p">(</span><span class="n">bound</span><span class="p">,</span><span class="w"> </span><span class="n">_</span><span class="p">)</span><span class="o">|</span><span class="w"> </span><span class="o">*</span><span class="n">bound</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">action</span><span class="p">).</span><span class="n">map_or</span><span class="p">(</span><span class="o">&amp;</span><span class="p">[],</span><span class="w"> </span><span class="o">|</span><span class="p">(</span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="n">combos</span><span class="p">)</span><span class="o">|</span><span class="w"> </span><span class="n">combos</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="sd">/// The first combination that actually triggers `action`, as shown in</span>
+<span class="w">    </span><span class="sd">/// the UI.</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">label</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">action</span><span class="p">:</span><span class="w"> </span><span class="nc">Action</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="bp">self</span><span class="p">.</span><span class="n">combos</span><span class="p">(</span><span class="n">action</span><span class="p">).</span><span class="n">iter</span><span class="p">().</span><span class="n">find</span><span class="p">(</span><span class="o">|</span><span class="n">combo</span><span class="o">|</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">action</span><span class="p">(</span><span class="n">combo</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">action</span><span class="p">)).</span><span class="n">map</span><span class="p">(</span><span class="n">KeyCombo</span><span class="p">::</span><span class="n">label</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="sd">/// The combinations in `texts`; blank ones mean none. If none of the rest</span>
+<span class="sd">/// parses, that's a typo and the defaults stay.</span>
+<span class="k">fn</span><span class="w"> </span><span class="nf">parse_all</span><span class="p">(</span><span class="n">action</span><span class="p">:</span><span class="w"> </span><span class="nc">Action</span><span class="p">,</span><span class="w"> </span><span class="n">texts</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="p">[</span><span class="nb">String</span><span class="p">])</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="n">KeyCombo</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">texts</span><span class="p">:</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;&amp;</span><span class="nb">String</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">texts</span><span class="p">.</span><span class="n">iter</span><span class="p">().</span><span class="n">filter</span><span class="p">(</span><span class="o">|</span><span class="n">text</span><span class="o">|</span><span class="w"> </span><span class="o">!</span><span class="n">text</span><span class="p">.</span><span class="n">trim</span><span class="p">().</span><span class="n">is_empty</span><span class="p">()).</span><span class="n">collect</span><span class="p">();</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">combos</span><span class="p">:</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="n">KeyCombo</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">texts</span>
+<span class="w">        </span><span class="p">.</span><span class="n">iter</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="n">filter_map</span><span class="p">(</span><span class="o">|</span><span class="n">text</span><span class="o">|</span><span class="w"> </span><span class="n">KeyCombo</span><span class="p">::</span><span class="n">parse</span><span class="p">(</span><span class="n">text</span><span class="p">).</span><span class="n">inspect_err</span><span class="p">(</span><span class="o">|</span><span class="n">err</span><span class="o">|</span><span class="w"> </span><span class="n">log</span><span class="p">::</span><span class="n">warn</span><span class="o">!</span><span class="p">(</span><span class="s">"shortcut {}: {err}"</span><span class="p">,</span><span class="w"> </span><span class="n">action</span><span class="p">.</span><span class="n">name</span><span class="p">())).</span><span class="n">ok</span><span class="p">())</span>
+<span class="w">        </span><span class="p">.</span><span class="n">collect</span><span class="p">();</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">combos</span><span class="p">.</span><span class="n">is_empty</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="n">texts</span><span class="p">.</span><span class="n">is_empty</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">action</span><span class="p">.</span><span class="n">defaults</span><span class="p">()</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">combos</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cp">#[cfg(test)]</span>
+<span class="k">mod</span><span class="w"> </span><span class="nn">tests</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">use</span><span class="w"> </span><span class="n">std</span><span class="p">::</span><span class="n">collections</span><span class="p">::</span><span class="n">HashMap</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">use</span><span class="w"> </span><span class="k">super</span><span class="p">::</span><span class="o">*</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">combo</span><span class="p">(</span><span class="n">text</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">KeyCombo</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">KeyCombo</span><span class="p">::</span><span class="n">parse</span><span class="p">(</span><span class="n">text</span><span class="p">).</span><span class="n">unwrap</span><span class="p">()</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cp">#[test]</span>
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">combinations_parse_and_print_back</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="w"> </span><span class="n">printed</span><span class="p">)</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">(</span><span class="s">"Ctrl+Shift+T"</span><span class="p">,</span><span class="w"> </span><span class="s">"Ctrl+Shift+T"</span><span class="p">),</span>
+<span class="w">            </span><span class="p">(</span><span class="s">"shift+ctrl+t"</span><span class="p">,</span><span class="w"> </span><span class="s">"Ctrl+Shift+T"</span><span class="p">),</span>
+<span class="w">            </span><span class="p">(</span><span class="s">"Ctrl++"</span><span class="p">,</span><span class="w"> </span><span class="s">"Ctrl+Plus"</span><span class="p">),</span>
+<span class="w">            </span><span class="p">(</span><span class="s">"Ctrl+plus"</span><span class="p">,</span><span class="w"> </span><span class="s">"Ctrl+Plus"</span><span class="p">),</span>
+<span class="w">            </span><span class="p">(</span><span class="s">"Ctrl+-"</span><span class="p">,</span><span class="w"> </span><span class="s">"Ctrl+Minus"</span><span class="p">),</span>
+<span class="w">            </span><span class="p">(</span><span class="s">"Ctrl+,"</span><span class="p">,</span><span class="w"> </span><span class="s">"Ctrl+,"</span><span class="p">),</span>
+<span class="w">            </span><span class="p">(</span><span class="s">"Ctrl+Comma"</span><span class="p">,</span><span class="w"> </span><span class="s">"Ctrl+,"</span><span class="p">),</span>
+<span class="w">            </span><span class="p">(</span><span class="s">"Alt+1"</span><span class="p">,</span><span class="w"> </span><span class="s">"Alt+1"</span><span class="p">),</span>
+<span class="w">            </span><span class="p">(</span><span class="s">"Shift+PgUp"</span><span class="p">,</span><span class="w"> </span><span class="s">"Shift+PageUp"</span><span class="p">),</span>
+<span class="w">            </span><span class="p">(</span><span class="s">"Super+Return"</span><span class="p">,</span><span class="w"> </span><span class="s">"Super+Enter"</span><span class="p">),</span>
+<span class="w">            </span><span class="p">(</span><span class="s">"F11"</span><span class="p">,</span><span class="w"> </span><span class="s">"F11"</span><span class="p">),</span>
+<span class="w">            </span><span class="p">(</span><span class="s">"Ctrl+Alt+ß"</span><span class="p">,</span><span class="w"> </span><span class="s">"Ctrl+Alt+ß"</span><span class="p">),</span>
+<span class="w">        </span><span class="p">]</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="n">parsed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">combo</span><span class="p">(</span><span class="n">text</span><span class="p">);</span>
+<span class="w">            </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">parsed</span><span class="p">.</span><span class="n">to_string</span><span class="p">(),</span><span class="w"> </span><span class="n">printed</span><span class="p">,</span><span class="w"> </span><span class="s">"{text}"</span><span class="p">);</span>
+<span class="w">            </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">combo</span><span class="p">(</span><span class="n">printed</span><span class="p">),</span><span class="w"> </span><span class="n">parsed</span><span class="p">,</span><span class="w"> </span><span class="s">"{printed}"</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">bad</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">[</span><span class="s">""</span><span class="p">,</span><span class="w"> </span><span class="s">"Ctrl+"</span><span class="p">,</span><span class="w"> </span><span class="s">"Ctrl+Foo"</span><span class="p">,</span><span class="w"> </span><span class="s">"Hyper+T"</span><span class="p">,</span><span class="w"> </span><span class="s">"Ctrl+Shift"</span><span class="p">]</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="fm">assert!</span><span class="p">(</span><span class="n">KeyCombo</span><span class="p">::</span><span class="n">parse</span><span class="p">(</span><span class="n">bad</span><span class="p">).</span><span class="n">is_err</span><span class="p">(),</span><span class="w"> </span><span class="s">"{bad:?}"</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cp">#[test]</span>
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">defaults_parse_leave_typing_alone_and_never_collide</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">keymap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Keymap</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="o">&amp;</span><span class="n">BTreeMap</span><span class="p">::</span><span class="n">new</span><span class="p">());</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">seen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HashMap</span><span class="p">::</span><span class="n">new</span><span class="p">();</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">action</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">Action</span><span class="p">::</span><span class="n">ALL</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="n">combo</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">action</span><span class="p">.</span><span class="n">defaults</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="fm">assert!</span><span class="p">(</span><span class="n">combo</span><span class="p">.</span><span class="n">leaves_typing_alone</span><span class="p">(),</span><span class="w"> </span><span class="s">"{action:?}: {combo}"</span><span class="p">);</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">other</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">seen</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">combo</span><span class="p">,</span><span class="w"> </span><span class="n">action</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="fm">panic!</span><span class="p">(</span><span class="s">"{combo} for both {other:?} and {action:?}"</span><span class="p">);</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">                </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">keymap</span><span class="p">.</span><span class="n">action</span><span class="p">(</span><span class="o">&amp;</span><span class="n">combo</span><span class="p">),</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">action</span><span class="p">));</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">Action</span><span class="p">::</span><span class="n">from_name</span><span class="p">(</span><span class="o">&amp;</span><span class="n">action</span><span class="p">.</span><span class="n">name</span><span class="p">()),</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">action</span><span class="p">));</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cp">#[test]</span>
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">config_entries_replace_the_defaults</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">config</span><span class="p">:</span><span class="w"> </span><span class="nc">BTreeMap</span><span class="o">&lt;</span><span class="nb">String</span><span class="p">,</span><span class="w"> </span><span class="n">Bindings</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">toml</span><span class="p">::</span><span class="n">from_str</span><span class="p">(</span>
+<span class="w">            </span><span class="s">r#"</span>
+<span class="s">            new_tab = "Ctrl+Alt+N"</span>
+<span class="s">            copy = ["Ctrl+Insert", "Ctrl+Shift+C"]</span>
+<span class="s">            paste = []</span>
+<span class="s">            close_tab = 5</span>
+<span class="s">            next_tab = "Ctrl+Nonsense"</span>
+<span class="s">            no_such_action = "Ctrl+X"</span>
+<span class="s">            "#</span><span class="p">,</span>
+<span class="w">        </span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="n">unwrap</span><span class="p">();</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">keymap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Keymap</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="o">&amp;</span><span class="n">config</span><span class="p">);</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">keymap</span><span class="p">.</span><span class="n">action</span><span class="p">(</span><span class="o">&amp;</span><span class="n">combo</span><span class="p">(</span><span class="s">"Ctrl+Alt+N"</span><span class="p">)),</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">Action</span><span class="p">::</span><span class="n">NewTab</span><span class="p">));</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">keymap</span><span class="p">.</span><span class="n">action</span><span class="p">(</span><span class="o">&amp;</span><span class="n">combo</span><span class="p">(</span><span class="s">"Ctrl+Shift+T"</span><span class="p">)),</span><span class="w"> </span><span class="nb">None</span><span class="p">);</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">keymap</span><span class="p">.</span><span class="n">combos</span><span class="p">(</span><span class="n">Action</span><span class="p">::</span><span class="nb">Copy</span><span class="p">),</span><span class="w"> </span><span class="p">[</span><span class="n">combo</span><span class="p">(</span><span class="s">"Ctrl+Insert"</span><span class="p">),</span><span class="w"> </span><span class="n">combo</span><span class="p">(</span><span class="s">"Ctrl+Shift+C"</span><span class="p">)]);</span>
+<span class="w">        </span><span class="fm">assert!</span><span class="p">(</span><span class="n">keymap</span><span class="p">.</span><span class="n">combos</span><span class="p">(</span><span class="n">Action</span><span class="p">::</span><span class="n">Paste</span><span class="p">).</span><span class="n">is_empty</span><span class="p">());</span>
+<span class="w">        </span><span class="c1">// Not a combination at all, or none that parses: the defaults stay.</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">keymap</span><span class="p">.</span><span class="n">combos</span><span class="p">(</span><span class="n">Action</span><span class="p">::</span><span class="n">CloseTab</span><span class="p">),</span><span class="w"> </span><span class="n">Action</span><span class="p">::</span><span class="n">CloseTab</span><span class="p">.</span><span class="n">defaults</span><span class="p">());</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">keymap</span><span class="p">.</span><span class="n">combos</span><span class="p">(</span><span class="n">Action</span><span class="p">::</span><span class="n">NextTab</span><span class="p">),</span><span class="w"> </span><span class="n">Action</span><span class="p">::</span><span class="n">NextTab</span><span class="p">.</span><span class="n">defaults</span><span class="p">());</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cp">#[test]</span>
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">a_combination_bound_twice_belongs_to_the_first_action</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">BTreeMap</span><span class="p">::</span><span class="n">from</span><span class="p">([(</span><span class="s">"open_settings"</span><span class="p">.</span><span class="n">to_string</span><span class="p">(),</span><span class="w"> </span><span class="n">Bindings</span><span class="p">::</span><span class="n">One</span><span class="p">(</span><span class="s">"Ctrl+Shift+T"</span><span class="p">.</span><span class="n">into</span><span class="p">()))]);</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">keymap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Keymap</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="o">&amp;</span><span class="n">config</span><span class="p">);</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">keymap</span><span class="p">.</span><span class="n">action</span><span class="p">(</span><span class="o">&amp;</span><span class="n">combo</span><span class="p">(</span><span class="s">"Ctrl+Shift+T"</span><span class="p">)),</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">Action</span><span class="p">::</span><span class="n">NewTab</span><span class="p">));</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">keymap</span><span class="p">.</span><span class="n">label</span><span class="p">(</span><span class="n">Action</span><span class="p">::</span><span class="n">OpenSettings</span><span class="p">),</span><span class="w"> </span><span class="nb">None</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cp">#[test]</span>
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">combinations_that_would_swallow_typing_are_told_apart</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">ok</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">[</span><span class="s">"Ctrl+A"</span><span class="p">,</span><span class="w"> </span><span class="s">"Alt+1"</span><span class="p">,</span><span class="w"> </span><span class="s">"Super+Space"</span><span class="p">,</span><span class="w"> </span><span class="s">"F5"</span><span class="p">,</span><span class="w"> </span><span class="s">"Shift+PageUp"</span><span class="p">,</span><span class="w"> </span><span class="s">"Shift+Up"</span><span class="p">]</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="fm">assert!</span><span class="p">(</span><span class="n">combo</span><span class="p">(</span><span class="n">ok</span><span class="p">).</span><span class="n">leaves_typing_alone</span><span class="p">(),</span><span class="w"> </span><span class="s">"{ok}"</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">bad</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">[</span><span class="s">"A"</span><span class="p">,</span><span class="w"> </span><span class="s">"Shift+A"</span><span class="p">,</span><span class="w"> </span><span class="s">"Enter"</span><span class="p">,</span><span class="w"> </span><span class="s">"Tab"</span><span class="p">,</span><span class="w"> </span><span class="s">"Shift+Tab"</span><span class="p">,</span><span class="w"> </span><span class="s">"Space"</span><span class="p">,</span><span class="w"> </span><span class="s">"Escape"</span><span class="p">,</span><span class="w"> </span><span class="s">"PageUp"</span><span class="p">]</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="fm">assert!</span><span class="p">(</span><span class="o">!</span><span class="n">combo</span><span class="p">(</span><span class="n">bad</span><span class="p">).</span><span class="n">leaves_typing_alone</span><span class="p">(),</span><span class="w"> </span><span class="s">"{bad}"</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cp">#[test]</span>
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">labels_are_translated</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Tests run in German.</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">combo</span><span class="p">(</span><span class="s">"Ctrl+Shift+T"</span><span class="p">).</span><span class="n">label</span><span class="p">(),</span><span class="w"> </span><span class="s">"Strg+Umschalt+T"</span><span class="p">);</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">combo</span><span class="p">(</span><span class="s">"Shift+PageUp"</span><span class="p">).</span><span class="n">label</span><span class="p">(),</span><span class="w"> </span><span class="s">"Umschalt+Bild↑"</span><span class="p">);</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">combo</span><span class="p">(</span><span class="s">"Ctrl+Plus"</span><span class="p">).</span><span class="n">label</span><span class="p">(),</span><span class="w"> </span><span class="s">"Strg++"</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cp">#[test]</span>
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">bindings_are_written_as_a_string_or_a_list</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">Bindings</span><span class="p">::</span><span class="n">of</span><span class="p">(</span><span class="o">&amp;</span><span class="p">[</span><span class="n">combo</span><span class="p">(</span><span class="s">"Ctrl+Plus"</span><span class="p">)]),</span><span class="w"> </span><span class="n">Bindings</span><span class="p">::</span><span class="n">One</span><span class="p">(</span><span class="s">"Ctrl+Plus"</span><span class="p">.</span><span class="n">into</span><span class="p">()));</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">Bindings</span><span class="p">::</span><span class="n">of</span><span class="p">(</span><span class="o">&amp;</span><span class="p">[]),</span><span class="w"> </span><span class="n">Bindings</span><span class="p">::</span><span class="n">Many</span><span class="p">(</span><span class="nb">Vec</span><span class="p">::</span><span class="n">new</span><span class="p">()));</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span>
+<span class="w">            </span><span class="n">Bindings</span><span class="p">::</span><span class="n">of</span><span class="p">(</span><span class="o">&amp;</span><span class="p">[</span><span class="n">combo</span><span class="p">(</span><span class="s">"Ctrl+Plus"</span><span class="p">),</span><span class="w"> </span><span class="n">combo</span><span class="p">(</span><span class="s">"Ctrl+="</span><span class="p">)]),</span>
+<span class="w">            </span><span class="n">Bindings</span><span class="p">::</span><span class="n">Many</span><span class="p">(</span><span class="fm">vec!</span><span class="p">[</span><span class="s">"Ctrl+Plus"</span><span class="p">.</span><span class="n">into</span><span class="p">(),</span><span class="w"> </span><span class="s">"Ctrl+="</span><span class="p">.</span><span class="n">into</span><span class="p">()])</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div></td></tr></table></div>
+
+      </section>
+    </main>
+  </div>
+</body>
+</html>
