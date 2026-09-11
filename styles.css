@@ -558,7 +558,7 @@ a:focus-visible, button:focus-visible {
   border-left: 3px solid var(--border);
   color: var(--muted);
 }
-.readme-content img { max-width: 100%; border-radius: 8px; }
+.readme-content img { max-width: 100%; height: auto; border-radius: 8px; }
 .readme-content hr { border: 0; border-top: 1px solid var(--border-soft); margin: 2rem 0; }
 .readme-content table { display: block; overflow-x: auto; max-width: 100%; border-collapse: collapse; width: 100%; margin: 0 0 1.2rem; font-size: .92rem; }
 .readme-content th, .readme-content td { border: 1px solid var(--border); padding: .5rem .7rem; text-align: left; }

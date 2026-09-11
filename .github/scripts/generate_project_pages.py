@@ -55,7 +55,7 @@ import re
 from datetime import datetime
 from html import escape as html_escape
 from pathlib import Path
-from urllib.parse import urlparse
+from urllib.parse import urljoin, urlparse
 
 import requests
 from bs4 import BeautifulSoup
@@ -289,11 +289,14 @@ def fetch_repo_meta(owner: str, repo: str):
         return None
 
 
-def fetch_readme_html(owner: str, repo: str) -> str:
+def fetch_readme_html(owner: str, repo: str, branch) -> str:
     """Fetches the repo's README already rendered to GitHub-flavored HTML
     (no local markdown parser needed at all). Returns a friendly fallback
     message on any failure (404, no README, rate limit, etc.) rather than
-    raising, so one broken repo doesn't fail the whole run."""
+    raising, so one broken repo doesn't fail the whole run. branch is only
+    used to resolve relative image/link paths (see clean_readme_html) -
+    None falls back to HEAD, which raw.githubusercontent.com also
+    understands."""
     url = f"https://api.github.com/repos/{owner}/{repo}/readme"
     try:
         resp = requests.get(url, headers=API_HEADERS_HTML, timeout=15)
@@ -305,7 +308,7 @@ def fetch_readme_html(owner: str, repo: str) -> str:
     if resp.status_code != 200:
         return f"<p><em>Could not fetch README (HTTP {resp.status_code}).</em></p>"
 
-    return clean_readme_html(resp.text)
+    return clean_readme_html(resp.text, owner, repo, branch or "HEAD")
 
 
 def fetch_repo_file_tree(owner: str, repo: str, branch: str) -> dict:
@@ -500,17 +503,62 @@ def render_commit_card(commit: dict) -> str:
           </a>"""
 
 
-def clean_readme_html(raw_html: str) -> str:
+# Bump whenever clean_readme_html's output changes: an unchanged repo
+# otherwise reuses its README verbatim from the already-published page
+# (see extract_readme_html), so old markup would stick around until that
+# repo's next push. A cache entry with a different version re-fetches.
+README_RENDER_VERSION = 2
+
+# Screenshots pasted into a README on github.com are stored as
+# github.com/user-attachments/assets/<uuid>, but the rendered-README API
+# hands them back as private-user-images.githubusercontent.com URLs
+# signed with a JWT that expires after 5 minutes - dead long before
+# anyone visits the page. The uuid is embedded in that signed URL, so the
+# permanent form can be rebuilt from it (it redirects to a freshly signed
+# URL on every load, and works anonymously for public repos).
+ATTACHMENT_UUID_RE = re.compile(r"[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}")
+
+
+def fix_readme_url(url: str, relative_base: str) -> str:
+    """Returns a README image/link URL that still works once the README is
+    served from this site instead of github.com: expiring
+    private-user-images URLs become their permanent user-attachments
+    form, and repo-relative paths (e.g. <img src="assets/logo.png">, which
+    the API leaves as-is) are resolved against relative_base. Absolute
+    URLs, in-page #anchors, mailto: etc. come back unchanged."""
+    parsed = urlparse(url)
+    if parsed.netloc == "private-user-images.githubusercontent.com":
+        match = ATTACHMENT_UUID_RE.search(parsed.path)
+        return f"https://github.com/user-attachments/assets/{match.group(0)}" if match else url
+    if not url or url.startswith("#") or parsed.scheme or parsed.netloc:
+        return url
+    return urljoin(relative_base, url.lstrip("/"))
+
+
+def clean_readme_html(raw_html: str, owner: str, repo: str, branch: str) -> str:
     """Strips GitHub-page-only chrome (heading permalink icons, the
     outer #readme/article wrapper) so the markup drops cleanly into our
-    own page template and styling instead of expecting GitHub's own CSS.
-
-    Note: GitHub rewrites relative links/images in a rendered README to
-    absolute repo URLs, so this doesn't need to handle relative paths
-    itself - verified for text links; spot-check if a project's README
-    ever adds relative images and they don't show up correctly.
+    own page template and styling instead of expecting GitHub's own CSS,
+    and rewrites image/link URLs that only work on github.com itself (see
+    fix_readme_url). Relative paths are resolved against the repo root,
+    where the README almost always lives.
     """
     soup = BeautifulSoup(raw_html, "html.parser")
+
+    raw_base = f"https://raw.githubusercontent.com/{owner}/{repo}/{branch}/"
+    blob_base = f"https://github.com/{owner}/{repo}/blob/{branch}/"
+    for img in soup.find_all("img", src=True):
+        img["src"] = fix_readme_url(img["src"], raw_base)
+    # <picture><source srcset="..."> - the usual light/dark logo pattern
+    for el in soup.find_all(["img", "source"], srcset=True):
+        candidates = []
+        for candidate in el["srcset"].split(","):
+            parts = candidate.split()
+            if parts:
+                candidates.append(" ".join([fix_readme_url(parts[0], raw_base), *parts[1:]]))
+        el["srcset"] = ", ".join(candidates)
+    for a in soup.find_all("a", href=True):
+        a["href"] = fix_readme_url(a["href"], blob_base)
 
     # Unwrap heading-permalink wrappers: <div class="markdown-heading">
     # <h2>Text</h2><a class="anchor">...</a></div> -> just <h2>Text</h2>
@@ -937,9 +985,11 @@ def main():
               + (" (repo unchanged since last build)" if repo_unchanged else ""))
 
         # ---------------------------------------------------------- README
-        readme_html = extract_readme_html(out_path) if repo_unchanged else None
+        readme_html = None
+        if repo_unchanged and cache_entry.get("readme_version") == README_RENDER_VERSION:
+            readme_html = extract_readme_html(out_path)
         if readme_html is None:
-            readme_html = fetch_readme_html(owner, repo)
+            readme_html = fetch_readme_html(owner, repo, default_branch)
 
         # ---------------------------------------------------------- source files
         files = []
@@ -1036,6 +1086,7 @@ def main():
         if pushed_at:
             cache[key] = {
                 "pushed_at": pushed_at,
+                "readme_version": README_RENDER_VERSION,
                 "source_entries": project["source_entries"],
                 "files": blob_shas,
                 "newest_commit_sha": newest_commit_sha,
