@@ -132,7 +132,6 @@
     },
     "newest_commit_sha": "f32ceb092909c18d7c93e4ab24ec76be8cf7203f",
     "pushed_at": "2026-09-10T02:45:50Z",
-    "readme_version": 2,
     "source_entries": [
       "Klar/src/main.rs",
       "Klar/migrations/*",
@@ -148,16 +147,16 @@
     },
     "newest_commit_sha": "4c2b7453764e3e472a2d602470ec54d6750116b2",
     "pushed_at": "2026-08-31T23:59:00Z",
-    "readme_version": 2,
     "source_entries": [
       "src/main.rs",
       ".github/*"
     ]
   },
   "mergedeyes/mergedeyes.github.io": {
-    "commit_count": 259,
+    "commit_count": 261,
     "files": {
-      ".github/scripts/generate_project_pages.py": "b44b5f728eddd68ec41adccf053906c1d7f0d9b6",
+      ".github/scripts/__pycache__/generate_project_pages.cpython-314.pyc": "b9e7f33a02cad66d5f4ee1b83d3c9c8428159d56",
+      ".github/scripts/generate_project_pages.py": "6d0d4d56ca91afaae12e814cc85c621c42421593",
       ".github/scripts/update_visitor_count.py": "6b3f83843602f650466aef1cce25e691f1e2d4dc",
       ".github/workflows/generate-project-pages.yml": "03fbf5e277331dc1a38df986a05a913afe5e129f",
       ".github/workflows/jekyll-gh-pages.yml": "e5d903dc63d17f68658e3d4b9726c19f748ce746",
@@ -177,9 +176,8 @@
       "skills/nginx.html": "80c4b61efb0493e6411b8b9caab170e3db5d80dd",
       "styles.css": "a3243ed44505aec40beb720fdfacf5edc649e475"
     },
-    "newest_commit_sha": "ff425c5bed18bb0e07079e5b9b315a25b55e7d42",
-    "pushed_at": "2026-09-11T21:04:13Z",
-    "readme_version": 2,
+    "newest_commit_sha": "0b8613cb6c9de5c7fd55f5d93ec748f32c5ec1a5",
+    "pushed_at": "2026-09-11T21:07:46Z",
     "source_entries": [
       "index.html",
       "404.html",
@@ -211,7 +209,6 @@
     },
     "newest_commit_sha": "6ca6f112c177934260abb3ab36350243e2fecb40",
     "pushed_at": "2026-07-31T17:16:08Z",
-    "readme_version": 2,
     "source_entries": [
       "run_demand_pipeline.py",
       "build.py",
@@ -279,7 +276,6 @@
     },
     "newest_commit_sha": "0d3fc4f1960fae721b721b2a7f3af1b94311e2ff",
     "pushed_at": "2026-09-11T20:58:21Z",
-    "readme_version": 2,
     "source_entries": [
       "src/*",
       "assets/terminaal.desktop",
@@ -297,7 +293,6 @@
     },
     "newest_commit_sha": "da93ae5f697739a85d1ef48ca7aad05e4993a14c",
     "pushed_at": "2025-12-31T22:13:36Z",
-    "readme_version": 2,
     "source_entries": [
       "GarnRechnerProzedural.java"
     ]

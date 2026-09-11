@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>.github/scripts/__pycache__/generate_project_pages.cpython-314.pyc — Personal Website — Jan</title>
+  <link rel="stylesheet" href="../../styles.css?v=0b8613cb" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="layout">
+    <header class="rail" id="rail">
+<div class="rail__top">
+<a class="brand" href="../../index.html#top">
+<span class="brand__name">Jan</span>
+<span class="brand__meta">systems &amp; infrastructure<br/>Code, Code &amp; Code</span>
+</a>
+<button aria-controls="nav" aria-expanded="false" aria-label="Toggle menu" class="menu-toggle" id="menuToggle">
+<span></span><span></span><span></span>
+</button>
+</div>
+<nav aria-label="Sections" class="nav" id="nav">
+<a data-path="~/projects" href="../../index.html#projects">Projects</a>
+<a data-path="~/work" href="../../index.html#work">Work</a>
+<a data-path="~/education" href="../../index.html#education">Education</a>
+<a data-path="~/skills" href="../../index.html#skills">Skills</a>
+<a data-path="~/about" href="../../index.html#about">About Me</a>
+<a data-path="~/contact" href="../../index.html#contact">Contact</a>
+</nav>
+<div class="rail__status">
+<span aria-hidden="true" class="dot"></span>
+<span>open to work</span>
+</div>
+</header>
+    <nav class="file-tree"><p class="file-tree__title">Files</p><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">.github/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">scripts/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">__pycache__/</span><ul class="tree"><li class="tree-file tree-file--active"><a href="github--scripts--__pycache__--generate_project_pages.cpython-314.pyc.html">generate_project_pages.cpython-314.pyc</a></li></ul></li><li class="tree-file"><a href="github--scripts--generate_project_pages.py.html">generate_project_pages.py</a></li><li class="tree-file"><a href="github--scripts--update_visitor_count.py.html">update_visitor_count.py</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">workflows/</span><ul class="tree"><li class="tree-file"><a href="github--workflows--generate-project-pages.yml.html">generate-project-pages.yml</a></li><li class="tree-file"><a href="github--workflows--jekyll-gh-pages.yml.html">jekyll-gh-pages.yml</a></li><li class="tree-file"><a href="github--workflows--update-visitor-count.yml.html">update-visitor-count.yml</a></li></ul></li></ul></li><li class="tree-dir"><span class="tree-dir__name">skills/</span><ul class="tree"><li class="tree-file"><a href="skills--dns.html.html">dns.html</a></li><li class="tree-file"><a href="skills--ibm.html.html">ibm.html</a></li><li class="tree-file"><a href="skills--linux.html.html">linux.html</a></li><li class="tree-file"><a href="skills--monitoring.html.html">monitoring.html</a></li><li class="tree-file"><a href="skills--nagios.html.html">nagios.html</a></li><li class="tree-file"><a href="skills--networking.html.html">networking.html</a></li><li class="tree-file"><a href="skills--nginx.html.html">nginx.html</a></li></ul></li><li class="tree-file"><a href="404.html.html">404.html</a></li><li class="tree-file"><a href="index.html.html">index.html</a></li><li class="tree-file"><a href="llms.txt.html">llms.txt</a></li><li class="tree-file"><a href="robots.txt.html">robots.txt</a></li><li class="tree-file"><a href="script.js.html">script.js</a></li><li class="tree-file"><a href="sitemap.xml.html">sitemap.xml</a></li><li class="tree-file"><a href="styles.css.html">styles.css</a></li></ul></nav>
+    <main class="main" id="main">
+      <section class="section source-page">
+        <p class="section__path">
+          <a href="../../index.html#projects" class="link">~/projects</a> /
+          <a href="../mergedeyes.github.io.html" class="link">mergedeyes.github.io</a> / source
+        </p>
+        <div class="source-page__head">
+          <h1 class="section__title">.github/scripts/__pycache__/generate_project_pages.cpython-314.pyc</h1>
+          <a href="../mergedeyes.github.io.html" class="link">← Back to Personal Website</a>
+        </div>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">  1</span>
+<span class="normal">  2</span>
+<span class="normal">  3</span>
+<span class="normal">  4</span>
+<span class="normal">  5</span>
+<span class="normal">  6</span>
+<span class="normal">  7</span>
+<span class="normal">  8</span>
+<span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span>
+<span class="normal">245</span>
+<span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span>
+<span class="normal">250</span>
+<span class="normal">251</span>
+<span class="normal">252</span>
+<span class="normal">253</span>
+<span class="normal">254</span>
+<span class="normal">255</span>
+<span class="normal">256</span>
+<span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span>
+<span class="normal">262</span>
+<span class="normal">263</span>
+<span class="normal">264</span>
+<span class="normal">265</span>
+<span class="normal">266</span>
+<span class="normal">267</span>
+<span class="normal">268</span>
+<span class="normal">269</span>
+<span class="normal">270</span>
+<span class="normal">271</span>
+<span class="normal">272</span>
+<span class="normal">273</span>
+<span class="normal">274</span>
+<span class="normal">275</span>
+<span class="normal">276</span>
+<span class="normal">277</span>
+<span class="normal">278</span>
+<span class="normal">279</span>
+<span class="normal">280</span>
+<span class="normal">281</span>
+<span class="normal">282</span>
+<span class="normal">283</span>
+<span class="normal">284</span>
+<span class="normal">285</span>
+<span class="normal">286</span>
+<span class="normal">287</span>
+<span class="normal">288</span>
+<span class="normal">289</span>
+<span class="normal">290</span>
+<span class="normal">291</span>
+<span class="normal">292</span>
+<span class="normal">293</span>
+<span class="normal">294</span>
+<span class="normal">295</span>
+<span class="normal">296</span>
+<span class="normal">297</span>
+<span class="normal">298</span>
+<span class="normal">299</span>
+<span class="normal">300</span>
+<span class="normal">301</span>
+<span class="normal">302</span>
+<span class="normal">303</span>
+<span class="normal">304</span>
+<span class="normal">305</span>
+<span class="normal">306</span>
+<span class="normal">307</span>
+<span class="normal">308</span>
+<span class="normal">309</span>
+<span class="normal">310</span>
+<span class="normal">311</span>
+<span class="normal">312</span>
+<span class="normal">313</span>
+<span class="normal">314</span>
+<span class="normal">315</span>
+<span class="normal">316</span>
+<span class="normal">317</span>
+<span class="normal">318</span>
+<span class="normal">319</span>
+<span class="normal">320</span>
+<span class="normal">321</span>
+<span class="normal">322</span>
+<span class="normal">323</span>
+<span class="normal">324</span>
+<span class="normal">325</span>
+<span class="normal">326</span>
+<span class="normal">327</span>
+<span class="normal">328</span>
+<span class="normal">329</span>
+<span class="normal">330</span>
+<span class="normal">331</span>
+<span class="normal">332</span>
+<span class="normal">333</span>
+<span class="normal">334</span>
+<span class="normal">335</span>
+<span class="normal">336</span>
+<span class="normal">337</span>
+<span class="normal">338</span>
+<span class="normal">339</span>
+<span class="normal">340</span>
+<span class="normal">341</span>
+<span class="normal">342</span>
+<span class="normal">343</span>
+<span class="normal">344</span>
+<span class="normal">345</span>
+<span class="normal">346</span>
+<span class="normal">347</span>
+<span class="normal">348</span>
+<span class="normal">349</span>
+<span class="normal">350</span>
+<span class="normal">351</span>
+<span class="normal">352</span>
+<span class="normal">353</span>
+<span class="normal">354</span>
+<span class="normal">355</span>
+<span class="normal">356</span>
+<span class="normal">357</span>
+<span class="normal">358</span>
+<span class="normal">359</span>
+<span class="normal">360</span>
+<span class="normal">361</span>
+<span class="normal">362</span>
+<span class="normal">363</span>
+<span class="normal">364</span>
+<span class="normal">365</span>
+<span class="normal">366</span>
+<span class="normal">367</span>
+<span class="normal">368</span>
+<span class="normal">369</span>
+<span class="normal">370</span>
+<span class="normal">371</span>
+<span class="normal">372</span>
+<span class="normal">373</span>
+<span class="normal">374</span>
+<span class="normal">375</span>
+<span class="normal">376</span>
+<span class="normal">377</span>
+<span class="normal">378</span>
+<span class="normal">379</span>
+<span class="normal">380</span>
+<span class="normal">381</span>
+<span class="normal">382</span>
+<span class="normal">383</span>
+<span class="normal">384</span>
+<span class="normal">385</span>
+<span class="normal">386</span>
+<span class="normal">387</span>
+<span class="normal">388</span>
+<span class="normal">389</span>
+<span class="normal">390</span>
+<span class="normal">391</span>
+<span class="normal">392</span>
+<span class="normal">393</span>
+<span class="normal">394</span>
+<span class="normal">395</span>
+<span class="normal">396</span>
+<span class="normal">397</span>
+<span class="normal">398</span>
+<span class="normal">399</span>
+<span class="normal">400</span>
+<span class="normal">401</span>
+<span class="normal">402</span>
+<span class="normal">403</span>
+<span class="normal">404</span>
+<span class="normal">405</span>
+<span class="normal">406</span>
+<span class="normal">407</span>
+<span class="normal">408</span>
+<span class="normal">409</span>
+<span class="normal">410</span>
+<span class="normal">411</span>
+<span class="normal">412</span>
+<span class="normal">413</span>
+<span class="normal">414</span>
+<span class="normal">415</span>
+<span class="normal">416</span>
+<span class="normal">417</span>
+<span class="normal">418</span>
+<span class="normal">419</span>
+<span class="normal">420</span>
+<span class="normal">421</span>
+<span class="normal">422</span>
+<span class="normal">423</span>
+<span class="normal">424</span>
+<span class="normal">425</span>
+<span class="normal">426</span>
+<span class="normal">427</span>
+<span class="normal">428</span>
+<span class="normal">429</span>
+<span class="normal">430</span>
+<span class="normal">431</span>
+<span class="normal">432</span>
+<span class="normal">433</span>
+<span class="normal">434</span>
+<span class="normal">435</span>
+<span class="normal">436</span>
+<span class="normal">437</span>
+<span class="normal">438</span>
+<span class="normal">439</span>
+<span class="normal">440</span>
+<span class="normal">441</span>
+<span class="normal">442</span>
+<span class="normal">443</span>
+<span class="normal">444</span>
+<span class="normal">445</span>
+<span class="normal">446</span>
+<span class="normal">447</span>
+<span class="normal">448</span>
+<span class="normal">449</span>
+<span class="normal">450</span>
+<span class="normal">451</span>
+<span class="normal">452</span>
+<span class="normal">453</span>
+<span class="normal">454</span>
+<span class="normal">455</span>
+<span class="normal">456</span>
+<span class="normal">457</span>
+<span class="normal">458</span>
+<span class="normal">459</span>
+<span class="normal">460</span>
+<span class="normal">461</span>
+<span class="normal">462</span>
+<span class="normal">463</span>
+<span class="normal">464</span>
+<span class="normal">465</span>
+<span class="normal">466</span>
+<span class="normal">467</span>
+<span class="normal">468</span>
+<span class="normal">469</span>
+<span class="normal">470</span>
+<span class="normal">471</span>
+<span class="normal">472</span>
+<span class="normal">473</span>
+<span class="normal">474</span>
+<span class="normal">475</span>
+<span class="normal">476</span>
+<span class="normal">477</span>
+<span class="normal">478</span>
+<span class="normal">479</span>
+<span class="normal">480</span>
+<span class="normal">481</span>
+<span class="normal">482</span>
+<span class="normal">483</span>
+<span class="normal">484</span>
+<span class="normal">485</span>
+<span class="normal">486</span>
+<span class="normal">487</span>
+<span class="normal">488</span>
+<span class="normal">489</span>
+<span class="normal">490</span>
+<span class="normal">491</span>
+<span class="normal">492</span>
+<span class="normal">493</span>
+<span class="normal">494</span>
+<span class="normal">495</span>
+<span class="normal">496</span>
+<span class="normal">497</span>
+<span class="normal">498</span>
+<span class="normal">499</span>
+<span class="normal">500</span>
+<span class="normal">501</span>
+<span class="normal">502</span>
+<span class="normal">503</span>
+<span class="normal">504</span>
+<span class="normal">505</span>
+<span class="normal">506</span>
+<span class="normal">507</span>
+<span class="normal">508</span>
+<span class="normal">509</span>
+<span class="normal">510</span>
+<span class="normal">511</span>
+<span class="normal">512</span>
+<span class="normal">513</span>
+<span class="normal">514</span>
+<span class="normal">515</span>
+<span class="normal">516</span>
+<span class="normal">517</span>
+<span class="normal">518</span>
+<span class="normal">519</span>
+<span class="normal">520</span>
+<span class="normal">521</span>
+<span class="normal">522</span>
+<span class="normal">523</span>
+<span class="normal">524</span>
+<span class="normal">525</span>
+<span class="normal">526</span>
+<span class="normal">527</span>
+<span class="normal">528</span>
+<span class="normal">529</span>
+<span class="normal">530</span>
+<span class="normal">531</span>
+<span class="normal">532</span>
+<span class="normal">533</span>
+<span class="normal">534</span>
+<span class="normal">535</span>
+<span class="normal">536</span>
+<span class="normal">537</span>
+<span class="normal">538</span>
+<span class="normal">539</span>
+<span class="normal">540</span>
+<span class="normal">541</span>
+<span class="normal">542</span>
+<span class="normal">543</span>
+<span class="normal">544</span>
+<span class="normal">545</span>
+<span class="normal">546</span>
+<span class="normal">547</span>
+<span class="normal">548</span>
+<span class="normal">549</span>
+<span class="normal">550</span>
+<span class="normal">551</span>
+<span class="normal">552</span>
+<span class="normal">553</span>
+<span class="normal">554</span>
+<span class="normal">555</span>
+<span class="normal">556</span>
+<span class="normal">557</span>
+<span class="normal">558</span>
+<span class="normal">559</span>
+<span class="normal">560</span>
+<span class="normal">561</span>
+<span class="normal">562</span>
+<span class="normal">563</span>
+<span class="normal">564</span>
+<span class="normal">565</span>
+<span class="normal">566</span>
+<span class="normal">567</span>
+<span class="normal">568</span>
+<span class="normal">569</span>
+<span class="normal">570</span>
+<span class="normal">571</span>
+<span class="normal">572</span>
+<span class="normal">573</span>
+<span class="normal">574</span>
+<span class="normal">575</span>
+<span class="normal">576</span>
+<span class="normal">577</span>
+<span class="normal">578</span>
+<span class="normal">579</span>
+<span class="normal">580</span>
+<span class="normal">581</span>
+<span class="normal">582</span>
+<span class="normal">583</span>
+<span class="normal">584</span>
+<span class="normal">585</span>
+<span class="normal">586</span>
+<span class="normal">587</span>
+<span class="normal">588</span>
+<span class="normal">589</span>
+<span class="normal">590</span>
+<span class="normal">591</span>
+<span class="normal">592</span>
+<span class="normal">593</span>
+<span class="normal">594</span>
+<span class="normal">595</span>
+<span class="normal">596</span>
+<span class="normal">597</span>
+<span class="normal">598</span>
+<span class="normal">599</span>
+<span class="normal">600</span>
+<span class="normal">601</span>
+<span class="normal">602</span>
+<span class="normal">603</span>
+<span class="normal">604</span>
+<span class="normal">605</span>
+<span class="normal">606</span>
+<span class="normal">607</span>
+<span class="normal">608</span>
+<span class="normal">609</span>
+<span class="normal">610</span>
+<span class="normal">611</span>
+<span class="normal">612</span>
+<span class="normal">613</span>
+<span class="normal">614</span>
+<span class="normal">615</span>
+<span class="normal">616</span>
+<span class="normal">617</span>
+<span class="normal">618</span>
+<span class="normal">619</span>
+<span class="normal">620</span>
+<span class="normal">621</span>
+<span class="normal">622</span>
+<span class="normal">623</span>
+<span class="normal">624</span>
+<span class="normal">625</span>
+<span class="normal">626</span>
+<span class="normal">627</span>
+<span class="normal">628</span>
+<span class="normal">629</span>
+<span class="normal">630</span>
+<span class="normal">631</span>
+<span class="normal">632</span>
+<span class="normal">633</span>
+<span class="normal">634</span>
+<span class="normal">635</span>
+<span class="normal">636</span>
+<span class="normal">637</span>
+<span class="normal">638</span>
+<span class="normal">639</span>
+<span class="normal">640</span>
+<span class="normal">641</span>
+<span class="normal">642</span>
+<span class="normal">643</span>
+<span class="normal">644</span>
+<span class="normal">645</span>
+<span class="normal">646</span>
+<span class="normal">647</span>
+<span class="normal">648</span>
+<span class="normal">649</span>
+<span class="normal">650</span>
+<span class="normal">651</span>
+<span class="normal">652</span>
+<span class="normal">653</span>
+<span class="normal">654</span>
+<span class="normal">655</span></pre></div></td><td class="code"><div><pre><span></span>+
+    em�j޿  �                   ��  � R t ^ RIt^ RIt^ RIt^ RIHt ^ RIHt ^ RIH	t	 ^ RI
+HtHt ^ RI
+t
+^ RIHt ^ RIHt ^ RIHt ^ R	IHtHt ^ R
+IHt ^ RIHt ^ RIHtHtHtHtH t H!t! ]	PD                  ! 4       t#]#R
+,          t$]#R,          t%]#R,          R,          R,          t&amp;]PN                  PQ                  RR4      t)]PN                  PQ                  RR4      R,          ;'       g    Rt*RR/t+])'       d	   R]) 2]+R&amp;   / ]+CRR/Ct,/ ]+CRR/Ct-/ ]+CRR/Ct. ! R R ]4      t/R! R" lt0R# R$ lt1R% R&amp; lt2R' R( lt3R) R* lt4R+ R, lt5R- R. lt6R/ R0 lt7R1 R2 lt8R3 R4 lt9R5 R6 lt:R7 R8 lt;R9 R: lt&lt;R; R&lt; lt=R]R= R&gt; llt&gt;R? R@ lt?]P�                  ! RA4      tARB RC ltBRD RE ltCR^RF RG lltDRH RI ltERJ RK ltFRL RM ltGRNtHROtIRPtJRQ RR ltKRS RT ltLRU RV ltMRW RX ltNRY RZ ltOR[ tP]QR\8X  d
+   ]P! 4        R# R# )_a�  
+Generates a standalone HTML page under /projects for every project card in
+index.html that has a "Repository" link pointing at GitHub. Each page gets:
+  - the project title
+  - its README, fetched pre-rendered as HTML via the GitHub API
+  - its tags (languages/stack) and license badge, copied from the card
+  - a link back to the repository
+  - a "Commit history" page listing every commit (title, short id, date,
+    author), each card linking straight out to that commit on GitHub -
+    generated for every project with a Repository link, unlike the
+    source browser below which is opt-in
+  - for opted-in projects (data-source-file="..." on the card), one or more
+    syntax-highlighted source files with line numbers. The attribute is a
+    comma-separated list; each entry is either a literal file path or a
+    "dir/*" wildcard that expands recursively to every file under that
+    directory. One file -&gt; a single wide source page, same as before.
+    Two or more files -&gt; a file-tree sidebar plus one page per file.
+  - the site's own navbar (extracted from index.html, not hand-copied,
+    so it can never drift out of sync with the real one)
+
+Change-skip caching (added 2026-08-30): re-fetching everything from GitHub
+on every run (every push to main, the daily cron, manual dispatch) got
+wasteful once commit history was added on top of the README/source-browser
+fetches - most runs touch zero repos. .github/data/project-pages-cache.json
+tracks, per project, the repo's last-seen `pushed_at` and (for the source
+browser) each file's git blob sha. A project whose repo hasn't been pushed
+to since the cache entry was written skips re-fetching its README, source
+files, and commits entirely - the content is read back out of the already-
+published page for that project instead (see extract_readme_html/
+extract_highlighted/extract_commit_cards) rather than duplicated into the
+cache file itself, so there's only ever one copy of the actual content.
+Two things always still happen even when a repo is unchanged: the page is
+still re-rendered (so an index.html-only edit - a retitled card, a changed
+tag - is never missed just because the linked repo stayed quiet), and
+individual source files are additionally checked file-by-file via blob sha
+(so a big repo where one file changed doesn't force every file to be
+re-fetched), and the commit history is extended incrementally - only
+commits newer than the last known one are fetched, then prepended onto the
+previously-rendered cards - instead of re-walking the whole history every
+time. See fetch_commits_since()'s docstring for exactly how that degrades
+if a repo's history is ever rewritten (force-push/rebase) or an API call
+fails outright.
+
+Run from the repository root (that's how the workflow invokes it):
+    python .github/scripts/generate_project_pages.py
+
+Reads GITHUB_TOKEN from the environment to authenticate API calls (raises
+the rate limit well past what these repos need, and would be required for
+private repos - not the case here, but no reason not to use it).
+N)�datetime)�escape��Path)�urljoin�urlparse)�
+BeautifulSoup)�	highlight)�
+HtmlFormatter)�	TextLexer�get_lexer_for_filename)�Style)�
+ClassNotFound)�Comment�Keyword�Name�Operator�Punctuation�Token�
+index.html�projectsz.github�datazproject-pages-cache.json�GITHUB_TOKEN� �
+GITHUB_SHA:N�   N�devzX-GitHub-Api-Versionz
+2022-11-28zBearer �
+Authorization�Acceptzapplication/vnd.github+jsonz application/vnd.github.html+jsonzapplication/vnd.github.raw+jsonc                   ��  � ] tR t^^tRtRt/ ]Rb]Rb]P                  Rb]	Rb]	P                  Rb]	P                  Rb]	P                  Rb]P                  P                  Rb]P                  P                  P                  Rb]P                  P                   R	b]R	b]P$                  R	b]P&amp;                  Rb]P(                  Rb]P*                  Rb]P,                  Rb]Rb]P0                  R]R
+/CtRtR# )
+�InstrumentPanelStylez�Matches the site's own palette (see styles.css :root) instead of
+importing a generic Pygments theme - keyword gold reuses --accent,
+strings/types reuse --signal teal, everything else stays within
+--text/--text-dim/--muted. No new hues introduced.z#151922z#AEB6C2zitalic #7E8794zbold #E3AC57z#E3AC57z#5FB8A6zbold #5FB8A6z#E9EDF2z#7E8794� N)�__name__�
+__module__�__qualname__�__firstlineno__�__doc__�background_colorr   r   �Preprocr   �Constant�Declaration�Type�Literal�String�Escape�Numberr   �Function�Class�Builtin�	Decorator�	Attributer   �Wordr   �styles�__static_attributes__r!   �    �).github/scripts/generate_project_pages.pyr    r    ^   sA  � �:� !���
+�	��� 0�� 	��� 0�� 	��	�
+ 	���	�� 	����
+� 	���	�� 	�
+�
+���	�� 	�
+�
+���#�#�^�� 	�
+�
+���	�� 	
+�	�� 	
+�
+�
+�	�� 	
+�
+�
+��� 	
+���	�� 	
+���	��  	
+���	�!�" 	�	�#�$ 	�
+�
+���	�'�Fr8   r    c                �$   � V ^8�  d   QhR\         /# )�   �return��dict)�formats   "r9   �__annotate__r@      s   � � � �D� r8   c                 �"  � \         P                  4       '       g   / #  \        P                  ! \         P	                  RR7      4      #   \
+        \        P                  3 d,    \        R\         P                  \        4       R24       / u # i ; i)z�Loads the per-project build cache. Missing/corrupt/unreadable file
+-&gt; empty cache, which just means every project gets treated as
+changed on this run (same as the very first run ever) - never a hard
+failure.�utf-8��encodingz  ! Warning: could not read z5, starting fresh (this run will re-fetch everything).)
+�
+CACHE_PATH�exists�json�loads�	read_text�OSError�JSONDecodeError�print�relative_to�	SITE_ROOTr!   r8   r9   �
+load_cacherO      s�   � �
+ ������	���z�z�*�.�.��.�@�A�A���T�)�)�*� �
+�,�Z�-C�-C�I�-N�,O�  PE�  F�  	G��	��s   �)A �AB�
+Bc                �$   � V ^8�  d   QhR\         /# )r;   �cacher=   )r?   s   "r9   r@   r@   �   s   � � `� `�d� `r8   c                 �   � \         P                  P                  R R R7       \         P                  \        P
+                  ! V ^R R7      R,           RR7       R# )T)�parents�exist_ok)�indent�	sort_keys�
+rB   rC   N)rE   �parent�mkdir�
+write_textrG   �dumps)rQ   s   &amp;r9   �
+save_cacher\   �   sA   � ������D�4��8����$�*�*�U�1��E��L�W^��_r8   c                �&lt;   � V ^8�  d   QhR\         R\         R\         /# )r;   �text�start_marker�
+end_marker��str)r?   s   "r9   r@   r@   �   s!   � � � �3� �c� �s� r8   c                 �   � V P                  V4      pVR8X  d   R# V\        V4      ,
+          pV P                  W#4      pVR8X  g   WC8  d   R# WV # )�   N�����)�find�len)r^   r_   r`   �start�ends   &amp;&amp;&amp;  r9   �_extract_betweenrj   �   sO   � ��I�I�l�#�E���{��	�S��
+��E�
+�)�)�J�
+&amp;�C�
+�b�y�C�K���c�?�r8   c                �$   � V ^8�  d   QhR\         /# �r;   �pathr   )r?   s   "r9   r@   r@   �   s   � � j� j�d� jr8   c                �   � V P                  4       '       g   R#  V P                  RR7      p\        TRR4      #   \         d     R# i ; i)aW  Reads a previously generated &lt;slug&gt;.html back and pulls the inner
+HTML of its .readme-content div out verbatim (plain string slicing
+against the exact template markup, not a parse-and-reserialize round
+trip through BeautifulSoup, so a reused README's bytes come back
+identical to what's already published - a round trip risks subtle
+re-serialization differences, e.g. attribute quoting, that would show
+up as spurious no-op diffs every run). Returns None (falls back to a
+fresh API fetch) if the file doesn't exist or doesn't look like it
+was expected to - always safe, just costs an extra API call.NrB   rC   z&lt;div class="readme-content"&gt;
+� 
+        &lt;/div&gt;
+      &lt;/section&gt;�rF   rI   rJ   rj   �rm   r^   s   &amp; r9   �extract_readme_htmlrr   �   sN   � � �;�;�=�=����~�~�w�~�/�� �D�"B�Dh�i�i�� � ����   �9 �A�Ac                �$   � V ^8�  d   QhR\         /# rl   r   )r?   s   "r9   r@   r@   �   s   � � #� #�d� #r8   c                �V  � V P                  4       '       g   R#  V P                  RR7      pTP                  R4      pTR8X  d   R# RpTP                  Y24      pTR8X  d   R# T\	        T4      ,           pTP                  RT4      pTR8X  g   Ye8  d   R# YT #   \         d     R# i ; i)z~Same idea as extract_readme_html, for a single source file's
+Pygments-highlighted block on a previously generated source page.NrB   rC   zclass="source-page__head"&gt;z&lt;/div&gt;
+        z
+      &lt;/section&gt;re   )rF   rI   rJ   rf   rg   )rm   r^   �head_idx�close_marker�	close_idx�
+content_startri   s   &amp;      r9   �extract_highlightedrz   �   s�   � � �;�;�=�=����~�~�w�~�/�� �y�y�5�6�H��2�~��%�L��	�	�,�1�I��B�����L� 1�1�M�
+�)�)�(�-�
+8�C�
+�b�y�C�'���c�"�"�� � ���s   �B �B(�'B(c                �$   � V ^8�  d   QhR\         /# rl   r   )r?   s   "r9   r@   r@   �   s   � � 	n� 	n�t� 	nr8   c                �   � V P                  4       '       g   R#  V P                  RR7      p\        TRR4      #   \         d     R# i ; i)zaSame idea again, for the rendered commit-card HTML on a previously
+generated &lt;slug&gt;-commits.html.NrB   rC   z!&lt;div class="cards commits-list"&gt;
+ro   rp   rq   s   &amp; r9   �extract_commit_cardsr}   �   sN   � � �;�;�=�=����~�~�w�~�/�� �D�"F�Hl�m�m�� � ���rs   c                �$   � V ^8�  d   QhR\         /# )r;   �urlra   )r?   s   "r9   r@   r@   �   s   � � � �3� r8   c                �*  � \        V 4      pVP                  R9  d   R# VP                  P                  R4       Uu. uF  q"'       g   K  VNK  	  pp\	        V4      ^8  d   R# V^ ,          V^,          rT\
+        P                  ! RRV4      pWE3# u upi )z�Returns (owner, repo) for a github.com repo URL, or None if the URL
+isn't a github.com repo link (e.g. a live-demo link, which we should
+just ignore).N�/z\.git$r   )z
+github.comzwww.github.com)r   �netlocrm   �splitrg   �re�sub)r   �parsed�p�parts�owner�repos   &amp;     r9   �parse_github_repor�   �   s�   � � �c�]�F�
+�}�}�&lt;�&lt;�����)�)�#�.�4�.�1�!�Q�Q�.�E�4�
+�5�z�A�~����(�E�!�H�4�
+�6�6�)�R��&amp;�D��;��� 
+5s   �	B�
+Bc                �$   � V ^8�  d   QhR\         /# )r;   �htmlra   )r?   s   "r9   r@   r@   �   s   � � -� -�3� -r8   c                �  � \        V R4      p. pVP                  R4       EF�  pVP                  R4      pV'       d   VP                  RR7      MRpVP                  R4       Uu. uF  qfP                  RR7      NK  	  ppRpVP                  R4       F;  p	V	P                  RR7      P	                  4       R	8X  g   K*  V	P                  R
+4      p M	  V'       g   K�  \
+        V4      p
+V
+'       g   \        RV RV R
+24       K�  V
+w  r�VP                  R4      p
+V
+'       d   V
+P                  RR7      MRpVP                  R4      pV'       dH   VP                  R4       Uu. uF+  pVP                  4       '       g   K  VP                  4       NK-  	  upM. pVP                  RVRVRVRVRVRVRV/4       EK�  	  V# u upi u upi )z�Parses index.html and returns a list of project dicts, one per
+.card that has a Repository link. Cards without one are skipped
+entirely, per the brief ("every project card where there is a
+github repo link").�html.parserz#projects .cards &gt; .cardz.card__titleT)�stripNz.card__head .tagz.card__links a, .card__foot &gt; a�
+repository�href�  ! 'z+': Repository link isn't a github.com URL (z), skippingz.license-badgezdata-source-file�,�title�tagsr�   r�   �repo_url�license�source_entries)r   �select�
+select_one�get_text�lower�getr�   rL   r�   r�   �append)r�   �soupr   �card�title_elr�   �tr�   r�   �ar�   r�   r�   �
+license_el�license_text�
+raw_source�er�   s   &amp;                 r9   �extract_projectsr�   �   s�  � �
+ ��}�-�D��H����6�7���?�?�&gt;�2��19��!�!��!�-�t��04���&lt;N�0O�P�0O�1�
+�
+��
+�&amp;�0O��P������&gt;�?�A��z�z��z�%�+�+�-��=��5�5��=��� @�
+ ��"�8�,����E�%�� K�H�:�U`�a�b������_�_�%5�6�
+�:D�z�*�*��*�6�$���X�X�0�1�
+�T^�Z�-=�-=�c�-B�P�-B��a�g�g�i�)�!�'�'�)�-B�P�df������U��D��U��D����|��n�
+� 	�7 8�J �O��C Q��* Qs   �$F&lt;� G�=Gc                �0   � V ^8�  d   QhR\         R\         /# )r;   r�   r�   ra   )r?   s   "r9   r@   r@     s   � � � �3� �c� r8   c                �  � RV  RV 2p \         P                  ! V\        ^R7      pVP                  4        VP	                  4       pRVP                  R4      RVP                  R4      /#   \         P
+                  \        3 d     R# i ; i)a�  Fetches the repo's pushed_at timestamp and default branch in one
+cheap call - pushed_at is the change-skip signal (see module
+docstring), default_branch feeds the Git Trees API (which, unlike the
+readme/contents endpoints, has no implicit 'use the default branch'
+behavior). Returns None on any failure; callers treat that the same
+as "definitely changed, fetch for real" since a cache can't be
+trusted to still be valid without a fresh pushed_at to compare.�https://api.github.com/repos/r�   ��headers�timeout�	pushed_at�default_branchN)�requestsr�   �API_HEADERS_JSON�raise_for_statusrG   �RequestException�
+ValueError)r�   r�   r   �respr   s   &amp;&amp;   r9   �fetch_repo_metar�     s�   � � 
+*�%���$��
+8�C���|�|�C�)9�2�F�������y�y�{���T�X�X�k�2�4D�d�h�h�O_�F`�a�a���%�%�z�2� ���s   �A A+ �+B
+�	B
+c                �&lt;   � V ^8�  d   QhR\         R\         R\         /# )r;   r�   r�   r&lt;   ra   )r?   s   "r9   r@   r@   $  s&amp;   � � G� G�S� G�� G�� Gr8   c                �J  � RV  RV R2p \         P                  ! V\        ^R7      pTP                  R8X  d   R	# TP                  ^�8w  d   R
+TP                   R2# \        TP                  YT;'       g    R4      #   \         P                   d   pRT R2u Rp?# Rp?ii ; i)
+a�  Fetches the repo's README already rendered to GitHub-flavored HTML
+(no local markdown parser needed at all). Returns a friendly fallback
+message on any failure (404, no README, rate limit, etc.) rather than
+raising, so one broken repo doesn't fail the whole run. branch is only
+used to resolve relative image/link paths (see clean_readme_html) -
+None falls back to HEAD, which raw.githubusercontent.com also
+understands.r�   r�   z/readmer�   z&lt;p&gt;&lt;em&gt;Could not fetch README: �	&lt;/em&gt;&lt;/p&gt;Ni�  z:&lt;p&gt;&lt;em&gt;This repository doesn't have a README yet.&lt;/em&gt;&lt;/p&gt;z$&lt;p&gt;&lt;em&gt;Could not fetch README (HTTP �).&lt;/em&gt;&lt;/p&gt;�HEAD)r�   r�   �API_HEADERS_HTMLr�   �status_code�clean_readme_htmlr^   )r�   r�   �branchr   r�   r�   s   &amp;&amp;&amp;   r9   �fetch_readme_htmlr�   $  s�   � � 
+*�%���$��w�
+?�C�&gt;��|�|�C�)9�2�F�� ���3��K����3��5�d�6F�6F�5G�{�S�S��T�Y�Y��V�5E�5E�v�F�F�� �$�$� &gt;�0���9�=�=��&gt;�s   �A= �=B"�B�B"�B"c                �H   � V ^8�  d   QhR\         R\         R\         R\        /# )r;   r�   r�   r�   r&lt;   )rb   r&gt;   )r?   s   "r9   r@   r@   :  s.   � � n� n�� n�3� n�� n�� nr8   c                ��  � V'       g   / # RV  RV RV R2p \         P                  ! V\        ^R7      pVP                  4        VP	                  4       pTP                  R4      '       d   \        RT  RT R24       TP                  R	. 4       Uu/ uF4  qfP                  R
+4      R8X  g   K  TR,          TP                  R
+R4      bK6  	  up#   \         P
+                  \        3 d    / u # i ; iu upi )a�  Fetches the full recursive file listing (blobs only, no
+directories) of the given branch as a {path: blob_sha} dict - used
+both to resolve dir/* wildcards in data-source-file and, via the
+blob sha, to know which individual files actually changed since the
+last build (see the module docstring). branch is passed in rather
+than looked up here so a caller who already has it from
+fetch_repo_meta doesn't pay for it twice.r�   r�   z/git/trees/z?recursive=1r�   �	truncatedz
+  ! Warning: zi's file tree was truncated by GitHub's API (repo too large) - a dir/* wildcard may be missing some files.�tree�type�blobrm   �shar   )r�   r�   r�   r�   rG   r�   r�   rL   )r�   r�   r�   r   r�   r   �items   &amp;&amp;&amp;    r9   �fetch_repo_file_treer�   :  s�   � � ��	�)�%���$��{�6�(�,�
+W�C���|�|�C�)9�2�F�������y�y�{�� �x�x����
+�
+�e�W�A�d�V� ,O� P� 	Q�:&gt;�(�(�6�2�:N�m�:N�$�RZ�RZ�[a�Rb�fl�Rl�-�D��L�$�(�(�5�"�-�-�:N�m�m�� 
+�%�%�z�2� ��	���
+ ns   �=C �C2�.C2�C/�.C/c                �&lt;   � V ^8�  d   QhR\         R\        R\         /# )r;   �entries�	file_treer&lt;   ��listr&gt;   )r?   s   "r9   r@   r@   Q  s!   � � � �4� �D� �T� r8   c                �  a	� V  Uu. uF  q"P                  R4      '       d   K  VNK  	  ppV  Uu. uF   q"P                  R4      '       g   K  VRR NK"  	  pp\        V4      pV F  o	VP                  V	3R lV 4       4       K   	  \        4       p. pV F-  pW�9  g   K  VP	                  V4       VP                  V4       K/  	  V# u upi u upi )a�  Resolves data-source-file entries into concrete file paths against
+an already-fetched {path: blob_sha} tree (see fetch_repo_file_tree) -
+this stays a pure function with no API calls of its own; the caller
+decides whether/when the tree is even worth fetching (see main() -
+an unchanged repo with the same data-source-file entries as last
+time skips the tree fetch entirely and reuses the cached file list).
+An entry ending in "/*" expands to every file under that directory,
+recursively; anything else is a literal file path (kept even if it's
+not in file_tree, so a typo'd path still gets attempted and fails
+gracefully at fetch time rather than silently vanishing). The first
+literal entry (if any) is left first in the result, so it becomes
+the "primary" file shown on the top-level &lt;slug&gt;-source.html page;
+wildcard-resolved files are appended after. De-duplicates so a file
+matched by both a literal entry and a wildcard only appears once.z/*Nc              3   �X   &lt;"  � T F  qP                  S4      '       g   K  Vx � K!  	  R # 5i�N)�
+startswith)�.0�f�prefixs   &amp; �r9   �	&lt;genexpr&gt;�(expand_source_entries.&lt;locals&gt;.&lt;genexpr&gt;e  s   �� � �E�9�a���V�0D���9�s   �*�
+*re   )�endswithr�   �extend�set�addr�   )
+r�   r�   r�   �
+literal_files�wildcard_prefixes�resolved�seen�orderedr�   r�   s
+   &amp;&amp;       @r9   �expand_source_entriesr�   Q  s�   �� � !(�@��1�z�z�$�/?�Q�Q��M�@�)0�E��A�J�J�t�4D���3�B����E��M�"�H�#�����E�9�E�E� $� �5�D��G�
+���=��H�H�Q�K��N�N�1�� � �N�� A��Es   �C�C�C�	Cc                �H   � V ^8�  d   QhR\         R\         R\         R\         /# )r;   r�   r�   rm   r&lt;   ra   )r?   s   "r9   r@   r@   p  s(   � � -� -�C� -�s� -�#� -�#� -r8   c                �  � RV  RV RV 2p \         P                  ! V\        ^R7      pTP                  ^�8w  d   RT R	TP                   R
+2# TP
+                  p \
+        Y&amp;4      p\        R\        RR
+7      p\        YgT4      #   \         P                   d   pRT RT R2u Rp?# Rp?ii ; i  \         d    \        4       p L`i ; i)z�Fetches one file's raw content and returns it pre-highlighted as
+HTML (Pygments, at build time) - no client-side highlighter needed
+on the page. Falls back to plain (unhighlighted) text on any error,
+same graceful-degradation pattern as the README fetch.r�   r�   z
+/contents/r�   z&lt;p&gt;&lt;em&gt;Could not fetch �: r�   N� (HTTP r�   r	   �table)�cssclass�style�linenos)r�   r�   �API_HEADERS_RAWr�   r�   r^   r   r   r   r
+   r    r	   )	r�   r�   rm   r   r�   r�   �code�lexer�	formatters	   &amp;&amp;&amp;      r9   �fetch_highlighted_sourcer�   p  s�   � �
+ 
+*�%���$��z�$��
+H�C�&gt;��|�|�C��"�E�� ���3��(���g�d�6F�6F�5G�{�S�S��9�9�D��&amp;�t�2�� �{�:N�X_�`�I��T�)�,�,�� �$�$� &gt;�(���b���9�=�=��&gt;�� � �����s/   �B �B/ �B,�B'�!B,�'B,�/C�Cc                �0   � V ^8�  d   QhR\         R\         /# )r;   �iso_dater&lt;   ra   )r?   s   "r9   r@   r@   �  s   � � 
+#� 
+#�� 
+#�� 
+#r8   c                �   � V '       g   R#  \         P                  ! V R4      pTP                  R4      #   \         d    T u # i ; i)z�Formats a GitHub API commit date ("2026-08-29T12:34:56Z") into a
+short human-readable form ("29 Aug 2026"). Falls back to the raw
+string on anything unexpected rather than raising.r   z%Y-%m-%dT%H:%M:%SZz%d %b %Y)r   �strptimer�   �strftime)r�   �dts   &amp; r9   �format_commit_dater�   �  sI   � � ���
+�
+�
+�x�)=�
+&gt;�� �;�;�z�"�"�� � ����s   �4 �
+A�Ac                �&lt;   � V ^8�  d   QhR\         R\         R\        /# )r;   r�   r�   �max_commits)rb   �int)r?   s   "r9   r@   r@   �  s&amp;   � � U;� U;�s� U;�#� U;�c� U;r8   c                ��  � . p^p^dpVRJ p\        V4      V8  Ed�   RV  RV R2p \        P                  ! V\        ^RVRV/R7      p	T	P                  ^�8w  d.   \        RT  RT RT	P                   R
+24       YG'       d   R
+3# R3#  T	P                  4       pT'       g   EMdRpT EF6  p
+T
+P                  RR4      pT'       d   Y�8X  d   RpRp EMT
+P                  R/ 4      ;'       g    / pTP                  R4      ;'       g    / pTP                  R4      ;'       g    RP                  4       pTP                  RTRTR,          RT'       d   TP                  4       ^ ,          MRRTP                  R4      ;'       g    RR\        TP                  RR4      4      RT
+P                  R4      ;'       g    RT  RT RT 2/4       \        T4      T8�  g   EK5  Rp M	  T'       g   \        T4      T8  d   MT^,
+          pEK�  YG'       d   R
+3# R3#   \        P                   d,   p
+\        RT  RT R	T
+ 24       YG'       d   R
+MR3u Rp
+?
+# Rp
+?
+ii ; i  \         d    YG'       d   R
+MR3u # i ; i) a	  Fetches commits newer than known_newest_sha (paginating from the
+top and stopping the moment that sha shows up) instead of always
+re-walking the whole history - once a project is cached, this is
+usually just one API call, since most runs add only a handful of
+commits since the last build. Returns (commits, status):
+  - "ok"        - completed cleanly. commits is either the first
+                   max_commits (known_newest_sha was None - first
+                   time caching this project) or just the new ones
+                   on top of it (often empty - "pushed_at changed
+                   but nothing new landed on the default branch" is
+                   a normal, cheap-to-detect case, e.g. a push to a
+                   different branch, or a tag).
+  - "rewritten" - known_newest_sha was never found within
+                   max_commits worth of history. Either the default
+                   branch's history was rewritten (force-push /
+                   rebase / squash - none of the new shas match the
+                   old one) or the repo has genuinely gained more
+                   than max_commits new commits since the last build
+                   (essentially never, for a personal project). The
+                   previously-cached cards can't be trusted to
+                   prepend onto, so commits here is a full, capped
+                   fetch meant to replace them outright.
+  - "failed"    - a request errored or returned non-200 before this
+                   could reach a conclusion, AND known_newest_sha was
+                   set (there's a cache worth protecting) - commits
+                   may be partial. The caller should keep whatever it
+                   already had rather than treat an empty result here
+                   as "nothing changed".
+A failure on a first-ever fetch (known_newest_sha is None) reports
+"ok" with a possibly-empty/partial list instead, matching this
+script's usual one-broken-repo-shouldn't-fail-the-run posture - the
+caller just skips writing a commits page for that project.
+Nr�   r�   z/commits�per_page�page)r�   r�   �paramsz   ! Could not fetch commits for r�   �ok�failedr�   z).Fr�   r   T�commit�author�message�	short_sha:N�   Nr�   z(no commit message)�name�Unknown�date�html_url�https://github.com/z/commit/�	rewritten)
+rg   r�   r�   r�   r�   rL   r�   rG   r�   r�   r�   �
+splitlinesr�   )r�   r�   �known_newest_shar�   �commitsr�   r�   �found_knownr   r�   r�   �batch�stopr�   r�   r  �author_infor  s   &amp;&amp;&amp;&amp;              r9   �fetch_commits_sincer  �  s�  � �D �G��D��H�"�d�*�K�
+
+�g�,��
+$�-�e�W�A�d�V�8�D��	@��&lt;�&lt;��-�r�"�H�f�d�;��D� ���s�"��4�U�G�1�T�F�'�$�JZ�JZ�I[�[]�^�_��[�T�?�?�h�?�?�	@��I�I�K�E� �����D��(�(�5�"�%�C��C�$;�"������X�X�h��+�1�1�r�F� �*�*�X�.�4�4�"�K��z�z�)�,�2�2��9�9�;�G��N�N��s��S��W��G��+�+�-�a�0�AV��+�/�/�&amp;�1�&gt;�&gt;�Y��*�;�?�?�6�2�+F�G��D�H�H�Z�0�e�e�6I�%��PQ�RV�QW�W_�`c�_d�4e�
+� 
+� �7�|�{�*����' �* �3�u�:��(����	���[�T�:�:�k�:�:��O �(�(� 	@��4�U�G�1�T�F�"�Q�C�H�I��[�T�h�?�?��	@�� � 	@��[�T�h�?�?�	@�s/   �"H �I �I�( I�I�I�I1�0I1c                �0   � V ^8�  d   QhR\         R\        /# )r;   r  r&lt;   �r&gt;   rb   )r?   s   "r9   r@   r@   �  s   � � 
+� 
+�t� 
+�� 
+r8   c                 �   � R V R,           RV R,           R\        V R,          4       R\        V R,          4       RV R	,           R
+2# )z"&lt;a class="card commit-card" href="r	  z`"&gt;
+            &lt;div class="card__head"&gt;
+              &lt;div class="card__tags"&gt;&lt;span class="tag"&gt;r  z4&lt;/span&gt;&lt;/div&gt;
+              &lt;h3 class="card__title"&gt;r�   z�&lt;/h3&gt;
+            &lt;/div&gt;
+            &lt;div class="card__foot commit-card__foot"&gt;
+              &lt;span class="commit-card__author"&gt;r  z6&lt;/span&gt;
+              &lt;span class="commit-card__date"&gt;r  z)&lt;/span&gt;
+            &lt;/div&gt;
+          &lt;/a&gt;)�html_escape)r  s   &amp;r9   �render_commit_cardr  �  sl   � �1�&amp;��2D�1E� F9�9?��9L�8M� N'�'2�6�'�?�'C�&amp;D� E1� 2=�V�H�=M�1N�0O� P/�/5�f�~�.&gt;� ?�	� 	r8   z&lt;[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}c                �&lt;   � V ^8�  d   QhR\         R\         R\         /# )r;   r   �
+relative_baser&lt;   ra   )r?   s   "r9   r@   r@     s!   � � 
+3� 
+3�� 
+3�C� 
+3�C� 
+3r8   c                �r  � \        V 4      pVP                  R8X  d&gt;   \        P                  VP                  4      pV'       d   RVP                  ^ 4       2# T # V '       d&lt;   V P
+                  R4      '       g%   VP                  '       g   VP                  '       d   V # \        WP                  R4      4      # )a~  Returns a README image/link URL that still works once the README is
+served from this site instead of github.com: expiring
+private-user-images URLs become their permanent user-attachments
+form, and repo-relative paths (e.g. &lt;img src="assets/logo.png"&gt;, which
+the API leaves as-is) are resolved against relative_base. Absolute
+URLs, in-page #anchors, mailto: etc. come back unchanged.z)private-user-images.githubusercontent.comz+https://github.com/user-attachments/assets/�#r�   )
+r   r�   �ATTACHMENT_UUID_RE�searchrm   �groupr�   �schemer   �lstrip)r   r  r�   �matchs   &amp;&amp;  r9   �fix_readme_urlr#    s�   � � �c�]�F�
+�}�}�C�C�"�)�)�&amp;�+�+�6��QV�&lt;�U�[�[��^�&lt;L�M�_�\_�_��#�.�.��%�%�����&amp;�-�-�-��
+��=�*�*�S�/�2�2r8   c          
+      �T   � V ^8�  d   QhR\         R\         R\         R\         R\         /# )r;   �raw_htmlr�   r�   r�   r&lt;   ra   )r?   s   "r9   r@   r@     s6   � � &amp;g� &amp;g�� &amp;g�C� &amp;g�s� &amp;g�C� &amp;g�C� &amp;gr8   c           
+     �,  � \        V R4      pRV RV RV R2pRV RV RV R2pVP                  RRR7       F  p\        VR	,          V4      VR	&amp;   K  	  VP                  RR
+.RR7       F�  p. p	VR,          P                  R
+4       FX  p
+V
+P                  4       pV'       g   K  V	P	                  RP                  \        V^ ,          V4      .VR,          O4      4       KZ  	  RP                  V	4      VR&amp;   K�  	  VP                  RRR7       F  p\        VR,          V4      VR&amp;   K  	  VP
+                  R4       F;  p
+V
+P
+                  R4       F  pVP                  4        K  	  V
+P                  4        K=  	  VP
+                  R4       F  pVP                  4        K  	  VP                  R4      ;'       g    VP                  R4      ;'       g    Tp\        VR4      '       d#   RP                  R VP                   4       4      # \        V4      # )av  Strips GitHub-page-only chrome (heading permalink icons, the
+outer #readme/article wrapper) so the markup drops cleanly into our
+own page template and styling instead of expecting GitHub's own CSS,
+and rewrites image/link URLs that only work on github.com itself (see
+fix_readme_url). Relative paths are resolved against the repo root,
+where the README almost always lives.
+r�   z"https://raw.githubusercontent.com/r�   r
+  z/blob/�imgT)�srcr(  �source)�srcsetr*  r�   � �rd   NNz, r�   �r�   r�   zdiv.markdown-headingza.anchorzarticle.markdown-bodyz#readme�contentsr   c              3   �8   "  � T F  p\        V4      x � K  	  R # 5ir�   ra   �r�   �cs   &amp; r9   r�   �$clean_readme_html.&lt;locals&gt;.&lt;genexpr&gt;:  s   � � �4�#3�a�3�q�6�6�#3�s   �)
+r   �find_allr#  r�   r�   �joinr�   �	decompose�unwrapr�   �hasattrr.  rb   )r%  r�   r�   r�   r�   �raw_base�	blob_baser'  �el�
+candidates�	candidater�   r�   �heading_wrap�anchor�articles   &amp;&amp;&amp;&amp;            r9   r�   r�     s�  � � ��=�1�D�3�E�7�!�D�6��6�(�!�L�H�%�e�W�A�d�V�6�&amp;���C�I��}�}�U��}�-��#�C��J��9��E�
+� .� �m�m�U�H�-�d�m�;���
+��H��+�+�C�0�I��O�O�%�E��u��!�!�#�(�(�N�5��8�X�,N�+[�QV�WY�QZ�+[�"\�]� 1� �y�y��,��8��
+ &lt;� �]�]�3�T�]�
+*��"�1�V�9�i�8��&amp;�	� +�
+ ���$:�;��"�)�)�*�5�F����� 6����� &lt;� �+�+�j�)������ *� �o�o�5�6�\�\�$�/�/�)�:T�\�\�X\�G�8?���8T�8T�2�7�7�4�7�#3�#3�4�4�f�Z]�^e�Zf�fr8   c                �&lt;   � V ^8�  d   QhR\         R\         R\         /# )r;   r�   �upr&lt;   ra   )r?   s   "r9   r@   r@   =  s!   � � � �s� �� �� r8   c                ��   � \        V R4      pVP                  R4      pVf   R# VP                  RRR7       F4  pVR,          P                  R4      '       g   K#  V R	VR,           2VR&amp;   K6  	  \	        V4      # )
+a  Pulls the whole &lt;header class="rail" id="rail"&gt; nav block out of
+index.html so project pages share the exact same navigation - single
+source of truth, nothing to remember to keep in sync by hand.
+
+In-page anchor links (#projects, #top, etc.) only make sense on
+index.html itself; from a generated page they're rewritten to point
+back at index.html instead. `up` is how many directory levels to
+climb to reach the site root - "../" for pages directly under
+/projects/, "../../" for per-file pages nested under
+/projects/&lt;slug&gt;-source/.
+r�   zheader.rail#railr   r�   Tr-  r�   r  r   )r   r�   r3  r�   rb   )r�   rA  r�   �railr�   s   &amp;&amp;   r9   �extract_railrD  =  sw   � � ��}�-�D��?�?�-�.�D��|��
+�]�]�3�T�]�
+*���V�9����$�$��$�j��6���4�A�f�I� +� �t�9�r8   c                �0   � V ^8�  d   QhR\         R\        /# )r;   �pathsr&lt;   r�   )r?   s   "r9   r@   r@   U  s   � � � �d� �t� r8   c                �   � / pV  F?  pVP                  R4      pTpVRR  F  pVP                  V/ 4      pK  	  RWCR,          &amp;   KA  	  V# )z�Turns a flat list of file paths into a nested dict tree, e.g.
+["src/main.rs", "src/utils/a.rs"] -&gt;
+{"src": {"main.rs": None, "utils": {"a.rs": None}}}.
+A leaf (file) maps to None; a directory maps to a dict of children.r�   Nre   )r�   �
+setdefault)rF  �rootrm   r�   �node�parts   &amp;     r9   �
+build_treerL  U  sW   � �
+ �D����
+�
+�3������#�2�J�D��?�?�4��,�D� ���2�Y�� � �Kr8   c                �0   � V ^8�  d   QhR\         R\         /# )r;   rm   r&lt;   ra   )r?   s   "r9   r@   r@   d  s   � � � �� �� r8   c                �j   � V P                  RR4      pVP                  R4      '       d
+   VR,          pV# )a�  Converts a repo-relative file path into a filesystem-safe filename
+for its generated page, e.g. "src/handlers/auth.rs" -&gt; "src--handlers--auth.rs".
+
+Strips a single leading "." from the result (e.g. ".github/workflows/x.yml"
+-&gt; "github--workflows--x.yml") so the generated filename never itself
+starts with a literal dot. GitHub Pages' explicit Jekyll build step
+(jekyll-gh-pages.yml, actions/jekyll-build-pages@v1) silently drops any
+file whose name starts with "." from its output -- 404ing the page --
+regardless of this repo's .nojekyll file, which only disables GitHub
+Pages' own *automatic* Jekyll auto-detection pipeline and has no effect
+on an explicitly invoked `jekyll build` command run from a workflow.r�   z--�.r,  )�replacer�   )rm   r  s   &amp; r9   �
+safe_filenamerQ  d  s1   � � �&lt;�&lt;��T�"�D����s����B�x���Kr8   c          
+      �T   � V ^8�  d   QhR\         R\        R\        R\        R\        /# )r;   r�   r�   �current_path�baser&lt;   r  )r?   s   "r9   r@   r@   v  s/   � � 5� 5�4� 5�� 5�C� 5�s� 5�s� 5r8   c           
+     �  � . p\        R V P                  4        4       4      p\        R V P                  4        4       4      pV F5  pV V R2p\        W,          W�V4      p	VP                  RV RV	 R24       K7  	  V F&gt;  pV V 2pV \	        V4       R2p
+W�8X  d   RMR	pVP                  R
+V RV
+ RV R
+24       K@  	  RR	P                  V4       R2# )z�Recursively renders a file tree dict as nested &lt;ul&gt; HTML, with a
+link to each file's generated page. `base` is the relative path
+prefix needed to reach the &lt;slug&gt;-source/ directory from whichever
+page this call renders onto (see generate_source_pages).c              3   �Z   "  � T F!  w  r\        V\        4      '       g   K  Vx � K#  	  R # 5ir�   )�
+isinstancer&gt;   �r�   �k�vs   &amp;  r9   r�   �#render_tree_html.&lt;locals&gt;.&lt;genexpr&gt;|  s   � � �D����
+�1�d�0C�!�!��s   �+�
++c              3   �6   "  � T F  w  rVe   K  Vx � K  	  R # 5ir�   r!   rX  s   &amp;  r9   r�   r[  }  s   � � �;�����1�1��s   ��
+r�   z2&lt;li class="tree-dir"&gt;&lt;span class="tree-dir__name"&gt;z/&lt;/span&gt;z&lt;/li&gt;�.htmlz tree-file--activer   z&lt;li class="tree-filez"&gt;&lt;a href="z"&gt;z	&lt;/a&gt;&lt;/li&gt;z&lt;ul class="tree"&gt;z&lt;/ul&gt;)�sorted�items�render_tree_htmlr�   rQ  r4  )r�   r�   rS  rT  r_  �dirs�filesr  �full�
+children_html�	file_page�actives   &amp;&amp;&amp;&amp;        r9   r`  r`  v  s�   � �
+ 
+�E��D��
+�
+��D�D�D��;�����;�;�E�����$��q�!��(���T��N�
+�
+���I�$��x�Xe�Wf�fk�l�m� �
+ ����$�� ���f�]�4�0�1��7�	�)-�)=�%�2��
+���+�F�8�;�y�k��D�6�QZ�[�\�	 � �r�w�w�u�~�.�e�4�4r8   u*  &lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8" /&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+  &lt;title&gt;{title} — Jan&lt;/title&gt;
+  &lt;link rel="stylesheet" href="../styles.css?v={asset_version}" /&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;a class="skip-link" href="#main"&gt;Skip to content&lt;/a&gt;
+  &lt;div class="layout"&gt;
+    {rail_html}
+    &lt;main class="main" id="main"&gt;
+      &lt;section class="section project-page"&gt;
+        &lt;p class="section__path"&gt;&lt;a href="../index.html#projects" class="link"&gt;~/projects&lt;/a&gt; / {repo}&lt;/p&gt;
+        &lt;div class="card__head project-page__head"&gt;
+          &lt;h1 class="section__title"&gt;{title}&lt;/h1&gt;
+          {tags_html}
+        &lt;/div&gt;
+        &lt;div class="card__foot project-page__foot"&gt;
+          &lt;div class="card__links"&gt;
+            &lt;a href="{repo_url}" class="link"&gt;Repository&lt;/a&gt;
+            {source_link_html}
+            {commits_link_html}
+          &lt;/div&gt;
+          {license_html}
+        &lt;/div&gt;
+        &lt;div class="readme-content"&gt;
+{readme_html}
+        &lt;/div&gt;
+      &lt;/section&gt;
+    &lt;/main&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+u�  &lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8" /&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+  &lt;title&gt;{file_path} — {title} — Jan&lt;/title&gt;
+  &lt;link rel="stylesheet" href="{up}styles.css?v={asset_version}" /&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;a class="skip-link" href="#main"&gt;Skip to content&lt;/a&gt;
+  &lt;div class="layout"&gt;
+    {rail_html}
+    {tree_html}
+    &lt;main class="main" id="main"&gt;
+      &lt;section class="section source-page"&gt;
+        &lt;p class="section__path"&gt;
+          &lt;a href="{up}index.html#projects" class="link"&gt;~/projects&lt;/a&gt; /
+          &lt;a href="{project_href}" class="link"&gt;{repo}&lt;/a&gt; / source
+        &lt;/p&gt;
+        &lt;div class="source-page__head"&gt;
+          &lt;h1 class="section__title"&gt;{file_path}&lt;/h1&gt;
+          &lt;a href="{project_href}" class="link"&gt;← Back to {title}&lt;/a&gt;
+        &lt;/div&gt;
+        {highlighted}
+      &lt;/section&gt;
+    &lt;/main&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+u�  &lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8" /&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+  &lt;title&gt;Commits — {title} — Jan&lt;/title&gt;
+  &lt;link rel="stylesheet" href="../styles.css?v={asset_version}" /&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;a class="skip-link" href="#main"&gt;Skip to content&lt;/a&gt;
+  &lt;div class="layout"&gt;
+    {rail_html}
+    &lt;main class="main" id="main"&gt;
+      &lt;section class="section commits-page"&gt;
+        &lt;p class="section__path"&gt;
+          &lt;a href="../index.html#projects" class="link"&gt;~/projects&lt;/a&gt; /
+          &lt;a href="{project_href}" class="link"&gt;{repo}&lt;/a&gt; / commits
+        &lt;/p&gt;
+        &lt;div class="source-page__head"&gt;
+          &lt;h1 class="section__title"&gt;Commit history&lt;/h1&gt;
+          &lt;a href="{project_href}" class="link"&gt;← Back to {title}&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div class="cards commits-list"&gt;
+{commit_cards_html}
+        &lt;/div&gt;
+      &lt;/section&gt;
+    &lt;/main&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+c                �`   � V ^8�  d   QhR\         R\        R\        R\        R\        R\        /# )r;   �project�	rail_html�
+has_source�readme_html�commit_countr&lt;   )r&gt;   rb   �boolr�   )r?   s   "r9   r@   r@   �  s8   � � � �� �#� �4� �c� �ad� �il� r8   c           
+      ��  � R P                  R V R,           4       4      pV R,          '       d   RV R,           R2MRpV R,          P                  4       pRpV'       d?   V R,          p	\        V	4      ^8X  d   R	V	^ ,           R
+2MR\        V	4       R2p
+R
+V RV
+ R2pV'       d
+   R
+V RV R2MRp\        P	                  V R,          V R,          VV R,          VVVVV\
+        R7
+      # )z
+          c              3   �.   "  � T F  pR V R2x � K
+  	  R# 5i)z&lt;span class="tag"&gt;�&lt;/span&gt;Nr!   )r�   r�   s   &amp; r9   r�   �render_page.&lt;locals&gt;.&lt;genexpr&gt;�  s   � � �#]�_��&amp;8���7�$C�_�s   �r�   r�   z&lt;span class="license-badge"&gt;rp  r   r�   �_resolved_filesz
+View source (�)zBrowse source (� files)z	&lt;a href="z-source.html" class="link"&gt;z&lt;/a&gt;z,-commits.html" class="link"&gt;Commit history (z)&lt;/a&gt;r�   r�   )
+r�   r�   �	tags_htmlr�   �license_htmlrk  ri  �source_link_html�commits_link_html�
+asset_version)r4  r�   rg   �
+PAGE_TEMPLATEr?   �
+ASSET_VERSION)rh  ri  rj  rk  rl  ru  rv  �slugrw  rb  �labelrx  s   &amp;&amp;&amp;&amp;&amp;       r9   �render_pager~  �  s  � ��#�#�#]�W�U[�_�#]�]�I� �9��� '�w�y�'9�&amp;:�'�B�#%� � �6�?� � �"�D�����)�*��/2�5�z�Q��-��a��z��+�o�VY�Z_�V`�Ua�ah�Di��&amp;�t�f�,G��w�d�S�� � �D�6�E�l�^�SX�Y�� �
+ ����g��
+�V�_����$�!���)�+�#�  � � r8   c                �H   � V ^8�  d   QhR\         R\        R\        R\        /# )r;   rh  ri  �commit_cards_htmlr&lt;   r  )r?   s   "r9   r@   r@     s)   � � 	� 	�� 	�#� 	�#� 	�RU� 	r8   c           	      �   � V R ,          P                  4       p\        P                  V R,          V R ,          VV R2V\        R7      # )r�   r�   r]  )r�   r�   ri  �project_hrefr�  ry  )r�   �COMMITS_PAGE_TEMPLATEr?   r{  )rh  ri  r�  r|  s   &amp;&amp;&amp; r9   �render_commits_pager�    sM   � ��6�?� � �"�D� �'�'��g��
+�V�_���v�U�^�+�#�
+ (� � r8   c                �l   � V ^8�  d   QhR\         R\         R\        R\        R\        R\        R\        /# )r;   rh  �
+rail_html_for�	file_pathrA  r�  �highlightedr&lt;   r  )r?   s   "r9   r@   r@   (  sI   � � � �T� �$� �3� �Z]� �mp� �  @C� �  HK� r8   c                ��   � V R,          P                  4       pVR8X  d   RMV R2pRp	Ve   \        VRW(R7      p
+RV
+ R2p	\        P                  V R,          V R,          VW,          V	VVV\        R	7	      # )
+a�  Renders one file's page - used both for the single-file case
+(up="../", project_href="&lt;slug&gt;.html") and for each file in the
+multi-file case (index page: up="../", tree base includes the
+subfolder; per-file pages: up="../../", tree base is empty since
+they're siblings). `highlighted` is already-resolved HTML (either
+freshly fetched or reused from the previous build - see
+generate_source_pages), not fetched here.r�   �../../r   z-source/)rT  z&lt;&lt;nav class="file-tree"&gt;&lt;p class="file-tree__title"&gt;Files&lt;/p&gt;z&lt;/nav&gt;r�   )	r�   r�   r�  ri  �	tree_htmlrA  r�  r�  ry  )r�   r`  �SOURCE_PAGE_TEMPLATEr?   r{  )rh  r�  r�  r�   rA  r�  r�  r|  �	tree_baser�  �rendereds   &amp;&amp;&amp;&amp;&amp;&amp;&amp;    r9   �render_source_file_pager�  (  s�   � � �6�?� � �"�D��H�n��T�F�(�*;�I��I���#�D�"�i�H��R�S[�R\�\b�c�	��&amp;�&amp;��g��
+�V�_���#��
+�!��#� '� 
+� 
+r8   c                �   � V ^8�  d   QhR\         R\        R\        R\        R\        R\        R\         R\         R	\        /	# )
+r;   rh  rb  �
+rail_html_top�rail_html_nested�out_dir�	site_root�	blob_shas�cached_filesr&lt;   )r&gt;   r�   rb   r   r�   )r?   s   "r9   r@   r@   D  sh   � � I� I�4� I�� I�S� I�\_� I�jn� I�{� I�  MQ� I�  ae� I�  jm� Ir8   c                �  aaaaa� V R,          P                  4       pV R,          V R,          uooRVRV/p	\        4       p
+R^ R^ /oR VVVVV3R llp\        V4      ^8X  d�   WH R	2,          pV! V^ ,          V4      p
+\        W	V^ ,          R
+RV R2V
+R7      pVP	                  VR
+R7       V
+P                  VP
+                  4       4       \        RVP                  V4       RSR,          '       d   RMR R24       V
+# \        V4      pV^ ,          pWH R2,          pVP                  RR7       V Uu/ uF   pVV! VV\        V4       R2,          4      bK"  	  pp\        W	VVRV R2VV,          R7      pWH R	2,          pVP	                  VR
+R7       V
+P                  VP
+                  4       4       \        RVP                  V4       R\        V4       R24       V Ff  p\        W	VVRRV R2VV,          R7      pV\        V4       R2,          pVP	                  VR
+R7       V
+P                  VP
+                  4       4       Kh  	  \        R\        V4       RVP                  V4       RSR,           RSR,           R2	4       V
+# u upi )a%  Writes &lt;slug&gt;-source.html (and, for multiple files, &lt;slug&gt;-source/
+per-file pages plus a file-tree sidebar on every one of them).
+
+For each file, reuses last build's highlighted HTML (read back from
+its own already-published page - see extract_highlighted) instead of
+re-fetching+re-highlighting it, but ONLY when that exact file's git
+blob sha hasn't changed (blob_shas is this run's {path: sha}, from
+fetch_repo_file_tree; cached_files is the same shape from last run's
+cache) - so within one repo, only the files that actually changed
+get re-fetched, not the whole source browser at once.
+
+Returns the set of resolved paths it wrote, so main() can tell
+cleanup_stale_files which files in projects/ are still current and
+which are leftovers from a data-source-file that's since been
+removed or narrowed.r�   r�   �../r�  �reused�fetchedc                �&lt;   � V ^8�  d   QhR\         R\        R\         /# )r;   r�  �existing_page_pathr&lt;   )rb   r   )r?   s   "r9   r@   �+generate_source_pages.&lt;locals&gt;.__annotate__Z  s&amp;   � � 	@� 	@�3� 	@�D� 	@�S� 	@r8   c                 �  &lt;� SP                  V 4      pSP                  V 4      pV'       d5   V'       d-   W#8X  d'   \        V4      pVe   S	R;;,          ^,
+          uu&amp;   V# S	R;;,          ^,
+          uu&amp;   \        SSV 4      # )Nr�  r�  )r�   rz   r�   )
+r�  r�  �old_sha�new_sha�cachedr�  r�  r�   r�   �statss
+   &amp;&amp;   �����r9   �get_highlighted�.generate_source_pages.&lt;locals&gt;.get_highlightedZ  sn   �� ��"�"�9�-���-�-�	�*���w�7�#5�(�);�&lt;�F��!��h��1�$���
+�
+�i��A���'��t�Y�?�?r8   z-source.htmlNr]  )r�   rA  r�  r�  rB   rC   z     -&gt; source page -&gt; � (rs  z-sourceT�rT   z     -&gt; source index -&gt; rt  z        z file page(s) -&gt; z/ (z
+ fetched, z reused))r�   r�   rg   r�  rZ   r�   �resolverL   rM   rL  rY   rQ  )rh  rb  r�  r�  r�  r�  r�  r�  r|  r�  �writtenr�  �out_pathr�  r�   r�   �primary�sub_dirr�   �highlighted_by_file�
+index_page�
+index_pathr�  �file_outr�   r�   r�  s   &amp;&amp;&amp;&amp;&amp;&amp;ff                @@@r9   �generate_source_pagesr�  D  s�  �� �  �6�?� � �"�D��'�"�G�F�O�K�E�4��M�8�5E�F�M��e�G�
+�q�)�Q�'�E�	@� 	@� �5�z�Q���v�\�2�2��%�e�A�h��9��&amp;��E�!�H�4��d�V�5�&gt;�{�
+�� 	���D�7��3����H�$�$�&amp;�'�
+�'��(&lt;�(&lt;�Y�(G�'H��W\�]e�Wf�Wf�8�lu�Jv�vw�x�y����e��D��A�h�G��&amp;��(�(�G��M�M�4�M� �
+ af�f�`e�[\�1�o�a��m�A�&gt;N�=O�u�;U�1U�V�V�`e��f�(���d��$��u�~�;N�w�;W��J� �V�&lt;�0�0�J����*�w��7��K�K�
+�"�"�$�%�	�$�Z�%;�%;�I�%F�$G�r�#�e�*��U\�
+]�^��	�&amp;��I�D���D�6��&amp;7�EX�Yb�Ec�
+�� �
+�i� 8�9��?�?�����D�7��3����H�$�$�&amp;�'� � 
+�H�S��Z�L� 1�'�2E�2E�i�2P�1Q�QT�UZ�[d�Ue�Tf�fp�qv�w�  rA�  qB�  BJ�  K�  L��N��) gs   �4&amp;J
+c                �&lt;   � V ^8�  d   QhR\         R\        R\         /# )r;   �projects_dirr�  r�  )r   r�   )r?   s   "r9   r@   r@   �  s!   � � 5� 5�d� 5�S� 5�T� 5r8   c                �0  � V P                  4       '       g   R# . p\        V P                  R4      4       F;  pVP                  4       V9  g   K  VP	                  4        VP                  V4       K=  	  \        R V P                  R4       4       R RR7       F  p VP
+                  4        K  	  V'       dA   \        R\        V4       R	24       V F   p\        R
+VP                  V4       24       K"  	  R# \        R4       R#   \         d     K{  i ; i)a�  Removes any *.html file under projects/ that this run didn't (re)write
+- i.e. leftovers from a project card that got removed, or a
+data-source-file attribute that got removed or narrowed to fewer files.
+Nothing under projects/ is hand-authored (see repo-structure notes), so
+anything not in `written` is safe to delete. Also removes any directory
+(e.g. a now-empty &lt;slug&gt;-source/) left empty afterwards.Nz*.htmlc              3   �T   "  � T F  qP                  4       '       g   K  Vx � K   	  R # 5ir�   )�is_dir�r�   r�   s   &amp; r9   r�   �&amp;cleanup_stale_files.&lt;locals&gt;.&lt;genexpr&gt;�  s   � � �F� 7�1�8�8�:�Q�Q� 7�s   �(�
+(�*c                 �,   � \        V P                  4      # r�   )rg   r�   )r�   s   &amp;r9   �&lt;lambda&gt;�%cleanup_stale_files.&lt;locals&gt;.&lt;lambda&gt;�  s   � �3�q�w�w�&lt;r8   T)�key�reversezRemoved z@ stale generated page(s) (no longer referenced from index.html):z  - z#No stale generated pages to remove.)rF   r^  �rglobr�  �unlinkr�   �rmdirrJ   rL   rg   rM   )r�  r�  r�  �removedrm   �ds   &amp;&amp;&amp;   r9   �cleanup_stale_filesr�  �  s�   � � ��� � ���G��|�)�)�(�3�4���&lt;�&lt;�&gt;��(��K�K�M��N�N�4� � 5� �F�� 2� 2�3� 7�F�/��?��	�
+�G�G�I�?� �
+���W���&amp;f�g�h��D��D��)�)�)�4�5�6�7� � 	�3�4�� � 	��	�s   �D�D�Dc            
+      �  � \         P                  R R7      p \        V 4      p\        V RR7      p\        V RR7      pV'       g   \	        R4       V'       g   \	        R4       R# \
+        P
+                  RR	7       \        4       p\        4       pV EF  pVR
+,          P                  4       pVR,          VR
+,          r�V RV	 2p
+VP                  V
+/ 4      p\
+        V R
+2,          p\
+        V R2,          p
+\        W�4      pV'       d   VP                  R4      MRpV'       d   VP                  R4      MRp\        V4      ;'       d    W�P                  R4      8H  p\	        RVR,           RV RV	 RVP                  \        4       2V'       d   RMR,           4       V'       d   \        V4      MRpVf
+   \!        W�V4      p. p/ pVP                  R/ 4      pVR,          '       Ed   VP                  R4      VR,          8H  pT;'       d
+    T;'       d    TpV'       d&amp;   \#        V4      p\%        VP'                  4       4      pM�V'       gL   V'       dD   V'       d&lt;   \	        RVR,           R24       \#        V4      p\%        VP'                  4       4      pM_\)        W�V4      p\+        VR,          V4      pV Uu/ uF  pVVP                  VR4      bK  	  ppV'       g   \	        RVR,           R24       VVR&amp;   VP                  R4      pVP                  R^ 4      pRp^ pTpV'       d   V'       d   \-        V
+4      pVe   TpVEf5   \/        W�V4      w  pp V R8X  d1   V'       d)   \-        V
+4      pVe   Tp\	        RVR,           R 24       M�V R!8X  dU   \	        RVR,           R"24       R#P1                  R$ V 4       4      p\3        V4      pV'       d   V^ ,          R%,          MRpM�\-        V
+4      ;'       g    Rp!R#P1                  R&amp; V 4       4      p"R#P1                  R' V"V!3 4       4      p#V#'       d   T#pV\3        V4      ,           pV'       d)   V^ ,          R%,          p\	        R(\3        V4       R)24       \5        Wb\        V4      VVR*7      p$VP7                  V$R R7       VP9                  VP;                  4       4       V'       d!   V\=        VVW#\
+        \        VV4      ,          pV'       dh   Ved   \?        WbV4      p%V
+P7                  V%R R7       VP9                  V
+P;                  4       4       \	        R+V R,V
+P                  \        4       24       M\	        RVR,           R-24       V'       g   EK�  RVRVR,          RVRVRV/WJ&amp;   EK  	  \	        R.\3        V4       R/24       \A        \
+        V\        4       \C        V4       R# u upi )0rB   rC   r�  )rA  r�  zo  ! Warning: couldn't find &lt;header class="rail" id="rail"&gt; in index.html - generated pages will have no navbar.z5No project cards with a GitHub Repository link found.NTr�  r�   r�   r�   r]  z
+-commits.htmlr�   r�   z  -&gt; r�   r�  z) -&gt; z" (repo unchanged since last build)r   rb  r�   r�   z�': could not reach the GitHub API for repo info - reusing last known file list instead of resolving dir/* wildcards against nothingzK': data-source-file entries resolved to zero files, skipping source page(s)rr  �newest_commit_sharl  r   zQ': could not refresh commit history this run (API error) - kept the existing pager  z�': previous newest commit not found in current history (force-push/rebase on the default branch?) - rebuilding the commits page from scratchrW   c              3   �&gt;   "  � T F  pR \        V4       2x � K  	  R# 5i�z
+          N�r  r0  s   &amp; r9   r�   �main.&lt;locals&gt;.&lt;genexpr&gt;  s!   � � �-h�\g�WX�
+�;M�a�;P�:Q�.R�\g��   �r�   c              3   �&gt;   "  � T F  pR \        V4       2x � K  	  R# 5ir�  r�  r0  s   &amp; r9   r�   r�    s!   � � �*e�Yd�TU�Z�8J�1�8M�7N�+O�Yd�r�  c              3   �8   "  � T F  q'       g   K  Vx � K  	  R # 5ir�   r!   r�  s   &amp; r9   r�   r�    s   � � �$[�0U�1�YZ�Q�Q�0U�s   �	�
+z     -&gt; z new commit(s) since last build)rj  rk  rl  z     -&gt; commit history (z
+ commits) -&gt; z8': could not fetch commit history, skipping commits pagez
+Generated z project page(s).)"�
+INDEX_HTMLrI   r�   rD  rL   �PROJECTS_DIRrY   rO   r�   r�   r�   r�   rm  rM   rN   rr   r�   r&gt;   r�   �keysr�   r�   r}   r  r4  rg   r~  rZ   r�   r�  r�  r�  r�  r\   )&amp;r�   r   r�  r�  rQ   r�  rh  r|  r�   r�   r�  �cache_entryr�  �existing_commits_path�metar�   r�   �repo_unchangedrk  rb  r�  r�  �same_entries�reuse_file_listr�   r�   �cached_newest_sha�cached_commit_countr�  rl  r�  �new_commits�status�previous_cards_html�new_cards_html�combinedr�   �commits_pages&amp;                                         r9   �mainr�  �  s�  � ������1�D���%�H� ��%�0�M�#�D�X�6���
+�  D�  	E��
+�E�F�������%��L�E��e�G����v��$�$�&amp;���g�&amp;����t���q������i�i��R�(���T�F�%�.�0�� ,�$��}�/E� E���u�+��-1�D�H�H�[�)�t�	�7;����"2�3���
+ �i��V�V�Y�/�/�+�:V�-V��
+��g�g�&amp;�'�r�%���$��u�X�=Q�=Q�R[�=\�&lt;]�^�9G�5�R�Q� 	R� 8F�)�(�3�4����+�E��H�K� ���	�"���w��3���#�$�$�&amp;�?�?�+;�&lt;��HX�@Y�Y�L�,�N�N��N�N�,�O�� !��.�	��Y�^�^�-�.��#��� ��g�g�.�/�  0s�  t�  u� ��.�	��Y�^�^�-�.��0��n�M�	�-�g�6F�.G��S��&gt;C�D�e��Q�	�
+�
+�a�� 4�4�e�	�D���E�'�'�"2�!3�3~��  A�%*��!�"� (�O�O�,?�@��)�o�o�n�a�@�� ����-���1� 4�5J� K�� �,�2���$�"5�e�CT�"U��K����!�&amp;9�$8�9N�$O�!�$�0�#6�L��E�'�'�"2�!3�  4E�  F�  G���;�&amp;���g�g�.�/� 0n� o� p�$(�I�I�-h�\g�-h�$h�!�"�;�/��=H�K��N�5�$9�d�!�&amp;:�;P�&amp;Q�&amp;W�&amp;W�UW�#�!%���*e�Yd�*e�!e���9�9�$[��AT�0U�$[�[���(0�%�#6��[�9I�#I�L��(3�A��u�(=�%��H�S��%5�$6�6U�V�W� �7�d�5�k�Wb�q}�~�����D�7��3����H�$�$�&amp;�'���,�W�e�]�^j�lu�  xA�  CO�  P�  
+P�G��-�9�.�w�GX�Y�L�!�,�,�\�G�,�L��K�K�-�5�5�7�8��,�\�N�-�H]�Hi�Hi�js�Ht�Gu�v�w��E�'�'�*�+�+c�d�e� �9��Y� �'�*:�";���#�%6����E�J�m �| 
+�J�s�8�}�o�%6�
+7�8���g�y�9��u���S Es   �=W�__main__)i,  )r�  )Rr&amp;   rG   �osr�   r   r�   r   r  �pathlibr   �urllib.parser   r   r�   �bs4r   �pygmentsr	   �pygments.formattersr
+   �pygments.lexersr   r   �pygments.styler
+   �
+pygments.utilr   �pygments.tokenr   r   r   r   r   r   �cwdrN   r�  r�  rE   �environr�   r   r{  �AUTH_HEADERSr�   r�   r�   r    rO   r\   rj   rr   rz   r}   r�   r�   r�   r�   r�   r�   r�   r�   r  r  �compiler  r#  r�   rD  rL  rQ  r`  rz  r�  r�  r~  r�  r�  r�  r�  r�  r"   r!   r8   r9   �&lt;module&gt;r�     s�  ��1�d � 	� 	� � &amp;� � *� � � � -� =�  � '� O� O� 
+�H�H�J�	�
+��
+%�
+��:�%��
+��
+"�V�
++�.H�
+H�
+��z�z�~�~�n�b�1��
+ �
+�
+���|�R�0��4�=�=��
+�&amp;��5���&amp;-�l�^�$&lt;�L��!�L�l�L�H�.K�L� �Q�l�Q�H�.P�Q� �O�\�O�8�-N�O���5� �B�`�
+�j�&amp;#�.	n��-�`�$G�,n�.�&gt;-�0
+#�U;�p
+�( �Z�Z� _�`� �
+3� &amp;g�R�0��$5�.#�
+�P� �J� �B�B	��8I�X5�BP�f �z���F� r8   
+</pre></div></td></tr></table></div>
+
+      </section>
+    </main>
+  </div>
+</body>
+</html>
