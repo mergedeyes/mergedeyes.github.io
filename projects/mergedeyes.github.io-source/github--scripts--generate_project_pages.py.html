@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>.github/scripts/generate_project_pages.py — Personal Website — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=7755d5b0" />
+  <link rel="stylesheet" href="../../styles.css?v=ff425c5b" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -1093,7 +1093,58 @@
 <span class="normal">1048</span>
 <span class="normal">1049</span>
 <span class="normal">1050</span>
-<span class="normal">1051</span></pre></div></td><td class="code"><div><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="normal">1051</span>
+<span class="normal">1052</span>
+<span class="normal">1053</span>
+<span class="normal">1054</span>
+<span class="normal">1055</span>
+<span class="normal">1056</span>
+<span class="normal">1057</span>
+<span class="normal">1058</span>
+<span class="normal">1059</span>
+<span class="normal">1060</span>
+<span class="normal">1061</span>
+<span class="normal">1062</span>
+<span class="normal">1063</span>
+<span class="normal">1064</span>
+<span class="normal">1065</span>
+<span class="normal">1066</span>
+<span class="normal">1067</span>
+<span class="normal">1068</span>
+<span class="normal">1069</span>
+<span class="normal">1070</span>
+<span class="normal">1071</span>
+<span class="normal">1072</span>
+<span class="normal">1073</span>
+<span class="normal">1074</span>
+<span class="normal">1075</span>
+<span class="normal">1076</span>
+<span class="normal">1077</span>
+<span class="normal">1078</span>
+<span class="normal">1079</span>
+<span class="normal">1080</span>
+<span class="normal">1081</span>
+<span class="normal">1082</span>
+<span class="normal">1083</span>
+<span class="normal">1084</span>
+<span class="normal">1085</span>
+<span class="normal">1086</span>
+<span class="normal">1087</span>
+<span class="normal">1088</span>
+<span class="normal">1089</span>
+<span class="normal">1090</span>
+<span class="normal">1091</span>
+<span class="normal">1092</span>
+<span class="normal">1093</span>
+<span class="normal">1094</span>
+<span class="normal">1095</span>
+<span class="normal">1096</span>
+<span class="normal">1097</span>
+<span class="normal">1098</span>
+<span class="normal">1099</span>
+<span class="normal">1100</span>
+<span class="normal">1101</span>
+<span class="normal">1102</span></pre></div></td><td class="code"><div><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
 <span class="sd">"""</span>
 <span class="sd">Generates a standalone HTML page under /projects for every project card in</span>
 <span class="sd">index.html that has a "Repository" link pointing at GitHub. Each page gets:</span>
@@ -1150,7 +1201,7 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">html</span><span class="w"> </span><span class="kn">import</span> <span class="n">escape</span> <span class="k">as</span> <span class="n">html_escape</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">urllib.parse</span><span class="w"> </span><span class="kn">import</span> <span class="n">urlparse</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">urllib.parse</span><span class="w"> </span><span class="kn">import</span> <span class="n">urljoin</span><span class="p">,</span> <span class="n">urlparse</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">bs4</span><span class="w"> </span><span class="kn">import</span> <span class="n">BeautifulSoup</span>
@@ -1384,11 +1435,14 @@
         <span class="k">return</span> <span class="kc">None</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">fetch_readme_html</span><span class="p">(</span><span class="n">owner</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">repo</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">fetch_readme_html</span><span class="p">(</span><span class="n">owner</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">repo</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">branch</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">"""Fetches the repo's README already rendered to GitHub-flavored HTML</span>
 <span class="sd">    (no local markdown parser needed at all). Returns a friendly fallback</span>
 <span class="sd">    message on any failure (404, no README, rate limit, etc.) rather than</span>
-<span class="sd">    raising, so one broken repo doesn't fail the whole run."""</span>
+<span class="sd">    raising, so one broken repo doesn't fail the whole run. branch is only</span>
+<span class="sd">    used to resolve relative image/link paths (see clean_readme_html) -</span>
+<span class="sd">    None falls back to HEAD, which raw.githubusercontent.com also</span>
+<span class="sd">    understands."""</span>
     <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"https://api.github.com/repos/</span><span class="si">{</span><span class="n">owner</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">repo</span><span class="si">}</span><span class="s2">/readme"</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">resp</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">API_HEADERS_HTML</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
@@ -1400,7 +1454,7 @@
     <span class="k">if</span> <span class="n">resp</span><span class="o">.</span><span class="n">status_code</span> <span class="o">!=</span> <span class="mi">200</span><span class="p">:</span>
         <span class="k">return</span> <span class="sa">f</span><span class="s2">"&lt;p&gt;&lt;em&gt;Could not fetch README (HTTP </span><span class="si">{</span><span class="n">resp</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2">).&lt;/em&gt;&lt;/p&gt;"</span>
 
-    <span class="k">return</span> <span class="n">clean_readme_html</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">clean_readme_html</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">owner</span><span class="p">,</span> <span class="n">repo</span><span class="p">,</span> <span class="n">branch</span> <span class="ow">or</span> <span class="s2">"HEAD"</span><span class="p">)</span>
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">fetch_repo_file_tree</span><span class="p">(</span><span class="n">owner</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">repo</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">branch</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
@@ -1595,17 +1649,62 @@
 <span class="s2">          &lt;/a&gt;"""</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">clean_readme_html</span><span class="p">(</span><span class="n">raw_html</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="c1"># Bump whenever clean_readme_html's output changes: an unchanged repo</span>
+<span class="c1"># otherwise reuses its README verbatim from the already-published page</span>
+<span class="c1"># (see extract_readme_html), so old markup would stick around until that</span>
+<span class="c1"># repo's next push. A cache entry with a different version re-fetches.</span>
+<span class="n">README_RENDER_VERSION</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="c1"># Screenshots pasted into a README on github.com are stored as</span>
+<span class="c1"># github.com/user-attachments/assets/&lt;uuid&gt;, but the rendered-README API</span>
+<span class="c1"># hands them back as private-user-images.githubusercontent.com URLs</span>
+<span class="c1"># signed with a JWT that expires after 5 minutes - dead long before</span>
+<span class="c1"># anyone visits the page. The uuid is embedded in that signed URL, so the</span>
+<span class="c1"># permanent form can be rebuilt from it (it redirects to a freshly signed</span>
+<span class="c1"># URL on every load, and works anonymously for public repos).</span>
+<span class="n">ATTACHMENT_UUID_RE</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">"[0-9a-f]</span><span class="si">{8}</span><span class="s2">-[0-9a-f]</span><span class="si">{4}</span><span class="s2">-[0-9a-f]</span><span class="si">{4}</span><span class="s2">-[0-9a-f]</span><span class="si">{4}</span><span class="s2">-[0-9a-f]</span><span class="si">{12}</span><span class="s2">"</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">fix_readme_url</span><span class="p">(</span><span class="n">url</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">relative_base</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Returns a README image/link URL that still works once the README is</span>
+<span class="sd">    served from this site instead of github.com: expiring</span>
+<span class="sd">    private-user-images URLs become their permanent user-attachments</span>
+<span class="sd">    form, and repo-relative paths (e.g. &lt;img src="assets/logo.png"&gt;, which</span>
+<span class="sd">    the API leaves as-is) are resolved against relative_base. Absolute</span>
+<span class="sd">    URLs, in-page #anchors, mailto: etc. come back unchanged."""</span>
+    <span class="n">parsed</span> <span class="o">=</span> <span class="n">urlparse</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">parsed</span><span class="o">.</span><span class="n">netloc</span> <span class="o">==</span> <span class="s2">"private-user-images.githubusercontent.com"</span><span class="p">:</span>
+        <span class="n">match</span> <span class="o">=</span> <span class="n">ATTACHMENT_UUID_RE</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">parsed</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">"https://github.com/user-attachments/assets/</span><span class="si">{</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span> <span class="k">if</span> <span class="n">match</span> <span class="k">else</span> <span class="n">url</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">url</span> <span class="ow">or</span> <span class="n">url</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"#"</span><span class="p">)</span> <span class="ow">or</span> <span class="n">parsed</span><span class="o">.</span><span class="n">scheme</span> <span class="ow">or</span> <span class="n">parsed</span><span class="o">.</span><span class="n">netloc</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">url</span>
+    <span class="k">return</span> <span class="n">urljoin</span><span class="p">(</span><span class="n">relative_base</span><span class="p">,</span> <span class="n">url</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s2">"/"</span><span class="p">))</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">clean_readme_html</span><span class="p">(</span><span class="n">raw_html</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">owner</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">repo</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">branch</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">"""Strips GitHub-page-only chrome (heading permalink icons, the</span>
 <span class="sd">    outer #readme/article wrapper) so the markup drops cleanly into our</span>
-<span class="sd">    own page template and styling instead of expecting GitHub's own CSS.</span>
-
-<span class="sd">    Note: GitHub rewrites relative links/images in a rendered README to</span>
-<span class="sd">    absolute repo URLs, so this doesn't need to handle relative paths</span>
-<span class="sd">    itself - verified for text links; spot-check if a project's README</span>
-<span class="sd">    ever adds relative images and they don't show up correctly.</span>
+<span class="sd">    own page template and styling instead of expecting GitHub's own CSS,</span>
+<span class="sd">    and rewrites image/link URLs that only work on github.com itself (see</span>
+<span class="sd">    fix_readme_url). Relative paths are resolved against the repo root,</span>
+<span class="sd">    where the README almost always lives.</span>
 <span class="sd">    """</span>
     <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">raw_html</span><span class="p">,</span> <span class="s2">"html.parser"</span><span class="p">)</span>
+
+    <span class="n">raw_base</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"https://raw.githubusercontent.com/</span><span class="si">{</span><span class="n">owner</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">repo</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">branch</span><span class="si">}</span><span class="s2">/"</span>
+    <span class="n">blob_base</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"https://github.com/</span><span class="si">{</span><span class="n">owner</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">repo</span><span class="si">}</span><span class="s2">/blob/</span><span class="si">{</span><span class="n">branch</span><span class="si">}</span><span class="s2">/"</span>
+    <span class="k">for</span> <span class="n">img</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s2">"img"</span><span class="p">,</span> <span class="n">src</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="n">img</span><span class="p">[</span><span class="s2">"src"</span><span class="p">]</span> <span class="o">=</span> <span class="n">fix_readme_url</span><span class="p">(</span><span class="n">img</span><span class="p">[</span><span class="s2">"src"</span><span class="p">],</span> <span class="n">raw_base</span><span class="p">)</span>
+    <span class="c1"># &lt;picture&gt;&lt;source srcset="..."&gt; - the usual light/dark logo pattern</span>
+    <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">([</span><span class="s2">"img"</span><span class="p">,</span> <span class="s2">"source"</span><span class="p">],</span> <span class="n">srcset</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="n">candidates</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">candidate</span> <span class="ow">in</span> <span class="n">el</span><span class="p">[</span><span class="s2">"srcset"</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">","</span><span class="p">):</span>
+            <span class="n">parts</span> <span class="o">=</span> <span class="n">candidate</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">parts</span><span class="p">:</span>
+                <span class="n">candidates</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">" "</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">fix_readme_url</span><span class="p">(</span><span class="n">parts</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">raw_base</span><span class="p">),</span> <span class="o">*</span><span class="n">parts</span><span class="p">[</span><span class="mi">1</span><span class="p">:]]))</span>
+        <span class="n">el</span><span class="p">[</span><span class="s2">"srcset"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">", "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">candidates</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s2">"a"</span><span class="p">,</span> <span class="n">href</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="n">a</span><span class="p">[</span><span class="s2">"href"</span><span class="p">]</span> <span class="o">=</span> <span class="n">fix_readme_url</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="s2">"href"</span><span class="p">],</span> <span class="n">blob_base</span><span class="p">)</span>
 
     <span class="c1"># Unwrap heading-permalink wrappers: &lt;div class="markdown-heading"&gt;</span>
     <span class="c1"># &lt;h2&gt;Text&lt;/h2&gt;&lt;a class="anchor"&gt;...&lt;/a&gt;&lt;/div&gt; -&gt; just &lt;h2&gt;Text&lt;/h2&gt;</span>
@@ -2032,9 +2131,11 @@
               <span class="o">+</span> <span class="p">(</span><span class="s2">" (repo unchanged since last build)"</span> <span class="k">if</span> <span class="n">repo_unchanged</span> <span class="k">else</span> <span class="s2">""</span><span class="p">))</span>
 
         <span class="c1"># ---------------------------------------------------------- README</span>
-        <span class="n">readme_html</span> <span class="o">=</span> <span class="n">extract_readme_html</span><span class="p">(</span><span class="n">out_path</span><span class="p">)</span> <span class="k">if</span> <span class="n">repo_unchanged</span> <span class="k">else</span> <span class="kc">None</span>
+        <span class="n">readme_html</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">repo_unchanged</span> <span class="ow">and</span> <span class="n">cache_entry</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"readme_version"</span><span class="p">)</span> <span class="o">==</span> <span class="n">README_RENDER_VERSION</span><span class="p">:</span>
+            <span class="n">readme_html</span> <span class="o">=</span> <span class="n">extract_readme_html</span><span class="p">(</span><span class="n">out_path</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">readme_html</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">readme_html</span> <span class="o">=</span> <span class="n">fetch_readme_html</span><span class="p">(</span><span class="n">owner</span><span class="p">,</span> <span class="n">repo</span><span class="p">)</span>
+            <span class="n">readme_html</span> <span class="o">=</span> <span class="n">fetch_readme_html</span><span class="p">(</span><span class="n">owner</span><span class="p">,</span> <span class="n">repo</span><span class="p">,</span> <span class="n">default_branch</span><span class="p">)</span>
 
         <span class="c1"># ---------------------------------------------------------- source files</span>
         <span class="n">files</span> <span class="o">=</span> <span class="p">[]</span>
@@ -2131,6 +2232,7 @@
         <span class="k">if</span> <span class="n">pushed_at</span><span class="p">:</span>
             <span class="n">cache</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
                 <span class="s2">"pushed_at"</span><span class="p">:</span> <span class="n">pushed_at</span><span class="p">,</span>
+                <span class="s2">"readme_version"</span><span class="p">:</span> <span class="n">README_RENDER_VERSION</span><span class="p">,</span>
                 <span class="s2">"source_entries"</span><span class="p">:</span> <span class="n">project</span><span class="p">[</span><span class="s2">"source_entries"</span><span class="p">],</span>
                 <span class="s2">"files"</span><span class="p">:</span> <span class="n">blob_shas</span><span class="p">,</span>
                 <span class="s2">"newest_commit_sha"</span><span class="p">:</span> <span class="n">newest_commit_sha</span><span class="p">,</span>

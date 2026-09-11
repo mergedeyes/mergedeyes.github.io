@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>src/blur.rs — Terminaal — Jan</title>
+  <link rel="stylesheet" href="../../styles.css?v=ff425c5b" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="layout">
+    <header class="rail" id="rail">
+<div class="rail__top">
+<a class="brand" href="../../index.html#top">
+<span class="brand__name">Jan</span>
+<span class="brand__meta">systems &amp; infrastructure<br/>Code, Code &amp; Code</span>
+</a>
+<button aria-controls="nav" aria-expanded="false" aria-label="Toggle menu" class="menu-toggle" id="menuToggle">
+<span></span><span></span><span></span>
+</button>
+</div>
+<nav aria-label="Sections" class="nav" id="nav">
+<a data-path="~/projects" href="../../index.html#projects">Projects</a>
+<a data-path="~/work" href="../../index.html#work">Work</a>
+<a data-path="~/education" href="../../index.html#education">Education</a>
+<a data-path="~/skills" href="../../index.html#skills">Skills</a>
+<a data-path="~/about" href="../../index.html#about">About Me</a>
+<a data-path="~/contact" href="../../index.html#contact">Contact</a>
+</nav>
+<div class="rail__status">
+<span aria-hidden="true" class="dot"></span>
+<span>open to work</span>
+</div>
+</header>
+    <nav class="file-tree"><p class="file-tree__title">Files</p><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">assets/</span><ul class="tree"><li class="tree-file"><a href="assets--terminaal.desktop.html">terminaal.desktop</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">locales/</span><ul class="tree"><li class="tree-file"><a href="locales--de.ftl.html">de.ftl</a></li><li class="tree-file"><a href="locales--en.ftl.html">en.ftl</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">src/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">render/</span><ul class="tree"><li class="tree-file"><a href="src--render--grid.rs.html">grid.rs</a></li><li class="tree-file"><a href="src--render--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="src--render--palette.rs.html">palette.rs</a></li><li class="tree-file"><a href="src--render--quad.rs.html">quad.rs</a></li><li class="tree-file"><a href="src--render--quad.wgsl.html">quad.wgsl</a></li><li class="tree-file"><a href="src--render--tab_bar.rs.html">tab_bar.rs</a></li><li class="tree-file"><a href="src--render--text.rs.html">text.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">shells/</span><ul class="tree"><li class="tree-file"><a href="src--shells--launch.rs.html">launch.rs</a></li><li class="tree-file"><a href="src--shells--managed.rs.html">managed.rs</a></li><li class="tree-file"><a href="src--shells--mod.rs.html">mod.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">ssh/</span><ul class="tree"><li class="tree-file"><a href="src--ssh--agent_forward.rs.html">agent_forward.rs</a></li><li class="tree-file"><a href="src--ssh--connection.rs.html">connection.rs</a></li><li class="tree-file"><a href="src--ssh--forward.rs.html">forward.rs</a></li><li class="tree-file"><a href="src--ssh--keys.rs.html">keys.rs</a></li><li class="tree-file"><a href="src--ssh--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="src--ssh--options.rs.html">options.rs</a></li><li class="tree-file"><a href="src--ssh--socks.rs.html">socks.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">terminal/</span><ul class="tree"><li class="tree-file"><a href="src--terminal--listener.rs.html">listener.rs</a></li><li class="tree-file"><a href="src--terminal--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="src--terminal--session.rs.html">session.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">theme/</span><ul class="tree"><li class="tree-file"><a href="src--theme--cosmic.rs.html">cosmic.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">ui/</span><ul class="tree"><li class="tree-file"><a href="src--ui--context_menu.rs.html">context_menu.rs</a></li><li class="tree-file"><a href="src--ui--keys_panel.rs.html">keys_panel.rs</a></li><li class="tree-file"><a href="src--ui--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="src--ui--settings_panel.rs.html">settings_panel.rs</a></li><li class="tree-file"><a href="src--ui--sidebar.rs.html">sidebar.rs</a></li><li class="tree-file"><a href="src--ui--splash.rs.html">splash.rs</a></li><li class="tree-file"><a href="src--ui--ssh_panel.rs.html">ssh_panel.rs</a></li><li class="tree-file"><a href="src--ui--theme.rs.html">theme.rs</a></li><li class="tree-file"><a href="src--ui--widgets.rs.html">widgets.rs</a></li></ul></li><li class="tree-file"><a href="src--app.rs.html">app.rs</a></li><li class="tree-file tree-file--active"><a href="src--blur.rs.html">blur.rs</a></li><li class="tree-file"><a href="src--config.rs.html">config.rs</a></li><li class="tree-file"><a href="src--gpu.rs.html">gpu.rs</a></li><li class="tree-file"><a href="src--i18n.rs.html">i18n.rs</a></li><li class="tree-file"><a href="src--input.rs.html">input.rs</a></li><li class="tree-file"><a href="src--main.rs.html">main.rs</a></li><li class="tree-file"><a href="src--shortcuts.rs.html">shortcuts.rs</a></li><li class="tree-file"><a href="src--theme.rs.html">theme.rs</a></li></ul></li><li class="tree-file"><a href="Cargo.lock.html">Cargo.lock</a></li><li class="tree-file"><a href="Cargo.toml.html">Cargo.toml</a></li><li class="tree-file"><a href="LICENSE.html">LICENSE</a></li><li class="tree-file"><a href="install.sh.html">install.sh</a></li></ul></nav>
+    <main class="main" id="main">
+      <section class="section source-page">
+        <p class="section__path">
+          <a href="../../index.html#projects" class="link">~/projects</a> /
+          <a href="../terminaal.html" class="link">terminaal</a> / source
+        </p>
+        <div class="source-page__head">
+          <h1 class="section__title">src/blur.rs</h1>
+          <a href="../terminaal.html" class="link">← Back to Terminaal</a>
+        </div>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">  1</span>
+<span class="normal">  2</span>
+<span class="normal">  3</span>
+<span class="normal">  4</span>
+<span class="normal">  5</span>
+<span class="normal">  6</span>
+<span class="normal">  7</span>
+<span class="normal">  8</span>
+<span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span></pre></div></td><td class="code"><div><pre><span></span><span class="sd">//! Blur behind the translucent window (`blur` in the config) on Wayland</span>
+<span class="sd">//! compositors with `ext_background_effect_v1` -- COSMIC among them.</span>
+<span class="sd">//! winit doesn't speak that protocol (its `set_blur` is KWin's, which</span>
+<span class="sd">//! `app.rs` calls as well), so this binds it on winit's own connection:</span>
+<span class="sd">//! libwayland lets a second event queue share the display, and the</span>
+<span class="sd">//! window's `wl_surface` is borrowed from winit by pointer. The blur region</span>
+<span class="sd">//! is double-buffered surface state, applied by the next commit -- the</span>
+<span class="sd">//! next frame's present.</span>
+
+<span class="k">use</span><span class="w"> </span><span class="n">wayland_backend</span><span class="p">::</span><span class="n">client</span><span class="p">::{</span><span class="n">Backend</span><span class="p">,</span><span class="w"> </span><span class="n">ObjectId</span><span class="p">};</span>
+<span class="k">use</span><span class="w"> </span><span class="n">wayland_client</span><span class="p">::</span><span class="n">globals</span><span class="p">::{</span><span class="n">GlobalListContents</span><span class="p">,</span><span class="w"> </span><span class="n">registry_queue_init</span><span class="p">};</span>
+<span class="k">use</span><span class="w"> </span><span class="n">wayland_client</span><span class="p">::</span><span class="n">protocol</span><span class="p">::</span><span class="n">wl_compositor</span><span class="p">::</span><span class="n">WlCompositor</span><span class="p">;</span>
+<span class="k">use</span><span class="w"> </span><span class="n">wayland_client</span><span class="p">::</span><span class="n">protocol</span><span class="p">::</span><span class="n">wl_region</span><span class="p">::</span><span class="n">WlRegion</span><span class="p">;</span>
+<span class="k">use</span><span class="w"> </span><span class="n">wayland_client</span><span class="p">::</span><span class="n">protocol</span><span class="p">::</span><span class="n">wl_registry</span><span class="p">::{</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">WlRegistry</span><span class="p">};</span>
+<span class="k">use</span><span class="w"> </span><span class="n">wayland_client</span><span class="p">::</span><span class="n">protocol</span><span class="p">::</span><span class="n">wl_surface</span><span class="p">::</span><span class="n">WlSurface</span><span class="p">;</span>
+<span class="k">use</span><span class="w"> </span><span class="n">wayland_client</span><span class="p">::{</span><span class="n">Connection</span><span class="p">,</span><span class="w"> </span><span class="n">Dispatch</span><span class="p">,</span><span class="w"> </span><span class="n">EventQueue</span><span class="p">,</span><span class="w"> </span><span class="n">Proxy</span><span class="p">,</span><span class="w"> </span><span class="n">QueueHandle</span><span class="p">,</span><span class="w"> </span><span class="n">WEnum</span><span class="p">,</span><span class="w"> </span><span class="n">delegate_noop</span><span class="p">};</span>
+<span class="k">use</span><span class="w"> </span><span class="n">wayland_protocols</span><span class="p">::</span><span class="n">ext</span><span class="p">::</span><span class="n">background_effect</span><span class="p">::</span><span class="n">v1</span><span class="p">::</span><span class="n">client</span><span class="p">::</span><span class="n">ext_background_effect_manager_v1</span><span class="p">::{</span>
+<span class="w">    </span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">ExtBackgroundEffectManagerV1</span><span class="p">,</span>
+<span class="p">};</span>
+<span class="k">use</span><span class="w"> </span><span class="n">wayland_protocols</span><span class="p">::</span><span class="n">ext</span><span class="p">::</span><span class="n">background_effect</span><span class="p">::</span><span class="n">v1</span><span class="p">::</span><span class="n">client</span><span class="p">::</span><span class="n">ext_background_effect_surface_v1</span><span class="p">::</span><span class="n">ExtBackgroundEffectSurfaceV1</span><span class="p">;</span>
+<span class="k">use</span><span class="w"> </span><span class="n">winit</span><span class="p">::</span><span class="n">raw_window_handle</span><span class="p">::{</span><span class="n">HasDisplayHandle</span><span class="p">,</span><span class="w"> </span><span class="n">HasWindowHandle</span><span class="p">,</span><span class="w"> </span><span class="n">RawDisplayHandle</span><span class="p">,</span><span class="w"> </span><span class="n">RawWindowHandle</span><span class="p">};</span>
+<span class="k">use</span><span class="w"> </span><span class="n">winit</span><span class="p">::</span><span class="n">window</span><span class="p">::</span><span class="n">Window</span><span class="p">;</span>
+
+<span class="k">pub</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">Blur</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">conn</span><span class="p">:</span><span class="w"> </span><span class="nc">Connection</span><span class="p">,</span>
+<span class="w">    </span><span class="n">queue</span><span class="p">:</span><span class="w"> </span><span class="nc">EventQueue</span><span class="o">&lt;</span><span class="n">State</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">state</span><span class="p">:</span><span class="w"> </span><span class="nc">State</span><span class="p">,</span>
+<span class="w">    </span><span class="n">surface</span><span class="p">:</span><span class="w"> </span><span class="nc">WlSurface</span><span class="p">,</span>
+<span class="w">    </span><span class="n">compositor</span><span class="p">:</span><span class="w"> </span><span class="nc">WlCompositor</span><span class="p">,</span>
+<span class="w">    </span><span class="n">manager</span><span class="p">:</span><span class="w"> </span><span class="nc">ExtBackgroundEffectManagerV1</span><span class="p">,</span>
+<span class="w">    </span><span class="sd">/// There while the window is blurred.</span>
+<span class="w">    </span><span class="n">effect</span><span class="p">:</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="n">ExtBackgroundEffectSurfaceV1</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="cp">#[derive(Default)]</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">State</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="sd">/// The compositor can blur (its latest `capabilities`).</span>
+<span class="w">    </span><span class="n">blur</span><span class="p">:</span><span class="w"> </span><span class="kt">bool</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="k">impl</span><span class="w"> </span><span class="n">Blur</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="sd">/// `None` off Wayland, or when the compositor can't blur.</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">new</span><span class="p">(</span><span class="n">window</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">Window</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="bp">Self</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">RawDisplayHandle</span><span class="p">::</span><span class="n">Wayland</span><span class="p">(</span><span class="n">display</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">window</span><span class="p">.</span><span class="n">display_handle</span><span class="p">().</span><span class="n">ok</span><span class="p">()</span><span class="o">?</span><span class="p">.</span><span class="n">as_raw</span><span class="p">()</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">None</span><span class="w"> </span><span class="p">};</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">RawWindowHandle</span><span class="p">::</span><span class="n">Wayland</span><span class="p">(</span><span class="n">handle</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">window</span><span class="p">.</span><span class="n">window_handle</span><span class="p">().</span><span class="n">ok</span><span class="p">()</span><span class="o">?</span><span class="p">.</span><span class="n">as_raw</span><span class="p">()</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">None</span><span class="w"> </span><span class="p">};</span>
+<span class="w">        </span><span class="c1">// SAFETY: both pointers come from winit's live connection and</span>
+<span class="w">        </span><span class="c1">// window; `AppState` drops this before the window.</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">conn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Connection</span><span class="p">::</span><span class="n">from_backend</span><span class="p">(</span><span class="k">unsafe</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Backend</span><span class="p">::</span><span class="n">from_foreign_display</span><span class="p">(</span><span class="n">display</span><span class="p">.</span><span class="n">display</span><span class="p">.</span><span class="n">as_ptr</span><span class="p">().</span><span class="n">cast</span><span class="p">())</span><span class="w"> </span><span class="p">});</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">unsafe</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">ObjectId</span><span class="p">::</span><span class="n">from_ptr</span><span class="p">(</span><span class="n">WlSurface</span><span class="p">::</span><span class="n">interface</span><span class="p">(),</span><span class="w"> </span><span class="n">handle</span><span class="p">.</span><span class="n">surface</span><span class="p">.</span><span class="n">as_ptr</span><span class="p">().</span><span class="n">cast</span><span class="p">())</span><span class="w"> </span><span class="p">}.</span><span class="n">ok</span><span class="p">()</span><span class="o">?</span><span class="p">;</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">surface</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">WlSurface</span><span class="p">::</span><span class="n">from_id</span><span class="p">(</span><span class="o">&amp;</span><span class="n">conn</span><span class="p">,</span><span class="w"> </span><span class="n">id</span><span class="p">).</span><span class="n">ok</span><span class="p">()</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="p">(</span><span class="n">globals</span><span class="p">,</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">queue</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">registry_queue_init</span><span class="p">::</span><span class="o">&lt;</span><span class="n">State</span><span class="o">&gt;</span><span class="p">(</span><span class="o">&amp;</span><span class="n">conn</span><span class="p">).</span><span class="n">ok</span><span class="p">()</span><span class="o">?</span><span class="p">;</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">qh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">queue</span><span class="p">.</span><span class="n">handle</span><span class="p">();</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">manager</span><span class="p">:</span><span class="w"> </span><span class="nc">ExtBackgroundEffectManagerV1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">globals</span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">qh</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="o">..=</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="p">()).</span><span class="n">ok</span><span class="p">()</span><span class="o">?</span><span class="p">;</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">compositor</span><span class="p">:</span><span class="w"> </span><span class="nc">WlCompositor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">globals</span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">qh</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="o">..=</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="p">()).</span><span class="n">ok</span><span class="p">()</span><span class="o">?</span><span class="p">;</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">State</span><span class="p">::</span><span class="n">default</span><span class="p">();</span>
+<span class="w">        </span><span class="c1">// Brings the manager's capabilities.</span>
+<span class="w">        </span><span class="n">queue</span><span class="p">.</span><span class="n">roundtrip</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="n">state</span><span class="p">).</span><span class="n">ok</span><span class="p">()</span><span class="o">?</span><span class="p">;</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="o">!</span><span class="n">state</span><span class="p">.</span><span class="n">blur</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">log</span><span class="p">::</span><span class="n">info</span><span class="o">!</span><span class="p">(</span><span class="s">"the compositor offers ext_background_effect, but no blur"</span><span class="p">);</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">None</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">log</span><span class="p">::</span><span class="n">info</span><span class="o">!</span><span class="p">(</span><span class="s">"the compositor can blur behind the window (ext_background_effect)"</span><span class="p">);</span>
+<span class="w">        </span><span class="nb">Some</span><span class="p">(</span><span class="bp">Self</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">conn</span><span class="p">,</span><span class="w"> </span><span class="n">queue</span><span class="p">,</span><span class="w"> </span><span class="n">state</span><span class="p">,</span><span class="w"> </span><span class="n">surface</span><span class="p">,</span><span class="w"> </span><span class="n">compositor</span><span class="p">,</span><span class="w"> </span><span class="n">manager</span><span class="p">,</span><span class="w"> </span><span class="n">effect</span><span class="p">:</span><span class="w"> </span><span class="nb">None</span><span class="w"> </span><span class="p">})</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="sd">/// Blur behind the whole window -- `size` in logical pixels -- or stop.</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">set</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">on</span><span class="p">:</span><span class="w"> </span><span class="kt">bool</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">width</span><span class="p">,</span><span class="w"> </span><span class="n">height</span><span class="p">):</span><span class="w"> </span><span class="p">(</span><span class="kt">i32</span><span class="p">,</span><span class="w"> </span><span class="kt">i32</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">qh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">queue</span><span class="p">.</span><span class="n">handle</span><span class="p">();</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="n">effect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">effect</span><span class="p">.</span><span class="n">get_or_insert_with</span><span class="p">(</span><span class="o">||</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">manager</span><span class="p">.</span><span class="n">get_background_effect</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">.</span><span class="n">surface</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">qh</span><span class="p">,</span><span class="w"> </span><span class="p">()));</span>
+<span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="n">region</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">compositor</span><span class="p">.</span><span class="n">create_region</span><span class="p">(</span><span class="o">&amp;</span><span class="n">qh</span><span class="p">,</span><span class="w"> </span><span class="p">());</span>
+<span class="w">            </span><span class="n">region</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">width</span><span class="p">,</span><span class="w"> </span><span class="n">height</span><span class="p">);</span>
+<span class="w">            </span><span class="n">effect</span><span class="p">.</span><span class="n">set_blur_region</span><span class="p">(</span><span class="nb">Some</span><span class="p">(</span><span class="o">&amp;</span><span class="n">region</span><span class="p">));</span>
+<span class="w">            </span><span class="n">region</span><span class="p">.</span><span class="n">destroy</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">effect</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">effect</span><span class="p">.</span><span class="n">take</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">effect</span><span class="p">.</span><span class="n">set_blur_region</span><span class="p">(</span><span class="nb">None</span><span class="p">);</span>
+<span class="w">            </span><span class="n">effect</span><span class="p">.</span><span class="n">destroy</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nb">Err</span><span class="p">(</span><span class="n">err</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">conn</span><span class="p">.</span><span class="n">flush</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">log</span><span class="p">::</span><span class="n">warn</span><span class="o">!</span><span class="p">(</span><span class="s">"failed to send the blur region: {err}"</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="c1">// Nothing to act on, but it keeps the queue from growing.</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nb">Err</span><span class="p">(</span><span class="n">err</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">queue</span><span class="p">.</span><span class="n">dispatch_pending</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">state</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">log</span><span class="p">::</span><span class="n">warn</span><span class="o">!</span><span class="p">(</span><span class="s">"wayland dispatch failed: {err}"</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">impl</span><span class="w"> </span><span class="n">Dispatch</span><span class="o">&lt;</span><span class="n">WlRegistry</span><span class="p">,</span><span class="w"> </span><span class="n">GlobalListContents</span><span class="o">&gt;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">State</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">event</span><span class="p">(</span><span class="n">_</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">mut</span><span class="w"> </span><span class="bp">Self</span><span class="p">,</span><span class="w"> </span><span class="n">_</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">WlRegistry</span><span class="p">,</span><span class="w"> </span><span class="n">_</span><span class="p">:</span><span class="w"> </span><span class="nc">wl_registry</span><span class="p">::</span><span class="n">Event</span><span class="p">,</span><span class="w"> </span><span class="n">_</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">GlobalListContents</span><span class="p">,</span><span class="w"> </span><span class="n">_</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">Connection</span><span class="p">,</span><span class="w"> </span><span class="n">_</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">QueueHandle</span><span class="o">&lt;</span><span class="bp">Self</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="p">}</span>
+
+<span class="k">impl</span><span class="w"> </span><span class="n">Dispatch</span><span class="o">&lt;</span><span class="n">ExtBackgroundEffectManagerV1</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">State</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">event</span><span class="p">(</span>
+<span class="w">        </span><span class="n">state</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">mut</span><span class="w"> </span><span class="bp">Self</span><span class="p">,</span>
+<span class="w">        </span><span class="n">_</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">ExtBackgroundEffectManagerV1</span><span class="p">,</span>
+<span class="w">        </span><span class="n">event</span><span class="p">:</span><span class="w"> </span><span class="nc">ext_background_effect_manager_v1</span><span class="p">::</span><span class="n">Event</span><span class="p">,</span>
+<span class="w">        </span><span class="n">_</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="p">(),</span>
+<span class="w">        </span><span class="n">_</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">Connection</span><span class="p">,</span>
+<span class="w">        </span><span class="n">_</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">QueueHandle</span><span class="o">&lt;</span><span class="bp">Self</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="n">ext_background_effect_manager_v1</span><span class="p">::</span><span class="n">Event</span><span class="p">::</span><span class="n">Capabilities</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">flags</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">event</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">state</span><span class="p">.</span><span class="n">blur</span><span class="w"> </span><span class="o">=</span>
+<span class="w">                </span><span class="fm">matches!</span><span class="p">(</span><span class="n">flags</span><span class="p">,</span><span class="w"> </span><span class="n">WEnum</span><span class="p">::</span><span class="n">Value</span><span class="p">(</span><span class="n">flags</span><span class="p">)</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">flags</span><span class="p">.</span><span class="n">contains</span><span class="p">(</span><span class="n">ext_background_effect_manager_v1</span><span class="p">::</span><span class="n">Capability</span><span class="p">::</span><span class="n">Blur</span><span class="p">));</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">delegate_noop</span><span class="o">!</span><span class="p">(</span><span class="n">State</span><span class="p">:</span><span class="w"> </span><span class="nc">ignore</span><span class="w"> </span><span class="n">WlCompositor</span><span class="p">);</span>
+<span class="n">delegate_noop</span><span class="o">!</span><span class="p">(</span><span class="n">State</span><span class="p">:</span><span class="w"> </span><span class="nc">ignore</span><span class="w"> </span><span class="n">WlRegion</span><span class="p">);</span>
+<span class="n">delegate_noop</span><span class="o">!</span><span class="p">(</span><span class="n">State</span><span class="p">:</span><span class="w"> </span><span class="nc">ignore</span><span class="w"> </span><span class="n">ExtBackgroundEffectSurfaceV1</span><span class="p">);</span>
+</pre></div></td></tr></table></div>
+
+      </section>
+    </main>
+  </div>
+</body>
+</html>
