@@ -503,12 +503,6 @@ def render_commit_card(commit: dict) -> str:
           </a>"""
 
 
-# Bump whenever clean_readme_html's output changes: an unchanged repo
-# otherwise reuses its README verbatim from the already-published page
-# (see extract_readme_html), so old markup would stick around until that
-# repo's next push. A cache entry with a different version re-fetches.
-README_RENDER_VERSION = 2
-
 # Screenshots pasted into a README on github.com are stored as
 # github.com/user-attachments/assets/<uuid>, but the rendered-README API
 # hands them back as private-user-images.githubusercontent.com URLs
@@ -985,9 +979,7 @@ def main():
               + (" (repo unchanged since last build)" if repo_unchanged else ""))
 
         # ---------------------------------------------------------- README
-        readme_html = None
-        if repo_unchanged and cache_entry.get("readme_version") == README_RENDER_VERSION:
-            readme_html = extract_readme_html(out_path)
+        readme_html = extract_readme_html(out_path) if repo_unchanged else None
         if readme_html is None:
             readme_html = fetch_readme_html(owner, repo, default_branch)
 
@@ -1086,7 +1078,6 @@ def main():
         if pushed_at:
             cache[key] = {
                 "pushed_at": pushed_at,
-                "readme_version": README_RENDER_VERSION,
                 "source_entries": project["source_entries"],
                 "files": blob_shas,
                 "newest_commit_sha": newest_commit_sha,
