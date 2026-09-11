@@ -153,7 +153,7 @@
     ]
   },
   "mergedeyes/mergedeyes.github.io": {
-    "commit_count": 253,
+    "commit_count": 255,
     "files": {
       ".github/scripts/generate_project_pages.py": "6095b4953a2612d6e7362ebc0bd4ce980d440917",
       ".github/scripts/update_visitor_count.py": "6b3f83843602f650466aef1cce25e691f1e2d4dc",
@@ -161,7 +161,7 @@
       ".github/workflows/jekyll-gh-pages.yml": "e5d903dc63d17f68658e3d4b9726c19f748ce746",
       ".github/workflows/update-visitor-count.yml": "cfa9ea2eacc02b9ef3719ce9ed8dca0b2171e967",
       "404.html": "cacf9aed64339b7d314de8914fbb917252c8fb6f",
-      "index.html": "773bcb9312dda4daa8d83ec078ae9364ca447ab5",
+      "index.html": "7c189c03f5b9c4f05bd93816bcb25312d5a16033",
       "llms.txt": "05d657ae6bfa0a8793b786bca19f3d285a9aad0e",
       "robots.txt": "24e94cbe9371b8c9d1dbf6a17bebea38cb49a552",
       "script.js": "33ef7fe1d0edc6c40d9d7e4658544c1845ec1a52",
@@ -175,8 +175,8 @@
       "skills/nginx.html": "80c4b61efb0493e6411b8b9caab170e3db5d80dd",
       "styles.css": "46aeb1c9e9445d077414b7d5f448dddf7dd9c178"
     },
-    "newest_commit_sha": "25b97049988af824a65f663d2be96c3ae96401b3",
-    "pushed_at": "2026-09-11T18:41:40Z",
+    "newest_commit_sha": "0acdc79dff726669aef3b838da2b96b6b5e26581",
+    "pushed_at": "2026-09-11T19:01:08Z",
     "source_entries": [
       "index.html",
       "404.html",
@@ -229,7 +229,7 @@
       "Cargo.lock": "ffe4a262a59683c4e5dd87231fea17b90aaddbe5",
       "Cargo.toml": "d6adb7c34cd28377959d751399a018aebba764ec",
       "LICENSE": "0ad25db4bd1d86c452db3f9602ccdbe172438f52",
-      "assets/*.desktop": "",
+      "assets/terminaal.desktop": "02c94ccb7f06db0ebf26ab8029a809af7d7a1136",
       "install.sh": "f63921cf9d09fdfa69a5fa0678c4b5f8419dd14f",
       "locales/de.ftl": "e1e0d8d1b4a38e77d04e018e72d6197a46feedd1",
       "locales/en.ftl": "ea7f71b5ed1aedcdcd3162653da0a1744235724b",
@@ -272,7 +272,7 @@
     "pushed_at": "2026-09-11T16:49:02Z",
     "source_entries": [
       "src/*",
-      "assets/*.desktop",
+      "assets/terminaal.desktop",
       "locales/*",
       "Cargo.toml",
       "Cargo.lock",
