@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>src/ssh/connection.rs — Terminaal — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=8b17b65e" />
+  <link rel="stylesheet" href="../../styles.css?v=3ecec74a" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -1585,7 +1585,12 @@
 <span class="normal">1540</span>
 <span class="normal">1541</span>
 <span class="normal">1542</span>
-<span class="normal">1543</span></pre></div></td><td class="code"><div><pre><span></span><span class="sd">//! One SSH session in a tab: a worker thread that connects with libssh2</span>
+<span class="normal">1543</span>
+<span class="normal">1544</span>
+<span class="normal">1545</span>
+<span class="normal">1546</span>
+<span class="normal">1547</span>
+<span class="normal">1548</span></pre></div></td><td class="code"><div><pre><span></span><span class="sd">//! One SSH session in a tab: a worker thread that connects with libssh2</span>
 <span class="sd">//! (`ssh2`), then pumps bytes between the remote shell's PTY channel and</span>
 <span class="sd">//! the tab's `Term` -- the job alacritty_terminal's own event loop does</span>
 <span class="sd">//! for a local PTY (its `event_loop.rs`, which this mirrors, including</span>
@@ -1949,7 +1954,12 @@
 <span class="w">        </span><span class="k">loop</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="bp">self</span><span class="p">.</span><span class="n">unattended</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">attempt</span><span class="p">.</span><span class="n">is_some</span><span class="p">();</span>
 <span class="w">            </span><span class="bp">self</span><span class="p">.</span><span class="n">filter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Filter</span><span class="p">::</span><span class="n">default</span><span class="p">();</span>
+<span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="n">connections</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">connections</span><span class="p">;</span>
 <span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">connect_and_pump</span><span class="p">();</span>
+<span class="w">            </span><span class="c1">// It was up again: the next drop starts with the short pause.</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">connections</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">connections</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">attempt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">None</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
 <span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="k">mut</span><span class="w"> </span><span class="n">proxy</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">proxy</span><span class="p">.</span><span class="n">take</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">                </span><span class="kd">let</span><span class="w"> </span><span class="n">_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">proxy</span><span class="p">.</span><span class="n">child</span><span class="p">.</span><span class="n">kill</span><span class="p">();</span>
 <span class="w">                </span><span class="kd">let</span><span class="w"> </span><span class="n">_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">proxy</span><span class="p">.</span><span class="n">child</span><span class="p">.</span><span class="n">wait</span><span class="p">();</span>

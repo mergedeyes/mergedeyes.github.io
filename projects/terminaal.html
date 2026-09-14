@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Terminaal — Jan</title>
-  <link rel="stylesheet" href="../styles.css?v=8b17b65e" />
+  <link rel="stylesheet" href="../styles.css?v=3ecec74a" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -45,7 +45,7 @@
           <div class="card__links">
             <a href="https://github.com/mergedeyes/terminaal" class="link">Repository</a>
             <a href="terminaal-source.html" class="link">Browse source (63 files)</a>
-            <a href="terminaal-commits.html" class="link">Commit history (25)</a>
+            <a href="terminaal-commits.html" class="link">Commit history (26)</a>
           </div>
           <span class="license-badge">GPL-3.0</span>
         </div>
@@ -107,7 +107,8 @@ looking at (after 10 seconds by default, adjustable)</li>
 (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>O</kbd> or the right-click menu): browse,
 upload and download files and folders (also by dragging files onto the window),
 and <strong>edit a server file in your local editor</strong> – every save goes back, with a
-check that nobody changed it meanwhile. Files only root may change go through
+check (a SHA-256 computed on the server) that nobody changed it meanwhile.
+Transfers and saves wait out a dropped connection and carry on once it's back. Files only root may change go through
 sudo in the terminal, where it asks for the password as usual</li>
 <li><strong>Broadcast</strong>: put terminals into a broadcast group (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>I</kbd>
 or the right-click menu), and what you type, paste or send with a command
@@ -161,6 +162,9 @@ one host. Add, edit and delete them under <strong>Manage</strong></li>
 copied over to edit. Supports <code>Include</code>, <code>Match</code>, <code>%</code> tokens and more</li>
 <li><strong>Several logins per host</strong> (user + key), with one as the default</li>
 <li><strong>ProxyJump</strong> chains and <strong>ProxyCommand</strong></li>
+<li><strong>Reconnects on its own</strong> when a connection drops – after 2, 4, 8 … seconds, as
+long as logging in needs no answer – keeping the scrollback. <kbd>Enter</kbd>
+tries right away, <kbd>Ctrl</kbd>+<kbd>D</kbd> closes the tab</li>
 <li><strong>Port forwarding</strong>: <code>LocalForward</code>, <code>RemoteForward</code> and <code>DynamicForward</code>
 (a SOCKS 4/4a/5 proxy; a <code>RemoteForward</code> with only a port runs one on the
 server). Unix socket paths work on either side, except for the server
@@ -560,10 +564,13 @@ connections away; libssh2 can't cancel it cleanly mid-session</li>
 terminal's system to every terminal in the group</li>
 <li>Split panes are resized with the mouse only, and the layout isn't kept when
 Terminaal quits</li>
-<li>SFTP never overwrites on copying (taken names get a number), deletes only
-files and empty folders, and doesn't resume a transfer after a dropped
-connection. Editing through sudo pastes a command into the terminal, so that
-terminal should be at a shell prompt</li>
+<li>SFTP never overwrites on copying (taken names get a number) and deletes only
+files and empty folders. Transfers resume after a dropped connection only while
+Terminaal stays open. Editing through sudo pastes a command into the terminal,
+so that terminal should be at a shell prompt</li>
+<li>Reconnecting on its own needs a login without prompts (agent, key without
+passphrase); otherwise press Enter and answer them. A dropped connection is
+noticed through keepalives – with the defaults after about a minute and a half</li>
 </ul>
 <h2 class="heading-element" dir="auto">Roadmap</h2>
 <ul class="contains-task-list">

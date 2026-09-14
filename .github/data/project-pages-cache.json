@@ -1,6 +1,6 @@
 {
   "mergedeyes/Klar-Stack": {
-    "commit_count": 99,
+    "commit_count": 100,
     "files": {
       "Klar/migrations/20260425000000_create_users.sql": "9fadcd2fef1fad49fdc545e95c9b5bb6a74c3ce6",
       "Klar/migrations/20260425010000_add_password_hash.sql": "28f8dd7008cc4407f5b9e6916104073bd4091f5a",
@@ -130,8 +130,8 @@
       "klar-web/src/lib/utils/media.ts": "301f16e266aef1f5b01c7202f50849924f96cc4a",
       "klar-web/src/proxy.ts": "f533bb36ab62952d9846e49d821042352f54209b"
     },
-    "newest_commit_sha": "f32ceb092909c18d7c93e4ab24ec76be8cf7203f",
-    "pushed_at": "2026-09-10T02:45:50Z",
+    "newest_commit_sha": "57f013855ec7c93941fe53124c802ebe17819052",
+    "pushed_at": "2026-09-14T05:04:27Z",
     "source_entries": [
       "Klar/src/main.rs",
       "Klar/migrations/*",
@@ -153,7 +153,7 @@
     ]
   },
   "mergedeyes/mergedeyes.github.io": {
-    "commit_count": 286,
+    "commit_count": 287,
     "files": {
       ".github/scripts/__pycache__/generate_project_pages.cpython-314.pyc": "b9e7f33a02cad66d5f4ee1b83d3c9c8428159d56",
       ".github/scripts/generate_project_pages.py": "6d0d4d56ca91afaae12e814cc85c621c42421593",
@@ -176,8 +176,8 @@
       "skills/nginx.html": "80c4b61efb0493e6411b8b9caab170e3db5d80dd",
       "styles.css": "a3243ed44505aec40beb720fdfacf5edc649e475"
     },
-    "newest_commit_sha": "8b17b65e89c67ce5a2683e1ecc67409e295ec90f",
-    "pushed_at": "2026-09-14T02:13:24Z",
+    "newest_commit_sha": "3ecec74a61af8e6bd8db7850d088b3b6b63bee25",
+    "pushed_at": "2026-09-14T04:43:46Z",
     "source_entries": [
       "index.html",
       "404.html",
@@ -225,7 +225,7 @@
     ]
   },
   "mergedeyes/terminaal": {
-    "commit_count": 25,
+    "commit_count": 26,
     "files": {
       "Cargo.lock": "522ec0d4a0411af534284f56b174328cd2a9d77e",
       "Cargo.toml": "61afe85a84f64ef845964f371e3433d243564457",
@@ -252,17 +252,17 @@
       "src/render/search_bar.rs": "4b9021de73e0964d28dc09d979551fb069955b5b",
       "src/render/tab_bar.rs": "99ca28a3680b53eeae377101b4887aced56e41b7",
       "src/render/text.rs": "709a7df5900b2e4d88956cd28b5408f5435781b4",
-      "src/sftp/edit.rs": "e2f2be7fd76c777eecef87c4034eeab795fabf6d",
+      "src/sftp/edit.rs": "b0af543cd56bd5961ac8cb7e5fb663fa0738e200",
       "src/sftp/mod.rs": "7d1e393ab9f7f5f72591d2d306a90945cbd05ec8",
       "src/sftp/protocol.rs": "31c092b8d0029b43c73f6253125b9b01a2f2b421",
-      "src/sftp/session.rs": "5d0f1623513434a39e9f79ccd2d908c4b6017276",
+      "src/sftp/session.rs": "be7350fb91f81e91df395f7ba97fa2de2997e610",
       "src/shells/launch.rs": "d7e0d506905db2e4fd1e4ec9121acfbd459d61bf",
       "src/shells/managed.rs": "51fa1278cf0fd637a403e3630e410c16daf4a78a",
       "src/shells/mod.rs": "b69b6e617c22331dbdaf69997cfd1e48d0b823ec",
       "src/shortcuts.rs": "b8ed74b68671eaa9ef42b04e9b6d805224c9fc54",
       "src/snippets.rs": "2d06c5515b98dd7dca37a39c35acbac25033409d",
       "src/ssh/agent_forward.rs": "9e3372b63673ad0339d2ac693ce272a109937193",
-      "src/ssh/connection.rs": "6edb12f807ba3fe884a288072511b518f39ef66e",
+      "src/ssh/connection.rs": "6a8802a9077dd1eadfa9b93f374644ca5c785ce9",
       "src/ssh/forward.rs": "7f853d6f79eff3b9e77e56b1a8268e663382c907",
       "src/ssh/keys.rs": "d447eeb604604aefda478f5be62a877cb37f42b1",
       "src/ssh/known_hosts.rs": "a872341ec4826c82cfe558d4bdc7638220b10e38",
@@ -291,8 +291,8 @@
       "src/ui/theme.rs": "997ccf6b78f22b7a82c57c604c271303deafd553",
       "src/ui/widgets.rs": "434ec98fa22969e94d8a9a2e2f57e7b0bb4f8efb"
     },
-    "newest_commit_sha": "5a4d0f020134c363d2833f14111b976054a29b75",
-    "pushed_at": "2026-09-14T02:50:20Z",
+    "newest_commit_sha": "ebaaa604dd282762bc811f31edef0ec4b44c0242",
+    "pushed_at": "2026-09-14T05:00:30Z",
     "source_entries": [
       "src/*",
       "assets/terminaal.desktop",
