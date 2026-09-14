@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Terminaal — Jan</title>
-  <link rel="stylesheet" href="../styles.css?v=b7af9298" />
+  <link rel="stylesheet" href="../styles.css?v=50f7b1d3" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -44,8 +44,8 @@
         <div class="card__foot project-page__foot">
           <div class="card__links">
             <a href="https://github.com/mergedeyes/terminaal" class="link">Repository</a>
-            <a href="terminaal-source.html" class="link">Browse source (57 files)</a>
-            <a href="terminaal-commits.html" class="link">Commit history (23)</a>
+            <a href="terminaal-source.html" class="link">Browse source (58 files)</a>
+            <a href="terminaal-commits.html" class="link">Commit history (24)</a>
           </div>
           <span class="license-badge">GPL-3.0</span>
         </div>
@@ -80,6 +80,11 @@ Linux (Wayland and X11). Expect rough edges, and expect the config format to cha
 <li>Redraws only when something changes (output, input, cursor blink), so it stays
 idle when you do</li>
 <li>Multiple tabs, each a local shell or an SSH session; a clickable tab bar</li>
+<li><strong>Split panes</strong>: divide a tab into several terminals side by side or one above
+the other (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>D</kbd>, <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>D</kbd>, or the right-click menu). A new pane
+runs the same shell in the same folder, or connects to the same host. Drag the
+line between panes to resize them, click or <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+arrow key to move
+between them, and <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Enter</kbd> shows one pane over the whole tab</li>
 <li>Scrollback with the mouse wheel (speed adjustable in the settings), mouse selection,
 clipboard copy and paste</li>
 <li><strong>Search the scrollback</strong> (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>F</kbd>): matches
@@ -98,10 +103,11 @@ shells over SSH that send them – fish 4 does on its own):
 looking at (after 10 seconds by default, adjustable)</li>
 </ul>
 </li>
-<li><strong>Broadcast</strong>: put tabs into a broadcast group (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>I</kbd>
+<li><strong>Broadcast</strong>: put terminals into a broadcast group (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>I</kbd>
 or the right-click menu), and what you type, paste or send with a command
 button in one of them goes to all of them – the same command on ten servers
-at once. Tabs in the group are marked red in the tab bar</li>
+at once, in separate tabs or in the panes of one. Tabs holding a terminal of
+the group are marked red in the tab bar, panes get a red frame</li>
 <li><strong>Clickable links</strong>: hold <kbd>Ctrl</kbd> to underline URLs, hyperlinks
 (OSC 8) and existing files under the mouse; <kbd>Ctrl</kbd>+click opens them
 with your default application. File names count relative to the shell's
@@ -109,8 +115,8 @@ working directory, and only in local tabs</li>
 <li>Mouse wheel in full-screen programs: arrow keys for <code>less</code>/<code>man</code>, wheel
 reports for programs with mouse support (<code>htop</code>, <code>mc</code>, <code>vim</code> with <code>mouse=a</code>);
 hold <kbd>Shift</kbd> to scroll Terminaal's scrollback instead</li>
-<li>Right-click menu in the terminal: copy, paste, paste and run, and joining or
-leaving the broadcast</li>
+<li>Right-click menu in the terminal: copy, paste, paste and run, joining or
+leaving the broadcast, splitting and closing the pane</li>
 <li>A <strong>settings tab</strong> for every option (<strong>⚙</strong> in the sidebar or <kbd>Ctrl</kbd>+<kbd>,</kbd>)</li>
 <li><strong>Themes</strong> for the console and the interface alike: seven built in, and your
 own in Alacritty's format (its themes work as they are)</li>
@@ -247,7 +253,11 @@ icons under <code>~/.local/share</code>, so Terminaal appears in your app launch
 </tr>
 <tr>
 <td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>W</kbd></td>
-<td>Close tab</td>
+<td>Close the pane (the tab, when it's the only one)</td>
+</tr>
+<tr>
+<td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>W</kbd></td>
+<td>Close the tab with all its panes</td>
 </tr>
 <tr>
 <td><kbd>Ctrl</kbd>+<kbd>Tab</kbd> / <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Tab</kbd></td>
@@ -262,8 +272,20 @@ icons under <code>~/.local/share</code>, so Terminaal appears in your app launch
 <td>Move the tab left / right</td>
 </tr>
 <tr>
+<td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>D</kbd> / <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>D</kbd></td>
+<td>Split right / split down</td>
+</tr>
+<tr>
+<td><kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>←</kbd> <kbd>→</kbd> <kbd>↑</kbd> <kbd>↓</kbd></td>
+<td>Go to the pane in that direction</td>
+</tr>
+<tr>
+<td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Enter</kbd></td>
+<td>Maximize the pane / show all panes again</td>
+</tr>
+<tr>
 <td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>I</kbd></td>
-<td>Tab joins / leaves the broadcast</td>
+<td>Terminal joins / leaves the broadcast</td>
 </tr>
 <tr>
 <td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>B</kbd></td>
@@ -311,7 +333,8 @@ again. <kbd>Esc</kbd> closes the bar, as does any other key, which then goes to
 the shell.</p>
 <p dir="auto">Hold <kbd>Ctrl</kbd> and click a link or file name to open it (not a
 configurable shortcut). Tabs can also be closed with a middle click; the ☰
-button in the tab bar toggles the sidebar as well.</p>
+button in the tab bar toggles the sidebar as well. Clicking into a pane gives
+it the keyboard; the mouse wheel scrolls the pane under the mouse.</p>
 <h3 class="heading-element" dir="auto">Command line</h3>
 <div class="highlight highlight-source-shell notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="terminaal                          # a local shell
 terminaal --connect myserver       # connect to a saved or ~/.ssh/config host
@@ -350,7 +373,7 @@ commands_assume_yes = false   # let them skip confirmations (-y, --noconfirm)
 [shortcuts]                   # only what differs from the defaults
 new_tab = &quot;Ctrl+Alt+N&quot;
 copy = [&quot;Ctrl+Shift+C&quot;, &quot;Ctrl+Insert&quot;]
-paste_and_run = &quot;Ctrl+Shift+Enter&quot;
+paste_and_run = &quot;Ctrl+Shift+Alt+V&quot;
 tab_9 = []                    # no shortcut" dir="auto"><pre><span class="pl-smi">font_size</span> = <span class="pl-c1">15.0</span>              <span class="pl-c"><span class="pl-c">#</span> logical pixels</span>
 <span class="pl-smi">line_height_factor</span> = <span class="pl-c1">1.25</span>
 <span class="pl-smi">padding</span> = <span class="pl-c1">8.0</span>                 <span class="pl-c"><span class="pl-c">#</span> around the terminal grid</span>
@@ -380,11 +403,13 @@ tab_9 = []                    # no shortcut" dir="auto"><pre><span class="pl-smi
 [<span class="pl-en">shortcuts</span>]                   <span class="pl-c"><span class="pl-c">#</span> only what differs from the defaults</span>
 <span class="pl-smi">new_tab</span> = <span class="pl-s"><span class="pl-pds">"</span>Ctrl+Alt+N<span class="pl-pds">"</span></span>
 <span class="pl-smi">copy</span> = [<span class="pl-s"><span class="pl-pds">"</span>Ctrl+Shift+C<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>Ctrl+Insert<span class="pl-pds">"</span></span>]
-<span class="pl-smi">paste_and_run</span> = <span class="pl-s"><span class="pl-pds">"</span>Ctrl+Shift+Enter<span class="pl-pds">"</span></span>
+<span class="pl-smi">paste_and_run</span> = <span class="pl-s"><span class="pl-pds">"</span>Ctrl+Shift+Alt+V<span class="pl-pds">"</span></span>
 <span class="pl-smi">tab_9</span> = []                    <span class="pl-c"><span class="pl-c">#</span> no shortcut</span></pre></div>
 <p dir="auto">Shortcut names are the ones listed in the settings tab's tooltips (<code>new_tab</code>,
 <code>close_tab</code>, <code>next_tab</code>, <code>previous_tab</code>, <code>tab_1</code> … <code>tab_9</code>, <code>move_tab_left</code>,
-<code>move_tab_right</code>, <code>toggle_broadcast</code>, <code>toggle_sidebar</code>, <code>open_settings</code>,
+<code>move_tab_right</code>, <code>split_right</code>, <code>split_down</code>, <code>close_pane</code>,
+<code>focus_pane_left</code>, <code>focus_pane_right</code>, <code>focus_pane_up</code>, <code>focus_pane_down</code>,
+<code>zoom_pane</code>, <code>toggle_broadcast</code>, <code>toggle_sidebar</code>, <code>open_settings</code>,
 <code>copy</code>, <code>paste</code>, <code>paste_and_run</code>, <code>scroll_page_up</code>, <code>scroll_page_down</code>,
 <code>scroll_to_top</code>, <code>scroll_to_bottom</code>, <code>search</code>, <code>previous_prompt</code>,
 <code>next_prompt</code>, <code>font_bigger</code>, <code>font_smaller</code>, <code>font_reset</code>). Key
@@ -516,8 +541,10 @@ system under "Advanced" to skip that</li>
 marks and the working directory only work if the remote shell sends them</li>
 <li>A paused remote port forward keeps listening on the server and turns
 connections away; libssh2 can't cancel it cleanly mid-session</li>
-<li>With broadcast on, the built-in command buttons send the line for the active
-tab's system to every tab in the group</li>
+<li>With broadcast on, the built-in command buttons send the line for the focused
+terminal's system to every terminal in the group</li>
+<li>Split panes are resized with the mouse only, and the layout isn't kept when
+Terminaal quits</li>
 </ul>
 <h2 class="heading-element" dir="auto">Roadmap</h2>
 <ul class="contains-task-list">
@@ -535,8 +562,10 @@ for new tabs in the same folder, jumping between prompts, exit codes and
 notifications, plus clickable URLs and paths</li>
 <li class="task-list-item"><input aria-label="Completed task" checked="" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Own commands: named snippets bound to a system or host, input broadcast
 to several tabs, and a live list of a session's port forwards</li>
-<li class="task-list-item"><input aria-label="Incomplete task" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> The bigger ones: SFTP browser, split panes, restoring the last session,
-drop-down (Quake) window</li>
+<li class="task-list-item"><input aria-label="Completed task" checked="" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Split panes: several terminals in one tab, resizable, with keyboard focus
+moves and a maximized view</li>
+<li class="task-list-item"><input aria-label="Incomplete task" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> The bigger ones: SFTP browser, restoring the last session, drop-down
+(Quake) window</li>
 </ul>
 <h2 class="heading-element" dir="auto">Development</h2>
 <div class="highlight highlight-source-shell notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="cargo run                        # dev build
