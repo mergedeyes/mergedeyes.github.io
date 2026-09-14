@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Terminaal — Jan</title>
-  <link rel="stylesheet" href="../styles.css?v=b76c900a" />
+  <link rel="stylesheet" href="../styles.css?v=8d9d9ba9" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -44,8 +44,8 @@
         <div class="card__foot project-page__foot">
           <div class="card__links">
             <a href="https://github.com/mergedeyes/terminaal" class="link">Repository</a>
-            <a href="terminaal-source.html" class="link">Browse source (85 files)</a>
-            <a href="terminaal-commits.html" class="link">Commit history (26)</a>
+            <a href="terminaal-source.html" class="link">Browse source (94 files)</a>
+            <a href="terminaal-commits.html" class="link">Commit history (29)</a>
           </div>
           <span class="license-badge">GPL-3.0</span>
         </div>
@@ -80,6 +80,13 @@ Linux (Wayland and X11). Expect rough edges, and expect the config format to cha
 <li>Redraws only when something changes (output, input, cursor blink), so it stays
 idle when you do</li>
 <li>Multiple tabs, each a local shell or an SSH session; a clickable tab bar</li>
+<li><strong>Drop-down window</strong> (<code>terminaal --quake</code>, bound to a key in your desktop's
+settings): a terminal that drops down from the top of the screen and hides
+again, with tabs of its own that keep running. A real layer surface on
+COSMIC, KDE, Sway and Hyprland</li>
+<li><strong>Restores the last session</strong> at start: tabs, splits, shells in their
+working directories, SSH connections, files and settings tabs (no scrollback).
+A second window starts fresh</li>
 <li><strong>Split panes</strong>: divide a tab into several terminals side by side or one above
 the other (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>D</kbd>, <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>D</kbd>, or the right-click menu). A new pane
 runs the same shell in the same folder, or connects to the same host. Drag the
@@ -125,6 +132,9 @@ hold <kbd>Shift</kbd> to scroll Terminaal's scrollback instead</li>
 <li>Right-click menu in the terminal: copy, paste, paste and run, joining or
 leaving the broadcast, splitting and closing the pane, the files of an SSH
 connection</li>
+<li>A <strong>command palette</strong> (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd>): type a few
+letters to switch to a tab, connect to a host with any of its logins, run a
+snippet, trigger an action or pick a theme</li>
 <li>A <strong>settings tab</strong> for every option (<strong>⚙</strong> in the sidebar or <kbd>Ctrl</kbd>+<kbd>,</kbd>)</li>
 <li><strong>Themes</strong> for the console and the interface alike: seven built in, and your
 own in Alacritty's format (its themes work as they are)</li>
@@ -144,7 +154,7 @@ They live in a separate file that only Terminaal loads, so your other
 terminals are unaffected:
 <code>~/.config/fish/terminaal.fish</code>, <code>~/.bash_terminaal</code>, <code>$ZDOTDIR/.zsh_terminaal</code></li>
 <li><strong>Built-in commands</strong>: buttons for the everyday chores – update the system,
-list what has updates, free space, folder sizes, memory, top processes,
+and separately Flatpaks and AUR packages (paru/yay) where installed, list what has updates, free space, folder sizes, memory, top processes,
 uptime, failed services, log errors, open ports, addresses. The
 lines are tailored to the system the active tab is on (pacman, apt, dnf,
 zypper, apk, xbps, emerge, nixos-rebuild, brew, pkg), detected from
@@ -154,7 +164,9 @@ turn that off (<code>commands_assume_yes</code>), and the first click explains t
 commands go straight to the shell</li>
 <li><strong>Your own commands</strong> (snippets) as buttons next to the built-in ones: a
 name and a command of one or more lines, optionally only for one system or
-one host. Add, edit and delete them under <strong>Manage</strong></li>
+one host. Add, edit and delete them under <strong>Manage</strong>. A snippet can also run
+by itself as a <strong>startup command</strong>: with every new shell, or after an SSH
+login</li>
 </ul>
 <h3 class="heading-element" dir="auto">SSH</h3>
 <ul dir="auto">
@@ -173,6 +185,9 @@ listening on one</li>
 timeouts, keepalives, compression, address family, authentication order,
 agent forwarding (<code>ForwardAgent</code>), <code>StrictHostKeyChecking</code>, <code>RemoteCommand</code>, <code>SetEnv</code>/<code>SendEnv</code>, and the
 algorithm lists (kex, host key, ciphers, MACs)</li>
+<li><strong>A color per host</strong>: a warning color marks the host's tabs and frames its
+terminals, and a theme of its own gives them different console colors – so a
+production server never looks like a test box</li>
 <li>The sidebar shows the active tab's <strong>port forwards</strong> – running, paused or
 failed and why – and pauses, starts or retries each while connected</li>
 <li>Host keys are checked against <code>~/.ssh/known_hosts</code>, and new entries are appended.
@@ -201,8 +216,10 @@ otherwise). Switch it any time in the settings tab</li>
 <p dir="auto">The <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/README.md"><code>docs/</code></a> folder has more: a
 <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/getting-started.md">getting started</a> guide, tutorials (your first SSH host,
 keys and agents, port forwarding, one command on many servers, your own theme),
-reference guides for configuration, shortcuts, SSH options and shell integration,
-background on the architecture and security model, plus
+guides for configuration, shortcuts, SSH hosts and host keys, shell integration,
+commands and snippets, search and links, split panes, restoring the session, the
+drop-down window, files over SFTP and appearance, background on the architecture,
+the security model and prompt marks, plus
 <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/tips.md">tips</a> and <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/troubleshooting.md">troubleshooting</a>.</p>
 <h2 class="heading-element" dir="auto">Installation</h2>
 <p dir="auto">Terminaal is built from source.</p>
@@ -311,6 +328,10 @@ icons under <code>~/.local/share</code>, so Terminaal appears in your app launch
 <td>Open the settings tab</td>
 </tr>
 <tr>
+<td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd></td>
+<td>Command palette</td>
+</tr>
+<tr>
 <td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>C</kbd> / <kbd>V</kbd></td>
 <td>Copy / paste</td>
 </tr>
@@ -353,9 +374,11 @@ it the keyboard; the mouse wheel scrolls the pane under the mouse.</p>
 <h3 class="heading-element" dir="auto">Command line</h3>
 <div class="highlight highlight-source-shell notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="terminaal                          # a local shell
 terminaal --connect myserver       # connect to a saved or ~/.ssh/config host
-terminaal --connect admin@myserver # ...using that host's login for &quot;admin&quot;" dir="auto"><pre>terminaal                          <span class="pl-c"><span class="pl-c">#</span> a local shell</span>
+terminaal --connect admin@myserver # ...using that host's login for &quot;admin&quot;
+terminaal --quake                  # show or hide the drop-down window (bind it to a key)" dir="auto"><pre>terminaal                          <span class="pl-c"><span class="pl-c">#</span> a local shell</span>
 terminaal --connect myserver       <span class="pl-c"><span class="pl-c">#</span> connect to a saved or ~/.ssh/config host</span>
-terminaal --connect admin@myserver <span class="pl-c"><span class="pl-c">#</span> ...using that host's login for "admin"</span></pre></div>
+terminaal --connect admin@myserver <span class="pl-c"><span class="pl-c">#</span> ...using that host's login for "admin"</span>
+terminaal --quake                  <span class="pl-c"><span class="pl-c">#</span> show or hide the drop-down window (bind it to a key)</span></pre></div>
 <h2 class="heading-element" dir="auto">Configuration</h2>
 <p dir="auto">Everything is optional. Terminaal reads <code>~/.config/terminaal/config.toml</code>.
 A missing or broken file just means defaults, never a failed start.</p>
@@ -373,6 +396,9 @@ tab_bar = true
 sidebar = true                # show the sidebar at start
 sidebar_width = 300.0
 splash = true                 # start-up animation
+restore_session = true        # open last time's tabs again
+quake_height = 50.0           # drop-down window height, percent of the screen
+quake_hide_on_unfocus = true  # hide it when another window gets the keyboard
 # shell = &quot;/usr/bin/fish&quot;     # default shell for new tabs (default: $SHELL)
 # language = &quot;en&quot;             # &quot;en&quot; or &quot;de&quot; (default: from your locale)
 # theme = &quot;Dracula&quot;           # color theme, see below (default: &quot;Terminaal&quot;)
@@ -405,6 +431,9 @@ tab_9 = []                    # no shortcut" dir="auto"><pre><span class="pl-smi
 <span class="pl-smi">sidebar</span> = <span class="pl-c1">true</span>                <span class="pl-c"><span class="pl-c">#</span> show the sidebar at start</span>
 <span class="pl-smi">sidebar_width</span> = <span class="pl-c1">300.0</span>
 <span class="pl-smi">splash</span> = <span class="pl-c1">true</span>                 <span class="pl-c"><span class="pl-c">#</span> start-up animation</span>
+<span class="pl-smi">restore_session</span> = <span class="pl-c1">true</span>        <span class="pl-c"><span class="pl-c">#</span> open last time's tabs again</span>
+<span class="pl-smi">quake_height</span> = <span class="pl-c1">50.0</span>           <span class="pl-c"><span class="pl-c">#</span> drop-down window height, percent of the screen</span>
+<span class="pl-smi">quake_hide_on_unfocus</span> = <span class="pl-c1">true</span>  <span class="pl-c"><span class="pl-c">#</span> hide it when another window gets the keyboard</span>
 <span class="pl-c"><span class="pl-c">#</span> shell = "/usr/bin/fish"     # default shell for new tabs (default: $SHELL)</span>
 <span class="pl-c"><span class="pl-c">#</span> language = "en"             # "en" or "de" (default: from your locale)</span>
 <span class="pl-c"><span class="pl-c">#</span> theme = "Dracula"           # color theme, see below (default: "Terminaal")</span>
@@ -429,6 +458,7 @@ tab_9 = []                    # no shortcut" dir="auto"><pre><span class="pl-smi
 <code>move_tab_right</code>, <code>split_right</code>, <code>split_down</code>, <code>close_pane</code>,
 <code>focus_pane_left</code>, <code>focus_pane_right</code>, <code>focus_pane_up</code>, <code>focus_pane_down</code>,
 <code>zoom_pane</code>, <code>toggle_broadcast</code>, <code>open_files</code>, <code>toggle_sidebar</code>, <code>open_settings</code>,
+<code>command_palette</code>,
 <code>copy</code>, <code>paste</code>, <code>paste_and_run</code>, <code>scroll_page_up</code>, <code>scroll_page_down</code>,
 <code>scroll_to_top</code>, <code>scroll_to_bottom</code>, <code>search</code>, <code>previous_prompt</code>,
 <code>next_prompt</code>, <code>font_bigger</code>, <code>font_smaller</code>, <code>font_reset</code>). Key
@@ -525,7 +555,11 @@ name = "Deploy"
 command = """
 cd /srv/app
 ./deploy.sh"""
-host = "web1"       # optional: only in SSH tabs of this host (its name in the sidebar)' dir="auto"><pre>[[<span class="pl-en">snippet</span>]]
+host = "web1"       # optional: only in SSH tabs of this host (its name in the sidebar)
+# local = true      # optional instead of host: only in local terminals
+autorun = "login"   # optional: run by itself, "shell" (every new terminal)
+                    # or "login" (SSH terminals, after login)
+hidden = true       # optional: no button, only listed under Manage' dir="auto"><pre>[[<span class="pl-en">snippet</span>]]
 <span class="pl-smi">name</span> = <span class="pl-s"><span class="pl-pds">"</span>Follow logs<span class="pl-pds">"</span></span>
 <span class="pl-smi">command</span> = <span class="pl-s"><span class="pl-pds">"</span>journalctl -f<span class="pl-pds">"</span></span>
 <span class="pl-smi">system</span> = <span class="pl-s"><span class="pl-pds">"</span>arch<span class="pl-pds">"</span></span>     <span class="pl-c"><span class="pl-c">#</span> optional: only on this system (arch, debian, fedora, suse,</span>
@@ -536,7 +570,11 @@ host = "web1"       # optional: only in SSH tabs of this host (its name in the s
 <span class="pl-smi">command</span> = <span class="pl-s"><span class="pl-pds">"""</span></span>
 <span class="pl-s">cd /srv/app</span>
 <span class="pl-s">./deploy.sh<span class="pl-pds">"""</span></span>
-<span class="pl-smi">host</span> = <span class="pl-s"><span class="pl-pds">"</span>web1<span class="pl-pds">"</span></span>       <span class="pl-c"><span class="pl-c">#</span> optional: only in SSH tabs of this host (its name in the sidebar)</span></pre></div>
+<span class="pl-smi">host</span> = <span class="pl-s"><span class="pl-pds">"</span>web1<span class="pl-pds">"</span></span>       <span class="pl-c"><span class="pl-c">#</span> optional: only in SSH tabs of this host (its name in the sidebar)</span>
+<span class="pl-c"><span class="pl-c">#</span> local = true      # optional instead of host: only in local terminals</span>
+<span class="pl-smi">autorun</span> = <span class="pl-s"><span class="pl-pds">"</span>login<span class="pl-pds">"</span></span>   <span class="pl-c"><span class="pl-c">#</span> optional: run by itself, "shell" (every new terminal)</span>
+                    <span class="pl-c"><span class="pl-c">#</span> or "login" (SSH terminals, after login)</span>
+<span class="pl-smi">hidden</span> = <span class="pl-c1">true</span>       <span class="pl-c"><span class="pl-c">#</span> optional: no button, only listed under Manage</span></pre></div>
 <h2 class="heading-element" dir="auto">Translations</h2>
 <p dir="auto">The texts live in <a href="https://github.com/mergedeyes/terminaal/blob/main/locales/"><code>locales/</code></a>, one <a href="https://projectfluent.org/fluent/guide/" rel="nofollow">Fluent</a>
 file per language, and are compiled into the binary. To improve a
@@ -562,8 +600,13 @@ marks and the working directory only work if the remote shell sends them</li>
 connections away; libssh2 can't cancel it cleanly mid-session</li>
 <li>With broadcast on, the built-in command buttons send the line for the focused
 terminal's system to every terminal in the group</li>
-<li>Split panes are resized with the mouse only, and the layout isn't kept when
-Terminaal quits</li>
+<li>Split panes are resized with the mouse only</li>
+<li>The drop-down window needs a Wayland desktop with the layer shell (not
+GNOME); on X11 it's an always-on-top window. It takes no dropped files and
+no input method (dead keys work)</li>
+<li>A restored session starts every terminal fresh: no scrollback, and SSH
+terminals log in again. Closing the last tab (or <code>exit</code> in the last shell)
+leaves nothing to restore – close the window to keep your tabs</li>
 <li>SFTP never overwrites on copying (taken names get a number) and deletes only
 files and empty folders. Transfers resume after a dropped connection only while
 Terminaal stays open. Editing through sudo pastes a command into the terminal,
@@ -592,7 +635,57 @@ to several tabs, and a live list of a session's port forwards</li>
 moves and a maximized view</li>
 <li class="task-list-item"><input aria-label="Completed task" checked="" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> SFTP: browse, transfer, edit server files locally with conflict check,
 through sudo where needed</li>
-<li class="task-list-item"><input aria-label="Incomplete task" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> The bigger ones: restoring the last session, drop-down (Quake) window</li>
+<li class="task-list-item"><input aria-label="Completed task" checked="" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Restoring the last session: tabs, splits, directories, SSH connections</li>
+<li class="task-list-item"><input aria-label="Completed task" checked="" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Drop-down (Quake) window: a layer surface toggled by <code>terminaal --quake</code></li>
+<li class="task-list-item"><input aria-label="Completed task" checked="" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Startup commands: snippets that run with every new shell, or after an SSH login</li>
+<li class="task-list-item"><input aria-label="Completed task" checked="" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Separate update buttons for Flatpak and for AUR helpers (yay/paru)</li>
+<li class="task-list-item"><input aria-label="Completed task" checked="" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> A color per host: a warning color on tab and frame, or a theme of its own</li>
+<li class="task-list-item"><input aria-label="Completed task" checked="" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Command palette: fuzzy search over actions, hosts and logins, snippets, tabs, themes and shells</li>
+</ul>
+<h3 class="heading-element" dir="auto">Planned</h3>
+<p dir="auto"><strong>Everyday comfort</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input aria-label="Incomplete task" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Working with command output through the prompt marks: copy the last output, click a prompt to select its output, show how long a command ran</li>
+<li class="task-list-item"><input aria-label="Incomplete task" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> A warning before pasting several lines or risky commands (<code>sudo</code>, <code>curl … | sh</code>), especially with broadcast on</li>
+<li class="task-list-item"><input aria-label="Incomplete task" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Activity in background tabs: a mark for new output, the bell, or silence for a while</li>
+<li class="task-list-item"><input aria-label="Incomplete task" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Reopen a closed tab</li>
+<li class="task-list-item"><input aria-label="Incomplete task" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Resize and swap panes with the keyboard</li>
+<li class="task-list-item"><input aria-label="Incomplete task" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Search: number of matches, optional regex</li>
+</ul>
+<p dir="auto"><strong>Terminal protocols</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input aria-label="Incomplete task" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> OSC 52: programs (also over SSH) may set the clipboard, after asking</li>
+<li class="task-list-item"><input aria-label="Incomplete task" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Kitty keyboard protocol</li>
+<li class="task-list-item"><input aria-label="Incomplete task" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Synchronized output (mode 2026)</li>
+<li class="task-list-item"><input aria-label="Incomplete task" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Keyboard hints: pick URLs, paths, IPs and hashes on screen by a letter to copy or open them</li>
+<li class="task-list-item"><input aria-label="Incomplete task" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Vi mode for selecting and copying in the scrollback</li>
+<li class="task-list-item"><input aria-label="Incomplete task" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Images in the terminal (Kitty graphics protocol or Sixel)</li>
+</ul>
+<p dir="auto"><strong>SSH</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input aria-label="Incomplete task" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Folders and tags for hosts, search in the sidebar</li>
+<li class="task-list-item"><input aria-label="Incomplete task" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> X11 forwarding</li>
+<li class="task-list-item"><input aria-label="Incomplete task" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Add a port forward on the fly from a connected tab</li>
+<li class="task-list-item"><input aria-label="Incomplete task" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Connection quality in the tab (latency, reconnecting)</li>
+<li class="task-list-item"><input aria-label="Incomplete task" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Import hosts from Termius, PuTTY and Remmina</li>
+<li class="task-list-item"><input aria-label="Incomplete task" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> More session types: serial console (<code>/dev/ttyUSB*</code>), containers (<code>docker</code>/<code>podman exec</code>, distrobox/toolbox, <code>kubectl exec</code>)</li>
+</ul>
+<p dir="auto"><strong>Files (SFTP)</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input aria-label="Incomplete task" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Drag and drop between the local and the server side</li>
+<li class="task-list-item"><input aria-label="Incomplete task" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Sort by name, type, size and date</li>
+<li class="task-list-item"><input aria-label="Incomplete task" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Filters that combine: hidden files, folders or files only, name pattern, size (below, above or between), modification date range, file type</li>
+<li class="task-list-item"><input aria-label="Incomplete task" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Change permissions in a small dialog: tick read/write/execute for owner, group and others (plus setuid/setgid/sticky), with the octal mode shown alongside and editable; recursively for folders; owner and group too</li>
+<li class="task-list-item"><input aria-label="Incomplete task" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Preview text and images</li>
+<li class="task-list-item"><input aria-label="Incomplete task" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Sync a folder one way, with a preview of what would be copied</li>
+</ul>
+<p dir="auto"><strong>Bigger pieces</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input aria-label="Incomplete task" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Workspaces: named layouts with splits, folders, hosts and startup commands, opened with one click</li>
+<li class="task-list-item"><input aria-label="Incomplete task" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Recording a tab's output as an asciinema cast or a log file, optionally per host</li>
+<li class="task-list-item"><input aria-label="Incomplete task" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> tmux control mode (<code>tmux -CC</code>): a server's tmux windows and panes as real tabs and splits</li>
+<li class="task-list-item"><input aria-label="Incomplete task" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Detach a tab into a window of its own</li>
+<li class="task-list-item"><input aria-label="Incomplete task" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Profiles: font, theme and environment per shell or host</li>
 </ul>
 <h2 class="heading-element" dir="auto">Development</h2>
 <div class="highlight highlight-source-shell notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="cargo run                        # dev build
