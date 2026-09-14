@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Terminaal — Jan</title>
-  <link rel="stylesheet" href="../styles.css?v=50f7b1d3" />
+  <link rel="stylesheet" href="../styles.css?v=8b17b65e" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -44,8 +44,8 @@
         <div class="card__foot project-page__foot">
           <div class="card__links">
             <a href="https://github.com/mergedeyes/terminaal" class="link">Repository</a>
-            <a href="terminaal-source.html" class="link">Browse source (58 files)</a>
-            <a href="terminaal-commits.html" class="link">Commit history (24)</a>
+            <a href="terminaal-source.html" class="link">Browse source (63 files)</a>
+            <a href="terminaal-commits.html" class="link">Commit history (25)</a>
           </div>
           <span class="license-badge">GPL-3.0</span>
         </div>
@@ -103,6 +103,12 @@ shells over SSH that send them – fish 4 does on its own):
 looking at (after 10 seconds by default, adjustable)</li>
 </ul>
 </li>
+<li><strong>Files on the server (SFTP)</strong> over the terminal's own connection
+(<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>O</kbd> or the right-click menu): browse,
+upload and download files and folders (also by dragging files onto the window),
+and <strong>edit a server file in your local editor</strong> – every save goes back, with a
+check that nobody changed it meanwhile. Files only root may change go through
+sudo in the terminal, where it asks for the password as usual</li>
 <li><strong>Broadcast</strong>: put terminals into a broadcast group (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>I</kbd>
 or the right-click menu), and what you type, paste or send with a command
 button in one of them goes to all of them – the same command on ten servers
@@ -116,7 +122,8 @@ working directory, and only in local tabs</li>
 reports for programs with mouse support (<code>htop</code>, <code>mc</code>, <code>vim</code> with <code>mouse=a</code>);
 hold <kbd>Shift</kbd> to scroll Terminaal's scrollback instead</li>
 <li>Right-click menu in the terminal: copy, paste, paste and run, joining or
-leaving the broadcast, splitting and closing the pane</li>
+leaving the broadcast, splitting and closing the pane, the files of an SSH
+connection</li>
 <li>A <strong>settings tab</strong> for every option (<strong>⚙</strong> in the sidebar or <kbd>Ctrl</kbd>+<kbd>,</kbd>)</li>
 <li><strong>Themes</strong> for the console and the interface alike: seven built in, and your
 own in Alacritty's format (its themes work as they are)</li>
@@ -288,6 +295,10 @@ icons under <code>~/.local/share</code>, so Terminaal appears in your app launch
 <td>Terminal joins / leaves the broadcast</td>
 </tr>
 <tr>
+<td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>O</kbd></td>
+<td>Files of the SSH connection (SFTP)</td>
+</tr>
+<tr>
 <td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>B</kbd></td>
 <td>Show or hide the sidebar</td>
 </tr>
@@ -369,6 +380,8 @@ commands_run = true           # command buttons run at once; off: typed into the
 commands_assume_yes = false   # let them skip confirmations (-y, --noconfirm)
 # system = &quot;debian&quot;           # what the built-in commands build for
                               # (default: from /etc/os-release)
+# editor = &quot;code&quot;             # opens server files edited locally
+                              # (default: the desktop's default app)
 
 [shortcuts]                   # only what differs from the defaults
 new_tab = &quot;Ctrl+Alt+N&quot;
@@ -399,6 +412,8 @@ tab_9 = []                    # no shortcut" dir="auto"><pre><span class="pl-smi
 <span class="pl-smi">commands_assume_yes</span> = <span class="pl-c1">false</span>   <span class="pl-c"><span class="pl-c">#</span> let them skip confirmations (-y, --noconfirm)</span>
 <span class="pl-c"><span class="pl-c">#</span> system = "debian"           # what the built-in commands build for</span>
                               <span class="pl-c"><span class="pl-c">#</span> (default: from /etc/os-release)</span>
+<span class="pl-c"><span class="pl-c">#</span> editor = "code"             # opens server files edited locally</span>
+                              <span class="pl-c"><span class="pl-c">#</span> (default: the desktop's default app)</span>
 
 [<span class="pl-en">shortcuts</span>]                   <span class="pl-c"><span class="pl-c">#</span> only what differs from the defaults</span>
 <span class="pl-smi">new_tab</span> = <span class="pl-s"><span class="pl-pds">"</span>Ctrl+Alt+N<span class="pl-pds">"</span></span>
@@ -409,7 +424,7 @@ tab_9 = []                    # no shortcut" dir="auto"><pre><span class="pl-smi
 <code>close_tab</code>, <code>next_tab</code>, <code>previous_tab</code>, <code>tab_1</code> … <code>tab_9</code>, <code>move_tab_left</code>,
 <code>move_tab_right</code>, <code>split_right</code>, <code>split_down</code>, <code>close_pane</code>,
 <code>focus_pane_left</code>, <code>focus_pane_right</code>, <code>focus_pane_up</code>, <code>focus_pane_down</code>,
-<code>zoom_pane</code>, <code>toggle_broadcast</code>, <code>toggle_sidebar</code>, <code>open_settings</code>,
+<code>zoom_pane</code>, <code>toggle_broadcast</code>, <code>open_files</code>, <code>toggle_sidebar</code>, <code>open_settings</code>,
 <code>copy</code>, <code>paste</code>, <code>paste_and_run</code>, <code>scroll_page_up</code>, <code>scroll_page_down</code>,
 <code>scroll_to_top</code>, <code>scroll_to_bottom</code>, <code>search</code>, <code>previous_prompt</code>,
 <code>next_prompt</code>, <code>font_bigger</code>, <code>font_smaller</code>, <code>font_reset</code>). Key
@@ -545,6 +560,10 @@ connections away; libssh2 can't cancel it cleanly mid-session</li>
 terminal's system to every terminal in the group</li>
 <li>Split panes are resized with the mouse only, and the layout isn't kept when
 Terminaal quits</li>
+<li>SFTP never overwrites on copying (taken names get a number), deletes only
+files and empty folders, and doesn't resume a transfer after a dropped
+connection. Editing through sudo pastes a command into the terminal, so that
+terminal should be at a shell prompt</li>
 </ul>
 <h2 class="heading-element" dir="auto">Roadmap</h2>
 <ul class="contains-task-list">
@@ -564,8 +583,9 @@ notifications, plus clickable URLs and paths</li>
 to several tabs, and a live list of a session's port forwards</li>
 <li class="task-list-item"><input aria-label="Completed task" checked="" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Split panes: several terminals in one tab, resizable, with keyboard focus
 moves and a maximized view</li>
-<li class="task-list-item"><input aria-label="Incomplete task" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> The bigger ones: SFTP browser, restoring the last session, drop-down
-(Quake) window</li>
+<li class="task-list-item"><input aria-label="Completed task" checked="" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> SFTP: browse, transfer, edit server files locally with conflict check,
+through sudo where needed</li>
+<li class="task-list-item"><input aria-label="Incomplete task" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> The bigger ones: restoring the last session, drop-down (Quake) window</li>
 </ul>
 <h2 class="heading-element" dir="auto">Development</h2>
 <div class="highlight highlight-source-shell notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="cargo run                        # dev build
