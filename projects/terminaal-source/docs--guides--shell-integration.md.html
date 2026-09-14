@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>docs/guides/shell-integration.md — Terminaal — Jan</title>
+  <link rel="stylesheet" href="../../styles.css?v=b76c900a" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="layout">
+    <header class="rail" id="rail">
+<div class="rail__top">
+<a class="brand" href="../../index.html#top">
+<span class="brand__name">Jan</span>
+<span class="brand__meta">systems &amp; infrastructure<br/>Code, Code &amp; Code</span>
+</a>
+<button aria-controls="nav" aria-expanded="false" aria-label="Toggle menu" class="menu-toggle" id="menuToggle">
+<span></span><span></span><span></span>
+</button>
+</div>
+<nav aria-label="Sections" class="nav" id="nav">
+<a data-path="~/projects" href="../../index.html#projects">Projects</a>
+<a data-path="~/work" href="../../index.html#work">Work</a>
+<a data-path="~/education" href="../../index.html#education">Education</a>
+<a data-path="~/skills" href="../../index.html#skills">Skills</a>
+<a data-path="~/about" href="../../index.html#about">About Me</a>
+<a data-path="~/contact" href="../../index.html#contact">Contact</a>
+</nav>
+<div class="rail__status">
+<span aria-hidden="true" class="dot"></span>
+<span>open to work</span>
+</div>
+</header>
+    <nav class="file-tree"><p class="file-tree__title">Files</p><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">assets/</span><ul class="tree"><li class="tree-file"><a href="assets--terminaal.desktop.html">terminaal.desktop</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">docs/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">explanations/</span><ul class="tree"><li class="tree-file"><a href="docs--explanations--architecture.md.html">architecture.md</a></li><li class="tree-file"><a href="docs--explanations--prompt-marks.md.html">prompt-marks.md</a></li><li class="tree-file"><a href="docs--explanations--security-and-your-files.md.html">security-and-your-files.md</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">guides/</span><ul class="tree"><li class="tree-file"><a href="docs--guides--appearance.md.html">appearance.md</a></li><li class="tree-file"><a href="docs--guides--commands-and-snippets.md.html">commands-and-snippets.md</a></li><li class="tree-file"><a href="docs--guides--configuration.md.html">configuration.md</a></li><li class="tree-file"><a href="docs--guides--files-and-sftp.md.html">files-and-sftp.md</a></li><li class="tree-file"><a href="docs--guides--host-keys.md.html">host-keys.md</a></li><li class="tree-file"><a href="docs--guides--keyboard-shortcuts.md.html">keyboard-shortcuts.md</a></li><li class="tree-file"><a href="docs--guides--search-and-links.md.html">search-and-links.md</a></li><li class="tree-file tree-file--active"><a href="docs--guides--shell-integration.md.html">shell-integration.md</a></li><li class="tree-file"><a href="docs--guides--split-panes.md.html">split-panes.md</a></li><li class="tree-file"><a href="docs--guides--ssh-hosts.md.html">ssh-hosts.md</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">tutorials/</span><ul class="tree"><li class="tree-file"><a href="docs--tutorials--01-your-first-ssh-host.md.html">01-your-first-ssh-host.md</a></li><li class="tree-file"><a href="docs--tutorials--02-keys-and-the-agent.md.html">02-keys-and-the-agent.md</a></li><li class="tree-file"><a href="docs--tutorials--03-port-forwarding.md.html">03-port-forwarding.md</a></li><li class="tree-file"><a href="docs--tutorials--04-one-command-many-servers.md.html">04-one-command-many-servers.md</a></li><li class="tree-file"><a href="docs--tutorials--05-make-your-own-theme.md.html">05-make-your-own-theme.md</a></li></ul></li><li class="tree-file"><a href="docs--README.md.html">README.md</a></li><li class="tree-file"><a href="docs--getting-started.md.html">getting-started.md</a></li><li class="tree-file"><a href="docs--tips.md.html">tips.md</a></li><li class="tree-file"><a href="docs--troubleshooting.md.html">troubleshooting.md</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">locales/</span><ul class="tree"><li class="tree-file"><a href="locales--de.ftl.html">de.ftl</a></li><li class="tree-file"><a href="locales--en.ftl.html">en.ftl</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">src/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">render/</span><ul class="tree"><li class="tree-file"><a href="src--render--grid.rs.html">grid.rs</a></li><li class="tree-file"><a href="src--render--label.rs.html">label.rs</a></li><li class="tree-file"><a href="src--render--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="src--render--palette.rs.html">palette.rs</a></li><li class="tree-file"><a href="src--render--quad.rs.html">quad.rs</a></li><li class="tree-file"><a href="src--render--quad.wgsl.html">quad.wgsl</a></li><li class="tree-file"><a href="src--render--search_bar.rs.html">search_bar.rs</a></li><li class="tree-file"><a href="src--render--tab_bar.rs.html">tab_bar.rs</a></li><li class="tree-file"><a href="src--render--text.rs.html">text.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">sftp/</span><ul class="tree"><li class="tree-file"><a href="src--sftp--edit.rs.html">edit.rs</a></li><li class="tree-file"><a href="src--sftp--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="src--sftp--protocol.rs.html">protocol.rs</a></li><li class="tree-file"><a href="src--sftp--session.rs.html">session.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">shells/</span><ul class="tree"><li class="tree-file"><a href="src--shells--launch.rs.html">launch.rs</a></li><li class="tree-file"><a href="src--shells--managed.rs.html">managed.rs</a></li><li class="tree-file"><a href="src--shells--mod.rs.html">mod.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">ssh/</span><ul class="tree"><li class="tree-file"><a href="src--ssh--agent_forward.rs.html">agent_forward.rs</a></li><li class="tree-file"><a href="src--ssh--connection.rs.html">connection.rs</a></li><li class="tree-file"><a href="src--ssh--forward.rs.html">forward.rs</a></li><li class="tree-file"><a href="src--ssh--keys.rs.html">keys.rs</a></li><li class="tree-file"><a href="src--ssh--known_hosts.rs.html">known_hosts.rs</a></li><li class="tree-file"><a href="src--ssh--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="src--ssh--options.rs.html">options.rs</a></li><li class="tree-file"><a href="src--ssh--socks.rs.html">socks.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">terminal/</span><ul class="tree"><li class="tree-file"><a href="src--terminal--filtered_pty.rs.html">filtered_pty.rs</a></li><li class="tree-file"><a href="src--terminal--integration.rs.html">integration.rs</a></li><li class="tree-file"><a href="src--terminal--links.rs.html">links.rs</a></li><li class="tree-file"><a href="src--terminal--listener.rs.html">listener.rs</a></li><li class="tree-file"><a href="src--terminal--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="src--terminal--prompts.rs.html">prompts.rs</a></li><li class="tree-file"><a href="src--terminal--search.rs.html">search.rs</a></li><li class="tree-file"><a href="src--terminal--session.rs.html">session.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">theme/</span><ul class="tree"><li class="tree-file"><a href="src--theme--cosmic.rs.html">cosmic.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">ui/</span><ul class="tree"><li class="tree-file"><a href="src--ui--commands_panel.rs.html">commands_panel.rs</a></li><li class="tree-file"><a href="src--ui--context_menu.rs.html">context_menu.rs</a></li><li class="tree-file"><a href="src--ui--files_panel.rs.html">files_panel.rs</a></li><li class="tree-file"><a href="src--ui--keys_panel.rs.html">keys_panel.rs</a></li><li class="tree-file"><a href="src--ui--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="src--ui--settings_panel.rs.html">settings_panel.rs</a></li><li class="tree-file"><a href="src--ui--sidebar.rs.html">sidebar.rs</a></li><li class="tree-file"><a href="src--ui--splash.rs.html">splash.rs</a></li><li class="tree-file"><a href="src--ui--ssh_panel.rs.html">ssh_panel.rs</a></li><li class="tree-file"><a href="src--ui--theme.rs.html">theme.rs</a></li><li class="tree-file"><a href="src--ui--widgets.rs.html">widgets.rs</a></li></ul></li><li class="tree-file"><a href="src--app.rs.html">app.rs</a></li><li class="tree-file"><a href="src--blur.rs.html">blur.rs</a></li><li class="tree-file"><a href="src--commands.rs.html">commands.rs</a></li><li class="tree-file"><a href="src--config.rs.html">config.rs</a></li><li class="tree-file"><a href="src--gpu.rs.html">gpu.rs</a></li><li class="tree-file"><a href="src--i18n.rs.html">i18n.rs</a></li><li class="tree-file"><a href="src--input.rs.html">input.rs</a></li><li class="tree-file"><a href="src--main.rs.html">main.rs</a></li><li class="tree-file"><a href="src--panes.rs.html">panes.rs</a></li><li class="tree-file"><a href="src--shortcuts.rs.html">shortcuts.rs</a></li><li class="tree-file"><a href="src--snippets.rs.html">snippets.rs</a></li><li class="tree-file"><a href="src--theme.rs.html">theme.rs</a></li></ul></li><li class="tree-file"><a href="Cargo.lock.html">Cargo.lock</a></li><li class="tree-file"><a href="Cargo.toml.html">Cargo.toml</a></li><li class="tree-file"><a href="LICENSE.html">LICENSE</a></li><li class="tree-file"><a href="install.sh.html">install.sh</a></li></ul></nav>
+    <main class="main" id="main">
+      <section class="section source-page">
+        <p class="section__path">
+          <a href="../../index.html#projects" class="link">~/projects</a> /
+          <a href="../terminaal.html" class="link">terminaal</a> / source
+        </p>
+        <div class="source-page__head">
+          <h1 class="section__title">docs/guides/shell-integration.md</h1>
+          <a href="../terminaal.html" class="link">← Back to Terminaal</a>
+        </div>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">  1</span>
+<span class="normal">  2</span>
+<span class="normal">  3</span>
+<span class="normal">  4</span>
+<span class="normal">  5</span>
+<span class="normal">  6</span>
+<span class="normal">  7</span>
+<span class="normal">  8</span>
+<span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span></pre></div></td><td class="code"><div><pre><span></span><span class="gh"># Shell integration</span>
+
+When the shell tells Terminaal where prompts start, when commands run and which
+directory it's in, you get:
+
+| Feature | Needs |
+| --- | --- |
+| Tab title shows the working directory | OSC 7 |
+| New tab opens in the same directory | OSC 7 (local tabs) |
+| Ctrl+click opens relative file names | OSC 7 (local tabs) |
+| &lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;↑&lt;/kbd&gt;/&lt;kbd&gt;↓&lt;/kbd&gt; jump between prompts | OSC 133 <span class="sb">`A`</span> |
+| <span class="sb">`✘ code`</span> next to a failed command | OSC 133 <span class="sb">`A`</span>, <span class="sb">`C`</span>, <span class="sb">`D`</span> |
+| Notification when a long command finishes unseen | OSC 133 <span class="sb">`C`</span>, <span class="sb">`D`</span> |
+
+<span class="gu">## fish, bash and zsh: nothing to do</span>
+
+Terminaal starts these shells with small generated startup files in
+<span class="sb">`~/.config/terminaal/shell-integration/`</span>. They load your own config first
+(<span class="sb">`~/.bashrc`</span>, your <span class="sb">`.zshrc`</span>, fish's config), then Terminaal's managed aliases,
+then the integration. Your dotfiles aren't touched, and other terminals don't
+get any of it.
+
+<span class="k">-</span><span class="w"> </span><span class="gs">**bash**</span> reports through <span class="sb">`PROMPT_COMMAND`</span> (put first, so it sees the command's
+  exit status; array-style <span class="sb">`PROMPT_COMMAND`</span> works) and <span class="sb">`PS0`</span>.
+<span class="k">-</span><span class="w"> </span><span class="gs">**zsh**</span> uses <span class="sb">`precmd`</span> and <span class="sb">`preexec`</span> hooks.
+<span class="k">-</span><span class="w"> </span><span class="gs">**fish 4 and newer**</span> report everything themselves; Terminaal only adds hooks
+  for older fish versions.
+
+Tools that rewrite your prompt (Starship, oh-my-zsh, powerlevel10k) keep
+working: the integration doesn't touch <span class="sb">`PS1`</span>.
+
+<span class="gu">## Other shells, or shells over SSH</span>
+
+Terminaal reads standard sequences, so any shell that sends them works – also on
+a server you've connected to. Add this to the <span class="gs">**server's**</span> <span class="sb">`~/.bashrc`</span>:
+
+<span class="sb">```bash</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$-</span><span class="w"> </span><span class="o">==</span><span class="w"> </span>*i*<span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span>__term_prompt<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="w">        </span><span class="nb">local</span><span class="w"> </span><span class="nv">ret</span><span class="o">=</span><span class="nv">$?</span>
+<span class="w">        </span><span class="nb">printf</span><span class="w"> </span><span class="s1">'\e]133;D;%s\a\e]7;file://%s%s\a\e]133;A\a'</span><span class="w"> </span><span class="s2">"</span><span class="nv">$ret</span><span class="s2">"</span><span class="w"> </span><span class="s2">"</span><span class="nv">$HOSTNAME</span><span class="s2">"</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">PWD</span><span class="p">// /%20</span><span class="si">}</span><span class="s2">"</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nv">$ret</span>
+<span class="w">    </span><span class="o">}</span>
+<span class="w">    </span><span class="nv">PROMPT_COMMAND</span><span class="o">=</span><span class="s2">"__term_prompt</span><span class="si">${</span><span class="nv">PROMPT_COMMAND</span><span class="p">:+;</span><span class="nv">$PROMPT_COMMAND</span><span class="si">}</span><span class="s2">"</span>
+<span class="w">    </span><span class="nv">PS0</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">PS0</span><span class="si">}</span><span class="s2">\e]133;C\a"</span>
+<span class="k">fi</span>
+<span class="sb">```</span>
+
+For zsh (<span class="sb">`~/.zshrc`</span>):
+
+<span class="sb">```zsh</span>
+__term_precmd<span class="o">()</span><span class="w"> </span><span class="o">{</span><span class="w"> </span><span class="nb">local</span><span class="w"> </span><span class="nv">ret</span><span class="o">=</span><span class="nv">$?</span><span class="p">;</span><span class="w"> </span><span class="nb">printf</span><span class="w"> </span><span class="s1">'\e]133;D;%s\a\e]7;file://%s%s\a\e]133;A\a'</span><span class="w"> </span><span class="nv">$ret</span><span class="w"> </span><span class="nv">$HOST</span><span class="w"> </span><span class="si">${</span><span class="nv">PWD</span><span class="p">// /%20</span><span class="si">}</span><span class="w"> </span><span class="o">}</span>
+__term_preexec<span class="o">()</span><span class="w"> </span><span class="o">{</span><span class="w"> </span><span class="nb">printf</span><span class="w"> </span><span class="s1">'\e]133;C\a'</span><span class="w"> </span><span class="o">}</span>
+<span class="nv">precmd_functions</span><span class="o">=(</span>__term_precmd<span class="w"> </span><span class="nv">$precmd_functions</span><span class="o">)</span>
+<span class="nv">preexec_functions</span><span class="o">+=(</span>__term_preexec<span class="o">)</span>
+<span class="sb">```</span>
+
+Other terminals ignore these sequences, so it's safe to leave them in.
+
+What each sequence means:
+
+| Sequence | Sent | Meaning |
+| --- | --- | --- |
+| <span class="sb">`ESC ] 7 ; file://host/path BEL`</span> | before each prompt | Working directory, percent-encoded |
+| <span class="sb">`ESC ] 133 ; A BEL`</span> | right before the prompt | A prompt starts here |
+| <span class="sb">`ESC ] 133 ; B BEL`</span> | after the prompt (optional) | The prompt ends, input starts |
+| <span class="sb">`ESC ] 133 ; C BEL`</span> | when a command starts | Output of a command follows |
+| <span class="sb">`ESC ] 133 ; D ; code BEL`</span> | before the next prompt | The command finished with <span class="sb">`code`</span> |
+
+<span class="sb">`ST`</span> (<span class="sb">`ESC \`</span>) works as terminator instead of <span class="sb">`BEL`</span>.
+
+<span class="gu">## Using the features</span>
+
+<span class="k">-</span><span class="w"> </span><span class="gs">**Prompt jumps**</span> put the prompt at the top of the screen. Going down past the
+  last prompt returns to the bottom.
+<span class="k">-</span><span class="w"> </span><span class="gs">**Exit codes**</span> appear at the right end of the prompt line of the failed command,
+  only where the line has room. Successful commands show nothing. The code is
+  known once the <span class="ge">*next*</span> prompt appears.
+<span class="k">-</span><span class="w"> </span><span class="gs">**Notifications**</span>: <span class="gs">**Settings → Terminal → Shell integration → Notify after**</span>
+  (default 10 seconds, 0 turns it off). You're notified only when the window
+  isn't focused or the command's tab isn't the active one. Needs <span class="sb">`notify-send`</span>;
+  the taskbar entry is also marked as needing attention.
+<span class="k">-</span><span class="w"> </span><span class="gs">**Tab titles**</span>: a title set by a program (OSC 0/2) wins over the directory.
+  Many distributions' bash setups set one, so you may see <span class="sb">`user@host: dir`</span>
+  instead – that's the program's title.
+<span class="k">-</span><span class="w"> </span><span class="gs">**New tabs**</span> open in the active tab's directory only when it's a local tab and
+  the directory is on this machine.
+
+<span class="gu">## Troubleshooting</span>
+
+<span class="k">-</span><span class="w"> </span><span class="gs">**No prompt marks in a local tab?**</span> Check you're running fish, bash or zsh as
+  started by Terminaal – a shell started inside another (say, <span class="sb">`bash`</span> typed in
+  fish) doesn't get the integration.
+<span class="k">-</span><span class="w"> </span><span class="gs">**Marks, but no exit codes?**</span> The shell sends <span class="sb">`A`</span> but not <span class="sb">`C`</span>/<span class="sb">`D`</span>. A <span class="sb">`D`</span>
+  without a preceding <span class="sb">`C`</span> is ignored on purpose (it would repeat the last status
+  on an empty Enter).
+<span class="k">-</span><span class="w"> </span><span class="gs">**Wrong directory in the title over SSH?**</span> The title shows <span class="sb">`host:path`</span> when the
+  host isn't this machine – that's the remote directory.
+
+How it works inside: [<span class="nt">How prompt marks work</span>](<span class="na">../explanations/prompt-marks.md</span>).
+</pre></div></td></tr></table></div>
+
+      </section>
+    </main>
+  </div>
+</body>
+</html>

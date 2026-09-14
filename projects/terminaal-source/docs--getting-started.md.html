@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>docs/getting-started.md — Terminaal — Jan</title>
+  <link rel="stylesheet" href="../../styles.css?v=b76c900a" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="layout">
+    <header class="rail" id="rail">
+<div class="rail__top">
+<a class="brand" href="../../index.html#top">
+<span class="brand__name">Jan</span>
+<span class="brand__meta">systems &amp; infrastructure<br/>Code, Code &amp; Code</span>
+</a>
+<button aria-controls="nav" aria-expanded="false" aria-label="Toggle menu" class="menu-toggle" id="menuToggle">
+<span></span><span></span><span></span>
+</button>
+</div>
+<nav aria-label="Sections" class="nav" id="nav">
+<a data-path="~/projects" href="../../index.html#projects">Projects</a>
+<a data-path="~/work" href="../../index.html#work">Work</a>
+<a data-path="~/education" href="../../index.html#education">Education</a>
+<a data-path="~/skills" href="../../index.html#skills">Skills</a>
+<a data-path="~/about" href="../../index.html#about">About Me</a>
+<a data-path="~/contact" href="../../index.html#contact">Contact</a>
+</nav>
+<div class="rail__status">
+<span aria-hidden="true" class="dot"></span>
+<span>open to work</span>
+</div>
+</header>
+    <nav class="file-tree"><p class="file-tree__title">Files</p><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">assets/</span><ul class="tree"><li class="tree-file"><a href="assets--terminaal.desktop.html">terminaal.desktop</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">docs/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">explanations/</span><ul class="tree"><li class="tree-file"><a href="docs--explanations--architecture.md.html">architecture.md</a></li><li class="tree-file"><a href="docs--explanations--prompt-marks.md.html">prompt-marks.md</a></li><li class="tree-file"><a href="docs--explanations--security-and-your-files.md.html">security-and-your-files.md</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">guides/</span><ul class="tree"><li class="tree-file"><a href="docs--guides--appearance.md.html">appearance.md</a></li><li class="tree-file"><a href="docs--guides--commands-and-snippets.md.html">commands-and-snippets.md</a></li><li class="tree-file"><a href="docs--guides--configuration.md.html">configuration.md</a></li><li class="tree-file"><a href="docs--guides--files-and-sftp.md.html">files-and-sftp.md</a></li><li class="tree-file"><a href="docs--guides--host-keys.md.html">host-keys.md</a></li><li class="tree-file"><a href="docs--guides--keyboard-shortcuts.md.html">keyboard-shortcuts.md</a></li><li class="tree-file"><a href="docs--guides--search-and-links.md.html">search-and-links.md</a></li><li class="tree-file"><a href="docs--guides--shell-integration.md.html">shell-integration.md</a></li><li class="tree-file"><a href="docs--guides--split-panes.md.html">split-panes.md</a></li><li class="tree-file"><a href="docs--guides--ssh-hosts.md.html">ssh-hosts.md</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">tutorials/</span><ul class="tree"><li class="tree-file"><a href="docs--tutorials--01-your-first-ssh-host.md.html">01-your-first-ssh-host.md</a></li><li class="tree-file"><a href="docs--tutorials--02-keys-and-the-agent.md.html">02-keys-and-the-agent.md</a></li><li class="tree-file"><a href="docs--tutorials--03-port-forwarding.md.html">03-port-forwarding.md</a></li><li class="tree-file"><a href="docs--tutorials--04-one-command-many-servers.md.html">04-one-command-many-servers.md</a></li><li class="tree-file"><a href="docs--tutorials--05-make-your-own-theme.md.html">05-make-your-own-theme.md</a></li></ul></li><li class="tree-file"><a href="docs--README.md.html">README.md</a></li><li class="tree-file tree-file--active"><a href="docs--getting-started.md.html">getting-started.md</a></li><li class="tree-file"><a href="docs--tips.md.html">tips.md</a></li><li class="tree-file"><a href="docs--troubleshooting.md.html">troubleshooting.md</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">locales/</span><ul class="tree"><li class="tree-file"><a href="locales--de.ftl.html">de.ftl</a></li><li class="tree-file"><a href="locales--en.ftl.html">en.ftl</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">src/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">render/</span><ul class="tree"><li class="tree-file"><a href="src--render--grid.rs.html">grid.rs</a></li><li class="tree-file"><a href="src--render--label.rs.html">label.rs</a></li><li class="tree-file"><a href="src--render--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="src--render--palette.rs.html">palette.rs</a></li><li class="tree-file"><a href="src--render--quad.rs.html">quad.rs</a></li><li class="tree-file"><a href="src--render--quad.wgsl.html">quad.wgsl</a></li><li class="tree-file"><a href="src--render--search_bar.rs.html">search_bar.rs</a></li><li class="tree-file"><a href="src--render--tab_bar.rs.html">tab_bar.rs</a></li><li class="tree-file"><a href="src--render--text.rs.html">text.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">sftp/</span><ul class="tree"><li class="tree-file"><a href="src--sftp--edit.rs.html">edit.rs</a></li><li class="tree-file"><a href="src--sftp--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="src--sftp--protocol.rs.html">protocol.rs</a></li><li class="tree-file"><a href="src--sftp--session.rs.html">session.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">shells/</span><ul class="tree"><li class="tree-file"><a href="src--shells--launch.rs.html">launch.rs</a></li><li class="tree-file"><a href="src--shells--managed.rs.html">managed.rs</a></li><li class="tree-file"><a href="src--shells--mod.rs.html">mod.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">ssh/</span><ul class="tree"><li class="tree-file"><a href="src--ssh--agent_forward.rs.html">agent_forward.rs</a></li><li class="tree-file"><a href="src--ssh--connection.rs.html">connection.rs</a></li><li class="tree-file"><a href="src--ssh--forward.rs.html">forward.rs</a></li><li class="tree-file"><a href="src--ssh--keys.rs.html">keys.rs</a></li><li class="tree-file"><a href="src--ssh--known_hosts.rs.html">known_hosts.rs</a></li><li class="tree-file"><a href="src--ssh--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="src--ssh--options.rs.html">options.rs</a></li><li class="tree-file"><a href="src--ssh--socks.rs.html">socks.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">terminal/</span><ul class="tree"><li class="tree-file"><a href="src--terminal--filtered_pty.rs.html">filtered_pty.rs</a></li><li class="tree-file"><a href="src--terminal--integration.rs.html">integration.rs</a></li><li class="tree-file"><a href="src--terminal--links.rs.html">links.rs</a></li><li class="tree-file"><a href="src--terminal--listener.rs.html">listener.rs</a></li><li class="tree-file"><a href="src--terminal--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="src--terminal--prompts.rs.html">prompts.rs</a></li><li class="tree-file"><a href="src--terminal--search.rs.html">search.rs</a></li><li class="tree-file"><a href="src--terminal--session.rs.html">session.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">theme/</span><ul class="tree"><li class="tree-file"><a href="src--theme--cosmic.rs.html">cosmic.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">ui/</span><ul class="tree"><li class="tree-file"><a href="src--ui--commands_panel.rs.html">commands_panel.rs</a></li><li class="tree-file"><a href="src--ui--context_menu.rs.html">context_menu.rs</a></li><li class="tree-file"><a href="src--ui--files_panel.rs.html">files_panel.rs</a></li><li class="tree-file"><a href="src--ui--keys_panel.rs.html">keys_panel.rs</a></li><li class="tree-file"><a href="src--ui--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="src--ui--settings_panel.rs.html">settings_panel.rs</a></li><li class="tree-file"><a href="src--ui--sidebar.rs.html">sidebar.rs</a></li><li class="tree-file"><a href="src--ui--splash.rs.html">splash.rs</a></li><li class="tree-file"><a href="src--ui--ssh_panel.rs.html">ssh_panel.rs</a></li><li class="tree-file"><a href="src--ui--theme.rs.html">theme.rs</a></li><li class="tree-file"><a href="src--ui--widgets.rs.html">widgets.rs</a></li></ul></li><li class="tree-file"><a href="src--app.rs.html">app.rs</a></li><li class="tree-file"><a href="src--blur.rs.html">blur.rs</a></li><li class="tree-file"><a href="src--commands.rs.html">commands.rs</a></li><li class="tree-file"><a href="src--config.rs.html">config.rs</a></li><li class="tree-file"><a href="src--gpu.rs.html">gpu.rs</a></li><li class="tree-file"><a href="src--i18n.rs.html">i18n.rs</a></li><li class="tree-file"><a href="src--input.rs.html">input.rs</a></li><li class="tree-file"><a href="src--main.rs.html">main.rs</a></li><li class="tree-file"><a href="src--panes.rs.html">panes.rs</a></li><li class="tree-file"><a href="src--shortcuts.rs.html">shortcuts.rs</a></li><li class="tree-file"><a href="src--snippets.rs.html">snippets.rs</a></li><li class="tree-file"><a href="src--theme.rs.html">theme.rs</a></li></ul></li><li class="tree-file"><a href="Cargo.lock.html">Cargo.lock</a></li><li class="tree-file"><a href="Cargo.toml.html">Cargo.toml</a></li><li class="tree-file"><a href="LICENSE.html">LICENSE</a></li><li class="tree-file"><a href="install.sh.html">install.sh</a></li></ul></nav>
+    <main class="main" id="main">
+      <section class="section source-page">
+        <p class="section__path">
+          <a href="../../index.html#projects" class="link">~/projects</a> /
+          <a href="../terminaal.html" class="link">terminaal</a> / source
+        </p>
+        <div class="source-page__head">
+          <h1 class="section__title">docs/getting-started.md</h1>
+          <a href="../terminaal.html" class="link">← Back to Terminaal</a>
+        </div>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span>
+<span class="normal">84</span>
+<span class="normal">85</span>
+<span class="normal">86</span>
+<span class="normal">87</span>
+<span class="normal">88</span>
+<span class="normal">89</span>
+<span class="normal">90</span>
+<span class="normal">91</span>
+<span class="normal">92</span>
+<span class="normal">93</span>
+<span class="normal">94</span>
+<span class="normal">95</span>
+<span class="normal">96</span>
+<span class="normal">97</span></pre></div></td><td class="code"><div><pre><span></span><span class="gh"># Getting started</span>
+
+<span class="gu">## Install</span>
+
+Terminaal is built from source and runs on Linux (Wayland or X11).
+
+You need:
+
+<span class="k">-</span><span class="w"> </span>Rust 1.88 or newer ([rustup](https://rustup.rs/))
+<span class="k">-</span><span class="w"> </span>A C compiler, <span class="sb">`pkg-config`</span>, and the OpenSSL and zlib headers for libssh2.
+  On Debian/Ubuntu: <span class="sb">`sudo apt install build-essential pkg-config libssl-dev zlib1g-dev`</span>.
+  On Arch: <span class="sb">`sudo pacman -S base-devel openssl zlib`</span>
+<span class="k">-</span><span class="w"> </span>A GPU driver with Vulkan or OpenGL
+<span class="k">-</span><span class="w"> </span>ImageMagick (<span class="sb">`magick`</span>), only for the install script, which scales the icons
+
+<span class="sb">```sh</span>
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/mergedeyes/terminaal<span class="w"> </span>terminaal
+<span class="nb">cd</span><span class="w"> </span>terminaal
+./install.sh
+<span class="sb">```</span>
+
+This puts a release build in <span class="sb">`~/.cargo/bin/terminaal`</span> and a desktop entry plus
+icons in <span class="sb">`~/.local/share`</span>, so Terminaal shows up in your app launcher. After
+pulling new source, run <span class="sb">`./install.sh`</span> again – the launcher always starts the
+installed binary. <span class="sb">`./install.sh --uninstall`</span> removes everything again.
+
+Just want to try it? <span class="sb">`cargo run --release`</span> starts it without installing.
+
+<span class="gu">## The window at a glance</span>
+
+<span class="sb">```</span>
+<span class="sb">┌──────────────┬───┬──────────────┬──────────────┬───┐</span>
+<span class="sb">│ Shells SSH … │ ☰ │ ~/projects   │ me@web1      │ + │  ← tab bar</span>
+<span class="sb">│──────────────┼───┴──────────────┴──────────────┴───│</span>
+<span class="sb">│              │                                     │</span>
+<span class="sb">│   sidebar    │            the terminal             │</span>
+<span class="sb">│              │                                     │</span>
+<span class="sb">└──────────────┴─────────────────────────────────────┘</span>
+<span class="sb">```</span>
+
+<span class="k">-</span><span class="w"> </span><span class="gs">**Tab bar**</span> – one tab per shell or SSH session. Click to switch, middle-click
+  or <span class="gs">**×**</span> to close, <span class="gs">**+**</span> for a new tab with your default shell. <span class="gs">**☰**</span> shows and
+  hides the sidebar.
+<span class="k">-</span><span class="w"> </span><span class="gs">**Sidebar**</span> – three sections along its top:
+<span class="w">  </span><span class="k">-</span><span class="w"> </span><span class="gs">**Shells**</span>: installed shells, aliases and functions, built-in commands and
+    your own commands
+<span class="w">  </span><span class="k">-</span><span class="w"> </span><span class="gs">**SSH**</span>: saved hosts and the hosts from <span class="sb">`~/.ssh/config`</span>, plus the port
+    forwards of the active tab
+<span class="w">  </span><span class="k">-</span><span class="w"> </span><span class="gs">**Keys**</span>: your SSH keys
+<span class="k">-</span><span class="w"> </span><span class="gs">**⚙**</span> at the end of the sidebar's header opens the <span class="gs">**settings tab**</span>.
+
+<span class="gu">## First steps</span>
+
+<span class="k">1.</span> <span class="gs">**Open a few tabs.**</span> &lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;T&lt;/kbd&gt; opens a tab
+   in the directory you're in; &lt;kbd&gt;Alt&lt;/kbd&gt;+&lt;kbd&gt;1&lt;/kbd&gt;…&lt;kbd&gt;9&lt;/kbd&gt; jumps to a
+   tab; &lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;W&lt;/kbd&gt; closes one.
+   &lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;D&lt;/kbd&gt; splits a tab into two terminals
+   side by side (see [<span class="nt">Split panes</span>](<span class="na">guides/split-panes.md</span>)).
+<span class="k">2.</span> <span class="gs">**Pick your shell.**</span> In the sidebar's Shells section, double-click a shell to
+   open a tab with it, or select it and click <span class="gs">**Make default**</span>.
+<span class="k">3.</span> <span class="gs">**Choose a look.**</span> Press &lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;,&lt;/kbd&gt;, go to <span class="gs">**Appearance**</span> and
+   try the themes – they apply immediately.
+<span class="k">4.</span> <span class="gs">**Add a server.**</span> Follow [<span class="nt">Your first SSH host</span>](<span class="na">tutorials/01-your-first-ssh-host.md</span>).
+
+Everything you change in the settings is saved to
+<span class="sb">`~/.config/terminaal/config.toml`</span> right away, keeping any comments you wrote
+there. Hover over a setting's name to see its key in the file.
+
+<span class="gu">## Working in the terminal</span>
+
+| To… | Do this |
+| --- | --- |
+| Copy | Select with the mouse, then &lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;C&lt;/kbd&gt; or right-click → Copy |
+| Paste | &lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;V&lt;/kbd&gt; or right-click → Paste |
+| Scroll back | Mouse wheel, or &lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;PageUp&lt;/kbd&gt; / &lt;kbd&gt;PageDown&lt;/kbd&gt; |
+| Search the output | &lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;F&lt;/kbd&gt; |
+| Jump between prompts | &lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;↑&lt;/kbd&gt; / &lt;kbd&gt;↓&lt;/kbd&gt; |
+| Open a URL or file | Hold &lt;kbd&gt;Ctrl&lt;/kbd&gt;, click it |
+| Make text bigger | &lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;+&lt;/kbd&gt; (back with &lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;0&lt;/kbd&gt;) |
+
+<span class="gu">## Starting from the command line</span>
+
+<span class="sb">```sh</span>
+terminaal<span class="w">                          </span><span class="c1"># a local shell</span>
+terminaal<span class="w"> </span>--connect<span class="w"> </span>myserver<span class="w">       </span><span class="c1"># open a saved or ~/.ssh/config host</span>
+terminaal<span class="w"> </span>--connect<span class="w"> </span>admin@myserver<span class="w"> </span><span class="c1"># ...with that host's login for "admin"</span>
+<span class="sb">```</span>
+
+<span class="gu">## Language</span>
+
+The interface is in English or German. By default it follows your system
+locale; switch it under <span class="gs">**Settings → General → Language**</span>.
+
+<span class="gu">## Where to go next</span>
+
+<span class="k">-</span><span class="w"> </span>[<span class="nt">Tips and tricks</span>](<span class="na">tips.md</span>) for small things that make a big difference
+<span class="k">-</span><span class="w"> </span>[<span class="nt">Configuration reference</span>](<span class="na">guides/configuration.md</span>) if you prefer editing files
+</pre></div></td></tr></table></div>
+
+      </section>
+    </main>
+  </div>
+</body>
+</html>

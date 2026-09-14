@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>docs/guides/files-and-sftp.md — Terminaal — Jan</title>
+  <link rel="stylesheet" href="../../styles.css?v=b76c900a" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="layout">
+    <header class="rail" id="rail">
+<div class="rail__top">
+<a class="brand" href="../../index.html#top">
+<span class="brand__name">Jan</span>
+<span class="brand__meta">systems &amp; infrastructure<br/>Code, Code &amp; Code</span>
+</a>
+<button aria-controls="nav" aria-expanded="false" aria-label="Toggle menu" class="menu-toggle" id="menuToggle">
+<span></span><span></span><span></span>
+</button>
+</div>
+<nav aria-label="Sections" class="nav" id="nav">
+<a data-path="~/projects" href="../../index.html#projects">Projects</a>
+<a data-path="~/work" href="../../index.html#work">Work</a>
+<a data-path="~/education" href="../../index.html#education">Education</a>
+<a data-path="~/skills" href="../../index.html#skills">Skills</a>
+<a data-path="~/about" href="../../index.html#about">About Me</a>
+<a data-path="~/contact" href="../../index.html#contact">Contact</a>
+</nav>
+<div class="rail__status">
+<span aria-hidden="true" class="dot"></span>
+<span>open to work</span>
+</div>
+</header>
+    <nav class="file-tree"><p class="file-tree__title">Files</p><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">assets/</span><ul class="tree"><li class="tree-file"><a href="assets--terminaal.desktop.html">terminaal.desktop</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">docs/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">explanations/</span><ul class="tree"><li class="tree-file"><a href="docs--explanations--architecture.md.html">architecture.md</a></li><li class="tree-file"><a href="docs--explanations--prompt-marks.md.html">prompt-marks.md</a></li><li class="tree-file"><a href="docs--explanations--security-and-your-files.md.html">security-and-your-files.md</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">guides/</span><ul class="tree"><li class="tree-file"><a href="docs--guides--appearance.md.html">appearance.md</a></li><li class="tree-file"><a href="docs--guides--commands-and-snippets.md.html">commands-and-snippets.md</a></li><li class="tree-file"><a href="docs--guides--configuration.md.html">configuration.md</a></li><li class="tree-file tree-file--active"><a href="docs--guides--files-and-sftp.md.html">files-and-sftp.md</a></li><li class="tree-file"><a href="docs--guides--host-keys.md.html">host-keys.md</a></li><li class="tree-file"><a href="docs--guides--keyboard-shortcuts.md.html">keyboard-shortcuts.md</a></li><li class="tree-file"><a href="docs--guides--search-and-links.md.html">search-and-links.md</a></li><li class="tree-file"><a href="docs--guides--shell-integration.md.html">shell-integration.md</a></li><li class="tree-file"><a href="docs--guides--split-panes.md.html">split-panes.md</a></li><li class="tree-file"><a href="docs--guides--ssh-hosts.md.html">ssh-hosts.md</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">tutorials/</span><ul class="tree"><li class="tree-file"><a href="docs--tutorials--01-your-first-ssh-host.md.html">01-your-first-ssh-host.md</a></li><li class="tree-file"><a href="docs--tutorials--02-keys-and-the-agent.md.html">02-keys-and-the-agent.md</a></li><li class="tree-file"><a href="docs--tutorials--03-port-forwarding.md.html">03-port-forwarding.md</a></li><li class="tree-file"><a href="docs--tutorials--04-one-command-many-servers.md.html">04-one-command-many-servers.md</a></li><li class="tree-file"><a href="docs--tutorials--05-make-your-own-theme.md.html">05-make-your-own-theme.md</a></li></ul></li><li class="tree-file"><a href="docs--README.md.html">README.md</a></li><li class="tree-file"><a href="docs--getting-started.md.html">getting-started.md</a></li><li class="tree-file"><a href="docs--tips.md.html">tips.md</a></li><li class="tree-file"><a href="docs--troubleshooting.md.html">troubleshooting.md</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">locales/</span><ul class="tree"><li class="tree-file"><a href="locales--de.ftl.html">de.ftl</a></li><li class="tree-file"><a href="locales--en.ftl.html">en.ftl</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">src/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">render/</span><ul class="tree"><li class="tree-file"><a href="src--render--grid.rs.html">grid.rs</a></li><li class="tree-file"><a href="src--render--label.rs.html">label.rs</a></li><li class="tree-file"><a href="src--render--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="src--render--palette.rs.html">palette.rs</a></li><li class="tree-file"><a href="src--render--quad.rs.html">quad.rs</a></li><li class="tree-file"><a href="src--render--quad.wgsl.html">quad.wgsl</a></li><li class="tree-file"><a href="src--render--search_bar.rs.html">search_bar.rs</a></li><li class="tree-file"><a href="src--render--tab_bar.rs.html">tab_bar.rs</a></li><li class="tree-file"><a href="src--render--text.rs.html">text.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">sftp/</span><ul class="tree"><li class="tree-file"><a href="src--sftp--edit.rs.html">edit.rs</a></li><li class="tree-file"><a href="src--sftp--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="src--sftp--protocol.rs.html">protocol.rs</a></li><li class="tree-file"><a href="src--sftp--session.rs.html">session.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">shells/</span><ul class="tree"><li class="tree-file"><a href="src--shells--launch.rs.html">launch.rs</a></li><li class="tree-file"><a href="src--shells--managed.rs.html">managed.rs</a></li><li class="tree-file"><a href="src--shells--mod.rs.html">mod.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">ssh/</span><ul class="tree"><li class="tree-file"><a href="src--ssh--agent_forward.rs.html">agent_forward.rs</a></li><li class="tree-file"><a href="src--ssh--connection.rs.html">connection.rs</a></li><li class="tree-file"><a href="src--ssh--forward.rs.html">forward.rs</a></li><li class="tree-file"><a href="src--ssh--keys.rs.html">keys.rs</a></li><li class="tree-file"><a href="src--ssh--known_hosts.rs.html">known_hosts.rs</a></li><li class="tree-file"><a href="src--ssh--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="src--ssh--options.rs.html">options.rs</a></li><li class="tree-file"><a href="src--ssh--socks.rs.html">socks.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">terminal/</span><ul class="tree"><li class="tree-file"><a href="src--terminal--filtered_pty.rs.html">filtered_pty.rs</a></li><li class="tree-file"><a href="src--terminal--integration.rs.html">integration.rs</a></li><li class="tree-file"><a href="src--terminal--links.rs.html">links.rs</a></li><li class="tree-file"><a href="src--terminal--listener.rs.html">listener.rs</a></li><li class="tree-file"><a href="src--terminal--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="src--terminal--prompts.rs.html">prompts.rs</a></li><li class="tree-file"><a href="src--terminal--search.rs.html">search.rs</a></li><li class="tree-file"><a href="src--terminal--session.rs.html">session.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">theme/</span><ul class="tree"><li class="tree-file"><a href="src--theme--cosmic.rs.html">cosmic.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">ui/</span><ul class="tree"><li class="tree-file"><a href="src--ui--commands_panel.rs.html">commands_panel.rs</a></li><li class="tree-file"><a href="src--ui--context_menu.rs.html">context_menu.rs</a></li><li class="tree-file"><a href="src--ui--files_panel.rs.html">files_panel.rs</a></li><li class="tree-file"><a href="src--ui--keys_panel.rs.html">keys_panel.rs</a></li><li class="tree-file"><a href="src--ui--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="src--ui--settings_panel.rs.html">settings_panel.rs</a></li><li class="tree-file"><a href="src--ui--sidebar.rs.html">sidebar.rs</a></li><li class="tree-file"><a href="src--ui--splash.rs.html">splash.rs</a></li><li class="tree-file"><a href="src--ui--ssh_panel.rs.html">ssh_panel.rs</a></li><li class="tree-file"><a href="src--ui--theme.rs.html">theme.rs</a></li><li class="tree-file"><a href="src--ui--widgets.rs.html">widgets.rs</a></li></ul></li><li class="tree-file"><a href="src--app.rs.html">app.rs</a></li><li class="tree-file"><a href="src--blur.rs.html">blur.rs</a></li><li class="tree-file"><a href="src--commands.rs.html">commands.rs</a></li><li class="tree-file"><a href="src--config.rs.html">config.rs</a></li><li class="tree-file"><a href="src--gpu.rs.html">gpu.rs</a></li><li class="tree-file"><a href="src--i18n.rs.html">i18n.rs</a></li><li class="tree-file"><a href="src--input.rs.html">input.rs</a></li><li class="tree-file"><a href="src--main.rs.html">main.rs</a></li><li class="tree-file"><a href="src--panes.rs.html">panes.rs</a></li><li class="tree-file"><a href="src--shortcuts.rs.html">shortcuts.rs</a></li><li class="tree-file"><a href="src--snippets.rs.html">snippets.rs</a></li><li class="tree-file"><a href="src--theme.rs.html">theme.rs</a></li></ul></li><li class="tree-file"><a href="Cargo.lock.html">Cargo.lock</a></li><li class="tree-file"><a href="Cargo.toml.html">Cargo.toml</a></li><li class="tree-file"><a href="LICENSE.html">LICENSE</a></li><li class="tree-file"><a href="install.sh.html">install.sh</a></li></ul></nav>
+    <main class="main" id="main">
+      <section class="section source-page">
+        <p class="section__path">
+          <a href="../../index.html#projects" class="link">~/projects</a> /
+          <a href="../terminaal.html" class="link">terminaal</a> / source
+        </p>
+        <div class="source-page__head">
+          <h1 class="section__title">docs/guides/files-and-sftp.md</h1>
+          <a href="../terminaal.html" class="link">← Back to Terminaal</a>
+        </div>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">  1</span>
+<span class="normal">  2</span>
+<span class="normal">  3</span>
+<span class="normal">  4</span>
+<span class="normal">  5</span>
+<span class="normal">  6</span>
+<span class="normal">  7</span>
+<span class="normal">  8</span>
+<span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span></pre></div></td><td class="code"><div><pre><span></span><span class="gh"># Files on a server (SFTP)</span>
+
+Every SSH connection can show its server's files: browse folders, copy files
+and folders in both directions, and edit a file in your local editor – every
+save goes back to the server. Files only root may change work too, through sudo
+in the terminal.
+
+<span class="gu">## Opening the files tab</span>
+
+In a terminal connected over SSH, press &lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;O&lt;/kbd&gt;
+or right-click and choose <span class="gs">**Files (SFTP)**</span>. A tab <span class="gs">**Files: user@host**</span> opens
+next to the terminal; pressing the shortcut again in that terminal switches to
+it.
+
+The files tab uses the terminal's connection – no second login, no second
+passphrase prompt. It needs the server's SFTP subsystem, which OpenSSH servers
+have by default. Opened before the login in the terminal is done, it waits for
+it. If the server has no SFTP, the tab says why; <span class="gs">**Reconnect**</span> tries again.
+
+Closing the files tab ends the SFTP session, the terminal keeps running.
+
+<span class="gu">## When the connection drops</span>
+
+The files tab checks every second whether its connection is still there. When
+it's gone, it says <span class="gs">**Connection interrupted**</span>; transfers and saves wait. As soon
+as the terminal is connected again – it reconnects by itself – the files tab
+carries on:
+
+<span class="k">-</span><span class="w"> </span>A <span class="gs">**download**</span> continues from its hidden <span class="sb">`.name.part`</span> file, an <span class="gs">**upload**</span> from
+  the part already on the server – as long as the source file didn't change
+  meanwhile; otherwise it starts over.
+<span class="k">-</span><span class="w"> </span><span class="gs">**Saves**</span> you made in the editor meanwhile are uploaded, after the usual check
+  that nobody changed the file.
+
+If you close the terminal, the files tab stays and says so. Open the same host
+with the same login again (from the sidebar, for example) and the files tab takes
+over the new connection. This lasts as long as Terminaal is open.
+
+<span class="gu">## Browsing</span>
+
+The left side is this computer, the right side the server.
+
+<span class="k">-</span><span class="w"> </span><span class="gs">**Double-click**</span> a folder to open it. On the server, double-clicking a file
+  edits it (see below); a symlink opens whatever it points to.
+<span class="k">-</span><span class="w"> </span><span class="gs">**⬆**</span> goes to the parent folder, <span class="gs">**~**</span> (server) to the home folder, <span class="gs">**⟳**</span>
+  reloads.
+<span class="k">-</span><span class="w"> </span>Click the path above a side to type one and press &lt;kbd&gt;Enter&lt;/kbd&gt;
+  (<span class="sb">`~/`</span> works on the local side).
+<span class="k">-</span><span class="w"> </span><span class="gs">**New folder**</span>, <span class="gs">**Rename**</span> and <span class="gs">**Delete**</span> act on the server. Delete removes
+  files and empty folders, and asks with <span class="gs">**Really delete?**</span> first.
+
+<span class="gu">## Copying</span>
+
+<span class="k">-</span><span class="w"> </span>Select a local entry and click <span class="gs">**Upload**</span>: it goes into the server folder on
+  show. Select a server entry and click <span class="gs">**Download**</span>: it goes into the local
+  folder on show.
+<span class="k">-</span><span class="w"> </span>Folders are copied with everything in them. Symlinks inside a folder are
+  skipped.
+<span class="k">-</span><span class="w"> </span><span class="gs">**Drag files from your file manager**</span> onto the files tab to upload them.
+<span class="k">-</span><span class="w"> </span><span class="gs">**Nothing is ever overwritten.**</span> If the name is taken, the copy gets a
+  number: <span class="sb">`notes (1).txt`</span>.
+<span class="k">-</span><span class="w"> </span><span class="gs">**Transfers**</span> below the lists show progress; <span class="gs">**×**</span> cancels one and removes
+  what was copied so far. <span class="gs">**Remove finished**</span> clears the list.
+
+Transfers run one after another, each with many requests in flight at once, so
+they stay fast even over a slow round trip.
+
+<span class="gu">## Editing a server file locally</span>
+
+Select a file and click <span class="gs">**Edit**</span>, or double-click it. Terminaal downloads it and
+opens it in your editor. Whenever you save, the change goes back to the server.
+The section <span class="gs">**Edited locally**</span> lists these files with their state:
+
+| State | Meaning |
+| --- | --- |
+| on the server | Your last save is on the server |
+| uploading … | It's on its way |
+| changed on the server meanwhile | Someone else changed the file since you opened it. Nothing was overwritten – choose <span class="gs">**Overwrite**</span> (your version wins) or <span class="gs">**Take the server's version**</span> (your changes are discarded and the file reloads) |
+| no permission to read / write | See [<span class="nt">Files only root may change</span>](<span class="na">#files-only-root-may-change</span>) |
+
+<span class="gs">**Open in editor**</span> opens it again; <span class="gs">**Close**</span> deletes the local copy (with
+unsaved changes it asks <span class="gs">**Discard changes?**</span> first).
+
+<span class="gu">### Which editor</span>
+
+By default the desktop's default application for the file type opens it
+(<span class="sb">`xdg-open`</span>). To pick one, set **Settings → Shell → Editor for files from the
+server**, or <span class="sb">`editor`</span> in <span class="sb">`config.toml`</span>: a command the path is appended to, such
+as <span class="sb">`code`</span>, <span class="sb">`gedit`</span>, <span class="sb">`kate`</span> or <span class="sb">`alacritty -e nvim`</span>.
+
+<span class="gu">### How it stays safe</span>
+
+<span class="k">-</span><span class="w"> </span>The local copy lives in a private folder (<span class="sb">`$XDG_RUNTIME_DIR/terminaal/edit/`</span>,
+  mode <span class="sb">`0700`</span>, the file <span class="sb">`0600`</span>). That folder is in memory and gone when you log
+  out. Closing an edit, or the files tab, deletes it – except a copy with changes
+  the server never got, which stays until you close it.
+<span class="k">-</span><span class="w"> </span>Before uploading, Terminaal checks that the server's file is still what it
+  last synced: the server computes its SHA-256 (<span class="sb">`sha256sum`</span>, or <span class="sb">`shasum`</span> on macOS
+  and BSD) and only that one line comes back, however big the file. Without either
+  tool, files up to 1 MB are downloaded and compared, bigger ones by size and
+  modification time.
+<span class="k">-</span><span class="w"> </span>The upload writes a hidden file next to the original and renames it over the
+  original, with the original's mode – an interrupted upload never leaves half a
+  file. Where that would change the file's owner, or the server can't rename
+  over a file, it's written in place instead.
+<span class="k">-</span><span class="w"> </span>Files over 32 MB aren't opened for editing; download them instead.
+
+<span class="gu">## Files only root may change</span>
+
+When the server says <span class="gs">**no permission to read**</span> or <span class="gs">**no permission to write**</span>,
+click <span class="gs">**With sudo …**</span>. Terminaal then:
+
+<span class="k">1.</span> Puts a small script into <span class="sb">`~/.cache/terminaal/sudo/&lt;random&gt;/`</span> on the server –
+   for saving, together with your version of the file.
+<span class="k">2.</span> Shows the command to run, like <span class="sb">` sh '/home/you/.cache/terminaal/sudo/…/run.sh'`</span>.
+<span class="k">3.</span> <span class="gs">**Run in terminal**</span> pastes it into the connection's terminal, runs it and
+   switches to that terminal. sudo asks for your password there, as usual.
+
+The script reads the file with <span class="sb">`sudo cat`</span>, or writes it with <span class="sb">`sudo cp`</span> – writing
+into the existing file, so it keeps its owner and mode – and leaves its exit
+code for Terminaal. Once it's done, the edit continues: the file opens in your
+editor, or the save is marked as on the server. A file opened this way saves
+through sudo each time; since sudo remembers your password for a few minutes,
+running the next command is usually just a click.
+
+Things to know:
+
+<span class="k">-</span><span class="w"> </span><span class="gs">**Run it at a shell prompt.**</span> The command is typed into the terminal like a
+  paste – if an editor or another program is running there, it goes there.
+<span class="k">-</span><span class="w"> </span>Only the short command passes through your shell, whatever shell that is. The
+  paths are inside the script, which <span class="sb">`sh`</span> reads.
+<span class="k">-</span><span class="w"> </span>The command starts with a space, so shells set to ignore such lines leave it
+  out of their history.
+<span class="k">-</span><span class="w"> </span><span class="gs">**Cancel**</span> removes the script again. The script deletes itself when it has run,
+  and Terminaal removes its folder.
+<span class="k">-</span><span class="w"> </span>The script compares the file's SHA-256 with what you last synced right before
+  copying. If someone changed it meanwhile, it copies nothing and the edit shows
+  the conflict; <span class="gs">**Overwrite**</span> then makes a script without that check.
+
+<span class="gu">## Limits</span>
+
+<span class="k">-</span><span class="w"> </span>Deleting a folder needs it to be empty.
+<span class="k">-</span><span class="w"> </span>Nothing is overwritten on copying; to replace a file, delete it first or edit it.
+<span class="k">-</span><span class="w"> </span>Transfers resume only while Terminaal stays open.
+<span class="k">-</span><span class="w"> </span>On a server without <span class="sb">`sha256sum`</span> or <span class="sb">`shasum`</span>, a change within the same second
+  that keeps the size isn't noticed for files over 1 MB, or at all for files
+  edited through sudo.
+</pre></div></td></tr></table></div>
+
+      </section>
+    </main>
+  </div>
+</body>
+</html>
