@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>src/terminal/session.rs — Terminaal — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=7095df78" />
+  <link rel="stylesheet" href="../../styles.css?v=d69e9cb9" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -233,7 +233,36 @@
 <span class="normal">188</span>
 <span class="normal">189</span>
 <span class="normal">190</span>
-<span class="normal">191</span></pre></div></td><td class="code"><div><pre><span></span><span class="sd">//! One terminal session: an `alacritty_terminal::Term` (the "brain" --</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span></pre></div></td><td class="code"><div><pre><span></span><span class="sd">//! One terminal session: an `alacritty_terminal::Term` (the "brain" --</span>
 <span class="sd">//! grid, cursor, VT parser state) plus whatever feeds it bytes:</span>
 <span class="sd">//!</span>
 <span class="sd">//! - a local PTY running a shell, pumped by alacritty_terminal's own</span>
@@ -243,6 +272,7 @@
 <span class="sd">//! Everything in `render/` and `input.rs` only ever sees `term`,</span>
 <span class="sd">//! `send_input` and `resize`, so it works the same for both.</span>
 
+<span class="k">use</span><span class="w"> </span><span class="n">std</span><span class="p">::</span><span class="n">os</span><span class="p">::</span><span class="n">fd</span><span class="p">::{</span><span class="n">AsRawFd</span><span class="p">,</span><span class="w"> </span><span class="n">OwnedFd</span><span class="p">};</span>
 <span class="k">use</span><span class="w"> </span><span class="n">std</span><span class="p">::</span><span class="n">path</span><span class="p">::</span><span class="n">PathBuf</span><span class="p">;</span>
 <span class="k">use</span><span class="w"> </span><span class="n">std</span><span class="p">::</span><span class="n">sync</span><span class="p">::</span><span class="n">Arc</span><span class="p">;</span>
 
@@ -289,7 +319,16 @@
 <span class="p">}</span>
 
 <span class="k">enum</span><span class="w"> </span><span class="nc">Backend</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">Local</span><span class="p">(</span><span class="n">Notifier</span><span class="p">),</span>
+<span class="w">    </span><span class="n">Local</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">notifier</span><span class="p">:</span><span class="w"> </span><span class="nc">Notifier</span><span class="p">,</span>
+<span class="w">        </span><span class="sd">/// A duplicate of the PTY master: the event loop thread owns the</span>
+<span class="w">        </span><span class="sd">/// original, and `tcgetpgrp` on this one says which program has</span>
+<span class="w">        </span><span class="sd">/// the terminal ([`TerminalSession::foreground_program`]).</span>
+<span class="w">        </span><span class="n">master</span><span class="p">:</span><span class="w"> </span><span class="nc">OwnedFd</span><span class="p">,</span>
+<span class="w">        </span><span class="sd">/// The shell itself -- it leads its own process group, so a</span>
+<span class="w">        </span><span class="sd">/// different foreground group means a program is running.</span>
+<span class="w">        </span><span class="n">shell_pid</span><span class="p">:</span><span class="w"> </span><span class="kt">u32</span><span class="p">,</span>
+<span class="w">    </span><span class="p">},</span>
 <span class="w">    </span><span class="n">Ssh</span><span class="p">(</span><span class="n">SshHandle</span><span class="p">),</span>
 <span class="p">}</span>
 
@@ -315,6 +354,8 @@
 <span class="w">            </span><span class="o">..</span><span class="n">tty</span><span class="p">::</span><span class="n">Options</span><span class="p">::</span><span class="n">default</span><span class="p">()</span>
 <span class="w">        </span><span class="p">};</span>
 <span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">pty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tty</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="o">&amp;</span><span class="n">options</span><span class="p">,</span><span class="w"> </span><span class="n">window_size</span><span class="p">(</span><span class="n">size</span><span class="p">,</span><span class="w"> </span><span class="n">cell_width</span><span class="p">,</span><span class="w"> </span><span class="n">cell_height</span><span class="p">),</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">master</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pty</span><span class="p">.</span><span class="n">file</span><span class="p">().</span><span class="n">try_clone</span><span class="p">()</span><span class="o">?</span><span class="p">.</span><span class="n">into</span><span class="p">();</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">shell_pid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pty</span><span class="p">.</span><span class="n">child</span><span class="p">().</span><span class="n">id</span><span class="p">();</span>
 <span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">shell_events</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">listener</span><span class="p">.</span><span class="n">clone</span><span class="p">();</span>
 <span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">pty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FilteredPty</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="n">pty</span><span class="p">,</span><span class="w"> </span><span class="k">move</span><span class="w"> </span><span class="o">|</span><span class="n">event</span><span class="o">|</span><span class="w"> </span><span class="n">shell_events</span><span class="p">.</span><span class="n">send_shell</span><span class="p">(</span><span class="n">event</span><span class="p">))</span><span class="o">?</span><span class="p">;</span>
 
@@ -324,7 +365,7 @@
 <span class="w">        </span><span class="c1">// of the process; we don't need the join handle for the MVP.</span>
 <span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pty_event_loop</span><span class="p">.</span><span class="n">spawn</span><span class="p">();</span>
 
-<span class="w">        </span><span class="nb">Ok</span><span class="p">(</span><span class="bp">Self</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">term</span><span class="p">,</span><span class="w"> </span><span class="n">backend</span><span class="p">:</span><span class="w"> </span><span class="nc">Backend</span><span class="p">::</span><span class="n">Local</span><span class="p">(</span><span class="n">notifier</span><span class="p">)</span><span class="w"> </span><span class="p">})</span>
+<span class="w">        </span><span class="nb">Ok</span><span class="p">(</span><span class="bp">Self</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">term</span><span class="p">,</span><span class="w"> </span><span class="n">backend</span><span class="p">:</span><span class="w"> </span><span class="nc">Backend</span><span class="p">::</span><span class="n">Local</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">notifier</span><span class="p">,</span><span class="w"> </span><span class="n">master</span><span class="p">,</span><span class="w"> </span><span class="n">shell_pid</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">})</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="sd">/// Connect to `target` over SSH. Returns right away -- connecting,</span>
@@ -346,7 +387,7 @@
 <span class="w">    </span><span class="sd">/// PTY-write/color/size request from `app.rs`) to the shell.</span>
 <span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">send_input</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">bytes</span><span class="p">:</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="kt">u8</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">match</span><span class="w"> </span><span class="o">&amp;</span><span class="bp">self</span><span class="p">.</span><span class="n">backend</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">Backend</span><span class="p">::</span><span class="n">Local</span><span class="p">(</span><span class="n">notifier</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">notifier</span><span class="p">.</span><span class="n">notify</span><span class="p">(</span><span class="n">bytes</span><span class="p">),</span>
+<span class="w">            </span><span class="n">Backend</span><span class="p">::</span><span class="n">Local</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">notifier</span><span class="p">,</span><span class="w"> </span><span class="o">..</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">notifier</span><span class="p">.</span><span class="n">notify</span><span class="p">(</span><span class="n">bytes</span><span class="p">),</span>
 <span class="w">            </span><span class="n">Backend</span><span class="p">::</span><span class="n">Ssh</span><span class="p">(</span><span class="n">handle</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">handle</span><span class="p">.</span><span class="n">send_input</span><span class="p">(</span><span class="n">bytes</span><span class="p">),</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
@@ -356,7 +397,7 @@
 <span class="w">        </span><span class="bp">self</span><span class="p">.</span><span class="n">term</span><span class="p">.</span><span class="n">lock</span><span class="p">().</span><span class="n">resize</span><span class="p">(</span><span class="n">size</span><span class="p">);</span>
 <span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">window_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">window_size</span><span class="p">(</span><span class="n">size</span><span class="p">,</span><span class="w"> </span><span class="n">cell_width</span><span class="p">,</span><span class="w"> </span><span class="n">cell_height</span><span class="p">);</span>
 <span class="w">        </span><span class="k">match</span><span class="w"> </span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">backend</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">Backend</span><span class="p">::</span><span class="n">Local</span><span class="p">(</span><span class="n">notifier</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">notifier</span><span class="p">.</span><span class="n">on_resize</span><span class="p">(</span><span class="n">window_size</span><span class="p">),</span>
+<span class="w">            </span><span class="n">Backend</span><span class="p">::</span><span class="n">Local</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">notifier</span><span class="p">,</span><span class="w"> </span><span class="o">..</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">notifier</span><span class="p">.</span><span class="n">on_resize</span><span class="p">(</span><span class="n">window_size</span><span class="p">),</span>
 <span class="w">            </span><span class="n">Backend</span><span class="p">::</span><span class="n">Ssh</span><span class="p">(</span><span class="n">handle</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">handle</span><span class="p">.</span><span class="n">resize</span><span class="p">(</span><span class="n">window_size</span><span class="p">),</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
@@ -365,7 +406,7 @@
 <span class="w">    </span><span class="sd">/// a local shell.</span>
 <span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">forwards</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="n">ForwardStatus</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">match</span><span class="w"> </span><span class="o">&amp;</span><span class="bp">self</span><span class="p">.</span><span class="n">backend</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">Backend</span><span class="p">::</span><span class="n">Local</span><span class="p">(</span><span class="n">_</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nb">Vec</span><span class="p">::</span><span class="n">new</span><span class="p">(),</span>
+<span class="w">            </span><span class="n">Backend</span><span class="p">::</span><span class="n">Local</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="o">..</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nb">Vec</span><span class="p">::</span><span class="n">new</span><span class="p">(),</span>
 <span class="w">            </span><span class="n">Backend</span><span class="p">::</span><span class="n">Ssh</span><span class="p">(</span><span class="n">handle</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">handle</span><span class="p">.</span><span class="n">forwards</span><span class="p">(),</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
@@ -381,14 +422,31 @@
 <span class="w">    </span><span class="sd">/// local shell.</span>
 <span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">opener</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="k">crate</span><span class="p">::</span><span class="n">ssh</span><span class="p">::</span><span class="n">connection</span><span class="p">::</span><span class="n">Opener</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">match</span><span class="w"> </span><span class="o">&amp;</span><span class="bp">self</span><span class="p">.</span><span class="n">backend</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">Backend</span><span class="p">::</span><span class="n">Local</span><span class="p">(</span><span class="n">_</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nb">None</span><span class="p">,</span>
+<span class="w">            </span><span class="n">Backend</span><span class="p">::</span><span class="n">Local</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="o">..</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nb">None</span><span class="p">,</span>
 <span class="w">            </span><span class="n">Backend</span><span class="p">::</span><span class="n">Ssh</span><span class="p">(</span><span class="n">handle</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">handle</span><span class="p">.</span><span class="n">opener</span><span class="p">()),</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 
+<span class="w">    </span><span class="sd">/// The program that currently owns the terminal, if it isn't the</span>
+<span class="w">    </span><span class="sd">/// shell itself: the name of the foreground process group's leader</span>
+<span class="w">    </span><span class="sd">/// (`btop`, `vim`, ...). `None` for SSH -- that process lives on the</span>
+<span class="w">    </span><span class="sd">/// server -- and for a shell without job control, whose jobs stay in</span>
+<span class="w">    </span><span class="sd">/// its own process group.</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">foreground_program</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">Backend</span><span class="p">::</span><span class="n">Local</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">master</span><span class="p">,</span><span class="w"> </span><span class="n">shell_pid</span><span class="p">,</span><span class="w"> </span><span class="o">..</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="bp">self</span><span class="p">.</span><span class="n">backend</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">None</span><span class="w"> </span><span class="p">};</span>
+<span class="w">        </span><span class="c1">// SAFETY: `master` is an open file descriptor we own.</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">group</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">unsafe</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">libc</span><span class="p">::</span><span class="n">tcgetpgrp</span><span class="p">(</span><span class="n">master</span><span class="p">.</span><span class="n">as_raw_fd</span><span class="p">())</span><span class="w"> </span><span class="p">};</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">group</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">group</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="kt">u32</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="o">*</span><span class="n">shell_pid</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">None</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">comm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="p">::</span><span class="n">fs</span><span class="p">::</span><span class="n">read_to_string</span><span class="p">(</span><span class="fm">format!</span><span class="p">(</span><span class="s">"/proc/{group}/comm"</span><span class="p">)).</span><span class="n">ok</span><span class="p">()</span><span class="o">?</span><span class="p">;</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">comm</span><span class="p">.</span><span class="n">trim</span><span class="p">();</span>
+<span class="w">        </span><span class="p">(</span><span class="o">!</span><span class="n">name</span><span class="p">.</span><span class="n">is_empty</span><span class="p">()).</span><span class="n">then</span><span class="p">(</span><span class="o">||</span><span class="w"> </span><span class="n">name</span><span class="p">.</span><span class="n">to_string</span><span class="p">())</span>
+<span class="w">    </span><span class="p">}</span>
+
 <span class="w">    </span><span class="sd">/// A local shell rather than an SSH connection.</span>
 <span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">is_local</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="fm">matches!</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">backend</span><span class="p">,</span><span class="w"> </span><span class="n">Backend</span><span class="p">::</span><span class="n">Local</span><span class="p">(</span><span class="n">_</span><span class="p">))</span>
+<span class="w">        </span><span class="fm">matches!</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">backend</span><span class="p">,</span><span class="w"> </span><span class="n">Backend</span><span class="p">::</span><span class="n">Local</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="o">..</span><span class="w"> </span><span class="p">})</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="sd">/// What the built-in commands (`crate::commands`) should build for:</span>
@@ -396,7 +454,7 @@
 <span class="w">    </span><span class="sd">/// for SSH.</span>
 <span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">command_target</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">Target</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">match</span><span class="w"> </span><span class="o">&amp;</span><span class="bp">self</span><span class="p">.</span><span class="n">backend</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">Backend</span><span class="p">::</span><span class="n">Local</span><span class="p">(</span><span class="n">_</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">Target</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">system</span><span class="p">:</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">commands</span><span class="p">::</span><span class="n">local</span><span class="p">()),</span><span class="w"> </span><span class="o">..</span><span class="n">Target</span><span class="p">::</span><span class="n">default</span><span class="p">()</span><span class="w"> </span><span class="p">},</span>
+<span class="w">            </span><span class="n">Backend</span><span class="p">::</span><span class="n">Local</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="o">..</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">Target</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">system</span><span class="p">:</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">commands</span><span class="p">::</span><span class="n">local</span><span class="p">()),</span><span class="w"> </span><span class="o">..</span><span class="n">Target</span><span class="p">::</span><span class="n">default</span><span class="p">()</span><span class="w"> </span><span class="p">},</span>
 <span class="w">            </span><span class="n">Backend</span><span class="p">::</span><span class="n">Ssh</span><span class="p">(</span><span class="n">handle</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">handle</span><span class="p">.</span><span class="n">target</span><span class="p">(),</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>

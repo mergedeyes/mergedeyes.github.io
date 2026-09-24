@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>docs/guides/shell-integration.md — Terminaal — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=7095df78" />
+  <link rel="stylesheet" href="../../styles.css?v=d69e9cb9" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -158,7 +158,10 @@
 <span class="normal">113</span>
 <span class="normal">114</span>
 <span class="normal">115</span>
-<span class="normal">116</span></pre></div></td><td class="code"><div><pre><span></span><span class="gh"># Shell integration</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span></pre></div></td><td class="code"><div><pre><span></span><span class="gh"># Shell integration</span>
 
 When the shell tells Terminaal where prompts start, when commands run and which
 directory it's in, you get:
@@ -253,9 +256,12 @@ What each sequence means:
   (default 10 seconds, 0 turns it off). You're notified only when the window
   isn't focused or the command's tab isn't the active one. Needs <span class="sb">`notify-send`</span>;
   the taskbar entry is also marked as needing attention.
-<span class="k">-</span><span class="w"> </span><span class="gs">**Tab titles**</span>: a title set by a program (OSC 0/2) wins over the directory.
-  Many distributions' bash setups set one, so you may see <span class="sb">`user@host: dir`</span>
-  instead – that's the program's title.
+<span class="k">-</span><span class="w"> </span><span class="gs">**Tab titles**</span>: while a program runs in a local tab, the tab is named after
+  it (<span class="sb">`btop`</span>, <span class="sb">`less`</span>) – or after the title the program sets for itself if it
+  sets one (<span class="sb">`notes.md (~) - VIM`</span>). At the prompt, a title set by the shell
+  (OSC 0/2) wins over the directory; many distributions' bash setups set one,
+  so you may see <span class="sb">`user@host: dir`</span> instead. Over SSH the program runs on the
+  server, so only what it sends as a title shows up.
 <span class="k">-</span><span class="w"> </span><span class="gs">**New tabs**</span> open in the active tab's directory only when it's a local tab and
   the directory is on this machine.
 

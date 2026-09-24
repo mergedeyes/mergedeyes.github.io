@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>src/snippets.rs — Terminaal — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=7095df78" />
+  <link rel="stylesheet" href="../../styles.css?v=d69e9cb9" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -251,7 +251,16 @@
 <span class="normal">206</span>
 <span class="normal">207</span>
 <span class="normal">208</span>
-<span class="normal">209</span></pre></div></td><td class="code"><div><pre><span></span><span class="sd">//! Your own commands ("snippets"), next to the built-in ones in the</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span></pre></div></td><td class="code"><div><pre><span></span><span class="sd">//! Your own commands ("snippets"), next to the built-in ones in the</span>
 <span class="sd">//! sidebar: a name and a command line -- or several lines -- optionally</span>
 <span class="sd">//! only for one system ([`Family`]) or one host.</span>
 <span class="sd">//!</span>
@@ -262,6 +271,7 @@
 <span class="sd">//! [[snippet]]</span>
 <span class="sd">//! name = "Logs"</span>
 <span class="sd">//! command = "journalctl -f"</span>
+<span class="sd">//! category = "Server"  # optional, groups the buttons in the sidebar</span>
 <span class="sd">//! system = "arch"   # optional, a `Family` key</span>
 <span class="sd">//! host = "web1"     # optional, a host's name in the sidebar</span>
 <span class="sd">//! # local = true    # optional instead of host: only in local terminals</span>
@@ -279,6 +289,10 @@
 <span class="k">pub</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">Snippet</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span>
 <span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">command</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span>
+<span class="w">    </span><span class="sd">/// The category it's listed under in the sidebar; without one it</span>
+<span class="w">    </span><span class="sd">/// goes under the commands themselves.</span>
+<span class="w">    </span><span class="cp">#[serde(default, skip_serializing_if = </span><span class="s">"Option::is_none"</span><span class="cp">)]</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">category</span><span class="p">:</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="p">,</span>
 <span class="w">    </span><span class="sd">/// Only on this system (a [`Family`] key).</span>
 <span class="w">    </span><span class="cp">#[serde(default, skip_serializing_if = </span><span class="s">"Option::is_none"</span><span class="cp">)]</span>
 <span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">system</span><span class="p">:</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="p">,</span>
@@ -396,14 +410,18 @@
 <span class="w">    </span><span class="cp">#[test]</span>
 <span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">reads_and_writes_the_file_format</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"[[snippet]]</span><span class="se">\n</span><span class="s">name = </span><span class="se">\"</span><span class="s">Logs</span><span class="se">\"\n</span><span class="s">command = </span><span class="se">\"</span><span class="s">journalctl -f</span><span class="se">\"\n</span><span class="s">system = </span><span class="se">\"</span><span class="s">arch</span><span class="se">\"\n\n</span><span class="s">\</span>
-<span class="s">                    [[snippet]]</span><span class="se">\n</span><span class="s">name = </span><span class="se">\"</span><span class="s">Deploy</span><span class="se">\"\n</span><span class="s">command = </span><span class="se">\"</span><span class="s">cd /srv</span><span class="se">\\</span><span class="s">n./deploy.sh</span><span class="se">\"\n</span><span class="s">host = </span><span class="se">\"</span><span class="s">web1</span><span class="se">\"\n</span><span class="s">"</span><span class="p">;</span>
+<span class="s">                    [[snippet]]</span><span class="se">\n</span><span class="s">name = </span><span class="se">\"</span><span class="s">Deploy</span><span class="se">\"\n</span><span class="s">command = </span><span class="se">\"</span><span class="s">cd /srv</span><span class="se">\\</span><span class="s">n./deploy.sh</span><span class="se">\"\n</span><span class="s">host = </span><span class="se">\"</span><span class="s">web1</span><span class="se">\"\n</span><span class="s">category = </span><span class="se">\"</span><span class="s">Server</span><span class="se">\"\n</span><span class="s">"</span><span class="p">;</span>
 <span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">snippets</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parse</span><span class="p">(</span><span class="n">text</span><span class="p">).</span><span class="n">unwrap</span><span class="p">();</span>
 <span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">snippets</span><span class="p">.</span><span class="n">len</span><span class="p">(),</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
 <span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">snippets</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">family</span><span class="p">(),</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">Family</span><span class="p">::</span><span class="n">Arch</span><span class="p">));</span>
+<span class="w">        </span><span class="c1">// The category is only the heading its button sits under.</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">snippets</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">category</span><span class="p">,</span><span class="w"> </span><span class="nb">None</span><span class="p">);</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">snippets</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">category</span><span class="p">.</span><span class="n">as_deref</span><span class="p">(),</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="s">"Server"</span><span class="p">));</span>
 <span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">snippets</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">command</span><span class="p">,</span><span class="w"> </span><span class="s">"cd /srv</span><span class="se">\n</span><span class="s">./deploy.sh"</span><span class="p">);</span>
 <span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">written</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">toml</span><span class="p">::</span><span class="n">to_string_pretty</span><span class="p">(</span><span class="o">&amp;</span><span class="n">File</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">snippets</span><span class="p">:</span><span class="w"> </span><span class="nc">snippets</span><span class="p">.</span><span class="n">clone</span><span class="p">()</span><span class="w"> </span><span class="p">}).</span><span class="n">unwrap</span><span class="p">();</span>
 <span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">parse</span><span class="p">(</span><span class="o">&amp;</span><span class="n">written</span><span class="p">).</span><span class="n">unwrap</span><span class="p">(),</span><span class="w"> </span><span class="n">snippets</span><span class="p">);</span>
 <span class="w">        </span><span class="fm">assert!</span><span class="p">(</span><span class="o">!</span><span class="n">written</span><span class="p">.</span><span class="n">contains</span><span class="p">(</span><span class="s">"host = </span><span class="se">\"\"</span><span class="s">"</span><span class="p">),</span><span class="w"> </span><span class="s">"unset fields stay out: {written}"</span><span class="p">);</span>
+<span class="w">        </span><span class="fm">assert!</span><span class="p">(</span><span class="o">!</span><span class="n">written</span><span class="p">.</span><span class="n">contains</span><span class="p">(</span><span class="s">"category = </span><span class="se">\"\"</span><span class="s">"</span><span class="p">),</span><span class="w"> </span><span class="s">"unset fields stay out: {written}"</span><span class="p">);</span>
 <span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">parse</span><span class="p">(</span><span class="s">""</span><span class="p">).</span><span class="n">unwrap</span><span class="p">(),</span><span class="w"> </span><span class="p">[]);</span>
 <span class="w">        </span><span class="fm">assert!</span><span class="p">(</span><span class="n">parse</span><span class="p">(</span><span class="s">"[[snippet]]</span><span class="se">\n</span><span class="s">name = 1"</span><span class="p">).</span><span class="n">is_err</span><span class="p">());</span>
 <span class="w">    </span><span class="p">}</span>

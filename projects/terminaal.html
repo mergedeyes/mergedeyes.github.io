@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Terminaal — Jan</title>
-  <link rel="stylesheet" href="../styles.css?v=7095df78" />
+  <link rel="stylesheet" href="../styles.css?v=d69e9cb9" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -45,7 +45,7 @@
           <div class="card__links">
             <a href="https://github.com/mergedeyes/terminaal" class="link">Repository</a>
             <a href="terminaal-source.html" class="link">Browse source (95 files)</a>
-            <a href="terminaal-commits.html" class="link">Commit history (30)</a>
+            <a href="terminaal-commits.html" class="link">Commit history (31)</a>
           </div>
           <span class="license-badge">GPL-3.0</span>
         </div>
@@ -82,7 +82,8 @@ idle when you do</li>
 <li><strong>Activity in background tabs</strong>: a dot before the title for new output, the
 bell, or a terminal you asked to watch for silence that has gone quiet (with a
 desktop notification) – right-click → Watch for silence</li>
-<li>Multiple tabs, each a local shell or an SSH session; a clickable tab bar</li>
+<li>Multiple tabs, each a local shell or an SSH session; a clickable tab bar, and
+tabs sort by dragging them sideways</li>
 <li><strong>Drop-down window</strong> (<code>terminaal --quake</code>, bound to a key in your desktop's
 settings): a terminal that drops down from the top of the screen and hides
 again, with tabs of its own that keep running. A real layer surface on
@@ -95,8 +96,9 @@ the other (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>D</kbd>, <kbd>Ctrl</kbd>+<kbd>S
 runs the same shell in the same folder, or connects to the same host. Drag the
 line between panes to resize them, click or <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+arrow key to move
 between them, and <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Enter</kbd> shows one pane over the whole tab</li>
-<li>Scrollback with the mouse wheel (speed adjustable in the settings), mouse selection,
-clipboard copy and paste</li>
+<li>Scrollback with the mouse wheel (speed adjustable in the settings), mouse selection
+(drag past the top or bottom edge and it scrolls along, and the wheel scrolls
+three times as fast while you mark – adjustable), clipboard copy and paste</li>
 <li><strong>Search the scrollback</strong> (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>F</kbd>): matches
 light up as you type, <kbd>Enter</kbd> and then <kbd>n</kbd>/<kbd>N</kbd> jump
 between them</li>
@@ -109,7 +111,8 @@ terminals by broadcast – are shown first and pasted with <kbd>Enter</kbd></li>
 (any other shell that sends OSC 7 and OSC 133 works too, and so do remote
 shells over SSH that send them – fish 4 does on its own):
 <ul dir="auto">
-<li>tab titles show the working directory, and a new tab opens in it</li>
+<li>tab titles show the working directory, and a new tab opens in it (while a
+program runs, a local tab is named after it instead)</li>
 <li><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>↑</kbd>/<kbd>↓</kbd> jump from prompt to prompt</li>
 <li>a failed command gets its exit code (<code>✘ 1</code>) next to its prompt, a slow one
 how long it ran (<code>4,2 s</code>)</li>
@@ -159,9 +162,12 @@ COSMIC and other compositors with <code>ext-background-effect</code>, and on KDE
 <h3 class="heading-element" dir="auto">Shells</h3>
 <ul dir="auto">
 <li>Choose any shell listed in <code>/etc/shells</code> for a new tab, and set a default</li>
-<li>Manage <strong>aliases and functions</strong> for fish, bash and zsh from the sidebar.
-They live in a separate file that only Terminaal loads, so your other
-terminals are unaffected:
+<li>Manage <strong>aliases, functions and lines of your own</strong> for fish, bash and zsh
+from the sidebar. Lines are whatever you would otherwise put in your startup
+file (<code>export EDITOR=vim</code>, <code>set -gx …</code>), kept as one named entry each that you
+can edit or drop again. They all live in a separate file that only Terminaal
+loads – your own <code>.bashrc</code> and friends are never touched, so nothing has to be
+undone:
 <code>~/.config/fish/terminaal.fish</code>, <code>~/.bash_terminaal</code>, <code>$ZDOTDIR/.zsh_terminaal</code></li>
 <li><strong>Built-in commands</strong>: buttons for the everyday chores – update the system,
 and separately Flatpaks and AUR packages (paru/yay) where installed, list what has updates, free space, folder sizes, memory, top processes,
@@ -401,6 +407,7 @@ line_height_factor = 1.25
 padding = 8.0                 # around the terminal grid
 scrollback_lines = 10000
 scroll_lines = 3.0            # lines per mouse-wheel notch
+scroll_select_factor = 3.0    # wheel multiplier while marking text (1 = off)
 default_width = 1000.0        # window size at start
 default_height = 650.0
 cursor_blink = true
@@ -438,6 +445,7 @@ tab_9 = []                    # no shortcut" dir="auto"><pre><span class="pl-smi
 <span class="pl-smi">padding</span> = <span class="pl-c1">8.0</span>                 <span class="pl-c"><span class="pl-c">#</span> around the terminal grid</span>
 <span class="pl-smi">scrollback_lines</span> = <span class="pl-c1">10000</span>
 <span class="pl-smi">scroll_lines</span> = <span class="pl-c1">3.0</span>            <span class="pl-c"><span class="pl-c">#</span> lines per mouse-wheel notch</span>
+<span class="pl-smi">scroll_select_factor</span> = <span class="pl-c1">3.0</span>    <span class="pl-c"><span class="pl-c">#</span> wheel multiplier while marking text (1 = off)</span>
 <span class="pl-smi">default_width</span> = <span class="pl-c1">1000.0</span>        <span class="pl-c"><span class="pl-c">#</span> window size at start</span>
 <span class="pl-smi">default_height</span> = <span class="pl-c1">650.0</span>
 <span class="pl-smi">cursor_blink</span> = <span class="pl-c1">true</span>
@@ -565,6 +573,7 @@ formatting.</p>
 <div class="highlight highlight-source-toml notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content='[[snippet]]
 name = "Follow logs"
 command = "journalctl -f"
+category = "Server"  # optional: groups the buttons under a heading you can fold
 system = "arch"     # optional: only on this system (arch, debian, fedora, suse,
                     # alpine, void, gentoo, nixos, macos, freebsd)
 
@@ -580,6 +589,7 @@ autorun = "login"   # optional: run by itself, "shell" (every new terminal)
 hidden = true       # optional: no button, only listed under Manage' dir="auto"><pre>[[<span class="pl-en">snippet</span>]]
 <span class="pl-smi">name</span> = <span class="pl-s"><span class="pl-pds">"</span>Follow logs<span class="pl-pds">"</span></span>
 <span class="pl-smi">command</span> = <span class="pl-s"><span class="pl-pds">"</span>journalctl -f<span class="pl-pds">"</span></span>
+<span class="pl-smi">category</span> = <span class="pl-s"><span class="pl-pds">"</span>Server<span class="pl-pds">"</span></span>  <span class="pl-c"><span class="pl-c">#</span> optional: groups the buttons under a heading you can fold</span>
 <span class="pl-smi">system</span> = <span class="pl-s"><span class="pl-pds">"</span>arch<span class="pl-pds">"</span></span>     <span class="pl-c"><span class="pl-c">#</span> optional: only on this system (arch, debian, fedora, suse,</span>
                     <span class="pl-c"><span class="pl-c">#</span> alpine, void, gentoo, nixos, macos, freebsd)</span>
 
@@ -636,7 +646,7 @@ noticed through keepalives – with the defaults after about a minute and a half
 <h2 class="heading-element" dir="auto">Roadmap</h2>
 <ul class="contains-task-list">
 <li class="task-list-item"><input aria-label="Completed task" checked="" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Local terminal core, tabs and sessions</li>
-<li class="task-list-item"><input aria-label="Completed task" checked="" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Shell management with per-shell aliases and functions</li>
+<li class="task-list-item"><input aria-label="Completed task" checked="" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Shell management with per-shell aliases, functions and lines of your own</li>
 <li class="task-list-item"><input aria-label="Completed task" checked="" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> SSH sessions, host manager, keys, per-host options</li>
 <li class="task-list-item"><input aria-label="Completed task" checked="" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Configurable keyboard shortcuts for every action</li>
 <li class="task-list-item"><input aria-label="Completed task" checked="" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Appearance: themes for console and interface, console and menu font,
@@ -669,6 +679,10 @@ through sudo where needed</li>
 <li class="task-list-item"><input aria-label="Incomplete task" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Reopen a closed tab</li>
 <li class="task-list-item"><input aria-label="Incomplete task" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Resize and swap panes with the keyboard</li>
 <li class="task-list-item"><input aria-label="Incomplete task" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Search: number of matches, optional regex</li>
+<li class="task-list-item"><input aria-label="Incomplete task" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> <code>terminaal -c "&lt;command&gt;"</code>: run a command in the first tab instead of just a
+shell, <code>terminaal -s</code> to list the installed shells and <code>-s &lt;shell&gt; -c "…"</code> to
+pick the one it runs in</li>
+<li class="task-list-item"><input aria-label="Incomplete task" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> A <code>terminaal(1)</code> man page, installed by <code>install.sh</code></li>
 </ul>
 <p dir="auto"><strong>Terminal protocols</strong></p>
 <ul class="contains-task-list">

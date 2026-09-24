@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>docs/troubleshooting.md — Terminaal — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=7095df78" />
+  <link rel="stylesheet" href="../../styles.css?v=d69e9cb9" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -224,7 +224,15 @@
 <span class="normal">179</span>
 <span class="normal">180</span>
 <span class="normal">181</span>
-<span class="normal">182</span></pre></div></td><td class="code"><div><pre><span></span><span class="gh"># Troubleshooting</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span></pre></div></td><td class="code"><div><pre><span></span><span class="gh"># Troubleshooting</span>
 
 <span class="gu">## Getting more information</span>
 
@@ -322,7 +330,15 @@ F-key or Shift+navigation key). You can still set it in <span class="sb">`config
   [<span class="nt">Shell integration</span>](<span class="na">guides/shell-integration.md#other-shells-or-shells-over-ssh</span>).
 
 <span class="gs">**The tab title shows `user@host: dir` instead of just the directory.**</span>
-A program (often your distribution's bash setup) sets the title; that wins.
+At the prompt, a title set by a program (often your distribution's bash setup)
+wins over the directory.
+
+<span class="gs">**The tab isn't named after the program that's running.**</span>
+<span class="k">-</span><span class="w"> </span>Only local tabs can tell: over SSH the program runs on the server, so the tab
+  shows whatever title it sends, if any.
+<span class="k">-</span><span class="w"> </span>The shell needs job control, which it has when Terminaal starts it as an
+  interactive shell.
+<span class="k">-</span><span class="w"> </span>The name follows the output, a quarter of a second behind it.
 
 <span class="gs">**No notification when a command finishes.**</span>
 <span class="k">-</span><span class="w"> </span>It only fires when the command ran at least <span class="sb">`notify_after_secs`</span> and the tab

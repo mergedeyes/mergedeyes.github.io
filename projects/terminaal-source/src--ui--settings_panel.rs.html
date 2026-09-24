@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>src/ui/settings_panel.rs — Terminaal — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=7095df78" />
+  <link rel="stylesheet" href="../../styles.css?v=d69e9cb9" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -868,7 +868,22 @@
 <span class="normal">823</span>
 <span class="normal">824</span>
 <span class="normal">825</span>
-<span class="normal">826</span></pre></div></td><td class="code"><div><pre><span></span><span class="sd">//! The settings tab (⚙ in the sidebar, Ctrl+,): every option in</span>
+<span class="normal">826</span>
+<span class="normal">827</span>
+<span class="normal">828</span>
+<span class="normal">829</span>
+<span class="normal">830</span>
+<span class="normal">831</span>
+<span class="normal">832</span>
+<span class="normal">833</span>
+<span class="normal">834</span>
+<span class="normal">835</span>
+<span class="normal">836</span>
+<span class="normal">837</span>
+<span class="normal">838</span>
+<span class="normal">839</span>
+<span class="normal">840</span>
+<span class="normal">841</span></pre></div></td><td class="code"><div><pre><span></span><span class="sd">//! The settings tab (⚙ in the sidebar, Ctrl+,): every option in</span>
 <span class="sd">//! config.toml, on pages by topic -- general, appearance, terminal, shell</span>
 <span class="sd">//! and keyboard shortcuts.</span>
 <span class="sd">//!</span>
@@ -1272,6 +1287,21 @@
 <span class="w">    </span><span class="p">});</span>
 <span class="w">    </span><span class="n">change</span><span class="p">(</span><span class="n">actions</span><span class="p">,</span><span class="w"> </span><span class="n">moved</span><span class="p">,</span><span class="w"> </span><span class="n">Setting</span><span class="p">::</span><span class="n">ScrollLines</span><span class="p">(</span><span class="n">lines</span><span class="p">));</span>
 <span class="w">    </span><span class="n">ui</span><span class="p">.</span><span class="n">label</span><span class="p">(</span><span class="n">weak</span><span class="p">(</span><span class="n">t</span><span class="o">!</span><span class="p">(</span><span class="s">"settings-scroll-speed-hint"</span><span class="p">)).</span><span class="n">size</span><span class="p">(</span><span class="mf">11.0</span><span class="p">));</span>
+<span class="w">    </span><span class="n">ui</span><span class="p">.</span><span class="n">add_space</span><span class="p">(</span><span class="mf">4.0</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">factor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">config</span><span class="p">.</span><span class="n">scroll_select_factor</span><span class="p">();</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">moved</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">slider</span><span class="p">(</span>
+<span class="w">        </span><span class="n">ui</span><span class="p">,</span>
+<span class="w">        </span><span class="o">&amp;</span><span class="n">t</span><span class="o">!</span><span class="p">(</span><span class="s">"settings-scroll-select"</span><span class="p">),</span>
+<span class="w">        </span><span class="s">"scroll_select_factor"</span><span class="p">,</span>
+<span class="w">        </span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="n">factor</span><span class="p">,</span>
+<span class="w">        </span><span class="n">config</span><span class="p">::</span><span class="n">SELECT_FACTORS</span><span class="p">,</span>
+<span class="w">        </span><span class="mf">1.0</span><span class="p">,</span>
+<span class="w">        </span><span class="o">|</span><span class="n">factor</span><span class="o">|</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="n">factor</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mf">1.0</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">t</span><span class="o">!</span><span class="p">(</span><span class="s">"settings-scroll-select-off"</span><span class="p">)</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">t</span><span class="o">!</span><span class="p">(</span><span class="s">"settings-scroll-select-times"</span><span class="p">,</span><span class="w"> </span><span class="n">factor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">f64</span><span class="p">::</span><span class="n">from</span><span class="p">(</span><span class="n">factor</span><span class="p">))</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">    </span><span class="p">);</span>
+<span class="w">    </span><span class="n">change</span><span class="p">(</span><span class="n">actions</span><span class="p">,</span><span class="w"> </span><span class="n">moved</span><span class="p">,</span><span class="w"> </span><span class="n">Setting</span><span class="p">::</span><span class="n">ScrollSelectFactor</span><span class="p">(</span><span class="n">factor</span><span class="p">));</span>
+<span class="w">    </span><span class="n">ui</span><span class="p">.</span><span class="n">label</span><span class="p">(</span><span class="n">weak</span><span class="p">(</span><span class="n">t</span><span class="o">!</span><span class="p">(</span><span class="s">"settings-scroll-select-hint"</span><span class="p">)).</span><span class="n">size</span><span class="p">(</span><span class="mf">11.0</span><span class="p">));</span>
 <span class="w">    </span><span class="n">ui</span><span class="p">.</span><span class="n">add_space</span><span class="p">(</span><span class="mf">4.0</span><span class="p">);</span>
 <span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">scrollback</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">config</span><span class="p">.</span><span class="n">scrollback_lines</span><span class="p">;</span>
 <span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">moved</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">slider</span><span class="p">(</span><span class="n">ui</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">t</span><span class="o">!</span><span class="p">(</span><span class="s">"settings-scrollback"</span><span class="p">),</span><span class="w"> </span><span class="s">"scrollback_lines"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="n">scrollback</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="o">..=</span><span class="mi">100_000</span><span class="p">,</span><span class="w"> </span><span class="mf">1000.0</span><span class="p">,</span><span class="w"> </span><span class="o">|</span><span class="n">lines</span><span class="o">|</span><span class="w"> </span><span class="p">{</span>

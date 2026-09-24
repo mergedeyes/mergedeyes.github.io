@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>src/render/grid.rs — Terminaal — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=7095df78" />
+  <link rel="stylesheet" href="../../styles.css?v=d69e9cb9" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -524,7 +524,21 @@
 <span class="normal">479</span>
 <span class="normal">480</span>
 <span class="normal">481</span>
-<span class="normal">482</span></pre></div></td><td class="code"><div><pre><span></span><span class="sd">//! Turns the current `alacritty_terminal` grid into draw data: background</span>
+<span class="normal">482</span>
+<span class="normal">483</span>
+<span class="normal">484</span>
+<span class="normal">485</span>
+<span class="normal">486</span>
+<span class="normal">487</span>
+<span class="normal">488</span>
+<span class="normal">489</span>
+<span class="normal">490</span>
+<span class="normal">491</span>
+<span class="normal">492</span>
+<span class="normal">493</span>
+<span class="normal">494</span>
+<span class="normal">495</span>
+<span class="normal">496</span></pre></div></td><td class="code"><div><pre><span></span><span class="sd">//! Turns the current `alacritty_terminal` grid into draw data: background</span>
 <span class="sd">//! quads (`render::quad`) for cell backgrounds, selection highlight and</span>
 <span class="sd">//! the cursor block, plus one shaped glyphon buffer per visible row.</span>
 <span class="sd">//!</span>
@@ -603,6 +617,13 @@
 
 <span class="k">impl</span><span class="w"> </span><span class="n">RowText</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">push</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">ch</span><span class="p">:</span><span class="w"> </span><span class="kt">char</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="p">:</span><span class="w"> </span><span class="nc">StyleKey</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Every cell is one column wide, control characters included: a</span>
+<span class="w">        </span><span class="c1">// tab, which `alacritty_terminal` keeps in the cell it started</span>
+<span class="w">        </span><span class="c1">// from (the ones it skipped hold spaces), would otherwise shape</span>
+<span class="w">        </span><span class="c1">// to the next tab stop and slide the rest of the row out from</span>
+<span class="w">        </span><span class="c1">// under its cells -- selecting what you see then copies</span>
+<span class="w">        </span><span class="c1">// something else (`dig` output, whose columns are tabs).</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">ch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">ch</span><span class="p">.</span><span class="n">is_control</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="sc">' '</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">ch</span><span class="w"> </span><span class="p">};</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">runs</span><span class="p">.</span><span class="n">last</span><span class="p">().</span><span class="n">is_none_or</span><span class="p">(</span><span class="o">|</span><span class="p">(</span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">)</span><span class="o">|</span><span class="w"> </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">key</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="bp">self</span><span class="p">.</span><span class="n">runs</span><span class="p">.</span><span class="n">push</span><span class="p">((</span><span class="bp">self</span><span class="p">.</span><span class="n">text</span><span class="p">.</span><span class="n">len</span><span class="p">(),</span><span class="w"> </span><span class="n">key</span><span class="p">));</span>
 <span class="w">        </span><span class="p">}</span>
@@ -923,6 +944,13 @@
 <span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">attrs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Attrs</span><span class="p">::</span><span class="n">new</span><span class="p">();</span>
 <span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">spans</span><span class="p">:</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;&amp;</span><span class="kt">str</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">spans</span><span class="p">(</span><span class="o">&amp;</span><span class="n">attrs</span><span class="p">).</span><span class="n">map</span><span class="p">(</span><span class="o">|</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="n">_</span><span class="p">)</span><span class="o">|</span><span class="w"> </span><span class="n">s</span><span class="p">).</span><span class="n">collect</span><span class="p">();</span>
 <span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">spans</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s">"ab"</span><span class="p">,</span><span class="w"> </span><span class="s">"c"</span><span class="p">,</span><span class="w"> </span><span class="s">"d"</span><span class="p">]);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cp">#[test]</span>
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">a_tab_cell_stays_one_column_wide</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">row</span><span class="p">(</span><span class="o">&amp;</span><span class="p">[(</span><span class="sc">'a'</span><span class="p">,</span><span class="w"> </span><span class="n">RED</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="sc">'\t'</span><span class="p">,</span><span class="w"> </span><span class="n">RED</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="sc">'b'</span><span class="p">,</span><span class="w"> </span><span class="n">RED</span><span class="p">)]);</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">text</span><span class="p">,</span><span class="w"> </span><span class="s">"a b"</span><span class="p">);</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">len</span><span class="p">(),</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="cp">#[test]</span>

@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>locales/de.ftl — Terminaal — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=7095df78" />
+  <link rel="stylesheet" href="../../styles.css?v=d69e9cb9" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -866,7 +866,26 @@
 <span class="normal">821</span>
 <span class="normal">822</span>
 <span class="normal">823</span>
-<span class="normal">824</span></pre></div></td><td class="code"><div><pre><span></span># Terminaal – deutsche Texte.
+<span class="normal">824</span>
+<span class="normal">825</span>
+<span class="normal">826</span>
+<span class="normal">827</span>
+<span class="normal">828</span>
+<span class="normal">829</span>
+<span class="normal">830</span>
+<span class="normal">831</span>
+<span class="normal">832</span>
+<span class="normal">833</span>
+<span class="normal">834</span>
+<span class="normal">835</span>
+<span class="normal">836</span>
+<span class="normal">837</span>
+<span class="normal">838</span>
+<span class="normal">839</span>
+<span class="normal">840</span>
+<span class="normal">841</span>
+<span class="normal">842</span>
+<span class="normal">843</span></pre></div></td><td class="code"><div><pre><span></span># Terminaal – deutsche Texte.
 #
 # Fluent-Syntax: https://projectfluent.org/fluent/guide/
 # Jede Meldung hier muss es auch in en.ftl geben, mit denselben Argumenten
@@ -991,6 +1010,10 @@ settings-scroll-lines = { $lines -&gt;
    *[other] { $lines } Zeilen je Raste
 }
 settings-scroll-speed-hint = Standard 3. Touchpads scrollen stufenlos.
+settings-scroll-select = Beim Markieren
+settings-scroll-select-times = { $factor }× so schnell
+settings-scroll-select-off = wie sonst
+settings-scroll-select-hint = Solange mit gedrückter Maustaste markiert wird, scrollt das Rad um diesen Faktor weiter – so reicht die Auswahl schnell über mehrere Bildschirme, ohne an den Rand ziehen zu müssen. Standard 3, 1× schaltet es ab.
 settings-scrollback = Scrollback
 settings-scrollback-lines = { $lines -&gt;
     [one] { $lines } Zeile
@@ -1161,8 +1184,8 @@ shells-new-tab = ▶  Neuer Tab
 shells-new-tab-hint = Öffnet einen neuen Tab mit { $shell }
 shells-make-default = ★  Als Standard
 shells-make-default-hint = Neue Tabs (Strg+Umschalt+T, „+“) starten mit dieser Shell
-shells-managed-title = Aliase &amp; Funktionen · { $shell }
-shells-managed-unsupported = Für { $shell } kann Terminaal keine Aliase oder Funktionen verwalten – unterstützt werden fish, bash und zsh.
+shells-managed-title = Aliase, Funktionen &amp; Zeilen · { $shell }
+shells-managed-unsupported = Für { $shell } kann Terminaal nichts verwalten – unterstützt werden fish, bash und zsh.
 shells-managed-file-hint = Wird nur in Terminaal geladen, nicht in anderen Terminals. Änderungen gelten für neu geöffnete Tabs.
 shells-save-failed = Speichern fehlgeschlagen: { $err }
 shells-aliases = Aliase ({ $count })
@@ -1184,6 +1207,14 @@ shells-command-missing = Der Befehl fehlt.
 shells-body-missing = Der Rumpf fehlt.
 shells-name-taken = „{ $name }“ ist bereits als { $kind } definiert.
 shells-saved = „{ $name }“ gespeichert – gilt für neue { $shell }-Tabs.
+shells-lines = Zeilen ({ $count })
+shells-no-lines = Noch keine Zeilen angelegt.
+shells-add-lines = +  Zeilen hinzufügen
+shells-new-lines = Neue Zeilen
+shells-edit-lines = Zeilen bearbeiten
+shells-lines-label = Zeilen
+shells-lines-hint = Läuft beim Start jedes Terminaal-Tabs mit dieser Shell – wie ein Eintrag in der Startdatei der Shell, nur in Terminaals eigener Datei.
+shells-lines-missing = Die Zeilen fehlen.
 
 ## Seitenleiste: Befehle (commands.rs)
 
@@ -1221,6 +1252,9 @@ snip-local-login = „Nach dem Login“ gilt nur für SSH-Terminals und passt ni
 snip-everywhere = Überall
 snip-on-host = auf { $host }
 snip-command-missing = Der Befehl fehlt.
+snip-category = Kategorie
+snip-category-hint = optional, z. B. Docker
+snip-category-use = Diese Kategorie übernehmen
 snip-name-taken = Einen Befehl „{ $name }“ gibt es schon.
 cmd-system = System: { $system }
 cmd-system-local-hint = Aus /etc/os-release erkannt. Stimmt das nicht, lässt es sich in den Einstellungen unter „Shell“ festlegen.
@@ -1238,6 +1272,8 @@ cmd-group-packages = Pakete
 cmd-group-disk = Speicherplatz
 cmd-group-system = System
 cmd-group-network = Netzwerk
+cmd-group-collapse = Gruppe einklappen
+cmd-group-expand = Gruppe ausklappen
 cmd-update = System aktualisieren
 cmd-update-flatpak = Flatpaks aktualisieren
 cmd-update-aur = AUR-Pakete aktualisieren
@@ -1267,10 +1303,12 @@ cmd-family-unknown = Automatisch erkennen
 
 managed-alias = Alias
 managed-function = Funktion
+managed-block = Zeilen
 managed-unsupported = diese Shell wird nicht unterstützt
 managed-invalid-name = Erlaubt sind Buchstaben, Ziffern und _ . : + - (nicht am Anfang: -).
+managed-marker-line = Eine Zeile darf nicht mit „# terminaal:“ beginnen – das sind die Markierungen der Datei.
 managed-header =
-    # Aliase und Funktionen für Terminaal.
+    # Aliase, Funktionen und eigene Zeilen für Terminaal.
     #
     # Wird von Terminaal verwaltet und nur in Terminaal geladen. Die Blöcke
     # zwischen den Markierungen dürfen auch von Hand bearbeitet werden;

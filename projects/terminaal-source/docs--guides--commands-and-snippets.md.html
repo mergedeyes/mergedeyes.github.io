@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>docs/guides/commands-and-snippets.md — Terminaal — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=7095df78" />
+  <link rel="stylesheet" href="../../styles.css?v=d69e9cb9" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -200,7 +200,18 @@
 <span class="normal">155</span>
 <span class="normal">156</span>
 <span class="normal">157</span>
-<span class="normal">158</span></pre></div></td><td class="code"><div><pre><span></span><span class="gh"># Built-in commands and snippets</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span></pre></div></td><td class="code"><div><pre><span></span><span class="gh"># Built-in commands and snippets</span>
 
 The sidebar's <span class="gs">**Shells**</span> section ends with command buttons: built-in ones for
 everyday chores, and your own (snippets). A click sends the command to the active
@@ -280,6 +291,9 @@ Your own commands, in <span class="sb">`~/.config/terminaal/snippets.toml`</span
 
 <span class="k">-</span><span class="w"> </span><span class="gs">**Add:**</span> <span class="gs">**Your commands → Manage → + Add command**</span>. Give it a name and a
   command – several lines are fine.
+<span class="k">-</span><span class="w"> </span><span class="gs">**Category:**</span> optional heading its button sits under. Categories you already
+  use are offered as buttons below the field, so a name only has to be typed
+  once. Without one, the button stands directly under <span class="gs">**Your commands**</span>.
 <span class="k">-</span><span class="w"> </span><span class="gs">**Only on system:**</span> show it only in tabs detected as that system.
 <span class="k">-</span><span class="w"> </span><span class="gs">**Where:**</span> <span class="gs">**Everywhere (local and all hosts)**</span>, <span class="gs">**Local only**</span> (never in
   SSH tabs), or one host – then only in SSH tabs of that host, by its name in
@@ -305,8 +319,16 @@ Example <span class="sb">`snippets.toml`</span>:
 <span class="k">[[snippet]]</span>
 <span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Restart app"</span>
 <span class="n">command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"sudo systemctl restart app &amp;&amp; journalctl -fu app"</span>
+<span class="n">category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"web1"</span><span class="w">     </span><span class="c1"># optional, the heading its button sits under</span>
 <span class="n">host</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"web1"</span>
 <span class="sb">```</span>
+
+<span class="gu">### Folding groups away</span>
+
+Every heading – the built-in groups (Packages, Disk, System, Network) and each
+of your categories – folds away when you click it, and unfolds the same way.
+What's folded is remembered in <span class="sb">`commands_collapsed`</span> in <span class="sb">`config.toml`</span>, so it
+stays that way the next time you start Terminaal.
 
 <span class="gu">### Startup commands</span>
 

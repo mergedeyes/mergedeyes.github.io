@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>docs/guides/configuration.md — Terminaal — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=7095df78" />
+  <link rel="stylesheet" href="../../styles.css?v=d69e9cb9" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -229,7 +229,9 @@
 <span class="normal">184</span>
 <span class="normal">185</span>
 <span class="normal">186</span>
-<span class="normal">187</span></pre></div></td><td class="code"><div><pre><span></span><span class="gh"># Configuration reference</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span></pre></div></td><td class="code"><div><pre><span></span><span class="gh"># Configuration reference</span>
 
 Terminaal keeps everything in <span class="sb">`~/.config/terminaal/`</span> (or
 <span class="sb">`$XDG_CONFIG_HOME/terminaal/`</span>). All files are optional, and none holds a
@@ -288,6 +290,7 @@ and keeps your comments and formatting. A missing file means defaults.
 | <span class="sb">`shell`</span> | <span class="sb">`$SHELL`</span> | Default shell for new tabs, a path |
 | <span class="sb">`scrollback_lines`</span> | <span class="sb">`10000`</span> | Lines kept per tab; lowering it drops the oldest |
 | <span class="sb">`scroll_lines`</span> | <span class="sb">`3.0`</span> | Lines per mouse-wheel notch |
+| <span class="sb">`scroll_select_factor`</span> | <span class="sb">`3.0`</span> | How much faster the wheel scrolls while text is being marked (1–10, <span class="sb">`1`</span> for the usual speed) |
 | <span class="sb">`notify_after_secs`</span> | <span class="sb">`10`</span> | Notify when a command that ran this long finishes unseen; <span class="sb">`0`</span> = never |
 | <span class="sb">`silence_secs`</span> | <span class="sb">`15`</span> | A terminal watched for silence counts as quiet after this many seconds without output (3–300) |
 | <span class="sb">`paste_warning`</span> | <span class="sb">`true`</span> | Ask before pasting several lines that would run at once, <span class="sb">`sudo`</span>, a download piped into a shell, <span class="sb">`rm -rf`</span> and the like |
@@ -299,6 +302,7 @@ and keeps your comments and formatting. A missing file means defaults.
 | <span class="sb">`commands_run`</span> | <span class="sb">`true`</span> | A click runs the command; <span class="sb">`false`</span> only types it into the prompt |
 | <span class="sb">`commands_assume_yes`</span> | <span class="sb">`false`</span> | Add <span class="sb">`-y`</span>/<span class="sb">`--noconfirm`</span> so updates don't ask |
 | <span class="sb">`commands_warned`</span> | <span class="sb">`false`</span> | Set once you confirmed the first-run warning |
+| <span class="sb">`commands_collapsed`</span> | <span class="sb">`[]`</span> | Command groups folded away in the sidebar; set by clicking their headings (built-in groups by key, your categories as <span class="sb">`custom:&lt;name&gt;`</span>) |
 | <span class="sb">`system`</span> | detected | Which system local tabs' commands are for: <span class="sb">`arch`</span>, <span class="sb">`debian`</span>, <span class="sb">`fedora`</span>, <span class="sb">`suse`</span>, <span class="sb">`alpine`</span>, <span class="sb">`void`</span>, <span class="sb">`gentoo`</span>, <span class="sb">`nixos`</span>, <span class="sb">`macos`</span>, <span class="sb">`freebsd`</span> |
 
 <span class="gu">### Files</span>
