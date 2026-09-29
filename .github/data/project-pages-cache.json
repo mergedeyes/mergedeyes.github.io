@@ -1,6 +1,6 @@
 {
   "mergedeyes/Klar-Stack": {
-    "commit_count": 149,
+    "commit_count": 152,
     "files": {
       "Klar/migrations/20260425000000_create_users.sql": "9fadcd2fef1fad49fdc545e95c9b5bb6a74c3ce6",
       "Klar/migrations/20260425010000_add_password_hash.sql": "28f8dd7008cc4407f5b9e6916104073bd4091f5a",
@@ -133,10 +133,10 @@
       "klar-web/src/lib/auth-context.tsx": "3997fa38f5d258f2d3239daf5ae31a711a05e134",
       "klar-web/src/lib/utils.ts": "bd0c391ddd1088e9067844c48835bf4abcd61783",
       "klar-web/src/lib/utils/media.ts": "301f16e266aef1f5b01c7202f50849924f96cc4a",
-      "klar-web/src/proxy.ts": "f533bb36ab62952d9846e49d821042352f54209b"
+      "klar-web/src/proxy.ts": "3850e87e12899a11dc766ce173c37cccb89f23da"
     },
-    "newest_commit_sha": "0f3e8bcb89fc2232d671e583361b007958f6464f",
-    "pushed_at": "2026-09-29T01:04:17Z",
+    "newest_commit_sha": "750a2a956fa25190fc2ebdc8badd80682555b81d",
+    "pushed_at": "2026-09-29T19:53:07Z",
     "source_entries": [
       "Klar/src/main.rs",
       "Klar/migrations/*",
@@ -158,7 +158,7 @@
     ]
   },
   "mergedeyes/mergedeyes.github.io": {
-    "commit_count": 408,
+    "commit_count": 409,
     "files": {
       ".github/scripts/__pycache__/generate_project_pages.cpython-314.pyc": "b9e7f33a02cad66d5f4ee1b83d3c9c8428159d56",
       ".github/scripts/generate_project_pages.py": "6d0d4d56ca91afaae12e814cc85c621c42421593",
@@ -181,8 +181,8 @@
       "skills/nginx.html": "80c4b61efb0493e6411b8b9caab170e3db5d80dd",
       "styles.css": "a3243ed44505aec40beb720fdfacf5edc649e475"
     },
-    "newest_commit_sha": "286f07f65b658c20ee0d1680d63082379e11ac55",
-    "pushed_at": "2026-09-29T08:46:43Z",
+    "newest_commit_sha": "91cb43218a79bf1978f10470292508aa3afcd2a7",
+    "pushed_at": "2026-09-29T15:12:36Z",
     "source_entries": [
       "index.html",
       "404.html",

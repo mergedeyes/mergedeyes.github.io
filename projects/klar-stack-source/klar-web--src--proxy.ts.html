@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>klar-web/src/proxy.ts — Klar — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=286f07f6" />
+  <link rel="stylesheet" href="../../styles.css?v=91cb4321" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -101,7 +101,14 @@
 <span class="normal">56</span>
 <span class="normal">57</span>
 <span class="normal">58</span>
-<span class="normal">59</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">NextRequest</span><span class="p">,</span><span class="w"> </span><span class="nx">NextResponse</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"next/server"</span><span class="p">;</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">NextRequest</span><span class="p">,</span><span class="w"> </span><span class="nx">NextResponse</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"next/server"</span><span class="p">;</span>
 
 <span class="c1">// Paths reachable without the passcode:</span>
 <span class="c1">// - /welcome itself (the gate page) and its own API route, or you'd</span>
@@ -111,9 +118,16 @@
 <span class="c1">//   both for legal-compliance reasons (an Impressum has to be reachable)</span>
 <span class="c1">//   and because they're linked from the global Footer on every page,</span>
 <span class="c1">//   including /welcome itself</span>
+<span class="c1">// - the email-link landing pages (/verify-email, /reset-password): the</span>
+<span class="c1">//   links always point at BASE_URL (.eu), but the gate cookie is per-host,</span>
+<span class="c1">//   so someone who entered the passcode on .de would be bounced to</span>
+<span class="c1">//   /welcome and lose the token. These pages only forward the token to the</span>
+<span class="c1">//   API, which the gate doesn't cover anyway, so exposing them leaks nothing.</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">PUBLIC_PATHS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
 <span class="w">  </span><span class="s2">"/welcome"</span><span class="p">,</span>
 <span class="w">  </span><span class="s2">"/api/site-access"</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">"/verify-email"</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">"/reset-password"</span><span class="p">,</span>
 <span class="w">  </span><span class="s2">"/impressum"</span><span class="p">,</span>
 <span class="w">  </span><span class="s2">"/datenschutz"</span><span class="p">,</span>
 <span class="w">  </span><span class="s2">"/nutzungsbedingungen"</span><span class="p">,</span>
