@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Klar — Jan</title>
-  <link rel="stylesheet" href="../styles.css?v=91cb4321" />
+  <link rel="stylesheet" href="../styles.css?v=43aed5e7" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -49,30 +49,31 @@
         <div class="card__foot project-page__foot">
           <div class="card__links">
             <a href="https://github.com/mergedeyes/Klar-Stack" class="link">Repository</a>
-            <a href="klar-stack-source.html" class="link">Browse source (132 files)</a>
-            <a href="klar-stack-commits.html" class="link">Commit history (152)</a>
+            <a href="klar-stack-source.html" class="link">Browse source (157 files)</a>
+            <a href="klar-stack-commits.html" class="link">Commit history (227)</a>
           </div>
           <span class="license-badge">AGPL-3.0</span>
         </div>
         <div class="readme-content">
-<h1 class="heading-element" dir="auto">Klar — Feature List (as of 25 August 2026)</h1>
+<h1 class="heading-element" dir="auto">Klar — Feature List (as of 30 September 2026)</h1>
 <h2 class="heading-element" dir="auto">Accounts &amp; Auth</h2>
 <ul dir="auto">
-<li>Registration (username, email, password) with email verification link</li>
-<li>Login / logout, JWT access tokens (15 min) + refresh tokens (30 days)</li>
+<li>Registration (username, email, password) with email verification link; emails are matched case-insensitively</li>
+<li>Banner on every page until the email address is verified</li>
+<li>Login / logout, JWT access tokens (15 min) + refresh tokens (30 days); refresh tokens are stored hashed, single-use and rotated on every refresh, and the frontend refreshes ahead of expiry through one shared request</li>
 <li>Cross-site auth support: tokens in <code>localStorage</code> + <code>Authorization: Bearer</code>, with httpOnly cookies as a same-site fallback (handles <code>klarsocial.eu</code> vs <code>klarsocial.de</code> being different top-level domains)</li>
 <li>Password reset (forgot password → email link → reset)</li>
-<li>Resend verification email</li>
+<li>Resend verification email (email-based, works while logged out)</li>
 <li>Argon2 password hashing</li>
 <li>Change password (requires current password, invalidates all other sessions)</li>
 <li>Account deletion (cascades to posts/comments/messages/media; cleans up stored files)</li>
-<li>Self-service data export (GDPR Art. 15/20) — full JSON download of everything Klar holds about you</li>
+<li>Self-service data export (GDPR Art. 15/20) — a ZIP with <code>data.json</code> (everything Klar holds about you) plus your full-size images and avatar, so the copy doesn't depend on expiring media links</li>
 </ul>
 <h2 class="heading-element" dir="auto">Profile</h2>
 <ul dir="auto">
-<li>Username (case preserved as entered, case-insensitive uniqueness, 14-day change cooldown)</li>
+<li>Username (3–30 characters: letters, digits, underscores; case preserved as entered, case-insensitive uniqueness, reserved names such as <code>me</code>/<code>admin</code> blocked, 14-day change cooldown)</li>
 <li>Display name, bio, avatar (upload, resized/processed server-side)</li>
-<li>Public profile page: avatar, stats (posts/followers/following), bio</li>
+<li>Public profile page: avatar, stats (posts/followers/following), bio, and a post grid that loads more as you scroll</li>
 <li><strong>Private accounts</strong>: toggle in Settings; when on, posts are hidden from non-followers</li>
 <li>Follow requests for private accounts: request → pending → accept/reject (not instant-follow)
 <ul dir="auto">
@@ -86,6 +87,7 @@
 <li>Create post: caption + optional photo</li>
 <li>Automatic EXIF stripping on upload (location, device info, timestamp removed)</li>
 <li>Three generated sizes per image (thumbnail/medium/full), real width/height captured for correct aspect-ratio rendering</li>
+<li>Media is served through signed, expiring CDN URLs (valid 6–12 h), so a copied link stops working after an unfollow, block or switch to private; every media deletion also purges the CDN cache</li>
 <li>Edit caption, delete post (with real cascade cleanup of media files)</li>
 <li>Post permalink pages (<code>/posts/[id]</code>) — shareable, deep-linkable</li>
 <li>Post detail modal: comments, likes, delete (from feed, profile, or permalink)</li>
@@ -94,7 +96,8 @@
 <ul dir="auto">
 <li>Personal feed: strictly <strong>chronological</strong>, no algorithm, no ranking — deliberate product stance</li>
 <li>Fan-out-on-write (<code>feed_items</code>) for fast reads; backfilled on follow, cleaned up on unfollow</li>
-<li>Discovery feed: global, cross-user, cursor-paginated</li>
+<li>Discovery feed: global, cross-user</li>
+<li>All feeds page with a <code>(created_at, id)</code> keyset cursor and infinite scroll, so posts with identical timestamps are never skipped</li>
 <li>Private-account posts are excluded from the discovery feed and profile grids unless you're the owner or an accepted follower (enforced backend-side in three places: single post view, profile posts list, and the discovery feed itself)</li>
 </ul>
 <h2 class="heading-element" dir="auto">Social Graph</h2>
@@ -112,7 +115,7 @@
 <h2 class="heading-element" dir="auto">Notifications</h2>
 <ul dir="auto">
 <li>Types: post like, comment, comment like, follow, follow request, follow accepted</li>
-<li>Persisted history (<code>GET /notifications</code>) + real-time delivery via SSE</li>
+<li>Persisted history (<code>GET /notifications</code>) + real-time delivery via SSE, authenticated with a single-use, 30-second stream ticket (no tokens in URLs)</li>
 <li><strong>Cross-replica delivery</strong> via Redis (Upstash) pub/sub — works correctly however many backend instances are running, not just replica-count-1</li>
 <li>Notification previews: actor avatar (follows/requests) or post thumbnail (likes/comments)</li>
 <li>Clicking a notification navigates to the relevant post or profile</li>
@@ -128,6 +131,7 @@
 <li>Unread-message badge on the Chat icon, correctly clears when actively viewing a conversation (no false positives from your own open chat)</li>
 <li>Conversation list shows the true most-recent activity — a plain message, a reply, or a reaction — with proper phrasing ("Me: ...", "X replied: ...", "X reacted 👍 to your message: ...")</li>
 <li>Avatar in conversation list/chat header links to the other person's profile; rest of the row opens the chat</li>
+<li>When an account is deleted, its messages are erased from the partner's chat too; the partner keeps the conversation with their own messages and a read-only "account deleted" notice</li>
 </ul>
 <h2 class="heading-element" dir="auto">Search</h2>
 <ul dir="auto">
@@ -139,19 +143,24 @@
 <li>Auto-moderation on submission: a CSAM report hides the content immediately, zero tolerance, no threshold; violence/self-harm/sexual-content reports flag the content (shown behind an interstitial rather than removed outright — a single report shouldn't have unilateral takedown power)</li>
 <li>Admin review queue (<code>/admin/reports</code>), critical reports sorted first: dismiss (restores visibility) or remove content outright, each with an optional internal review note</li>
 <li>Admin access gated via an <code>ADMIN_EMAILS</code> allow-list, requiring the matching account's email to also be verified (prevents someone from claiming an admin address by registering it first)</li>
-<li><em>Not yet built:</em> DSA-mandated automated "Statement of Reasons" notification to affected users, appeal/counter-notice flow, UrhDaG rights-holder copyright takedown portal</li>
+<li>Evidence preservation: when a post, comment or profile is reported for a likely-illegal reason (CSAM, violence, hate speech, …), the reported state — only that item, its images and author, plus the replied-to text for comments — is copied at once into a separate storage zone with no public URL (files encrypted with AES-256-GCM, key only in the backend's environment), and every edit while the report is open adds a version; deleting the item (by moderation, its author or with the account) no longer destroys the evidence. Spam and similar reasons copy nothing. Admins open records and files only with a stated reason, every access is logged, and records are purged immediately if the reports are dismissed, otherwise after six months unless a legal hold is set (<code>/admin/evidence</code>)</li>
+<li>Statements of reasons (DSA Art. 17): every removal, automatic hide or warning of someone's content is recorded with its ground (law or Terms section), explanation and whether it was automated, and delivered in the app and by email (<code>/moderation/decisions/:id</code>). Statements for CSAM are held back until an admin releases them. Affected users can object once within six months; admins answer at <code>/admin/moderation</code>, and an accepted objection lifts a hide or warning</li>
+<li>Reporters are told the outcome of their reports (Art. 16) and see them at <code>/moderation</code></li>
+<li>Reports and evidence still undecided after 30 days are marked overdue and listed first</li>
+<li>Rights claims (copyright, trademark, other rights): a public form at <code>/rights</code> (footer link "Rechteverletzung melden"), usable without an account, with a private status link for the claimant (token hashed at rest). Admins triage, ask for evidence, accept or decline at <code>/admin/rights</code>. Accepting hides the post (restorable) and sends the uploader a statement of reasons without the claimant's identity; a successful objection restores it and tells the claimant. Claims are deleted three years after the decision</li>
 </ul>
 <h2 class="heading-element" dir="auto">Privacy &amp; Compliance</h2>
 <ul dir="auto">
 <li>Impressum, Datenschutzerklärung (privacy policy), Nutzungsbedingungen (ToS), and a plain-language <strong>Transparenz</strong> page explaining data handling in everyday terms</li>
-<li>Legal pages carry a version-controlled "Stand:" date, auto-updated by a GitHub Actions bot commit whenever the underlying legal page file changes</li>
+<li>Legal pages carry a "Stand:" date that the frontend build stamps from the last commit on <code>main</code> that changed each page (Europe/Berlin time) — nothing is edited by hand or committed by a bot</li>
 <li>ToS + privacy consent checkbox at registration, enforced server-side (<code>POST /auth/register</code> rejects the request with 400 if <code>accept_terms</code> isn't <code>true</code>, and 422 if it's missing entirely) — not just a client-side gate anymore. Acceptance is timestamped (<code>users.terms_accepted_at</code>) and included in the self-service data export</li>
 <li>No tracking/advertising cookies — only functional auth storage</li>
 <li>Documented sub-processors: Bunny.net (hosting/CDN/storage and self-hosted Postgres, German DC), Scaleway (transactional email, EU), Upstash (real-time notification relay, US — SCCs apply)</li>
 </ul>
 <h2 class="heading-element" dir="auto">Pre-Launch</h2>
 <ul dir="auto">
-<li>Site-wide passcode gate (<code>/welcome</code>) via Next.js <code>proxy.ts</code> — blocks the whole site except the gate page and legal pages until a shared passcode is entered; disabled automatically if no passcode is configured (e.g. local dev)</li>
+<li>In-app feedback for testers: a "Feedback" link in the footer (signed-in users) opens a form for bugs, ideas or anything else, optionally with the page, screen size and browser; admins triage it at <code>/admin/feedback</code>. Capped at 20 per user per day, deleted after a year</li>
+<li>Site-wide passcode gate (<code>/welcome</code>) via Next.js <code>proxy.ts</code> — blocks the whole site except the gate page, legal pages and email-link landing pages until a shared passcode is entered; attempts are rate-limited; disabled automatically if no passcode is configured (e.g. local dev)</li>
 </ul>
 <h2 class="heading-element" dir="auto">Frontend/UX Details</h2>
 <ul dir="auto">
@@ -163,17 +172,24 @@
 <h2 class="heading-element" dir="auto">Backend/Infra</h2>
 <ul dir="auto">
 <li>Rust (Axum) backend, self-hosted PostgreSQL 18 in a Bunny Magic Container (Frankfurt) — TLS enforced even on loopback, connection pool retries through pod-startup races</li>
-<li>Nightly automated Postgres backups (<code>db-backup</code> sidecar → private Bunny Storage Zone, no CDN pull zone); durability handled by off-pod storage, so the sidecar itself needs no persistent volume</li>
+<li>Daily automated Postgres backups at a fixed time (<code>db-backup</code> sidecar → private Bunny Storage Zone, no CDN pull zone); missed or failed slots are caught up on the next start, and a dead-man's-switch ping (Healthchecks.io protocol, no data sent) raises an alert when a backup fails or the sidecar stops running. Durability is handled by off-pod storage, so the sidecar itself needs no persistent volume</li>
 <li>UUIDv7 primary keys, denormalized counters (follower/following/post/like/comment counts), hash-partitioned <code>likes</code>/<code>notifications</code>, monthly-partitioned interaction event log (<code>post_events</code> — logging foundation for possible future recommendations, not used for ranking today)</li>
 <li>Bunny.net: application hosting (Magic Containers), CDN, S3-compatible object storage</li>
 <li>Redis (Upstash, TLS) for cross-replica pub/sub</li>
 <li>Multi-provider transactional email abstraction (currently live on Scaleway TEM)</li>
 <li>Per-route rate limiting (stricter on auth endpoints)</li>
-<li>GitHub Actions CI/CD: separate backend/frontend pipelines, Docker builds, auto-deploy to Bunny on push to <code>main</code></li>
+<li>GitHub Actions CI/CD: every pull request runs <code>cargo clippy -D warnings</code>, <code>cargo test</code>, <code>tsc</code> and <code>eslint --max-warnings 0</code>; separate backend/frontend pipelines build Docker images and auto-deploy to Bunny on push to <code>main</code>, cancelling a running deploy when a newer one starts</li>
 <li>Health check endpoint</li>
+<li>Local development: disk storage provider instead of Bunny, and an anonymised production snapshot (<code>tools/prod-snapshot/</code>) that keeps the data's structure but replaces everything personal</li>
+</ul>
+<h2 class="heading-element" dir="auto">Development</h2>
+<ul dir="auto">
+<li>Backend: <code>cd Klar &amp;&amp; SQLX_OFFLINE=true cargo clippy</code> (regenerate <code>.sqlx/</code> with <code>cargo sqlx prepare</code> after changing a <code>query!</code> macro)</li>
+<li>Frontend: <code>cd klar-web &amp;&amp; npx tsc --noEmit &amp;&amp; npx eslint src</code></li>
+<li>Before merging a change to how the app behaves, go through the matching sections of <a href="https://github.com/mergedeyes/Klar-Stack/blob/main/docs/manual-checks.md">docs/manual-checks.md</a> — the PR template asks for them in the test plan</li>
 </ul>
 <hr/>
-<p dir="auto"><em>Not yet built / explicitly deferred:</em> DSA Statement-of-Reasons user notifications &amp; appeal flow, UrhDaG rights-holder copyright portal, birth-date/16+ age verification enforcement, uptime monitoring/alerting, notifications for follows-of-a-reply/DM-specific push beyond what's listed above, ClickHouse-based ranking (data collection foundation exists, ranking layer doesn't).</p>
+<p dir="auto"><em>Not yet built / explicitly deferred:</em> claims against comments or profiles (posts only for now), UrhDaG-specific pre-upload obligations rights-holder copyright portal, birth-date/16+ age verification enforcement, uptime monitoring/alerting for the app itself (only backups are monitored), notifications for follows-of-a-reply/DM-specific push beyond what's listed above, ClickHouse-based ranking (data collection foundation exists, ranking layer doesn't).</p>
 
         </div>
       </section>
