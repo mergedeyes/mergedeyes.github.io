@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Klar/src/handlers/account_review.rs — Klar — Jan</title>
+  <link rel="stylesheet" href="../../styles.css?v=6854377f" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="layout">
+    <header class="rail" id="rail">
+<div class="rail__top">
+<a class="brand" href="../../index.html#top">
+<span class="brand__name">Jan</span>
+<span class="brand__meta">systems &amp; infrastructure<br/>Code, Code &amp; Code</span>
+</a>
+<button aria-controls="nav" aria-expanded="false" aria-label="Toggle menu" class="menu-toggle" id="menuToggle">
+<span></span><span></span><span></span>
+</button>
+</div>
+<nav aria-label="Sections" class="nav" id="nav">
+<a data-path="~/projects" href="../../index.html#projects">Projects</a>
+<a data-path="~/work" href="../../index.html#work">Work</a>
+<a data-path="~/education" href="../../index.html#education">Education</a>
+<a data-path="~/skills" href="../../index.html#skills">Skills</a>
+<a data-path="~/about" href="../../index.html#about">About Me</a>
+<a data-path="~/contact" href="../../index.html#contact">Contact</a>
+</nav>
+<div class="rail__status">
+<span aria-hidden="true" class="dot"></span>
+<span>open to work</span>
+</div>
+</header>
+    <nav class="file-tree"><p class="file-tree__title">Files</p><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">Klar/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">migrations/</span><ul class="tree"><li class="tree-file"><a href="Klar--migrations--20260425000000_create_users.sql.html">20260425000000_create_users.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260425010000_add_password_hash.sql.html">20260425010000_add_password_hash.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260425020000_create_posts.sql.html">20260425020000_create_posts.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260425020100_create_follows.sql.html">20260425020100_create_follows.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260425030000_create_likes.sql.html">20260425030000_create_likes.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260425030100_create_comments.sql.html">20260425030100_create_comments.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260425040000_add_edited_at.sql.html">20260425040000_add_edited_at.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260425050000_create_media_assets.sql.html">20260425050000_create_media_assets.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260425060000_add_profile_fields.sql.html">20260425060000_add_profile_fields.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260425070000_add_email_verification.sql.html">20260425070000_add_email_verification.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260425080000_create_refresh_tokens.sql.html">20260425080000_create_refresh_tokens.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260502000000_create_blocks.sql.html">20260502000000_create_blocks.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260503000000_create_comment_likes.sql.html">20260503000000_create_comment_likes.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260529000000_create_notifications.sql.html">20260529000000_create_notifications.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260604000000_add_username_changed_at.sql.html">20260604000000_add_username_changed_at.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260615000000_add_chat_tables.sql.html">20260615000000_add_chat_tables.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260615001000_upgrade_chats.sql.html">20260615001000_upgrade_chats.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260616140136_add_missing_index_to_posts.sql.html">20260616140136_add_missing_index_to_posts.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260717000100_add_keyset_pagination_index.sql.html">20260717000100_add_keyset_pagination_index.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260720000000_uuidv7_function.sql.html">20260720000000_uuidv7_function.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260720000100_users.sql.html">20260720000100_users.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260720000200_posts.sql.html">20260720000200_posts.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260720000300_follows_blocks.sql.html">20260720000300_follows_blocks.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260720000400_media_assets.sql.html">20260720000400_media_assets.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260720000500_comments.sql.html">20260720000500_comments.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260720000600_likes_partitioned.sql.html">20260720000600_likes_partitioned.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260720000700_auth_tokens.sql.html">20260720000700_auth_tokens.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260720000800_notifications_partitioned.sql.html">20260720000800_notifications_partitioned.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260720000900_feed_items.sql.html">20260720000900_feed_items.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260720001000_post_events_partitioned.sql.html">20260720001000_post_events_partitioned.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260720001100_chats.sql.html">20260720001100_chats.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260723000000_private_accounts.sql.html">20260723000000_private_accounts.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260723000100_follow_request_notification_types.sql.html">20260723000100_follow_request_notification_types.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260723010000_reports_and_moderation.sql.html">20260723010000_reports_and_moderation.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260723020000_add_report_review_note.sql.html">20260723020000_add_report_review_note.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260825000000_add_terms_accepted_at.sql.html">20260825000000_add_terms_accepted_at.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260929000000_email_case_insensitive.sql.html">20260929000000_email_case_insensitive.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260929000100_chat_deleted_user.sql.html">20260929000100_chat_deleted_user.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260929000200_reports_keep_on_reporter_delete.sql.html">20260929000200_reports_keep_on_reporter_delete.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260930000000_delete_messages_with_sender.sql.html">20260930000000_delete_messages_with_sender.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260930010000_evidence.sql.html">20260930010000_evidence.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260930020000_moderation_decisions.sql.html">20260930020000_moderation_decisions.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260930030000_feedback.sql.html">20260930030000_feedback.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260930040000_rights_claims.sql.html">20260930040000_rights_claims.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260930050000_feedback_screenshots.sql.html">20260930050000_feedback_screenshots.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260930060000_keep_account.sql.html">20260930060000_keep_account.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260930070000_account_standing.sql.html">20260930070000_account_standing.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260930080000_more_report_reasons.sql.html">20260930080000_more_report_reasons.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260930090000_account_locks.sql.html">20260930090000_account_locks.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260930100000_account_review.sql.html">20260930100000_account_review.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260930110000_legal_updates.sql.html">20260930110000_legal_updates.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260930120000_evidence_event_time.sql.html">20260930120000_evidence_event_time.sql</a></li><li class="tree-file"><a href="Klar--migrations--20261001000000_official_account_renames.sql.html">20261001000000_official_account_renames.sql</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">src/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">handlers/</span><ul class="tree"><li class="tree-file"><a href="Klar--src--handlers--account_lock.rs.html">account_lock.rs</a></li><li class="tree-file tree-file--active"><a href="Klar--src--handlers--account_review.rs.html">account_review.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--auth.rs.html">auth.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--blocks.rs.html">blocks.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--chats.rs.html">chats.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--comment_likes.rs.html">comment_likes.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--comments.rs.html">comments.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--events.rs.html">events.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--evidence.rs.html">evidence.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--feed.rs.html">feed.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--feedback.rs.html">feedback.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--follows.rs.html">follows.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--health.rs.html">health.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--legal_updates.rs.html">legal_updates.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--likes.rs.html">likes.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--moderation.rs.html">moderation.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--notifications.rs.html">notifications.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--official_accounts.rs.html">official_accounts.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--posts.rs.html">posts.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--reports.rs.html">reports.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--rights.rs.html">rights.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--standing.rs.html">standing.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--test_phase.rs.html">test_phase.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--uploads.rs.html">uploads.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--users.rs.html">users.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">integration_tests/</span><ul class="tree"><li class="tree-file"><a href="Klar--src--integration_tests--account_lock.rs.html">account_lock.rs</a></li><li class="tree-file"><a href="Klar--src--integration_tests--account_review.rs.html">account_review.rs</a></li><li class="tree-file"><a href="Klar--src--integration_tests--accounts.rs.html">accounts.rs</a></li><li class="tree-file"><a href="Klar--src--integration_tests--chats.rs.html">chats.rs</a></li><li class="tree-file"><a href="Klar--src--integration_tests--evidence.rs.html">evidence.rs</a></li><li class="tree-file"><a href="Klar--src--integration_tests--feedback.rs.html">feedback.rs</a></li><li class="tree-file"><a href="Klar--src--integration_tests--legal_updates.rs.html">legal_updates.rs</a></li><li class="tree-file"><a href="Klar--src--integration_tests--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="Klar--src--integration_tests--moderation.rs.html">moderation.rs</a></li><li class="tree-file"><a href="Klar--src--integration_tests--official_accounts.rs.html">official_accounts.rs</a></li><li class="tree-file"><a href="Klar--src--integration_tests--previews.rs.html">previews.rs</a></li><li class="tree-file"><a href="Klar--src--integration_tests--privacy.rs.html">privacy.rs</a></li><li class="tree-file"><a href="Klar--src--integration_tests--rights.rs.html">rights.rs</a></li><li class="tree-file"><a href="Klar--src--integration_tests--sessions.rs.html">sessions.rs</a></li><li class="tree-file"><a href="Klar--src--integration_tests--social.rs.html">social.rs</a></li><li class="tree-file"><a href="Klar--src--integration_tests--standing.rs.html">standing.rs</a></li><li class="tree-file"><a href="Klar--src--integration_tests--support.rs.html">support.rs</a></li><li class="tree-file"><a href="Klar--src--integration_tests--test_phase.rs.html">test_phase.rs</a></li><li class="tree-file"><a href="Klar--src--integration_tests--uptime.rs.html">uptime.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">models/</span><ul class="tree"><li class="tree-file"><a href="Klar--src--models--chat.rs.html">chat.rs</a></li><li class="tree-file"><a href="Klar--src--models--comment.rs.html">comment.rs</a></li><li class="tree-file"><a href="Klar--src--models--event.rs.html">event.rs</a></li><li class="tree-file"><a href="Klar--src--models--like.rs.html">like.rs</a></li><li class="tree-file"><a href="Klar--src--models--media.rs.html">media.rs</a></li><li class="tree-file"><a href="Klar--src--models--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="Klar--src--models--post.rs.html">post.rs</a></li><li class="tree-file"><a href="Klar--src--models--report.rs.html">report.rs</a></li><li class="tree-file"><a href="Klar--src--models--user.rs.html">user.rs</a></li></ul></li><li class="tree-file"><a href="Klar--src--auth.rs.html">auth.rs</a></li><li class="tree-file"><a href="Klar--src--config.rs.html">config.rs</a></li><li class="tree-file"><a href="Klar--src--db.rs.html">db.rs</a></li><li class="tree-file"><a href="Klar--src--email.rs.html">email.rs</a></li><li class="tree-file"><a href="Klar--src--errors.rs.html">errors.rs</a></li><li class="tree-file"><a href="Klar--src--evidence.rs.html">evidence.rs</a></li><li class="tree-file"><a href="Klar--src--evidence_crypto.rs.html">evidence_crypto.rs</a></li><li class="tree-file"><a href="Klar--src--main.rs.html">main.rs</a></li><li class="tree-file"><a href="Klar--src--media.rs.html">media.rs</a></li><li class="tree-file"><a href="Klar--src--moderation.rs.html">moderation.rs</a></li><li class="tree-file"><a href="Klar--src--rate_limit.rs.html">rate_limit.rs</a></li><li class="tree-file"><a href="Klar--src--routes.rs.html">routes.rs</a></li><li class="tree-file"><a href="Klar--src--standing.rs.html">standing.rs</a></li><li class="tree-file"><a href="Klar--src--storage.rs.html">storage.rs</a></li><li class="tree-file"><a href="Klar--src--uptime.rs.html">uptime.rs</a></li><li class="tree-file"><a href="Klar--src--utils.rs.html">utils.rs</a></li><li class="tree-file"><a href="Klar--src--validation.rs.html">validation.rs</a></li></ul></li></ul></li><li class="tree-dir"><span class="tree-dir__name">klar-web/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">src/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">app/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">admin/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">evidence/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">[id]/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--admin--evidence--[id]--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-file"><a href="klar-web--src--app--admin--evidence--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">feedback/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--admin--feedback--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">legal-updates/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--admin--legal-updates--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">moderation/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--admin--moderation--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">official/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--admin--official--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">reports/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--admin--reports--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">review/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">[username]/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--admin--review--[username]--page.tsx.html">page.tsx</a></li></ul></li></ul></li><li class="tree-dir"><span class="tree-dir__name">rights/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--admin--rights--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">security/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--admin--security--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">standing/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--admin--standing--page.tsx.html">page.tsx</a></li></ul></li></ul></li><li class="tree-dir"><span class="tree-dir__name">api/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">health/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--api--health--route.ts.html">route.ts</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">site-access/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--api--site-access--route.ts.html">route.ts</a></li></ul></li></ul></li><li class="tree-dir"><span class="tree-dir__name">chats/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--chats--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">datenschutz/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--datenschutz--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">feed/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">discovery/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--feed--discovery--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-file"><a href="klar-web--src--app--feed--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">feedback/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--feedback--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">follow-requests/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--follow-requests--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">forgot-password/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--forgot-password--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">impressum/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--impressum--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">login/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--login--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">moderation/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">decisions/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">[id]/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--moderation--decisions--[id]--page.tsx.html">page.tsx</a></li></ul></li></ul></li><li class="tree-file"><a href="klar-web--src--app--moderation--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">nutzungsbedingungen/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--nutzungsbedingungen--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">posts/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">[id]/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--posts--[id]--PostPageClient.tsx.html">PostPageClient.tsx</a></li><li class="tree-file"><a href="klar-web--src--app--posts--[id]--page.tsx.html">page.tsx</a></li></ul></li></ul></li><li class="tree-dir"><span class="tree-dir__name">register/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--register--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">resend-verification/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--resend-verification--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">reset-password/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--reset-password--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">rights/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">status/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">[id]/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--rights--status--[id]--page.tsx.html">page.tsx</a></li></ul></li></ul></li><li class="tree-file"><a href="klar-web--src--app--rights--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">search/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--search--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">settings/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">account/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--settings--account--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">password/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--settings--password--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">profile/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--settings--profile--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-file"><a href="klar-web--src--app--settings--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">transparenz/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--transparenz--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">users/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">[username]/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--users--[username]--page.tsx.html">page.tsx</a></li></ul></li></ul></li><li class="tree-dir"><span class="tree-dir__name">verify-email/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--verify-email--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">welcome/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--welcome--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-file"><a href="klar-web--src--app--favicon.ico.html">favicon.ico</a></li><li class="tree-file"><a href="klar-web--src--app--globals.css.html">globals.css</a></li><li class="tree-file"><a href="klar-web--src--app--layout.tsx.html">layout.tsx</a></li><li class="tree-file"><a href="klar-web--src--app--page.tsx.html">page.tsx</a></li><li class="tree-file"><a href="klar-web--src--app--robots.ts.html">robots.ts</a></li><li class="tree-file"><a href="klar-web--src--app--sitemap.ts.html">sitemap.ts</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">components/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">feedback/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--components--feedback--FeedbackScreenshots.tsx.html">FeedbackScreenshots.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">moderation/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--components--moderation--StandingScore.tsx.html">StandingScore.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">settings/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--components--settings--KeepAccountCard.tsx.html">KeepAccountCard.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">ui/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--components--ui--button.tsx.html">button.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--ui--card.tsx.html">card.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--ui--form.tsx.html">form.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--ui--input.tsx.html">input.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--ui--label.tsx.html">label.tsx</a></li></ul></li><li class="tree-file"><a href="klar-web--src--components--ChatWindow.tsx.html">ChatWindow.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--CreatePostModal.tsx.html">CreatePostModal.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--EditedBadge.tsx.html">EditedBadge.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--EvidenceStatus.tsx.html">EvidenceStatus.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--Footer.tsx.html">Footer.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--LegalUpdateNotice.tsx.html">LegalUpdateNotice.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--NewChatModal.tsx.html">NewChatModal.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--PostCard.tsx.html">PostCard.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--PostModal.tsx.html">PostModal.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--PostView.tsx.html">PostView.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--ReportModal.tsx.html">ReportModal.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--ShareButton.tsx.html">ShareButton.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--SmartBackButton.tsx.html">SmartBackButton.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--TopNav.tsx.html">TopNav.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--UserListModal.tsx.html">UserListModal.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--VerifyEmailBanner.tsx.html">VerifyEmailBanner.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">hooks/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--hooks--use-notifications.ts.html">use-notifications.ts</a></li><li class="tree-file"><a href="klar-web--src--hooks--use-smart-back.ts.html">use-smart-back.ts</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">lib/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">server/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--lib--server--uptime.ts.html">uptime.ts</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">utils/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--lib--utils--media.ts.html">media.ts</a></li></ul></li><li class="tree-file"><a href="klar-web--src--lib--api.ts.html">api.ts</a></li><li class="tree-file"><a href="klar-web--src--lib--auth-context.tsx.html">auth-context.tsx</a></li><li class="tree-file"><a href="klar-web--src--lib--moderation.ts.html">moderation.ts</a></li><li class="tree-file"><a href="klar-web--src--lib--utils.ts.html">utils.ts</a></li></ul></li><li class="tree-file"><a href="klar-web--src--env.ts.html">env.ts</a></li><li class="tree-file"><a href="klar-web--src--instrumentation.ts.html">instrumentation.ts</a></li><li class="tree-file"><a href="klar-web--src--proxy.ts.html">proxy.ts</a></li></ul></li></ul></li></ul></nav>
+    <main class="main" id="main">
+      <section class="section source-page">
+        <p class="section__path">
+          <a href="../../index.html#projects" class="link">~/projects</a> /
+          <a href="../klar-stack.html" class="link">Klar-Stack</a> / source
+        </p>
+        <div class="source-page__head">
+          <h1 class="section__title">Klar/src/handlers/account_review.rs</h1>
+          <a href="../klar-stack.html" class="link">← Back to Klar</a>
+        </div>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">  1</span>
+<span class="normal">  2</span>
+<span class="normal">  3</span>
+<span class="normal">  4</span>
+<span class="normal">  5</span>
+<span class="normal">  6</span>
+<span class="normal">  7</span>
+<span class="normal">  8</span>
+<span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span>
+<span class="normal">245</span>
+<span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span>
+<span class="normal">250</span>
+<span class="normal">251</span>
+<span class="normal">252</span>
+<span class="normal">253</span>
+<span class="normal">254</span>
+<span class="normal">255</span>
+<span class="normal">256</span>
+<span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span>
+<span class="normal">262</span>
+<span class="normal">263</span>
+<span class="normal">264</span>
+<span class="normal">265</span>
+<span class="normal">266</span>
+<span class="normal">267</span>
+<span class="normal">268</span>
+<span class="normal">269</span>
+<span class="normal">270</span>
+<span class="normal">271</span>
+<span class="normal">272</span>
+<span class="normal">273</span>
+<span class="normal">274</span>
+<span class="normal">275</span>
+<span class="normal">276</span>
+<span class="normal">277</span>
+<span class="normal">278</span>
+<span class="normal">279</span>
+<span class="normal">280</span>
+<span class="normal">281</span>
+<span class="normal">282</span>
+<span class="normal">283</span>
+<span class="normal">284</span>
+<span class="normal">285</span>
+<span class="normal">286</span>
+<span class="normal">287</span>
+<span class="normal">288</span>
+<span class="normal">289</span>
+<span class="normal">290</span>
+<span class="normal">291</span>
+<span class="normal">292</span>
+<span class="normal">293</span>
+<span class="normal">294</span>
+<span class="normal">295</span>
+<span class="normal">296</span>
+<span class="normal">297</span>
+<span class="normal">298</span>
+<span class="normal">299</span>
+<span class="normal">300</span>
+<span class="normal">301</span>
+<span class="normal">302</span>
+<span class="normal">303</span>
+<span class="normal">304</span>
+<span class="normal">305</span>
+<span class="normal">306</span>
+<span class="normal">307</span>
+<span class="normal">308</span>
+<span class="normal">309</span>
+<span class="normal">310</span>
+<span class="normal">311</span>
+<span class="normal">312</span>
+<span class="normal">313</span>
+<span class="normal">314</span>
+<span class="normal">315</span>
+<span class="normal">316</span>
+<span class="normal">317</span>
+<span class="normal">318</span>
+<span class="normal">319</span>
+<span class="normal">320</span>
+<span class="normal">321</span>
+<span class="normal">322</span>
+<span class="normal">323</span>
+<span class="normal">324</span>
+<span class="normal">325</span>
+<span class="normal">326</span>
+<span class="normal">327</span>
+<span class="normal">328</span>
+<span class="normal">329</span>
+<span class="normal">330</span>
+<span class="normal">331</span>
+<span class="normal">332</span>
+<span class="normal">333</span>
+<span class="normal">334</span>
+<span class="normal">335</span>
+<span class="normal">336</span>
+<span class="normal">337</span>
+<span class="normal">338</span>
+<span class="normal">339</span>
+<span class="normal">340</span>
+<span class="normal">341</span>
+<span class="normal">342</span>
+<span class="normal">343</span>
+<span class="normal">344</span>
+<span class="normal">345</span>
+<span class="normal">346</span>
+<span class="normal">347</span>
+<span class="normal">348</span>
+<span class="normal">349</span>
+<span class="normal">350</span>
+<span class="normal">351</span>
+<span class="normal">352</span>
+<span class="normal">353</span>
+<span class="normal">354</span>
+<span class="normal">355</span>
+<span class="normal">356</span>
+<span class="normal">357</span>
+<span class="normal">358</span>
+<span class="normal">359</span>
+<span class="normal">360</span>
+<span class="normal">361</span>
+<span class="normal">362</span>
+<span class="normal">363</span>
+<span class="normal">364</span>
+<span class="normal">365</span>
+<span class="normal">366</span>
+<span class="normal">367</span>
+<span class="normal">368</span>
+<span class="normal">369</span>
+<span class="normal">370</span>
+<span class="normal">371</span>
+<span class="normal">372</span>
+<span class="normal">373</span>
+<span class="normal">374</span>
+<span class="normal">375</span>
+<span class="normal">376</span>
+<span class="normal">377</span>
+<span class="normal">378</span>
+<span class="normal">379</span>
+<span class="normal">380</span>
+<span class="normal">381</span>
+<span class="normal">382</span>
+<span class="normal">383</span>
+<span class="normal">384</span>
+<span class="normal">385</span>
+<span class="normal">386</span>
+<span class="normal">387</span>
+<span class="normal">388</span>
+<span class="normal">389</span>
+<span class="normal">390</span>
+<span class="normal">391</span>
+<span class="normal">392</span>
+<span class="normal">393</span>
+<span class="normal">394</span>
+<span class="normal">395</span>
+<span class="normal">396</span>
+<span class="normal">397</span>
+<span class="normal">398</span>
+<span class="normal">399</span>
+<span class="normal">400</span>
+<span class="normal">401</span>
+<span class="normal">402</span>
+<span class="normal">403</span>
+<span class="normal">404</span>
+<span class="normal">405</span>
+<span class="normal">406</span>
+<span class="normal">407</span>
+<span class="normal">408</span>
+<span class="normal">409</span>
+<span class="normal">410</span>
+<span class="normal">411</span>
+<span class="normal">412</span>
+<span class="normal">413</span>
+<span class="normal">414</span>
+<span class="normal">415</span>
+<span class="normal">416</span>
+<span class="normal">417</span>
+<span class="normal">418</span>
+<span class="normal">419</span>
+<span class="normal">420</span>
+<span class="normal">421</span>
+<span class="normal">422</span>
+<span class="normal">423</span>
+<span class="normal">424</span>
+<span class="normal">425</span>
+<span class="normal">426</span>
+<span class="normal">427</span>
+<span class="normal">428</span>
+<span class="normal">429</span>
+<span class="normal">430</span>
+<span class="normal">431</span>
+<span class="normal">432</span>
+<span class="normal">433</span>
+<span class="normal">434</span>
+<span class="normal">435</span>
+<span class="normal">436</span>
+<span class="normal">437</span>
+<span class="normal">438</span>
+<span class="normal">439</span>
+<span class="normal">440</span>
+<span class="normal">441</span>
+<span class="normal">442</span>
+<span class="normal">443</span>
+<span class="normal">444</span>
+<span class="normal">445</span>
+<span class="normal">446</span>
+<span class="normal">447</span>
+<span class="normal">448</span>
+<span class="normal">449</span>
+<span class="normal">450</span>
+<span class="normal">451</span>
+<span class="normal">452</span>
+<span class="normal">453</span>
+<span class="normal">454</span>
+<span class="normal">455</span>
+<span class="normal">456</span>
+<span class="normal">457</span>
+<span class="normal">458</span>
+<span class="normal">459</span>
+<span class="normal">460</span>
+<span class="normal">461</span>
+<span class="normal">462</span>
+<span class="normal">463</span>
+<span class="normal">464</span>
+<span class="normal">465</span>
+<span class="normal">466</span>
+<span class="normal">467</span>
+<span class="normal">468</span>
+<span class="normal">469</span>
+<span class="normal">470</span>
+<span class="normal">471</span>
+<span class="normal">472</span>
+<span class="normal">473</span>
+<span class="normal">474</span>
+<span class="normal">475</span>
+<span class="normal">476</span>
+<span class="normal">477</span>
+<span class="normal">478</span>
+<span class="normal">479</span>
+<span class="normal">480</span>
+<span class="normal">481</span>
+<span class="normal">482</span>
+<span class="normal">483</span>
+<span class="normal">484</span>
+<span class="normal">485</span>
+<span class="normal">486</span>
+<span class="normal">487</span>
+<span class="normal">488</span>
+<span class="normal">489</span>
+<span class="normal">490</span>
+<span class="normal">491</span>
+<span class="normal">492</span>
+<span class="normal">493</span>
+<span class="normal">494</span>
+<span class="normal">495</span>
+<span class="normal">496</span>
+<span class="normal">497</span>
+<span class="normal">498</span>
+<span class="normal">499</span>
+<span class="normal">500</span>
+<span class="normal">501</span>
+<span class="normal">502</span>
+<span class="normal">503</span>
+<span class="normal">504</span>
+<span class="normal">505</span>
+<span class="normal">506</span>
+<span class="normal">507</span>
+<span class="normal">508</span>
+<span class="normal">509</span>
+<span class="normal">510</span>
+<span class="normal">511</span>
+<span class="normal">512</span>
+<span class="normal">513</span>
+<span class="normal">514</span>
+<span class="normal">515</span>
+<span class="normal">516</span>
+<span class="normal">517</span>
+<span class="normal">518</span>
+<span class="normal">519</span>
+<span class="normal">520</span>
+<span class="normal">521</span>
+<span class="normal">522</span>
+<span class="normal">523</span>
+<span class="normal">524</span>
+<span class="normal">525</span>
+<span class="normal">526</span>
+<span class="normal">527</span>
+<span class="normal">528</span>
+<span class="normal">529</span>
+<span class="normal">530</span>
+<span class="normal">531</span>
+<span class="normal">532</span>
+<span class="normal">533</span>
+<span class="normal">534</span>
+<span class="normal">535</span>
+<span class="normal">536</span>
+<span class="normal">537</span>
+<span class="normal">538</span>
+<span class="normal">539</span></pre></div></td><td class="code"><div><pre><span></span><span class="sd">//! Account reviews: one page with an account's recent activity, for</span>
+<span class="sd">//! deciding whether it was taken over, is a bot or spam-only account, or</span>
+<span class="sd">//! is fine (see the account_review migration).</span>
+<span class="sd">//!</span>
+<span class="sd">//! Accounts come up for review from a report (a "Review account" button in</span>
+<span class="sd">//! the queue), from the admin standing and security pages, or from the</span>
+<span class="sd">//! "Needs review" list, which flags accounts by signals computed from data</span>
+<span class="sd">//! Klar already stores -- bursts of activity, repeated identical texts,</span>
+<span class="sd">//! sudden activity after a long silence. Nothing is locked or banned</span>
+<span class="sd">//! automatically, and no IPs or devices are collected for this.</span>
+<span class="sd">//!</span>
+<span class="sd">//! Direct messages appear as numbers only (sent, distinct recipients),</span>
+<span class="sd">//! never their content: an account looking odd is no reason to read</span>
+<span class="sd">//! private conversations. Reported messages reach moderation through</span>
+<span class="sd">//! reports.</span>
+
+<span class="k">use</span><span class="w"> </span><span class="n">axum</span><span class="p">::{</span>
+<span class="w">    </span><span class="n">extract</span><span class="p">::{</span><span class="n">Path</span><span class="p">,</span><span class="w"> </span><span class="n">State</span><span class="p">},</span>
+<span class="w">    </span><span class="n">Json</span><span class="p">,</span>
+<span class="p">};</span>
+<span class="k">use</span><span class="w"> </span><span class="n">chrono</span><span class="p">::{</span><span class="n">DateTime</span><span class="p">,</span><span class="w"> </span><span class="n">Utc</span><span class="p">};</span>
+<span class="k">use</span><span class="w"> </span><span class="n">serde</span><span class="p">::{</span><span class="n">Deserialize</span><span class="p">,</span><span class="w"> </span><span class="n">Serialize</span><span class="p">};</span>
+<span class="k">use</span><span class="w"> </span><span class="n">sqlx</span><span class="p">::</span><span class="n">PgConnection</span><span class="p">;</span>
+<span class="k">use</span><span class="w"> </span><span class="n">uuid</span><span class="p">::</span><span class="n">Uuid</span><span class="p">;</span>
+
+<span class="k">use</span><span class="w"> </span><span class="k">crate</span><span class="p">::</span><span class="n">auth</span><span class="p">::</span><span class="n">AuthUser</span><span class="p">;</span>
+<span class="k">use</span><span class="w"> </span><span class="k">crate</span><span class="p">::</span><span class="n">errors</span><span class="p">::</span><span class="n">AppError</span><span class="p">;</span>
+<span class="k">use</span><span class="w"> </span><span class="k">crate</span><span class="p">::</span><span class="n">handlers</span><span class="p">::</span><span class="n">account_lock</span><span class="p">::{</span><span class="n">checked_text</span><span class="p">,</span><span class="w"> </span><span class="n">lock_user</span><span class="p">};</span>
+<span class="k">use</span><span class="w"> </span><span class="k">crate</span><span class="p">::</span><span class="n">handlers</span><span class="p">::</span><span class="n">auth</span><span class="p">::</span><span class="n">AppState</span><span class="p">;</span>
+<span class="k">use</span><span class="w"> </span><span class="k">crate</span><span class="p">::</span><span class="n">handlers</span><span class="p">::</span><span class="n">reports</span><span class="p">::</span><span class="n">require_admin</span><span class="p">;</span>
+<span class="k">use</span><span class="w"> </span><span class="k">crate</span><span class="p">::</span><span class="n">moderation</span><span class="p">;</span>
+<span class="k">use</span><span class="w"> </span><span class="k">crate</span><span class="p">::</span><span class="n">standing</span><span class="p">::</span><span class="n">Measure</span><span class="p">;</span>
+<span class="k">use</span><span class="w"> </span><span class="k">crate</span><span class="p">::</span><span class="n">utils</span><span class="p">::</span><span class="n">DbResultExt</span><span class="p">;</span>
+
+<span class="sd">/// Signal thresholds. A burst counts posts, comments and messages sent in</span>
+<span class="sd">/// the same ten-minute window over the last week.</span>
+<span class="k">const</span><span class="w"> </span><span class="n">BURST_FLAG</span><span class="p">:</span><span class="w"> </span><span class="kt">i64</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<span class="k">const</span><span class="w"> </span><span class="n">DUPLICATES_FLAG</span><span class="p">:</span><span class="w"> </span><span class="kt">i64</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="sd">/// Activity in the last day after this many days without any...</span>
+<span class="k">const</span><span class="w"> </span><span class="n">DORMANT_DAYS</span><span class="p">:</span><span class="w"> </span><span class="kt">i32</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">60</span><span class="p">;</span>
+<span class="sd">/// ...counts when it is at least this much.</span>
+<span class="k">const</span><span class="w"> </span><span class="n">DORMANT_ACTIVITY_FLAG</span><span class="p">:</span><span class="w"> </span><span class="kt">i64</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+<span class="k">const</span><span class="w"> </span><span class="n">LIST_LIMIT</span><span class="p">:</span><span class="w"> </span><span class="kt">i64</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">30</span><span class="p">;</span>
+
+<span class="cp">#[derive(Debug, Serialize, sqlx::FromRow, Default)]</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">Signals</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="sd">/// Most posts, comments and messages in one ten-minute window, last 7 days.</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">max_burst</span><span class="p">:</span><span class="w"> </span><span class="kt">i64</span><span class="p">,</span>
+<span class="w">    </span><span class="sd">/// Most posts or comments with the same text, last 7 days.</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">max_duplicates</span><span class="p">:</span><span class="w"> </span><span class="kt">i64</span><span class="p">,</span>
+<span class="w">    </span><span class="sd">/// Posts and comments with a link, last 7 days.</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">links</span><span class="p">:</span><span class="w"> </span><span class="kt">i64</span><span class="p">,</span>
+<span class="w">    </span><span class="sd">/// Posts, comments and messages in the last 24 hours.</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">activity_24h</span><span class="p">:</span><span class="w"> </span><span class="kt">i64</span><span class="p">,</span>
+<span class="w">    </span><span class="sd">/// Active in the last day after DORMANT_DAYS of silence (account older</span>
+<span class="w">    </span><span class="sd">/// than that).</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">woke_up</span><span class="p">:</span><span class="w"> </span><span class="kt">bool</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="k">impl</span><span class="w"> </span><span class="n">Signals</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="sd">/// The signals worth a review, as short labels.</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">flags</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;&amp;'</span><span class="nb">static</span><span class="w"> </span><span class="kt">str</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">flags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Vec</span><span class="p">::</span><span class="n">new</span><span class="p">();</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">max_burst</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">BURST_FLAG</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">flags</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="s">"burst"</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">max_duplicates</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">DUPLICATES_FLAG</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">flags</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="s">"duplicates"</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">woke_up</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">activity_24h</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">DORMANT_ACTIVITY_FLAG</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">flags</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="s">"woke_up"</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">flags</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">signals</span><span class="p">(</span><span class="n">conn</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">mut</span><span class="w"> </span><span class="n">PgConnection</span><span class="p">,</span><span class="w"> </span><span class="n">user_id</span><span class="p">:</span><span class="w"> </span><span class="nc">Uuid</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="n">Signals</span><span class="p">,</span><span class="w"> </span><span class="n">AppError</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">sqlx</span><span class="p">::</span><span class="n">query_as</span><span class="p">::</span><span class="o">&lt;</span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="n">Signals</span><span class="o">&gt;</span><span class="p">(</span>
+<span class="w">        </span><span class="s">r#"</span>
+<span class="s">        WITH act AS (</span>
+<span class="s">            SELECT created_at FROM posts WHERE user_id = $1 AND created_at &gt; NOW() - INTERVAL '7 days'</span>
+<span class="s">            UNION ALL</span>
+<span class="s">            SELECT created_at FROM comments WHERE user_id = $1 AND created_at &gt; NOW() - INTERVAL '7 days'</span>
+<span class="s">            UNION ALL</span>
+<span class="s">            SELECT created_at FROM messages WHERE sender_id = $1 AND created_at &gt; NOW() - INTERVAL '7 days'</span>
+<span class="s">        ),</span>
+<span class="s">        texts AS (</span>
+<span class="s">            SELECT caption AS t FROM posts WHERE user_id = $1 AND created_at &gt; NOW() - INTERVAL '7 days'</span>
+<span class="s">            UNION ALL</span>
+<span class="s">            SELECT body FROM comments WHERE user_id = $1 AND created_at &gt; NOW() - INTERVAL '7 days'</span>
+<span class="s">        ),</span>
+<span class="s">        before_today AS (</span>
+<span class="s">            SELECT MAX(at) AS at FROM (</span>
+<span class="s">                SELECT MAX(created_at) AS at FROM posts WHERE user_id = $1 AND created_at &lt;= NOW() - INTERVAL '1 day'</span>
+<span class="s">                UNION ALL</span>
+<span class="s">                SELECT MAX(created_at) FROM comments WHERE user_id = $1 AND created_at &lt;= NOW() - INTERVAL '1 day'</span>
+<span class="s">                UNION ALL</span>
+<span class="s">                SELECT MAX(created_at) FROM messages WHERE sender_id = $1 AND created_at &lt;= NOW() - INTERVAL '1 day'</span>
+<span class="s">            ) x</span>
+<span class="s">        )</span>
+<span class="s">        SELECT</span>
+<span class="s">            COALESCE((SELECT MAX(n) FROM (</span>
+<span class="s">                SELECT COUNT(*) AS n FROM act GROUP BY date_bin('10 minutes', created_at, TIMESTAMPTZ '2000-01-01')</span>
+<span class="s">            ) b), 0) AS max_burst,</span>
+<span class="s">            COALESCE((SELECT MAX(n) FROM (</span>
+<span class="s">                SELECT COUNT(*) AS n FROM texts WHERE length(trim(t)) &gt; 0 GROUP BY lower(trim(t))</span>
+<span class="s">            ) d), 0) AS max_duplicates,</span>
+<span class="s">            (SELECT COUNT(*) FROM texts WHERE t ~* 'https?://') AS links,</span>
+<span class="s">            (SELECT COUNT(*) FROM act WHERE created_at &gt; NOW() - INTERVAL '1 day') AS activity_24h,</span>
+<span class="s">            (EXISTS (SELECT 1 FROM act WHERE created_at &gt; NOW() - INTERVAL '1 day')</span>
+<span class="s">             AND (SELECT created_at FROM users WHERE id = $1) &lt; NOW() - make_interval(days =&gt; $2)</span>
+<span class="s">             AND COALESCE((SELECT at FROM before_today) &lt; NOW() - make_interval(days =&gt; $2), TRUE)) AS woke_up</span>
+<span class="s">        "#</span><span class="p">,</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="n">DORMANT_DAYS</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">fetch_one</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="o">*</span><span class="n">conn</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="k">await</span>
+<span class="w">    </span><span class="p">.</span><span class="n">db_err</span><span class="p">(</span><span class="s">"Database error"</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="cp">#[derive(Debug, Serialize)]</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">Candidate</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">username</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">signals</span><span class="p">:</span><span class="w"> </span><span class="nc">Signals</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">flags</span><span class="p">:</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;&amp;'</span><span class="nb">static</span><span class="w"> </span><span class="kt">str</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="sd">/// Pending spam, fraud or impersonation reports on the account or its</span>
+<span class="w">    </span><span class="sd">/// content: the report reasons that most often mean a hijacked or bot</span>
+<span class="w">    </span><span class="sd">/// account.</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">spam_reports</span><span class="p">:</span><span class="w"> </span><span class="kt">i64</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">locked</span><span class="p">:</span><span class="w"> </span><span class="kt">bool</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">last_review</span><span class="p">:</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="n">DateTime</span><span class="o">&lt;</span><span class="n">Utc</span><span class="o">&gt;&gt;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="sd">/// GET /admin/review-candidates (admin only) -- accounts active in the</span>
+<span class="sd">/// last day with a flagged signal, and accounts with pending spam, fraud or</span>
+<span class="sd">/// impersonation reports. Most flags first.</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">list_candidates</span><span class="p">(</span>
+<span class="w">    </span><span class="n">State</span><span class="p">(</span><span class="n">state</span><span class="p">):</span><span class="w"> </span><span class="nc">State</span><span class="o">&lt;</span><span class="n">AppState</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">auth</span><span class="p">:</span><span class="w"> </span><span class="nc">AuthUser</span><span class="p">,</span>
+<span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="n">Json</span><span class="o">&lt;</span><span class="nb">Vec</span><span class="o">&lt;</span><span class="n">Candidate</span><span class="o">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">AppError</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">require_admin</span><span class="p">(</span><span class="o">&amp;</span><span class="n">state</span><span class="p">.</span><span class="n">db</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">auth</span><span class="p">).</span><span class="k">await</span><span class="o">?</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">conn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">state</span><span class="p">.</span><span class="n">db</span><span class="p">.</span><span class="n">acquire</span><span class="p">().</span><span class="k">await</span><span class="p">.</span><span class="n">db_err</span><span class="p">(</span><span class="s">"Database error"</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">users</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sqlx</span><span class="p">::</span><span class="n">query_as</span><span class="p">::</span><span class="o">&lt;</span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">Uuid</span><span class="p">,</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span><span class="w"> </span><span class="kt">i64</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="p">,</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="n">DateTime</span><span class="o">&lt;</span><span class="n">Utc</span><span class="o">&gt;&gt;</span><span class="p">)</span><span class="o">&gt;</span><span class="p">(</span>
+<span class="w">        </span><span class="s">r#"</span>
+<span class="s">        WITH active AS (</span>
+<span class="s">            SELECT user_id AS id FROM posts WHERE created_at &gt; NOW() - INTERVAL '1 day'</span>
+<span class="s">            UNION SELECT user_id FROM comments WHERE created_at &gt; NOW() - INTERVAL '1 day'</span>
+<span class="s">            UNION SELECT sender_id FROM messages WHERE created_at &gt; NOW() - INTERVAL '1 day'</span>
+<span class="s">        ),</span>
+<span class="s">        spam AS (</span>
+<span class="s">            SELECT COALESCE(p.user_id, c.user_id, u0.id) AS id, COUNT(*) AS n</span>
+<span class="s">            FROM reports r</span>
+<span class="s">            LEFT JOIN posts p ON r.target_type = 'post' AND p.id = r.target_id</span>
+<span class="s">            LEFT JOIN comments c ON r.target_type = 'comment' AND c.id = r.target_id</span>
+<span class="s">            LEFT JOIN users u0 ON r.target_type = 'user' AND u0.id = r.target_id</span>
+<span class="s">            WHERE r.status = 'pending' AND r.reason IN ('spam', 'fraud', 'impersonation')</span>
+<span class="s">            GROUP BY 1</span>
+<span class="s">        )</span>
+<span class="s">        SELECT u.id, u.username, COALESCE(s.n, 0),</span>
+<span class="s">               EXISTS (SELECT 1 FROM account_locks l WHERE l.user_id = u.id AND l.unlocked_at IS NULL),</span>
+<span class="s">               (SELECT MAX(opened_at) FROM account_reviews ar WHERE ar.user_id = u.id)</span>
+<span class="s">        FROM users u</span>
+<span class="s">        LEFT JOIN spam s ON s.id = u.id</span>
+<span class="s">        WHERE u.id IN (SELECT id FROM active WHERE id IS NOT NULL) OR s.n &gt; 0</span>
+<span class="s">        LIMIT 500</span>
+<span class="s">        "#</span><span class="p">,</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">fetch_all</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="o">*</span><span class="n">conn</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="k">await</span>
+<span class="w">    </span><span class="p">.</span><span class="n">db_err</span><span class="p">(</span><span class="s">"Database error"</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Vec</span><span class="p">::</span><span class="n">new</span><span class="p">();</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">username</span><span class="p">,</span><span class="w"> </span><span class="n">spam_reports</span><span class="p">,</span><span class="w"> </span><span class="n">locked</span><span class="p">,</span><span class="w"> </span><span class="n">last_review</span><span class="p">)</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">users</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">signals</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">signals</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="n">conn</span><span class="p">,</span><span class="w"> </span><span class="n">id</span><span class="p">).</span><span class="k">await</span><span class="o">?</span><span class="p">;</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">flags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">signals</span><span class="p">.</span><span class="n">flags</span><span class="p">();</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">flags</span><span class="p">.</span><span class="n">is_empty</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">spam_reports</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">continue</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">out</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">Candidate</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">username</span><span class="p">,</span><span class="w"> </span><span class="n">signals</span><span class="p">,</span><span class="w"> </span><span class="n">flags</span><span class="p">,</span><span class="w"> </span><span class="n">spam_reports</span><span class="p">,</span><span class="w"> </span><span class="n">locked</span><span class="p">,</span><span class="w"> </span><span class="n">last_review</span><span class="w"> </span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">out</span><span class="p">.</span><span class="n">sort_by_key</span><span class="p">(</span><span class="o">|</span><span class="n">c</span><span class="o">|</span><span class="w"> </span><span class="n">std</span><span class="p">::</span><span class="n">cmp</span><span class="p">::</span><span class="n">Reverse</span><span class="p">((</span><span class="n">c</span><span class="p">.</span><span class="n">flags</span><span class="p">.</span><span class="n">len</span><span class="p">(),</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">spam_reports</span><span class="p">)));</span>
+<span class="w">    </span><span class="nb">Ok</span><span class="p">(</span><span class="n">Json</span><span class="p">(</span><span class="n">out</span><span class="p">))</span>
+<span class="p">}</span>
+
+<span class="cp">#[derive(Debug, Serialize, sqlx::FromRow)]</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">Overview</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">username</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">display_name</span><span class="p">:</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">created_at</span><span class="p">:</span><span class="w"> </span><span class="nc">DateTime</span><span class="o">&lt;</span><span class="n">Utc</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">email_verified</span><span class="p">:</span><span class="w"> </span><span class="kt">bool</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">is_private</span><span class="p">:</span><span class="w"> </span><span class="kt">bool</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">post_count</span><span class="p">:</span><span class="w"> </span><span class="kt">i64</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">follower_count</span><span class="p">:</span><span class="w"> </span><span class="kt">i64</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">following_count</span><span class="p">:</span><span class="w"> </span><span class="kt">i64</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="cp">#[derive(Debug, Serialize, sqlx::FromRow)]</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">PostItem</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="nc">Uuid</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">caption</span><span class="p">:</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">created_at</span><span class="p">:</span><span class="w"> </span><span class="nc">DateTime</span><span class="o">&lt;</span><span class="n">Utc</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">moderation_status</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">image_count</span><span class="p">:</span><span class="w"> </span><span class="kt">i64</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="cp">#[derive(Debug, Serialize, sqlx::FromRow)]</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">CommentItem</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="nc">Uuid</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">body</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">created_at</span><span class="p">:</span><span class="w"> </span><span class="nc">DateTime</span><span class="o">&lt;</span><span class="n">Utc</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">post_id</span><span class="p">:</span><span class="w"> </span><span class="nc">Uuid</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">post_author</span><span class="p">:</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="cp">#[derive(Debug, Serialize, sqlx::FromRow)]</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">LikeItem</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">post_id</span><span class="p">:</span><span class="w"> </span><span class="nc">Uuid</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">post_author</span><span class="p">:</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">created_at</span><span class="p">:</span><span class="w"> </span><span class="nc">DateTime</span><span class="o">&lt;</span><span class="n">Utc</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="cp">#[derive(Debug, Serialize, sqlx::FromRow)]</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">FollowItem</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">username</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">created_at</span><span class="p">:</span><span class="w"> </span><span class="nc">DateTime</span><span class="o">&lt;</span><span class="n">Utc</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="sd">/// Direct messages, as numbers only.</span>
+<span class="cp">#[derive(Debug, Serialize, sqlx::FromRow)]</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">MessageStats</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">sent_24h</span><span class="p">:</span><span class="w"> </span><span class="kt">i64</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">recipients_24h</span><span class="p">:</span><span class="w"> </span><span class="kt">i64</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">sent_7d</span><span class="p">:</span><span class="w"> </span><span class="kt">i64</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">recipients_7d</span><span class="p">:</span><span class="w"> </span><span class="kt">i64</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="cp">#[derive(Debug, Serialize, sqlx::FromRow)]</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">ReportItem</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">reason</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">target_type</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">status</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">details</span><span class="p">:</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">created_at</span><span class="p">:</span><span class="w"> </span><span class="nc">DateTime</span><span class="o">&lt;</span><span class="n">Utc</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="cp">#[derive(Debug, Serialize, sqlx::FromRow)]</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">HistoryItem</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="sd">/// "decision", "lock" or "review".</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">kind</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span>
+<span class="w">    </span><span class="sd">/// The restriction, the lock's end, or the review's outcome.</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">what</span><span class="p">:</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">at</span><span class="p">:</span><span class="w"> </span><span class="nc">DateTime</span><span class="o">&lt;</span><span class="n">Utc</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="cp">#[derive(Debug, Serialize)]</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">Review</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">review_id</span><span class="p">:</span><span class="w"> </span><span class="nc">Uuid</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">overview</span><span class="p">:</span><span class="w"> </span><span class="nc">Overview</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">signals</span><span class="p">:</span><span class="w"> </span><span class="nc">Signals</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">flags</span><span class="p">:</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;&amp;'</span><span class="nb">static</span><span class="w"> </span><span class="kt">str</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">standing_score</span><span class="p">:</span><span class="w"> </span><span class="kt">i64</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">suspended</span><span class="p">:</span><span class="w"> </span><span class="kt">bool</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">locked</span><span class="p">:</span><span class="w"> </span><span class="kt">bool</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">posts</span><span class="p">:</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="n">PostItem</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">comments</span><span class="p">:</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="n">CommentItem</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">likes</span><span class="p">:</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="n">LikeItem</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">follows</span><span class="p">:</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="n">FollowItem</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">messages</span><span class="p">:</span><span class="w"> </span><span class="nc">MessageStats</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">reports</span><span class="p">:</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="n">ReportItem</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">history</span><span class="p">:</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="n">HistoryItem</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="cp">#[derive(Debug, Deserialize)]</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">OpenRequest</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="sd">/// Why the account is being reviewed. Required.</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">reason</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">report_id</span><span class="p">:</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="n">Uuid</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="sd">/// POST /admin/users/:username/review (admin only) -- opens a review:</span>
+<span class="sd">/// records who opened it, when and why, and returns the account's recent</span>
+<span class="sd">/// activity.</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">open_review</span><span class="p">(</span>
+<span class="w">    </span><span class="n">State</span><span class="p">(</span><span class="n">state</span><span class="p">):</span><span class="w"> </span><span class="nc">State</span><span class="o">&lt;</span><span class="n">AppState</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">auth</span><span class="p">:</span><span class="w"> </span><span class="nc">AuthUser</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Path</span><span class="p">(</span><span class="n">username</span><span class="p">):</span><span class="w"> </span><span class="nc">Path</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Json</span><span class="p">(</span><span class="n">input</span><span class="p">):</span><span class="w"> </span><span class="nc">Json</span><span class="o">&lt;</span><span class="n">OpenRequest</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="n">Json</span><span class="o">&lt;</span><span class="n">Review</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">AppError</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">require_admin</span><span class="p">(</span><span class="o">&amp;</span><span class="n">state</span><span class="p">.</span><span class="n">db</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">auth</span><span class="p">).</span><span class="k">await</span><span class="o">?</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">reason</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">checked_text</span><span class="p">(</span><span class="o">&amp;</span><span class="n">input</span><span class="p">.</span><span class="n">reason</span><span class="p">,</span><span class="w"> </span><span class="s">"A reason"</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">tx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">state</span><span class="p">.</span><span class="n">db</span><span class="p">.</span><span class="n">begin</span><span class="p">().</span><span class="k">await</span><span class="p">.</span><span class="n">db_err</span><span class="p">(</span><span class="s">"Database error"</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">overview</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sqlx</span><span class="p">::</span><span class="n">query_as</span><span class="p">::</span><span class="o">&lt;</span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="n">Overview</span><span class="o">&gt;</span><span class="p">(</span>
+<span class="w">        </span><span class="s">r#"</span>
+<span class="s">        SELECT username, display_name, created_at, email_verified, is_private,</span>
+<span class="s">               post_count, follower_count, following_count</span>
+<span class="s">        FROM users WHERE LOWER(username) = LOWER($1)</span>
+<span class="s">        "#</span><span class="p">,</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">username</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">fetch_optional</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="o">*</span><span class="n">tx</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="k">await</span>
+<span class="w">    </span><span class="p">.</span><span class="n">db_err</span><span class="p">(</span><span class="s">"Database error"</span><span class="p">)</span><span class="o">?</span>
+<span class="w">    </span><span class="p">.</span><span class="n">ok_or_else</span><span class="p">(</span><span class="o">||</span><span class="w"> </span><span class="n">AppError</span><span class="p">::</span><span class="n">not_found</span><span class="p">(</span><span class="s">"User not found"</span><span class="p">))</span><span class="o">?</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">user_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sqlx</span><span class="p">::</span><span class="n">query_scalar</span><span class="p">::</span><span class="o">&lt;</span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="n">Uuid</span><span class="o">&gt;</span><span class="p">(</span><span class="s">"SELECT id FROM users WHERE LOWER(username) = LOWER($1)"</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">username</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="n">fetch_one</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="o">*</span><span class="n">tx</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="k">await</span>
+<span class="w">        </span><span class="p">.</span><span class="n">db_err</span><span class="p">(</span><span class="s">"Database error"</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">review_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sqlx</span><span class="p">::</span><span class="n">query_scalar</span><span class="p">::</span><span class="o">&lt;</span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="n">Uuid</span><span class="o">&gt;</span><span class="p">(</span>
+<span class="w">        </span><span class="s">"INSERT INTO account_reviews (user_id, reviewer_id, reason, report_id) VALUES ($1, $2, $3, $4) RETURNING id"</span><span class="p">,</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="n">auth</span><span class="p">.</span><span class="n">user_id</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">reason</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="n">input</span><span class="p">.</span><span class="n">report_id</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">fetch_one</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="o">*</span><span class="n">tx</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="k">await</span>
+<span class="w">    </span><span class="p">.</span><span class="n">db_err_ctx</span><span class="p">(</span><span class="s">"Failed to record the review"</span><span class="p">,</span><span class="w"> </span><span class="s">"Database error"</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">signals</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">signals</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="n">tx</span><span class="p">,</span><span class="w"> </span><span class="n">user_id</span><span class="p">).</span><span class="k">await</span><span class="o">?</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">flags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">signals</span><span class="p">.</span><span class="n">flags</span><span class="p">();</span>
+
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">posts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sqlx</span><span class="p">::</span><span class="n">query_as</span><span class="p">::</span><span class="o">&lt;</span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="n">PostItem</span><span class="o">&gt;</span><span class="p">(</span>
+<span class="w">        </span><span class="s">r#"</span>
+<span class="s">        SELECT p.id, p.caption, p.created_at, p.moderation_status::text AS moderation_status,</span>
+<span class="s">               (SELECT COUNT(*) FROM media_assets m WHERE m.post_id = p.id) AS image_count</span>
+<span class="s">        FROM posts p WHERE p.user_id = $1 ORDER BY p.created_at DESC LIMIT $2</span>
+<span class="s">        "#</span><span class="p">,</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="n">LIST_LIMIT</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">fetch_all</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="o">*</span><span class="n">tx</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="k">await</span>
+<span class="w">    </span><span class="p">.</span><span class="n">db_err</span><span class="p">(</span><span class="s">"Database error"</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">comments</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sqlx</span><span class="p">::</span><span class="n">query_as</span><span class="p">::</span><span class="o">&lt;</span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="n">CommentItem</span><span class="o">&gt;</span><span class="p">(</span>
+<span class="w">        </span><span class="s">r#"</span>
+<span class="s">        SELECT c.id, c.body, c.created_at, c.post_id, pu.username AS post_author</span>
+<span class="s">        FROM comments c JOIN posts p ON p.id = c.post_id LEFT JOIN users pu ON pu.id = p.user_id</span>
+<span class="s">        WHERE c.user_id = $1 ORDER BY c.created_at DESC LIMIT $2</span>
+<span class="s">        "#</span><span class="p">,</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="n">LIST_LIMIT</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">fetch_all</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="o">*</span><span class="n">tx</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="k">await</span>
+<span class="w">    </span><span class="p">.</span><span class="n">db_err</span><span class="p">(</span><span class="s">"Database error"</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">likes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sqlx</span><span class="p">::</span><span class="n">query_as</span><span class="p">::</span><span class="o">&lt;</span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="n">LikeItem</span><span class="o">&gt;</span><span class="p">(</span>
+<span class="w">        </span><span class="s">r#"</span>
+<span class="s">        SELECT l.post_id, pu.username AS post_author, l.created_at</span>
+<span class="s">        FROM likes l JOIN posts p ON p.id = l.post_id LEFT JOIN users pu ON pu.id = p.user_id</span>
+<span class="s">        WHERE l.user_id = $1 ORDER BY l.created_at DESC LIMIT $2</span>
+<span class="s">        "#</span><span class="p">,</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="n">LIST_LIMIT</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">fetch_all</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="o">*</span><span class="n">tx</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="k">await</span>
+<span class="w">    </span><span class="p">.</span><span class="n">db_err</span><span class="p">(</span><span class="s">"Database error"</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">follows</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sqlx</span><span class="p">::</span><span class="n">query_as</span><span class="p">::</span><span class="o">&lt;</span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="n">FollowItem</span><span class="o">&gt;</span><span class="p">(</span>
+<span class="w">        </span><span class="s">r#"</span>
+<span class="s">        SELECT u.username, f.created_at FROM follows f JOIN users u ON u.id = f.following_id</span>
+<span class="s">        WHERE f.follower_id = $1 ORDER BY f.created_at DESC LIMIT $2</span>
+<span class="s">        "#</span><span class="p">,</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="n">LIST_LIMIT</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">fetch_all</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="o">*</span><span class="n">tx</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="k">await</span>
+<span class="w">    </span><span class="p">.</span><span class="n">db_err</span><span class="p">(</span><span class="s">"Database error"</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Counts only: the recipient is the other participant of each</span>
+<span class="w">    </span><span class="c1">// conversation the message went to.</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">messages</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sqlx</span><span class="p">::</span><span class="n">query_as</span><span class="p">::</span><span class="o">&lt;</span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="n">MessageStats</span><span class="o">&gt;</span><span class="p">(</span>
+<span class="w">        </span><span class="s">r#"</span>
+<span class="s">        SELECT</span>
+<span class="s">            COUNT(*) FILTER (WHERE m.created_at &gt; NOW() - INTERVAL '1 day') AS sent_24h,</span>
+<span class="s">            COUNT(DISTINCT c.id) FILTER (WHERE m.created_at &gt; NOW() - INTERVAL '1 day') AS recipients_24h,</span>
+<span class="s">            COUNT(*) AS sent_7d,</span>
+<span class="s">            COUNT(DISTINCT c.id) AS recipients_7d</span>
+<span class="s">        FROM messages m JOIN conversations c ON c.id = m.conversation_id</span>
+<span class="s">        WHERE m.sender_id = $1 AND m.created_at &gt; NOW() - INTERVAL '7 days'</span>
+<span class="s">        "#</span><span class="p">,</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">fetch_one</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="o">*</span><span class="n">tx</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="k">await</span>
+<span class="w">    </span><span class="p">.</span><span class="n">db_err</span><span class="p">(</span><span class="s">"Database error"</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">reports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sqlx</span><span class="p">::</span><span class="n">query_as</span><span class="p">::</span><span class="o">&lt;</span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="n">ReportItem</span><span class="o">&gt;</span><span class="p">(</span>
+<span class="w">        </span><span class="s">r#"</span>
+<span class="s">        SELECT r.reason::text AS reason, r.target_type::text AS target_type, r.status::text AS status,</span>
+<span class="s">               r.details, r.created_at</span>
+<span class="s">        FROM reports r</span>
+<span class="s">        LEFT JOIN posts p ON r.target_type = 'post' AND p.id = r.target_id</span>
+<span class="s">        LEFT JOIN comments c ON r.target_type = 'comment' AND c.id = r.target_id</span>
+<span class="s">        WHERE (r.target_type = 'user' AND r.target_id = $1) OR p.user_id = $1 OR c.user_id = $1</span>
+<span class="s">        ORDER BY r.created_at DESC LIMIT $2</span>
+<span class="s">        "#</span><span class="p">,</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="n">LIST_LIMIT</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">fetch_all</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="o">*</span><span class="n">tx</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="k">await</span>
+<span class="w">    </span><span class="p">.</span><span class="n">db_err</span><span class="p">(</span><span class="s">"Database error"</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">history</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sqlx</span><span class="p">::</span><span class="n">query_as</span><span class="p">::</span><span class="o">&lt;</span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="n">HistoryItem</span><span class="o">&gt;</span><span class="p">(</span>
+<span class="w">        </span><span class="s">r#"</span>
+<span class="s">        SELECT * FROM (</span>
+<span class="s">            SELECT 'decision' AS kind, restriction AS what, created_at AS at</span>
+<span class="s">            FROM moderation_decisions WHERE affected_user_id = $1</span>
+<span class="s">            UNION ALL</span>
+<span class="s">            SELECT 'lock', COALESCE('unlocked by ' || unlocked_via, 'active'), locked_at</span>
+<span class="s">            FROM account_locks WHERE user_id = $1</span>
+<span class="s">            UNION ALL</span>
+<span class="s">            SELECT 'review', COALESCE(outcome, 'open'), opened_at</span>
+<span class="s">            FROM account_reviews WHERE user_id = $1 AND id != $2</span>
+<span class="s">        ) h ORDER BY at DESC LIMIT 50</span>
+<span class="s">        "#</span><span class="p">,</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="n">review_id</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">fetch_all</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="o">*</span><span class="n">tx</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="k">await</span>
+<span class="w">    </span><span class="p">.</span><span class="n">db_err</span><span class="p">(</span><span class="s">"Database error"</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="p">(</span><span class="n">standing_score</span><span class="p">,</span><span class="w"> </span><span class="n">suspended</span><span class="p">,</span><span class="w"> </span><span class="n">locked</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sqlx</span><span class="p">::</span><span class="n">query_as</span><span class="p">::</span><span class="o">&lt;</span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">i64</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="p">)</span><span class="o">&gt;</span><span class="p">(</span>
+<span class="w">        </span><span class="s">r#"</span>
+<span class="s">        SELECT</span>
+<span class="s">            LEAST(COALESCE((SELECT SUM(points) FROM account_strikes</span>
+<span class="s">                            WHERE user_id = $1 AND (expires_at IS NULL OR expires_at &gt; NOW())), 0), 100)::bigint,</span>
+<span class="s">            COALESCE((SELECT suspended_until &gt; NOW() FROM users WHERE id = $1), FALSE),</span>
+<span class="s">            EXISTS (SELECT 1 FROM account_locks WHERE user_id = $1 AND unlocked_at IS NULL)</span>
+<span class="s">        "#</span><span class="p">,</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">fetch_one</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="o">*</span><span class="n">tx</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="k">await</span>
+<span class="w">    </span><span class="p">.</span><span class="n">db_err</span><span class="p">(</span><span class="s">"Database error"</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">tx</span><span class="p">.</span><span class="n">commit</span><span class="p">().</span><span class="k">await</span><span class="p">.</span><span class="n">db_err</span><span class="p">(</span><span class="s">"Database error"</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+<span class="w">    </span><span class="n">tracing</span><span class="p">::</span><span class="n">info</span><span class="o">!</span><span class="p">(</span><span class="s">"Account review {} of user {} opened by admin {}"</span><span class="p">,</span><span class="w"> </span><span class="n">review_id</span><span class="p">,</span><span class="w"> </span><span class="n">user_id</span><span class="p">,</span><span class="w"> </span><span class="n">auth</span><span class="p">.</span><span class="n">user_id</span><span class="p">);</span>
+
+<span class="w">    </span><span class="nb">Ok</span><span class="p">(</span><span class="n">Json</span><span class="p">(</span><span class="n">Review</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">review_id</span><span class="p">,</span>
+<span class="w">        </span><span class="n">overview</span><span class="p">,</span>
+<span class="w">        </span><span class="n">signals</span><span class="p">,</span>
+<span class="w">        </span><span class="n">flags</span><span class="p">,</span>
+<span class="w">        </span><span class="n">standing_score</span><span class="p">,</span>
+<span class="w">        </span><span class="n">suspended</span><span class="p">,</span>
+<span class="w">        </span><span class="n">locked</span><span class="p">,</span>
+<span class="w">        </span><span class="n">posts</span><span class="p">,</span>
+<span class="w">        </span><span class="n">comments</span><span class="p">,</span>
+<span class="w">        </span><span class="n">likes</span><span class="p">,</span>
+<span class="w">        </span><span class="n">follows</span><span class="p">,</span>
+<span class="w">        </span><span class="n">messages</span><span class="p">,</span>
+<span class="w">        </span><span class="n">reports</span><span class="p">,</span>
+<span class="w">        </span><span class="n">history</span><span class="p">,</span>
+<span class="w">    </span><span class="p">}))</span>
+<span class="p">}</span>
+
+<span class="cp">#[derive(Debug, Deserialize)]</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">DecideRequest</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="sd">/// "no_action", "lock" (suspected takeover) or "bot" (bot or spam-only</span>
+<span class="w">    </span><span class="sd">/// account: permanent suspension).</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">outcome</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span>
+<span class="w">    </span><span class="sd">/// Required; for "lock" it is the lock's reason, for "bot" it stays</span>
+<span class="w">    </span><span class="sd">/// internal like any review note.</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">note</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="sd">/// The statement basis for a ban after a review found a bot.</span>
+<span class="k">const</span><span class="w"> </span><span class="n">BOT_BASIS</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Nach Prüfung deines Kontos gehen wir davon aus, dass es automatisiert betrieben oder nur \</span>
+<span class="s">    für Spam angelegt wurde. Das verbieten unsere Nutzungsbedingungen in Abschnitt 4 (Spam, automatisierte \</span>
+<span class="s">    Massen-Registrierungen oder Bots)."</span><span class="p">;</span>
+
+<span class="sd">/// POST /admin/reviews/:id/decide (admin only) -- closes a review with its</span>
+<span class="sd">/// outcome and carries it out.</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">decide_review</span><span class="p">(</span>
+<span class="w">    </span><span class="n">State</span><span class="p">(</span><span class="n">state</span><span class="p">):</span><span class="w"> </span><span class="nc">State</span><span class="o">&lt;</span><span class="n">AppState</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">auth</span><span class="p">:</span><span class="w"> </span><span class="nc">AuthUser</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Path</span><span class="p">(</span><span class="n">review_id</span><span class="p">):</span><span class="w"> </span><span class="nc">Path</span><span class="o">&lt;</span><span class="n">Uuid</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Json</span><span class="p">(</span><span class="n">input</span><span class="p">):</span><span class="w"> </span><span class="nc">Json</span><span class="o">&lt;</span><span class="n">DecideRequest</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="n">Json</span><span class="o">&lt;</span><span class="n">serde_json</span><span class="p">::</span><span class="n">Value</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">AppError</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">require_admin</span><span class="p">(</span><span class="o">&amp;</span><span class="n">state</span><span class="p">.</span><span class="n">db</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">auth</span><span class="p">).</span><span class="k">await</span><span class="o">?</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">note</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">checked_text</span><span class="p">(</span><span class="o">&amp;</span><span class="n">input</span><span class="p">.</span><span class="n">note</span><span class="p">,</span><span class="w"> </span><span class="s">"A note"</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">outcome</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">match</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="n">outcome</span><span class="p">.</span><span class="n">as_str</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="s">"no_action"</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">"no_action"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"lock"</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">"locked"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"bot"</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">"bot"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">_</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">Err</span><span class="p">(</span><span class="n">AppError</span><span class="p">::</span><span class="n">bad_request</span><span class="p">(</span><span class="s">"Invalid outcome"</span><span class="p">)),</span>
+<span class="w">    </span><span class="p">};</span>
+
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">user_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sqlx</span><span class="p">::</span><span class="n">query_scalar</span><span class="p">::</span><span class="o">&lt;</span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="n">Uuid</span><span class="o">&gt;&gt;</span><span class="p">(</span>
+<span class="w">        </span><span class="s">"SELECT user_id FROM account_reviews WHERE id = $1 AND outcome IS NULL"</span><span class="p">,</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="n">review_id</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">fetch_optional</span><span class="p">(</span><span class="o">&amp;</span><span class="n">state</span><span class="p">.</span><span class="n">db</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="k">await</span>
+<span class="w">    </span><span class="p">.</span><span class="n">db_err</span><span class="p">(</span><span class="s">"Database error"</span><span class="p">)</span><span class="o">?</span>
+<span class="w">    </span><span class="p">.</span><span class="n">ok_or_else</span><span class="p">(</span><span class="o">||</span><span class="w"> </span><span class="n">AppError</span><span class="p">::</span><span class="n">conflict</span><span class="p">(</span><span class="s">"This review is already decided"</span><span class="p">))</span><span class="o">?</span>
+<span class="w">    </span><span class="p">.</span><span class="n">ok_or_else</span><span class="p">(</span><span class="o">||</span><span class="w"> </span><span class="n">AppError</span><span class="p">::</span><span class="n">conflict</span><span class="p">(</span><span class="s">"The account no longer exists"</span><span class="p">))</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Carried out first: if the lock or ban fails, the review stays open.</span>
+<span class="w">    </span><span class="k">match</span><span class="w"> </span><span class="n">outcome</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="s">"locked"</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">lock_user</span><span class="p">(</span><span class="o">&amp;</span><span class="n">state</span><span class="p">,</span><span class="w"> </span><span class="n">user_id</span><span class="p">,</span><span class="w"> </span><span class="n">auth</span><span class="p">.</span><span class="n">user_id</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">note</span><span class="p">).</span><span class="k">await</span><span class="o">?</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"bot"</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="n">user_id</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">auth</span><span class="p">.</span><span class="n">user_id</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="nb">Err</span><span class="p">(</span><span class="n">AppError</span><span class="p">::</span><span class="n">bad_request</span><span class="p">(</span><span class="s">"You can't take a measure against your own account"</span><span class="p">));</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">tx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">state</span><span class="p">.</span><span class="n">db</span><span class="p">.</span><span class="n">begin</span><span class="p">().</span><span class="k">await</span><span class="p">.</span><span class="n">db_err</span><span class="p">(</span><span class="s">"Database error"</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+<span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="p">(</span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="n">notices</span><span class="p">)</span><span class="w"> </span><span class="o">=</span>
+<span class="w">                </span><span class="n">moderation</span><span class="p">::</span><span class="n">record_account_measure</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="n">tx</span><span class="p">,</span><span class="w"> </span><span class="n">user_id</span><span class="p">,</span><span class="w"> </span><span class="n">Measure</span><span class="p">::</span><span class="n">Ban</span><span class="p">,</span><span class="w"> </span><span class="s">"spam"</span><span class="p">,</span><span class="w"> </span><span class="n">auth</span><span class="p">.</span><span class="n">user_id</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">BOT_BASIS</span><span class="p">))</span>
+<span class="w">                    </span><span class="p">.</span><span class="k">await</span><span class="o">?</span><span class="p">;</span>
+<span class="w">            </span><span class="n">tx</span><span class="p">.</span><span class="n">commit</span><span class="p">().</span><span class="k">await</span><span class="p">.</span><span class="n">db_err</span><span class="p">(</span><span class="s">"Database error"</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+<span class="w">            </span><span class="n">notices</span><span class="p">.</span><span class="n">send</span><span class="p">(</span><span class="o">&amp;</span><span class="n">state</span><span class="p">).</span><span class="k">await</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">_</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">sqlx</span><span class="p">::</span><span class="n">query</span><span class="p">(</span>
+<span class="w">        </span><span class="s">"UPDATE account_reviews SET outcome = $2, outcome_note = $3, decided_at = NOW() WHERE id = $1 AND outcome IS NULL"</span><span class="p">,</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="n">review_id</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="n">outcome</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">note</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">state</span><span class="p">.</span><span class="n">db</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="k">await</span>
+<span class="w">    </span><span class="p">.</span><span class="n">db_err</span><span class="p">(</span><span class="s">"Database error"</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">tracing</span><span class="p">::</span><span class="n">info</span><span class="o">!</span><span class="p">(</span><span class="s">"Account review {} decided by admin {}: {}"</span><span class="p">,</span><span class="w"> </span><span class="n">review_id</span><span class="p">,</span><span class="w"> </span><span class="n">auth</span><span class="p">.</span><span class="n">user_id</span><span class="p">,</span><span class="w"> </span><span class="n">outcome</span><span class="p">);</span>
+<span class="w">    </span><span class="nb">Ok</span><span class="p">(</span><span class="n">Json</span><span class="p">(</span><span class="n">serde_json</span><span class="p">::</span><span class="n">json</span><span class="o">!</span><span class="p">({</span><span class="w"> </span><span class="s">"outcome"</span><span class="p">:</span><span class="w"> </span><span class="nc">outcome</span><span class="w"> </span><span class="p">})))</span>
+<span class="p">}</span>
+</pre></div></td></tr></table></div>
+
+      </section>
+    </main>
+  </div>
+</body>
+</html>
