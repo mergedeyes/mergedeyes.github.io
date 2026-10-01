@@ -1,6 +1,6 @@
 {
   "mergedeyes/Klar-Stack": {
-    "commit_count": 291,
+    "commit_count": 297,
     "files": {
       "Klar/migrations/20260425000000_create_users.sql": "9fadcd2fef1fad49fdc545e95c9b5bb6a74c3ce6",
       "Klar/migrations/20260425010000_add_password_hash.sql": "28f8dd7008cc4407f5b9e6916104073bd4091f5a",
@@ -98,7 +98,7 @@
       "Klar/src/integration_tests/account_review.rs": "7e8ebb491db259effd83d102031c9e2b900857c0",
       "Klar/src/integration_tests/accounts.rs": "149664d3f36d57d565b4cee04e606cced7dcc0ee",
       "Klar/src/integration_tests/chats.rs": "7d97c78bd133eeb3fbffbc6408d61818786893ae",
-      "Klar/src/integration_tests/evidence.rs": "dd51df5bff0f29210994111a277c198435557954",
+      "Klar/src/integration_tests/evidence.rs": "9698818889e518f866e693c6473e48b1c410143f",
       "Klar/src/integration_tests/feedback.rs": "8174c160096f6605650654bf9f574cfd404c76e8",
       "Klar/src/integration_tests/legal_updates.rs": "d5738f11eadfdfb245655df6a0c522c507ed7d9c",
       "Klar/src/integration_tests/mod.rs": "24e219f0a8ad36455203969383d51d2695228b77",
@@ -144,7 +144,8 @@
       "klar-web/src/app/admin/legal-updates/page.tsx": "c0b1984485c175dd6f76aabc115b0919b05ed458",
       "klar-web/src/app/admin/moderation/page.tsx": "4806cc7b959f367e956fd611ab39dffec839e37c",
       "klar-web/src/app/admin/official/page.tsx": "871c51d422b71efab1b3459de4bd93f5ad7f42e0",
-      "klar-web/src/app/admin/reports/page.tsx": "57f18c0d4fcf5edb114125257f3ea411131c778c",
+      "klar-web/src/app/admin/page.tsx": "c3f0bd48a493ff8df9e58d98991978eba929dee7",
+      "klar-web/src/app/admin/reports/page.tsx": "e0c3967aeb441298ac5f682eae4cd98a51fb6638",
       "klar-web/src/app/admin/review/[username]/page.tsx": "da8fc93d5706d3553855d2e20ac0f1278bbebced",
       "klar-web/src/app/admin/rights/page.tsx": "112040dd485bcd197b81531e6ef1cb907a2761bb",
       "klar-web/src/app/admin/security/page.tsx": "4ca96a3eb9008962d66fb699c9074f1b0b2f2dbe",
@@ -180,13 +181,13 @@
       "klar-web/src/app/robots.ts": "194a0c0e380274b0ee8fb74a0318d9bbd86f96fc",
       "klar-web/src/app/search/page.tsx": "7c6d09a1bddf32143fcc74360ae1908342e0866e",
       "klar-web/src/app/settings/account/page.tsx": "85e48962a187a478c855789be5105c7c2ce86c8f",
-      "klar-web/src/app/settings/page.tsx": "494108b1a892d168ce032660ef049b5833e8cc3d",
+      "klar-web/src/app/settings/page.tsx": "3700ce5b0b95918ba36f9588c8379faa9d1efad6",
       "klar-web/src/app/settings/password/page.tsx": "f5824ea68c0c2eff9484089c258a1560e7ab8685",
       "klar-web/src/app/settings/profile/page.tsx": "521ef2fb9fb02a97b0c037169ba2ad53dc491bb3",
       "klar-web/src/app/sitemap.ts": "184d90589ad60c7d2fd48c27c63a187784cae3d6",
       "klar-web/src/app/transparenz/page.tsx": "f55d26fd9a658ecb1c95cc547ae67fa50e088743",
       "klar-web/src/app/users/[username]/page.tsx": "eb9508d2c06adae4e8a6c9ade50ebbdad7aa51e7",
-      "klar-web/src/app/verify-email/page.tsx": "e9bb52e7031c44725b0f99cd965febe08e438d7d",
+      "klar-web/src/app/verify-email/page.tsx": "d790df957496e774827536c072f94aff5bfbc338",
       "klar-web/src/app/welcome/page.tsx": "d3deaaa7d6b517c723757c12d39bd3b5b2cf2aa9",
       "klar-web/src/components/ChatWindow.tsx": "b54f7b2e21ecd9c5450137cc7b2930463697a40d",
       "klar-web/src/components/CreatePostModal.tsx": "faa0142fa44e433961e384092e2a7f86fdd7cd1e",
@@ -201,7 +202,7 @@
       "klar-web/src/components/ReportModal.tsx": "8aed27ee6a9d976e2a86674e3fac3ce173ef76b7",
       "klar-web/src/components/ShareButton.tsx": "173ce1fada77ab78188ebdef91159965a683d06a",
       "klar-web/src/components/SmartBackButton.tsx": "fde64ff2504889787a36ec4eae875030c6f33299",
-      "klar-web/src/components/TopNav.tsx": "549b3f69767565be80b884d1cf65b1f8beda4716",
+      "klar-web/src/components/TopNav.tsx": "81b563c2ac2f8a0a22249c88ef5346cc3b6be21b",
       "klar-web/src/components/UserListModal.tsx": "e4c598514bbd12b8a0b32b23e1b66293a01f4abd",
       "klar-web/src/components/VerifyEmailBanner.tsx": "103f478622a462b43d44fcdbfdb1adad2b7a6e96",
       "klar-web/src/components/feedback/FeedbackScreenshots.tsx": "8bc0a780e7cda65060e803d2042b366cfb29d3f3",
@@ -225,8 +226,8 @@
       "klar-web/src/lib/utils/media.ts": "301f16e266aef1f5b01c7202f50849924f96cc4a",
       "klar-web/src/proxy.ts": "1d068baa8277e54d730c03f5c1b330eb0a2decd8"
     },
-    "newest_commit_sha": "ce0abd3bd9ea7b59909cdc32ff86395527ee0619",
-    "pushed_at": "2026-10-01T07:45:22Z",
+    "newest_commit_sha": "80db0e0a51ffa4698da3244f3276f7c767aee520",
+    "pushed_at": "2026-10-01T23:15:46Z",
     "source_entries": [
       "Klar/src/main.rs",
       "Klar/migrations/*",
@@ -248,7 +249,7 @@
     ]
   },
   "mergedeyes/mergedeyes.github.io": {
-    "commit_count": 422,
+    "commit_count": 423,
     "files": {
       ".github/scripts/__pycache__/generate_project_pages.cpython-314.pyc": "b9e7f33a02cad66d5f4ee1b83d3c9c8428159d56",
       ".github/scripts/generate_project_pages.py": "6d0d4d56ca91afaae12e814cc85c621c42421593",
@@ -271,8 +272,8 @@
       "skills/nginx.html": "80c4b61efb0493e6411b8b9caab170e3db5d80dd",
       "styles.css": "a3243ed44505aec40beb720fdfacf5edc649e475"
     },
-    "newest_commit_sha": "540b8e337aa72aefae9400dd7e7a0089908c3df1",
-    "pushed_at": "2026-10-01T13:36:59Z",
+    "newest_commit_sha": "257b7b7b6fcbf3962718337b7191bd5578467d45",
+    "pushed_at": "2026-10-01T19:07:44Z",
     "source_entries": [
       "index.html",
       "404.html",
