@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Klar/src/alerts.rs — Klar — Jan</title>
+  <link rel="stylesheet" href="../../styles.css?v=b2c99f8a" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="layout">
+    <header class="rail" id="rail">
+<div class="rail__top">
+<a class="brand" href="../../index.html#top">
+<span class="brand__name">Jan</span>
+<span class="brand__meta">systems &amp; infrastructure<br/>Code, Code &amp; Code</span>
+</a>
+<button aria-controls="nav" aria-expanded="false" aria-label="Toggle menu" class="menu-toggle" id="menuToggle">
+<span></span><span></span><span></span>
+</button>
+</div>
+<nav aria-label="Sections" class="nav" id="nav">
+<a data-path="~/projects" href="../../index.html#projects">Projects</a>
+<a data-path="~/work" href="../../index.html#work">Work</a>
+<a data-path="~/education" href="../../index.html#education">Education</a>
+<a data-path="~/skills" href="../../index.html#skills">Skills</a>
+<a data-path="~/about" href="../../index.html#about">About Me</a>
+<a data-path="~/contact" href="../../index.html#contact">Contact</a>
+</nav>
+<div class="rail__status">
+<span aria-hidden="true" class="dot"></span>
+<span>open to work</span>
+</div>
+</header>
+    <nav class="file-tree"><p class="file-tree__title">Files</p><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">Klar/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">migrations/</span><ul class="tree"><li class="tree-file"><a href="Klar--migrations--20260425000000_create_users.sql.html">20260425000000_create_users.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260425010000_add_password_hash.sql.html">20260425010000_add_password_hash.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260425020000_create_posts.sql.html">20260425020000_create_posts.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260425020100_create_follows.sql.html">20260425020100_create_follows.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260425030000_create_likes.sql.html">20260425030000_create_likes.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260425030100_create_comments.sql.html">20260425030100_create_comments.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260425040000_add_edited_at.sql.html">20260425040000_add_edited_at.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260425050000_create_media_assets.sql.html">20260425050000_create_media_assets.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260425060000_add_profile_fields.sql.html">20260425060000_add_profile_fields.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260425070000_add_email_verification.sql.html">20260425070000_add_email_verification.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260425080000_create_refresh_tokens.sql.html">20260425080000_create_refresh_tokens.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260502000000_create_blocks.sql.html">20260502000000_create_blocks.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260503000000_create_comment_likes.sql.html">20260503000000_create_comment_likes.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260529000000_create_notifications.sql.html">20260529000000_create_notifications.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260604000000_add_username_changed_at.sql.html">20260604000000_add_username_changed_at.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260615000000_add_chat_tables.sql.html">20260615000000_add_chat_tables.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260615001000_upgrade_chats.sql.html">20260615001000_upgrade_chats.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260616140136_add_missing_index_to_posts.sql.html">20260616140136_add_missing_index_to_posts.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260717000100_add_keyset_pagination_index.sql.html">20260717000100_add_keyset_pagination_index.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260720000000_uuidv7_function.sql.html">20260720000000_uuidv7_function.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260720000100_users.sql.html">20260720000100_users.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260720000200_posts.sql.html">20260720000200_posts.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260720000300_follows_blocks.sql.html">20260720000300_follows_blocks.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260720000400_media_assets.sql.html">20260720000400_media_assets.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260720000500_comments.sql.html">20260720000500_comments.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260720000600_likes_partitioned.sql.html">20260720000600_likes_partitioned.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260720000700_auth_tokens.sql.html">20260720000700_auth_tokens.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260720000800_notifications_partitioned.sql.html">20260720000800_notifications_partitioned.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260720000900_feed_items.sql.html">20260720000900_feed_items.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260720001000_post_events_partitioned.sql.html">20260720001000_post_events_partitioned.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260720001100_chats.sql.html">20260720001100_chats.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260723000000_private_accounts.sql.html">20260723000000_private_accounts.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260723000100_follow_request_notification_types.sql.html">20260723000100_follow_request_notification_types.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260723010000_reports_and_moderation.sql.html">20260723010000_reports_and_moderation.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260723020000_add_report_review_note.sql.html">20260723020000_add_report_review_note.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260825000000_add_terms_accepted_at.sql.html">20260825000000_add_terms_accepted_at.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260929000000_email_case_insensitive.sql.html">20260929000000_email_case_insensitive.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260929000100_chat_deleted_user.sql.html">20260929000100_chat_deleted_user.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260929000200_reports_keep_on_reporter_delete.sql.html">20260929000200_reports_keep_on_reporter_delete.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260930000000_delete_messages_with_sender.sql.html">20260930000000_delete_messages_with_sender.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260930010000_evidence.sql.html">20260930010000_evidence.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260930020000_moderation_decisions.sql.html">20260930020000_moderation_decisions.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260930030000_feedback.sql.html">20260930030000_feedback.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260930040000_rights_claims.sql.html">20260930040000_rights_claims.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260930050000_feedback_screenshots.sql.html">20260930050000_feedback_screenshots.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260930060000_keep_account.sql.html">20260930060000_keep_account.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260930070000_account_standing.sql.html">20260930070000_account_standing.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260930080000_more_report_reasons.sql.html">20260930080000_more_report_reasons.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260930090000_account_locks.sql.html">20260930090000_account_locks.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260930100000_account_review.sql.html">20260930100000_account_review.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260930110000_legal_updates.sql.html">20260930110000_legal_updates.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260930120000_evidence_event_time.sql.html">20260930120000_evidence_event_time.sql</a></li><li class="tree-file"><a href="Klar--migrations--20261001000000_official_account_renames.sql.html">20261001000000_official_account_renames.sql</a></li><li class="tree-file"><a href="Klar--migrations--20261001100000_moderation_enum_values.sql.html">20261001100000_moderation_enum_values.sql</a></li><li class="tree-file"><a href="Klar--migrations--20261001100100_moderation_workflow.sql.html">20261001100100_moderation_workflow.sql</a></li><li class="tree-file"><a href="Klar--migrations--20261001100200_drop_post_events.sql.html">20261001100200_drop_post_events.sql</a></li><li class="tree-file"><a href="Klar--migrations--20261001100300_repair_counters.sql.html">20261001100300_repair_counters.sql</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">src/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">handlers/</span><ul class="tree"><li class="tree-file"><a href="Klar--src--handlers--account_lock.rs.html">account_lock.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--account_review.rs.html">account_review.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--auth.rs.html">auth.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--blocks.rs.html">blocks.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--chats.rs.html">chats.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--comment_likes.rs.html">comment_likes.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--comments.rs.html">comments.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--evidence.rs.html">evidence.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--feed.rs.html">feed.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--feedback.rs.html">feedback.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--follows.rs.html">follows.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--health.rs.html">health.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--legal_updates.rs.html">legal_updates.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--likes.rs.html">likes.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--moderation.rs.html">moderation.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--notices.rs.html">notices.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--notifications.rs.html">notifications.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--official_accounts.rs.html">official_accounts.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--posts.rs.html">posts.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--profile_moderation.rs.html">profile_moderation.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--reports.rs.html">reports.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--rights.rs.html">rights.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--standing.rs.html">standing.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--test_phase.rs.html">test_phase.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--uploads.rs.html">uploads.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--users.rs.html">users.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">integration_tests/</span><ul class="tree"><li class="tree-file"><a href="Klar--src--integration_tests--account_lock.rs.html">account_lock.rs</a></li><li class="tree-file"><a href="Klar--src--integration_tests--account_review.rs.html">account_review.rs</a></li><li class="tree-file"><a href="Klar--src--integration_tests--accounts.rs.html">accounts.rs</a></li><li class="tree-file"><a href="Klar--src--integration_tests--chats.rs.html">chats.rs</a></li><li class="tree-file"><a href="Klar--src--integration_tests--evidence.rs.html">evidence.rs</a></li><li class="tree-file"><a href="Klar--src--integration_tests--feedback.rs.html">feedback.rs</a></li><li class="tree-file"><a href="Klar--src--integration_tests--legal_updates.rs.html">legal_updates.rs</a></li><li class="tree-file"><a href="Klar--src--integration_tests--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="Klar--src--integration_tests--moderation.rs.html">moderation.rs</a></li><li class="tree-file"><a href="Klar--src--integration_tests--notices.rs.html">notices.rs</a></li><li class="tree-file"><a href="Klar--src--integration_tests--official_accounts.rs.html">official_accounts.rs</a></li><li class="tree-file"><a href="Klar--src--integration_tests--previews.rs.html">previews.rs</a></li><li class="tree-file"><a href="Klar--src--integration_tests--privacy.rs.html">privacy.rs</a></li><li class="tree-file"><a href="Klar--src--integration_tests--profile_moderation.rs.html">profile_moderation.rs</a></li><li class="tree-file"><a href="Klar--src--integration_tests--reports.rs.html">reports.rs</a></li><li class="tree-file"><a href="Klar--src--integration_tests--retention.rs.html">retention.rs</a></li><li class="tree-file"><a href="Klar--src--integration_tests--rights.rs.html">rights.rs</a></li><li class="tree-file"><a href="Klar--src--integration_tests--sessions.rs.html">sessions.rs</a></li><li class="tree-file"><a href="Klar--src--integration_tests--social.rs.html">social.rs</a></li><li class="tree-file"><a href="Klar--src--integration_tests--standing.rs.html">standing.rs</a></li><li class="tree-file"><a href="Klar--src--integration_tests--support.rs.html">support.rs</a></li><li class="tree-file"><a href="Klar--src--integration_tests--test_phase.rs.html">test_phase.rs</a></li><li class="tree-file"><a href="Klar--src--integration_tests--uptime.rs.html">uptime.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">models/</span><ul class="tree"><li class="tree-file"><a href="Klar--src--models--chat.rs.html">chat.rs</a></li><li class="tree-file"><a href="Klar--src--models--comment.rs.html">comment.rs</a></li><li class="tree-file"><a href="Klar--src--models--like.rs.html">like.rs</a></li><li class="tree-file"><a href="Klar--src--models--media.rs.html">media.rs</a></li><li class="tree-file"><a href="Klar--src--models--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="Klar--src--models--post.rs.html">post.rs</a></li><li class="tree-file"><a href="Klar--src--models--report.rs.html">report.rs</a></li><li class="tree-file"><a href="Klar--src--models--user.rs.html">user.rs</a></li></ul></li><li class="tree-file tree-file--active"><a href="Klar--src--alerts.rs.html">alerts.rs</a></li><li class="tree-file"><a href="Klar--src--auth.rs.html">auth.rs</a></li><li class="tree-file"><a href="Klar--src--config.rs.html">config.rs</a></li><li class="tree-file"><a href="Klar--src--db.rs.html">db.rs</a></li><li class="tree-file"><a href="Klar--src--email.rs.html">email.rs</a></li><li class="tree-file"><a href="Klar--src--errors.rs.html">errors.rs</a></li><li class="tree-file"><a href="Klar--src--evidence.rs.html">evidence.rs</a></li><li class="tree-file"><a href="Klar--src--evidence_crypto.rs.html">evidence_crypto.rs</a></li><li class="tree-file"><a href="Klar--src--main.rs.html">main.rs</a></li><li class="tree-file"><a href="Klar--src--media.rs.html">media.rs</a></li><li class="tree-file"><a href="Klar--src--moderation.rs.html">moderation.rs</a></li><li class="tree-file"><a href="Klar--src--rate_limit.rs.html">rate_limit.rs</a></li><li class="tree-file"><a href="Klar--src--retention.rs.html">retention.rs</a></li><li class="tree-file"><a href="Klar--src--routes.rs.html">routes.rs</a></li><li class="tree-file"><a href="Klar--src--standing.rs.html">standing.rs</a></li><li class="tree-file"><a href="Klar--src--storage.rs.html">storage.rs</a></li><li class="tree-file"><a href="Klar--src--uptime.rs.html">uptime.rs</a></li><li class="tree-file"><a href="Klar--src--utils.rs.html">utils.rs</a></li><li class="tree-file"><a href="Klar--src--validation.rs.html">validation.rs</a></li></ul></li></ul></li><li class="tree-dir"><span class="tree-dir__name">klar-web/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">src/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">app/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">admin/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">cases/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">new/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--admin--cases--new--page.tsx.html">page.tsx</a></li></ul></li></ul></li><li class="tree-dir"><span class="tree-dir__name">decisions/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--admin--decisions--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">evidence/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">[id]/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--admin--evidence--[id]--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-file"><a href="klar-web--src--app--admin--evidence--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">feedback/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--admin--feedback--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">legal-updates/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--admin--legal-updates--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">moderation/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--admin--moderation--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">official/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--admin--official--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">reports/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--admin--reports--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">review/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">[username]/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--admin--review--[username]--page.tsx.html">page.tsx</a></li></ul></li></ul></li><li class="tree-dir"><span class="tree-dir__name">rights/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--admin--rights--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">security/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--admin--security--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">standing/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">[username]/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--admin--standing--[username]--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-file"><a href="klar-web--src--app--admin--standing--page.tsx.html">page.tsx</a></li></ul></li></ul></li><li class="tree-dir"><span class="tree-dir__name">api/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">health/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--api--health--route.ts.html">route.ts</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">site-access/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--api--site-access--route.ts.html">route.ts</a></li></ul></li></ul></li><li class="tree-dir"><span class="tree-dir__name">chats/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--chats--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">datenschutz/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--datenschutz--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">feed/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">discovery/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--feed--discovery--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-file"><a href="klar-web--src--app--feed--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">feedback/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--feedback--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">follow-requests/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--follow-requests--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">forgot-password/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--forgot-password--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">impressum/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--impressum--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">login/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--login--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">moderation/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">decisions/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">[id]/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--moderation--decisions--[id]--page.tsx.html">page.tsx</a></li></ul></li></ul></li><li class="tree-file"><a href="klar-web--src--app--moderation--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">notices/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">status/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">[id]/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--notices--status--[id]--page.tsx.html">page.tsx</a></li></ul></li></ul></li><li class="tree-file"><a href="klar-web--src--app--notices--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">nutzungsbedingungen/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--nutzungsbedingungen--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">posts/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">[id]/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--posts--[id]--PostPageClient.tsx.html">PostPageClient.tsx</a></li><li class="tree-file"><a href="klar-web--src--app--posts--[id]--page.tsx.html">page.tsx</a></li></ul></li></ul></li><li class="tree-dir"><span class="tree-dir__name">register/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--register--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">resend-verification/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--resend-verification--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">reset-password/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--reset-password--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">rights/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">status/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">[id]/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--rights--status--[id]--page.tsx.html">page.tsx</a></li></ul></li></ul></li><li class="tree-file"><a href="klar-web--src--app--rights--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">search/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--search--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">settings/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">account/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--settings--account--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">password/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--settings--password--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">profile/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--settings--profile--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-file"><a href="klar-web--src--app--settings--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">transparenz/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--transparenz--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">users/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">[username]/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--users--[username]--page.tsx.html">page.tsx</a></li></ul></li></ul></li><li class="tree-dir"><span class="tree-dir__name">verify-email/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--verify-email--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">welcome/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--welcome--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-file"><a href="klar-web--src--app--favicon.ico.html">favicon.ico</a></li><li class="tree-file"><a href="klar-web--src--app--globals.css.html">globals.css</a></li><li class="tree-file"><a href="klar-web--src--app--layout.tsx.html">layout.tsx</a></li><li class="tree-file"><a href="klar-web--src--app--page.tsx.html">page.tsx</a></li><li class="tree-file"><a href="klar-web--src--app--robots.ts.html">robots.ts</a></li><li class="tree-file"><a href="klar-web--src--app--sitemap.ts.html">sitemap.ts</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">components/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">feedback/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--components--feedback--FeedbackScreenshots.tsx.html">FeedbackScreenshots.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">moderation/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--components--moderation--StandingCard.tsx.html">StandingCard.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--moderation--StandingScore.tsx.html">StandingScore.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">settings/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--components--settings--KeepAccountCard.tsx.html">KeepAccountCard.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">ui/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--components--ui--button.tsx.html">button.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--ui--card.tsx.html">card.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--ui--form.tsx.html">form.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--ui--input.tsx.html">input.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--ui--label.tsx.html">label.tsx</a></li></ul></li><li class="tree-file"><a href="klar-web--src--components--ChatWindow.tsx.html">ChatWindow.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--CreatePostModal.tsx.html">CreatePostModal.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--EditedBadge.tsx.html">EditedBadge.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--EvidenceStatus.tsx.html">EvidenceStatus.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--Footer.tsx.html">Footer.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--LegalUpdateNotice.tsx.html">LegalUpdateNotice.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--NewChatModal.tsx.html">NewChatModal.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--PostCard.tsx.html">PostCard.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--PostModal.tsx.html">PostModal.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--PostView.tsx.html">PostView.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--ReportModal.tsx.html">ReportModal.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--ShareButton.tsx.html">ShareButton.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--SmartBackButton.tsx.html">SmartBackButton.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--TopNav.tsx.html">TopNav.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--UserListModal.tsx.html">UserListModal.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--VerifyEmailBanner.tsx.html">VerifyEmailBanner.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">hooks/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--hooks--use-notifications.ts.html">use-notifications.ts</a></li><li class="tree-file"><a href="klar-web--src--hooks--use-smart-back.ts.html">use-smart-back.ts</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">lib/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">server/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--lib--server--uptime.ts.html">uptime.ts</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">utils/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--lib--utils--media.ts.html">media.ts</a></li></ul></li><li class="tree-file"><a href="klar-web--src--lib--api.ts.html">api.ts</a></li><li class="tree-file"><a href="klar-web--src--lib--auth-context.tsx.html">auth-context.tsx</a></li><li class="tree-file"><a href="klar-web--src--lib--moderation.ts.html">moderation.ts</a></li><li class="tree-file"><a href="klar-web--src--lib--utils.ts.html">utils.ts</a></li></ul></li><li class="tree-file"><a href="klar-web--src--env.ts.html">env.ts</a></li><li class="tree-file"><a href="klar-web--src--instrumentation.ts.html">instrumentation.ts</a></li><li class="tree-file"><a href="klar-web--src--proxy.ts.html">proxy.ts</a></li></ul></li></ul></li></ul></nav>
+    <main class="main" id="main">
+      <section class="section source-page">
+        <p class="section__path">
+          <a href="../../index.html#projects" class="link">~/projects</a> /
+          <a href="../klar-stack.html" class="link">Klar-Stack</a> / source
+        </p>
+        <div class="source-page__head">
+          <h1 class="section__title">Klar/src/alerts.rs</h1>
+          <a href="../klar-stack.html" class="link">← Back to Klar</a>
+        </div>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">  1</span>
+<span class="normal">  2</span>
+<span class="normal">  3</span>
+<span class="normal">  4</span>
+<span class="normal">  5</span>
+<span class="normal">  6</span>
+<span class="normal">  7</span>
+<span class="normal">  8</span>
+<span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span>
+<span class="normal">245</span>
+<span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span>
+<span class="normal">250</span>
+<span class="normal">251</span>
+<span class="normal">252</span>
+<span class="normal">253</span>
+<span class="normal">254</span>
+<span class="normal">255</span>
+<span class="normal">256</span>
+<span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span>
+<span class="normal">262</span>
+<span class="normal">263</span>
+<span class="normal">264</span>
+<span class="normal">265</span>
+<span class="normal">266</span>
+<span class="normal">267</span>
+<span class="normal">268</span>
+<span class="normal">269</span>
+<span class="normal">270</span>
+<span class="normal">271</span>
+<span class="normal">272</span>
+<span class="normal">273</span>
+<span class="normal">274</span>
+<span class="normal">275</span>
+<span class="normal">276</span>
+<span class="normal">277</span>
+<span class="normal">278</span>
+<span class="normal">279</span>
+<span class="normal">280</span>
+<span class="normal">281</span>
+<span class="normal">282</span>
+<span class="normal">283</span>
+<span class="normal">284</span>
+<span class="normal">285</span></pre></div></td><td class="code"><div><pre><span></span><span class="sd">//! Alerts for admins, so nothing that needs a person waits until someone</span>
+<span class="sd">//! happens to open an admin page.</span>
+<span class="sd">//!</span>
+<span class="sd">//! - At once: a report that can't wait -- child sexual abuse material,</span>
+<span class="sd">//!   intimate images shared without consent, terrorism (a removal order for</span>
+<span class="sd">//!   terrorist content allows one hour, Regulation 2021/784) -- and a</span>
+<span class="sd">//!   removal the catalog says must be reported to the authorities (DSA</span>
+<span class="sd">//!   Art. 18: "promptly").</span>
+<span class="sd">//! - Once a day, from 06:00 UTC: how many reports, objections, rights</span>
+<span class="sd">//!   claims, held-back statements and overdue items are waiting.</span>
+<span class="sd">//!</span>
+<span class="sd">//! Emails go to every admin address (ADMIN_EMAILS) with a verified account.</span>
+<span class="sd">//! They carry counts and a link, never content or names: an email leaves our</span>
+<span class="sd">//! systems, the admin pages don't. Each alert is claimed in admin_alerts</span>
+<span class="sd">//! before it is sent, so replicas don't send the same one twice.</span>
+
+<span class="k">use</span><span class="w"> </span><span class="n">std</span><span class="p">::</span><span class="n">time</span><span class="p">::</span><span class="n">Duration</span><span class="p">;</span>
+
+<span class="k">use</span><span class="w"> </span><span class="n">chrono</span><span class="p">::{</span><span class="n">Timelike</span><span class="p">,</span><span class="w"> </span><span class="n">Utc</span><span class="p">};</span>
+<span class="k">use</span><span class="w"> </span><span class="n">serde</span><span class="p">::</span><span class="n">Serialize</span><span class="p">;</span>
+<span class="k">use</span><span class="w"> </span><span class="n">sqlx</span><span class="p">::</span><span class="n">PgPool</span><span class="p">;</span>
+<span class="k">use</span><span class="w"> </span><span class="n">uuid</span><span class="p">::</span><span class="n">Uuid</span><span class="p">;</span>
+
+<span class="k">use</span><span class="w"> </span><span class="k">crate</span><span class="p">::</span><span class="n">errors</span><span class="p">::</span><span class="n">AppError</span><span class="p">;</span>
+<span class="k">use</span><span class="w"> </span><span class="k">crate</span><span class="p">::</span><span class="n">handlers</span><span class="p">::</span><span class="n">auth</span><span class="p">::</span><span class="n">AppState</span><span class="p">;</span>
+<span class="k">use</span><span class="w"> </span><span class="k">crate</span><span class="p">::</span><span class="n">utils</span><span class="p">::{</span><span class="n">admin_emails</span><span class="p">,</span><span class="w"> </span><span class="n">DbResultExt</span><span class="p">};</span>
+
+<span class="sd">/// Report reasons an admin is alerted about at once.</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">is_urgent</span><span class="p">(</span><span class="n">reason</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="fm">matches!</span><span class="p">(</span><span class="n">reason</span><span class="p">,</span><span class="w"> </span><span class="s">"csam"</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s">"ncii"</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s">"terrorism"</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="k">pub</span><span class="w"> </span><span class="k">enum</span><span class="w"> </span><span class="nc">Alert</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="sd">/// A report for an urgent reason. One alert per item and reason.</span>
+<span class="w">    </span><span class="n">UrgentReport</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">target_type</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span><span class="w"> </span><span class="n">target_id</span><span class="p">:</span><span class="w"> </span><span class="nc">Uuid</span><span class="p">,</span><span class="w"> </span><span class="n">reason</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="sd">/// A removal classified as a violation that must be reported to the</span>
+<span class="w">    </span><span class="sd">/// authorities, with its evidence record if one exists.</span>
+<span class="w">    </span><span class="n">AuthorityReportRequired</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">target_type</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span><span class="w"> </span><span class="n">target_id</span><span class="p">:</span><span class="w"> </span><span class="nc">Uuid</span><span class="p">,</span><span class="w"> </span><span class="n">evidence_id</span><span class="p">:</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="n">Uuid</span><span class="o">&gt;</span><span class="w"> </span><span class="p">},</span>
+<span class="p">}</span>
+
+<span class="k">fn</span><span class="w"> </span><span class="nf">reason_de</span><span class="p">(</span><span class="n">reason</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="kp">&amp;</span><span class="o">'</span><span class="nb">static</span><span class="w"> </span><span class="kt">str</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">match</span><span class="w"> </span><span class="n">reason</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="s">"csam"</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">"Darstellung sexuellen Missbrauchs von Minderjährigen"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"ncii"</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">"intime Aufnahmen ohne Einwilligung"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"terrorism"</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">"Terrorismus oder Androhung schwerer Gewalt"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">_</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">"dringender Meldegrund"</span><span class="p">,</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="sd">/// Claims an alert in admin_alerts. False if it was sent before.</span>
+<span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">claim</span><span class="p">(</span><span class="n">db</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">PgPool</span><span class="p">,</span><span class="w"> </span><span class="n">kind</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="kt">bool</span><span class="p">,</span><span class="w"> </span><span class="n">AppError</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">sqlx</span><span class="p">::</span><span class="n">query</span><span class="p">(</span><span class="s">"INSERT INTO admin_alerts (kind, key) VALUES ($1, $2) ON CONFLICT DO NOTHING"</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="n">kind</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="n">db</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="k">await</span>
+<span class="w">        </span><span class="p">.</span><span class="n">db_err</span><span class="p">(</span><span class="s">"Database error"</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="n">map</span><span class="p">(</span><span class="o">|</span><span class="n">r</span><span class="o">|</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">rows_affected</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="sd">/// The verified accounts behind the ADMIN_EMAILS addresses.</span>
+<span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">recipients</span><span class="p">(</span><span class="n">db</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">PgPool</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="nb">Vec</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">AppError</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">sqlx</span><span class="p">::</span><span class="n">query_scalar</span><span class="p">::</span><span class="o">&lt;</span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="nb">String</span><span class="o">&gt;</span><span class="p">(</span><span class="s">"SELECT email FROM users WHERE email_verified AND LOWER(email) = ANY($1)"</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="n">admin_emails</span><span class="p">())</span>
+<span class="w">        </span><span class="p">.</span><span class="n">fetch_all</span><span class="p">(</span><span class="n">db</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="k">await</span>
+<span class="w">        </span><span class="p">.</span><span class="n">db_err</span><span class="p">(</span><span class="s">"Database error"</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="sd">/// Sends an alert to every admin, once. Runs after the commit of whatever</span>
+<span class="sd">/// raised it; failures are logged (the item is in the admin pages anyway).</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">send</span><span class="p">(</span><span class="n">state</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">AppState</span><span class="p">,</span><span class="w"> </span><span class="n">alert</span><span class="p">:</span><span class="w"> </span><span class="nc">Alert</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="p">(</span><span class="n">kind</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="n">subject</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="p">,</span><span class="w"> </span><span class="n">path</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">match</span><span class="w"> </span><span class="o">&amp;</span><span class="n">alert</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Alert</span><span class="p">::</span><span class="n">UrgentReport</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">target_type</span><span class="p">,</span><span class="w"> </span><span class="n">target_id</span><span class="p">,</span><span class="w"> </span><span class="n">reason</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">(</span>
+<span class="w">            </span><span class="s">"urgent_report"</span><span class="p">,</span>
+<span class="w">            </span><span class="fm">format!</span><span class="p">(</span><span class="s">"{target_type}:{target_id}:{reason}"</span><span class="p">),</span>
+<span class="w">            </span><span class="s">"Klar: dringende Meldung"</span><span class="p">,</span>
+<span class="w">            </span><span class="fm">format!</span><span class="p">(</span>
+<span class="w">                </span><span class="s">"Eine neue Meldung wegen „{}“ wartet auf Prüfung. Bitte sieh sie dir so bald wie möglich an."</span><span class="p">,</span>
+<span class="w">                </span><span class="n">reason_de</span><span class="p">(</span><span class="n">reason</span><span class="p">)</span>
+<span class="w">            </span><span class="p">),</span>
+<span class="w">            </span><span class="s">"/admin/reports"</span><span class="p">.</span><span class="n">to_string</span><span class="p">(),</span>
+<span class="w">        </span><span class="p">),</span>
+<span class="w">        </span><span class="n">Alert</span><span class="p">::</span><span class="n">AuthorityReportRequired</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">target_type</span><span class="p">,</span><span class="w"> </span><span class="n">target_id</span><span class="p">,</span><span class="w"> </span><span class="n">evidence_id</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">(</span>
+<span class="w">            </span><span class="s">"authority_report"</span><span class="p">,</span>
+<span class="w">            </span><span class="fm">format!</span><span class="p">(</span><span class="s">"{target_type}:{target_id}"</span><span class="p">),</span>
+<span class="w">            </span><span class="s">"Klar: Meldung an Behörden erforderlich"</span><span class="p">,</span>
+<span class="w">            </span><span class="s">"Ein entfernter Inhalt ist als Straftat eingestuft, die Leben oder Sicherheit von Menschen gefährdet. \</span>
+<span class="s">             Er muss unverzüglich den Strafverfolgungsbehörden gemeldet werden (Art. 18 DSA); trag die Meldung danach \</span>
+<span class="s">             im Beweismittel ein."</span>
+<span class="w">                </span><span class="p">.</span><span class="n">to_string</span><span class="p">(),</span>
+<span class="w">            </span><span class="n">evidence_id</span><span class="p">.</span><span class="n">map</span><span class="p">(</span><span class="o">|</span><span class="n">id</span><span class="o">|</span><span class="w"> </span><span class="fm">format!</span><span class="p">(</span><span class="s">"/admin/evidence/{id}"</span><span class="p">)).</span><span class="n">unwrap_or_else</span><span class="p">(</span><span class="o">||</span><span class="w"> </span><span class="s">"/admin/evidence"</span><span class="p">.</span><span class="n">to_string</span><span class="p">()),</span>
+<span class="w">        </span><span class="p">),</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">state</span><span class="p">.</span><span class="n">clone</span><span class="p">();</span>
+<span class="w">    </span><span class="n">tokio</span><span class="p">::</span><span class="n">spawn</span><span class="p">(</span><span class="k">async</span><span class="w"> </span><span class="k">move</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">match</span><span class="w"> </span><span class="n">claim</span><span class="p">(</span><span class="o">&amp;</span><span class="n">state</span><span class="p">.</span><span class="n">db</span><span class="p">,</span><span class="w"> </span><span class="n">kind</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">key</span><span class="p">).</span><span class="k">await</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nb">Ok</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">            </span><span class="nb">Ok</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="k">return</span><span class="p">,</span>
+<span class="w">            </span><span class="nb">Err</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">tracing</span><span class="p">::</span><span class="n">error</span><span class="o">!</span><span class="p">(</span><span class="s">"Admin alert {kind} {key}: claiming failed: {}"</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">message</span><span class="p">);</span>
+<span class="w">                </span><span class="k">return</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">deliver</span><span class="p">(</span><span class="o">&amp;</span><span class="n">state</span><span class="p">,</span><span class="w"> </span><span class="n">subject</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">message</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">path</span><span class="p">).</span><span class="k">await</span><span class="p">;</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="p">}</span>
+
+<span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">deliver</span><span class="p">(</span><span class="n">state</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">AppState</span><span class="p">,</span><span class="w"> </span><span class="n">subject</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">,</span><span class="w"> </span><span class="n">path</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">match</span><span class="w"> </span><span class="n">recipients</span><span class="p">(</span><span class="o">&amp;</span><span class="n">state</span><span class="p">.</span><span class="n">db</span><span class="p">).</span><span class="k">await</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nb">Ok</span><span class="p">(</span><span class="n">to</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">to</span><span class="p">,</span>
+<span class="w">        </span><span class="nb">Err</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">tracing</span><span class="p">::</span><span class="n">error</span><span class="o">!</span><span class="p">(</span><span class="s">"Admin alert: listing admins failed: {}"</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">message</span><span class="p">);</span>
+<span class="w">            </span><span class="k">return</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">to</span><span class="p">.</span><span class="n">is_empty</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">tracing</span><span class="p">::</span><span class="n">warn</span><span class="o">!</span><span class="p">(</span><span class="s">"Admin alert </span><span class="se">\"</span><span class="s">{subject}</span><span class="se">\"</span><span class="s"> not sent: no verified admin account"</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">email</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nb">Err</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">state</span><span class="p">.</span><span class="n">email</span><span class="p">.</span><span class="n">send_admin_alert</span><span class="p">(</span><span class="o">&amp;</span><span class="n">email</span><span class="p">,</span><span class="w"> </span><span class="n">subject</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="p">,</span><span class="w"> </span><span class="n">path</span><span class="p">).</span><span class="k">await</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">tracing</span><span class="p">::</span><span class="n">error</span><span class="o">!</span><span class="p">(</span><span class="s">"Admin alert </span><span class="se">\"</span><span class="s">{subject}</span><span class="se">\"</span><span class="s"> failed: {}"</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="mi">0</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="sd">/// What is waiting for an admin: the daily digest, and the badges on the</span>
+<span class="sd">/// admin entries in Settings.</span>
+<span class="cp">#[derive(Debug, Default, Serialize, sqlx::FromRow)]</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">Attention</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="sd">/// Items (posts, comments, messages, profiles) with pending reports.</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">reports</span><span class="p">:</span><span class="w"> </span><span class="kt">i64</span><span class="p">,</span>
+<span class="w">    </span><span class="sd">/// ... of which with an urgent reason.</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">urgent_reports</span><span class="p">:</span><span class="w"> </span><span class="kt">i64</span><span class="p">,</span>
+<span class="w">    </span><span class="sd">/// ... of which waiting for more than 30 days.</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">overdue_reports</span><span class="p">:</span><span class="w"> </span><span class="kt">i64</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">objections</span><span class="p">:</span><span class="w"> </span><span class="kt">i64</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">rights_claims</span><span class="p">:</span><span class="w"> </span><span class="kt">i64</span><span class="p">,</span>
+<span class="w">    </span><span class="sd">/// Statements held back (CSAM) until an admin sends them, and those</span>
+<span class="w">    </span><span class="sd">/// held for more than a week.</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">held_statements</span><span class="p">:</span><span class="w"> </span><span class="kt">i64</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">overdue_held_statements</span><span class="p">:</span><span class="w"> </span><span class="kt">i64</span><span class="p">,</span>
+<span class="w">    </span><span class="sd">/// Evidence undecided for more than 30 days.</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">overdue_evidence</span><span class="p">:</span><span class="w"> </span><span class="kt">i64</span><span class="p">,</span>
+<span class="w">    </span><span class="sd">/// Required reports to the authorities (Art. 18) not recorded yet.</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">authority_reports</span><span class="p">:</span><span class="w"> </span><span class="kt">i64</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="k">impl</span><span class="w"> </span><span class="n">Attention</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">total</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="kt">i64</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="bp">self</span><span class="p">.</span><span class="n">reports</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">objections</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">rights_claims</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">held_statements</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">overdue_evidence</span>
+<span class="w">            </span><span class="o">+</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">authority_reports</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">pub</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">attention</span><span class="p">(</span><span class="n">db</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">PgPool</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="n">Attention</span><span class="p">,</span><span class="w"> </span><span class="n">AppError</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">sqlx</span><span class="p">::</span><span class="n">query_as</span><span class="p">::</span><span class="o">&lt;</span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="n">Attention</span><span class="o">&gt;</span><span class="p">(</span>
+<span class="w">        </span><span class="s">r#"</span>
+<span class="s">        SELECT</span>
+<span class="s">            (SELECT COUNT(DISTINCT (target_type, target_id)) FROM reports WHERE status = 'pending') AS reports,</span>
+<span class="s">            (SELECT COUNT(DISTINCT (target_type, target_id)) FROM reports</span>
+<span class="s">             WHERE status = 'pending' AND reason IN ('csam', 'ncii', 'terrorism')) AS urgent_reports,</span>
+<span class="s">            (SELECT COUNT(DISTINCT (target_type, target_id)) FROM reports</span>
+<span class="s">             WHERE status = 'pending' AND created_at &lt; NOW() - INTERVAL '30 days') AS overdue_reports,</span>
+<span class="s">            (SELECT COUNT(*) FROM moderation_decisions WHERE objection_status = 'pending') AS objections,</span>
+<span class="s">            (SELECT COUNT(*) FROM rights_claims WHERE status IN ('submitted', 'triaged', 'evidence_requested')) AS rights_claims,</span>
+<span class="s">            (SELECT COUNT(*) FROM moderation_decisions</span>
+<span class="s">             WHERE delivered_at IS NULL AND affected_user_id IS NOT NULL AND lifted_at IS NULL AND superseded_by IS NULL)</span>
+<span class="s">                AS held_statements,</span>
+<span class="s">            (SELECT COUNT(*) FROM moderation_decisions</span>
+<span class="s">             WHERE delivered_at IS NULL AND affected_user_id IS NOT NULL AND lifted_at IS NULL AND superseded_by IS NULL</span>
+<span class="s">               AND created_at &lt; NOW() - INTERVAL '7 days') AS overdue_held_statements,</span>
+<span class="s">            (SELECT COUNT(*) FROM evidence_records</span>
+<span class="s">             WHERE decided_at IS NULL AND purged_at IS NULL AND created_at &lt; NOW() - INTERVAL '30 days') AS overdue_evidence,</span>
+<span class="s">            (SELECT COUNT(*) FROM evidence_records e</span>
+<span class="s">             WHERE e.purged_at IS NULL AND e.authority_report = 'required'</span>
+<span class="s">               AND NOT EXISTS (SELECT 1 FROM evidence_events ev WHERE ev.evidence_id = e.id AND ev.action = 'authority_report'))</span>
+<span class="s">                AS authority_reports</span>
+<span class="s">        "#</span><span class="p">,</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">fetch_one</span><span class="p">(</span><span class="n">db</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="k">await</span>
+<span class="w">    </span><span class="p">.</span><span class="n">db_err</span><span class="p">(</span><span class="s">"Database error"</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="sd">/// The digest's lines, only for what is non-zero.</span>
+<span class="k">fn</span><span class="w"> </span><span class="nf">digest_lines</span><span class="p">(</span><span class="n">a</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">Attention</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">lines</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Vec</span><span class="p">::</span><span class="n">new</span><span class="p">();</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">reports</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="fm">format!</span><span class="p">(</span><span class="s">"{} gemeldete Inhalte warten auf eine Entscheidung"</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">reports</span><span class="p">);</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">extra</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Vec</span><span class="p">::</span><span class="n">new</span><span class="p">();</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">urgent_reports</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">extra</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="fm">format!</span><span class="p">(</span><span class="s">"{} dringend"</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">urgent_reports</span><span class="p">));</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">overdue_reports</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">extra</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="fm">format!</span><span class="p">(</span><span class="s">"{} seit über 30 Tagen"</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">overdue_reports</span><span class="p">));</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="o">!</span><span class="n">extra</span><span class="p">.</span><span class="n">is_empty</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">line</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="fm">format!</span><span class="p">(</span><span class="s">"{line} ({})"</span><span class="p">,</span><span class="w"> </span><span class="n">extra</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="s">", "</span><span class="p">));</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">lines</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">line</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">objections</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">lines</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="fm">format!</span><span class="p">(</span><span class="s">"{} Widersprüche warten auf eine Antwort"</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">objections</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">rights_claims</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">lines</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="fm">format!</span><span class="p">(</span><span class="s">"{} Rechte-Meldungen sind offen"</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">rights_claims</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">held_statements</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">overdue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">overdue_held_statements</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="fm">format!</span><span class="p">(</span><span class="s">" ({} seit über einer Woche)"</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">overdue_held_statements</span><span class="p">)</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nb">String</span><span class="p">::</span><span class="n">new</span><span class="p">()</span>
+<span class="w">        </span><span class="p">};</span>
+<span class="w">        </span><span class="n">lines</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="fm">format!</span><span class="p">(</span><span class="s">"{} zurückgehaltene Begründungen sind noch nicht versandt{}"</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">held_statements</span><span class="p">,</span><span class="w"> </span><span class="n">overdue</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">overdue_evidence</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">lines</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="fm">format!</span><span class="p">(</span><span class="s">"{} Beweismittel sind seit über 30 Tagen unentschieden"</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">overdue_evidence</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">authority_reports</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">lines</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="fm">format!</span><span class="p">(</span><span class="s">"{} erforderliche Meldungen an Behörden sind noch nicht eingetragen"</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">authority_reports</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">lines</span>
+<span class="p">}</span>
+
+<span class="sd">/// Sends today's digest if it is due and anything is waiting.</span>
+<span class="k">pub</span><span class="p">(</span><span class="k">crate</span><span class="p">)</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">send_digest_if_due</span><span class="p">(</span><span class="n">state</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">AppState</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Utc</span><span class="p">::</span><span class="n">now</span><span class="p">();</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">now</span><span class="p">.</span><span class="n">hour</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">attention</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">match</span><span class="w"> </span><span class="n">attention</span><span class="p">(</span><span class="o">&amp;</span><span class="n">state</span><span class="p">.</span><span class="n">db</span><span class="p">).</span><span class="k">await</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nb">Ok</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">a</span><span class="p">,</span>
+<span class="w">        </span><span class="nb">Err</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">tracing</span><span class="p">::</span><span class="n">error</span><span class="o">!</span><span class="p">(</span><span class="s">"Admin digest: counting failed: {}"</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">message</span><span class="p">);</span>
+<span class="w">            </span><span class="k">return</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">lines</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">digest_lines</span><span class="p">(</span><span class="o">&amp;</span><span class="n">attention</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">lines</span><span class="p">.</span><span class="n">is_empty</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">match</span><span class="w"> </span><span class="n">claim</span><span class="p">(</span><span class="o">&amp;</span><span class="n">state</span><span class="p">.</span><span class="n">db</span><span class="p">,</span><span class="w"> </span><span class="s">"digest"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">now</span><span class="p">.</span><span class="n">date_naive</span><span class="p">().</span><span class="n">to_string</span><span class="p">()).</span><span class="k">await</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nb">Ok</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">        </span><span class="nb">Ok</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="k">return</span><span class="p">,</span>
+<span class="w">        </span><span class="nb">Err</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">tracing</span><span class="p">::</span><span class="n">error</span><span class="o">!</span><span class="p">(</span><span class="s">"Admin digest: claiming failed: {}"</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">message</span><span class="p">);</span>
+<span class="w">            </span><span class="k">return</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="fm">format!</span><span class="p">(</span><span class="s">"Stand heute:</span><span class="se">\n\n</span><span class="s">- {}"</span><span class="p">,</span><span class="w"> </span><span class="n">lines</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">- "</span><span class="p">));</span>
+<span class="w">    </span><span class="n">deliver</span><span class="p">(</span><span class="n">state</span><span class="p">,</span><span class="w"> </span><span class="s">"Klar: Was heute auf dich wartet"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">message</span><span class="p">,</span><span class="w"> </span><span class="s">"/admin/reports"</span><span class="p">).</span><span class="k">await</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="sd">/// Checks every 15 minutes whether the digest is due; also clears alert</span>
+<span class="sd">/// claims older than 30 days. Safe on every replica.</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">spawn</span><span class="p">(</span><span class="n">state</span><span class="p">:</span><span class="w"> </span><span class="nc">AppState</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">tokio</span><span class="p">::</span><span class="n">spawn</span><span class="p">(</span><span class="k">async</span><span class="w"> </span><span class="k">move</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">loop</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">send_digest_if_due</span><span class="p">(</span><span class="o">&amp;</span><span class="n">state</span><span class="p">).</span><span class="k">await</span><span class="p">;</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nb">Err</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sqlx</span><span class="p">::</span><span class="n">query</span><span class="p">(</span><span class="s">"DELETE FROM admin_alerts WHERE sent_at &lt; NOW() - INTERVAL '30 days'"</span><span class="p">)</span>
+<span class="w">                </span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">state</span><span class="p">.</span><span class="n">db</span><span class="p">)</span>
+<span class="w">                </span><span class="p">.</span><span class="k">await</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="n">tracing</span><span class="p">::</span><span class="n">error</span><span class="o">!</span><span class="p">(</span><span class="s">"Admin alert cleanup failed: {}"</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="n">tokio</span><span class="p">::</span><span class="n">time</span><span class="p">::</span><span class="n">sleep</span><span class="p">(</span><span class="n">Duration</span><span class="p">::</span><span class="n">from_secs</span><span class="p">(</span><span class="mi">15</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">60</span><span class="p">)).</span><span class="k">await</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="p">}</span>
+
+<span class="cp">#[cfg(test)]</span>
+<span class="k">mod</span><span class="w"> </span><span class="nn">tests</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">use</span><span class="w"> </span><span class="k">super</span><span class="p">::</span><span class="o">*</span><span class="p">;</span>
+
+<span class="w">    </span><span class="cp">#[test]</span>
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">digest_mentions_only_what_is_waiting</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="fm">assert!</span><span class="p">(</span><span class="n">digest_lines</span><span class="p">(</span><span class="o">&amp;</span><span class="n">Attention</span><span class="p">::</span><span class="n">default</span><span class="p">()).</span><span class="n">is_empty</span><span class="p">());</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Attention</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">reports</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="n">urgent_reports</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">objections</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="o">..</span><span class="nb">Default</span><span class="p">::</span><span class="n">default</span><span class="p">()</span><span class="w"> </span><span class="p">};</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">lines</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">digest_lines</span><span class="p">(</span><span class="o">&amp;</span><span class="n">a</span><span class="p">);</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">lines</span><span class="p">.</span><span class="n">len</span><span class="p">(),</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
+<span class="w">        </span><span class="fm">assert!</span><span class="p">(</span><span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">contains</span><span class="p">(</span><span class="s">"3 gemeldete Inhalte"</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">contains</span><span class="p">(</span><span class="s">"1 dringend"</span><span class="p">));</span>
+<span class="w">        </span><span class="fm">assert!</span><span class="p">(</span><span class="n">is_urgent</span><span class="p">(</span><span class="s">"csam"</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">is_urgent</span><span class="p">(</span><span class="s">"terrorism"</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="n">is_urgent</span><span class="p">(</span><span class="s">"spam"</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div></td></tr></table></div>
+
+      </section>
+    </main>
+  </div>
+</body>
+</html>
