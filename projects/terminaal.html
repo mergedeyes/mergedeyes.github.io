@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Terminaal — Jan</title>
-  <link rel="stylesheet" href="../styles.css?v=3751c79f" />
+  <link rel="stylesheet" href="../styles.css?v=d21a0e1b" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -44,8 +44,8 @@
         <div class="card__foot project-page__foot">
           <div class="card__links">
             <a href="https://github.com/mergedeyes/terminaal" class="link">Repository</a>
-            <a href="terminaal-source.html" class="link">Browse source (97 files)</a>
-            <a href="terminaal-commits.html" class="link">Commit history (36)</a>
+            <a href="terminaal-source.html" class="link">Browse source (109 files)</a>
+            <a href="terminaal-commits.html" class="link">Commit history (73)</a>
           </div>
           <span class="license-badge">GPL-3.0</span>
         </div>
@@ -132,7 +132,22 @@ connections, files and settings tabs. → <a href="https://github.com/mergedeyes
 <li><strong>Drop-down window</strong> (<code>terminaal --quake</code>) – drops down from the top of the
 screen and hides again, a real layer surface on COSMIC, KDE, Sway and
 Hyprland. → <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/drop-down-window.md">Drop-down window</a></li>
-<li>Bracketed paste, mouse selection that scrolls along, the mouse wheel in
+<li><strong>Images in the terminal</strong> – the kitty graphics protocol, for yazi's previews,
+<code>kitten icat</code>, chafa or timg, over SSH too. → <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/images.md">Images</a></li>
+<li><strong>Hints</strong> (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>H</kbd>) – links, paths, IP
+addresses and hashes on screen get a letter or two; type them to copy, open or
+insert that text. → <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/search-and-links.md#hints">Search, links and the scrollback</a></li>
+<li><strong>Keys as programs expect them</strong> – Alt, Ctrl and Shift with arrows, function
+and editing keys the xterm way, and the kitty keyboard protocol for programs
+that ask for it (fish 4, Neovim, Helix)</li>
+<li><strong>Vi mode</strong> (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Space</kbd>) – move through
+the scrollback with vi's keys, select with <code>v</code>/<code>V</code>/Ctrl+V, copy with <code>y</code>.
+→ <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/search-and-links.md#vi-mode">Search, links and the scrollback</a></li>
+<li><strong>Clipboard from programs (OSC 52)</strong> – vim or tmux, on a server too, copy into
+your clipboard; reading it asks first. Synchronized output (mode 2026) for
+flicker-free full-screen programs</li>
+<li>Bracketed paste, mouse selection that scrolls along (double-click a word,
+triple-click a line), a scrollbar that shows when needed, the mouse wheel in
 full-screen programs (<code>less</code>, <code>htop</code>, <code>vim</code>), a right-click menu, and a
 settings tab for every option</li>
 </ul>
@@ -204,6 +219,7 @@ services, log errors, open ports – tailored to the system of the active tab
 locally and over SSH</li>
 <li><strong>Snippets</strong> – your own commands as buttons, optionally only for one system or
 host, or run by themselves with every new shell or after an SSH login</li>
+<li>Middle-click any command button to run it in a new tab like the active one</li>
 </ul>
 <h3 class="heading-element" dir="auto">Keys</h3>
 <p dir="auto">→ <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/tutorials/02-keys-and-the-agent.md">Tutorial: keys and the agent</a></p>
@@ -227,7 +243,20 @@ Alacritty's format (its themes work as they are)</li>
 <li><strong>English and German</strong>, following your locale or set in the settings</li>
 </ul>
 <h2 class="heading-element" dir="auto">Installation</h2>
-<p dir="auto">Terminaal is built from source.</p>
+<p dir="auto"><strong>From a release</strong> (x86_64 Linux): download <code>terminaal-x86_64-linux.tar.gz</code> from
+the <a href="https://github.com/mergedeyes/terminaal/releases/latest">latest release</a>,
+unpack it and run the installer:</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="tar xzf terminaal-x86_64-linux.tar.gz
+cd terminaal-x86_64-linux
+./install.sh" dir="auto"><pre>tar xzf terminaal-x86_64-linux.tar.gz
+<span class="pl-c1">cd</span> terminaal-x86_64-linux
+./install.sh</pre></div>
+<p dir="auto">This puts Terminaal in <code>~/.local/bin/terminaal</code>, plus a desktop entry, icons and
+the man page under <code>~/.local/share</code>. It needs a GPU driver with Vulkan or OpenGL,
+and OpenSSL 3, zlib and libxkbcommon, which practically every desktop has. From
+then on Terminaal <strong>updates itself</strong>: it offers new releases at start
+(<a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/updates.md">Updates</a>).</p>
+<p dir="auto"><strong>From source</strong></p>
 <p dir="auto"><strong>Requirements</strong></p>
 <ul dir="auto">
 <li>Rust <strong>1.88</strong> or newer (<a href="https://rustup.rs/" rel="nofollow">rustup</a>)</li>
@@ -242,7 +271,7 @@ cd terminaal
 ./install.sh" dir="auto"><pre>git clone https://github.com/mergedeyes/terminaal terminaal
 <span class="pl-c1">cd</span> terminaal
 ./install.sh</pre></div>
-<p dir="auto">This installs a release build to <code>~/.cargo/bin/terminaal</code>, plus a desktop entry,
+<p dir="auto">This builds and installs <code>~/.cargo/bin/terminaal</code>, plus a desktop entry,
 icons and the man page (<code>man terminaal</code>) under <code>~/.local/share</code>, so Terminaal
 appears in your app launcher.</p>
 <markdown-accessiblity-table><table>
@@ -268,7 +297,9 @@ appears in your app launcher.</p>
 </tbody>
 </table></markdown-accessiblity-table>
 <p dir="auto">Run <code>./install.sh</code> again after updating the source – the launcher always starts
-the installed binary.</p>
+the installed binary. Installed from source, Terminaal still offers new releases;
+turn that off under Settings → General → Updates to stay on your own builds.</p>
+<p dir="auto">Making releases: <a href="https://github.com/mergedeyes/terminaal/blob/main/RELEASING.md">RELEASING.md</a>.</p>
 <p dir="auto"><strong>Just try it</strong></p>
 <div class="highlight highlight-source-shell notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="cargo run --release" dir="auto"><pre>cargo run --release</pre></div>
 <p dir="auto">New here? <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/getting-started.md">Getting started</a> walks through the window
@@ -349,6 +380,10 @@ and the first steps.</p>
 <td>Close the tab with all its panes</td>
 </tr>
 <tr>
+<td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>T</kbd></td>
+<td>Reopen the tab closed last</td>
+</tr>
+<tr>
 <td><kbd>Ctrl</kbd>+<kbd>Tab</kbd> / <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Tab</kbd></td>
 <td>Next / previous tab</td>
 </tr>
@@ -367,6 +402,10 @@ and the first steps.</p>
 <tr>
 <td><kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>←</kbd> <kbd>→</kbd> <kbd>↑</kbd> <kbd>↓</kbd></td>
 <td>Go to the pane in that direction</td>
+</tr>
+<tr>
+<td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>←</kbd> <kbd>→</kbd> <kbd>↑</kbd> <kbd>↓</kbd></td>
+<td>Move the divider of the pane that way</td>
 </tr>
 <tr>
 <td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Enter</kbd></td>
@@ -401,6 +440,10 @@ and the first steps.</p>
 <td>Copy the last command's output</td>
 </tr>
 <tr>
+<td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>H</kbd></td>
+<td>Hints: copy, open or insert a link, path, IP or hash by its letters</td>
+</tr>
+<tr>
 <td><kbd>Shift</kbd>+<kbd>PageUp</kbd> / <kbd>PageDown</kbd></td>
 <td>Scroll the scrollback a page up / down</td>
 </tr>
@@ -413,6 +456,10 @@ and the first steps.</p>
 <td>Search the scrollback</td>
 </tr>
 <tr>
+<td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Space</kbd></td>
+<td>Vi mode: select and copy in the scrollback with vi keys</td>
+</tr>
+<tr>
 <td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>↑</kbd> / <kbd>↓</kbd></td>
 <td>Previous / next prompt</td>
 </tr>
@@ -422,7 +469,7 @@ and the first steps.</p>
 </tr>
 </tbody>
 </table></markdown-accessiblity-table>
-<p dir="auto">"Paste and run" and "Watch for silence" have no default. In full-screen programs
+<p dir="auto">"Paste and run", "Watch for silence" and swapping panes have no default. In full-screen programs
 such as <code>less</code> or <code>vim</code>, the scrolling keys go to the program.</p>
 </details>
 <p dir="auto">Every shortcut can be changed, removed or given more key combinations – in the
@@ -505,19 +552,27 @@ line_height_factor = 1.25
 padding = 8.0                 # around the terminal grid
 scrollback_lines = 10000
 scroll_lines = 3.0            # lines per mouse-wheel notch
+scrollbar = true              # scrollbar at the right edge, shown when scrolling or on hover
 scroll_select_factor = 3.0    # wheel multiplier while marking text (1 = off)
+select_path_segments = false  # double-click marks one folder of a path, not all of it
 default_width = 1000.0        # window size at start
 default_height = 650.0
 cursor_blink = true
 cursor_blink_interval_ms = 600
+notifications = true          # desktop notifications at all
 notify_after_secs = 10        # notify when a command ran this long unseen (0: never)
 paste_warning = true          # ask before risky pastes (several lines, sudo, curl | sh, rm -rf)
+kitty_keyboard = true         # programs may switch on the kitty keyboard protocol
+clipboard_write = true        # programs may set the clipboard (OSC 52)
+images = true                 # programs may show images (kitty graphics protocol)
+clipboard_read = &quot;ask&quot;        # programs reading the clipboard: &quot;never&quot;, &quot;ask&quot; or &quot;always&quot;
 silence_secs = 15             # a terminal watched for silence is quiet after this long
 tab_bar = true
 sidebar = true                # show the sidebar at start
 sidebar_width = 300.0
 splash = true                 # start-up animation
 restore_session = true        # open last time's tabs again
+update_check = true           # offer new releases at start
 quake_height = 50.0           # drop-down window height, percent of the screen
 quake_hide_on_unfocus = true  # hide it when another window gets the keyboard
 # shell = &quot;/usr/bin/fish&quot;     # default shell for new tabs (default: $SHELL)
@@ -526,6 +581,8 @@ quake_hide_on_unfocus = true  # hide it when another window gets the keyboard
 # font_family = &quot;Hack&quot;        # console font (default: Noto Sans Mono)
 # ui_font_family = &quot;Inter&quot;    # font of menus and panels (default: built in)
 opacity = 1.0                 # below 1 the window is see-through (0.2–1.0)
+# ui_opacity = 0.85           # tab bar, sidebar, settings in a see-through window
+                              # (default: the theme's, else 0.85)
 blur = true                   # blur what's behind a see-through window
 commands_run = true           # command buttons run at once; off: typed into the prompt
 commands_assume_yes = false   # let them skip confirmations (-y, --noconfirm)
@@ -543,19 +600,27 @@ tab_9 = []                    # no shortcut" dir="auto"><pre><span class="pl-smi
 <span class="pl-smi">padding</span> = <span class="pl-c1">8.0</span>                 <span class="pl-c"><span class="pl-c">#</span> around the terminal grid</span>
 <span class="pl-smi">scrollback_lines</span> = <span class="pl-c1">10000</span>
 <span class="pl-smi">scroll_lines</span> = <span class="pl-c1">3.0</span>            <span class="pl-c"><span class="pl-c">#</span> lines per mouse-wheel notch</span>
+<span class="pl-smi">scrollbar</span> = <span class="pl-c1">true</span>              <span class="pl-c"><span class="pl-c">#</span> scrollbar at the right edge, shown when scrolling or on hover</span>
 <span class="pl-smi">scroll_select_factor</span> = <span class="pl-c1">3.0</span>    <span class="pl-c"><span class="pl-c">#</span> wheel multiplier while marking text (1 = off)</span>
+<span class="pl-smi">select_path_segments</span> = <span class="pl-c1">false</span>  <span class="pl-c"><span class="pl-c">#</span> double-click marks one folder of a path, not all of it</span>
 <span class="pl-smi">default_width</span> = <span class="pl-c1">1000.0</span>        <span class="pl-c"><span class="pl-c">#</span> window size at start</span>
 <span class="pl-smi">default_height</span> = <span class="pl-c1">650.0</span>
 <span class="pl-smi">cursor_blink</span> = <span class="pl-c1">true</span>
 <span class="pl-smi">cursor_blink_interval_ms</span> = <span class="pl-c1">600</span>
+<span class="pl-smi">notifications</span> = <span class="pl-c1">true</span>          <span class="pl-c"><span class="pl-c">#</span> desktop notifications at all</span>
 <span class="pl-smi">notify_after_secs</span> = <span class="pl-c1">10</span>        <span class="pl-c"><span class="pl-c">#</span> notify when a command ran this long unseen (0: never)</span>
 <span class="pl-smi">paste_warning</span> = <span class="pl-c1">true</span>          <span class="pl-c"><span class="pl-c">#</span> ask before risky pastes (several lines, sudo, curl | sh, rm -rf)</span>
+<span class="pl-smi">kitty_keyboard</span> = <span class="pl-c1">true</span>         <span class="pl-c"><span class="pl-c">#</span> programs may switch on the kitty keyboard protocol</span>
+<span class="pl-smi">clipboard_write</span> = <span class="pl-c1">true</span>        <span class="pl-c"><span class="pl-c">#</span> programs may set the clipboard (OSC 52)</span>
+<span class="pl-smi">images</span> = <span class="pl-c1">true</span>                 <span class="pl-c"><span class="pl-c">#</span> programs may show images (kitty graphics protocol)</span>
+<span class="pl-smi">clipboard_read</span> = <span class="pl-s"><span class="pl-pds">"</span>ask<span class="pl-pds">"</span></span>        <span class="pl-c"><span class="pl-c">#</span> programs reading the clipboard: "never", "ask" or "always"</span>
 <span class="pl-smi">silence_secs</span> = <span class="pl-c1">15</span>             <span class="pl-c"><span class="pl-c">#</span> a terminal watched for silence is quiet after this long</span>
 <span class="pl-smi">tab_bar</span> = <span class="pl-c1">true</span>
 <span class="pl-smi">sidebar</span> = <span class="pl-c1">true</span>                <span class="pl-c"><span class="pl-c">#</span> show the sidebar at start</span>
 <span class="pl-smi">sidebar_width</span> = <span class="pl-c1">300.0</span>
 <span class="pl-smi">splash</span> = <span class="pl-c1">true</span>                 <span class="pl-c"><span class="pl-c">#</span> start-up animation</span>
 <span class="pl-smi">restore_session</span> = <span class="pl-c1">true</span>        <span class="pl-c"><span class="pl-c">#</span> open last time's tabs again</span>
+<span class="pl-smi">update_check</span> = <span class="pl-c1">true</span>           <span class="pl-c"><span class="pl-c">#</span> offer new releases at start</span>
 <span class="pl-smi">quake_height</span> = <span class="pl-c1">50.0</span>           <span class="pl-c"><span class="pl-c">#</span> drop-down window height, percent of the screen</span>
 <span class="pl-smi">quake_hide_on_unfocus</span> = <span class="pl-c1">true</span>  <span class="pl-c"><span class="pl-c">#</span> hide it when another window gets the keyboard</span>
 <span class="pl-c"><span class="pl-c">#</span> shell = "/usr/bin/fish"     # default shell for new tabs (default: $SHELL)</span>
@@ -564,6 +629,8 @@ tab_9 = []                    # no shortcut" dir="auto"><pre><span class="pl-smi
 <span class="pl-c"><span class="pl-c">#</span> font_family = "Hack"        # console font (default: Noto Sans Mono)</span>
 <span class="pl-c"><span class="pl-c">#</span> ui_font_family = "Inter"    # font of menus and panels (default: built in)</span>
 <span class="pl-smi">opacity</span> = <span class="pl-c1">1.0</span>                 <span class="pl-c"><span class="pl-c">#</span> below 1 the window is see-through (0.2–1.0)</span>
+<span class="pl-c"><span class="pl-c">#</span> ui_opacity = 0.85           # tab bar, sidebar, settings in a see-through window</span>
+                              <span class="pl-c"><span class="pl-c">#</span> (default: the theme's, else 0.85)</span>
 <span class="pl-smi">blur</span> = <span class="pl-c1">true</span>                   <span class="pl-c"><span class="pl-c">#</span> blur what's behind a see-through window</span>
 <span class="pl-smi">commands_run</span> = <span class="pl-c1">true</span>           <span class="pl-c"><span class="pl-c">#</span> command buttons run at once; off: typed into the prompt</span>
 <span class="pl-smi">commands_assume_yes</span> = <span class="pl-c1">false</span>   <span class="pl-c"><span class="pl-c">#</span> let them skip confirmations (-y, --noconfirm)</span>
@@ -650,7 +717,6 @@ should be at a shell prompt</li>
 marks and the working directory only work if the remote shell sends them</li>
 <li>With broadcast on, the built-in command buttons send the line for the focused
 terminal's system to every terminal in the group</li>
-<li>Split panes are resized with the mouse only</li>
 <li>A restored session starts every terminal fresh: no scrollback, and SSH
 terminals log in again. Closing the last tab leaves nothing to restore – close
 the window to keep your tabs</li>
@@ -687,22 +753,22 @@ through sudo where needed</li>
 <li class="task-list-item"><input aria-label="Completed task" checked="" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> <code>terminaal -c</code>, <code>-s</code> and <code>--hold</code>, and a <code>terminaal(1)</code> man page</li>
 <li class="task-list-item"><input aria-label="Completed task" checked="" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Folder sync over SFTP – two-way or one-way, on opening or live in the background</li>
 <li class="task-list-item"><input aria-label="Completed task" checked="" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Selecting several files at once in the files tab</li>
+<li class="task-list-item"><input aria-label="Completed task" checked="" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Updates from the GitHub releases, offered at start and installed on request</li>
+<li class="task-list-item"><input aria-label="Completed task" checked="" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> A scrollbar for the scrollback</li>
+<li class="task-list-item"><input aria-label="Completed task" checked="" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> OSC 52: programs (also over SSH) may set the clipboard; reading it asks first</li>
+<li class="task-list-item"><input aria-label="Completed task" checked="" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Synchronized output (mode 2026)</li>
+<li class="task-list-item"><input aria-label="Completed task" checked="" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Keyboard hints: copy, open or insert URLs, paths, IPs and hashes on screen by a letter</li>
+<li class="task-list-item"><input aria-label="Completed task" checked="" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Kitty keyboard protocol, and modifiers on every key the xterm way</li>
+<li class="task-list-item"><input aria-label="Completed task" checked="" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Vi mode for selecting and copying in the scrollback</li>
+<li class="task-list-item"><input aria-label="Completed task" checked="" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Images in the terminal (kitty graphics protocol)</li>
+<li class="task-list-item"><input aria-label="Completed task" checked="" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Reopen a closed tab</li>
+<li class="task-list-item"><input aria-label="Completed task" checked="" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Resize and swap panes with the keyboard</li>
+<li class="task-list-item"><input aria-label="Completed task" checked="" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Search: number of matches, optional regex</li>
 </ul>
 </details>
 <p dir="auto"><strong>Everyday comfort</strong></p>
 <ul class="contains-task-list">
-<li class="task-list-item"><input aria-label="Incomplete task" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Reopen a closed tab</li>
-<li class="task-list-item"><input aria-label="Incomplete task" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Resize and swap panes with the keyboard</li>
-<li class="task-list-item"><input aria-label="Incomplete task" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Search: number of matches, optional regex</li>
-</ul>
-<p dir="auto"><strong>Terminal protocols</strong></p>
-<ul class="contains-task-list">
-<li class="task-list-item"><input aria-label="Incomplete task" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> OSC 52: programs (also over SSH) may set the clipboard, after asking</li>
-<li class="task-list-item"><input aria-label="Incomplete task" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Kitty keyboard protocol</li>
-<li class="task-list-item"><input aria-label="Incomplete task" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Synchronized output (mode 2026)</li>
-<li class="task-list-item"><input aria-label="Incomplete task" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Keyboard hints: pick URLs, paths, IPs and hashes on screen by a letter</li>
-<li class="task-list-item"><input aria-label="Incomplete task" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Vi mode for selecting and copying in the scrollback</li>
-<li class="task-list-item"><input aria-label="Incomplete task" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Images in the terminal (Kitty graphics protocol or Sixel)</li>
+<li class="task-list-item"><input aria-label="Incomplete task" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> An integrated title bar: window buttons in the tab bar instead of the desktop's title bar</li>
 </ul>
 <p dir="auto"><strong>SSH</strong></p>
 <ul class="contains-task-list">

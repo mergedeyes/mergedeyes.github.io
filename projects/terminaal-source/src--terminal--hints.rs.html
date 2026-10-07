@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>src/terminal/hints.rs — Terminaal — Jan</title>
+  <link rel="stylesheet" href="../../styles.css?v=d21a0e1b" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="layout">
+    <header class="rail" id="rail">
+<div class="rail__top">
+<a class="brand" href="../../index.html#top">
+<span class="brand__name">Jan</span>
+<span class="brand__meta">systems &amp; infrastructure<br/>Code, Code &amp; Code</span>
+</a>
+<button aria-controls="nav" aria-expanded="false" aria-label="Toggle menu" class="menu-toggle" id="menuToggle">
+<span></span><span></span><span></span>
+</button>
+</div>
+<nav aria-label="Sections" class="nav" id="nav">
+<a data-path="~/projects" href="../../index.html#projects">Projects</a>
+<a data-path="~/work" href="../../index.html#work">Work</a>
+<a data-path="~/education" href="../../index.html#education">Education</a>
+<a data-path="~/skills" href="../../index.html#skills">Skills</a>
+<a data-path="~/about" href="../../index.html#about">About Me</a>
+<a data-path="~/contact" href="../../index.html#contact">Contact</a>
+</nav>
+<div class="rail__status">
+<span aria-hidden="true" class="dot"></span>
+<span>open to work</span>
+</div>
+</header>
+    <nav class="file-tree"><p class="file-tree__title">Files</p><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">assets/</span><ul class="tree"><li class="tree-file"><a href="assets--terminaal.desktop.html">terminaal.desktop</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">docs/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">explanations/</span><ul class="tree"><li class="tree-file"><a href="docs--explanations--architecture.md.html">architecture.md</a></li><li class="tree-file"><a href="docs--explanations--prompt-marks.md.html">prompt-marks.md</a></li><li class="tree-file"><a href="docs--explanations--security-and-your-files.md.html">security-and-your-files.md</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">guides/</span><ul class="tree"><li class="tree-file"><a href="docs--guides--appearance.md.html">appearance.md</a></li><li class="tree-file"><a href="docs--guides--command-line.md.html">command-line.md</a></li><li class="tree-file"><a href="docs--guides--command-palette.md.html">command-palette.md</a></li><li class="tree-file"><a href="docs--guides--commands-and-snippets.md.html">commands-and-snippets.md</a></li><li class="tree-file"><a href="docs--guides--configuration.md.html">configuration.md</a></li><li class="tree-file"><a href="docs--guides--drop-down-window.md.html">drop-down-window.md</a></li><li class="tree-file"><a href="docs--guides--files-and-sftp.md.html">files-and-sftp.md</a></li><li class="tree-file"><a href="docs--guides--host-keys.md.html">host-keys.md</a></li><li class="tree-file"><a href="docs--guides--images.md.html">images.md</a></li><li class="tree-file"><a href="docs--guides--keyboard-shortcuts.md.html">keyboard-shortcuts.md</a></li><li class="tree-file"><a href="docs--guides--search-and-links.md.html">search-and-links.md</a></li><li class="tree-file"><a href="docs--guides--sessions.md.html">sessions.md</a></li><li class="tree-file"><a href="docs--guides--shell-integration.md.html">shell-integration.md</a></li><li class="tree-file"><a href="docs--guides--split-panes.md.html">split-panes.md</a></li><li class="tree-file"><a href="docs--guides--ssh-hosts.md.html">ssh-hosts.md</a></li><li class="tree-file"><a href="docs--guides--updates.md.html">updates.md</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">tutorials/</span><ul class="tree"><li class="tree-file"><a href="docs--tutorials--01-your-first-ssh-host.md.html">01-your-first-ssh-host.md</a></li><li class="tree-file"><a href="docs--tutorials--02-keys-and-the-agent.md.html">02-keys-and-the-agent.md</a></li><li class="tree-file"><a href="docs--tutorials--03-port-forwarding.md.html">03-port-forwarding.md</a></li><li class="tree-file"><a href="docs--tutorials--04-one-command-many-servers.md.html">04-one-command-many-servers.md</a></li><li class="tree-file"><a href="docs--tutorials--05-make-your-own-theme.md.html">05-make-your-own-theme.md</a></li></ul></li><li class="tree-file"><a href="docs--README.md.html">README.md</a></li><li class="tree-file"><a href="docs--getting-started.md.html">getting-started.md</a></li><li class="tree-file"><a href="docs--tips.md.html">tips.md</a></li><li class="tree-file"><a href="docs--troubleshooting.md.html">troubleshooting.md</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">locales/</span><ul class="tree"><li class="tree-file"><a href="locales--de.ftl.html">de.ftl</a></li><li class="tree-file"><a href="locales--en.ftl.html">en.ftl</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">src/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">input/</span><ul class="tree"><li class="tree-file"><a href="src--input--keyboard.rs.html">keyboard.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">quake/</span><ul class="tree"><li class="tree-file"><a href="src--quake--keys.rs.html">keys.rs</a></li><li class="tree-file"><a href="src--quake--layer.rs.html">layer.rs</a></li><li class="tree-file"><a href="src--quake--mod.rs.html">mod.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">render/</span><ul class="tree"><li class="tree-file"><a href="src--render--grid.rs.html">grid.rs</a></li><li class="tree-file"><a href="src--render--image.rs.html">image.rs</a></li><li class="tree-file"><a href="src--render--image.wgsl.html">image.wgsl</a></li><li class="tree-file"><a href="src--render--label.rs.html">label.rs</a></li><li class="tree-file"><a href="src--render--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="src--render--palette.rs.html">palette.rs</a></li><li class="tree-file"><a href="src--render--quad.rs.html">quad.rs</a></li><li class="tree-file"><a href="src--render--quad.wgsl.html">quad.wgsl</a></li><li class="tree-file"><a href="src--render--scrollbar.rs.html">scrollbar.rs</a></li><li class="tree-file"><a href="src--render--search_bar.rs.html">search_bar.rs</a></li><li class="tree-file"><a href="src--render--tab_bar.rs.html">tab_bar.rs</a></li><li class="tree-file"><a href="src--render--text.rs.html">text.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">sftp/</span><ul class="tree"><li class="tree-file"><a href="src--sftp--edit.rs.html">edit.rs</a></li><li class="tree-file"><a href="src--sftp--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="src--sftp--protocol.rs.html">protocol.rs</a></li><li class="tree-file"><a href="src--sftp--session.rs.html">session.rs</a></li><li class="tree-file"><a href="src--sftp--sync.rs.html">sync.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">shells/</span><ul class="tree"><li class="tree-file"><a href="src--shells--launch.rs.html">launch.rs</a></li><li class="tree-file"><a href="src--shells--managed.rs.html">managed.rs</a></li><li class="tree-file"><a href="src--shells--mod.rs.html">mod.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">ssh/</span><ul class="tree"><li class="tree-file"><a href="src--ssh--agent_forward.rs.html">agent_forward.rs</a></li><li class="tree-file"><a href="src--ssh--connection.rs.html">connection.rs</a></li><li class="tree-file"><a href="src--ssh--forward.rs.html">forward.rs</a></li><li class="tree-file"><a href="src--ssh--keys.rs.html">keys.rs</a></li><li class="tree-file"><a href="src--ssh--known_hosts.rs.html">known_hosts.rs</a></li><li class="tree-file"><a href="src--ssh--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="src--ssh--options.rs.html">options.rs</a></li><li class="tree-file"><a href="src--ssh--socks.rs.html">socks.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">terminal/</span><ul class="tree"><li class="tree-file"><a href="src--terminal--filtered_pty.rs.html">filtered_pty.rs</a></li><li class="tree-file"><a href="src--terminal--graphics.rs.html">graphics.rs</a></li><li class="tree-file tree-file--active"><a href="src--terminal--hints.rs.html">hints.rs</a></li><li class="tree-file"><a href="src--terminal--integration.rs.html">integration.rs</a></li><li class="tree-file"><a href="src--terminal--links.rs.html">links.rs</a></li><li class="tree-file"><a href="src--terminal--listener.rs.html">listener.rs</a></li><li class="tree-file"><a href="src--terminal--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="src--terminal--prompts.rs.html">prompts.rs</a></li><li class="tree-file"><a href="src--terminal--search.rs.html">search.rs</a></li><li class="tree-file"><a href="src--terminal--session.rs.html">session.rs</a></li><li class="tree-file"><a href="src--terminal--vi.rs.html">vi.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">theme/</span><ul class="tree"><li class="tree-file"><a href="src--theme--cosmic.rs.html">cosmic.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">ui/</span><ul class="tree"><li class="tree-file"><a href="src--ui--clipboard_request.rs.html">clipboard_request.rs</a></li><li class="tree-file"><a href="src--ui--command_palette.rs.html">command_palette.rs</a></li><li class="tree-file"><a href="src--ui--commands_panel.rs.html">commands_panel.rs</a></li><li class="tree-file"><a href="src--ui--context_menu.rs.html">context_menu.rs</a></li><li class="tree-file"><a href="src--ui--files_panel.rs.html">files_panel.rs</a></li><li class="tree-file"><a href="src--ui--keys_panel.rs.html">keys_panel.rs</a></li><li class="tree-file"><a href="src--ui--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="src--ui--paste_warning.rs.html">paste_warning.rs</a></li><li class="tree-file"><a href="src--ui--settings_panel.rs.html">settings_panel.rs</a></li><li class="tree-file"><a href="src--ui--sidebar.rs.html">sidebar.rs</a></li><li class="tree-file"><a href="src--ui--splash.rs.html">splash.rs</a></li><li class="tree-file"><a href="src--ui--ssh_panel.rs.html">ssh_panel.rs</a></li><li class="tree-file"><a href="src--ui--theme.rs.html">theme.rs</a></li><li class="tree-file"><a href="src--ui--update_dialog.rs.html">update_dialog.rs</a></li><li class="tree-file"><a href="src--ui--widgets.rs.html">widgets.rs</a></li></ul></li><li class="tree-file"><a href="src--app.rs.html">app.rs</a></li><li class="tree-file"><a href="src--blur.rs.html">blur.rs</a></li><li class="tree-file"><a href="src--commands.rs.html">commands.rs</a></li><li class="tree-file"><a href="src--config.rs.html">config.rs</a></li><li class="tree-file"><a href="src--gpu.rs.html">gpu.rs</a></li><li class="tree-file"><a href="src--i18n.rs.html">i18n.rs</a></li><li class="tree-file"><a href="src--input.rs.html">input.rs</a></li><li class="tree-file"><a href="src--main.rs.html">main.rs</a></li><li class="tree-file"><a href="src--panes.rs.html">panes.rs</a></li><li class="tree-file"><a href="src--session.rs.html">session.rs</a></li><li class="tree-file"><a href="src--shortcuts.rs.html">shortcuts.rs</a></li><li class="tree-file"><a href="src--snippets.rs.html">snippets.rs</a></li><li class="tree-file"><a href="src--theme.rs.html">theme.rs</a></li><li class="tree-file"><a href="src--update.rs.html">update.rs</a></li><li class="tree-file"><a href="src--window.rs.html">window.rs</a></li></ul></li><li class="tree-file"><a href="Cargo.lock.html">Cargo.lock</a></li><li class="tree-file"><a href="Cargo.toml.html">Cargo.toml</a></li><li class="tree-file"><a href="LICENSE.html">LICENSE</a></li><li class="tree-file"><a href="install.sh.html">install.sh</a></li></ul></nav>
+    <main class="main" id="main">
+      <section class="section source-page">
+        <p class="section__path">
+          <a href="../../index.html#projects" class="link">~/projects</a> /
+          <a href="../terminaal.html" class="link">terminaal</a> / source
+        </p>
+        <div class="source-page__head">
+          <h1 class="section__title">src/terminal/hints.rs</h1>
+          <a href="../terminaal.html" class="link">← Back to Terminaal</a>
+        </div>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">  1</span>
+<span class="normal">  2</span>
+<span class="normal">  3</span>
+<span class="normal">  4</span>
+<span class="normal">  5</span>
+<span class="normal">  6</span>
+<span class="normal">  7</span>
+<span class="normal">  8</span>
+<span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span>
+<span class="normal">245</span>
+<span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span>
+<span class="normal">250</span>
+<span class="normal">251</span>
+<span class="normal">252</span>
+<span class="normal">253</span>
+<span class="normal">254</span>
+<span class="normal">255</span>
+<span class="normal">256</span>
+<span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span>
+<span class="normal">262</span>
+<span class="normal">263</span>
+<span class="normal">264</span>
+<span class="normal">265</span>
+<span class="normal">266</span>
+<span class="normal">267</span>
+<span class="normal">268</span>
+<span class="normal">269</span>
+<span class="normal">270</span>
+<span class="normal">271</span>
+<span class="normal">272</span>
+<span class="normal">273</span>
+<span class="normal">274</span>
+<span class="normal">275</span>
+<span class="normal">276</span>
+<span class="normal">277</span>
+<span class="normal">278</span>
+<span class="normal">279</span>
+<span class="normal">280</span>
+<span class="normal">281</span>
+<span class="normal">282</span>
+<span class="normal">283</span>
+<span class="normal">284</span>
+<span class="normal">285</span>
+<span class="normal">286</span>
+<span class="normal">287</span>
+<span class="normal">288</span>
+<span class="normal">289</span>
+<span class="normal">290</span>
+<span class="normal">291</span>
+<span class="normal">292</span>
+<span class="normal">293</span>
+<span class="normal">294</span>
+<span class="normal">295</span>
+<span class="normal">296</span>
+<span class="normal">297</span>
+<span class="normal">298</span>
+<span class="normal">299</span>
+<span class="normal">300</span>
+<span class="normal">301</span>
+<span class="normal">302</span>
+<span class="normal">303</span>
+<span class="normal">304</span>
+<span class="normal">305</span>
+<span class="normal">306</span>
+<span class="normal">307</span>
+<span class="normal">308</span>
+<span class="normal">309</span>
+<span class="normal">310</span>
+<span class="normal">311</span>
+<span class="normal">312</span>
+<span class="normal">313</span>
+<span class="normal">314</span>
+<span class="normal">315</span>
+<span class="normal">316</span>
+<span class="normal">317</span>
+<span class="normal">318</span>
+<span class="normal">319</span>
+<span class="normal">320</span>
+<span class="normal">321</span>
+<span class="normal">322</span>
+<span class="normal">323</span>
+<span class="normal">324</span>
+<span class="normal">325</span>
+<span class="normal">326</span>
+<span class="normal">327</span>
+<span class="normal">328</span>
+<span class="normal">329</span>
+<span class="normal">330</span>
+<span class="normal">331</span>
+<span class="normal">332</span>
+<span class="normal">333</span>
+<span class="normal">334</span>
+<span class="normal">335</span>
+<span class="normal">336</span>
+<span class="normal">337</span>
+<span class="normal">338</span>
+<span class="normal">339</span>
+<span class="normal">340</span>
+<span class="normal">341</span>
+<span class="normal">342</span>
+<span class="normal">343</span>
+<span class="normal">344</span>
+<span class="normal">345</span>
+<span class="normal">346</span>
+<span class="normal">347</span>
+<span class="normal">348</span>
+<span class="normal">349</span>
+<span class="normal">350</span>
+<span class="normal">351</span>
+<span class="normal">352</span>
+<span class="normal">353</span>
+<span class="normal">354</span>
+<span class="normal">355</span>
+<span class="normal">356</span>
+<span class="normal">357</span>
+<span class="normal">358</span>
+<span class="normal">359</span>
+<span class="normal">360</span>
+<span class="normal">361</span>
+<span class="normal">362</span>
+<span class="normal">363</span>
+<span class="normal">364</span>
+<span class="normal">365</span>
+<span class="normal">366</span>
+<span class="normal">367</span>
+<span class="normal">368</span>
+<span class="normal">369</span>
+<span class="normal">370</span>
+<span class="normal">371</span>
+<span class="normal">372</span>
+<span class="normal">373</span>
+<span class="normal">374</span>
+<span class="normal">375</span>
+<span class="normal">376</span>
+<span class="normal">377</span></pre></div></td><td class="code"><div><pre><span></span><span class="sd">//! Keyboard hints: everything worth picking on the screen -- links,</span>
+<span class="sd">//! paths, IP addresses, hashes -- gets a label of a letter or two, and</span>
+<span class="sd">//! typing it copies, opens or inserts that text (`Action::Hints`).</span>
+<span class="sd">//!</span>
+<span class="sd">//! Found on the visible screen (wrapped lines included) in this order,</span>
+<span class="sd">//! later finds skipped where they overlap an earlier one:</span>
+<span class="sd">//! - hyperlinks the program set (OSC 8) and URLs, trimmed like Ctrl+click</span>
+<span class="sd">//!   links ([`super::links`]);</span>
+<span class="sd">//! - paths: absolute, `~/`, `./` or `../`, or any word naming a file or</span>
+<span class="sd">//!   folder that exists here (relative to the shell's working directory);</span>
+<span class="sd">//! - IPv4 and IPv6 addresses (valid ones: `12:30:45` isn't);</span>
+<span class="sd">//! - hashes and IDs: hex of 7 or more with a letter and a digit (git, docker),</span>
+<span class="sd">//!   UUIDs, MAC addresses.</span>
+<span class="sd">//!</span>
+<span class="sd">//! The labels go to the hints from the bottom of the screen up, so the</span>
+<span class="sd">//! newest output gets the home row's letters.</span>
+
+<span class="k">use</span><span class="w"> </span><span class="n">std</span><span class="p">::</span><span class="n">net</span><span class="p">::{</span><span class="n">Ipv4Addr</span><span class="p">,</span><span class="w"> </span><span class="n">Ipv6Addr</span><span class="p">};</span>
+<span class="k">use</span><span class="w"> </span><span class="n">std</span><span class="p">::</span><span class="n">ops</span><span class="p">::</span><span class="n">RangeInclusive</span><span class="p">;</span>
+<span class="k">use</span><span class="w"> </span><span class="n">std</span><span class="p">::</span><span class="n">path</span><span class="p">::{</span><span class="n">Path</span><span class="p">,</span><span class="w"> </span><span class="n">PathBuf</span><span class="p">};</span>
+
+<span class="k">use</span><span class="w"> </span><span class="n">alacritty_terminal</span><span class="p">::</span><span class="n">grid</span><span class="p">::</span><span class="n">Dimensions</span><span class="p">;</span>
+<span class="k">use</span><span class="w"> </span><span class="n">alacritty_terminal</span><span class="p">::</span><span class="n">index</span><span class="p">::{</span><span class="n">Boundary</span><span class="p">,</span><span class="w"> </span><span class="n">Column</span><span class="p">,</span><span class="w"> </span><span class="n">Direction</span><span class="p">,</span><span class="w"> </span><span class="n">Line</span><span class="p">,</span><span class="w"> </span><span class="n">Point</span><span class="p">};</span>
+<span class="k">use</span><span class="w"> </span><span class="n">alacritty_terminal</span><span class="p">::</span><span class="n">term</span><span class="p">::</span><span class="n">Term</span><span class="p">;</span>
+<span class="k">use</span><span class="w"> </span><span class="n">alacritty_terminal</span><span class="p">::</span><span class="n">term</span><span class="p">::</span><span class="n">search</span><span class="p">::{</span><span class="n">RegexIter</span><span class="p">,</span><span class="w"> </span><span class="n">RegexSearch</span><span class="p">};</span>
+
+<span class="k">use</span><span class="w"> </span><span class="k">super</span><span class="p">::</span><span class="n">links</span><span class="p">::{</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">Target</span><span class="p">};</span>
+
+<span class="sd">/// Label letters, the home row first. No y/z: they swap places between</span>
+<span class="sd">/// German and US layouts.</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">ALPHABET</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"fjdkslaghrueiwoqpcmvnbtx"</span><span class="p">;</span>
+
+<span class="k">const</span><span class="w"> </span><span class="n">IPV4</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"[0-9]{1,3}(</span><span class="se">\\</span><span class="s">.[0-9]{1,3}){3}"</span><span class="p">;</span>
+<span class="k">const</span><span class="w"> </span><span class="n">IPV6</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"[0-9a-fA-F]{0,4}(:[0-9a-fA-F]{0,4}){2,7}"</span><span class="p">;</span>
+<span class="k">const</span><span class="w"> </span><span class="n">HEX</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"[0-9a-f]{7,128}"</span><span class="p">;</span>
+<span class="k">const</span><span class="w"> </span><span class="n">UUID</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}"</span><span class="p">;</span>
+<span class="k">const</span><span class="w"> </span><span class="n">MAC</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}"</span><span class="p">;</span>
+
+<span class="sd">/// A find before it's labelled: cells, text, what opening it opens.</span>
+<span class="k">type</span><span class="w"> </span><span class="nc">Found</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">RangeInclusive</span><span class="o">&lt;</span><span class="n">Point</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="n">Target</span><span class="o">&gt;</span><span class="p">);</span>
+<span class="sd">/// A regex, whether its match is one (`valid`), and which characters</span>
+<span class="sd">/// mustn't stand right before or after it.</span>
+<span class="k">type</span><span class="w"> </span><span class="nc">Check</span><span class="o">&lt;'</span><span class="na">a</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="o">&amp;'</span><span class="na">a</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">RegexSearch</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;'</span><span class="na">a</span><span class="w"> </span><span class="k">dyn</span><span class="w"> </span><span class="nb">Fn</span><span class="p">(</span><span class="o">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="kt">bool</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;'</span><span class="na">a</span><span class="w"> </span><span class="k">dyn</span><span class="w"> </span><span class="nb">Fn</span><span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="kt">bool</span><span class="p">);</span>
+
+<span class="cp">#[derive(Clone, Debug, PartialEq, Eq)]</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">Hint</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="sd">/// The cells, first to last.</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">cells</span><span class="p">:</span><span class="w"> </span><span class="nc">RangeInclusive</span><span class="o">&lt;</span><span class="n">Point</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">text</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span>
+<span class="w">    </span><span class="sd">/// What opening it opens; `None`: there's nothing to open (an IP, a</span>
+<span class="w">    </span><span class="sd">/// hash, a path that isn't here), so it's copied instead.</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">target</span><span class="p">:</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="n">Target</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">label</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="sd">/// The regexes, built once.</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">Finder</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">url</span><span class="p">:</span><span class="w"> </span><span class="nc">RegexSearch</span><span class="p">,</span>
+<span class="w">    </span><span class="n">path</span><span class="p">:</span><span class="w"> </span><span class="nc">RegexSearch</span><span class="p">,</span>
+<span class="w">    </span><span class="n">ipv4</span><span class="p">:</span><span class="w"> </span><span class="nc">RegexSearch</span><span class="p">,</span>
+<span class="w">    </span><span class="n">ipv6</span><span class="p">:</span><span class="w"> </span><span class="nc">RegexSearch</span><span class="p">,</span>
+<span class="w">    </span><span class="n">hex</span><span class="p">:</span><span class="w"> </span><span class="nc">RegexSearch</span><span class="p">,</span>
+<span class="w">    </span><span class="n">uuid</span><span class="p">:</span><span class="w"> </span><span class="nc">RegexSearch</span><span class="p">,</span>
+<span class="w">    </span><span class="n">mac</span><span class="p">:</span><span class="w"> </span><span class="nc">RegexSearch</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="k">impl</span><span class="w"> </span><span class="nb">Default</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">Finder</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">default</span><span class="p">()</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">Self</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">regex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">|</span><span class="n">pattern</span><span class="o">|</span><span class="w"> </span><span class="n">RegexSearch</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="n">pattern</span><span class="p">).</span><span class="n">expect</span><span class="p">(</span><span class="s">"hint regex"</span><span class="p">);</span>
+<span class="w">        </span><span class="bp">Self</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">url</span><span class="p">:</span><span class="w"> </span><span class="nc">regex</span><span class="p">(</span><span class="n">links</span><span class="p">::</span><span class="n">URL</span><span class="p">),</span>
+<span class="w">            </span><span class="n">path</span><span class="p">:</span><span class="w"> </span><span class="nc">regex</span><span class="p">(</span><span class="n">links</span><span class="p">::</span><span class="n">PATH</span><span class="p">),</span>
+<span class="w">            </span><span class="n">ipv4</span><span class="p">:</span><span class="w"> </span><span class="nc">regex</span><span class="p">(</span><span class="n">IPV4</span><span class="p">),</span>
+<span class="w">            </span><span class="n">ipv6</span><span class="p">:</span><span class="w"> </span><span class="nc">regex</span><span class="p">(</span><span class="n">IPV6</span><span class="p">),</span>
+<span class="w">            </span><span class="n">hex</span><span class="p">:</span><span class="w"> </span><span class="nc">regex</span><span class="p">(</span><span class="n">HEX</span><span class="p">),</span>
+<span class="w">            </span><span class="n">uuid</span><span class="p">:</span><span class="w"> </span><span class="nc">regex</span><span class="p">(</span><span class="n">UUID</span><span class="p">),</span>
+<span class="w">            </span><span class="n">mac</span><span class="p">:</span><span class="w"> </span><span class="nc">regex</span><span class="p">(</span><span class="n">MAC</span><span class="p">),</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">impl</span><span class="w"> </span><span class="n">Finder</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="sd">/// The hints on `term`'s screen, top to bottom, labelled. Paths that</span>
+<span class="w">    </span><span class="sd">/// exist count only with `files` (over SSH they'd be the server's),</span>
+<span class="w">    </span><span class="sd">/// relative ones with the working directory `cwd`.</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">find</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">term</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">Term</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">files</span><span class="p">:</span><span class="w"> </span><span class="kt">bool</span><span class="p">,</span><span class="w"> </span><span class="n">cwd</span><span class="p">:</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;&amp;</span><span class="n">Path</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="n">Hint</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">offset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">term</span><span class="p">.</span><span class="n">grid</span><span class="p">().</span><span class="n">display_offset</span><span class="p">()</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="kt">i32</span><span class="p">;</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Point</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="n">Line</span><span class="p">(</span><span class="o">-</span><span class="n">offset</span><span class="p">),</span><span class="w"> </span><span class="n">Column</span><span class="p">(</span><span class="mi">0</span><span class="p">));</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Point</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="n">Line</span><span class="p">(</span><span class="n">term</span><span class="p">.</span><span class="n">screen_lines</span><span class="p">()</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="kt">i32</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">offset</span><span class="p">),</span><span class="w"> </span><span class="n">term</span><span class="p">.</span><span class="n">last_column</span><span class="p">());</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">found</span><span class="p">:</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="n">Found</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Vec</span><span class="p">::</span><span class="n">new</span><span class="p">();</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">free</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">|</span><span class="n">found</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="p">[</span><span class="n">Found</span><span class="p">],</span><span class="w"> </span><span class="n">cells</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">RangeInclusive</span><span class="o">&lt;</span><span class="n">Point</span><span class="o">&gt;|</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="o">!</span><span class="n">found</span><span class="p">.</span><span class="n">iter</span><span class="p">().</span><span class="n">any</span><span class="p">(</span><span class="o">|</span><span class="p">(</span><span class="n">other</span><span class="p">,</span><span class="w"> </span><span class="o">..</span><span class="p">)</span><span class="o">|</span><span class="w"> </span><span class="n">other</span><span class="p">.</span><span class="n">start</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">cells</span><span class="p">.</span><span class="n">end</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">cells</span><span class="p">.</span><span class="n">start</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">other</span><span class="p">.</span><span class="n">end</span><span class="p">())</span>
+<span class="w">        </span><span class="p">};</span>
+
+<span class="w">        </span><span class="c1">// Hyperlinks: the runs of cells carrying one.</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">point</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">start</span><span class="p">;</span>
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="n">point</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">link</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">links</span><span class="p">::</span><span class="n">hyperlink</span><span class="p">(</span><span class="n">term</span><span class="p">,</span><span class="w"> </span><span class="n">point</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="kd">let</span><span class="w"> </span><span class="n">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">link</span><span class="p">.</span><span class="n">cells</span><span class="p">.</span><span class="n">end</span><span class="p">().</span><span class="n">add</span><span class="p">(</span><span class="n">term</span><span class="p">,</span><span class="w"> </span><span class="n">Boundary</span><span class="p">::</span><span class="n">Grid</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="n">Target</span><span class="p">::</span><span class="n">Uri</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">link</span><span class="p">.</span><span class="n">target</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">found</span><span class="p">.</span><span class="n">push</span><span class="p">((</span><span class="n">link</span><span class="p">.</span><span class="n">cells</span><span class="p">.</span><span class="n">clone</span><span class="p">(),</span><span class="w"> </span><span class="n">uri</span><span class="p">.</span><span class="n">clone</span><span class="p">(),</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">link</span><span class="p">.</span><span class="n">target</span><span class="p">.</span><span class="n">clone</span><span class="p">())));</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="n">next</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">point</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="k">break</span><span class="p">;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">                </span><span class="n">point</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">next</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="kd">let</span><span class="w"> </span><span class="n">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">point</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">term</span><span class="p">,</span><span class="w"> </span><span class="n">Boundary</span><span class="p">::</span><span class="n">Grid</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="n">next</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">point</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="k">break</span><span class="p">;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">                </span><span class="n">point</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">next</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">cells</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">RegexIter</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="n">start</span><span class="p">,</span><span class="w"> </span><span class="n">end</span><span class="p">,</span><span class="w"> </span><span class="n">Direction</span><span class="p">::</span><span class="n">Right</span><span class="p">,</span><span class="w"> </span><span class="n">term</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">url</span><span class="p">).</span><span class="n">collect</span><span class="p">::</span><span class="o">&lt;</span><span class="nb">Vec</span><span class="o">&lt;</span><span class="n">_</span><span class="o">&gt;&gt;</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="p">(</span><span class="n">cells</span><span class="p">,</span><span class="w"> </span><span class="n">text</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">links</span><span class="p">::</span><span class="n">trim_url</span><span class="p">(</span><span class="n">term</span><span class="p">,</span><span class="w"> </span><span class="n">cells</span><span class="p">);</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="n">free</span><span class="p">(</span><span class="o">&amp;</span><span class="n">found</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">cells</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">found</span><span class="p">.</span><span class="n">push</span><span class="p">((</span><span class="n">cells</span><span class="p">,</span><span class="w"> </span><span class="n">text</span><span class="p">.</span><span class="n">clone</span><span class="p">(),</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">Target</span><span class="p">::</span><span class="n">Uri</span><span class="p">(</span><span class="n">text</span><span class="p">))));</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">cells</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">RegexIter</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="n">start</span><span class="p">,</span><span class="w"> </span><span class="n">end</span><span class="p">,</span><span class="w"> </span><span class="n">Direction</span><span class="p">::</span><span class="n">Right</span><span class="p">,</span><span class="w"> </span><span class="n">term</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">path</span><span class="p">).</span><span class="n">collect</span><span class="p">::</span><span class="o">&lt;</span><span class="nb">Vec</span><span class="o">&lt;</span><span class="n">_</span><span class="o">&gt;&gt;</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="p">(</span><span class="n">cells</span><span class="p">,</span><span class="w"> </span><span class="n">text</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trim_end</span><span class="p">(</span><span class="n">term</span><span class="p">,</span><span class="w"> </span><span class="n">cells</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="p">[</span><span class="sc">'.'</span><span class="p">,</span><span class="w"> </span><span class="sc">','</span><span class="p">]);</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="n">text</span><span class="p">.</span><span class="n">is_empty</span><span class="p">()</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">!</span><span class="n">free</span><span class="p">(</span><span class="o">&amp;</span><span class="n">found</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">cells</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">continue</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="n">here</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">files</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">links</span><span class="p">::</span><span class="n">resolve</span><span class="p">(</span><span class="o">&amp;</span><span class="n">text</span><span class="p">,</span><span class="w"> </span><span class="n">cwd</span><span class="p">)</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">None</span><span class="w"> </span><span class="p">};</span>
+<span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="n">looks_like_one</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s">"/"</span><span class="p">,</span><span class="w"> </span><span class="s">"~/"</span><span class="p">,</span><span class="w"> </span><span class="s">"./"</span><span class="p">,</span><span class="w"> </span><span class="s">"../"</span><span class="p">].</span><span class="n">iter</span><span class="p">().</span><span class="n">any</span><span class="p">(</span><span class="o">|</span><span class="n">prefix</span><span class="o">|</span><span class="w"> </span><span class="n">text</span><span class="p">.</span><span class="n">starts_with</span><span class="p">(</span><span class="n">prefix</span><span class="p">))</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">text</span><span class="p">.</span><span class="n">len</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="n">here</span><span class="p">.</span><span class="n">is_some</span><span class="p">()</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">looks_like_one</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">found</span><span class="p">.</span><span class="n">push</span><span class="p">((</span><span class="n">cells</span><span class="p">,</span><span class="w"> </span><span class="n">text</span><span class="p">,</span><span class="w"> </span><span class="n">here</span><span class="p">.</span><span class="n">map</span><span class="p">(</span><span class="n">Target</span><span class="p">::</span><span class="n">Path</span><span class="p">)));</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">word</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">|</span><span class="n">c</span><span class="p">:</span><span class="w"> </span><span class="kt">char</span><span class="o">|</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">is_alphanumeric</span><span class="p">()</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">'_'</span><span class="p">;</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">checks</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">Check</span><span class="p">;</span><span class="w"> </span><span class="mi">5</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="c1">// A version number like v1.2.3.4 isn't one.</span>
+<span class="w">            </span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">ipv4</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;|</span><span class="n">text</span><span class="o">|</span><span class="w"> </span><span class="n">text</span><span class="p">.</span><span class="n">parse</span><span class="p">::</span><span class="o">&lt;</span><span class="n">Ipv4Addr</span><span class="o">&gt;</span><span class="p">().</span><span class="n">is_ok</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;|</span><span class="n">c</span><span class="o">|</span><span class="w"> </span><span class="n">word</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">'.'</span><span class="p">),</span>
+<span class="w">            </span><span class="p">(</span>
+<span class="w">                </span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">ipv6</span><span class="p">,</span>
+<span class="w">                </span><span class="o">&amp;|</span><span class="n">text</span><span class="o">|</span><span class="w"> </span><span class="n">text</span><span class="p">.</span><span class="n">contains</span><span class="p">(</span><span class="o">|</span><span class="n">c</span><span class="p">:</span><span class="w"> </span><span class="kt">char</span><span class="o">|</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">is_ascii_hexdigit</span><span class="p">())</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">text</span><span class="p">.</span><span class="n">parse</span><span class="p">::</span><span class="o">&lt;</span><span class="n">Ipv6Addr</span><span class="o">&gt;</span><span class="p">().</span><span class="n">is_ok</span><span class="p">(),</span>
+<span class="w">                </span><span class="o">&amp;|</span><span class="n">c</span><span class="o">|</span><span class="w"> </span><span class="n">word</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">':'</span><span class="p">,</span>
+<span class="w">            </span><span class="p">),</span>
+<span class="w">            </span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">uuid</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;|</span><span class="n">_</span><span class="o">|</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;|</span><span class="n">c</span><span class="o">|</span><span class="w"> </span><span class="n">word</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">'-'</span><span class="p">),</span>
+<span class="w">            </span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">mac</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;|</span><span class="n">_</span><span class="o">|</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;|</span><span class="n">c</span><span class="o">|</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">is_ascii_hexdigit</span><span class="p">()</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">':'</span><span class="p">),</span>
+<span class="w">            </span><span class="p">(</span>
+<span class="w">                </span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">hex</span><span class="p">,</span>
+<span class="w">                </span><span class="o">&amp;|</span><span class="n">text</span><span class="o">|</span><span class="w"> </span><span class="n">text</span><span class="p">.</span><span class="n">contains</span><span class="p">(</span><span class="o">|</span><span class="n">c</span><span class="p">:</span><span class="w"> </span><span class="kt">char</span><span class="o">|</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">is_ascii_digit</span><span class="p">())</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">text</span><span class="p">.</span><span class="n">contains</span><span class="p">(</span><span class="o">|</span><span class="n">c</span><span class="p">:</span><span class="w"> </span><span class="kt">char</span><span class="o">|</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">is_ascii_lowercase</span><span class="p">()),</span>
+<span class="w">                </span><span class="o">&amp;</span><span class="n">word</span><span class="p">,</span>
+<span class="w">            </span><span class="p">),</span>
+<span class="w">        </span><span class="p">];</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">regex</span><span class="p">,</span><span class="w"> </span><span class="n">valid</span><span class="p">,</span><span class="w"> </span><span class="n">joins</span><span class="p">)</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">checks</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="n">cells</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">RegexIter</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="n">start</span><span class="p">,</span><span class="w"> </span><span class="n">end</span><span class="p">,</span><span class="w"> </span><span class="n">Direction</span><span class="p">::</span><span class="n">Right</span><span class="p">,</span><span class="w"> </span><span class="n">term</span><span class="p">,</span><span class="w"> </span><span class="n">regex</span><span class="p">).</span><span class="n">collect</span><span class="p">::</span><span class="o">&lt;</span><span class="nb">Vec</span><span class="o">&lt;</span><span class="n">_</span><span class="o">&gt;&gt;</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="kd">let</span><span class="w"> </span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">links</span><span class="p">::</span><span class="n">text_of</span><span class="p">(</span><span class="n">term</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">cells</span><span class="p">);</span>
+<span class="w">                </span><span class="kd">let</span><span class="w"> </span><span class="n">alone</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">!</span><span class="n">neighbour</span><span class="p">(</span><span class="n">term</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">cells</span><span class="p">.</span><span class="n">start</span><span class="p">(),</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">).</span><span class="n">is_some_and</span><span class="p">(</span><span class="n">joins</span><span class="p">)</span>
+<span class="w">                    </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="n">neighbour</span><span class="p">(</span><span class="n">term</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">cells</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="w"> </span><span class="mi">1</span><span class="p">).</span><span class="n">is_some_and</span><span class="p">(</span><span class="n">joins</span><span class="p">);</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="n">alone</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">valid</span><span class="p">(</span><span class="o">&amp;</span><span class="n">text</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">free</span><span class="p">(</span><span class="o">&amp;</span><span class="n">found</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">cells</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">found</span><span class="p">.</span><span class="n">push</span><span class="p">((</span><span class="n">cells</span><span class="p">,</span><span class="w"> </span><span class="n">text</span><span class="p">,</span><span class="w"> </span><span class="nb">None</span><span class="p">));</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="n">found</span><span class="p">.</span><span class="n">sort_by_key</span><span class="p">(</span><span class="o">|</span><span class="p">(</span><span class="n">cells</span><span class="p">,</span><span class="w"> </span><span class="o">..</span><span class="p">)</span><span class="o">|</span><span class="w"> </span><span class="o">*</span><span class="n">cells</span><span class="p">.</span><span class="n">start</span><span class="p">());</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">labels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">labels</span><span class="p">(</span><span class="n">found</span><span class="p">.</span><span class="n">len</span><span class="p">());</span>
+<span class="w">        </span><span class="c1">// The newest output, at the bottom, gets the first labels.</span>
+<span class="w">        </span><span class="n">found</span>
+<span class="w">            </span><span class="p">.</span><span class="n">into_iter</span><span class="p">()</span>
+<span class="w">            </span><span class="p">.</span><span class="n">rev</span><span class="p">()</span>
+<span class="w">            </span><span class="p">.</span><span class="n">zip</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="n">map</span><span class="p">(</span><span class="o">|</span><span class="p">((</span><span class="n">cells</span><span class="p">,</span><span class="w"> </span><span class="n">text</span><span class="p">,</span><span class="w"> </span><span class="n">target</span><span class="p">),</span><span class="w"> </span><span class="n">label</span><span class="p">)</span><span class="o">|</span><span class="w"> </span><span class="n">Hint</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">cells</span><span class="p">,</span><span class="w"> </span><span class="n">text</span><span class="p">,</span><span class="w"> </span><span class="n">target</span><span class="p">,</span><span class="w"> </span><span class="n">label</span><span class="w"> </span><span class="p">})</span>
+<span class="w">            </span><span class="p">.</span><span class="n">collect</span><span class="p">::</span><span class="o">&lt;</span><span class="nb">Vec</span><span class="o">&lt;</span><span class="n">_</span><span class="o">&gt;&gt;</span><span class="p">()</span>
+<span class="w">            </span><span class="p">.</span><span class="n">into_iter</span><span class="p">()</span>
+<span class="w">            </span><span class="p">.</span><span class="n">rev</span><span class="p">()</span>
+<span class="w">            </span><span class="p">.</span><span class="n">collect</span><span class="p">()</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="sd">/// The character `by` cells before (-1) or after (1) `point`, if there's</span>
+<span class="sd">/// a cell there.</span>
+<span class="k">fn</span><span class="w"> </span><span class="nf">neighbour</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">term</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">Term</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">point</span><span class="p">:</span><span class="w"> </span><span class="nc">Point</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="p">:</span><span class="w"> </span><span class="kt">i32</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">other</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">point</span><span class="p">.</span><span class="n">sub</span><span class="p">(</span><span class="n">term</span><span class="p">,</span><span class="w"> </span><span class="n">Boundary</span><span class="p">::</span><span class="n">Grid</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">point</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">term</span><span class="p">,</span><span class="w"> </span><span class="n">Boundary</span><span class="p">::</span><span class="n">Grid</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">};</span>
+<span class="w">    </span><span class="p">(</span><span class="n">other</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">point</span><span class="p">).</span><span class="n">then</span><span class="p">(</span><span class="o">||</span><span class="w"> </span><span class="n">term</span><span class="p">.</span><span class="n">grid</span><span class="p">()[</span><span class="n">other</span><span class="p">].</span><span class="n">c</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="sd">/// `cells` without the characters in `chars` at their end.</span>
+<span class="k">fn</span><span class="w"> </span><span class="nf">trim_end</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">term</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">Term</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">cells</span><span class="p">:</span><span class="w"> </span><span class="nc">RangeInclusive</span><span class="o">&lt;</span><span class="n">Point</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">chars</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="p">[</span><span class="kt">char</span><span class="p">])</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">RangeInclusive</span><span class="o">&lt;</span><span class="n">Point</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="nb">String</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">links</span><span class="p">::</span><span class="n">text_of</span><span class="p">(</span><span class="n">term</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">cells</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">cells</span><span class="p">.</span><span class="n">end</span><span class="p">();</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="n">text</span><span class="p">.</span><span class="n">len</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">text</span><span class="p">.</span><span class="n">ends_with</span><span class="p">(</span><span class="n">chars</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">*</span><span class="n">cells</span><span class="p">.</span><span class="n">start</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">text</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+<span class="w">        </span><span class="n">end</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">end</span><span class="p">.</span><span class="n">sub</span><span class="p">(</span><span class="n">term</span><span class="p">,</span><span class="w"> </span><span class="n">Boundary</span><span class="p">::</span><span class="n">Grid</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="p">(</span><span class="o">*</span><span class="n">cells</span><span class="p">.</span><span class="n">start</span><span class="p">()</span><span class="o">..=</span><span class="n">end</span><span class="p">,</span><span class="w"> </span><span class="n">text</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="sd">/// `count` labels, none the beginning of another: one letter each while</span>
+<span class="sd">/// the alphabet lasts, then all of two (or three) letters.</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">labels</span><span class="p">(</span><span class="n">count</span><span class="p">:</span><span class="w"> </span><span class="kt">usize</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">letters</span><span class="p">:</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ALPHABET</span><span class="p">.</span><span class="n">chars</span><span class="p">().</span><span class="n">collect</span><span class="p">();</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="n">letters</span><span class="p">.</span><span class="n">len</span><span class="p">().</span><span class="n">pow</span><span class="p">(</span><span class="n">length</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">length</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="p">(</span><span class="mi">0</span><span class="o">..</span><span class="n">count</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="n">map</span><span class="p">(</span><span class="o">|</span><span class="k">mut</span><span class="w"> </span><span class="n">n</span><span class="o">|</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="fm">vec!</span><span class="p">[</span><span class="n">letters</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span><span class="w"> </span><span class="n">length</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="kt">usize</span><span class="p">];</span>
+<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="n">slot</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">label</span><span class="p">.</span><span class="n">iter_mut</span><span class="p">().</span><span class="n">rev</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="o">*</span><span class="n">slot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">letters</span><span class="p">[</span><span class="n">n</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">letters</span><span class="p">.</span><span class="n">len</span><span class="p">()];</span>
+<span class="w">                </span><span class="n">n</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="n">letters</span><span class="p">.</span><span class="n">len</span><span class="p">();</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="n">label</span><span class="p">.</span><span class="n">into_iter</span><span class="p">().</span><span class="n">collect</span><span class="p">()</span>
+<span class="w">        </span><span class="p">})</span>
+<span class="w">        </span><span class="p">.</span><span class="n">collect</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="sd">/// What picking a hint does.</span>
+<span class="cp">#[derive(Clone, Copy, Debug, PartialEq, Eq)]</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">enum</span><span class="w"> </span><span class="nc">Pick</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nb">Copy</span><span class="p">,</span>
+<span class="w">    </span><span class="sd">/// Open the link or file; copy what can't be opened.</span>
+<span class="w">    </span><span class="n">Open</span><span class="p">,</span>
+<span class="w">    </span><span class="sd">/// Type it into the terminal.</span>
+<span class="w">    </span><span class="n">Insert</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="sd">/// Hint mode over one pane: its hints and the label typed so far.</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">Hints</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">pane</span><span class="p">:</span><span class="w"> </span><span class="kt">usize</span><span class="p">,</span>
+<span class="w">    </span><span class="sd">/// Paths may be its files (a local terminal), relative ones to `cwd`.</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">files</span><span class="p">:</span><span class="w"> </span><span class="kt">bool</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">cwd</span><span class="p">:</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="n">PathBuf</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">hints</span><span class="p">:</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="n">Hint</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">typed</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="k">impl</span><span class="w"> </span><span class="n">Hints</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">new</span><span class="p">(</span><span class="n">pane</span><span class="p">:</span><span class="w"> </span><span class="kt">usize</span><span class="p">,</span><span class="w"> </span><span class="n">files</span><span class="p">:</span><span class="w"> </span><span class="kt">bool</span><span class="p">,</span><span class="w"> </span><span class="n">cwd</span><span class="p">:</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="n">PathBuf</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">Self</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="bp">Self</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">pane</span><span class="p">,</span><span class="w"> </span><span class="n">files</span><span class="p">,</span><span class="w"> </span><span class="n">cwd</span><span class="p">,</span><span class="w"> </span><span class="n">hints</span><span class="p">:</span><span class="w"> </span><span class="nb">Vec</span><span class="p">::</span><span class="n">new</span><span class="p">(),</span><span class="w"> </span><span class="n">typed</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">::</span><span class="n">new</span><span class="p">()</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="sd">/// Take over what's on screen now. The same hints keep their labels</span>
+<span class="w">    </span><span class="sd">/// and what's typed; others start over.</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">hints</span><span class="p">:</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="n">Hint</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">same</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hints</span><span class="p">.</span><span class="n">len</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">hints</span><span class="p">.</span><span class="n">len</span><span class="p">()</span>
+<span class="w">            </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">hints</span><span class="p">.</span><span class="n">iter</span><span class="p">().</span><span class="n">zip</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">.</span><span class="n">hints</span><span class="p">).</span><span class="n">all</span><span class="p">(</span><span class="o">|</span><span class="p">(</span><span class="n">new</span><span class="p">,</span><span class="w"> </span><span class="n">old</span><span class="p">)</span><span class="o">|</span><span class="w"> </span><span class="n">new</span><span class="p">.</span><span class="n">cells</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">old</span><span class="p">.</span><span class="n">cells</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">new</span><span class="p">.</span><span class="n">text</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">old</span><span class="p">.</span><span class="n">text</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="o">!</span><span class="n">same</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="bp">self</span><span class="p">.</span><span class="n">hints</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hints</span><span class="p">;</span>
+<span class="w">            </span><span class="bp">self</span><span class="p">.</span><span class="n">typed</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="sd">/// The hints whose label starts with what's typed.</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">shown</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">impl</span><span class="w"> </span><span class="nb">Iterator</span><span class="o">&lt;</span><span class="n">Item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">Hint</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="bp">self</span><span class="p">.</span><span class="n">hints</span><span class="p">.</span><span class="n">iter</span><span class="p">().</span><span class="n">filter</span><span class="p">(</span><span class="o">|</span><span class="n">hint</span><span class="o">|</span><span class="w"> </span><span class="n">hint</span><span class="p">.</span><span class="n">label</span><span class="p">.</span><span class="n">starts_with</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">.</span><span class="n">typed</span><span class="p">))</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="sd">/// One more letter of a label. The hint it completes, if it does; a</span>
+<span class="w">    </span><span class="sd">/// letter no label goes on with is ignored.</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">push</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">letter</span><span class="p">:</span><span class="w"> </span><span class="kt">char</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;&amp;</span><span class="n">Hint</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="bp">self</span><span class="p">.</span><span class="n">typed</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">letter</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">shown</span><span class="p">().</span><span class="n">next</span><span class="p">().</span><span class="n">is_none</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="bp">self</span><span class="p">.</span><span class="n">typed</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">None</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="bp">self</span><span class="p">.</span><span class="n">hints</span><span class="p">.</span><span class="n">iter</span><span class="p">().</span><span class="n">find</span><span class="p">(</span><span class="o">|</span><span class="n">hint</span><span class="o">|</span><span class="w"> </span><span class="n">hint</span><span class="p">.</span><span class="n">label</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">typed</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">pop</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="bp">self</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="bp">self</span><span class="p">.</span><span class="n">typed</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cp">#[cfg(test)]</span>
+<span class="k">mod</span><span class="w"> </span><span class="nn">tests</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">use</span><span class="w"> </span><span class="n">alacritty_terminal</span><span class="p">::</span><span class="n">event</span><span class="p">::</span><span class="n">VoidListener</span><span class="p">;</span>
+<span class="w">    </span><span class="k">use</span><span class="w"> </span><span class="n">alacritty_terminal</span><span class="p">::</span><span class="n">term</span><span class="p">::</span><span class="n">Config</span><span class="p">;</span>
+<span class="w">    </span><span class="k">use</span><span class="w"> </span><span class="n">alacritty_terminal</span><span class="p">::</span><span class="n">vte</span><span class="p">::</span><span class="n">ansi</span><span class="p">::{</span><span class="n">Processor</span><span class="p">,</span><span class="w"> </span><span class="n">StdSyncHandler</span><span class="p">};</span>
+
+<span class="w">    </span><span class="k">use</span><span class="w"> </span><span class="k">super</span><span class="p">::</span><span class="o">*</span><span class="p">;</span>
+<span class="w">    </span><span class="k">use</span><span class="w"> </span><span class="k">crate</span><span class="p">::</span><span class="n">terminal</span><span class="p">::</span><span class="n">GridSize</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">term</span><span class="p">(</span><span class="n">output</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">,</span><span class="w"> </span><span class="n">columns</span><span class="p">:</span><span class="w"> </span><span class="kt">usize</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">Term</span><span class="o">&lt;</span><span class="n">VoidListener</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GridSize</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">columns</span><span class="p">,</span><span class="w"> </span><span class="n">screen_lines</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="p">};</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">term</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Term</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="n">Config</span><span class="p">::</span><span class="n">default</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="n">size</span><span class="p">,</span><span class="w"> </span><span class="n">VoidListener</span><span class="p">);</span>
+<span class="w">        </span><span class="n">Processor</span><span class="p">::</span><span class="o">&lt;</span><span class="n">StdSyncHandler</span><span class="o">&gt;</span><span class="p">::</span><span class="n">new</span><span class="p">().</span><span class="n">advance</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="n">term</span><span class="p">,</span><span class="w"> </span><span class="n">output</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="sc">'\n'</span><span class="p">,</span><span class="w"> </span><span class="s">"</span><span class="se">\r\n</span><span class="s">"</span><span class="p">).</span><span class="n">as_bytes</span><span class="p">());</span>
+<span class="w">        </span><span class="n">term</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">texts</span><span class="p">(</span><span class="n">hints</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="p">[</span><span class="n">Hint</span><span class="p">])</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;&amp;</span><span class="kt">str</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">hints</span><span class="p">.</span><span class="n">iter</span><span class="p">().</span><span class="n">map</span><span class="p">(</span><span class="o">|</span><span class="n">hint</span><span class="o">|</span><span class="w"> </span><span class="n">hint</span><span class="p">.</span><span class="n">text</span><span class="p">.</span><span class="n">as_str</span><span class="p">()).</span><span class="n">collect</span><span class="p">()</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cp">#[test]</span>
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">finds_what_is_worth_picking</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">term</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">term</span><span class="p">(</span>
+<span class="w">            </span><span class="s">"see https://example.com/x. and /etc/hosts.</span><span class="se">\n</span><span class="s">\</span>
+<span class="s">             inet 192.168.178.20/24 brd 192.168.178.255 fe80::1c2:3d4</span><span class="se">\n</span><span class="s">\</span>
+<span class="s">             commit 3f2a9c1e at 12:30:45 by deadbeef 1234567</span><span class="se">\n</span><span class="s">\</span>
+<span class="s">             id 123e4567-e89b-12d3-a456-426614174000 mac 0a:1b:2c:3d:4e:5f</span><span class="se">\n</span><span class="s">\</span>
+<span class="s">             999.1.1.1 v1.2.3.4x </span><span class="se">\x1b</span><span class="s">]8;;https://docs.rs</span><span class="se">\x07</span><span class="s">docs</span><span class="se">\x1b</span><span class="s">]8;;</span><span class="se">\x07</span><span class="s"> ~/x ./run a/b"</span><span class="p">,</span>
+<span class="w">            </span><span class="mi">80</span><span class="p">,</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">hints</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Finder</span><span class="p">::</span><span class="n">default</span><span class="p">().</span><span class="n">find</span><span class="p">(</span><span class="o">&amp;</span><span class="n">term</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="nb">None</span><span class="p">);</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span>
+<span class="w">            </span><span class="n">texts</span><span class="p">(</span><span class="o">&amp;</span><span class="n">hints</span><span class="p">),</span>
+<span class="w">            </span><span class="p">[</span>
+<span class="w">                </span><span class="s">"https://example.com/x"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"/etc/hosts"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"192.168.178.20"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"192.168.178.255"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"fe80::1c2:3d4"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"3f2a9c1e"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"123e4567-e89b-12d3-a456-426614174000"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"0a:1b:2c:3d:4e:5f"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"https://docs.rs"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"~/x"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"./run"</span><span class="p">,</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">hints</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">target</span><span class="p">,</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">Target</span><span class="p">::</span><span class="n">Uri</span><span class="p">(</span><span class="s">"https://example.com/x"</span><span class="p">.</span><span class="n">into</span><span class="p">())));</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">hints</span><span class="p">[</span><span class="mi">8</span><span class="p">].</span><span class="n">target</span><span class="p">,</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">Target</span><span class="p">::</span><span class="n">Uri</span><span class="p">(</span><span class="s">"https://docs.rs"</span><span class="p">.</span><span class="n">into</span><span class="p">())));</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">hints</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">target</span><span class="p">,</span><span class="w"> </span><span class="nb">None</span><span class="p">,</span><span class="w"> </span><span class="s">"files only where they're ours"</span><span class="p">);</span>
+<span class="w">        </span><span class="c1">// The bottom gets the first letters.</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">hints</span><span class="p">.</span><span class="n">last</span><span class="p">().</span><span class="n">unwrap</span><span class="p">().</span><span class="n">label</span><span class="p">,</span><span class="w"> </span><span class="s">"f"</span><span class="p">);</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">hints</span><span class="p">[</span><span class="n">hints</span><span class="p">.</span><span class="n">len</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2</span><span class="p">].</span><span class="n">label</span><span class="p">,</span><span class="w"> </span><span class="s">"j"</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cp">#[test]</span>
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">existing_files_open_and_wrapped_urls_count</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">dir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="p">::</span><span class="n">env</span><span class="p">::</span><span class="n">temp_dir</span><span class="p">().</span><span class="n">join</span><span class="p">(</span><span class="fm">format!</span><span class="p">(</span><span class="s">"terminaal-hints-{}"</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="p">::</span><span class="n">process</span><span class="p">::</span><span class="n">id</span><span class="p">()));</span>
+<span class="w">        </span><span class="n">std</span><span class="p">::</span><span class="n">fs</span><span class="p">::</span><span class="n">create_dir_all</span><span class="p">(</span><span class="n">dir</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="s">"src"</span><span class="p">)).</span><span class="n">unwrap</span><span class="p">();</span>
+<span class="w">        </span><span class="n">std</span><span class="p">::</span><span class="n">fs</span><span class="p">::</span><span class="n">write</span><span class="p">(</span><span class="n">dir</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="s">"src/main.rs"</span><span class="p">),</span><span class="w"> </span><span class="s">""</span><span class="p">).</span><span class="n">unwrap</span><span class="p">();</span>
+<span class="w">        </span><span class="c1">// 30 columns: the URL wraps onto the second row.</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">term</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">term</span><span class="p">(</span><span class="s">"xx https://example.com/a/very/long/path</span><span class="se">\n</span><span class="s">src/main.rs:12 gone.rs"</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">);</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">hints</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Finder</span><span class="p">::</span><span class="n">default</span><span class="p">().</span><span class="n">find</span><span class="p">(</span><span class="o">&amp;</span><span class="n">term</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="o">&amp;</span><span class="n">dir</span><span class="p">));</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">texts</span><span class="p">(</span><span class="o">&amp;</span><span class="n">hints</span><span class="p">),</span><span class="w"> </span><span class="p">[</span><span class="s">"https://example.com/a/very/long/path"</span><span class="p">,</span><span class="w"> </span><span class="s">"src/main.rs"</span><span class="p">]);</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">hints</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">target</span><span class="p">,</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">Target</span><span class="p">::</span><span class="n">Path</span><span class="p">(</span><span class="n">dir</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="s">"src/main.rs"</span><span class="p">))));</span>
+<span class="w">        </span><span class="n">std</span><span class="p">::</span><span class="n">fs</span><span class="p">::</span><span class="n">remove_dir_all</span><span class="p">(</span><span class="o">&amp;</span><span class="n">dir</span><span class="p">).</span><span class="n">unwrap</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cp">#[test]</span>
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">labels_are_never_the_start_of_another</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">labels</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="p">[</span><span class="s">"f"</span><span class="p">,</span><span class="w"> </span><span class="s">"j"</span><span class="p">,</span><span class="w"> </span><span class="s">"d"</span><span class="p">]);</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">many</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">labels</span><span class="p">(</span><span class="mi">30</span><span class="p">);</span>
+<span class="w">        </span><span class="fm">assert!</span><span class="p">(</span><span class="n">many</span><span class="p">.</span><span class="n">iter</span><span class="p">().</span><span class="n">all</span><span class="p">(</span><span class="o">|</span><span class="n">label</span><span class="o">|</span><span class="w"> </span><span class="n">label</span><span class="p">.</span><span class="n">len</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2</span><span class="p">));</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="o">&amp;</span><span class="n">many</span><span class="p">[</span><span class="o">..</span><span class="mi">3</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="s">"ff"</span><span class="p">,</span><span class="w"> </span><span class="s">"fj"</span><span class="p">,</span><span class="w"> </span><span class="s">"fd"</span><span class="p">]);</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">unique</span><span class="p">:</span><span class="w"> </span><span class="nc">std</span><span class="p">::</span><span class="n">collections</span><span class="p">::</span><span class="n">HashSet</span><span class="o">&lt;</span><span class="n">_</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">many</span><span class="p">.</span><span class="n">iter</span><span class="p">().</span><span class="n">collect</span><span class="p">();</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">unique</span><span class="p">.</span><span class="n">len</span><span class="p">(),</span><span class="w"> </span><span class="mi">30</span><span class="p">);</span>
+<span class="w">        </span><span class="fm">assert!</span><span class="p">(</span><span class="n">labels</span><span class="p">(</span><span class="n">ALPHABET</span><span class="p">.</span><span class="n">len</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">ALPHABET</span><span class="p">.</span><span class="n">len</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">).</span><span class="n">iter</span><span class="p">().</span><span class="n">all</span><span class="p">(</span><span class="o">|</span><span class="n">label</span><span class="o">|</span><span class="w"> </span><span class="n">label</span><span class="p">.</span><span class="n">len</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">3</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cp">#[test]</span>
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">typing_a_label</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">hint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">|</span><span class="n">label</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="o">|</span><span class="w"> </span><span class="n">Hint</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">cells</span><span class="p">:</span><span class="w"> </span><span class="nc">Point</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="n">Line</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="n">Column</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span><span class="o">..=</span><span class="n">Point</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="n">Line</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="n">Column</span><span class="p">(</span><span class="mi">1</span><span class="p">)),</span>
+<span class="w">            </span><span class="n">text</span><span class="p">:</span><span class="w"> </span><span class="nc">label</span><span class="p">.</span><span class="n">to_uppercase</span><span class="p">(),</span>
+<span class="w">            </span><span class="n">target</span><span class="p">:</span><span class="w"> </span><span class="nb">None</span><span class="p">,</span>
+<span class="w">            </span><span class="n">label</span><span class="p">:</span><span class="w"> </span><span class="nc">label</span><span class="p">.</span><span class="n">into</span><span class="p">(),</span>
+<span class="w">        </span><span class="p">};</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">hints</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Hints</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="nb">None</span><span class="p">);</span>
+<span class="w">        </span><span class="n">hints</span><span class="p">.</span><span class="n">update</span><span class="p">(</span><span class="fm">vec!</span><span class="p">[</span><span class="n">hint</span><span class="p">(</span><span class="s">"ff"</span><span class="p">),</span><span class="w"> </span><span class="n">hint</span><span class="p">(</span><span class="s">"fj"</span><span class="p">),</span><span class="w"> </span><span class="n">hint</span><span class="p">(</span><span class="s">"jf"</span><span class="p">)]);</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">hints</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="sc">'x'</span><span class="p">),</span><span class="w"> </span><span class="nb">None</span><span class="p">,</span><span class="w"> </span><span class="s">"no label goes on with it"</span><span class="p">);</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">hints</span><span class="p">.</span><span class="n">typed</span><span class="p">,</span><span class="w"> </span><span class="s">""</span><span class="p">);</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">hints</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="sc">'f'</span><span class="p">),</span><span class="w"> </span><span class="nb">None</span><span class="p">);</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">hints</span><span class="p">.</span><span class="n">shown</span><span class="p">().</span><span class="n">count</span><span class="p">(),</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">hints</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="sc">'j'</span><span class="p">).</span><span class="n">map</span><span class="p">(</span><span class="o">|</span><span class="n">hint</span><span class="o">|</span><span class="w"> </span><span class="n">hint</span><span class="p">.</span><span class="n">text</span><span class="p">.</span><span class="n">as_str</span><span class="p">()),</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="s">"FJ"</span><span class="p">));</span>
+<span class="w">        </span><span class="n">hints</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+<span class="w">        </span><span class="n">hints</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">hints</span><span class="p">.</span><span class="n">shown</span><span class="p">().</span><span class="n">count</span><span class="p">(),</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span>
+<span class="w">        </span><span class="c1">// The same hints keep what's typed; others start over.</span>
+<span class="w">        </span><span class="n">hints</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="sc">'j'</span><span class="p">);</span>
+<span class="w">        </span><span class="n">hints</span><span class="p">.</span><span class="n">update</span><span class="p">(</span><span class="fm">vec!</span><span class="p">[</span><span class="n">hint</span><span class="p">(</span><span class="s">"ff"</span><span class="p">),</span><span class="w"> </span><span class="n">hint</span><span class="p">(</span><span class="s">"fj"</span><span class="p">),</span><span class="w"> </span><span class="n">hint</span><span class="p">(</span><span class="s">"jf"</span><span class="p">)]);</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">hints</span><span class="p">.</span><span class="n">typed</span><span class="p">,</span><span class="w"> </span><span class="s">"j"</span><span class="p">);</span>
+<span class="w">        </span><span class="n">hints</span><span class="p">.</span><span class="n">update</span><span class="p">(</span><span class="fm">vec!</span><span class="p">[</span><span class="n">hint</span><span class="p">(</span><span class="s">"ff"</span><span class="p">)]);</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">hints</span><span class="p">.</span><span class="n">typed</span><span class="p">,</span><span class="w"> </span><span class="s">""</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div></td></tr></table></div>
+
+      </section>
+    </main>
+  </div>
+</body>
+</html>
