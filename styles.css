@@ -528,6 +528,10 @@ a:focus-visible, button:focus-visible {
 .readme-content h1:first-child,
 .readme-content h2:first-child,
 .readme-content h3:first-child { margin-top: 0; }
+/* README in-page #anchor targets (table of contents etc.) - a little air
+   above the heading it scrolls to; bumped under 900px to clear the sticky
+   top bar */
+.readme-content [id] { scroll-margin-top: 1.5rem; }
 .readme-content p { margin: 0 0 1rem; }
 .readme-content ul, .readme-content ol { margin: 0 0 1rem; padding-left: 1.4rem; }
 .readme-content li { margin-bottom: .35rem; }
@@ -814,6 +818,7 @@ a:focus-visible, button:focus-visible {
   }
   .rail__top { flex: 1; align-items: center; }
   .menu-toggle { display: flex; }
+  .readme-content [id] { scroll-margin-top: 6rem; }
 
   .nav {
     position: absolute;
