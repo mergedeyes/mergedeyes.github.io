@@ -14,6 +14,8 @@
 ## Projects
 
 - [Klar](https://mergedcloud.de/projects/klar-stack.html): A social media platform for the EU, built with Rust, TypeScript, Bash, and Docker.
+- [Terminaal](https://mergedcloud.de/projects/terminaal.html): A GPU-rendered terminal emulator for Linux with a built-in SSH manager, written in Rust, with English and German UI.
+- [Personal Website](https://mergedcloud.de/projects/mergedeyes.github.io.html): This site itself - plain HTML, CSS, and JavaScript, with Python scripts in GitHub Actions that generate the project pages and visitor stats.
 - [idea](https://mergedcloud.de/projects/idea.html): A command-line tool for capturing ideas, written in Rust.
 - [Subway Builder MapTools](https://mergedcloud.de/projects/subwaybuilder_maptools.html): A Python wrapper for building maps for Subway Builder, based on the DEPOT project.
 - [Yarn Calculator](https://mergedcloud.de/projects/yarncalculator.html): A Java app that calculates fiber composition across combined yarns.
