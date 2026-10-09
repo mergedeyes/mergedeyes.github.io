@@ -675,6 +675,64 @@ def render_tree_html(tree: dict, prefix: str, current_path: str, base: str) -> s
     return f'<ul class="tree">{"".join(items)}</ul>'
 
 
+# Every file in the source browser is its own static page, so clicking a
+# file in the tree is a full page load - and the tree's own scroll
+# container (.file-tree is overflow-y: auto, its own scrollbar separate
+# from the page's) always comes back scrolled to the very top. In a long
+# tree (Klar-Stack has 200+ files) that throws the visitor back to the
+# start after every click, with the file they just opened far out of
+# view. Browsers only restore the document's scroll position across
+# navigations, never an inner element's, so this has to be done by hand:
+#
+# - On click, remember the tree's scrollTop in sessionStorage, keyed per
+#   project (data-tree-key) so a position from one project's tree never
+#   leaks into another's. Read once and removed right away, so it only
+#   applies to the very next page load (the one that click caused) and
+#   not to some later visit from the project page.
+# - Without a saved position (deep link, reload, storage unavailable in
+#   a private window), fall back to scrolling the active file to the
+#   middle of the tree, but only if it isn't already visible - a file
+#   near the top shouldn't make the tree jump for nothing.
+#
+# The scroll offset is computed from getBoundingClientRect differences
+# rather than scrollIntoView(), since scrollIntoView() would also scroll
+# the page itself - on <=900px the tree is a static block above the code
+# (see styles.css), and the page jumping down to it on load would be its
+# own bug. It's inlined right after the <nav> (not in script.js, which
+# generated pages don't load) so it runs before the code below it is
+# parsed and the tree never visibly flashes at the top first; the
+# render-blocking stylesheet in <head> guarantees layout is ready by then.
+FILE_TREE_SCROLL_SCRIPT = """<script>
+(function () {
+  var tree = document.currentScript.previousElementSibling;
+  var key = "file-tree-scroll:" + tree.dataset.treeKey;
+  var saved = null;
+  try {
+    saved = sessionStorage.getItem(key);
+    sessionStorage.removeItem(key);
+  } catch (e) {}
+
+  if (saved !== null) {
+    tree.scrollTop = +saved;
+  } else {
+    var active = tree.querySelector(".tree-file--active");
+    if (active) {
+      var a = active.getBoundingClientRect();
+      var t = tree.getBoundingClientRect();
+      if (a.bottom > t.bottom) {
+        tree.scrollTop += a.top - t.top - (tree.clientHeight - a.height) / 2;
+      }
+    }
+  }
+
+  tree.addEventListener("click", function (e) {
+    if (!e.target.closest("a")) return;
+    try { sessionStorage.setItem(key, String(tree.scrollTop)); } catch (err) {}
+  });
+})();
+</script>"""
+
+
 PAGE_TEMPLATE = """<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -843,7 +901,10 @@ def render_source_file_page(project: dict, rail_html_for: dict, file_path: str, 
     tree_html = ""
     if tree is not None:
         rendered = render_tree_html(tree, "", file_path, base=tree_base)
-        tree_html = f'<nav class="file-tree"><p class="file-tree__title">Files</p>{rendered}</nav>'
+        tree_html = (
+            f'<nav class="file-tree" data-tree-key="{slug}"><p class="file-tree__title">Files</p>{rendered}</nav>'
+            + FILE_TREE_SCROLL_SCRIPT
+        )
 
     return SOURCE_PAGE_TEMPLATE.format(
         title=project["title"],
