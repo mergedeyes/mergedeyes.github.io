@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Klar — Jan</title>
-  <link rel="stylesheet" href="../styles.css?v=890737eb" />
+  <link rel="stylesheet" href="../styles.css?v=299a804f" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -55,19 +55,19 @@
           <span class="license-badge">AGPL-3.0</span>
         </div>
         <div class="readme-content">
-<h1 class="heading-element" dir="auto">Klar</h1>
+<h1 class="heading-element" dir="auto" id="klar">Klar</h1>
 <p dir="auto">Klar is a photo-sharing social network with a <strong>strictly chronological feed</strong>: no algorithm, no ranking, no ads, no tracking. It is built and run from Germany under EU law, and treats privacy and legal compliance as part of the product rather than an afterthought.</p>
 <p dir="auto">Klar is <strong>pre-launch</strong>. The live site (<a href="https://www.klarsocial.eu" rel="nofollow">klarsocial.eu</a>) sits behind a passcode while a small group of friends and family test it.</p>
 <p dir="auto"><strong>Contents:</strong> <a href="#principles">Principles</a> · <a href="#features">Features</a> · <a href="#safety-and-moderation">Safety and moderation</a> · <a href="#privacy-and-your-data">Privacy and your data</a> · <a href="#architecture">Architecture</a> · <a href="#development">Development</a> · <a href="#deployment">Deployment</a> · <a href="#not-built-yet">Not built yet</a> · <a href="#license">License</a></p>
-<h2 class="heading-element" dir="auto">Principles</h2>
+<h2 class="heading-element" dir="auto" id="principles">Principles</h2>
 <ul dir="auto">
 <li><strong>Chronological, always.</strong> The feed shows posts from people you follow, newest first. Nothing is boosted, hidden or reordered.</li>
 <li><strong>No ads, no tracking.</strong> Only the storage needed to keep you signed in; no analytics or advertising cookies.</li>
 <li><strong>Your data stays yours.</strong> Download everything in one ZIP, delete your account at any time, with no waiting period.</li>
 <li><strong>EU hosting.</strong> Servers, database and storage run in Germany (Bunny.net); email goes through an EU provider.</li>
 </ul>
-<h2 class="heading-element" dir="auto">Features</h2>
-<h3 class="heading-element" dir="auto">Posts and profiles</h3>
+<h2 class="heading-element" dir="auto" id="features">Features</h2>
+<h3 class="heading-element" dir="auto" id="posts-and-profiles">Posts and profiles</h3>
 <ul dir="auto">
 <li>Post a photo with a caption; location and camera data (EXIF) are stripped on upload.</li>
 <li>Edit captions, delete posts.</li>
@@ -75,30 +75,30 @@
 <li>Every post has its own page (<code>/posts/&lt;id&gt;</code>): opened from the app it appears over the feed, opened from a shared link it gets a full-screen layout.</li>
 <li>Share button on every post: the system share sheet on phones, "copy link" on desktop. Shared links show a preview (author, caption, image) in messengers, for public accounts only.</li>
 </ul>
-<h3 class="heading-element" dir="auto">Feeds and discovery</h3>
+<h3 class="heading-element" dir="auto" id="feeds-and-discovery">Feeds and discovery</h3>
 <ul dir="auto">
 <li><strong>Home feed:</strong> posts from people you follow, newest first.</li>
 <li><strong>Discovery:</strong> posts from across Klar.</li>
 <li><strong>Search</strong> for people by username or display name.</li>
 </ul>
-<h3 class="heading-element" dir="auto">People</h3>
+<h3 class="heading-element" dir="auto" id="people">People</h3>
 <ul dir="auto">
 <li>Follow and unfollow; followers and following lists.</li>
 <li><strong>Private accounts:</strong> posts are visible only to approved followers. Follow requests can be accepted from the notification, the requester's profile or a dedicated page.</li>
 <li>Block users: they can no longer follow you, like or comment.</li>
 </ul>
-<h3 class="heading-element" dir="auto">Conversation</h3>
+<h3 class="heading-element" dir="auto" id="conversation">Conversation</h3>
 <ul dir="auto">
 <li>Likes on posts and comments; threaded comments with replies and @mentions; edit and delete your own comments.</li>
 <li>Real-time notifications for likes, comments, follows and follow requests.</li>
 <li><strong>Direct messages</strong> between people who follow each other: replies, emoji reactions, read receipts, editing and deleting, all in real time.</li>
 </ul>
-<h3 class="heading-element" dir="auto">Accounts</h3>
+<h3 class="heading-element" dir="auto" id="accounts">Accounts</h3>
 <ul dir="auto">
 <li>Sign-up with email verification, password reset, password change (signs out other sessions).</li>
 <li>Usernames of 3–30 characters (letters, digits, underscores), case-insensitively unique, changeable every 14 days.</li>
 </ul>
-<h2 class="heading-element" dir="auto">Safety and moderation</h2>
+<h2 class="heading-element" dir="auto" id="safety-and-moderation">Safety and moderation</h2>
 <p dir="auto">Klar follows the EU Digital Services Act (DSA) for handling reports.</p>
 <ul dir="auto">
 <li><strong>Reporting:</strong> posts, comments and profiles can be reported for spam, harassment, hate speech, violence, self-harm, sexual content, child sexual abuse material (CSAM), impersonation or other reasons.</li>
@@ -109,7 +109,7 @@
 <li><strong>Rights claims:</strong> rightsholders can report copyright or other infringements through a public form, with or without an account, and follow their claim through a private link. An accepted claim hides the post and can be reversed by the uploader's objection.</li>
 <li><strong>Admin tools:</strong> a review queue for reports, rights claims, objections and preserved evidence; cases open for more than 30 days are flagged.</li>
 </ul>
-<h2 class="heading-element" dir="auto">Privacy and your data</h2>
+<h2 class="heading-element" dir="auto" id="privacy-and-your-data">Privacy and your data</h2>
 <ul dir="auto">
 <li><strong>Data export (GDPR Art. 15/20):</strong> a ZIP with everything Klar holds about you as JSON, plus your photos.</li>
 <li><strong>Account deletion:</strong> immediate. Your posts, comments, likes and messages go with it, including your messages in other people's chats.</li>
@@ -117,7 +117,7 @@
 <li><strong>Consent:</strong> accepting the terms at sign-up is required and recorded.</li>
 <li><strong>Sub-processors:</strong> Bunny.net (hosting, CDN, storage, database; Germany), Scaleway (email; EU), Upstash (real-time relay; US, standard contractual clauses).</li>
 </ul>
-<h2 class="heading-element" dir="auto">Architecture</h2>
+<h2 class="heading-element" dir="auto" id="architecture">Architecture</h2>
 <markdown-accessiblity-table><table>
 <thead>
 <tr>
@@ -175,7 +175,7 @@ docs/        manual-checks.md: what to test by hand before merging
 <p dir="auto"><strong>Evidence.</strong> A separate storage zone without a public URL; files encrypted with AES-256-GCM, the key only in the backend's environment; every access and change in an append-only audit log; an hourly sweeper retries copies and purges expired records.</p>
 <p dir="auto"><strong>Operations.</strong> Daily database backups to a private storage zone, caught up after missed slots, with dead-man's-switch alerting. Per-route rate limits, stricter on sign-in and public forms. Backend and frontend each ping their own healthchecks.io check every 5 minutes after checking themselves (database and Redis; the rendered <code>/welcome</code> page), so an outage alerts at once or after 10 minutes of silence (<code>UPTIME_HEALTHCHECK_URL</code>).</p>
 </details>
-<h2 class="heading-element" dir="auto">Development</h2>
+<h2 class="heading-element" dir="auto" id="development">Development</h2>
 <p dir="auto"><strong>You need:</strong> Rust (1.97, as in CI), Node.js 20, PostgreSQL, Redis and <a href="https://github.com/mailhog/MailHog">MailHog</a> running locally, and a <code>Klar/.env</code> (the variables are listed in <code>Klar/Dockerfile</code>; set <code>STORAGE_PROVIDER=local</code> to store files on disk).</p>
 <p dir="auto"><strong>Run everything:</strong></p>
 <div class="highlight highlight-source-shell notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="cd klar-web
@@ -196,9 +196,9 @@ DATABASE_URL=postgres://postgres:postgres@localhost:5432/postgres REDIS_URL=redi
 SQLX_OFFLINE=true cargo <span class="pl-c1">test</span> --features integration-tests integration_tests</pre></div>
 <p dir="auto"><strong>Browser tests</strong> (Playwright) cover the page layout, the post modal and page, sharing and link previews; CI runs them against a full stack on every pull request. See <a href="https://github.com/mergedeyes/Klar-Stack/blob/main/klar-web/e2e/README.md">klar-web/e2e</a> to run them locally.</p>
 <p dir="auto">After changing a <code>query!</code> macro, regenerate the offline cache with <code>cargo sqlx prepare</code>. For changes to how the app behaves, go through the matching sections of <a href="https://github.com/mergedeyes/Klar-Stack/blob/main/docs/manual-checks.md">docs/manual-checks.md</a>; the pull-request template asks for them.</p>
-<h2 class="heading-element" dir="auto">Deployment</h2>
+<h2 class="heading-element" dir="auto" id="deployment">Deployment</h2>
 <p dir="auto">Pushing to <code>main</code> builds Docker images for the backend and the frontend and deploys them to Bunny.net; a newer deploy cancels one still running. The backend's settings are environment variables declared in <code>Klar/Dockerfile</code> and filled in on Bunny. Besides the usual database, email, Redis and storage settings, the evidence store needs its own storage zone and an encryption key (<code>EVIDENCE_S3_STORAGE_*</code>, <code>EVIDENCE_ENCRYPTION_KEY</code>).</p>
-<h2 class="heading-element" dir="auto">Not built yet</h2>
+<h2 class="heading-element" dir="auto" id="not-built-yet">Not built yet</h2>
 <ul dir="auto">
 <li>Rights claims for comments and profiles (posts only for now); UrhDaG-specific obligations.</li>
 <li>Handling people who repeatedly file unfounded reports (DSA Art. 23); account suspension from the report queue.</li>
@@ -206,7 +206,7 @@ SQLX_OFFLINE=true cargo <span class="pl-c1">test</span> --features integration-t
 <li>End-to-end encryption for direct messages.</li>
 <li>A written guide for testers in the repo.</li>
 </ul>
-<h2 class="heading-element" dir="auto">License</h2>
+<h2 class="heading-element" dir="auto" id="license">License</h2>
 <p dir="auto"><a href="https://github.com/mergedeyes/Klar-Stack/blob/main/LICENSE">GNU Affero General Public License v3.0</a>.</p>
 
         </div>

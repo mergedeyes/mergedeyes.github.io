@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Terminaal — Jan</title>
-  <link rel="stylesheet" href="../styles.css?v=890737eb" />
+  <link rel="stylesheet" href="../styles.css?v=299a804f" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -53,7 +53,7 @@
 <p align="center" dir="auto">
 <a href="https://github.com/mergedeyes/terminaal/blob/main/assets/terminaal_logo.png" rel="noopener noreferrer" target="_blank"><img alt="Terminaal logo" src="https://raw.githubusercontent.com/mergedeyes/terminaal/main/assets/terminaal_logo.png" style="max-width: 100%;" width="160"/></a>
 </p>
-<h1 align="center" class="heading-element" dir="auto">Terminaal</h1>
+<h1 align="center" class="heading-element" dir="auto" id="terminaal">Terminaal</h1>
 <p align="center" dir="auto">
   A GPU-rendered terminal emulator for COSMIC with a built-in SSH manager.<br/>
   Written in Rust. English and German UI.
@@ -81,7 +81,7 @@ decisions, though – every feature was planned by me.</p>
 </div>
 <a href="https://github.com/user-attachments/assets/95a72250-0e38-4be0-86cd-d9cbce21ce06" rel="noopener noreferrer" target="_blank"><img alt="Terminaal with local and SSH tabs and the sidebar" class="js-gh-image-fallback" height="1082" src="https://github.com/user-attachments/assets/95a72250-0e38-4be0-86cd-d9cbce21ce06" style="max-width: 100%; height: auto; max-height: 1082px;; aspect-ratio: 2000 / 1082; background-color: var(--bgColor-muted); border-radius: 6px" width="2000"/></a>
 <a href="https://github.com/user-attachments/assets/5d820773-2745-474c-bb17-9327a6339164" rel="noopener noreferrer" target="_blank"><img alt="Terminaal with split panes" class="js-gh-image-fallback" height="1082" src="https://github.com/user-attachments/assets/5d820773-2745-474c-bb17-9327a6339164" style="max-width: 100%; height: auto; max-height: 1082px;; aspect-ratio: 2000 / 1082; background-color: var(--bgColor-muted); border-radius: 6px" width="2000"/></a>
-<h2 class="heading-element" dir="auto">Contents</h2>
+<h2 class="heading-element" dir="auto" id="contents">Contents</h2>
 <ul dir="auto">
 <li><a href="#highlights">Highlights</a></li>
 <li><a href="#features">Features</a>
@@ -97,7 +97,7 @@ decisions, though – every feature was planned by me.</p>
 <li><a href="#roadmap">Roadmap</a></li>
 <li><a href="#contributing">Contributing</a></li>
 </ul>
-<h2 class="heading-element" dir="auto">Highlights</h2>
+<h2 class="heading-element" dir="auto" id="highlights">Highlights</h2>
 <ul dir="auto">
 <li><strong>Fast and quiet:</strong> a custom wgpu renderer that redraws only when something changes</li>
 <li><strong>SSH manager built in:</strong> hosts, several logins per host, keys, jump hosts, port forwards, automatic reconnect</li>
@@ -107,8 +107,8 @@ decisions, though – every feature was planned by me.</p>
 <li><strong>Nothing secret on disk</strong>, and your own config files are never rewritten behind your back</li>
 <li><strong>Fits COSMIC:</strong> follows the desktop theme live, frosted see-through window, drop-down mode</li>
 </ul>
-<h2 class="heading-element" dir="auto">Features</h2>
-<h3 class="heading-element" dir="auto">Terminal</h3>
+<h2 class="heading-element" dir="auto" id="features">Features</h2>
+<h3 class="heading-element" dir="auto" id="terminal">Terminal</h3>
 <ul dir="auto">
 <li><strong>Tabs and split panes</strong> – local shells and SSH sessions side by side; drag
 tabs to reorder them, split a tab right or down, resize panes by dragging the
@@ -151,7 +151,7 @@ triple-click a line), a scrollbar that shows when needed, the mouse wheel in
 full-screen programs (<code>less</code>, <code>htop</code>, <code>vim</code>), a right-click menu, and a
 settings tab for every option</li>
 </ul>
-<h3 class="heading-element" dir="auto">Shell integration</h3>
+<h3 class="heading-element" dir="auto" id="shell-integration">Shell integration</h3>
 <p dir="auto">Set up by Terminaal itself for <strong>fish, bash and zsh</strong>; any shell that sends
 OSC 7 and OSC 133 works too, also over SSH. →
 <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/shell-integration.md">Shell integration</a></p>
@@ -164,7 +164,7 @@ run time (<code>4.2 s</code>)</li>
 <li>Copy the last command's output, or click a prompt to select a command with its output</li>
 <li>A desktop notification when a long command finishes in a tab you're not looking at</li>
 </ul>
-<h3 class="heading-element" dir="auto">SSH</h3>
+<h3 class="heading-element" dir="auto" id="ssh">SSH</h3>
 <p dir="auto">→ <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/ssh-hosts.md">SSH hosts</a> ·
 <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/tutorials/01-your-first-ssh-host.md">Tutorial: your first SSH host</a></p>
 <ul dir="auto">
@@ -187,7 +187,7 @@ fingerprints, and old entries can be removed from the sidebar. →
 <li>Prompts for host keys, passphrases and passwords appear <strong>inside the tab</strong>,
 like OpenSSH – nothing secret is stored</li>
 </ul>
-<h3 class="heading-element" dir="auto">Files on the server (SFTP)</h3>
+<h3 class="heading-element" dir="auto" id="files-on-the-server-sftp">Files on the server (SFTP)</h3>
 <p dir="auto"><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>O</kbd> in an SSH terminal opens its
 files tab, over the terminal's own connection. →
 <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/files-and-sftp.md">Files on a server</a></p>
@@ -205,7 +205,7 @@ checking (by SHA-256 on the server) that nobody changed it meanwhile</li>
 for the password as usual</li>
 <li>Transfers and saves wait out a dropped connection and carry on once it's back</li>
 </ul>
-<h3 class="heading-element" dir="auto">Shells and commands</h3>
+<h3 class="heading-element" dir="auto" id="shells-and-commands">Shells and commands</h3>
 <p dir="auto">→ <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/commands-and-snippets.md">Commands and snippets</a></p>
 <ul dir="auto">
 <li>Any shell from <code>/etc/shells</code> for a new tab, and a default one</li>
@@ -221,7 +221,7 @@ locally and over SSH</li>
 host, or run by themselves with every new shell or after an SSH login</li>
 <li>Middle-click any command button to run it in a new tab like the active one</li>
 </ul>
-<h3 class="heading-element" dir="auto">Keys</h3>
+<h3 class="heading-element" dir="auto" id="keys">Keys</h3>
 <p dir="auto">→ <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/tutorials/02-keys-and-the-agent.md">Tutorial: keys and the agent</a></p>
 <ul dir="auto">
 <li>Generate <strong>Ed25519</strong> keys (optionally with a passphrase), add existing key
@@ -229,7 +229,7 @@ files, or take over keys from your <strong>SSH agent</strong> (e.g. 1Password)</
 <li>Copy the public key with one click; renaming a key updates the hosts that use it</li>
 <li>Only keys generated in Terminaal can have their files deleted, and only after asking</li>
 </ul>
-<h3 class="heading-element" dir="auto">Look and feel</h3>
+<h3 class="heading-element" dir="auto" id="look-and-feel">Look and feel</h3>
 <p dir="auto">→ <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/appearance.md">Appearance</a> ·
 <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/tutorials/05-make-your-own-theme.md">Tutorial: your own theme</a></p>
 <ul dir="auto">
@@ -242,7 +242,7 @@ Alacritty's format (its themes work as they are)</li>
 <li><strong>Every keyboard shortcut configurable</strong>, several per action if you like</li>
 <li><strong>English and German</strong>, following your locale or set in the settings</li>
 </ul>
-<h2 class="heading-element" dir="auto">Installation</h2>
+<h2 class="heading-element" dir="auto" id="installation">Installation</h2>
 <p dir="auto"><strong>From a release</strong> (x86_64 Linux): download <code>terminaal-x86_64-linux.tar.gz</code> from
 the <a href="https://github.com/mergedeyes/terminaal/releases/latest">latest release</a>,
 unpack it and run the installer:</p>
@@ -304,8 +304,8 @@ turn that off under Settings → General → Updates to stay on your own builds.
 <div class="highlight highlight-source-shell notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="cargo run --release" dir="auto"><pre>cargo run --release</pre></div>
 <p dir="auto">New here? <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/getting-started.md">Getting started</a> walks through the window
 and the first steps.</p>
-<h2 class="heading-element" dir="auto">Getting around</h2>
-<h3 class="heading-element" dir="auto">Keyboard shortcuts</h3>
+<h2 class="heading-element" dir="auto" id="getting-around">Getting around</h2>
+<h3 class="heading-element" dir="auto" id="keyboard-shortcuts">Keyboard shortcuts</h3>
 <p dir="auto">The ones you'll use most:</p>
 <markdown-accessiblity-table><table>
 <thead>
@@ -475,7 +475,7 @@ such as <code>less</code> or <code>vim</code>, the scrolling keys go to the prog
 <p dir="auto">Every shortcut can be changed, removed or given more key combinations – in the
 settings tab under <strong>Shortcuts</strong> (click <strong>+</strong> and press the keys) or in
 <code>config.toml</code>. → <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/keyboard-shortcuts.md">Keyboard shortcuts</a></p>
-<h3 class="heading-element" dir="auto">Mouse</h3>
+<h3 class="heading-element" dir="auto" id="mouse">Mouse</h3>
 <ul dir="auto">
 <li><kbd>Ctrl</kbd>+click a link or file name to open it</li>
 <li>Middle-click a tab to close it; the ☰ button in the tab bar toggles the sidebar</li>
@@ -483,7 +483,7 @@ settings tab under <strong>Shortcuts</strong> (click <strong>+</strong> and pres
 (<kbd>Shift</kbd>+wheel scrolls Terminaal's scrollback even in full-screen programs)</li>
 <li>Right-click in a terminal for copy, paste, broadcast, splitting and the files tab</li>
 </ul>
-<h3 class="heading-element" dir="auto">Command line</h3>
+<h3 class="heading-element" dir="auto" id="command-line">Command line</h3>
 <div class="highlight highlight-source-shell notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="terminaal                              # a local shell
 terminaal --connect myserver           # connect to a saved or ~/.ssh/config host
 terminaal --connect admin@myserver     # ...using that host's login for &quot;admin&quot;
@@ -505,7 +505,7 @@ terminaal --quake                      <span class="pl-c"><span class="pl-c">#</
 terminaal --help                       <span class="pl-c"><span class="pl-c">#</span> all of it, and `man terminaal` for more</span></pre></div>
 <p dir="auto">With <code>--connect</code>, <code>-s</code> or <code>-c</code> the saved session is neither restored nor
 written. → <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/command-line.md">The command line</a></p>
-<h2 class="heading-element" dir="auto">Configuration</h2>
+<h2 class="heading-element" dir="auto" id="configuration">Configuration</h2>
 <p dir="auto">Everything is optional and can be set in the settings tab (<strong>⚙</strong> in the sidebar,
 or <kbd>Ctrl</kbd>+<kbd>,</kbd>). Behind it, everything lives in
 <code>~/.config/terminaal/</code> – plain TOML you may edit by hand. None of it holds
@@ -647,7 +647,7 @@ tab_9 = []                    # no shortcut" dir="auto"><pre><span class="pl-smi
 </details>
 <p dir="auto">→ The <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/configuration.md">configuration reference</a> documents every
 key of every file, including <code>hosts.toml</code> and <code>snippets.toml</code>.</p>
-<h2 class="heading-element" dir="auto">Documentation</h2>
+<h2 class="heading-element" dir="auto" id="documentation">Documentation</h2>
 <p dir="auto">The <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/README.md"><code>docs/</code></a> folder goes into detail:</p>
 <markdown-accessiblity-table><table>
 <thead>
@@ -675,7 +675,7 @@ key of every file, including <code>hosts.toml</code> and <code>snippets.toml</co
 </tr>
 </tbody>
 </table></markdown-accessiblity-table>
-<h2 class="heading-element" dir="auto">Known limitations</h2>
+<h2 class="heading-element" dir="auto" id="known-limitations">Known limitations</h2>
 <p dir="auto"><strong>Platform</strong></p>
 <ul dir="auto">
 <li>Linux only for now</li>
@@ -721,7 +721,7 @@ terminal's system to every terminal in the group</li>
 terminals log in again. Closing the last tab leaves nothing to restore – close
 the window to keep your tabs</li>
 </ul>
-<h2 class="heading-element" dir="auto">Roadmap</h2>
+<h2 class="heading-element" dir="auto" id="roadmap">Roadmap</h2>
 <details>
 <summary><b>Done</b></summary>
 <ul class="contains-task-list">
@@ -796,8 +796,8 @@ through sudo where needed</li>
 <li class="task-list-item"><input aria-label="Incomplete task" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Detach a tab into a window of its own</li>
 <li class="task-list-item"><input aria-label="Incomplete task" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Profiles: font, theme and environment per shell or host</li>
 </ul>
-<h2 class="heading-element" dir="auto">Contributing</h2>
-<h3 class="heading-element" dir="auto">Development</h3>
+<h2 class="heading-element" dir="auto" id="contributing">Contributing</h2>
+<h3 class="heading-element" dir="auto" id="development">Development</h3>
 <div class="highlight highlight-source-shell notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="cargo run                            # dev build
 cargo run -- --connect myserver      # pass arguments after --
 cargo test
@@ -812,7 +812,7 @@ RUST_LOG=terminaal=trace cargo run   <span class="pl-c"><span class="pl-c">#</sp
 <p dir="auto">Code comments are in English. User-facing text goes in <code>locales/*.ftl</code>, never
 inline in the code. The <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/explanations/architecture.md">architecture overview</a>
 explains how the pieces fit together.</p>
-<h3 class="heading-element" dir="auto">Translations</h3>
+<h3 class="heading-element" dir="auto" id="translations">Translations</h3>
 <p dir="auto">The texts live in <a href="https://github.com/mergedeyes/terminaal/blob/main/locales/"><code>locales/</code></a>, one <a href="https://projectfluent.org/fluent/guide/" rel="nofollow">Fluent</a>
 file per language, compiled into the binary. To improve a translation, edit the
 <code>.ftl</code> file; <code>cargo test</code> checks that every language has the same messages with

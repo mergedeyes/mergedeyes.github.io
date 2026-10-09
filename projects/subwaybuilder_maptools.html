@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Subway Builder MapTools - A wrapper for DEPOT — Jan</title>
-  <link rel="stylesheet" href="../styles.css?v=890737eb" />
+  <link rel="stylesheet" href="../styles.css?v=299a804f" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -48,15 +48,15 @@
           <span class="license-badge">GPL-3.0</span>
         </div>
         <div class="readme-content">
-<h1 class="heading-element" dir="auto">Custom DEPOT Map Tools written in Python</h1>
-<h3 class="heading-element" dir="auto">Valid as of v5.1.1</h3>
-<h1 class="heading-element" dir="auto">DISCLAIMER</h1>
+<h1 class="heading-element" dir="auto" id="custom-depot-map-tools-written-in-python">Custom DEPOT Map Tools written in Python</h1>
+<h3 class="heading-element" dir="auto" id="valid-as-of-v511">Valid as of v5.1.1</h3>
+<h1 class="heading-element" dir="auto" id="disclaimer">DISCLAIMER</h1>
 <ul dir="auto">
 <li>This is a wrapper for <a href="https://github.com/Subway-Builder-Modded/depot">depot</a>.</li>
 <li>BUILT FOR GERMANY, PLEASE MAKE SURE THAT OSM BUILDING TAGGING AND YOUR O/D MATRIX IS PRECISE!</li>
 </ul>
 <hr/>
-<h2 class="heading-element" dir="auto">Setting up .env file</h2>
+<h2 class="heading-element" dir="auto" id="setting-up-env-file">Setting up .env file</h2>
 <div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="# CITY_CODE, CITY_NAME, MAP_DESCRIPTION and MAP_CREATOR all have to change
 # per city/map - everything below that already has a working default baked
 # into the scripts, and only needs uncommenting/editing if your setup
@@ -135,15 +135,15 @@ GITHUB_TOKEN = "&lt;Github_Token_Classic&gt;"
 <li>The bounding box is no longer set in <code>.env</code> - it's looked up automatically per city and saved to <code>raw_map_files/CITY_CODE/CITY_CODE_MAP_DATA.json</code>. The first time you run a script for a city with no saved bbox yet, it'll prompt you to paste one in (e.g. copied from <a href="http://boundingbox.klokantech.com" rel="nofollow">boundingbox.klokantech.com</a>).</li>
 <li>Some city codes can be found <a href="https://archive.bresser.de/download/City_Codes/CityCodes_en_BRESSER_v082023a.pdf" rel="nofollow">here</a>.</li>
 </ul>
-<h2 class="heading-element" dir="auto">Usage</h2>
-<h3 class="heading-element" dir="auto">Generating a map</h3>
+<h2 class="heading-element" dir="auto" id="usage">Usage</h2>
+<h3 class="heading-element" dir="auto" id="generating-a-map">Generating a map</h3>
 <p dir="auto">This is handled by <code>build.py</code>, a thin wrapper around depot's own <code>depot.maps.MapGen</code> class - see depot's own <a href="https://github.com/Subway-Builder-Modded/depot/tree/main/examples/maps">examples/maps</a> (<code>HEL.py</code>/<code>LAXM.py</code>) for further <code>MapGen</code> configuration options and depot's README for the full <code>MapGen</code> parameter/method reference.</p>
 <div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="python build.py"><pre class="notranslate"><code>python build.py
 </code></pre></div>
-<h3 class="heading-element" dir="auto">Generating demand data</h3>
+<h3 class="heading-element" dir="auto" id="generating-demand-data">Generating demand data</h3>
 <p dir="auto">This is handled by <code>run_demand_pipeline.py</code>, wrapping two composable pipeline stages exposed by <code>generate_demand_qzm_local.py</code> behind a small <code>DemandGen</code> class (<code>demand_gen</code>, already constructed for <code>CITY_CODE</code> at the bottom of the file) - the same build.py/<code>MapGen</code>-style shape, just for demand instead of map geometry.</p>
 <p dir="auto">Job hubs and residential hubs are consolidated independently and never merge into each other - <code>RES_SIZE_RATIO</code>/<code>JOB_SIZE_RATIO</code> in <code>.env</code> (see above) control each side's hub size/count on its own. If commuters end up spread across too many small, scattered job destinations to plan a profitable line around, lower <code>JOB_SIZE_RATIO</code> to fold jobs into fewer, bigger hubs without changing residential granularity at all.</p>
-<h4 class="heading-element" dir="auto"><code>DemandGen</code> inputs</h4>
+<h4 class="heading-element" dir="auto" id="demandgen-inputs"><code>DemandGen</code> inputs</h4>
 <markdown-accessiblity-table><table>
 <thead>
 <tr>
@@ -166,7 +166,7 @@ GITHUB_TOKEN = "&lt;Github_Token_Classic&gt;"
 </tr>
 </tbody>
 </table></markdown-accessiblity-table>
-<h4 class="heading-element" dir="auto"><code>DemandGen</code> methods</h4>
+<h4 class="heading-element" dir="auto" id="demandgen-methods"><code>DemandGen</code> methods</h4>
 <markdown-accessiblity-table><table>
 <thead>
 <tr>
@@ -190,15 +190,15 @@ GITHUB_TOKEN = "&lt;Github_Token_Classic&gt;"
 python rerun_enrichment.py                    # DemandGen.run_enrich_only()"><pre class="notranslate"><code>python run_demand_pipeline.py                # DemandGen.run_all()
 python rerun_enrichment.py                    # DemandGen.run_enrich_only()
 </code></pre></div>
-<h2 class="heading-element" dir="auto">Running the scripts</h2>
-<h3 class="heading-element" dir="auto">Precautions</h3>
+<h2 class="heading-element" dir="auto" id="running-the-scripts">Running the scripts</h2>
+<h3 class="heading-element" dir="auto" id="precautions">Precautions</h3>
 <ol dir="auto">
 <li>Install <a href="https://github.com/Subway-Builder-Modded/depot">depot</a>.</li>
 <li>Run "pip install -r requirements.txt"</li>
 <li>Download a .osm.pbf file you want to use to extract the mapdata from <a href="https://download.geofabrik.de/index.html" rel="nofollow">Geofabrik</a>.</li>
 <li>Get your commuters data in the INSPIRE-Grid format. <a href="https://mobilithek.info/offers/767359761906577408" rel="nofollow">Germany</a></li>
 </ol>
-<h3 class="heading-element" dir="auto">Running the scripts</h3>
+<h3 class="heading-element" dir="auto" id="running-the-scripts-1">Running the scripts</h3>
 <ol dir="auto" start="5">
 <li>Get your initial map data with depot, running build.py (Check examples directory within depot (HEL.py/LAXM.py))</li>
 <li>Set <code>CITY_NAME</code>/<code>MAP_DESCRIPTION</code>/<code>MAP_CREATOR</code> in <code>.env</code> (see <a href="#setting-up-env-file">Setting up .env file</a> above) - required before this next step, since it now also writes <code>config.json</code> for you. Prepare the data, running run_demand_pipeline.py</li>
@@ -217,9 +217,9 @@ python rerun_enrichment.py                    # DemandGen.run_enrich_only()
 <li>Publish your map to Github manually, OR:</li>
 <li>Edit the parameters of publish.py and automatically publish your map to your Github-Repo, also generating a update.json for the SubwayBuilderModded Registry for your map automatically.</li>
 </ol>
-<h2 class="heading-element" dir="auto">Scripts overview</h2>
+<h2 class="heading-element" dir="auto" id="scripts-overview">Scripts overview</h2>
 <p dir="auto">Everything above walks through running these in order. Here's what each one actually does, for reference.</p>
-<h3 class="heading-element" dir="auto">Scripts you run directly</h3>
+<h3 class="heading-element" dir="auto" id="scripts-you-run-directly">Scripts you run directly</h3>
 <markdown-accessiblity-table><table>
 <thead>
 <tr>
@@ -254,7 +254,7 @@ python rerun_enrichment.py                    # DemandGen.run_enrich_only()
 </tr>
 </tbody>
 </table></markdown-accessiblity-table>
-<h3 class="heading-element" dir="auto">Supporting modules</h3>
+<h3 class="heading-element" dir="auto" id="supporting-modules">Supporting modules</h3>
 <p dir="auto">These aren't run directly - <code>run_demand_pipeline.py</code> and <code>generate_demand_qzm_local.py</code> import them.</p>
 <markdown-accessiblity-table><table>
 <thead>
