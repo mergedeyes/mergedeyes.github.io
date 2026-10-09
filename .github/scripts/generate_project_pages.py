@@ -74,6 +74,11 @@ SITE_ROOT = Path.cwd()
 INDEX_HTML = SITE_ROOT / "index.html"
 PROJECTS_DIR = SITE_ROOT / "projects"
 CACHE_PATH = SITE_ROOT / ".github" / "data" / "project-pages-cache.json"
+# Bump whenever clean_readme_html's output changes shape, so READMEs reused
+# out of already-published pages (see extract_readme_html) get re-fetched
+# once and pick the change up, instead of waiting for each repo's next push.
+# 2: headings keep their ids (in-page #anchor links work)
+README_FORMAT = 2
 
 GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN", "")
 # GITHUB_SHA is set automatically by every GitHub Actions run (no wiring
@@ -555,15 +560,35 @@ def clean_readme_html(raw_html: str, owner: str, repo: str, branch: str) -> str:
         a["href"] = fix_readme_url(a["href"], blob_base)
 
     # Unwrap heading-permalink wrappers: <div class="markdown-heading">
-    # <h2>Text</h2><a class="anchor">...</a></div> -> just <h2>Text</h2>
+    # <h2>Text</h2><a class="anchor" id="user-content-text" href="#text">
+    # ...</a></div> -> just <h2 id="text">Text</h2>. The permalink <a> is
+    # the only thing carrying the heading's id, so it's moved onto the
+    # heading before the <a> goes - otherwise in-page links like a
+    # README's table of contents (href="#installation") have nothing to
+    # land on. The id is taken from the permalink's href rather than its
+    # own id, because github.com resolves the "user-content-" prefix with
+    # its own JS, which this site doesn't have.
     for heading_wrap in soup.select("div.markdown-heading"):
+        heading = heading_wrap.find(["h1", "h2", "h3", "h4", "h5", "h6"])
         for anchor in heading_wrap.select("a.anchor"):
+            target = anchor.get("href", "").removeprefix("#") or anchor.get("id", "").removeprefix("user-content-")
+            if heading is not None and target and not heading.get("id"):
+                heading["id"] = target
             anchor.decompose()
         heading_wrap.unwrap()
 
     # Any remaining stray anchor-permalink links outside that wrapper
     for anchor in soup.select("a.anchor"):
         anchor.decompose()
+
+    # Same prefix problem for any other in-page target GitHub prefixed
+    # (raw <a name="..."> / id="..." written in the README itself): point
+    # the link at the prefixed id that's actually on the page.
+    ids = {el.get("id") for el in soup.find_all(id=True)} | {el.get("name") for el in soup.find_all("a", attrs={"name": True})}
+    for a in soup.find_all("a", href=True):
+        target = a["href"].removeprefix("#")
+        if a["href"].startswith("#") and target not in ids and f"user-content-{target}" in ids:
+            a["href"] = f"#user-content-{target}"
 
     # Unwrap the outer GitHub chrome; keep only the actual content
     article = soup.select_one("article.markdown-body") or soup.select_one("#readme") or soup
@@ -979,7 +1004,8 @@ def main():
               + (" (repo unchanged since last build)" if repo_unchanged else ""))
 
         # ---------------------------------------------------------- README
-        readme_html = extract_readme_html(out_path) if repo_unchanged else None
+        readme_current = repo_unchanged and cache_entry.get("readme_format") == README_FORMAT
+        readme_html = extract_readme_html(out_path) if readme_current else None
         if readme_html is None:
             readme_html = fetch_readme_html(owner, repo, default_branch)
 
@@ -1078,6 +1104,7 @@ def main():
         if pushed_at:
             cache[key] = {
                 "pushed_at": pushed_at,
+                "readme_format": README_FORMAT,
                 "source_entries": project["source_entries"],
                 "files": blob_shas,
                 "newest_commit_sha": newest_commit_sha,
