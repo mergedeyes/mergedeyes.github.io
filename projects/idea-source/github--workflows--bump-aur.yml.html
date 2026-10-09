@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>.github/workflows/bump-aur.yml — idea — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=ac9ee654" />
+  <link rel="stylesheet" href="../../styles.css?v=13ff26e7" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -32,7 +32,35 @@
 <span>open to work</span>
 </div>
 </header>
-    <nav class="file-tree"><p class="file-tree__title">Files</p><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">.github/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">workflows/</span><ul class="tree"><li class="tree-file tree-file--active"><a href="github--workflows--bump-aur.yml.html">bump-aur.yml</a></li></ul></li></ul></li><li class="tree-dir"><span class="tree-dir__name">src/</span><ul class="tree"><li class="tree-file"><a href="src--main.rs.html">main.rs</a></li></ul></li></ul></nav>
+    <nav class="file-tree" data-tree-key="idea"><p class="file-tree__title">Files</p><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">.github/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">workflows/</span><ul class="tree"><li class="tree-file tree-file--active"><a href="github--workflows--bump-aur.yml.html">bump-aur.yml</a></li></ul></li></ul></li><li class="tree-dir"><span class="tree-dir__name">src/</span><ul class="tree"><li class="tree-file"><a href="src--main.rs.html">main.rs</a></li></ul></li></ul></nav><script>
+(function () {
+  var tree = document.currentScript.previousElementSibling;
+  var key = "file-tree-scroll:" + tree.dataset.treeKey;
+  var saved = null;
+  try {
+    saved = sessionStorage.getItem(key);
+    sessionStorage.removeItem(key);
+  } catch (e) {}
+
+  if (saved !== null) {
+    tree.scrollTop = +saved;
+  } else {
+    var active = tree.querySelector(".tree-file--active");
+    if (active) {
+      var a = active.getBoundingClientRect();
+      var t = tree.getBoundingClientRect();
+      if (a.bottom > t.bottom) {
+        tree.scrollTop += a.top - t.top - (tree.clientHeight - a.height) / 2;
+      }
+    }
+  }
+
+  tree.addEventListener("click", function (e) {
+    if (!e.target.closest("a")) return;
+    try { sessionStorage.setItem(key, String(tree.scrollTop)); } catch (err) {}
+  });
+})();
+</script>
     <main class="main" id="main">
       <section class="section source-page">
         <p class="section__path">

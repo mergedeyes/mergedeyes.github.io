@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>.github/scripts/generate_project_pages.py — Personal Website — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=ac9ee654" />
+  <link rel="stylesheet" href="../../styles.css?v=13ff26e7" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -32,7 +32,35 @@
 <span>open to work</span>
 </div>
 </header>
-    <nav class="file-tree"><p class="file-tree__title">Files</p><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">.github/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">scripts/</span><ul class="tree"><li class="tree-file tree-file--active"><a href="github--scripts--generate_project_pages.py.html">generate_project_pages.py</a></li><li class="tree-file"><a href="github--scripts--update_visitor_count.py.html">update_visitor_count.py</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">workflows/</span><ul class="tree"><li class="tree-file"><a href="github--workflows--generate-project-pages.yml.html">generate-project-pages.yml</a></li><li class="tree-file"><a href="github--workflows--jekyll-gh-pages.yml.html">jekyll-gh-pages.yml</a></li><li class="tree-file"><a href="github--workflows--update-visitor-count.yml.html">update-visitor-count.yml</a></li></ul></li></ul></li><li class="tree-dir"><span class="tree-dir__name">skills/</span><ul class="tree"><li class="tree-file"><a href="skills--dns.html.html">dns.html</a></li><li class="tree-file"><a href="skills--ibm.html.html">ibm.html</a></li><li class="tree-file"><a href="skills--linux.html.html">linux.html</a></li><li class="tree-file"><a href="skills--monitoring.html.html">monitoring.html</a></li><li class="tree-file"><a href="skills--nagios.html.html">nagios.html</a></li><li class="tree-file"><a href="skills--networking.html.html">networking.html</a></li><li class="tree-file"><a href="skills--nginx.html.html">nginx.html</a></li></ul></li><li class="tree-file"><a href="404.html.html">404.html</a></li><li class="tree-file"><a href="index.html.html">index.html</a></li><li class="tree-file"><a href="llms.txt.html">llms.txt</a></li><li class="tree-file"><a href="robots.txt.html">robots.txt</a></li><li class="tree-file"><a href="script.js.html">script.js</a></li><li class="tree-file"><a href="sitemap.xml.html">sitemap.xml</a></li><li class="tree-file"><a href="styles.css.html">styles.css</a></li></ul></nav>
+    <nav class="file-tree" data-tree-key="mergedeyes.github.io"><p class="file-tree__title">Files</p><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">.github/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">scripts/</span><ul class="tree"><li class="tree-file tree-file--active"><a href="github--scripts--generate_project_pages.py.html">generate_project_pages.py</a></li><li class="tree-file"><a href="github--scripts--update_visitor_count.py.html">update_visitor_count.py</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">workflows/</span><ul class="tree"><li class="tree-file"><a href="github--workflows--generate-project-pages.yml.html">generate-project-pages.yml</a></li><li class="tree-file"><a href="github--workflows--jekyll-gh-pages.yml.html">jekyll-gh-pages.yml</a></li><li class="tree-file"><a href="github--workflows--update-visitor-count.yml.html">update-visitor-count.yml</a></li></ul></li></ul></li><li class="tree-dir"><span class="tree-dir__name">skills/</span><ul class="tree"><li class="tree-file"><a href="skills--dns.html.html">dns.html</a></li><li class="tree-file"><a href="skills--ibm.html.html">ibm.html</a></li><li class="tree-file"><a href="skills--linux.html.html">linux.html</a></li><li class="tree-file"><a href="skills--monitoring.html.html">monitoring.html</a></li><li class="tree-file"><a href="skills--nagios.html.html">nagios.html</a></li><li class="tree-file"><a href="skills--networking.html.html">networking.html</a></li><li class="tree-file"><a href="skills--nginx.html.html">nginx.html</a></li></ul></li><li class="tree-file"><a href="404.html.html">404.html</a></li><li class="tree-file"><a href="index.html.html">index.html</a></li><li class="tree-file"><a href="llms.txt.html">llms.txt</a></li><li class="tree-file"><a href="robots.txt.html">robots.txt</a></li><li class="tree-file"><a href="script.js.html">script.js</a></li><li class="tree-file"><a href="sitemap.xml.html">sitemap.xml</a></li><li class="tree-file"><a href="styles.css.html">styles.css</a></li></ul></nav><script>
+(function () {
+  var tree = document.currentScript.previousElementSibling;
+  var key = "file-tree-scroll:" + tree.dataset.treeKey;
+  var saved = null;
+  try {
+    saved = sessionStorage.getItem(key);
+    sessionStorage.removeItem(key);
+  } catch (e) {}
+
+  if (saved !== null) {
+    tree.scrollTop = +saved;
+  } else {
+    var active = tree.querySelector(".tree-file--active");
+    if (active) {
+      var a = active.getBoundingClientRect();
+      var t = tree.getBoundingClientRect();
+      if (a.bottom > t.bottom) {
+        tree.scrollTop += a.top - t.top - (tree.clientHeight - a.height) / 2;
+      }
+    }
+  }
+
+  tree.addEventListener("click", function (e) {
+    if (!e.target.closest("a")) return;
+    try { sessionStorage.setItem(key, String(tree.scrollTop)); } catch (err) {}
+  });
+})();
+</script>
     <main class="main" id="main">
       <section class="section source-page">
         <p class="section__path">
@@ -1162,7 +1190,68 @@
 <span class="normal">1117</span>
 <span class="normal">1118</span>
 <span class="normal">1119</span>
-<span class="normal">1120</span></pre></div></td><td class="code"><div><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="normal">1120</span>
+<span class="normal">1121</span>
+<span class="normal">1122</span>
+<span class="normal">1123</span>
+<span class="normal">1124</span>
+<span class="normal">1125</span>
+<span class="normal">1126</span>
+<span class="normal">1127</span>
+<span class="normal">1128</span>
+<span class="normal">1129</span>
+<span class="normal">1130</span>
+<span class="normal">1131</span>
+<span class="normal">1132</span>
+<span class="normal">1133</span>
+<span class="normal">1134</span>
+<span class="normal">1135</span>
+<span class="normal">1136</span>
+<span class="normal">1137</span>
+<span class="normal">1138</span>
+<span class="normal">1139</span>
+<span class="normal">1140</span>
+<span class="normal">1141</span>
+<span class="normal">1142</span>
+<span class="normal">1143</span>
+<span class="normal">1144</span>
+<span class="normal">1145</span>
+<span class="normal">1146</span>
+<span class="normal">1147</span>
+<span class="normal">1148</span>
+<span class="normal">1149</span>
+<span class="normal">1150</span>
+<span class="normal">1151</span>
+<span class="normal">1152</span>
+<span class="normal">1153</span>
+<span class="normal">1154</span>
+<span class="normal">1155</span>
+<span class="normal">1156</span>
+<span class="normal">1157</span>
+<span class="normal">1158</span>
+<span class="normal">1159</span>
+<span class="normal">1160</span>
+<span class="normal">1161</span>
+<span class="normal">1162</span>
+<span class="normal">1163</span>
+<span class="normal">1164</span>
+<span class="normal">1165</span>
+<span class="normal">1166</span>
+<span class="normal">1167</span>
+<span class="normal">1168</span>
+<span class="normal">1169</span>
+<span class="normal">1170</span>
+<span class="normal">1171</span>
+<span class="normal">1172</span>
+<span class="normal">1173</span>
+<span class="normal">1174</span>
+<span class="normal">1175</span>
+<span class="normal">1176</span>
+<span class="normal">1177</span>
+<span class="normal">1178</span>
+<span class="normal">1179</span>
+<span class="normal">1180</span>
+<span class="normal">1181</span></pre></div></td><td class="code"><div><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
 <span class="sd">"""</span>
 <span class="sd">Generates a standalone HTML page under /projects for every project card in</span>
 <span class="sd">index.html that has a "Repository" link pointing at GitHub. Each page gets:</span>
@@ -1839,6 +1928,64 @@
     <span class="k">return</span> <span class="sa">f</span><span class="s1">'&lt;ul class="tree"&gt;</span><span class="si">{</span><span class="s2">""</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">items</span><span class="p">)</span><span class="si">}</span><span class="s1">&lt;/ul&gt;'</span>
 
 
+<span class="c1"># Every file in the source browser is its own static page, so clicking a</span>
+<span class="c1"># file in the tree is a full page load - and the tree's own scroll</span>
+<span class="c1"># container (.file-tree is overflow-y: auto, its own scrollbar separate</span>
+<span class="c1"># from the page's) always comes back scrolled to the very top. In a long</span>
+<span class="c1"># tree (Klar-Stack has 200+ files) that throws the visitor back to the</span>
+<span class="c1"># start after every click, with the file they just opened far out of</span>
+<span class="c1"># view. Browsers only restore the document's scroll position across</span>
+<span class="c1"># navigations, never an inner element's, so this has to be done by hand:</span>
+<span class="c1">#</span>
+<span class="c1"># - On click, remember the tree's scrollTop in sessionStorage, keyed per</span>
+<span class="c1">#   project (data-tree-key) so a position from one project's tree never</span>
+<span class="c1">#   leaks into another's. Read once and removed right away, so it only</span>
+<span class="c1">#   applies to the very next page load (the one that click caused) and</span>
+<span class="c1">#   not to some later visit from the project page.</span>
+<span class="c1"># - Without a saved position (deep link, reload, storage unavailable in</span>
+<span class="c1">#   a private window), fall back to scrolling the active file to the</span>
+<span class="c1">#   middle of the tree, but only if it isn't already visible - a file</span>
+<span class="c1">#   near the top shouldn't make the tree jump for nothing.</span>
+<span class="c1">#</span>
+<span class="c1"># The scroll offset is computed from getBoundingClientRect differences</span>
+<span class="c1"># rather than scrollIntoView(), since scrollIntoView() would also scroll</span>
+<span class="c1"># the page itself - on &lt;=900px the tree is a static block above the code</span>
+<span class="c1"># (see styles.css), and the page jumping down to it on load would be its</span>
+<span class="c1"># own bug. It's inlined right after the &lt;nav&gt; (not in script.js, which</span>
+<span class="c1"># generated pages don't load) so it runs before the code below it is</span>
+<span class="c1"># parsed and the tree never visibly flashes at the top first; the</span>
+<span class="c1"># render-blocking stylesheet in &lt;head&gt; guarantees layout is ready by then.</span>
+<span class="n">FILE_TREE_SCROLL_SCRIPT</span> <span class="o">=</span> <span class="s2">"""&lt;script&gt;</span>
+<span class="s2">(function () {</span>
+<span class="s2">  var tree = document.currentScript.previousElementSibling;</span>
+<span class="s2">  var key = "file-tree-scroll:" + tree.dataset.treeKey;</span>
+<span class="s2">  var saved = null;</span>
+<span class="s2">  try {</span>
+<span class="s2">    saved = sessionStorage.getItem(key);</span>
+<span class="s2">    sessionStorage.removeItem(key);</span>
+<span class="s2">  } catch (e) </span><span class="si">{}</span>
+
+<span class="s2">  if (saved !== null) {</span>
+<span class="s2">    tree.scrollTop = +saved;</span>
+<span class="s2">  } else {</span>
+<span class="s2">    var active = tree.querySelector(".tree-file--active");</span>
+<span class="s2">    if (active) {</span>
+<span class="s2">      var a = active.getBoundingClientRect();</span>
+<span class="s2">      var t = tree.getBoundingClientRect();</span>
+<span class="s2">      if (a.bottom &gt; t.bottom) {</span>
+<span class="s2">        tree.scrollTop += a.top - t.top - (tree.clientHeight - a.height) / 2;</span>
+<span class="s2">      }</span>
+<span class="s2">    }</span>
+<span class="s2">  }</span>
+
+<span class="s2">  tree.addEventListener("click", function (e) {</span>
+<span class="s2">    if (!e.target.closest("a")) return;</span>
+<span class="s2">    try { sessionStorage.setItem(key, String(tree.scrollTop)); } catch (err) </span><span class="si">{}</span>
+<span class="s2">  });</span>
+<span class="s2">})();</span>
+<span class="s2">&lt;/script&gt;"""</span>
+
+
 <span class="n">PAGE_TEMPLATE</span> <span class="o">=</span> <span class="s2">"""&lt;!DOCTYPE html&gt;</span>
 <span class="s2">&lt;html lang="en"&gt;</span>
 <span class="s2">&lt;head&gt;</span>
@@ -2007,7 +2154,10 @@
     <span class="n">tree_html</span> <span class="o">=</span> <span class="s2">""</span>
     <span class="k">if</span> <span class="n">tree</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">rendered</span> <span class="o">=</span> <span class="n">render_tree_html</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="s2">""</span><span class="p">,</span> <span class="n">file_path</span><span class="p">,</span> <span class="n">base</span><span class="o">=</span><span class="n">tree_base</span><span class="p">)</span>
-        <span class="n">tree_html</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">'&lt;nav class="file-tree"&gt;&lt;p class="file-tree__title"&gt;Files&lt;/p&gt;</span><span class="si">{</span><span class="n">rendered</span><span class="si">}</span><span class="s1">&lt;/nav&gt;'</span>
+        <span class="n">tree_html</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="sa">f</span><span class="s1">'&lt;nav class="file-tree" data-tree-key="</span><span class="si">{</span><span class="n">slug</span><span class="si">}</span><span class="s1">"&gt;&lt;p class="file-tree__title"&gt;Files&lt;/p&gt;</span><span class="si">{</span><span class="n">rendered</span><span class="si">}</span><span class="s1">&lt;/nav&gt;'</span>
+            <span class="o">+</span> <span class="n">FILE_TREE_SCROLL_SCRIPT</span>
+        <span class="p">)</span>
 
     <span class="k">return</span> <span class="n">SOURCE_PAGE_TEMPLATE</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
         <span class="n">title</span><span class="o">=</span><span class="n">project</span><span class="p">[</span><span class="s2">"title"</span><span class="p">],</span>
