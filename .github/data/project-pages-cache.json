@@ -271,7 +271,7 @@
       "klar-web/src/whats-new/releases.ts": "e1016df8dc9bb954bb79f266ef8ffa7ca7481cc3"
     },
     "newest_commit_sha": "50ac852d0947ae4e77598cef060b195566546f30",
-    "pushed_at": "2026-10-19T23:32:29Z",
+    "pushed_at": "2026-10-20T18:43:43Z",
     "readme_format": 2,
     "source_entries": [
       "Klar/src/main.rs",
@@ -295,7 +295,7 @@
     ]
   },
   "mergedeyes/mergedeyes.github.io": {
-    "commit_count": 563,
+    "commit_count": 564,
     "files": {
       ".github/scripts/generate_project_pages.py": "1192a1f3c831b8a4df56cd16b79b8fdcb5bfb752",
       ".github/scripts/update_visitor_count.py": "6b3f83843602f650466aef1cce25e691f1e2d4dc",
@@ -317,8 +317,8 @@
       "skills/nginx.html": "80c4b61efb0493e6411b8b9caab170e3db5d80dd",
       "styles.css": "edba3eece9cbecffbd2b034ea5412aad4c0cffc4"
     },
-    "newest_commit_sha": "9485e617efe2a4aaa0cfc1e585941c197e105b14",
-    "pushed_at": "2026-10-20T15:26:30Z",
+    "newest_commit_sha": "da04addec40ee5eccb22a0b02900b5c4ad04e019",
+    "pushed_at": "2026-10-20T15:26:59Z",
     "readme_format": 2,
     "source_entries": [
       "index.html",
