@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Klar/src/i18n.rs — Klar — Jan</title>
+  <link rel="stylesheet" href="../../styles.css?v=52a4fcbf" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="layout">
+    <header class="rail" id="rail">
+<div class="rail__top">
+<a class="brand" href="../../index.html#top">
+<span class="brand__name">Jan</span>
+<span class="brand__meta">systems &amp; infrastructure<br/>Code, Code &amp; Code</span>
+</a>
+<button aria-controls="nav" aria-expanded="false" aria-label="Toggle menu" class="menu-toggle" id="menuToggle">
+<span></span><span></span><span></span>
+</button>
+</div>
+<nav aria-label="Sections" class="nav" id="nav">
+<a data-path="~/projects" href="../../index.html#projects">Projects</a>
+<a data-path="~/work" href="../../index.html#work">Work</a>
+<a data-path="~/education" href="../../index.html#education">Education</a>
+<a data-path="~/skills" href="../../index.html#skills">Skills</a>
+<a data-path="~/about" href="../../index.html#about">About Me</a>
+<a data-path="~/contact" href="../../index.html#contact">Contact</a>
+</nav>
+<div class="rail__status">
+<span aria-hidden="true" class="dot"></span>
+<span>open to work</span>
+</div>
+</header>
+    <nav class="file-tree" data-tree-key="klar-stack"><p class="file-tree__title">Files</p><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">Klar/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">migrations/</span><ul class="tree"><li class="tree-file"><a href="Klar--migrations--20260425000000_create_users.sql.html">20260425000000_create_users.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260425010000_add_password_hash.sql.html">20260425010000_add_password_hash.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260425020000_create_posts.sql.html">20260425020000_create_posts.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260425020100_create_follows.sql.html">20260425020100_create_follows.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260425030000_create_likes.sql.html">20260425030000_create_likes.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260425030100_create_comments.sql.html">20260425030100_create_comments.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260425040000_add_edited_at.sql.html">20260425040000_add_edited_at.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260425050000_create_media_assets.sql.html">20260425050000_create_media_assets.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260425060000_add_profile_fields.sql.html">20260425060000_add_profile_fields.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260425070000_add_email_verification.sql.html">20260425070000_add_email_verification.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260425080000_create_refresh_tokens.sql.html">20260425080000_create_refresh_tokens.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260502000000_create_blocks.sql.html">20260502000000_create_blocks.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260503000000_create_comment_likes.sql.html">20260503000000_create_comment_likes.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260529000000_create_notifications.sql.html">20260529000000_create_notifications.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260604000000_add_username_changed_at.sql.html">20260604000000_add_username_changed_at.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260615000000_add_chat_tables.sql.html">20260615000000_add_chat_tables.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260615001000_upgrade_chats.sql.html">20260615001000_upgrade_chats.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260616140136_add_missing_index_to_posts.sql.html">20260616140136_add_missing_index_to_posts.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260717000100_add_keyset_pagination_index.sql.html">20260717000100_add_keyset_pagination_index.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260720000000_uuidv7_function.sql.html">20260720000000_uuidv7_function.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260720000100_users.sql.html">20260720000100_users.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260720000200_posts.sql.html">20260720000200_posts.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260720000300_follows_blocks.sql.html">20260720000300_follows_blocks.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260720000400_media_assets.sql.html">20260720000400_media_assets.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260720000500_comments.sql.html">20260720000500_comments.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260720000600_likes_partitioned.sql.html">20260720000600_likes_partitioned.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260720000700_auth_tokens.sql.html">20260720000700_auth_tokens.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260720000800_notifications_partitioned.sql.html">20260720000800_notifications_partitioned.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260720000900_feed_items.sql.html">20260720000900_feed_items.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260720001000_post_events_partitioned.sql.html">20260720001000_post_events_partitioned.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260720001100_chats.sql.html">20260720001100_chats.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260723000000_private_accounts.sql.html">20260723000000_private_accounts.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260723000100_follow_request_notification_types.sql.html">20260723000100_follow_request_notification_types.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260723010000_reports_and_moderation.sql.html">20260723010000_reports_and_moderation.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260723020000_add_report_review_note.sql.html">20260723020000_add_report_review_note.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260825000000_add_terms_accepted_at.sql.html">20260825000000_add_terms_accepted_at.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260929000000_email_case_insensitive.sql.html">20260929000000_email_case_insensitive.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260929000100_chat_deleted_user.sql.html">20260929000100_chat_deleted_user.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260929000200_reports_keep_on_reporter_delete.sql.html">20260929000200_reports_keep_on_reporter_delete.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260930000000_delete_messages_with_sender.sql.html">20260930000000_delete_messages_with_sender.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260930010000_evidence.sql.html">20260930010000_evidence.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260930020000_moderation_decisions.sql.html">20260930020000_moderation_decisions.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260930030000_feedback.sql.html">20260930030000_feedback.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260930040000_rights_claims.sql.html">20260930040000_rights_claims.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260930050000_feedback_screenshots.sql.html">20260930050000_feedback_screenshots.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260930060000_keep_account.sql.html">20260930060000_keep_account.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260930070000_account_standing.sql.html">20260930070000_account_standing.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260930080000_more_report_reasons.sql.html">20260930080000_more_report_reasons.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260930090000_account_locks.sql.html">20260930090000_account_locks.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260930100000_account_review.sql.html">20260930100000_account_review.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260930110000_legal_updates.sql.html">20260930110000_legal_updates.sql</a></li><li class="tree-file"><a href="Klar--migrations--20260930120000_evidence_event_time.sql.html">20260930120000_evidence_event_time.sql</a></li><li class="tree-file"><a href="Klar--migrations--20261001000000_official_account_renames.sql.html">20261001000000_official_account_renames.sql</a></li><li class="tree-file"><a href="Klar--migrations--20261001100000_moderation_enum_values.sql.html">20261001100000_moderation_enum_values.sql</a></li><li class="tree-file"><a href="Klar--migrations--20261001100100_moderation_workflow.sql.html">20261001100100_moderation_workflow.sql</a></li><li class="tree-file"><a href="Klar--migrations--20261001100200_drop_post_events.sql.html">20261001100200_drop_post_events.sql</a></li><li class="tree-file"><a href="Klar--migrations--20261001100300_repair_counters.sql.html">20261001100300_repair_counters.sql</a></li><li class="tree-file"><a href="Klar--migrations--20261002100000_post_events.sql.html">20261002100000_post_events.sql</a></li><li class="tree-file"><a href="Klar--migrations--20261002110000_decision_source.sql.html">20261002110000_decision_source.sql</a></li><li class="tree-file"><a href="Klar--migrations--20261002120000_audit_exports.sql.html">20261002120000_audit_exports.sql</a></li><li class="tree-file"><a href="Klar--migrations--20261009100000_activity_indices.sql.html">20261009100000_activity_indices.sql</a></li><li class="tree-file"><a href="Klar--migrations--20261017100000_guide_seen.sql.html">20261017100000_guide_seen.sql</a></li><li class="tree-file"><a href="Klar--migrations--20261017120000_user_locale.sql.html">20261017120000_user_locale.sql</a></li><li class="tree-file"><a href="Klar--migrations--20261018100000_whats_new_seen.sql.html">20261018100000_whats_new_seen.sql</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">src/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">handlers/</span><ul class="tree"><li class="tree-file"><a href="Klar--src--handlers--account_lock.rs.html">account_lock.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--account_review.rs.html">account_review.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--activity.rs.html">activity.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--audit_export.rs.html">audit_export.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--auth.rs.html">auth.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--blocks.rs.html">blocks.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--chats.rs.html">chats.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--comment_likes.rs.html">comment_likes.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--comments.rs.html">comments.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--events.rs.html">events.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--evidence.rs.html">evidence.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--feed.rs.html">feed.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--feedback.rs.html">feedback.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--follows.rs.html">follows.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--health.rs.html">health.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--legal_updates.rs.html">legal_updates.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--likes.rs.html">likes.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--moderation.rs.html">moderation.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--notices.rs.html">notices.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--notifications.rs.html">notifications.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--official_accounts.rs.html">official_accounts.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--posts.rs.html">posts.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--profile_moderation.rs.html">profile_moderation.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--reports.rs.html">reports.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--rights.rs.html">rights.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--standing.rs.html">standing.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--test_phase.rs.html">test_phase.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--uploads.rs.html">uploads.rs</a></li><li class="tree-file"><a href="Klar--src--handlers--users.rs.html">users.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">integration_tests/</span><ul class="tree"><li class="tree-file"><a href="Klar--src--integration_tests--account_lock.rs.html">account_lock.rs</a></li><li class="tree-file"><a href="Klar--src--integration_tests--account_review.rs.html">account_review.rs</a></li><li class="tree-file"><a href="Klar--src--integration_tests--accounts.rs.html">accounts.rs</a></li><li class="tree-file"><a href="Klar--src--integration_tests--activity.rs.html">activity.rs</a></li><li class="tree-file"><a href="Klar--src--integration_tests--audit_export.rs.html">audit_export.rs</a></li><li class="tree-file"><a href="Klar--src--integration_tests--chats.rs.html">chats.rs</a></li><li class="tree-file"><a href="Klar--src--integration_tests--db_errors.rs.html">db_errors.rs</a></li><li class="tree-file"><a href="Klar--src--integration_tests--evidence.rs.html">evidence.rs</a></li><li class="tree-file"><a href="Klar--src--integration_tests--feedback.rs.html">feedback.rs</a></li><li class="tree-file"><a href="Klar--src--integration_tests--guide.rs.html">guide.rs</a></li><li class="tree-file"><a href="Klar--src--integration_tests--legal_updates.rs.html">legal_updates.rs</a></li><li class="tree-file"><a href="Klar--src--integration_tests--locale.rs.html">locale.rs</a></li><li class="tree-file"><a href="Klar--src--integration_tests--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="Klar--src--integration_tests--moderation.rs.html">moderation.rs</a></li><li class="tree-file"><a href="Klar--src--integration_tests--notices.rs.html">notices.rs</a></li><li class="tree-file"><a href="Klar--src--integration_tests--official_accounts.rs.html">official_accounts.rs</a></li><li class="tree-file"><a href="Klar--src--integration_tests--post_events.rs.html">post_events.rs</a></li><li class="tree-file"><a href="Klar--src--integration_tests--previews.rs.html">previews.rs</a></li><li class="tree-file"><a href="Klar--src--integration_tests--privacy.rs.html">privacy.rs</a></li><li class="tree-file"><a href="Klar--src--integration_tests--profile_moderation.rs.html">profile_moderation.rs</a></li><li class="tree-file"><a href="Klar--src--integration_tests--reports.rs.html">reports.rs</a></li><li class="tree-file"><a href="Klar--src--integration_tests--retention.rs.html">retention.rs</a></li><li class="tree-file"><a href="Klar--src--integration_tests--rights.rs.html">rights.rs</a></li><li class="tree-file"><a href="Klar--src--integration_tests--sessions.rs.html">sessions.rs</a></li><li class="tree-file"><a href="Klar--src--integration_tests--social.rs.html">social.rs</a></li><li class="tree-file"><a href="Klar--src--integration_tests--standing.rs.html">standing.rs</a></li><li class="tree-file"><a href="Klar--src--integration_tests--support.rs.html">support.rs</a></li><li class="tree-file"><a href="Klar--src--integration_tests--test_phase.rs.html">test_phase.rs</a></li><li class="tree-file"><a href="Klar--src--integration_tests--uptime.rs.html">uptime.rs</a></li><li class="tree-file"><a href="Klar--src--integration_tests--whats_new.rs.html">whats_new.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">models/</span><ul class="tree"><li class="tree-file"><a href="Klar--src--models--chat.rs.html">chat.rs</a></li><li class="tree-file"><a href="Klar--src--models--comment.rs.html">comment.rs</a></li><li class="tree-file"><a href="Klar--src--models--like.rs.html">like.rs</a></li><li class="tree-file"><a href="Klar--src--models--media.rs.html">media.rs</a></li><li class="tree-file"><a href="Klar--src--models--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="Klar--src--models--post.rs.html">post.rs</a></li><li class="tree-file"><a href="Klar--src--models--report.rs.html">report.rs</a></li><li class="tree-file"><a href="Klar--src--models--user.rs.html">user.rs</a></li></ul></li><li class="tree-file"><a href="Klar--src--alerts.rs.html">alerts.rs</a></li><li class="tree-file"><a href="Klar--src--auth.rs.html">auth.rs</a></li><li class="tree-file"><a href="Klar--src--config.rs.html">config.rs</a></li><li class="tree-file"><a href="Klar--src--db.rs.html">db.rs</a></li><li class="tree-file"><a href="Klar--src--email.rs.html">email.rs</a></li><li class="tree-file"><a href="Klar--src--errors.rs.html">errors.rs</a></li><li class="tree-file"><a href="Klar--src--evidence.rs.html">evidence.rs</a></li><li class="tree-file"><a href="Klar--src--evidence_crypto.rs.html">evidence_crypto.rs</a></li><li class="tree-file tree-file--active"><a href="Klar--src--i18n.rs.html">i18n.rs</a></li><li class="tree-file"><a href="Klar--src--main.rs.html">main.rs</a></li><li class="tree-file"><a href="Klar--src--media.rs.html">media.rs</a></li><li class="tree-file"><a href="Klar--src--moderation.rs.html">moderation.rs</a></li><li class="tree-file"><a href="Klar--src--rate_limit.rs.html">rate_limit.rs</a></li><li class="tree-file"><a href="Klar--src--redis_retry.rs.html">redis_retry.rs</a></li><li class="tree-file"><a href="Klar--src--retention.rs.html">retention.rs</a></li><li class="tree-file"><a href="Klar--src--routes.rs.html">routes.rs</a></li><li class="tree-file"><a href="Klar--src--standing.rs.html">standing.rs</a></li><li class="tree-file"><a href="Klar--src--storage.rs.html">storage.rs</a></li><li class="tree-file"><a href="Klar--src--uptime.rs.html">uptime.rs</a></li><li class="tree-file"><a href="Klar--src--utils.rs.html">utils.rs</a></li><li class="tree-file"><a href="Klar--src--validation.rs.html">validation.rs</a></li></ul></li></ul></li><li class="tree-dir"><span class="tree-dir__name">klar-web/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">src/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">app/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">admin/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">audit/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--admin--audit--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">cases/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">new/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--admin--cases--new--page.tsx.html">page.tsx</a></li></ul></li></ul></li><li class="tree-dir"><span class="tree-dir__name">decisions/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--admin--decisions--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">evidence/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">[id]/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--admin--evidence--[id]--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-file"><a href="klar-web--src--app--admin--evidence--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">feedback/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--admin--feedback--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">legal-updates/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--admin--legal-updates--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">moderation/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--admin--moderation--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">official/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--admin--official--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">reports/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--admin--reports--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">review/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">[username]/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--admin--review--[username]--page.tsx.html">page.tsx</a></li></ul></li></ul></li><li class="tree-dir"><span class="tree-dir__name">rights/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--admin--rights--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">security/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--admin--security--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">standing/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">[username]/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--admin--standing--[username]--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-file"><a href="klar-web--src--app--admin--standing--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-file"><a href="klar-web--src--app--admin--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">api/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">health/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--api--health--route.ts.html">route.ts</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">site-access/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--api--site-access--route.ts.html">route.ts</a></li></ul></li></ul></li><li class="tree-dir"><span class="tree-dir__name">app-icons/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">[id]/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">manifest.webmanifest/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--app-icons--[id]--manifest.webmanifest--route.ts.html">route.ts</a></li></ul></li></ul></li></ul></li><li class="tree-dir"><span class="tree-dir__name">chats/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--chats--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">datenschutz/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--datenschutz--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">feed/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">discovery/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--feed--discovery--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-file"><a href="klar-web--src--app--feed--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">feedback/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--feedback--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">follow-requests/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--follow-requests--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">forgot-password/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--forgot-password--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">impressum/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--impressum--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">login/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--login--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">moderation/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">decisions/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">[id]/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--moderation--decisions--[id]--page.tsx.html">page.tsx</a></li></ul></li></ul></li><li class="tree-file"><a href="klar-web--src--app--moderation--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">notices/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">status/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">[id]/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--notices--status--[id]--page.tsx.html">page.tsx</a></li></ul></li></ul></li><li class="tree-file"><a href="klar-web--src--app--notices--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">nutzungsbedingungen/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--nutzungsbedingungen--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">posts/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">[id]/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--posts--[id]--PostPageClient.tsx.html">PostPageClient.tsx</a></li><li class="tree-file"><a href="klar-web--src--app--posts--[id]--page.tsx.html">page.tsx</a></li></ul></li></ul></li><li class="tree-dir"><span class="tree-dir__name">register/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--register--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">resend-verification/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--resend-verification--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">reset-password/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--reset-password--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">rights/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">status/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">[id]/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--rights--status--[id]--page.tsx.html">page.tsx</a></li></ul></li></ul></li><li class="tree-file"><a href="klar-web--src--app--rights--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">search/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--search--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">settings/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">account/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--settings--account--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">activity/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--settings--activity--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">appearance/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--settings--appearance--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">blocked/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--settings--blocked--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">discovery/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--settings--discovery--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">password/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--settings--password--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">profile/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--settings--profile--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-file"><a href="klar-web--src--app--settings--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">transparenz/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--transparenz--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">users/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">[username]/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--users--[username]--page.tsx.html">page.tsx</a></li></ul></li></ul></li><li class="tree-dir"><span class="tree-dir__name">verify-email/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--verify-email--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">welcome/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--welcome--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">whats-new/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app--whats-new--page.tsx.html">page.tsx</a></li></ul></li><li class="tree-file"><a href="klar-web--src--app--globals.css.html">globals.css</a></li><li class="tree-file"><a href="klar-web--src--app--layout.tsx.html">layout.tsx</a></li><li class="tree-file"><a href="klar-web--src--app--page.tsx.html">page.tsx</a></li><li class="tree-file"><a href="klar-web--src--app--robots.ts.html">robots.ts</a></li><li class="tree-file"><a href="klar-web--src--app--sitemap.ts.html">sitemap.ts</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">app-icons/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--app-icons--catalog.json.html">catalog.json</a></li><li class="tree-file"><a href="klar-web--src--app-icons--cookie.ts.html">cookie.ts</a></li><li class="tree-file"><a href="klar-web--src--app-icons--index.ts.html">index.ts</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">components/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">feedback/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--components--feedback--FeedbackScreenshots.tsx.html">FeedbackScreenshots.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">moderation/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--components--moderation--ClosedReports.tsx.html">ClosedReports.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--moderation--StandingCard.tsx.html">StandingCard.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--moderation--StandingScore.tsx.html">StandingScore.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">settings/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--components--settings--AppearanceSettings.tsx.html">AppearanceSettings.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--settings--KeepAccountRow.tsx.html">KeepAccountRow.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--settings--PersonalizationCard.tsx.html">PersonalizationCard.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">ui/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--components--ui--button.tsx.html">button.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--ui--card.tsx.html">card.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--ui--form.tsx.html">form.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--ui--input.tsx.html">input.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--ui--label.tsx.html">label.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--ui--switch.tsx.html">switch.tsx</a></li></ul></li><li class="tree-file"><a href="klar-web--src--components--ChatWindow.tsx.html">ChatWindow.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--CreatePostModal.tsx.html">CreatePostModal.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--EdgeToEdge.tsx.html">EdgeToEdge.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--EditedBadge.tsx.html">EditedBadge.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--EvidenceStatus.tsx.html">EvidenceStatus.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--Footer.tsx.html">Footer.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--LegalUpdateNotice.tsx.html">LegalUpdateNotice.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--LocaleSync.tsx.html">LocaleSync.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--NewChatModal.tsx.html">NewChatModal.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--NewPostsPill.tsx.html">NewPostsPill.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--PostCard.tsx.html">PostCard.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--PostModal.tsx.html">PostModal.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--PostView.tsx.html">PostView.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--PullToRefresh.tsx.html">PullToRefresh.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--ReportModal.tsx.html">ReportModal.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--ShareButton.tsx.html">ShareButton.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--SmartBackButton.tsx.html">SmartBackButton.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--TopNav.tsx.html">TopNav.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--UserListModal.tsx.html">UserListModal.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--VerifyEmailBanner.tsx.html">VerifyEmailBanner.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--WelcomeGuide.tsx.html">WelcomeGuide.tsx</a></li><li class="tree-file"><a href="klar-web--src--components--WhatsNew.tsx.html">WhatsNew.tsx</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">hooks/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--hooks--use-new-posts.ts.html">use-new-posts.ts</a></li><li class="tree-file"><a href="klar-web--src--hooks--use-notifications.ts.html">use-notifications.ts</a></li><li class="tree-file"><a href="klar-web--src--hooks--use-smart-back.ts.html">use-smart-back.ts</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">i18n/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--i18n--config.ts.html">config.ts</a></li><li class="tree-file"><a href="klar-web--src--i18n--cookie.ts.html">cookie.ts</a></li><li class="tree-file"><a href="klar-web--src--i18n--messages.ts.html">messages.ts</a></li><li class="tree-file"><a href="klar-web--src--i18n--request.ts.html">request.ts</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">lib/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">server/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--lib--server--uptime.ts.html">uptime.ts</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">utils/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--lib--utils--media.ts.html">media.ts</a></li><li class="tree-file"><a href="klar-web--src--lib--utils--time.ts.html">time.ts</a></li></ul></li><li class="tree-file"><a href="klar-web--src--lib--api.ts.html">api.ts</a></li><li class="tree-file"><a href="klar-web--src--lib--auth-context.tsx.html">auth-context.tsx</a></li><li class="tree-file"><a href="klar-web--src--lib--moderation.ts.html">moderation.ts</a></li><li class="tree-file"><a href="klar-web--src--lib--utils.ts.html">utils.ts</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">whats-new/</span><ul class="tree"><li class="tree-file"><a href="klar-web--src--whats-new--releases.ts.html">releases.ts</a></li></ul></li><li class="tree-file"><a href="klar-web--src--env.ts.html">env.ts</a></li><li class="tree-file"><a href="klar-web--src--global.d.ts.html">global.d.ts</a></li><li class="tree-file"><a href="klar-web--src--instrumentation.ts.html">instrumentation.ts</a></li><li class="tree-file"><a href="klar-web--src--proxy.ts.html">proxy.ts</a></li></ul></li></ul></li></ul></nav><script>
+(function () {
+  var tree = document.currentScript.previousElementSibling;
+  var key = "file-tree-scroll:" + tree.dataset.treeKey;
+  var saved = null;
+  try {
+    saved = sessionStorage.getItem(key);
+    sessionStorage.removeItem(key);
+  } catch (e) {}
+
+  if (saved !== null) {
+    tree.scrollTop = +saved;
+  } else {
+    var active = tree.querySelector(".tree-file--active");
+    if (active) {
+      var a = active.getBoundingClientRect();
+      var t = tree.getBoundingClientRect();
+      if (a.bottom > t.bottom) {
+        tree.scrollTop += a.top - t.top - (tree.clientHeight - a.height) / 2;
+      }
+    }
+  }
+
+  tree.addEventListener("click", function (e) {
+    if (!e.target.closest("a")) return;
+    try { sessionStorage.setItem(key, String(tree.scrollTop)); } catch (err) {}
+  });
+})();
+</script>
+    <main class="main" id="main">
+      <section class="section source-page">
+        <p class="section__path">
+          <a href="../../index.html#projects" class="link">~/projects</a> /
+          <a href="../klar-stack.html" class="link">Klar-Stack</a> / source
+        </p>
+        <div class="source-page__head">
+          <h1 class="section__title">Klar/src/i18n.rs</h1>
+          <a href="../klar-stack.html" class="link">← Back to Klar</a>
+        </div>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">  1</span>
+<span class="normal">  2</span>
+<span class="normal">  3</span>
+<span class="normal">  4</span>
+<span class="normal">  5</span>
+<span class="normal">  6</span>
+<span class="normal">  7</span>
+<span class="normal">  8</span>
+<span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span>
+<span class="normal">245</span>
+<span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span>
+<span class="normal">250</span>
+<span class="normal">251</span>
+<span class="normal">252</span>
+<span class="normal">253</span>
+<span class="normal">254</span>
+<span class="normal">255</span>
+<span class="normal">256</span>
+<span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span>
+<span class="normal">262</span>
+<span class="normal">263</span>
+<span class="normal">264</span>
+<span class="normal">265</span>
+<span class="normal">266</span>
+<span class="normal">267</span>
+<span class="normal">268</span>
+<span class="normal">269</span>
+<span class="normal">270</span>
+<span class="normal">271</span>
+<span class="normal">272</span>
+<span class="normal">273</span>
+<span class="normal">274</span>
+<span class="normal">275</span>
+<span class="normal">276</span>
+<span class="normal">277</span>
+<span class="normal">278</span>
+<span class="normal">279</span>
+<span class="normal">280</span>
+<span class="normal">281</span>
+<span class="normal">282</span>
+<span class="normal">283</span>
+<span class="normal">284</span>
+<span class="normal">285</span>
+<span class="normal">286</span>
+<span class="normal">287</span>
+<span class="normal">288</span>
+<span class="normal">289</span>
+<span class="normal">290</span>
+<span class="normal">291</span>
+<span class="normal">292</span>
+<span class="normal">293</span>
+<span class="normal">294</span>
+<span class="normal">295</span>
+<span class="normal">296</span>
+<span class="normal">297</span>
+<span class="normal">298</span>
+<span class="normal">299</span>
+<span class="normal">300</span>
+<span class="normal">301</span>
+<span class="normal">302</span>
+<span class="normal">303</span>
+<span class="normal">304</span>
+<span class="normal">305</span>
+<span class="normal">306</span>
+<span class="normal">307</span>
+<span class="normal">308</span>
+<span class="normal">309</span>
+<span class="normal">310</span>
+<span class="normal">311</span>
+<span class="normal">312</span>
+<span class="normal">313</span>
+<span class="normal">314</span>
+<span class="normal">315</span>
+<span class="normal">316</span>
+<span class="normal">317</span>
+<span class="normal">318</span>
+<span class="normal">319</span>
+<span class="normal">320</span>
+<span class="normal">321</span>
+<span class="normal">322</span>
+<span class="normal">323</span>
+<span class="normal">324</span>
+<span class="normal">325</span>
+<span class="normal">326</span>
+<span class="normal">327</span>
+<span class="normal">328</span>
+<span class="normal">329</span>
+<span class="normal">330</span>
+<span class="normal">331</span>
+<span class="normal">332</span>
+<span class="normal">333</span>
+<span class="normal">334</span>
+<span class="normal">335</span>
+<span class="normal">336</span>
+<span class="normal">337</span>
+<span class="normal">338</span>
+<span class="normal">339</span>
+<span class="normal">340</span>
+<span class="normal">341</span>
+<span class="normal">342</span>
+<span class="normal">343</span>
+<span class="normal">344</span>
+<span class="normal">345</span>
+<span class="normal">346</span>
+<span class="normal">347</span>
+<span class="normal">348</span>
+<span class="normal">349</span>
+<span class="normal">350</span>
+<span class="normal">351</span>
+<span class="normal">352</span>
+<span class="normal">353</span>
+<span class="normal">354</span>
+<span class="normal">355</span>
+<span class="normal">356</span>
+<span class="normal">357</span>
+<span class="normal">358</span>
+<span class="normal">359</span>
+<span class="normal">360</span>
+<span class="normal">361</span>
+<span class="normal">362</span>
+<span class="normal">363</span>
+<span class="normal">364</span>
+<span class="normal">365</span>
+<span class="normal">366</span>
+<span class="normal">367</span>
+<span class="normal">368</span>
+<span class="normal">369</span>
+<span class="normal">370</span>
+<span class="normal">371</span>
+<span class="normal">372</span>
+<span class="normal">373</span>
+<span class="normal">374</span>
+<span class="normal">375</span>
+<span class="normal">376</span>
+<span class="normal">377</span>
+<span class="normal">378</span>
+<span class="normal">379</span>
+<span class="normal">380</span>
+<span class="normal">381</span>
+<span class="normal">382</span>
+<span class="normal">383</span>
+<span class="normal">384</span>
+<span class="normal">385</span>
+<span class="normal">386</span>
+<span class="normal">387</span>
+<span class="normal">388</span>
+<span class="normal">389</span>
+<span class="normal">390</span>
+<span class="normal">391</span>
+<span class="normal">392</span>
+<span class="normal">393</span>
+<span class="normal">394</span>
+<span class="normal">395</span>
+<span class="normal">396</span>
+<span class="normal">397</span>
+<span class="normal">398</span>
+<span class="normal">399</span>
+<span class="normal">400</span>
+<span class="normal">401</span>
+<span class="normal">402</span>
+<span class="normal">403</span>
+<span class="normal">404</span>
+<span class="normal">405</span>
+<span class="normal">406</span>
+<span class="normal">407</span>
+<span class="normal">408</span>
+<span class="normal">409</span>
+<span class="normal">410</span>
+<span class="normal">411</span>
+<span class="normal">412</span>
+<span class="normal">413</span>
+<span class="normal">414</span>
+<span class="normal">415</span>
+<span class="normal">416</span>
+<span class="normal">417</span>
+<span class="normal">418</span>
+<span class="normal">419</span>
+<span class="normal">420</span>
+<span class="normal">421</span>
+<span class="normal">422</span>
+<span class="normal">423</span>
+<span class="normal">424</span>
+<span class="normal">425</span>
+<span class="normal">426</span>
+<span class="normal">427</span>
+<span class="normal">428</span>
+<span class="normal">429</span>
+<span class="normal">430</span>
+<span class="normal">431</span>
+<span class="normal">432</span>
+<span class="normal">433</span>
+<span class="normal">434</span>
+<span class="normal">435</span>
+<span class="normal">436</span>
+<span class="normal">437</span>
+<span class="normal">438</span>
+<span class="normal">439</span>
+<span class="normal">440</span>
+<span class="normal">441</span>
+<span class="normal">442</span>
+<span class="normal">443</span>
+<span class="normal">444</span></pre></div></td><td class="code"><div><pre><span></span><span class="sd">//! The language of what the backend says to people: error messages and</span>
+<span class="sd">//! the account emails (email.rs).</span>
+<span class="sd">//!</span>
+<span class="sd">//! Handlers keep writing their messages in English. `negotiate` (a</span>
+<span class="sd">//! middleware around the whole router) reads the request's Accept-Language</span>
+<span class="sd">//! -- the frontend sends the language the page is shown in -- and keeps it</span>
+<span class="sd">//! for the rest of the request; `AppError` and the few JSON messages that</span>
+<span class="sd">//! reach people pass their text through `tr`, which looks the English text</span>
+<span class="sd">//! up in the German catalog below. Anything not in it (mostly the admin</span>
+<span class="sd">//! pages' messages, which are English only) stays English.</span>
+<span class="sd">//!</span>
+<span class="sd">//! An entry's English side must match the message in the code exactly; a</span>
+<span class="sd">//! unit test checks that every entry still occurs in the source, so</span>
+<span class="sd">//! rewording a message without its entry fails the tests instead of</span>
+<span class="sd">//! quietly falling back to English.</span>
+
+<span class="k">use</span><span class="w"> </span><span class="n">std</span><span class="p">::</span><span class="n">collections</span><span class="p">::</span><span class="n">HashMap</span><span class="p">;</span>
+<span class="k">use</span><span class="w"> </span><span class="n">std</span><span class="p">::</span><span class="n">sync</span><span class="p">::</span><span class="n">LazyLock</span><span class="p">;</span>
+
+<span class="k">use</span><span class="w"> </span><span class="n">axum</span><span class="p">::{</span><span class="n">extract</span><span class="p">::</span><span class="n">Request</span><span class="p">,</span><span class="w"> </span><span class="n">http</span><span class="p">::</span><span class="n">header</span><span class="p">,</span><span class="w"> </span><span class="n">middleware</span><span class="p">::</span><span class="n">Next</span><span class="p">,</span><span class="w"> </span><span class="n">response</span><span class="p">::</span><span class="n">Response</span><span class="p">};</span>
+
+<span class="sd">/// The languages Klar is translated into, as validation::LOCALES.</span>
+<span class="cp">#[derive(Clone, Copy, Debug, PartialEq, Eq)]</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">enum</span><span class="w"> </span><span class="nc">Lang</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">En</span><span class="p">,</span>
+<span class="w">    </span><span class="n">De</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="k">impl</span><span class="w"> </span><span class="n">Lang</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="sd">/// An account's stored language ("en" / "de"), if it has one.</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">from_locale</span><span class="p">(</span><span class="n">locale</span><span class="p">:</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;&amp;</span><span class="kt">str</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="n">Lang</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">match</span><span class="w"> </span><span class="n">locale</span><span class="o">?</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="s">"en"</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">Lang</span><span class="p">::</span><span class="n">En</span><span class="p">),</span>
+<span class="w">            </span><span class="s">"de"</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">Lang</span><span class="p">::</span><span class="n">De</span><span class="p">),</span>
+<span class="w">            </span><span class="n">_</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nb">None</span><span class="p">,</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="sd">/// The most preferred language Klar has from an Accept-Language header</span>
+<span class="w">    </span><span class="sd">/// such as "de-AT,de;q=0.9,en;q=0.8", English when it asks for neither;</span>
+<span class="w">    </span><span class="sd">/// the same rule as the frontend's negotiateLocale (i18n/config.ts).</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">negotiate</span><span class="p">(</span><span class="n">header</span><span class="p">:</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;&amp;</span><span class="kt">str</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">Lang</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">header</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">header</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">Lang</span><span class="p">::</span><span class="n">En</span><span class="w"> </span><span class="p">};</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">ranked</span><span class="p">:</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="p">(</span><span class="kt">f32</span><span class="p">,</span><span class="w"> </span><span class="kt">usize</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">header</span>
+<span class="w">            </span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="sc">','</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="n">enumerate</span><span class="p">()</span>
+<span class="w">            </span><span class="p">.</span><span class="n">filter_map</span><span class="p">(</span><span class="o">|</span><span class="p">(</span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="n">part</span><span class="p">)</span><span class="o">|</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">pieces</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">part</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="sc">';'</span><span class="p">).</span><span class="n">map</span><span class="p">(</span><span class="kt">str</span><span class="p">::</span><span class="n">trim</span><span class="p">);</span>
+<span class="w">                </span><span class="kd">let</span><span class="w"> </span><span class="n">tag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pieces</span><span class="p">.</span><span class="n">next</span><span class="p">()</span><span class="o">?</span><span class="p">;</span>
+<span class="w">                </span><span class="kd">let</span><span class="w"> </span><span class="n">weight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pieces</span>
+<span class="w">                    </span><span class="p">.</span><span class="n">find_map</span><span class="p">(</span><span class="o">|</span><span class="n">p</span><span class="o">|</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">strip_prefix</span><span class="p">(</span><span class="s">"q="</span><span class="p">))</span>
+<span class="w">                    </span><span class="p">.</span><span class="n">map_or</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="o">|</span><span class="n">q</span><span class="o">|</span><span class="w"> </span><span class="n">q</span><span class="p">.</span><span class="n">parse</span><span class="p">().</span><span class="n">unwrap_or</span><span class="p">(</span><span class="mf">0.0</span><span class="p">));</span>
+<span class="w">                </span><span class="kd">let</span><span class="w"> </span><span class="n">lang</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tag</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="sc">'-'</span><span class="p">).</span><span class="n">next</span><span class="p">()</span><span class="o">?</span><span class="p">;</span>
+<span class="w">                </span><span class="p">(</span><span class="n">weight</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0.0</span><span class="p">).</span><span class="n">then_some</span><span class="p">((</span><span class="n">weight</span><span class="p">,</span><span class="w"> </span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="n">lang</span><span class="p">))</span>
+<span class="w">            </span><span class="p">})</span>
+<span class="w">            </span><span class="p">.</span><span class="n">collect</span><span class="p">();</span>
+<span class="w">        </span><span class="n">ranked</span><span class="p">.</span><span class="n">sort_by</span><span class="p">(</span><span class="o">|</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="o">|</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="mf">0.</span><span class="n">total_cmp</span><span class="p">(</span><span class="o">&amp;</span><span class="n">a</span><span class="p">.</span><span class="mi">0</span><span class="p">).</span><span class="n">then</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="mf">1.</span><span class="n">cmp</span><span class="p">(</span><span class="o">&amp;</span><span class="n">b</span><span class="p">.</span><span class="mi">1</span><span class="p">)));</span>
+<span class="w">        </span><span class="n">ranked</span>
+<span class="w">            </span><span class="p">.</span><span class="n">iter</span><span class="p">()</span>
+<span class="w">            </span><span class="p">.</span><span class="n">find_map</span><span class="p">(</span><span class="o">|</span><span class="p">(</span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="n">lang</span><span class="p">)</span><span class="o">|</span><span class="w"> </span><span class="n">Lang</span><span class="p">::</span><span class="n">from_locale</span><span class="p">(</span><span class="nb">Some</span><span class="p">(</span><span class="n">lang</span><span class="p">.</span><span class="n">to_ascii_lowercase</span><span class="p">().</span><span class="n">as_str</span><span class="p">())))</span>
+<span class="w">            </span><span class="p">.</span><span class="n">unwrap_or</span><span class="p">(</span><span class="n">Lang</span><span class="p">::</span><span class="n">En</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">tokio</span><span class="p">::</span><span class="n">task_local</span><span class="o">!</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="n">LANG</span><span class="p">:</span><span class="w"> </span><span class="nc">Lang</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="sd">/// The language of an email to an account: the account's own, or</span>
+<span class="sd">/// `fallback` while it has none (accounts from before languages existed,</span>
+<span class="sd">/// until the app sets it). Emails the person asked for just now fall back</span>
+<span class="sd">/// to the page's language (`current()`), the others to German, which all</span>
+<span class="sd">/// emails were before.</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">for_account</span><span class="p">(</span><span class="n">locale</span><span class="p">:</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;&amp;</span><span class="kt">str</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">fallback</span><span class="p">:</span><span class="w"> </span><span class="nc">Lang</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">Lang</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Lang</span><span class="p">::</span><span class="n">from_locale</span><span class="p">(</span><span class="n">locale</span><span class="p">).</span><span class="n">unwrap_or</span><span class="p">(</span><span class="n">fallback</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="sd">/// The language of the request being handled; English outside one (the</span>
+<span class="sd">/// background tasks).</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">current</span><span class="p">()</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">Lang</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">LANG</span><span class="p">.</span><span class="n">try_with</span><span class="p">(</span><span class="o">|</span><span class="n">lang</span><span class="o">|</span><span class="w"> </span><span class="o">*</span><span class="n">lang</span><span class="p">).</span><span class="n">unwrap_or</span><span class="p">(</span><span class="n">Lang</span><span class="p">::</span><span class="n">En</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="sd">/// Middleware: the request's language, for everything that runs while it</span>
+<span class="sd">/// is handled.</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">negotiate</span><span class="p">(</span><span class="n">req</span><span class="p">:</span><span class="w"> </span><span class="nc">Request</span><span class="p">,</span><span class="w"> </span><span class="n">next</span><span class="p">:</span><span class="w"> </span><span class="nc">Next</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">Response</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">lang</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Lang</span><span class="p">::</span><span class="n">negotiate</span><span class="p">(</span><span class="n">req</span><span class="p">.</span><span class="n">headers</span><span class="p">().</span><span class="n">get</span><span class="p">(</span><span class="n">header</span><span class="p">::</span><span class="n">ACCEPT_LANGUAGE</span><span class="p">).</span><span class="n">and_then</span><span class="p">(</span><span class="o">|</span><span class="n">v</span><span class="o">|</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">to_str</span><span class="p">().</span><span class="n">ok</span><span class="p">()));</span>
+<span class="w">    </span><span class="n">LANG</span><span class="p">.</span><span class="n">scope</span><span class="p">(</span><span class="n">lang</span><span class="p">,</span><span class="w"> </span><span class="n">next</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">req</span><span class="p">)).</span><span class="k">await</span>
+<span class="p">}</span>
+
+<span class="sd">/// `message` in the current request's language.</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">tr</span><span class="p">(</span><span class="n">message</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">String</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">tr_in</span><span class="p">(</span><span class="n">current</span><span class="p">(),</span><span class="w"> </span><span class="n">message</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="sd">/// `message` in `lang`: the catalog's translation, or the message itself.</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">tr_in</span><span class="p">(</span><span class="n">lang</span><span class="p">:</span><span class="w"> </span><span class="nc">Lang</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">String</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">match</span><span class="w"> </span><span class="n">lang</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Lang</span><span class="p">::</span><span class="n">En</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">message</span><span class="p">.</span><span class="n">to_string</span><span class="p">(),</span>
+<span class="w">        </span><span class="n">Lang</span><span class="p">::</span><span class="n">De</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">german</span><span class="p">(</span><span class="n">message</span><span class="p">).</span><span class="n">unwrap_or_else</span><span class="p">(</span><span class="o">||</span><span class="w"> </span><span class="n">message</span><span class="p">.</span><span class="n">to_string</span><span class="p">()),</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">fn</span><span class="w"> </span><span class="nf">german</span><span class="p">(</span><span class="n">message</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">de</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">EXACT</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">message</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">Some</span><span class="p">((</span><span class="o">*</span><span class="n">de</span><span class="p">).</span><span class="n">to_string</span><span class="p">());</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">TEMPLATES</span><span class="p">.</span><span class="n">iter</span><span class="p">().</span><span class="n">find_map</span><span class="p">(</span><span class="o">|</span><span class="p">(</span><span class="n">en</span><span class="p">,</span><span class="w"> </span><span class="n">de</span><span class="p">)</span><span class="o">|</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">args</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">match_template</span><span class="p">(</span><span class="n">en</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+<span class="w">        </span><span class="c1">// A field name in a generic message ("Caption cannot be empty")</span>
+<span class="w">        </span><span class="c1">// is translated too; numbers and other values pass through.</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">args</span><span class="p">:</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;&amp;</span><span class="kt">str</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">args</span><span class="p">.</span><span class="n">iter</span><span class="p">().</span><span class="n">map</span><span class="p">(</span><span class="o">|</span><span class="n">a</span><span class="o">|</span><span class="w"> </span><span class="n">FIELDS</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">a</span><span class="p">).</span><span class="n">copied</span><span class="p">().</span><span class="n">unwrap_or</span><span class="p">(</span><span class="n">a</span><span class="p">)).</span><span class="n">collect</span><span class="p">();</span>
+<span class="w">        </span><span class="nb">Some</span><span class="p">(</span><span class="n">fill</span><span class="p">(</span><span class="n">de</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">args</span><span class="p">))</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="p">}</span>
+
+<span class="sd">/// The values a message fills into `template`'s `{}` placeholders, or None</span>
+<span class="sd">/// if it doesn't have the template's shape.</span>
+<span class="k">fn</span><span class="w"> </span><span class="nf">match_template</span><span class="o">&lt;'</span><span class="na">a</span><span class="o">&gt;</span><span class="p">(</span><span class="n">template</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="o">'</span><span class="na">a</span><span class="w"> </span><span class="kt">str</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="nb">Vec</span><span class="o">&lt;&amp;'</span><span class="na">a</span><span class="w"> </span><span class="kt">str</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">parts</span><span class="p">:</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;&amp;</span><span class="kt">str</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">template</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="s">"{}"</span><span class="p">).</span><span class="n">collect</span><span class="p">();</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">rest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">message</span><span class="p">.</span><span class="n">strip_prefix</span><span class="p">(</span><span class="n">parts</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">?</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">args</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Vec</span><span class="p">::</span><span class="n">with_capacity</span><span class="p">(</span><span class="n">parts</span><span class="p">.</span><span class="n">len</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">part</span><span class="p">)</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">parts</span><span class="p">.</span><span class="n">iter</span><span class="p">().</span><span class="n">enumerate</span><span class="p">().</span><span class="n">skip</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">last</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">parts</span><span class="p">.</span><span class="n">len</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">last</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">rest</span><span class="p">.</span><span class="n">strip_suffix</span><span class="p">(</span><span class="n">part</span><span class="p">)</span><span class="o">?</span><span class="p">.</span><span class="n">len</span><span class="p">()</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">part</span><span class="p">.</span><span class="n">is_empty</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">None</span><span class="p">;</span><span class="w"> </span><span class="c1">// two placeholders in a row can't be told apart</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">rest</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="n">part</span><span class="p">)</span><span class="o">?</span>
+<span class="w">        </span><span class="p">};</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">None</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">args</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="o">&amp;</span><span class="n">rest</span><span class="p">[</span><span class="o">..</span><span class="n">end</span><span class="p">]);</span>
+<span class="w">        </span><span class="n">rest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">rest</span><span class="p">[</span><span class="n">end</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">part</span><span class="p">.</span><span class="n">len</span><span class="p">()</span><span class="o">..</span><span class="p">];</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="nb">Some</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="sd">/// `template` with each `{}` replaced by the next value.</span>
+<span class="k">fn</span><span class="w"> </span><span class="nf">fill</span><span class="p">(</span><span class="n">template</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">,</span><span class="w"> </span><span class="n">args</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="p">[</span><span class="o">&amp;</span><span class="kt">str</span><span class="p">])</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">String</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">String</span><span class="p">::</span><span class="n">with_capacity</span><span class="p">(</span><span class="n">template</span><span class="p">.</span><span class="n">len</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">16</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">args</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">args</span><span class="p">.</span><span class="n">iter</span><span class="p">();</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">pieces</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">template</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="s">"{}"</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">first</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pieces</span><span class="p">.</span><span class="n">next</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">out</span><span class="p">.</span><span class="n">push_str</span><span class="p">(</span><span class="n">first</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">piece</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">pieces</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">out</span><span class="p">.</span><span class="n">push_str</span><span class="p">(</span><span class="n">args</span><span class="p">.</span><span class="n">next</span><span class="p">().</span><span class="n">copied</span><span class="p">().</span><span class="n">unwrap_or</span><span class="p">(</span><span class="s">""</span><span class="p">));</span>
+<span class="w">        </span><span class="n">out</span><span class="p">.</span><span class="n">push_str</span><span class="p">(</span><span class="n">piece</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">out</span>
+<span class="p">}</span>
+
+<span class="k">static</span><span class="w"> </span><span class="n">EXACT</span><span class="p">:</span><span class="w"> </span><span class="nc">LazyLock</span><span class="o">&lt;</span><span class="n">HashMap</span><span class="o">&lt;&amp;'</span><span class="nb">static</span><span class="w"> </span><span class="kt">str</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;'</span><span class="nb">static</span><span class="w"> </span><span class="kt">str</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">LazyLock</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="o">||</span><span class="w"> </span><span class="n">CATALOG</span><span class="p">.</span><span class="n">iter</span><span class="p">().</span><span class="n">filter</span><span class="p">(</span><span class="o">|</span><span class="p">(</span><span class="n">en</span><span class="p">,</span><span class="w"> </span><span class="n">_</span><span class="p">)</span><span class="o">|</span><span class="w"> </span><span class="o">!</span><span class="n">en</span><span class="p">.</span><span class="n">contains</span><span class="p">(</span><span class="s">"{}"</span><span class="p">)).</span><span class="n">copied</span><span class="p">().</span><span class="n">collect</span><span class="p">());</span>
+
+<span class="sd">/// The entries with placeholders, most specific first: "Password must be {}</span>
+<span class="sd">/// characters or less" has to win over "{} must be {} characters or less".</span>
+<span class="k">static</span><span class="w"> </span><span class="n">TEMPLATES</span><span class="p">:</span><span class="w"> </span><span class="nc">LazyLock</span><span class="o">&lt;</span><span class="nb">Vec</span><span class="o">&lt;</span><span class="p">(</span><span class="o">&amp;'</span><span class="nb">static</span><span class="w"> </span><span class="kt">str</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;'</span><span class="nb">static</span><span class="w"> </span><span class="kt">str</span><span class="p">)</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LazyLock</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="o">||</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">templates</span><span class="p">:</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="n">_</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CATALOG</span><span class="p">.</span><span class="n">iter</span><span class="p">().</span><span class="n">filter</span><span class="p">(</span><span class="o">|</span><span class="p">(</span><span class="n">en</span><span class="p">,</span><span class="w"> </span><span class="n">_</span><span class="p">)</span><span class="o">|</span><span class="w"> </span><span class="n">en</span><span class="p">.</span><span class="n">contains</span><span class="p">(</span><span class="s">"{}"</span><span class="p">)).</span><span class="n">copied</span><span class="p">().</span><span class="n">collect</span><span class="p">();</span>
+<span class="w">    </span><span class="n">templates</span><span class="p">.</span><span class="n">sort_by_key</span><span class="p">(</span><span class="o">|</span><span class="p">(</span><span class="n">en</span><span class="p">,</span><span class="w"> </span><span class="n">_</span><span class="p">)</span><span class="o">|</span><span class="w"> </span><span class="n">std</span><span class="p">::</span><span class="n">cmp</span><span class="p">::</span><span class="n">Reverse</span><span class="p">(</span><span class="n">en</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="s">"{}"</span><span class="p">,</span><span class="w"> </span><span class="s">""</span><span class="p">).</span><span class="n">len</span><span class="p">()));</span>
+<span class="w">    </span><span class="n">templates</span>
+<span class="p">});</span>
+
+<span class="k">static</span><span class="w"> </span><span class="n">FIELDS</span><span class="p">:</span><span class="w"> </span><span class="nc">LazyLock</span><span class="o">&lt;</span><span class="n">HashMap</span><span class="o">&lt;&amp;'</span><span class="nb">static</span><span class="w"> </span><span class="kt">str</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;'</span><span class="nb">static</span><span class="w"> </span><span class="kt">str</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LazyLock</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="o">||</span><span class="w"> </span><span class="n">FIELD_NAMES</span><span class="p">.</span><span class="n">iter</span><span class="p">().</span><span class="n">copied</span><span class="p">().</span><span class="n">collect</span><span class="p">());</span>
+
+<span class="sd">/// Field names handed to validation::required_text / check_max_len and the</span>
+<span class="sd">/// like, for the generic messages about them.</span>
+<span class="k">const</span><span class="w"> </span><span class="n">FIELD_NAMES</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="p">[(</span><span class="o">&amp;</span><span class="kt">str</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="kt">str</span><span class="p">)]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="p">[</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"Basis of your rights"</span><span class="p">,</span><span class="w"> </span><span class="s">"Die Grundlage deiner Rechte"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"Bio"</span><span class="p">,</span><span class="w"> </span><span class="s">"Die Bio"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"Caption"</span><span class="p">,</span><span class="w"> </span><span class="s">"Die Bildunterschrift"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"Comment"</span><span class="p">,</span><span class="w"> </span><span class="s">"Der Kommentar"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"Description of the work"</span><span class="p">,</span><span class="w"> </span><span class="s">"Die Beschreibung des Werks"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"Display name"</span><span class="p">,</span><span class="w"> </span><span class="s">"Der Anzeigename"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"Link"</span><span class="p">,</span><span class="w"> </span><span class="s">"Der Link"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"Link to the post"</span><span class="p">,</span><span class="w"> </span><span class="s">"Der Link zum Beitrag"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"Message"</span><span class="p">,</span><span class="w"> </span><span class="s">"Die Nachricht"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"Name"</span><span class="p">,</span><span class="w"> </span><span class="s">"Der Name"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"Reason"</span><span class="p">,</span><span class="w"> </span><span class="s">"Der Grund"</span><span class="p">),</span>
+<span class="p">];</span>
+
+<span class="sd">/// English message -&gt; German. `{}` stands for a value filled in at run</span>
+<span class="sd">/// time, in the same order in both.</span>
+<span class="k">const</span><span class="w"> </span><span class="n">CATALOG</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="p">[(</span><span class="o">&amp;</span><span class="kt">str</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="kt">str</span><span class="p">)]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="p">[</span>
+<span class="w">    </span><span class="c1">// Sessions, sign-up and sign-in</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"Missing or invalid token"</span><span class="p">,</span><span class="w"> </span><span class="s">"Du bist nicht (mehr) angemeldet"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"Session ended"</span><span class="p">,</span><span class="w"> </span><span class="s">"Deine Sitzung wurde beendet"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"Invalid or expired refresh token"</span><span class="p">,</span><span class="w"> </span><span class="s">"Deine Sitzung ist abgelaufen. Bitte melde dich erneut an."</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"No refresh token found"</span><span class="p">,</span><span class="w"> </span><span class="s">"Deine Sitzung ist abgelaufen. Bitte melde dich erneut an."</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"Invalid email, username or password"</span><span class="p">,</span><span class="w"> </span><span class="s">"E-Mail-Adresse, Nutzername oder Passwort ist falsch"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"Username or email already taken"</span><span class="p">,</span><span class="w"> </span><span class="s">"Nutzername oder E-Mail-Adresse ist schon vergeben"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span>
+<span class="w">        </span><span class="s">"You must accept the Terms of Service and Privacy Policy to register"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Um dich zu registrieren, musst du den Nutzungsbedingungen und der Datenschutzerklärung zustimmen"</span><span class="p">,</span>
+<span class="w">    </span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"Invalid or expired verification link"</span><span class="p">,</span><span class="w"> </span><span class="s">"Der Bestätigungslink ist ungültig oder abgelaufen"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"Invalid or expired reset link"</span><span class="p">,</span><span class="w"> </span><span class="s">"Der Link zum Zurücksetzen ist ungültig oder abgelaufen"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span>
+<span class="w">        </span><span class="s">"Please verify your email address first: open the link we emailed you, or request a new one."</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Bitte bestätige zuerst deine E-Mail-Adresse: Öffne den Link aus unserer E-Mail oder fordere einen neuen an."</span><span class="p">,</span>
+<span class="w">    </span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span>
+<span class="w">        </span><span class="s">"We suspect someone else has been using this account, so we locked it and emailed you a link \</span>
+<span class="s">         to set a new password. Setting one unlocks the account."</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Wir vermuten, dass jemand anderes dieses Konto benutzt hat. Deshalb haben wir es gesperrt und dir einen \</span>
+<span class="s">         Link geschickt, mit dem du ein neues Passwort setzen kannst. Damit ist das Konto wieder entsperrt."</span><span class="p">,</span>
+<span class="w">    </span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span>
+<span class="w">        </span><span class="s">"We sent a link recently. You can ask for a new one every {} minutes; if it doesn't arrive, write to us."</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Wir haben dir vor Kurzem einen Link geschickt. Einen neuen kannst du alle {} Minuten anfordern; wenn keiner ankommt, schreib uns."</span><span class="p">,</span>
+<span class="w">    </span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"We sent you a new link."</span><span class="p">,</span><span class="w"> </span><span class="s">"Wir haben dir einen neuen Link geschickt."</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"This account isn't locked any more; you can log in"</span><span class="p">,</span><span class="w"> </span><span class="s">"Dieses Konto ist nicht mehr gesperrt; du kannst dich anmelden"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"Rate limit exceeded. Try again in {} seconds."</span><span class="p">,</span><span class="w"> </span><span class="s">"Zu viele Anfragen. Versuch es in {} Sekunden noch einmal."</span><span class="p">),</span>
+<span class="w">    </span><span class="c1">// Validation (validation.rs)</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"This username is not available"</span><span class="p">,</span><span class="w"> </span><span class="s">"Dieser Nutzername ist nicht verfügbar"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"Username must be between {} and {} characters"</span><span class="p">,</span><span class="w"> </span><span class="s">"Der Nutzername muss zwischen {} und {} Zeichen lang sein"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span>
+<span class="w">        </span><span class="s">"Username can only contain letters, numbers, and underscores"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Der Nutzername darf nur Buchstaben, Ziffern und Unterstriche enthalten"</span><span class="p">,</span>
+<span class="w">    </span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"Invalid email address"</span><span class="p">,</span><span class="w"> </span><span class="s">"Ungültige E-Mail-Adresse"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"Password must be at least {} characters"</span><span class="p">,</span><span class="w"> </span><span class="s">"Das Passwort muss mindestens {} Zeichen lang sein"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"Password must be {} characters or less"</span><span class="p">,</span><span class="w"> </span><span class="s">"Das Passwort darf höchstens {} Zeichen lang sein"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"{} must be {} characters or less"</span><span class="p">,</span><span class="w"> </span><span class="s">"{} darf höchstens {} Zeichen lang sein"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"{} cannot be empty"</span><span class="p">,</span><span class="w"> </span><span class="s">"{} darf nicht leer sein"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"Unsupported language"</span><span class="p">,</span><span class="w"> </span><span class="s">"Diese Sprache wird nicht unterstützt"</span><span class="p">),</span>
+<span class="w">    </span><span class="c1">// Profiles, settings, the account</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"User not found"</span><span class="p">,</span><span class="w"> </span><span class="s">"Konto nicht gefunden"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"User '{}' not found"</span><span class="p">,</span><span class="w"> </span><span class="s">"Konto „{}“ nicht gefunden"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"Username is already taken"</span><span class="p">,</span><span class="w"> </span><span class="s">"Dieser Nutzername ist schon vergeben"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"You can change your username again on {}"</span><span class="p">,</span><span class="w"> </span><span class="s">"Du kannst deinen Nutzernamen ab dem {} wieder ändern"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span>
+<span class="w">        </span><span class="s">"Your account is suspended. You can only clear your display name or bio until the suspension ends."</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Dein Konto ist gesperrt. Bis die Sperre endet, kannst du nur deinen Anzeigenamen oder deine Bio leeren."</span><span class="p">,</span>
+<span class="w">    </span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"Current password is incorrect"</span><span class="p">,</span><span class="w"> </span><span class="s">"Das aktuelle Passwort ist falsch"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"Invalid current password"</span><span class="p">,</span><span class="w"> </span><span class="s">"Das aktuelle Passwort ist falsch"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"The password is incorrect"</span><span class="p">,</span><span class="w"> </span><span class="s">"Das Passwort ist falsch"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"New password must be different from current password"</span><span class="p">,</span><span class="w"> </span><span class="s">"Das neue Passwort muss sich vom aktuellen unterscheiden"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"Avatar field is required"</span><span class="p">,</span><span class="w"> </span><span class="s">"Bitte wähle ein Profilbild aus"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"Avatar file is empty"</span><span class="p">,</span><span class="w"> </span><span class="s">"Die Bilddatei ist leer"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"Avatar must be under 5MB"</span><span class="p">,</span><span class="w"> </span><span class="s">"Das Profilbild muss kleiner als 5 MB sein"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"Search query cannot be empty"</span><span class="p">,</span><span class="w"> </span><span class="s">"Gib einen Suchbegriff ein"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"Search query too long"</span><span class="p">,</span><span class="w"> </span><span class="s">"Der Suchbegriff ist zu lang"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"This account is private"</span><span class="p">,</span><span class="w"> </span><span class="s">"Dieses Konto ist privat"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"You can't follow yourself"</span><span class="p">,</span><span class="w"> </span><span class="s">"Du kannst dir nicht selbst folgen"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"Cannot follow this user"</span><span class="p">,</span><span class="w"> </span><span class="s">"Diesem Konto kannst du nicht folgen"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"Cannot accept this request"</span><span class="p">,</span><span class="w"> </span><span class="s">"Diese Anfrage kannst du nicht annehmen"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"No pending request from this user"</span><span class="p">,</span><span class="w"> </span><span class="s">"Von diesem Konto liegt keine offene Anfrage vor"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"You can't block yourself"</span><span class="p">,</span><span class="w"> </span><span class="s">"Du kannst dich nicht selbst blockieren"</span><span class="p">),</span>
+<span class="w">    </span><span class="c1">// Posts, comments, likes, uploads</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"Post not found"</span><span class="p">,</span><span class="w"> </span><span class="s">"Beitrag nicht gefunden"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"Not found"</span><span class="p">,</span><span class="w"> </span><span class="s">"Nicht gefunden"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"You can only edit your own posts"</span><span class="p">,</span><span class="w"> </span><span class="s">"Du kannst nur deine eigenen Beiträge bearbeiten"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"You can only delete your own posts"</span><span class="p">,</span><span class="w"> </span><span class="s">"Du kannst nur deine eigenen Beiträge löschen"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"Cannot like this post"</span><span class="p">,</span><span class="w"> </span><span class="s">"Diesen Beitrag kannst du nicht liken"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"Cannot comment on this post"</span><span class="p">,</span><span class="w"> </span><span class="s">"Diesen Beitrag kannst du nicht kommentieren"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"Comment not found"</span><span class="p">,</span><span class="w"> </span><span class="s">"Kommentar nicht gefunden"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"Parent comment not found on this post"</span><span class="p">,</span><span class="w"> </span><span class="s">"Den Kommentar, auf den du antwortest, gibt es bei diesem Beitrag nicht"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"You can only edit your own comments"</span><span class="p">,</span><span class="w"> </span><span class="s">"Du kannst nur deine eigenen Kommentare bearbeiten"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span>
+<span class="w">        </span><span class="s">"You can only delete your own comments or comments on your posts"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Du kannst nur deine eigenen Kommentare löschen oder Kommentare unter deinen Beiträgen"</span><span class="p">,</span>
+<span class="w">    </span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"Cannot like this comment"</span><span class="p">,</span><span class="w"> </span><span class="s">"Diesen Kommentar kannst du nicht liken"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"Image field is required"</span><span class="p">,</span><span class="w"> </span><span class="s">"Bitte wähle ein Bild aus"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"Image file is empty"</span><span class="p">,</span><span class="w"> </span><span class="s">"Die Bilddatei ist leer"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"Image must be under 20MB"</span><span class="p">,</span><span class="w"> </span><span class="s">"Das Bild muss kleiner als 20 MB sein"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"Unsupported image type: {}. Allowed: JPEG, PNG, WebP"</span><span class="p">,</span><span class="w"> </span><span class="s">"Dieser Bildtyp wird nicht unterstützt: {}. Erlaubt sind JPEG, PNG und WebP"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"Image processing failed: {}"</span><span class="p">,</span><span class="w"> </span><span class="s">"Das Bild konnte nicht verarbeitet werden: {}"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"Failed to read image: {}"</span><span class="p">,</span><span class="w"> </span><span class="s">"Das Bild konnte nicht gelesen werden: {}"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"Failed to read caption: {}"</span><span class="p">,</span><span class="w"> </span><span class="s">"Die Bildunterschrift konnte nicht gelesen werden: {}"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"Invalid multipart data: {}"</span><span class="p">,</span><span class="w"> </span><span class="s">"Ungültige Formulardaten: {}"</span><span class="p">),</span>
+<span class="w">    </span><span class="c1">// Chats</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"You cannot message yourself"</span><span class="p">,</span><span class="w"> </span><span class="s">"Du kannst dir nicht selbst schreiben"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"You can only message users who follow you back."</span><span class="p">,</span><span class="w"> </span><span class="s">"Du kannst nur Leuten schreiben, die dir zurückfolgen."</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"Access denied to this conversation"</span><span class="p">,</span><span class="w"> </span><span class="s">"Kein Zugriff auf diesen Chat"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"Message not found"</span><span class="p">,</span><span class="w"> </span><span class="s">"Nachricht nicht gefunden"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"You can only edit your own messages"</span><span class="p">,</span><span class="w"> </span><span class="s">"Du kannst nur deine eigenen Nachrichten bearbeiten"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"You can only delete your own messages"</span><span class="p">,</span><span class="w"> </span><span class="s">"Du kannst nur deine eigenen Nachrichten löschen"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"Reply target not found in this conversation"</span><span class="p">,</span><span class="w"> </span><span class="s">"Die Nachricht, auf die du antwortest, gibt es in diesem Chat nicht"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"Invalid reaction"</span><span class="p">,</span><span class="w"> </span><span class="s">"Ungültige Reaktion"</span><span class="p">),</span>
+<span class="w">    </span><span class="c1">// Reports, objections, notices, rights claims, feedback</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"Invalid reason"</span><span class="p">,</span><span class="w"> </span><span class="s">"Ungültiger Grund"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"Details must be under 1000 characters"</span><span class="p">,</span><span class="w"> </span><span class="s">"Die Angaben müssen kürzer als 1000 Zeichen sein"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"You already reported this. It's waiting for review."</span><span class="p">,</span><span class="w"> </span><span class="s">"Du hast das schon gemeldet. Es wartet auf Prüfung."</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span>
+<span class="w">        </span><span class="s">"You've reached today's limit for reports. If something can't wait, write to kontakt@klarsocial.eu."</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Du hast für heute die Höchstzahl an Meldungen erreicht. Wenn etwas nicht warten kann, schreib an kontakt@klarsocial.eu."</span><span class="p">,</span>
+<span class="w">    </span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"Decision not found"</span><span class="p">,</span><span class="w"> </span><span class="s">"Entscheidung nicht gefunden"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"Please explain your objection in at least {} characters"</span><span class="p">,</span><span class="w"> </span><span class="s">"Bitte begründe deinen Widerspruch mit mindestens {} Zeichen"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"Objection must be under {} characters"</span><span class="p">,</span><span class="w"> </span><span class="s">"Der Widerspruch muss kürzer als {} Zeichen sein"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span>
+<span class="w">        </span><span class="s">"This decision can't be objected to (not found, already objected, lifted, replaced by a later decision, or older than six months)"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Gegen diese Entscheidung ist kein Widerspruch möglich (nicht gefunden, schon widersprochen, aufgehoben, durch eine spätere Entscheidung ersetzt oder älter als sechs Monate)"</span><span class="p">,</span>
+<span class="w">    </span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"The note must be under {} characters"</span><span class="p">,</span><span class="w"> </span><span class="s">"Die Notiz muss kürzer als {} Zeichen sein"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"The reported content no longer exists"</span><span class="p">,</span><span class="w"> </span><span class="s">"Den gemeldeten Inhalt gibt es nicht mehr"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span>
+<span class="w">        </span><span class="s">"This report can't be checked again (not dismissed, already re-checked, or older than six months)"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Diese Meldung kann nicht erneut geprüft werden (nicht abgelehnt, schon einmal erneut geprüft oder älter als sechs Monate)"</span><span class="p">,</span>
+<span class="w">    </span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"You already have a report on this waiting for review."</span><span class="p">,</span><span class="w"> </span><span class="s">"Du hast dazu schon eine Meldung, die auf Prüfung wartet."</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span>
+<span class="w">        </span><span class="s">"Your account is suspended until {}. You can still read, object to the decision, export your data or delete your account."</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Dein Konto ist bis {} gesperrt. Du kannst weiterhin lesen, der Entscheidung widersprechen, deine Daten exportieren oder dein Konto löschen."</span><span class="p">,</span>
+<span class="w">    </span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span>
+<span class="w">        </span><span class="s">"Your account is permanently suspended. You can still read, object to the decision, export your data or delete your account."</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Dein Konto ist dauerhaft gesperrt. Du kannst weiterhin lesen, der Entscheidung widersprechen, deine Daten exportieren oder dein Konto löschen."</span><span class="p">,</span>
+<span class="w">    </span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"Notice not found"</span><span class="p">,</span><span class="w"> </span><span class="s">"Meldung nicht gefunden"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"Your name and email address are required"</span><span class="p">,</span><span class="w"> </span><span class="s">"Dein Name und deine E-Mail-Adresse sind erforderlich"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"The good-faith statement is required"</span><span class="p">,</span><span class="w"> </span><span class="s">"Die Bestätigung, nach bestem Wissen zu handeln, ist erforderlich"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"Name must be {} characters or less"</span><span class="p">,</span><span class="w"> </span><span class="s">"Der Name darf höchstens {} Zeichen lang sein"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"We couldn't find that content on Klar (any more)"</span><span class="p">,</span><span class="w"> </span><span class="s">"Diesen Inhalt haben wir auf Klar nicht (mehr) gefunden"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span>
+<span class="w">        </span><span class="s">"The link must point to a post, a comment or a profile on Klar (…/posts/…, …/users/…)"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Der Link muss auf einen Beitrag, einen Kommentar oder ein Profil auf Klar zeigen (…/posts/…, …/users/…)"</span><span class="p">,</span>
+<span class="w">    </span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"Invalid claim type"</span><span class="p">,</span><span class="w"> </span><span class="s">"Ungültige Art der Meldung"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"The link must point to a post on Klar (…/posts/…)"</span><span class="p">,</span><span class="w"> </span><span class="s">"Der Link muss auf einen Beitrag auf Klar zeigen (…/posts/…)"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"That post doesn't exist (any more)"</span><span class="p">,</span><span class="w"> </span><span class="s">"Diesen Beitrag gibt es nicht (mehr)"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"Claim not found"</span><span class="p">,</span><span class="w"> </span><span class="s">"Meldung nicht gefunden"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"No evidence was requested for this claim"</span><span class="p">,</span><span class="w"> </span><span class="s">"Zu dieser Meldung wurden keine Nachweise angefordert"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"Please write a little more"</span><span class="p">,</span><span class="w"> </span><span class="s">"Bitte schreib etwas mehr"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"Invalid category"</span><span class="p">,</span><span class="w"> </span><span class="s">"Ungültige Kategorie"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"Feedback must be under {} characters"</span><span class="p">,</span><span class="w"> </span><span class="s">"Das Feedback muss kürzer als {} Zeichen sein"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"At most {} screenshots"</span><span class="p">,</span><span class="w"> </span><span class="s">"Höchstens {} Screenshots"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"Each screenshot must be under 10 MB"</span><span class="p">,</span><span class="w"> </span><span class="s">"Jeder Screenshot muss kleiner als 10 MB sein"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"Screenshots must be JPEG, PNG or WebP"</span><span class="p">,</span><span class="w"> </span><span class="s">"Screenshots müssen JPEG-, PNG- oder WebP-Bilder sein"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"Screenshot could not be read: {}"</span><span class="p">,</span><span class="w"> </span><span class="s">"Der Screenshot konnte nicht gelesen werden: {}"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"Failed to read screenshot: {}"</span><span class="p">,</span><span class="w"> </span><span class="s">"Der Screenshot konnte nicht gelesen werden: {}"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span>
+<span class="w">        </span><span class="s">"That's a lot of feedback for one day — thank you! Please try again tomorrow."</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Das ist viel Feedback für einen Tag – danke! Bitte versuch es morgen wieder."</span><span class="p">,</span>
+<span class="w">    </span><span class="p">),</span>
+<span class="w">    </span><span class="c1">// Server errors</span>
+<span class="w">    </span><span class="p">(</span><span class="s">"Database error"</span><span class="p">,</span><span class="w"> </span><span class="s">"Ein Fehler ist aufgetreten. Bitte versuch es noch einmal."</span><span class="p">),</span>
+<span class="p">];</span>
+
+<span class="cp">#[cfg(test)]</span>
+<span class="k">mod</span><span class="w"> </span><span class="nn">tests</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">use</span><span class="w"> </span><span class="k">super</span><span class="p">::</span><span class="o">*</span><span class="p">;</span>
+
+<span class="w">    </span><span class="cp">#[test]</span>
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">negotiates_like_the_frontend</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">Lang</span><span class="p">::</span><span class="n">negotiate</span><span class="p">(</span><span class="nb">None</span><span class="p">),</span><span class="w"> </span><span class="n">Lang</span><span class="p">::</span><span class="n">En</span><span class="p">);</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">Lang</span><span class="p">::</span><span class="n">negotiate</span><span class="p">(</span><span class="nb">Some</span><span class="p">(</span><span class="s">"de-AT,de;q=0.9,en;q=0.8"</span><span class="p">)),</span><span class="w"> </span><span class="n">Lang</span><span class="p">::</span><span class="n">De</span><span class="p">);</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">Lang</span><span class="p">::</span><span class="n">negotiate</span><span class="p">(</span><span class="nb">Some</span><span class="p">(</span><span class="s">"fr-FR,fr;q=0.9,de;q=0.5,en;q=0.4"</span><span class="p">)),</span><span class="w"> </span><span class="n">Lang</span><span class="p">::</span><span class="n">De</span><span class="p">);</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">Lang</span><span class="p">::</span><span class="n">negotiate</span><span class="p">(</span><span class="nb">Some</span><span class="p">(</span><span class="s">"en-US,de;q=0.9"</span><span class="p">)),</span><span class="w"> </span><span class="n">Lang</span><span class="p">::</span><span class="n">En</span><span class="p">);</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">Lang</span><span class="p">::</span><span class="n">negotiate</span><span class="p">(</span><span class="nb">Some</span><span class="p">(</span><span class="s">"en;q=0.5,de"</span><span class="p">)),</span><span class="w"> </span><span class="n">Lang</span><span class="p">::</span><span class="n">De</span><span class="p">);</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">Lang</span><span class="p">::</span><span class="n">negotiate</span><span class="p">(</span><span class="nb">Some</span><span class="p">(</span><span class="s">"de;q=0,en"</span><span class="p">)),</span><span class="w"> </span><span class="n">Lang</span><span class="p">::</span><span class="n">En</span><span class="p">);</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">Lang</span><span class="p">::</span><span class="n">negotiate</span><span class="p">(</span><span class="nb">Some</span><span class="p">(</span><span class="s">"fr"</span><span class="p">)),</span><span class="w"> </span><span class="n">Lang</span><span class="p">::</span><span class="n">En</span><span class="p">);</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">Lang</span><span class="p">::</span><span class="n">negotiate</span><span class="p">(</span><span class="nb">Some</span><span class="p">(</span><span class="s">"DE"</span><span class="p">)),</span><span class="w"> </span><span class="n">Lang</span><span class="p">::</span><span class="n">De</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cp">#[test]</span>
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">an_email_follows_the_account_then_the_fallback</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">for_account</span><span class="p">(</span><span class="nb">Some</span><span class="p">(</span><span class="s">"en"</span><span class="p">),</span><span class="w"> </span><span class="n">Lang</span><span class="p">::</span><span class="n">De</span><span class="p">),</span><span class="w"> </span><span class="n">Lang</span><span class="p">::</span><span class="n">En</span><span class="p">);</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">for_account</span><span class="p">(</span><span class="nb">Some</span><span class="p">(</span><span class="s">"de"</span><span class="p">),</span><span class="w"> </span><span class="n">Lang</span><span class="p">::</span><span class="n">En</span><span class="p">),</span><span class="w"> </span><span class="n">Lang</span><span class="p">::</span><span class="n">De</span><span class="p">);</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">for_account</span><span class="p">(</span><span class="nb">None</span><span class="p">,</span><span class="w"> </span><span class="n">Lang</span><span class="p">::</span><span class="n">De</span><span class="p">),</span><span class="w"> </span><span class="n">Lang</span><span class="p">::</span><span class="n">De</span><span class="p">);</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">for_account</span><span class="p">(</span><span class="nb">Some</span><span class="p">(</span><span class="s">"fr"</span><span class="p">),</span><span class="w"> </span><span class="n">Lang</span><span class="p">::</span><span class="n">En</span><span class="p">),</span><span class="w"> </span><span class="n">Lang</span><span class="p">::</span><span class="n">En</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cp">#[test]</span>
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">translates_exact_messages_and_templates</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">tr_in</span><span class="p">(</span><span class="n">Lang</span><span class="p">::</span><span class="n">De</span><span class="p">,</span><span class="w"> </span><span class="s">"Post not found"</span><span class="p">),</span><span class="w"> </span><span class="s">"Beitrag nicht gefunden"</span><span class="p">);</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">tr_in</span><span class="p">(</span><span class="n">Lang</span><span class="p">::</span><span class="n">En</span><span class="p">,</span><span class="w"> </span><span class="s">"Post not found"</span><span class="p">),</span><span class="w"> </span><span class="s">"Post not found"</span><span class="p">);</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">tr_in</span><span class="p">(</span><span class="n">Lang</span><span class="p">::</span><span class="n">De</span><span class="p">,</span><span class="w"> </span><span class="s">"User 'bob' not found"</span><span class="p">),</span><span class="w"> </span><span class="s">"Konto „bob“ nicht gefunden"</span><span class="p">);</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span>
+<span class="w">            </span><span class="n">tr_in</span><span class="p">(</span><span class="n">Lang</span><span class="p">::</span><span class="n">De</span><span class="p">,</span><span class="w"> </span><span class="s">"Username must be between 3 and 30 characters"</span><span class="p">),</span>
+<span class="w">            </span><span class="s">"Der Nutzername muss zwischen 3 und 30 Zeichen lang sein"</span><span class="p">,</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">        </span><span class="c1">// The specific template wins over the generic one, and field names</span>
+<span class="w">        </span><span class="c1">// in the generic ones are translated.</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">tr_in</span><span class="p">(</span><span class="n">Lang</span><span class="p">::</span><span class="n">De</span><span class="p">,</span><span class="w"> </span><span class="s">"Password must be 128 characters or less"</span><span class="p">),</span><span class="w"> </span><span class="s">"Das Passwort darf höchstens 128 Zeichen lang sein"</span><span class="p">);</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">tr_in</span><span class="p">(</span><span class="n">Lang</span><span class="p">::</span><span class="n">De</span><span class="p">,</span><span class="w"> </span><span class="s">"Caption must be 2000 characters or less"</span><span class="p">),</span><span class="w"> </span><span class="s">"Die Bildunterschrift darf höchstens 2000 Zeichen lang sein"</span><span class="p">);</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">tr_in</span><span class="p">(</span><span class="n">Lang</span><span class="p">::</span><span class="n">De</span><span class="p">,</span><span class="w"> </span><span class="s">"Comment cannot be empty"</span><span class="p">),</span><span class="w"> </span><span class="s">"Der Kommentar darf nicht leer sein"</span><span class="p">);</span>
+<span class="w">        </span><span class="c1">// Not in the catalog: stays English.</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">tr_in</span><span class="p">(</span><span class="n">Lang</span><span class="p">::</span><span class="n">De</span><span class="p">,</span><span class="w"> </span><span class="s">"Lock not found"</span><span class="p">),</span><span class="w"> </span><span class="s">"Lock not found"</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cp">#[test]</span>
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">templates_need_the_whole_shape</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">match_template</span><span class="p">(</span><span class="s">"At most {} screenshots"</span><span class="p">,</span><span class="w"> </span><span class="s">"At most 3 screenshots"</span><span class="p">),</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="fm">vec!</span><span class="p">[</span><span class="s">"3"</span><span class="p">]));</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">match_template</span><span class="p">(</span><span class="s">"At most {} screenshots"</span><span class="p">,</span><span class="w"> </span><span class="s">"At most screenshots"</span><span class="p">),</span><span class="w"> </span><span class="nb">None</span><span class="p">);</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">match_template</span><span class="p">(</span><span class="s">"{} cannot be empty"</span><span class="p">,</span><span class="w"> </span><span class="s">"Search query cannot be empty!"</span><span class="p">),</span><span class="w"> </span><span class="nb">None</span><span class="p">);</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span>
+<span class="w">            </span><span class="n">match_template</span><span class="p">(</span><span class="s">"Username must be between {} and {} characters"</span><span class="p">,</span><span class="w"> </span><span class="s">"Username must be between 3 and 30 characters"</span><span class="p">),</span>
+<span class="w">            </span><span class="nb">Some</span><span class="p">(</span><span class="fm">vec!</span><span class="p">[</span><span class="s">"3"</span><span class="p">,</span><span class="w"> </span><span class="s">"30"</span><span class="p">]),</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="sd">/// Every catalog entry and field name still occurs in the source, so a</span>
+<span class="w">    </span><span class="sd">/// reworded message can't silently lose its translation.</span>
+<span class="w">    </span><span class="cp">#[test]</span>
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">every_entry_matches_a_message_in_the_code</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">String</span><span class="p">::</span><span class="n">new</span><span class="p">();</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">dirs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="fm">vec!</span><span class="p">[</span><span class="n">std</span><span class="p">::</span><span class="n">path</span><span class="p">::</span><span class="n">PathBuf</span><span class="p">::</span><span class="n">from</span><span class="p">(</span><span class="fm">concat!</span><span class="p">(</span><span class="fm">env!</span><span class="p">(</span><span class="s">"CARGO_MANIFEST_DIR"</span><span class="p">),</span><span class="w"> </span><span class="s">"/src"</span><span class="p">))];</span>
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">dir</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dirs</span><span class="p">.</span><span class="n">pop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="n">entry</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">std</span><span class="p">::</span><span class="n">fs</span><span class="p">::</span><span class="n">read_dir</span><span class="p">(</span><span class="n">dir</span><span class="p">).</span><span class="n">unwrap</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="kd">let</span><span class="w"> </span><span class="n">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">entry</span><span class="p">.</span><span class="n">unwrap</span><span class="p">().</span><span class="n">path</span><span class="p">();</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="n">path</span><span class="p">.</span><span class="n">is_dir</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">dirs</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">path</span><span class="p">);</span>
+<span class="w">                </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">path</span><span class="p">.</span><span class="n">extension</span><span class="p">().</span><span class="n">is_some_and</span><span class="p">(</span><span class="o">|</span><span class="n">e</span><span class="o">|</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">"rs"</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="n">path</span><span class="p">.</span><span class="n">ends_with</span><span class="p">(</span><span class="s">"i18n.rs"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">source</span><span class="p">.</span><span class="n">push_str</span><span class="p">(</span><span class="o">&amp;</span><span class="n">std</span><span class="p">::</span><span class="n">fs</span><span class="p">::</span><span class="n">read_to_string</span><span class="p">(</span><span class="o">&amp;</span><span class="n">path</span><span class="p">).</span><span class="n">unwrap</span><span class="p">());</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="c1">// Long messages are split over lines with a trailing backslash in</span>
+<span class="w">        </span><span class="c1">// the code; join them the way the compiler does.</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">joined</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">regex_free_unescape</span><span class="p">(</span><span class="o">&amp;</span><span class="n">source</span><span class="p">);</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">en</span><span class="p">,</span><span class="w"> </span><span class="n">_</span><span class="p">)</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">CATALOG</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="fm">assert!</span><span class="p">(</span><span class="n">joined</span><span class="p">.</span><span class="n">contains</span><span class="p">(</span><span class="n">en</span><span class="p">),</span><span class="w"> </span><span class="s">"catalog entry not found in the code: {en:?}"</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">en</span><span class="p">,</span><span class="w"> </span><span class="n">_</span><span class="p">)</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">FIELD_NAMES</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="fm">assert!</span><span class="p">(</span><span class="n">joined</span><span class="p">.</span><span class="n">contains</span><span class="p">(</span><span class="o">&amp;</span><span class="fm">format!</span><span class="p">(</span><span class="s">"</span><span class="se">\"</span><span class="s">{en}</span><span class="se">\"</span><span class="s">"</span><span class="p">)),</span><span class="w"> </span><span class="s">"field name not found in the code: {en:?}"</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="sd">/// Joins `\` + newline + indentation inside string literals, as Rust</span>
+<span class="w">    </span><span class="sd">/// does, so multi-line messages read as one line.</span>
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">regex_free_unescape</span><span class="p">(</span><span class="n">source</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">String</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">String</span><span class="p">::</span><span class="n">with_capacity</span><span class="p">(</span><span class="n">source</span><span class="p">.</span><span class="n">len</span><span class="p">());</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">chars</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">source</span><span class="p">.</span><span class="n">chars</span><span class="p">().</span><span class="n">peekable</span><span class="p">();</span>
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">chars</span><span class="p">.</span><span class="n">next</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">'\\'</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">chars</span><span class="p">.</span><span class="n">peek</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="o">&amp;</span><span class="sc">'\n'</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">chars</span><span class="p">.</span><span class="n">next</span><span class="p">();</span>
+<span class="w">                </span><span class="k">while</span><span class="w"> </span><span class="n">chars</span><span class="p">.</span><span class="n">peek</span><span class="p">().</span><span class="n">is_some_and</span><span class="p">(</span><span class="o">|</span><span class="n">c</span><span class="o">|</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">is_whitespace</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">chars</span><span class="p">.</span><span class="n">next</span><span class="p">();</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">out</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">out</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div></td></tr></table></div>
+
+      </section>
+    </main>
+  </div>
+</body>
+</html>
