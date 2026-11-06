@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>src/tn5250/connection.rs — Terminaal — Jan</title>
+  <link rel="stylesheet" href="../../styles.css?v=f9619d8f" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="layout">
+    <header class="rail" id="rail">
+<div class="rail__top">
+<a class="brand" href="../../index.html#top">
+<span class="brand__name">Jan</span>
+<span class="brand__meta">systems &amp; infrastructure<br/>Code, Code &amp; Code</span>
+</a>
+<button aria-controls="nav" aria-expanded="false" aria-label="Toggle menu" class="menu-toggle" id="menuToggle">
+<span></span><span></span><span></span>
+</button>
+</div>
+<nav aria-label="Sections" class="nav" id="nav">
+<a data-path="~/projects" href="../../index.html#projects">Projects</a>
+<a data-path="~/work" href="../../index.html#work">Work</a>
+<a data-path="~/education" href="../../index.html#education">Education</a>
+<a data-path="~/skills" href="../../index.html#skills">Skills</a>
+<a data-path="~/about" href="../../index.html#about">About Me</a>
+<a data-path="~/contact" href="../../index.html#contact">Contact</a>
+</nav>
+<div class="rail__status">
+<span aria-hidden="true" class="dot"></span>
+<span>open to work</span>
+</div>
+</header>
+    <nav class="file-tree" data-tree-key="terminaal"><p class="file-tree__title">Files</p><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">assets/</span><ul class="tree"><li class="tree-file"><a href="assets--terminaal.desktop.html">terminaal.desktop</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">docs/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">explanations/</span><ul class="tree"><li class="tree-file"><a href="docs--explanations--architecture.md.html">architecture.md</a></li><li class="tree-file"><a href="docs--explanations--prompt-marks.md.html">prompt-marks.md</a></li><li class="tree-file"><a href="docs--explanations--security-and-your-files.md.html">security-and-your-files.md</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">guides/</span><ul class="tree"><li class="tree-file"><a href="docs--guides--appearance.md.html">appearance.md</a></li><li class="tree-file"><a href="docs--guides--command-line.md.html">command-line.md</a></li><li class="tree-file"><a href="docs--guides--command-palette.md.html">command-palette.md</a></li><li class="tree-file"><a href="docs--guides--commands-and-snippets.md.html">commands-and-snippets.md</a></li><li class="tree-file"><a href="docs--guides--configuration.md.html">configuration.md</a></li><li class="tree-file"><a href="docs--guides--drop-down-window.md.html">drop-down-window.md</a></li><li class="tree-file"><a href="docs--guides--files-and-sftp.md.html">files-and-sftp.md</a></li><li class="tree-file"><a href="docs--guides--host-keys.md.html">host-keys.md</a></li><li class="tree-file"><a href="docs--guides--ibm-i-5250.md.html">ibm-i-5250.md</a></li><li class="tree-file"><a href="docs--guides--images.md.html">images.md</a></li><li class="tree-file"><a href="docs--guides--keyboard-shortcuts.md.html">keyboard-shortcuts.md</a></li><li class="tree-file"><a href="docs--guides--search-and-links.md.html">search-and-links.md</a></li><li class="tree-file"><a href="docs--guides--sessions.md.html">sessions.md</a></li><li class="tree-file"><a href="docs--guides--shell-integration.md.html">shell-integration.md</a></li><li class="tree-file"><a href="docs--guides--split-panes.md.html">split-panes.md</a></li><li class="tree-file"><a href="docs--guides--ssh-hosts.md.html">ssh-hosts.md</a></li><li class="tree-file"><a href="docs--guides--updates.md.html">updates.md</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">tutorials/</span><ul class="tree"><li class="tree-file"><a href="docs--tutorials--01-your-first-ssh-host.md.html">01-your-first-ssh-host.md</a></li><li class="tree-file"><a href="docs--tutorials--02-keys-and-the-agent.md.html">02-keys-and-the-agent.md</a></li><li class="tree-file"><a href="docs--tutorials--03-port-forwarding.md.html">03-port-forwarding.md</a></li><li class="tree-file"><a href="docs--tutorials--04-one-command-many-servers.md.html">04-one-command-many-servers.md</a></li><li class="tree-file"><a href="docs--tutorials--05-make-your-own-theme.md.html">05-make-your-own-theme.md</a></li></ul></li><li class="tree-file"><a href="docs--README.md.html">README.md</a></li><li class="tree-file"><a href="docs--getting-started.md.html">getting-started.md</a></li><li class="tree-file"><a href="docs--tips.md.html">tips.md</a></li><li class="tree-file"><a href="docs--troubleshooting.md.html">troubleshooting.md</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">locales/</span><ul class="tree"><li class="tree-file"><a href="locales--de.ftl.html">de.ftl</a></li><li class="tree-file"><a href="locales--en.ftl.html">en.ftl</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">src/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">input/</span><ul class="tree"><li class="tree-file"><a href="src--input--keyboard.rs.html">keyboard.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">quake/</span><ul class="tree"><li class="tree-file"><a href="src--quake--keys.rs.html">keys.rs</a></li><li class="tree-file"><a href="src--quake--layer.rs.html">layer.rs</a></li><li class="tree-file"><a href="src--quake--mod.rs.html">mod.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">render/</span><ul class="tree"><li class="tree-file"><a href="src--render--grid.rs.html">grid.rs</a></li><li class="tree-file"><a href="src--render--image.rs.html">image.rs</a></li><li class="tree-file"><a href="src--render--image.wgsl.html">image.wgsl</a></li><li class="tree-file"><a href="src--render--label.rs.html">label.rs</a></li><li class="tree-file"><a href="src--render--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="src--render--palette.rs.html">palette.rs</a></li><li class="tree-file"><a href="src--render--quad.rs.html">quad.rs</a></li><li class="tree-file"><a href="src--render--quad.wgsl.html">quad.wgsl</a></li><li class="tree-file"><a href="src--render--scrollbar.rs.html">scrollbar.rs</a></li><li class="tree-file"><a href="src--render--search_bar.rs.html">search_bar.rs</a></li><li class="tree-file"><a href="src--render--tab_bar.rs.html">tab_bar.rs</a></li><li class="tree-file"><a href="src--render--text.rs.html">text.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">sftp/</span><ul class="tree"><li class="tree-file"><a href="src--sftp--edit.rs.html">edit.rs</a></li><li class="tree-file"><a href="src--sftp--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="src--sftp--protocol.rs.html">protocol.rs</a></li><li class="tree-file"><a href="src--sftp--session.rs.html">session.rs</a></li><li class="tree-file"><a href="src--sftp--sync.rs.html">sync.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">shells/</span><ul class="tree"><li class="tree-file"><a href="src--shells--launch.rs.html">launch.rs</a></li><li class="tree-file"><a href="src--shells--managed.rs.html">managed.rs</a></li><li class="tree-file"><a href="src--shells--mod.rs.html">mod.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">ssh/</span><ul class="tree"><li class="tree-file"><a href="src--ssh--agent_forward.rs.html">agent_forward.rs</a></li><li class="tree-file"><a href="src--ssh--connection.rs.html">connection.rs</a></li><li class="tree-file"><a href="src--ssh--forward.rs.html">forward.rs</a></li><li class="tree-file"><a href="src--ssh--keys.rs.html">keys.rs</a></li><li class="tree-file"><a href="src--ssh--known_hosts.rs.html">known_hosts.rs</a></li><li class="tree-file"><a href="src--ssh--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="src--ssh--options.rs.html">options.rs</a></li><li class="tree-file"><a href="src--ssh--socks.rs.html">socks.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">terminal/</span><ul class="tree"><li class="tree-file"><a href="src--terminal--filtered_pty.rs.html">filtered_pty.rs</a></li><li class="tree-file"><a href="src--terminal--graphics.rs.html">graphics.rs</a></li><li class="tree-file"><a href="src--terminal--hints.rs.html">hints.rs</a></li><li class="tree-file"><a href="src--terminal--integration.rs.html">integration.rs</a></li><li class="tree-file"><a href="src--terminal--links.rs.html">links.rs</a></li><li class="tree-file"><a href="src--terminal--listener.rs.html">listener.rs</a></li><li class="tree-file"><a href="src--terminal--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="src--terminal--prompts.rs.html">prompts.rs</a></li><li class="tree-file"><a href="src--terminal--search.rs.html">search.rs</a></li><li class="tree-file"><a href="src--terminal--session.rs.html">session.rs</a></li><li class="tree-file"><a href="src--terminal--vi.rs.html">vi.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">theme/</span><ul class="tree"><li class="tree-file"><a href="src--theme--cosmic.rs.html">cosmic.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">tn5250/</span><ul class="tree"><li class="tree-file"><a href="src--tn5250--codepage.rs.html">codepage.rs</a></li><li class="tree-file"><a href="src--tn5250--codepages.rs.html">codepages.rs</a></li><li class="tree-file tree-file--active"><a href="src--tn5250--connection.rs.html">connection.rs</a></li><li class="tree-file"><a href="src--tn5250--keys.rs.html">keys.rs</a></li><li class="tree-file"><a href="src--tn5250--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="src--tn5250--render.rs.html">render.rs</a></li><li class="tree-file"><a href="src--tn5250--screen.rs.html">screen.rs</a></li><li class="tree-file"><a href="src--tn5250--telnet.rs.html">telnet.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">ui/</span><ul class="tree"><li class="tree-file"><a href="src--ui--clipboard_request.rs.html">clipboard_request.rs</a></li><li class="tree-file"><a href="src--ui--command_palette.rs.html">command_palette.rs</a></li><li class="tree-file"><a href="src--ui--commands_panel.rs.html">commands_panel.rs</a></li><li class="tree-file"><a href="src--ui--context_menu.rs.html">context_menu.rs</a></li><li class="tree-file"><a href="src--ui--files_panel.rs.html">files_panel.rs</a></li><li class="tree-file"><a href="src--ui--keys_panel.rs.html">keys_panel.rs</a></li><li class="tree-file"><a href="src--ui--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="src--ui--paste_warning.rs.html">paste_warning.rs</a></li><li class="tree-file"><a href="src--ui--settings_panel.rs.html">settings_panel.rs</a></li><li class="tree-file"><a href="src--ui--sidebar.rs.html">sidebar.rs</a></li><li class="tree-file"><a href="src--ui--splash.rs.html">splash.rs</a></li><li class="tree-file"><a href="src--ui--ssh_panel.rs.html">ssh_panel.rs</a></li><li class="tree-file"><a href="src--ui--theme.rs.html">theme.rs</a></li><li class="tree-file"><a href="src--ui--update_dialog.rs.html">update_dialog.rs</a></li><li class="tree-file"><a href="src--ui--widgets.rs.html">widgets.rs</a></li></ul></li><li class="tree-file"><a href="src--app.rs.html">app.rs</a></li><li class="tree-file"><a href="src--blur.rs.html">blur.rs</a></li><li class="tree-file"><a href="src--commands.rs.html">commands.rs</a></li><li class="tree-file"><a href="src--config.rs.html">config.rs</a></li><li class="tree-file"><a href="src--gpu.rs.html">gpu.rs</a></li><li class="tree-file"><a href="src--i18n.rs.html">i18n.rs</a></li><li class="tree-file"><a href="src--input.rs.html">input.rs</a></li><li class="tree-file"><a href="src--main.rs.html">main.rs</a></li><li class="tree-file"><a href="src--panes.rs.html">panes.rs</a></li><li class="tree-file"><a href="src--session.rs.html">session.rs</a></li><li class="tree-file"><a href="src--shortcuts.rs.html">shortcuts.rs</a></li><li class="tree-file"><a href="src--snippets.rs.html">snippets.rs</a></li><li class="tree-file"><a href="src--theme.rs.html">theme.rs</a></li><li class="tree-file"><a href="src--update.rs.html">update.rs</a></li><li class="tree-file"><a href="src--window.rs.html">window.rs</a></li></ul></li><li class="tree-file"><a href="Cargo.lock.html">Cargo.lock</a></li><li class="tree-file"><a href="Cargo.toml.html">Cargo.toml</a></li><li class="tree-file"><a href="LICENSE.html">LICENSE</a></li><li class="tree-file"><a href="install.sh.html">install.sh</a></li></ul></nav><script>
+(function () {
+  var tree = document.currentScript.previousElementSibling;
+  var key = "file-tree-scroll:" + tree.dataset.treeKey;
+  var saved = null;
+  try {
+    saved = sessionStorage.getItem(key);
+    sessionStorage.removeItem(key);
+  } catch (e) {}
+
+  if (saved !== null) {
+    tree.scrollTop = +saved;
+  } else {
+    var active = tree.querySelector(".tree-file--active");
+    if (active) {
+      var a = active.getBoundingClientRect();
+      var t = tree.getBoundingClientRect();
+      if (a.bottom > t.bottom) {
+        tree.scrollTop += a.top - t.top - (tree.clientHeight - a.height) / 2;
+      }
+    }
+  }
+
+  tree.addEventListener("click", function (e) {
+    if (!e.target.closest("a")) return;
+    try { sessionStorage.setItem(key, String(tree.scrollTop)); } catch (err) {}
+  });
+})();
+</script>
+    <main class="main" id="main">
+      <section class="section source-page">
+        <p class="section__path">
+          <a href="../../index.html#projects" class="link">~/projects</a> /
+          <a href="../terminaal.html" class="link">terminaal</a> / source
+        </p>
+        <div class="source-page__head">
+          <h1 class="section__title">src/tn5250/connection.rs</h1>
+          <a href="../terminaal.html" class="link">← Back to Terminaal</a>
+        </div>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">  1</span>
+<span class="normal">  2</span>
+<span class="normal">  3</span>
+<span class="normal">  4</span>
+<span class="normal">  5</span>
+<span class="normal">  6</span>
+<span class="normal">  7</span>
+<span class="normal">  8</span>
+<span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span>
+<span class="normal">245</span>
+<span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span>
+<span class="normal">250</span>
+<span class="normal">251</span>
+<span class="normal">252</span>
+<span class="normal">253</span>
+<span class="normal">254</span>
+<span class="normal">255</span>
+<span class="normal">256</span>
+<span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span>
+<span class="normal">262</span>
+<span class="normal">263</span>
+<span class="normal">264</span>
+<span class="normal">265</span>
+<span class="normal">266</span>
+<span class="normal">267</span>
+<span class="normal">268</span>
+<span class="normal">269</span>
+<span class="normal">270</span>
+<span class="normal">271</span>
+<span class="normal">272</span>
+<span class="normal">273</span>
+<span class="normal">274</span>
+<span class="normal">275</span>
+<span class="normal">276</span>
+<span class="normal">277</span>
+<span class="normal">278</span>
+<span class="normal">279</span>
+<span class="normal">280</span>
+<span class="normal">281</span>
+<span class="normal">282</span>
+<span class="normal">283</span>
+<span class="normal">284</span>
+<span class="normal">285</span>
+<span class="normal">286</span>
+<span class="normal">287</span>
+<span class="normal">288</span>
+<span class="normal">289</span>
+<span class="normal">290</span>
+<span class="normal">291</span>
+<span class="normal">292</span>
+<span class="normal">293</span>
+<span class="normal">294</span>
+<span class="normal">295</span>
+<span class="normal">296</span>
+<span class="normal">297</span>
+<span class="normal">298</span>
+<span class="normal">299</span>
+<span class="normal">300</span>
+<span class="normal">301</span>
+<span class="normal">302</span>
+<span class="normal">303</span>
+<span class="normal">304</span>
+<span class="normal">305</span>
+<span class="normal">306</span>
+<span class="normal">307</span>
+<span class="normal">308</span>
+<span class="normal">309</span>
+<span class="normal">310</span>
+<span class="normal">311</span>
+<span class="normal">312</span>
+<span class="normal">313</span>
+<span class="normal">314</span>
+<span class="normal">315</span>
+<span class="normal">316</span>
+<span class="normal">317</span>
+<span class="normal">318</span>
+<span class="normal">319</span>
+<span class="normal">320</span>
+<span class="normal">321</span>
+<span class="normal">322</span>
+<span class="normal">323</span>
+<span class="normal">324</span>
+<span class="normal">325</span>
+<span class="normal">326</span>
+<span class="normal">327</span>
+<span class="normal">328</span>
+<span class="normal">329</span>
+<span class="normal">330</span>
+<span class="normal">331</span>
+<span class="normal">332</span>
+<span class="normal">333</span>
+<span class="normal">334</span>
+<span class="normal">335</span>
+<span class="normal">336</span>
+<span class="normal">337</span>
+<span class="normal">338</span>
+<span class="normal">339</span>
+<span class="normal">340</span>
+<span class="normal">341</span>
+<span class="normal">342</span>
+<span class="normal">343</span>
+<span class="normal">344</span>
+<span class="normal">345</span>
+<span class="normal">346</span>
+<span class="normal">347</span>
+<span class="normal">348</span>
+<span class="normal">349</span>
+<span class="normal">350</span>
+<span class="normal">351</span>
+<span class="normal">352</span>
+<span class="normal">353</span>
+<span class="normal">354</span>
+<span class="normal">355</span>
+<span class="normal">356</span>
+<span class="normal">357</span>
+<span class="normal">358</span>
+<span class="normal">359</span>
+<span class="normal">360</span>
+<span class="normal">361</span>
+<span class="normal">362</span>
+<span class="normal">363</span>
+<span class="normal">364</span>
+<span class="normal">365</span>
+<span class="normal">366</span>
+<span class="normal">367</span>
+<span class="normal">368</span>
+<span class="normal">369</span>
+<span class="normal">370</span>
+<span class="normal">371</span>
+<span class="normal">372</span>
+<span class="normal">373</span>
+<span class="normal">374</span>
+<span class="normal">375</span>
+<span class="normal">376</span>
+<span class="normal">377</span>
+<span class="normal">378</span>
+<span class="normal">379</span>
+<span class="normal">380</span>
+<span class="normal">381</span>
+<span class="normal">382</span>
+<span class="normal">383</span>
+<span class="normal">384</span>
+<span class="normal">385</span>
+<span class="normal">386</span>
+<span class="normal">387</span>
+<span class="normal">388</span>
+<span class="normal">389</span>
+<span class="normal">390</span>
+<span class="normal">391</span>
+<span class="normal">392</span>
+<span class="normal">393</span>
+<span class="normal">394</span>
+<span class="normal">395</span>
+<span class="normal">396</span>
+<span class="normal">397</span>
+<span class="normal">398</span>
+<span class="normal">399</span>
+<span class="normal">400</span>
+<span class="normal">401</span>
+<span class="normal">402</span>
+<span class="normal">403</span>
+<span class="normal">404</span>
+<span class="normal">405</span>
+<span class="normal">406</span>
+<span class="normal">407</span>
+<span class="normal">408</span>
+<span class="normal">409</span>
+<span class="normal">410</span>
+<span class="normal">411</span>
+<span class="normal">412</span>
+<span class="normal">413</span>
+<span class="normal">414</span>
+<span class="normal">415</span>
+<span class="normal">416</span>
+<span class="normal">417</span>
+<span class="normal">418</span>
+<span class="normal">419</span>
+<span class="normal">420</span>
+<span class="normal">421</span>
+<span class="normal">422</span>
+<span class="normal">423</span>
+<span class="normal">424</span>
+<span class="normal">425</span>
+<span class="normal">426</span>
+<span class="normal">427</span>
+<span class="normal">428</span>
+<span class="normal">429</span>
+<span class="normal">430</span>
+<span class="normal">431</span>
+<span class="normal">432</span>
+<span class="normal">433</span>
+<span class="normal">434</span>
+<span class="normal">435</span>
+<span class="normal">436</span>
+<span class="normal">437</span>
+<span class="normal">438</span>
+<span class="normal">439</span>
+<span class="normal">440</span>
+<span class="normal">441</span>
+<span class="normal">442</span>
+<span class="normal">443</span>
+<span class="normal">444</span>
+<span class="normal">445</span>
+<span class="normal">446</span>
+<span class="normal">447</span>
+<span class="normal">448</span>
+<span class="normal">449</span>
+<span class="normal">450</span>
+<span class="normal">451</span>
+<span class="normal">452</span>
+<span class="normal">453</span>
+<span class="normal">454</span>
+<span class="normal">455</span>
+<span class="normal">456</span>
+<span class="normal">457</span>
+<span class="normal">458</span>
+<span class="normal">459</span>
+<span class="normal">460</span>
+<span class="normal">461</span>
+<span class="normal">462</span>
+<span class="normal">463</span>
+<span class="normal">464</span>
+<span class="normal">465</span>
+<span class="normal">466</span>
+<span class="normal">467</span>
+<span class="normal">468</span>
+<span class="normal">469</span>
+<span class="normal">470</span>
+<span class="normal">471</span>
+<span class="normal">472</span>
+<span class="normal">473</span>
+<span class="normal">474</span>
+<span class="normal">475</span>
+<span class="normal">476</span>
+<span class="normal">477</span>
+<span class="normal">478</span>
+<span class="normal">479</span></pre></div></td><td class="code"><div><pre><span></span><span class="sd">//! The worker thread of a 5250 pane: connects (TCP, TLS if asked),</span>
+<span class="sd">//! negotiates, then pumps records between the server and the</span>
+<span class="sd">//! [`Screen`], and keys from the pane into it, drawing the screen into the</span>
+<span class="sd">//! pane's `Term` after every change.</span>
+<span class="sd">//!</span>
+<span class="sd">//! Like the SSH worker, the app talks to it through a handle: an mpsc</span>
+<span class="sd">//! queue plus a socketpair that wakes its `poll()`. Dropping the handle</span>
+<span class="sd">//! (closing the tab) ends the thread. When the connection fails or ends,</span>
+<span class="sd">//! the screen stays with a notice: Enter connects again (a new sign-on),</span>
+<span class="sd">//! Ctrl+D closes the tab.</span>
+
+<span class="k">use</span><span class="w"> </span><span class="n">std</span><span class="p">::</span><span class="n">io</span><span class="p">::{</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">ErrorKind</span><span class="p">,</span><span class="w"> </span><span class="n">Read</span><span class="p">,</span><span class="w"> </span><span class="n">Write</span><span class="p">};</span>
+<span class="k">use</span><span class="w"> </span><span class="n">std</span><span class="p">::</span><span class="n">net</span><span class="p">::{</span><span class="n">SocketAddr</span><span class="p">,</span><span class="w"> </span><span class="n">TcpStream</span><span class="p">,</span><span class="w"> </span><span class="n">ToSocketAddrs</span><span class="p">};</span>
+<span class="k">use</span><span class="w"> </span><span class="n">std</span><span class="p">::</span><span class="n">os</span><span class="p">::</span><span class="n">fd</span><span class="p">::{</span><span class="n">AsRawFd</span><span class="p">,</span><span class="w"> </span><span class="n">RawFd</span><span class="p">};</span>
+<span class="k">use</span><span class="w"> </span><span class="n">std</span><span class="p">::</span><span class="n">os</span><span class="p">::</span><span class="n">unix</span><span class="p">::</span><span class="n">net</span><span class="p">::</span><span class="n">UnixStream</span><span class="p">;</span>
+<span class="k">use</span><span class="w"> </span><span class="n">std</span><span class="p">::</span><span class="n">sync</span><span class="p">::</span><span class="n">Arc</span><span class="p">;</span>
+<span class="k">use</span><span class="w"> </span><span class="n">std</span><span class="p">::</span><span class="n">sync</span><span class="p">::</span><span class="n">mpsc</span><span class="p">::{</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">Receiver</span><span class="p">,</span><span class="w"> </span><span class="n">Sender</span><span class="p">,</span><span class="w"> </span><span class="n">TryRecvError</span><span class="p">};</span>
+<span class="k">use</span><span class="w"> </span><span class="n">std</span><span class="p">::</span><span class="n">time</span><span class="p">::</span><span class="n">Duration</span><span class="p">;</span>
+
+<span class="k">use</span><span class="w"> </span><span class="n">alacritty_terminal</span><span class="p">::</span><span class="n">event</span><span class="p">::{</span><span class="n">Event</span><span class="p">,</span><span class="w"> </span><span class="n">EventListener</span><span class="p">,</span><span class="w"> </span><span class="n">WindowSize</span><span class="p">};</span>
+<span class="k">use</span><span class="w"> </span><span class="n">alacritty_terminal</span><span class="p">::</span><span class="n">sync</span><span class="p">::</span><span class="n">FairMutex</span><span class="p">;</span>
+<span class="k">use</span><span class="w"> </span><span class="n">alacritty_terminal</span><span class="p">::</span><span class="n">term</span><span class="p">::</span><span class="n">Term</span><span class="p">;</span>
+<span class="k">use</span><span class="w"> </span><span class="n">alacritty_terminal</span><span class="p">::</span><span class="n">vte</span><span class="p">::</span><span class="n">ansi</span><span class="p">::</span><span class="n">Processor</span><span class="p">;</span>
+
+<span class="k">use</span><span class="w"> </span><span class="k">super</span><span class="p">::</span><span class="n">Tn5250Target</span><span class="p">;</span>
+<span class="k">use</span><span class="w"> </span><span class="k">super</span><span class="p">::</span><span class="n">codepage</span><span class="p">::</span><span class="n">Codepage</span><span class="p">;</span>
+<span class="k">use</span><span class="w"> </span><span class="k">super</span><span class="p">::</span><span class="n">keys</span><span class="p">::{</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">KITTY_FLAGS</span><span class="p">,</span><span class="w"> </span><span class="n">Typed</span><span class="p">};</span>
+<span class="k">use</span><span class="w"> </span><span class="k">super</span><span class="p">::</span><span class="n">render</span><span class="p">::</span><span class="n">Renderer</span><span class="p">;</span>
+<span class="k">use</span><span class="w"> </span><span class="k">super</span><span class="p">::</span><span class="n">screen</span><span class="p">::{</span><span class="n">Key</span><span class="p">,</span><span class="w"> </span><span class="n">Packet</span><span class="p">,</span><span class="w"> </span><span class="n">Screen</span><span class="p">};</span>
+<span class="k">use</span><span class="w"> </span><span class="k">super</span><span class="p">::</span><span class="n">telnet</span><span class="p">::{</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">Telnet</span><span class="p">};</span>
+<span class="k">use</span><span class="w"> </span><span class="k">crate</span><span class="p">::</span><span class="n">i18n</span><span class="p">::</span><span class="n">t</span><span class="p">;</span>
+<span class="k">use</span><span class="w"> </span><span class="k">crate</span><span class="p">::</span><span class="n">terminal</span><span class="p">::</span><span class="n">listener</span><span class="p">::</span><span class="n">EventProxyListener</span><span class="p">;</span>
+
+<span class="k">type</span><span class="w"> </span><span class="nc">SharedTerm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Arc</span><span class="o">&lt;</span><span class="n">FairMutex</span><span class="o">&lt;</span><span class="n">Term</span><span class="o">&lt;</span><span class="n">EventProxyListener</span><span class="o">&gt;&gt;&gt;</span><span class="p">;</span>
+
+<span class="k">const</span><span class="w"> </span><span class="n">CONNECT_TIMEOUT</span><span class="p">:</span><span class="w"> </span><span class="nc">Duration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Duration</span><span class="p">::</span><span class="n">from_secs</span><span class="p">(</span><span class="mi">15</span><span class="p">);</span>
+<span class="sd">/// The TLS handshake runs blocking, with this as the socket timeout.</span>
+<span class="k">const</span><span class="w"> </span><span class="n">HANDSHAKE_TIMEOUT</span><span class="p">:</span><span class="w"> </span><span class="nc">Duration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Duration</span><span class="p">::</span><span class="n">from_secs</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
+<span class="sd">/// Don't hold the screen hostage to one flood of input.</span>
+<span class="k">const</span><span class="w"> </span><span class="n">MAX_READ_PER_LOOP</span><span class="p">:</span><span class="w"> </span><span class="kt">usize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span>
+
+<span class="k">enum</span><span class="w"> </span><span class="nc">Msg</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Input</span><span class="p">(</span><span class="nb">Vec</span><span class="o">&lt;</span><span class="kt">u8</span><span class="o">&gt;</span><span class="p">),</span>
+<span class="w">    </span><span class="n">Resize</span><span class="p">(</span><span class="n">WindowSize</span><span class="p">),</span>
+<span class="p">}</span>
+
+<span class="k">pub</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">Tn5250Handle</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">tx</span><span class="p">:</span><span class="w"> </span><span class="nc">Sender</span><span class="o">&lt;</span><span class="n">Msg</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">wake</span><span class="p">:</span><span class="w"> </span><span class="nc">UnixStream</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="k">impl</span><span class="w"> </span><span class="n">Tn5250Handle</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">send_input</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">bytes</span><span class="p">:</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="kt">u8</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="bp">self</span><span class="p">.</span><span class="n">send</span><span class="p">(</span><span class="n">Msg</span><span class="p">::</span><span class="n">Input</span><span class="p">(</span><span class="n">bytes</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">resize</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">:</span><span class="w"> </span><span class="nc">WindowSize</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="bp">self</span><span class="p">.</span><span class="n">send</span><span class="p">(</span><span class="n">Msg</span><span class="p">::</span><span class="n">Resize</span><span class="p">(</span><span class="n">size</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">send</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">msg</span><span class="p">:</span><span class="w"> </span><span class="nc">Msg</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">tx</span><span class="p">.</span><span class="n">send</span><span class="p">(</span><span class="n">msg</span><span class="p">).</span><span class="n">is_ok</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// Non-blocking: if the socket buffer is full, a wakeup is pending anyway.</span>
+<span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="n">_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">.</span><span class="n">wake</span><span class="p">).</span><span class="n">write</span><span class="p">(</span><span class="o">&amp;</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="sd">/// Start connecting in the background; the pane shows how it goes.</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">spawn</span><span class="p">(</span><span class="n">target</span><span class="p">:</span><span class="w"> </span><span class="nc">Tn5250Target</span><span class="p">,</span><span class="w"> </span><span class="n">term</span><span class="p">:</span><span class="w"> </span><span class="nc">SharedTerm</span><span class="p">,</span><span class="w"> </span><span class="n">listener</span><span class="p">:</span><span class="w"> </span><span class="nc">EventProxyListener</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">:</span><span class="w"> </span><span class="nc">WindowSize</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">io</span><span class="p">::</span><span class="nb">Result</span><span class="o">&lt;</span><span class="n">Tn5250Handle</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="p">(</span><span class="n">tx</span><span class="p">,</span><span class="w"> </span><span class="n">rx</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mpsc</span><span class="p">::</span><span class="n">channel</span><span class="p">();</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="p">(</span><span class="n">wake_tx</span><span class="p">,</span><span class="w"> </span><span class="n">wake_rx</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UnixStream</span><span class="p">::</span><span class="n">pair</span><span class="p">()</span><span class="o">?</span><span class="p">;</span>
+<span class="w">    </span><span class="n">wake_tx</span><span class="p">.</span><span class="n">set_nonblocking</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+<span class="w">    </span><span class="n">wake_rx</span><span class="p">.</span><span class="n">set_nonblocking</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">codepage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Codepage</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="n">target</span><span class="p">.</span><span class="n">ccsid</span><span class="p">).</span><span class="n">unwrap_or_else</span><span class="p">(</span><span class="o">||</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">log</span><span class="p">::</span><span class="n">warn</span><span class="o">!</span><span class="p">(</span><span class="s">"{}: no table for CCSID {}, using 37"</span><span class="p">,</span><span class="w"> </span><span class="n">target</span><span class="p">.</span><span class="n">label</span><span class="p">,</span><span class="w"> </span><span class="n">target</span><span class="p">.</span><span class="n">ccsid</span><span class="p">);</span>
+<span class="w">        </span><span class="n">Codepage</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="k">super</span><span class="p">::</span><span class="n">codepage</span><span class="p">::</span><span class="n">DEFAULT_CCSID</span><span class="p">).</span><span class="n">expect</span><span class="p">(</span><span class="s">"CCSID 37 has a table"</span><span class="p">)</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">worker</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Worker</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">renderer</span><span class="p">:</span><span class="w"> </span><span class="nc">Renderer</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="kt">usize</span><span class="p">::</span><span class="n">from</span><span class="p">(</span><span class="n">size</span><span class="p">.</span><span class="n">num_cols</span><span class="p">),</span><span class="w"> </span><span class="kt">usize</span><span class="p">::</span><span class="n">from</span><span class="p">(</span><span class="n">size</span><span class="p">.</span><span class="n">num_lines</span><span class="p">)),</span>
+<span class="w">        </span><span class="n">target</span><span class="p">,</span>
+<span class="w">        </span><span class="n">codepage</span><span class="p">,</span>
+<span class="w">        </span><span class="n">term</span><span class="p">,</span>
+<span class="w">        </span><span class="n">listener</span><span class="p">,</span>
+<span class="w">        </span><span class="n">parser</span><span class="p">:</span><span class="w"> </span><span class="nc">Processor</span><span class="p">::</span><span class="n">new</span><span class="p">(),</span>
+<span class="w">        </span><span class="n">rx</span><span class="p">,</span>
+<span class="w">        </span><span class="n">wake</span><span class="p">:</span><span class="w"> </span><span class="nc">wake_rx</span><span class="p">,</span>
+<span class="w">        </span><span class="n">screen</span><span class="p">:</span><span class="w"> </span><span class="nb">None</span><span class="p">,</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="w">    </span><span class="n">std</span><span class="p">::</span><span class="n">thread</span><span class="p">::</span><span class="n">Builder</span><span class="p">::</span><span class="n">new</span><span class="p">().</span><span class="n">name</span><span class="p">(</span><span class="fm">format!</span><span class="p">(</span><span class="s">"tn5250 {}"</span><span class="p">,</span><span class="w"> </span><span class="n">worker</span><span class="p">.</span><span class="n">target</span><span class="p">.</span><span class="n">label</span><span class="p">)).</span><span class="n">spawn</span><span class="p">(</span><span class="k">move</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">worker</span><span class="p">.</span><span class="n">run</span><span class="p">())</span><span class="o">?</span><span class="p">;</span>
+<span class="w">    </span><span class="nb">Ok</span><span class="p">(</span><span class="n">Tn5250Handle</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">tx</span><span class="p">,</span><span class="w"> </span><span class="n">wake</span><span class="p">:</span><span class="w"> </span><span class="nc">wake_tx</span><span class="w"> </span><span class="p">})</span>
+<span class="p">}</span>
+
+<span class="sd">/// How a connection ended.</span>
+<span class="k">enum</span><span class="w"> </span><span class="nc">Stop</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="sd">/// Shown in the pane; Enter tries again.</span>
+<span class="w">    </span><span class="n">Failed</span><span class="p">(</span><span class="nb">String</span><span class="p">),</span>
+<span class="w">    </span><span class="n">TabClosed</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="k">enum</span><span class="w"> </span><span class="nc">Choice</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Retry</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Close</span><span class="p">,</span>
+<span class="w">    </span><span class="n">TabClosed</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="sd">/// TCP, or TLS over it.</span>
+<span class="k">enum</span><span class="w"> </span><span class="nc">Transport</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Plain</span><span class="p">(</span><span class="n">TcpStream</span><span class="p">),</span>
+<span class="w">    </span><span class="n">Tls</span><span class="p">(</span><span class="nb">Box</span><span class="o">&lt;</span><span class="n">native_tls</span><span class="p">::</span><span class="n">TlsStream</span><span class="o">&lt;</span><span class="n">TcpStream</span><span class="o">&gt;&gt;</span><span class="p">),</span>
+<span class="p">}</span>
+
+<span class="k">impl</span><span class="w"> </span><span class="n">Transport</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">fd</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">RawFd</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">match</span><span class="w"> </span><span class="bp">self</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">Transport</span><span class="p">::</span><span class="n">Plain</span><span class="p">(</span><span class="n">stream</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">stream</span><span class="p">.</span><span class="n">as_raw_fd</span><span class="p">(),</span>
+<span class="w">            </span><span class="n">Transport</span><span class="p">::</span><span class="n">Tls</span><span class="p">(</span><span class="n">stream</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">stream</span><span class="p">.</span><span class="n">get_ref</span><span class="p">().</span><span class="n">as_raw_fd</span><span class="p">(),</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">read</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">buf</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">mut</span><span class="w"> </span><span class="p">[</span><span class="kt">u8</span><span class="p">])</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">io</span><span class="p">::</span><span class="nb">Result</span><span class="o">&lt;</span><span class="kt">usize</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">match</span><span class="w"> </span><span class="bp">self</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">Transport</span><span class="p">::</span><span class="n">Plain</span><span class="p">(</span><span class="n">stream</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">stream</span><span class="p">.</span><span class="n">read</span><span class="p">(</span><span class="n">buf</span><span class="p">),</span>
+<span class="w">            </span><span class="n">Transport</span><span class="p">::</span><span class="n">Tls</span><span class="p">(</span><span class="n">stream</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">stream</span><span class="p">.</span><span class="n">read</span><span class="p">(</span><span class="n">buf</span><span class="p">),</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">write</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">buf</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="p">[</span><span class="kt">u8</span><span class="p">])</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">io</span><span class="p">::</span><span class="nb">Result</span><span class="o">&lt;</span><span class="kt">usize</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">match</span><span class="w"> </span><span class="bp">self</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">Transport</span><span class="p">::</span><span class="n">Plain</span><span class="p">(</span><span class="n">stream</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">stream</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="n">buf</span><span class="p">),</span>
+<span class="w">            </span><span class="n">Transport</span><span class="p">::</span><span class="n">Tls</span><span class="p">(</span><span class="n">stream</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">stream</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="n">buf</span><span class="p">),</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">Worker</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">target</span><span class="p">:</span><span class="w"> </span><span class="nc">Tn5250Target</span><span class="p">,</span>
+<span class="w">    </span><span class="n">codepage</span><span class="p">:</span><span class="w"> </span><span class="nc">Codepage</span><span class="p">,</span>
+<span class="w">    </span><span class="n">term</span><span class="p">:</span><span class="w"> </span><span class="nc">SharedTerm</span><span class="p">,</span>
+<span class="w">    </span><span class="n">listener</span><span class="p">:</span><span class="w"> </span><span class="nc">EventProxyListener</span><span class="p">,</span>
+<span class="w">    </span><span class="n">parser</span><span class="p">:</span><span class="w"> </span><span class="nc">Processor</span><span class="p">,</span>
+<span class="w">    </span><span class="n">rx</span><span class="p">:</span><span class="w"> </span><span class="nc">Receiver</span><span class="o">&lt;</span><span class="n">Msg</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">wake</span><span class="p">:</span><span class="w"> </span><span class="nc">UnixStream</span><span class="p">,</span>
+<span class="w">    </span><span class="n">renderer</span><span class="p">:</span><span class="w"> </span><span class="nc">Renderer</span><span class="p">,</span>
+<span class="w">    </span><span class="sd">/// The 5250 screen once the server sent one; it stays after the</span>
+<span class="w">    </span><span class="sd">/// connection ends, under the notice.</span>
+<span class="w">    </span><span class="n">screen</span><span class="p">:</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="n">Screen</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="k">impl</span><span class="w"> </span><span class="n">Worker</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="k">mut</span><span class="w"> </span><span class="bp">self</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Title for the tab; the alternate screen (no scrollback for a</span>
+<span class="w">        </span><span class="c1">// screen that is redrawn in place); the wheel as mouse reports</span>
+<span class="w">        </span><span class="c1">// (Roll); every key as an escape code, with its text.</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">title</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">target</span><span class="p">.</span><span class="n">label</span><span class="p">.</span><span class="n">chars</span><span class="p">().</span><span class="n">filter</span><span class="p">(</span><span class="o">|</span><span class="n">c</span><span class="o">|</span><span class="w"> </span><span class="o">!</span><span class="n">c</span><span class="p">.</span><span class="n">is_control</span><span class="p">()).</span><span class="n">collect</span><span class="p">();</span>
+<span class="w">        </span><span class="bp">self</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="fm">format!</span><span class="p">(</span><span class="s">"</span><span class="se">\x1b</span><span class="s">]2;{title}</span><span class="se">\x07\x1b</span><span class="s">[?1049h</span><span class="se">\x1b</span><span class="s">[?1000h</span><span class="se">\x1b</span><span class="s">[?1006h</span><span class="se">\x1b</span><span class="s">[&gt;{KITTY_FLAGS}u"</span><span class="p">).</span><span class="n">as_bytes</span><span class="p">());</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">attempt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">        </span><span class="k">loop</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">target</span><span class="p">.</span><span class="n">address</span><span class="p">();</span>
+<span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="n">connecting</span><span class="w"> </span><span class="o">=</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="n">attempt</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">t</span><span class="o">!</span><span class="p">(</span><span class="s">"conn-connecting"</span><span class="p">,</span><span class="w"> </span><span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">target</span><span class="p">)</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">t</span><span class="o">!</span><span class="p">(</span><span class="s">"conn-reconnecting"</span><span class="p">,</span><span class="w"> </span><span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">target</span><span class="p">)</span><span class="w"> </span><span class="p">};</span>
+<span class="w">            </span><span class="n">attempt</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">            </span><span class="bp">self</span><span class="p">.</span><span class="n">screen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">None</span><span class="p">;</span>
+<span class="w">            </span><span class="bp">self</span><span class="p">.</span><span class="n">renderer</span><span class="p">.</span><span class="n">notice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">None</span><span class="p">;</span>
+<span class="w">            </span><span class="bp">self</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="fm">format!</span><span class="p">(</span><span class="s">"</span><span class="se">\x1b</span><span class="s">[0 q</span><span class="se">\x1b</span><span class="s">[H</span><span class="se">\x1b</span><span class="s">[2J</span><span class="se">\x1b</span><span class="s">[2m{connecting}</span><span class="se">\x1b</span><span class="s">[0m</span><span class="se">\r\n</span><span class="s">"</span><span class="p">).</span><span class="n">as_bytes</span><span class="p">());</span>
+<span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">match</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">connect_and_pump</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">Stop</span><span class="p">::</span><span class="n">TabClosed</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="k">return</span><span class="p">,</span>
+<span class="w">                </span><span class="n">Stop</span><span class="p">::</span><span class="n">Failed</span><span class="p">(</span><span class="n">message</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">message</span><span class="p">,</span>
+<span class="w">            </span><span class="p">};</span>
+<span class="w">            </span><span class="n">log</span><span class="p">::</span><span class="n">info</span><span class="o">!</span><span class="p">(</span><span class="s">"{}: {message}"</span><span class="p">,</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">target</span><span class="p">.</span><span class="n">label</span><span class="p">);</span>
+<span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="n">hint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t</span><span class="o">!</span><span class="p">(</span><span class="s">"conn-retry-or-close"</span><span class="p">);</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">screen</span><span class="p">.</span><span class="n">is_some</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="c1">// Over the status line: what's on the screen stays readable.</span>
+<span class="w">                </span><span class="bp">self</span><span class="p">.</span><span class="n">renderer</span><span class="p">.</span><span class="n">notice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="fm">format!</span><span class="p">(</span><span class="s">"{message} – {hint}"</span><span class="p">));</span>
+<span class="w">                </span><span class="bp">self</span><span class="p">.</span><span class="n">redraw</span><span class="p">();</span>
+<span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="bp">self</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="fm">format!</span><span class="p">(</span><span class="s">"</span><span class="se">\x1b</span><span class="s">[31m{message}</span><span class="se">\x1b</span><span class="s">[0m</span><span class="se">\r\n\x1b</span><span class="s">[2m{hint}</span><span class="se">\x1b</span><span class="s">[0m</span><span class="se">\r\n</span><span class="s">"</span><span class="p">).</span><span class="n">as_bytes</span><span class="p">());</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="k">match</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">wait_choice</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">Choice</span><span class="p">::</span><span class="n">Retry</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">                </span><span class="n">Choice</span><span class="p">::</span><span class="n">Close</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">term</span><span class="p">.</span><span class="n">lock</span><span class="p">().</span><span class="n">exit</span><span class="p">(),</span>
+<span class="w">                </span><span class="n">Choice</span><span class="p">::</span><span class="n">TabClosed</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="k">return</span><span class="p">,</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="sd">/// Bytes into the pane's terminal, and a redraw.</span>
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">write</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">bytes</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="p">[</span><span class="kt">u8</span><span class="p">])</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="bp">self</span><span class="p">.</span><span class="n">parser</span><span class="p">.</span><span class="n">advance</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="o">*</span><span class="bp">self</span><span class="p">.</span><span class="n">term</span><span class="p">.</span><span class="n">lock</span><span class="p">(),</span><span class="w"> </span><span class="n">bytes</span><span class="p">);</span>
+<span class="w">        </span><span class="bp">self</span><span class="p">.</span><span class="n">listener</span><span class="p">.</span><span class="n">send_event</span><span class="p">(</span><span class="n">Event</span><span class="p">::</span><span class="n">Wakeup</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="sd">/// Bring the pane up to date with the screen.</span>
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">redraw</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="bp">self</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">screen</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">screen</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="p">};</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">bell</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">screen</span><span class="p">.</span><span class="n">take_bell</span><span class="p">();</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">frame</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">renderer</span><span class="p">.</span><span class="n">frame</span><span class="p">(</span><span class="n">screen</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">bell</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">frame</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="mh">0x07</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="bp">self</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="o">&amp;</span><span class="n">frame</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">resize</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">:</span><span class="w"> </span><span class="nc">WindowSize</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="bp">self</span><span class="p">.</span><span class="n">renderer</span><span class="p">.</span><span class="n">resize</span><span class="p">(</span><span class="kt">usize</span><span class="p">::</span><span class="n">from</span><span class="p">(</span><span class="n">size</span><span class="p">.</span><span class="n">num_cols</span><span class="p">),</span><span class="w"> </span><span class="kt">usize</span><span class="p">::</span><span class="n">from</span><span class="p">(</span><span class="n">size</span><span class="p">.</span><span class="n">num_lines</span><span class="p">));</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">screen</span><span class="p">.</span><span class="n">is_some</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// Whatever the resize did to the terminal's rows, start over.</span>
+<span class="w">            </span><span class="bp">self</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="s">b"</span><span class="se">\x1b</span><span class="s">[H</span><span class="se">\x1b</span><span class="s">[2J"</span><span class="p">);</span>
+<span class="w">            </span><span class="bp">self</span><span class="p">.</span><span class="n">redraw</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="sd">/// Wait for Enter (try again) or Ctrl+D (close).</span>
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">wait_choice</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="bp">self</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">Choice</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">loop</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="nb">Ok</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">rx</span><span class="p">.</span><span class="n">recv</span><span class="p">()</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">Choice</span><span class="p">::</span><span class="n">TabClosed</span><span class="w"> </span><span class="p">};</span>
+<span class="w">            </span><span class="k">match</span><span class="w"> </span><span class="n">msg</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">Msg</span><span class="p">::</span><span class="n">Input</span><span class="p">(</span><span class="n">bytes</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="k">for</span><span class="w"> </span><span class="n">typed</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">keys</span><span class="p">::</span><span class="n">decode</span><span class="p">(</span><span class="o">&amp;</span><span class="n">bytes</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="k">match</span><span class="w"> </span><span class="n">typed</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                            </span><span class="n">Typed</span><span class="p">::</span><span class="n">Close</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">Choice</span><span class="p">::</span><span class="n">Close</span><span class="p">,</span>
+<span class="w">                            </span><span class="n">Typed</span><span class="p">::</span><span class="n">Key</span><span class="p">(</span><span class="n">Key</span><span class="p">::</span><span class="n">Enter</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Key</span><span class="p">::</span><span class="n">NewLine</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">Choice</span><span class="p">::</span><span class="n">Retry</span><span class="p">,</span>
+<span class="w">                            </span><span class="n">_</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">                </span><span class="n">Msg</span><span class="p">::</span><span class="n">Resize</span><span class="p">(</span><span class="n">size</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">resize</span><span class="p">(</span><span class="n">size</span><span class="p">),</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">connect</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="n">Transport</span><span class="p">,</span><span class="w"> </span><span class="n">Stop</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="bp">Self</span><span class="p">::</span><span class="n">connect_target</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">.</span><span class="n">target</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">connect_target</span><span class="p">(</span><span class="n">target</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">Tn5250Target</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="n">Transport</span><span class="p">,</span><span class="w"> </span><span class="n">Stop</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="p">(</span><span class="n">host</span><span class="p">,</span><span class="w"> </span><span class="n">port</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">target</span><span class="p">.</span><span class="n">host</span><span class="p">.</span><span class="n">as_str</span><span class="p">(),</span><span class="w"> </span><span class="n">target</span><span class="p">.</span><span class="n">port</span><span class="p">);</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">addresses</span><span class="p">:</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="n">SocketAddr</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">host</span><span class="p">,</span><span class="w"> </span><span class="n">port</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="n">to_socket_addrs</span><span class="p">()</span>
+<span class="w">            </span><span class="p">.</span><span class="n">map_err</span><span class="p">(</span><span class="o">|</span><span class="n">err</span><span class="o">|</span><span class="w"> </span><span class="n">Stop</span><span class="p">::</span><span class="n">Failed</span><span class="p">(</span><span class="n">t</span><span class="o">!</span><span class="p">(</span><span class="s">"conn-resolve-failed"</span><span class="p">,</span><span class="w"> </span><span class="n">host</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">host</span><span class="p">,</span><span class="w"> </span><span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">err</span><span class="p">.</span><span class="n">to_string</span><span class="p">())))</span><span class="o">?</span>
+<span class="w">            </span><span class="p">.</span><span class="n">collect</span><span class="p">();</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">last_error</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">None</span><span class="p">;</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">stream</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">None</span><span class="p">;</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">address</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">addresses</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">match</span><span class="w"> </span><span class="n">TcpStream</span><span class="p">::</span><span class="n">connect_timeout</span><span class="p">(</span><span class="o">&amp;</span><span class="n">address</span><span class="p">,</span><span class="w"> </span><span class="n">CONNECT_TIMEOUT</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nb">Ok</span><span class="p">(</span><span class="n">connected</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">stream</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">connected</span><span class="p">);</span>
+<span class="w">                    </span><span class="k">break</span><span class="p">;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">                </span><span class="nb">Err</span><span class="p">(</span><span class="n">err</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">last_error</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">err</span><span class="p">),</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">stream</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">stream</span><span class="p">.</span><span class="n">ok_or_else</span><span class="p">(</span><span class="o">||</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">last_error</span><span class="p">.</span><span class="n">map_or_else</span><span class="p">(</span><span class="o">||</span><span class="w"> </span><span class="n">t</span><span class="o">!</span><span class="p">(</span><span class="s">"conn-unknown-type"</span><span class="p">),</span><span class="w"> </span><span class="o">|</span><span class="n">err</span><span class="o">|</span><span class="w"> </span><span class="n">err</span><span class="p">.</span><span class="n">to_string</span><span class="p">());</span>
+<span class="w">            </span><span class="n">Stop</span><span class="p">::</span><span class="n">Failed</span><span class="p">(</span><span class="n">t</span><span class="o">!</span><span class="p">(</span><span class="s">"conn-connect-failed"</span><span class="p">,</span><span class="w"> </span><span class="n">host</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">host</span><span class="p">,</span><span class="w"> </span><span class="n">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">port</span><span class="p">,</span><span class="w"> </span><span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">err</span><span class="p">))</span>
+<span class="w">        </span><span class="p">})</span><span class="o">?</span><span class="p">;</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">stream</span><span class="p">.</span><span class="n">set_nodelay</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="o">!</span><span class="n">target</span><span class="p">.</span><span class="n">tls</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">stream</span><span class="p">.</span><span class="n">set_nonblocking</span><span class="p">(</span><span class="kc">true</span><span class="p">).</span><span class="n">map_err</span><span class="p">(</span><span class="n">io_failure</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">Ok</span><span class="p">(</span><span class="n">Transport</span><span class="p">::</span><span class="n">Plain</span><span class="p">(</span><span class="n">stream</span><span class="p">));</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">stream</span><span class="p">.</span><span class="n">set_read_timeout</span><span class="p">(</span><span class="nb">Some</span><span class="p">(</span><span class="n">HANDSHAKE_TIMEOUT</span><span class="p">)).</span><span class="n">map_err</span><span class="p">(</span><span class="n">io_failure</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+<span class="w">        </span><span class="n">stream</span><span class="p">.</span><span class="n">set_write_timeout</span><span class="p">(</span><span class="nb">Some</span><span class="p">(</span><span class="n">HANDSHAKE_TIMEOUT</span><span class="p">)).</span><span class="n">map_err</span><span class="p">(</span><span class="n">io_failure</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">tls_failed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">|</span><span class="n">err</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="o">|</span><span class="w"> </span><span class="n">Stop</span><span class="p">::</span><span class="n">Failed</span><span class="p">(</span><span class="n">t</span><span class="o">!</span><span class="p">(</span><span class="s">"tn5250-tls-failed"</span><span class="p">,</span><span class="w"> </span><span class="n">host</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">host</span><span class="p">,</span><span class="w"> </span><span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">err</span><span class="p">));</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">connector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">native_tls</span><span class="p">::</span><span class="n">TlsConnector</span><span class="p">::</span><span class="n">new</span><span class="p">().</span><span class="n">map_err</span><span class="p">(</span><span class="o">|</span><span class="n">err</span><span class="o">|</span><span class="w"> </span><span class="n">tls_failed</span><span class="p">(</span><span class="n">err</span><span class="p">.</span><span class="n">to_string</span><span class="p">()))</span><span class="o">?</span><span class="p">;</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">stream</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">connector</span><span class="p">.</span><span class="n">connect</span><span class="p">(</span><span class="n">host</span><span class="p">,</span><span class="w"> </span><span class="n">stream</span><span class="p">).</span><span class="n">map_err</span><span class="p">(</span><span class="o">|</span><span class="n">err</span><span class="o">|</span><span class="w"> </span><span class="n">tls_failed</span><span class="p">(</span><span class="n">err</span><span class="p">.</span><span class="n">to_string</span><span class="p">()))</span><span class="o">?</span><span class="p">;</span>
+<span class="w">        </span><span class="n">stream</span><span class="p">.</span><span class="n">get_ref</span><span class="p">().</span><span class="n">set_read_timeout</span><span class="p">(</span><span class="nb">None</span><span class="p">).</span><span class="n">map_err</span><span class="p">(</span><span class="n">io_failure</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+<span class="w">        </span><span class="n">stream</span><span class="p">.</span><span class="n">get_ref</span><span class="p">().</span><span class="n">set_write_timeout</span><span class="p">(</span><span class="nb">None</span><span class="p">).</span><span class="n">map_err</span><span class="p">(</span><span class="n">io_failure</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+<span class="w">        </span><span class="n">stream</span><span class="p">.</span><span class="n">get_ref</span><span class="p">().</span><span class="n">set_nonblocking</span><span class="p">(</span><span class="kc">true</span><span class="p">).</span><span class="n">map_err</span><span class="p">(</span><span class="n">io_failure</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+<span class="w">        </span><span class="nb">Ok</span><span class="p">(</span><span class="n">Transport</span><span class="p">::</span><span class="n">Tls</span><span class="p">(</span><span class="nb">Box</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="n">stream</span><span class="p">)))</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">connect_and_pump</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="bp">self</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">Stop</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">transport</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">match</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">connect</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nb">Ok</span><span class="p">(</span><span class="n">transport</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">transport</span><span class="p">,</span>
+<span class="w">            </span><span class="nb">Err</span><span class="p">(</span><span class="n">stop</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">stop</span><span class="p">,</span>
+<span class="w">        </span><span class="p">};</span>
+<span class="w">        </span><span class="n">log</span><span class="p">::</span><span class="n">info</span><span class="o">!</span><span class="p">(</span><span class="s">"{}: connected to {}"</span><span class="p">,</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">target</span><span class="p">.</span><span class="n">label</span><span class="p">,</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">target</span><span class="p">.</span><span class="n">address</span><span class="p">());</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="p">(</span><span class="n">terminal_type</span><span class="p">,</span><span class="w"> </span><span class="n">device</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">target</span><span class="p">.</span><span class="n">terminal_type</span><span class="p">();</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">environment</span><span class="p">:</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="p">(</span><span class="nb">String</span><span class="p">,</span><span class="w"> </span><span class="nb">String</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span>
+<span class="w">            </span><span class="bp">self</span><span class="p">.</span><span class="n">codepage</span><span class="p">.</span><span class="n">environment</span><span class="p">().</span><span class="n">into_iter</span><span class="p">().</span><span class="n">map</span><span class="p">(</span><span class="o">|</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">)</span><span class="o">|</span><span class="w"> </span><span class="p">(</span><span class="n">name</span><span class="p">.</span><span class="n">to_string</span><span class="p">(),</span><span class="w"> </span><span class="n">value</span><span class="p">)).</span><span class="n">collect</span><span class="p">();</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">device</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="bp">self</span><span class="p">.</span><span class="n">target</span><span class="p">.</span><span class="n">device</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">environment</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="s">"DEVNAME"</span><span class="p">.</span><span class="n">to_string</span><span class="p">(),</span><span class="w"> </span><span class="n">device</span><span class="p">.</span><span class="n">to_uppercase</span><span class="p">()));</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">telnet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Telnet</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="n">terminal_type</span><span class="p">,</span><span class="w"> </span><span class="n">environment</span><span class="p">);</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">outgoing</span><span class="p">:</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="kt">u8</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Vec</span><span class="p">::</span><span class="n">new</span><span class="p">();</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">buf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="fm">vec!</span><span class="p">[</span><span class="mi">0</span><span class="k">u8</span><span class="p">;</span><span class="w"> </span><span class="mi">64</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1024</span><span class="p">];</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">screen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">Screen</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">codepage</span><span class="p">.</span><span class="n">clone</span><span class="p">(),</span><span class="w"> </span><span class="n">device</span><span class="p">));</span>
+
+<span class="w">        </span><span class="k">loop</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// Keys and resizes from the app.</span>
+<span class="w">            </span><span class="k">loop</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">match</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">rx</span><span class="p">.</span><span class="n">try_recv</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nb">Ok</span><span class="p">(</span><span class="n">Msg</span><span class="p">::</span><span class="n">Input</span><span class="p">(</span><span class="n">bytes</span><span class="p">))</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="c1">// Only how much: what's typed may be a password.</span>
+<span class="w">                        </span><span class="n">log</span><span class="p">::</span><span class="n">trace</span><span class="o">!</span><span class="p">(</span><span class="s">"{}: {} bytes typed"</span><span class="p">,</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">target</span><span class="p">.</span><span class="n">label</span><span class="p">,</span><span class="w"> </span><span class="n">bytes</span><span class="p">.</span><span class="n">len</span><span class="p">());</span>
+<span class="w">                        </span><span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">screen</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">screen</span><span class="p">.</span><span class="n">as_mut</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                            </span><span class="k">for</span><span class="w"> </span><span class="n">packet</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">typed</span><span class="p">(</span><span class="n">screen</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">bytes</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                                </span><span class="n">outgoing</span><span class="p">.</span><span class="n">extend</span><span class="p">(</span><span class="n">telnet</span><span class="p">::</span><span class="n">frame</span><span class="p">(</span><span class="o">&amp;</span><span class="n">packet</span><span class="p">.</span><span class="n">to_record</span><span class="p">()));</span>
+<span class="w">                            </span><span class="p">}</span>
+<span class="w">                            </span><span class="bp">self</span><span class="p">.</span><span class="n">redraw</span><span class="p">();</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                    </span><span class="nb">Ok</span><span class="p">(</span><span class="n">Msg</span><span class="p">::</span><span class="n">Resize</span><span class="p">(</span><span class="n">size</span><span class="p">))</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">resize</span><span class="p">(</span><span class="n">size</span><span class="p">),</span>
+<span class="w">                    </span><span class="nb">Err</span><span class="p">(</span><span class="n">TryRecvError</span><span class="p">::</span><span class="n">Empty</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="k">break</span><span class="p">,</span>
+<span class="w">                    </span><span class="nb">Err</span><span class="p">(</span><span class="n">TryRecvError</span><span class="p">::</span><span class="n">Disconnected</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">Stop</span><span class="p">::</span><span class="n">TabClosed</span><span class="p">,</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">drain</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="k">u8</span><span class="p">;</span><span class="w"> </span><span class="mi">64</span><span class="p">];</span>
+<span class="w">            </span><span class="k">while</span><span class="w"> </span><span class="fm">matches!</span><span class="p">((</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">.</span><span class="n">wake</span><span class="p">).</span><span class="n">read</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="n">drain</span><span class="p">),</span><span class="w"> </span><span class="nb">Ok</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+
+<span class="w">            </span><span class="c1">// From the server.</span>
+<span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">processed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">changed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">            </span><span class="k">while</span><span class="w"> </span><span class="n">processed</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">MAX_READ_PER_LOOP</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">match</span><span class="w"> </span><span class="n">transport</span><span class="p">.</span><span class="n">read</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="n">buf</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nb">Ok</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">Stop</span><span class="p">::</span><span class="n">Failed</span><span class="p">(</span><span class="n">t</span><span class="o">!</span><span class="p">(</span><span class="s">"tn5250-closed"</span><span class="p">)),</span>
+<span class="w">                    </span><span class="nb">Ok</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="n">processed</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">n</span><span class="p">;</span>
+<span class="w">                        </span><span class="kd">let</span><span class="w"> </span><span class="p">(</span><span class="k">mut</span><span class="w"> </span><span class="n">records</span><span class="p">,</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">reply</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nb">Vec</span><span class="p">::</span><span class="n">new</span><span class="p">(),</span><span class="w"> </span><span class="nb">Vec</span><span class="p">::</span><span class="n">new</span><span class="p">());</span>
+<span class="w">                        </span><span class="n">telnet</span><span class="p">.</span><span class="n">feed</span><span class="p">(</span><span class="o">&amp;</span><span class="n">buf</span><span class="p">[</span><span class="o">..</span><span class="n">n</span><span class="p">],</span><span class="w"> </span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="n">records</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="n">reply</span><span class="p">);</span>
+<span class="w">                        </span><span class="n">outgoing</span><span class="p">.</span><span class="n">extend</span><span class="p">(</span><span class="n">reply</span><span class="p">);</span>
+<span class="w">                        </span><span class="k">for</span><span class="w"> </span><span class="n">record</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">records</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                            </span><span class="c1">// The first screen replaces the connection messages.</span>
+<span class="w">                            </span><span class="k">if</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">screen</span><span class="p">.</span><span class="n">is_none</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                                </span><span class="bp">self</span><span class="p">.</span><span class="n">screen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">screen</span><span class="p">.</span><span class="n">take</span><span class="p">();</span>
+<span class="w">                                </span><span class="bp">self</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="s">b"</span><span class="se">\x1b</span><span class="s">[H</span><span class="se">\x1b</span><span class="s">[2J"</span><span class="p">);</span>
+<span class="w">                                </span><span class="bp">self</span><span class="p">.</span><span class="n">renderer</span><span class="p">.</span><span class="n">invalidate</span><span class="p">();</span>
+<span class="w">                            </span><span class="p">}</span>
+<span class="w">                            </span><span class="kd">let</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">screen</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">screen</span><span class="p">.</span><span class="n">as_mut</span><span class="p">()</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">continue</span><span class="w"> </span><span class="p">};</span>
+<span class="w">                            </span><span class="k">for</span><span class="w"> </span><span class="n">packet</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">screen</span><span class="p">.</span><span class="n">record</span><span class="p">(</span><span class="o">&amp;</span><span class="n">record</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                                </span><span class="n">outgoing</span><span class="p">.</span><span class="n">extend</span><span class="p">(</span><span class="n">telnet</span><span class="p">::</span><span class="n">frame</span><span class="p">(</span><span class="o">&amp;</span><span class="n">packet</span><span class="p">.</span><span class="n">to_record</span><span class="p">()));</span>
+<span class="w">                            </span><span class="p">}</span>
+<span class="w">                            </span><span class="n">changed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                    </span><span class="nb">Err</span><span class="p">(</span><span class="n">err</span><span class="p">)</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">err</span><span class="p">.</span><span class="n">kind</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">ErrorKind</span><span class="p">::</span><span class="n">WouldBlock</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="k">break</span><span class="p">,</span>
+<span class="w">                    </span><span class="nb">Err</span><span class="p">(</span><span class="n">err</span><span class="p">)</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">err</span><span class="p">.</span><span class="n">kind</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">ErrorKind</span><span class="p">::</span><span class="n">Interrupted</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">                    </span><span class="nb">Err</span><span class="p">(</span><span class="n">err</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">Stop</span><span class="p">::</span><span class="n">Failed</span><span class="p">(</span><span class="n">t</span><span class="o">!</span><span class="p">(</span><span class="s">"conn-lost"</span><span class="p">,</span><span class="w"> </span><span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">err</span><span class="p">.</span><span class="n">to_string</span><span class="p">())),</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="n">changed</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="bp">self</span><span class="p">.</span><span class="n">redraw</span><span class="p">();</span>
+<span class="w">            </span><span class="p">}</span>
+
+<span class="w">            </span><span class="k">while</span><span class="w"> </span><span class="o">!</span><span class="n">outgoing</span><span class="p">.</span><span class="n">is_empty</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">match</span><span class="w"> </span><span class="n">transport</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="o">&amp;</span><span class="n">outgoing</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nb">Ok</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">Stop</span><span class="p">::</span><span class="n">Failed</span><span class="p">(</span><span class="n">t</span><span class="o">!</span><span class="p">(</span><span class="s">"tn5250-closed"</span><span class="p">)),</span>
+<span class="w">                    </span><span class="nb">Ok</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nb">drop</span><span class="p">(</span><span class="n">outgoing</span><span class="p">.</span><span class="n">drain</span><span class="p">(</span><span class="o">..</span><span class="n">n</span><span class="p">)),</span>
+<span class="w">                    </span><span class="nb">Err</span><span class="p">(</span><span class="n">err</span><span class="p">)</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">err</span><span class="p">.</span><span class="n">kind</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">ErrorKind</span><span class="p">::</span><span class="n">WouldBlock</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="k">break</span><span class="p">,</span>
+<span class="w">                    </span><span class="nb">Err</span><span class="p">(</span><span class="n">err</span><span class="p">)</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">err</span><span class="p">.</span><span class="n">kind</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">ErrorKind</span><span class="p">::</span><span class="n">Interrupted</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">                    </span><span class="nb">Err</span><span class="p">(</span><span class="n">err</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">Stop</span><span class="p">::</span><span class="n">Failed</span><span class="p">(</span><span class="n">t</span><span class="o">!</span><span class="p">(</span><span class="s">"conn-lost"</span><span class="p">,</span><span class="w"> </span><span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">err</span><span class="p">.</span><span class="n">to_string</span><span class="p">())),</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="n">processed</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">MAX_READ_PER_LOOP</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">continue</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">events</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">libc</span><span class="p">::</span><span class="n">POLLIN</span><span class="p">;</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="o">!</span><span class="n">outgoing</span><span class="p">.</span><span class="n">is_empty</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">events</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">libc</span><span class="p">::</span><span class="n">POLLOUT</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">fds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="n">libc</span><span class="p">::</span><span class="n">pollfd</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">fd</span><span class="p">:</span><span class="w"> </span><span class="nc">transport</span><span class="p">.</span><span class="n">fd</span><span class="p">(),</span><span class="w"> </span><span class="n">events</span><span class="p">,</span><span class="w"> </span><span class="n">revents</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">},</span>
+<span class="w">                </span><span class="n">libc</span><span class="p">::</span><span class="n">pollfd</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">fd</span><span class="p">:</span><span class="w"> </span><span class="nc">self</span><span class="p">.</span><span class="n">wake</span><span class="p">.</span><span class="n">as_raw_fd</span><span class="p">(),</span><span class="w"> </span><span class="n">events</span><span class="p">:</span><span class="w"> </span><span class="nc">libc</span><span class="p">::</span><span class="n">POLLIN</span><span class="p">,</span><span class="w"> </span><span class="n">revents</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">},</span>
+<span class="w">            </span><span class="p">];</span>
+<span class="w">            </span><span class="c1">// SAFETY: two valid pollfds; both descriptors outlive the call.</span>
+<span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="n">ready</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">unsafe</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">libc</span><span class="p">::</span><span class="n">poll</span><span class="p">(</span><span class="n">fds</span><span class="p">.</span><span class="n">as_mut_ptr</span><span class="p">(),</span><span class="w"> </span><span class="n">fds</span><span class="p">.</span><span class="n">len</span><span class="p">()</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">libc</span><span class="p">::</span><span class="n">nfds_t</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">};</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="n">ready</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">io</span><span class="p">::</span><span class="n">Error</span><span class="p">::</span><span class="n">last_os_error</span><span class="p">().</span><span class="n">kind</span><span class="p">()</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">ErrorKind</span><span class="p">::</span><span class="n">Interrupted</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="n">Stop</span><span class="p">::</span><span class="n">Failed</span><span class="p">(</span><span class="n">t</span><span class="o">!</span><span class="p">(</span><span class="s">"conn-io-error"</span><span class="p">,</span><span class="w"> </span><span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">io</span><span class="p">::</span><span class="n">Error</span><span class="p">::</span><span class="n">last_os_error</span><span class="p">().</span><span class="n">to_string</span><span class="p">()));</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="c1">// The app's end of the wakeup socket is gone: the tab closed.</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="n">fds</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">revents</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">libc</span><span class="p">::</span><span class="n">POLLHUP</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="n">Stop</span><span class="p">::</span><span class="n">TabClosed</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">fn</span><span class="w"> </span><span class="nf">io_failure</span><span class="p">(</span><span class="n">err</span><span class="p">:</span><span class="w"> </span><span class="nc">io</span><span class="p">::</span><span class="n">Error</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">Stop</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Stop</span><span class="p">::</span><span class="n">Failed</span><span class="p">(</span><span class="n">t</span><span class="o">!</span><span class="p">(</span><span class="s">"conn-io-error"</span><span class="p">,</span><span class="w"> </span><span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">err</span><span class="p">.</span><span class="n">to_string</span><span class="p">()))</span>
+<span class="p">}</span>
+
+<span class="sd">/// Keys typed into the pane, onto the screen; what to send. Pasted text</span>
+<span class="sd">/// stops at the first key that locks or inhibits the keyboard.</span>
+<span class="k">fn</span><span class="w"> </span><span class="nf">typed</span><span class="p">(</span><span class="n">screen</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">mut</span><span class="w"> </span><span class="n">Screen</span><span class="p">,</span><span class="w"> </span><span class="n">bytes</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="p">[</span><span class="kt">u8</span><span class="p">])</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="n">Packet</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Vec</span><span class="p">::</span><span class="n">new</span><span class="p">();</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">typed</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">keys</span><span class="p">::</span><span class="n">decode</span><span class="p">(</span><span class="n">bytes</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">match</span><span class="w"> </span><span class="n">typed</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">Typed</span><span class="p">::</span><span class="n">Key</span><span class="p">(</span><span class="n">key</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">key</span><span class="p">,</span>
+<span class="w">            </span><span class="n">Typed</span><span class="p">::</span><span class="n">Keypad</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">screen</span><span class="p">.</span><span class="n">in_numeric_field</span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">'-'</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">Key</span><span class="p">::</span><span class="n">FieldMinus</span>
+<span class="w">                </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">Key</span><span class="p">::</span><span class="n">FieldPlus</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="n">Typed</span><span class="p">::</span><span class="n">Keypad</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">Key</span><span class="p">::</span><span class="n">Char</span><span class="p">(</span><span class="n">c</span><span class="p">),</span>
+<span class="w">            </span><span class="c1">// Only while disconnected.</span>
+<span class="w">            </span><span class="n">Typed</span><span class="p">::</span><span class="n">Close</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="k">continue</span><span class="p">,</span>
+<span class="w">        </span><span class="p">};</span>
+<span class="w">        </span><span class="n">out</span><span class="p">.</span><span class="n">extend</span><span class="p">(</span><span class="n">screen</span><span class="p">.</span><span class="n">key</span><span class="p">(</span><span class="n">key</span><span class="p">));</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="o">!</span><span class="n">out</span><span class="p">.</span><span class="n">is_empty</span><span class="p">()</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">!</span><span class="n">screen</span><span class="p">.</span><span class="n">typing</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">break</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">out</span>
+<span class="p">}</span>
+
+<span class="cp">#[cfg(test)]</span>
+<span class="k">mod</span><span class="w"> </span><span class="nn">tests</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">use</span><span class="w"> </span><span class="n">std</span><span class="p">::</span><span class="n">time</span><span class="p">::</span><span class="n">Instant</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">use</span><span class="w"> </span><span class="k">super</span><span class="p">::</span><span class="o">*</span><span class="p">;</span>
+<span class="w">    </span><span class="k">use</span><span class="w"> </span><span class="k">crate</span><span class="p">::</span><span class="n">tn5250</span><span class="p">::</span><span class="n">screen</span><span class="p">::</span><span class="n">tests</span><span class="p">::</span><span class="n">text</span><span class="p">;</span>
+
+<span class="w">    </span><span class="sd">/// Against the real thing: PUB400's sign-on screen, over plain telnet</span>
+<span class="w">    </span><span class="sd">/// and over TLS. Nothing is typed. `cargo test -- --ignored talks_to_pub400`</span>
+<span class="w">    </span><span class="cp">#[test]</span>
+<span class="w">    </span><span class="cp">#[ignore]</span>
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">talks_to_pub400</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">port</span><span class="p">,</span><span class="w"> </span><span class="n">tls</span><span class="p">)</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">[(</span><span class="mi">23</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="mi">992</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">)]</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Tn5250Target</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">label</span><span class="p">:</span><span class="w"> </span><span class="s">"PUB400"</span><span class="p">.</span><span class="n">into</span><span class="p">(),</span>
+<span class="w">                </span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="s">"PUB400"</span><span class="p">.</span><span class="n">into</span><span class="p">(),</span>
+<span class="w">                </span><span class="n">host</span><span class="p">:</span><span class="w"> </span><span class="s">"pub400.com"</span><span class="p">.</span><span class="n">into</span><span class="p">(),</span>
+<span class="w">                </span><span class="n">port</span><span class="p">,</span>
+<span class="w">                </span><span class="n">tls</span><span class="p">,</span>
+<span class="w">                </span><span class="n">ccsid</span><span class="p">:</span><span class="w"> </span><span class="mi">37</span><span class="p">,</span>
+<span class="w">                </span><span class="n">wide</span><span class="p">:</span><span class="w"> </span><span class="nc">false</span><span class="p">,</span>
+<span class="w">                </span><span class="n">device</span><span class="p">:</span><span class="w"> </span><span class="nb">None</span><span class="p">,</span>
+<span class="w">                </span><span class="n">color</span><span class="p">:</span><span class="w"> </span><span class="nb">None</span><span class="p">,</span>
+<span class="w">                </span><span class="n">theme</span><span class="p">:</span><span class="w"> </span><span class="nb">None</span><span class="p">,</span>
+<span class="w">            </span><span class="p">};</span>
+<span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="n">worker_target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">target</span><span class="p">.</span><span class="n">clone</span><span class="p">();</span>
+<span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">transport</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Worker</span><span class="p">::</span><span class="n">connect_target</span><span class="p">(</span><span class="o">&amp;</span><span class="n">worker_target</span><span class="p">).</span><span class="n">unwrap_or_else</span><span class="p">(</span><span class="o">|</span><span class="n">_</span><span class="o">|</span><span class="w"> </span><span class="fm">panic!</span><span class="p">(</span><span class="s">"connect {port}"</span><span class="p">));</span>
+<span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="p">(</span><span class="n">terminal_type</span><span class="p">,</span><span class="w"> </span><span class="n">device</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">target</span><span class="p">.</span><span class="n">terminal_type</span><span class="p">();</span>
+<span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="n">codepage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Codepage</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="mi">37</span><span class="p">).</span><span class="n">unwrap</span><span class="p">();</span>
+<span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="n">environment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">codepage</span><span class="p">.</span><span class="n">environment</span><span class="p">().</span><span class="n">into_iter</span><span class="p">().</span><span class="n">map</span><span class="p">(</span><span class="o">|</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="o">|</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="p">.</span><span class="n">to_string</span><span class="p">(),</span><span class="w"> </span><span class="n">v</span><span class="p">)).</span><span class="n">collect</span><span class="p">();</span>
+<span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">telnet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Telnet</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="n">terminal_type</span><span class="p">,</span><span class="w"> </span><span class="n">environment</span><span class="p">);</span>
+<span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">screen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Screen</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="n">codepage</span><span class="p">,</span><span class="w"> </span><span class="n">device</span><span class="p">);</span>
+<span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">buf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="fm">vec!</span><span class="p">[</span><span class="mi">0</span><span class="k">u8</span><span class="p">;</span><span class="w"> </span><span class="mi">65536</span><span class="p">];</span>
+<span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="n">deadline</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Instant</span><span class="p">::</span><span class="n">now</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Duration</span><span class="p">::</span><span class="n">from_secs</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
+<span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">records</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">            </span><span class="k">while</span><span class="w"> </span><span class="n">Instant</span><span class="p">::</span><span class="n">now</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">deadline</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="p">(</span><span class="n">records</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">screen</span><span class="p">.</span><span class="n">typing</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">match</span><span class="w"> </span><span class="n">transport</span><span class="p">.</span><span class="n">read</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="n">buf</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nb">Ok</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="fm">panic!</span><span class="p">(</span><span class="s">"closed"</span><span class="p">),</span>
+<span class="w">                    </span><span class="nb">Ok</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="kd">let</span><span class="w"> </span><span class="p">(</span><span class="k">mut</span><span class="w"> </span><span class="n">got</span><span class="p">,</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">reply</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nb">Vec</span><span class="p">::</span><span class="n">new</span><span class="p">(),</span><span class="w"> </span><span class="nb">Vec</span><span class="p">::</span><span class="n">new</span><span class="p">());</span>
+<span class="w">                        </span><span class="n">telnet</span><span class="p">.</span><span class="n">feed</span><span class="p">(</span><span class="o">&amp;</span><span class="n">buf</span><span class="p">[</span><span class="o">..</span><span class="n">n</span><span class="p">],</span><span class="w"> </span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="n">got</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="n">reply</span><span class="p">);</span>
+<span class="w">                        </span><span class="k">for</span><span class="w"> </span><span class="n">record</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">got</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                            </span><span class="n">records</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">                            </span><span class="k">for</span><span class="w"> </span><span class="n">packet</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">screen</span><span class="p">.</span><span class="n">record</span><span class="p">(</span><span class="o">&amp;</span><span class="n">record</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                                </span><span class="n">reply</span><span class="p">.</span><span class="n">extend</span><span class="p">(</span><span class="n">telnet</span><span class="p">::</span><span class="n">frame</span><span class="p">(</span><span class="o">&amp;</span><span class="n">packet</span><span class="p">.</span><span class="n">to_record</span><span class="p">()));</span>
+<span class="w">                            </span><span class="p">}</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                        </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">sent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">                        </span><span class="k">while</span><span class="w"> </span><span class="n">sent</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">reply</span><span class="p">.</span><span class="n">len</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                            </span><span class="k">match</span><span class="w"> </span><span class="n">transport</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="o">&amp;</span><span class="n">reply</span><span class="p">[</span><span class="n">sent</span><span class="o">..</span><span class="p">])</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                                </span><span class="nb">Ok</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">sent</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">n</span><span class="p">,</span>
+<span class="w">                                </span><span class="nb">Err</span><span class="p">(</span><span class="n">err</span><span class="p">)</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">err</span><span class="p">.</span><span class="n">kind</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">ErrorKind</span><span class="p">::</span><span class="n">WouldBlock</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">std</span><span class="p">::</span><span class="n">thread</span><span class="p">::</span><span class="n">sleep</span><span class="p">(</span><span class="n">Duration</span><span class="p">::</span><span class="n">from_millis</span><span class="p">(</span><span class="mi">10</span><span class="p">)),</span>
+<span class="w">                                </span><span class="nb">Err</span><span class="p">(</span><span class="n">err</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="fm">panic!</span><span class="p">(</span><span class="s">"{err}"</span><span class="p">),</span>
+<span class="w">                            </span><span class="p">}</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                    </span><span class="nb">Err</span><span class="p">(</span><span class="n">err</span><span class="p">)</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">err</span><span class="p">.</span><span class="n">kind</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">ErrorKind</span><span class="p">::</span><span class="n">WouldBlock</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">std</span><span class="p">::</span><span class="n">thread</span><span class="p">::</span><span class="n">sleep</span><span class="p">(</span><span class="n">Duration</span><span class="p">::</span><span class="n">from_millis</span><span class="p">(</span><span class="mi">20</span><span class="p">)),</span>
+<span class="w">                    </span><span class="nb">Err</span><span class="p">(</span><span class="n">err</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="fm">panic!</span><span class="p">(</span><span class="s">"{err}"</span><span class="p">),</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="n">lines</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">text</span><span class="p">(</span><span class="o">&amp;</span><span class="n">screen</span><span class="p">);</span>
+<span class="w">            </span><span class="fm">println!</span><span class="p">(</span><span class="s">"--- port {port}: {records} records, keyboard {:?}, cursor {:?}"</span><span class="p">,</span><span class="w"> </span><span class="n">screen</span><span class="p">.</span><span class="n">keyboard</span><span class="p">,</span><span class="w"> </span><span class="n">screen</span><span class="p">.</span><span class="n">row_col</span><span class="p">(</span><span class="n">screen</span><span class="p">.</span><span class="n">cursor</span><span class="p">));</span>
+<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="o">&amp;</span><span class="n">lines</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="fm">println!</span><span class="p">(</span><span class="s">"|{line}"</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="fm">assert!</span><span class="p">(</span><span class="n">screen</span><span class="p">.</span><span class="n">typing</span><span class="p">(),</span><span class="w"> </span><span class="s">"the sign-on screen unlocks the keyboard"</span><span class="p">);</span>
+<span class="w">            </span><span class="fm">assert!</span><span class="p">(</span><span class="n">lines</span><span class="p">.</span><span class="n">iter</span><span class="p">().</span><span class="n">filter</span><span class="p">(</span><span class="o">|</span><span class="n">line</span><span class="o">|</span><span class="w"> </span><span class="o">!</span><span class="n">line</span><span class="p">.</span><span class="n">is_empty</span><span class="p">()).</span><span class="n">count</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="s">"{lines:#?}"</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div></td></tr></table></div>
+
+      </section>
+    </main>
+  </div>
+</body>
+</html>

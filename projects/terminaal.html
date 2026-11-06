@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Terminaal — Jan</title>
-  <link rel="stylesheet" href="../styles.css?v=460c6339" />
+  <link rel="stylesheet" href="../styles.css?v=f9619d8f" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -44,8 +44,8 @@
         <div class="card__foot project-page__foot">
           <div class="card__links">
             <a href="https://github.com/mergedeyes/terminaal" class="link">Repository</a>
-            <a href="terminaal-source.html" class="link">Browse source (109 files)</a>
-            <a href="terminaal-commits.html" class="link">Commit history (73)</a>
+            <a href="terminaal-source.html" class="link">Browse source (118 files)</a>
+            <a href="terminaal-commits.html" class="link">Commit history (77)</a>
           </div>
           <span class="license-badge">GPL-3.0</span>
         </div>
@@ -79,14 +79,14 @@ to change.</p>
 <div class="markdown-alert markdown-alert-important" dir="auto"><p class="markdown-alert-title" dir="auto"><svg aria-hidden="true" class="octicon octicon-report mr-2" data-component="Octicon" height="16" version="1.1" viewbox="0 0 16 16" width="16"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Important</p><p dir="auto"><strong>Disclaimer:</strong> this project is coded mostly by Claude Code. I make all the
 decisions, though – every feature was planned by me.</p>
 </div>
-<a href="https://github.com/user-attachments/assets/95a72250-0e38-4be0-86cd-d9cbce21ce06" rel="noopener noreferrer" target="_blank"><img alt="Terminaal with local and SSH tabs and the sidebar" class="js-gh-image-fallback" height="1082" src="https://github.com/user-attachments/assets/95a72250-0e38-4be0-86cd-d9cbce21ce06" style="max-width: 100%; height: auto; max-height: 1082px;; aspect-ratio: 2000 / 1082; background-color: var(--bgColor-muted); border-radius: 6px" width="2000"/></a>
-<a href="https://github.com/user-attachments/assets/5d820773-2745-474c-bb17-9327a6339164" rel="noopener noreferrer" target="_blank"><img alt="Terminaal with split panes" class="js-gh-image-fallback" height="1082" src="https://github.com/user-attachments/assets/5d820773-2745-474c-bb17-9327a6339164" style="max-width: 100%; height: auto; max-height: 1082px;; aspect-ratio: 2000 / 1082; background-color: var(--bgColor-muted); border-radius: 6px" width="2000"/></a>
+<a href="https://github.com/user-attachments/assets/5e446793-c832-4950-8668-91b633a414f3" rel="noopener noreferrer" target="_blank"><img alt="image" class="js-gh-image-fallback" height="1080" src="https://github.com/user-attachments/assets/5e446793-c832-4950-8668-91b633a414f3" style="max-width: 100%; height: auto; max-height: 1080px;; aspect-ratio: 2000 / 1080; background-color: var(--bgColor-muted); border-radius: 6px" width="2000"/></a>
+<a href="https://github.com/user-attachments/assets/f6559f71-1c05-4052-a547-79a4f5595181" rel="noopener noreferrer" target="_blank"><img alt="image" class="js-gh-image-fallback" height="1080" src="https://github.com/user-attachments/assets/f6559f71-1c05-4052-a547-79a4f5595181" style="max-width: 100%; height: auto; max-height: 1080px;; aspect-ratio: 2000 / 1080; background-color: var(--bgColor-muted); border-radius: 6px" width="2000"/></a>
 <h2 class="heading-element" dir="auto" id="contents">Contents</h2>
 <ul dir="auto">
 <li><a href="#highlights">Highlights</a></li>
 <li><a href="#features">Features</a>
 <ul dir="auto">
-<li><a href="#terminal">Terminal</a> · <a href="#shell-integration">Shell integration</a> · <a href="#ssh">SSH</a> · <a href="#files-on-the-server-sftp">Files on the server</a> · <a href="#shells-and-commands">Shells and commands</a> · <a href="#keys">Keys</a> · <a href="#look-and-feel">Look and feel</a></li>
+<li><a href="#terminal">Terminal</a> · <a href="#shell-integration">Shell integration</a> · <a href="#ssh">SSH</a> · <a href="#ibm-i-5250">IBM i</a> · <a href="#files-on-the-server-sftp">Files on the server</a> · <a href="#shells-and-commands">Shells and commands</a> · <a href="#keys">Keys</a> · <a href="#look-and-feel">Look and feel</a></li>
 </ul>
 </li>
 <li><a href="#installation">Installation</a></li>
@@ -102,6 +102,7 @@ decisions, though – every feature was planned by me.</p>
 <li><strong>Fast and quiet:</strong> a custom wgpu renderer that redraws only when something changes</li>
 <li><strong>SSH manager built in:</strong> hosts, several logins per host, keys, jump hosts, port forwards, automatic reconnect</li>
 <li><strong>Files over the same connection:</strong> browse, copy, edit locally and <strong>keep folders in sync</strong> – no second login</li>
+<li><strong>IBM i green screens:</strong> a 5250 terminal for AS/400 systems such as PUB400, over TLS too</li>
 <li><strong>Split panes, broadcast, command palette</strong> for working on many terminals at once</li>
 <li><strong>Shell integration</strong> without setup for fish, bash and zsh: prompt jumps, exit codes, run times, notifications</li>
 <li><strong>Nothing secret on disk</strong>, and your own config files are never rewritten behind your back</li>
@@ -186,6 +187,18 @@ fingerprints, and old entries can be removed from the sidebar. →
 <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/host-keys.md">Host keys</a></li>
 <li>Prompts for host keys, passphrases and passwords appear <strong>inside the tab</strong>,
 like OpenSSH – nothing secret is stored</li>
+</ul>
+<h3 class="heading-element" dir="auto" id="ibm-i-5250">IBM i (5250)</h3>
+<p dir="auto">→ <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/ibm-i-5250.md">IBM i green screens</a></p>
+<ul dir="auto">
+<li><strong>A real 5250 terminal</strong> (TN5250) for IBM i / AS/400 systems such as
+<a href="https://pub400.com" rel="nofollow">PUB400</a>: input fields, function keys F1–F24, Field Exit,
+Field+/−, Roll on <kbd>Page Up</kbd>/<kbd>Down</kbd> and the mouse wheel,
+Attention and System Request</li>
+<li><strong>Saved like SSH hosts</strong> – pick <strong>IBM i (5250)</strong> in the host form; telnet or
+<strong>TLS</strong>, the screen's <strong>code page</strong> (US, German, French … with or without €),
+27 × 132 screens, a device name, a color per host</li>
+<li>Copy, search, split panes, themes and session restore work as in any tab</li>
 </ul>
 <h3 class="heading-element" dir="auto" id="files-on-the-server-sftp">Files on the server (SFTP)</h3>
 <p dir="auto"><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>O</kbd> in an SSH terminal opens its
@@ -667,7 +680,7 @@ key of every file, including <code>hosts.toml</code> and <code>snippets.toml</co
 </tr>
 <tr>
 <td><strong>Guides</strong></td>
-<td><a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/configuration.md">Configuration</a> · <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/keyboard-shortcuts.md">Shortcuts</a> · <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/command-line.md">Command line</a> · <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/ssh-hosts.md">SSH hosts</a> · <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/host-keys.md">Host keys</a> · <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/files-and-sftp.md">Files and SFTP</a> · <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/shell-integration.md">Shell integration</a> · <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/commands-and-snippets.md">Commands and snippets</a> · <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/command-palette.md">Command palette</a> · <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/search-and-links.md">Search and links</a> · <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/split-panes.md">Split panes</a> · <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/sessions.md">Sessions</a> · <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/drop-down-window.md">Drop-down window</a> · <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/appearance.md">Appearance</a></td>
+<td><a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/configuration.md">Configuration</a> · <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/keyboard-shortcuts.md">Shortcuts</a> · <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/command-line.md">Command line</a> · <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/ssh-hosts.md">SSH hosts</a> · <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/ibm-i-5250.md">IBM i (5250)</a> · <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/host-keys.md">Host keys</a> · <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/files-and-sftp.md">Files and SFTP</a> · <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/shell-integration.md">Shell integration</a> · <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/commands-and-snippets.md">Commands and snippets</a> · <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/command-palette.md">Command palette</a> · <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/search-and-links.md">Search and links</a> · <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/split-panes.md">Split panes</a> · <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/sessions.md">Sessions</a> · <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/drop-down-window.md">Drop-down window</a> · <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/appearance.md">Appearance</a></td>
 </tr>
 <tr>
 <td><strong>Background</strong></td>
@@ -701,6 +714,14 @@ connections away; libssh2 can't cancel it cleanly mid-session</li>
 <li>The built-in commands ask an SSH host what it is right after login, which can
 hold the tab for up to two seconds on a slow link; set the host's system under
 <strong>Advanced</strong> to skip that</li>
+</ul>
+<p dir="auto"><strong>IBM i (5250)</strong></p>
+<ul dir="auto">
+<li>Display sessions only: no printer sessions, no automatic sign-on, no enhanced
+5250 GUI elements (pop-up windows come as characters)</li>
+<li>Single-byte code pages only; clicking doesn't move the cursor, and keys typed
+while the server works (<code>X SYSTEM</code>) don't queue up</li>
+<li>A 5250 screen has a fixed size: a pane smaller than 80 × 25 cells cuts it off</li>
 </ul>
 <p dir="auto"><strong>Files</strong></p>
 <ul dir="auto">
@@ -764,6 +785,7 @@ through sudo where needed</li>
 <li class="task-list-item"><input aria-label="Completed task" checked="" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Reopen a closed tab</li>
 <li class="task-list-item"><input aria-label="Completed task" checked="" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Resize and swap panes with the keyboard</li>
 <li class="task-list-item"><input aria-label="Completed task" checked="" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Search: number of matches, optional regex</li>
+<li class="task-list-item"><input aria-label="Completed task" checked="" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> IBM i (AS/400) green screens: a 5250 terminal over telnet and TLS</li>
 </ul>
 </details>
 <p dir="auto"><strong>Everyday comfort</strong></p>
