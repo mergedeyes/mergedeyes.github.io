@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>docs/guides/windows.md — Terminaal — Jan</title>
+  <link rel="stylesheet" href="../../styles.css?v=808cdec3" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="layout">
+    <header class="rail" id="rail">
+<div class="rail__top">
+<a class="brand" href="../../index.html#top">
+<span class="brand__name">Jan</span>
+<span class="brand__meta">systems &amp; infrastructure<br/>Code, Code &amp; Code</span>
+</a>
+<button aria-controls="nav" aria-expanded="false" aria-label="Toggle menu" class="menu-toggle" id="menuToggle">
+<span></span><span></span><span></span>
+</button>
+</div>
+<nav aria-label="Sections" class="nav" id="nav">
+<a data-path="~/projects" href="../../index.html#projects">Projects</a>
+<a data-path="~/work" href="../../index.html#work">Work</a>
+<a data-path="~/education" href="../../index.html#education">Education</a>
+<a data-path="~/skills" href="../../index.html#skills">Skills</a>
+<a data-path="~/about" href="../../index.html#about">About Me</a>
+<a data-path="~/contact" href="../../index.html#contact">Contact</a>
+</nav>
+<div class="rail__status">
+<span aria-hidden="true" class="dot"></span>
+<span>open to work</span>
+</div>
+</header>
+    <nav class="file-tree" data-tree-key="terminaal"><p class="file-tree__title">Files</p><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">assets/</span><ul class="tree"><li class="tree-file"><a href="assets--terminaal.desktop.html">terminaal.desktop</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">docs/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">explanations/</span><ul class="tree"><li class="tree-file"><a href="docs--explanations--architecture.md.html">architecture.md</a></li><li class="tree-file"><a href="docs--explanations--prompt-marks.md.html">prompt-marks.md</a></li><li class="tree-file"><a href="docs--explanations--security-and-your-files.md.html">security-and-your-files.md</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">guides/</span><ul class="tree"><li class="tree-file"><a href="docs--guides--appearance.md.html">appearance.md</a></li><li class="tree-file"><a href="docs--guides--command-line.md.html">command-line.md</a></li><li class="tree-file"><a href="docs--guides--command-palette.md.html">command-palette.md</a></li><li class="tree-file"><a href="docs--guides--commands-and-snippets.md.html">commands-and-snippets.md</a></li><li class="tree-file"><a href="docs--guides--configuration.md.html">configuration.md</a></li><li class="tree-file"><a href="docs--guides--drop-down-window.md.html">drop-down-window.md</a></li><li class="tree-file"><a href="docs--guides--files-and-sftp.md.html">files-and-sftp.md</a></li><li class="tree-file"><a href="docs--guides--host-keys.md.html">host-keys.md</a></li><li class="tree-file"><a href="docs--guides--ibm-i-5250.md.html">ibm-i-5250.md</a></li><li class="tree-file"><a href="docs--guides--images.md.html">images.md</a></li><li class="tree-file"><a href="docs--guides--keyboard-shortcuts.md.html">keyboard-shortcuts.md</a></li><li class="tree-file"><a href="docs--guides--search-and-links.md.html">search-and-links.md</a></li><li class="tree-file"><a href="docs--guides--sessions.md.html">sessions.md</a></li><li class="tree-file"><a href="docs--guides--shell-integration.md.html">shell-integration.md</a></li><li class="tree-file"><a href="docs--guides--split-panes.md.html">split-panes.md</a></li><li class="tree-file"><a href="docs--guides--ssh-hosts.md.html">ssh-hosts.md</a></li><li class="tree-file"><a href="docs--guides--updates.md.html">updates.md</a></li><li class="tree-file tree-file--active"><a href="docs--guides--windows.md.html">windows.md</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">tutorials/</span><ul class="tree"><li class="tree-file"><a href="docs--tutorials--01-your-first-ssh-host.md.html">01-your-first-ssh-host.md</a></li><li class="tree-file"><a href="docs--tutorials--02-keys-and-the-agent.md.html">02-keys-and-the-agent.md</a></li><li class="tree-file"><a href="docs--tutorials--03-port-forwarding.md.html">03-port-forwarding.md</a></li><li class="tree-file"><a href="docs--tutorials--04-one-command-many-servers.md.html">04-one-command-many-servers.md</a></li><li class="tree-file"><a href="docs--tutorials--05-make-your-own-theme.md.html">05-make-your-own-theme.md</a></li></ul></li><li class="tree-file"><a href="docs--README.md.html">README.md</a></li><li class="tree-file"><a href="docs--getting-started.md.html">getting-started.md</a></li><li class="tree-file"><a href="docs--tips.md.html">tips.md</a></li><li class="tree-file"><a href="docs--troubleshooting.md.html">troubleshooting.md</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">locales/</span><ul class="tree"><li class="tree-file"><a href="locales--de.ftl.html">de.ftl</a></li><li class="tree-file"><a href="locales--en.ftl.html">en.ftl</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">src/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">input/</span><ul class="tree"><li class="tree-file"><a href="src--input--keyboard.rs.html">keyboard.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">platform/</span><ul class="tree"><li class="tree-file"><a href="src--platform--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="src--platform--process_windows.rs.html">process_windows.rs</a></li><li class="tree-file"><a href="src--platform--unix.rs.html">unix.rs</a></li><li class="tree-file"><a href="src--platform--unix_socket_windows.rs.html">unix_socket_windows.rs</a></li><li class="tree-file"><a href="src--platform--windows.rs.html">windows.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">quake/</span><ul class="tree"><li class="tree-file"><a href="src--quake--hotkey.rs.html">hotkey.rs</a></li><li class="tree-file"><a href="src--quake--keys.rs.html">keys.rs</a></li><li class="tree-file"><a href="src--quake--layer.rs.html">layer.rs</a></li><li class="tree-file"><a href="src--quake--layer_windows.rs.html">layer_windows.rs</a></li><li class="tree-file"><a href="src--quake--mod.rs.html">mod.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">render/</span><ul class="tree"><li class="tree-file"><a href="src--render--grid.rs.html">grid.rs</a></li><li class="tree-file"><a href="src--render--image.rs.html">image.rs</a></li><li class="tree-file"><a href="src--render--image.wgsl.html">image.wgsl</a></li><li class="tree-file"><a href="src--render--label.rs.html">label.rs</a></li><li class="tree-file"><a href="src--render--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="src--render--palette.rs.html">palette.rs</a></li><li class="tree-file"><a href="src--render--quad.rs.html">quad.rs</a></li><li class="tree-file"><a href="src--render--quad.wgsl.html">quad.wgsl</a></li><li class="tree-file"><a href="src--render--scrollbar.rs.html">scrollbar.rs</a></li><li class="tree-file"><a href="src--render--search_bar.rs.html">search_bar.rs</a></li><li class="tree-file"><a href="src--render--tab_bar.rs.html">tab_bar.rs</a></li><li class="tree-file"><a href="src--render--text.rs.html">text.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">sftp/</span><ul class="tree"><li class="tree-file"><a href="src--sftp--edit.rs.html">edit.rs</a></li><li class="tree-file"><a href="src--sftp--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="src--sftp--protocol.rs.html">protocol.rs</a></li><li class="tree-file"><a href="src--sftp--session.rs.html">session.rs</a></li><li class="tree-file"><a href="src--sftp--sync.rs.html">sync.rs</a></li><li class="tree-file"><a href="src--sftp--watch_windows.rs.html">watch_windows.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">shells/</span><ul class="tree"><li class="tree-file"><a href="src--shells--launch.rs.html">launch.rs</a></li><li class="tree-file"><a href="src--shells--managed.rs.html">managed.rs</a></li><li class="tree-file"><a href="src--shells--mod.rs.html">mod.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">ssh/</span><ul class="tree"><li class="tree-file"><a href="src--ssh--agent_forward.rs.html">agent_forward.rs</a></li><li class="tree-file"><a href="src--ssh--agent_pipe.rs.html">agent_pipe.rs</a></li><li class="tree-file"><a href="src--ssh--connection.rs.html">connection.rs</a></li><li class="tree-file"><a href="src--ssh--forward.rs.html">forward.rs</a></li><li class="tree-file"><a href="src--ssh--keys.rs.html">keys.rs</a></li><li class="tree-file"><a href="src--ssh--known_hosts.rs.html">known_hosts.rs</a></li><li class="tree-file"><a href="src--ssh--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="src--ssh--options.rs.html">options.rs</a></li><li class="tree-file"><a href="src--ssh--socks.rs.html">socks.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">terminal/</span><ul class="tree"><li class="tree-file"><a href="src--terminal--filtered_pty.rs.html">filtered_pty.rs</a></li><li class="tree-file"><a href="src--terminal--filtered_pty_windows.rs.html">filtered_pty_windows.rs</a></li><li class="tree-file"><a href="src--terminal--graphics.rs.html">graphics.rs</a></li><li class="tree-file"><a href="src--terminal--hints.rs.html">hints.rs</a></li><li class="tree-file"><a href="src--terminal--integration.rs.html">integration.rs</a></li><li class="tree-file"><a href="src--terminal--links.rs.html">links.rs</a></li><li class="tree-file"><a href="src--terminal--listener.rs.html">listener.rs</a></li><li class="tree-file"><a href="src--terminal--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="src--terminal--prompts.rs.html">prompts.rs</a></li><li class="tree-file"><a href="src--terminal--search.rs.html">search.rs</a></li><li class="tree-file"><a href="src--terminal--session.rs.html">session.rs</a></li><li class="tree-file"><a href="src--terminal--vi.rs.html">vi.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">theme/</span><ul class="tree"><li class="tree-file"><a href="src--theme--cosmic.rs.html">cosmic.rs</a></li><li class="tree-file"><a href="src--theme--windows.rs.html">windows.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">tn5250/</span><ul class="tree"><li class="tree-file"><a href="src--tn5250--codepage.rs.html">codepage.rs</a></li><li class="tree-file"><a href="src--tn5250--codepages.rs.html">codepages.rs</a></li><li class="tree-file"><a href="src--tn5250--connection.rs.html">connection.rs</a></li><li class="tree-file"><a href="src--tn5250--keys.rs.html">keys.rs</a></li><li class="tree-file"><a href="src--tn5250--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="src--tn5250--render.rs.html">render.rs</a></li><li class="tree-file"><a href="src--tn5250--screen.rs.html">screen.rs</a></li><li class="tree-file"><a href="src--tn5250--telnet.rs.html">telnet.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">ui/</span><ul class="tree"><li class="tree-file"><a href="src--ui--clipboard_request.rs.html">clipboard_request.rs</a></li><li class="tree-file"><a href="src--ui--command_palette.rs.html">command_palette.rs</a></li><li class="tree-file"><a href="src--ui--commands_panel.rs.html">commands_panel.rs</a></li><li class="tree-file"><a href="src--ui--context_menu.rs.html">context_menu.rs</a></li><li class="tree-file"><a href="src--ui--files_panel.rs.html">files_panel.rs</a></li><li class="tree-file"><a href="src--ui--keys_panel.rs.html">keys_panel.rs</a></li><li class="tree-file"><a href="src--ui--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="src--ui--paste_warning.rs.html">paste_warning.rs</a></li><li class="tree-file"><a href="src--ui--settings_panel.rs.html">settings_panel.rs</a></li><li class="tree-file"><a href="src--ui--sidebar.rs.html">sidebar.rs</a></li><li class="tree-file"><a href="src--ui--splash.rs.html">splash.rs</a></li><li class="tree-file"><a href="src--ui--ssh_panel.rs.html">ssh_panel.rs</a></li><li class="tree-file"><a href="src--ui--theme.rs.html">theme.rs</a></li><li class="tree-file"><a href="src--ui--update_dialog.rs.html">update_dialog.rs</a></li><li class="tree-file"><a href="src--ui--widgets.rs.html">widgets.rs</a></li></ul></li><li class="tree-file"><a href="src--app.rs.html">app.rs</a></li><li class="tree-file"><a href="src--blur.rs.html">blur.rs</a></li><li class="tree-file"><a href="src--blur_windows.rs.html">blur_windows.rs</a></li><li class="tree-file"><a href="src--commands.rs.html">commands.rs</a></li><li class="tree-file"><a href="src--config.rs.html">config.rs</a></li><li class="tree-file"><a href="src--gpu.rs.html">gpu.rs</a></li><li class="tree-file"><a href="src--i18n.rs.html">i18n.rs</a></li><li class="tree-file"><a href="src--input.rs.html">input.rs</a></li><li class="tree-file"><a href="src--main.rs.html">main.rs</a></li><li class="tree-file"><a href="src--panes.rs.html">panes.rs</a></li><li class="tree-file"><a href="src--session.rs.html">session.rs</a></li><li class="tree-file"><a href="src--shortcuts.rs.html">shortcuts.rs</a></li><li class="tree-file"><a href="src--snippets.rs.html">snippets.rs</a></li><li class="tree-file"><a href="src--theme.rs.html">theme.rs</a></li><li class="tree-file"><a href="src--update.rs.html">update.rs</a></li><li class="tree-file"><a href="src--window.rs.html">window.rs</a></li></ul></li><li class="tree-file"><a href="Cargo.lock.html">Cargo.lock</a></li><li class="tree-file"><a href="Cargo.toml.html">Cargo.toml</a></li><li class="tree-file"><a href="LICENSE.html">LICENSE</a></li><li class="tree-file"><a href="install.sh.html">install.sh</a></li></ul></nav><script>
+(function () {
+  var tree = document.currentScript.previousElementSibling;
+  var key = "file-tree-scroll:" + tree.dataset.treeKey;
+  var saved = null;
+  try {
+    saved = sessionStorage.getItem(key);
+    sessionStorage.removeItem(key);
+  } catch (e) {}
+
+  if (saved !== null) {
+    tree.scrollTop = +saved;
+  } else {
+    var active = tree.querySelector(".tree-file--active");
+    if (active) {
+      var a = active.getBoundingClientRect();
+      var t = tree.getBoundingClientRect();
+      if (a.bottom > t.bottom) {
+        tree.scrollTop += a.top - t.top - (tree.clientHeight - a.height) / 2;
+      }
+    }
+  }
+
+  tree.addEventListener("click", function (e) {
+    if (!e.target.closest("a")) return;
+    try { sessionStorage.setItem(key, String(tree.scrollTop)); } catch (err) {}
+  });
+})();
+</script>
+    <main class="main" id="main">
+      <section class="section source-page">
+        <p class="section__path">
+          <a href="../../index.html#projects" class="link">~/projects</a> /
+          <a href="../terminaal.html" class="link">terminaal</a> / source
+        </p>
+        <div class="source-page__head">
+          <h1 class="section__title">docs/guides/windows.md</h1>
+          <a href="../terminaal.html" class="link">← Back to Terminaal</a>
+        </div>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">  1</span>
+<span class="normal">  2</span>
+<span class="normal">  3</span>
+<span class="normal">  4</span>
+<span class="normal">  5</span>
+<span class="normal">  6</span>
+<span class="normal">  7</span>
+<span class="normal">  8</span>
+<span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span></pre></div></td><td class="code"><div><pre><span></span><span class="gh"># Terminaal on Windows</span>
+
+Terminaal runs on Windows 10 version 1809 (build 17763) or newer, 64-bit. It
+does what it does on Linux; this page is about what's different: installing,
+where things are kept, the shells, SSH agents, the drop-down window and the
+look.
+
+<span class="gu">## Installing</span>
+
+Download <span class="sb">`terminaal-x86_64-windows-setup.exe`</span> from the
+[<span class="nt">latest release</span>](<span class="na">https://github.com/mergedeyes/terminaal/releases/latest</span>) and
+run it. Its first page asks for whom:
+
+<span class="k">-</span><span class="w"> </span><span class="gs">**For all users**</span> (the default): into <span class="sb">`C:\Program Files\Terminaal`</span>. Windows
+  asks for administrator rights.
+<span class="k">-</span><span class="w"> </span><span class="gs">**Only for me**</span>: into <span class="sb">`%LOCALAPPDATA%\Programs\Terminaal`</span>, no administrator
+  rights needed.
+
+Two options are offered and off by default: a desktop shortcut, and **Start the
+drop-down window when I sign in** ([below](#the-drop-down-window)). Terminaal
+then is in the Start menu and under <span class="gs">**Settings → Apps**</span>.
+
+<span class="gs">**"Windows protected your PC"**</span>: Terminaal isn't signed with a certificate, so
+SmartScreen warns about a setup downloaded with a browser. Click <span class="gs">**More info**</span>,
+then <span class="gs">**Run anyway**</span>.
+
+<span class="gs">**Without installing**</span>: <span class="sb">`terminaal-x86_64-windows.exe`</span> from the same release
+runs from any folder of yours, as it is.
+
+<span class="gu">## Updates</span>
+
+Terminaal offers new releases at start, as on Linux ([Updates](updates.md)). How
+it installs one depends on how it got there:
+
+<span class="k">-</span><span class="w"> </span><span class="gs">**Installed by the setup**</span>: it downloads the new setup, checks it, and runs it
+  without its pages once Terminaal ends – after <span class="gs">**Restart now**</span>, or when you
+  simply close it later. Then Terminaal starts again. An install for all users
+  asks for administrator rights at each update.
+<span class="k">-</span><span class="w"> </span><span class="gs">**A plain `terminaal.exe`**</span> of yours is replaced in place.
+<span class="k">-</span><span class="w"> </span>A plain exe copied into <span class="sb">`C:\Program Files`</span> by hand can't be: Terminaal says so
+  and points to the setup.
+
+<span class="gu">## Uninstalling</span>
+
+<span class="gs">**Settings → Apps → Terminaal → Uninstall**</span> removes the program and its
+shortcuts, then asks whether to delete your settings as well (no, unless you
+say so). Your SSH keys in <span class="sb">`%USERPROFILE%\.ssh`</span> stay either way.
+
+<span class="gu">## Where things are</span>
+
+| What | Where |
+| --- | --- |
+| <span class="sb">`config.toml`</span>, <span class="sb">`hosts.toml`</span>, <span class="sb">`keys.toml`</span>, <span class="sb">`snippets.toml`</span>, <span class="sb">`themes\`</span> | <span class="sb">`%APPDATA%\terminaal`</span> |
+| The saved session, folder-sync records | <span class="sb">`%LOCALAPPDATA%\terminaal`</span> |
+| Local copies of server files you edit, downloaded updates | <span class="sb">`%TEMP%\terminaal`</span> – private to you through your user profile's permissions |
+| SSH keys, <span class="sb">`known_hosts`</span>, <span class="sb">`config`</span> | <span class="sb">`%USERPROFILE%\.ssh`</span> |
+
+Wherever the other pages say <span class="sb">`~/.config/terminaal`</span>, read <span class="sb">`%APPDATA%\terminaal`</span>.
+The [<span class="nt">configuration reference</span>](<span class="na">configuration.md</span>) has two keys only Windows reads:
+<span class="sb">`maximized`</span> and <span class="sb">`quake_hotkey`</span>.
+
+<span class="gu">## Shells</span>
+
+Terminaal finds PowerShell 7 (<span class="sb">`pwsh`</span>, also the preview), Windows PowerShell,
+cmd, Git Bash, Nushell and WSL, plus <span class="sb">`pwsh`</span> and <span class="sb">`nu`</span> anywhere on the <span class="sb">`PATH`</span>.
+The default is the first that isn't cmd; change it in the sidebar's <span class="gs">**Shells**</span>.
+
+What the [<span class="nt">shell integration</span>](<span class="na">shell-integration.md</span>) gives you, per shell:
+
+| Shell | Prompt marks | Exit codes, run times, notifications | Folder for new tabs |
+| --- | --- | --- | --- |
+| PowerShell (both) | yes | yes | yes |
+| Git Bash | yes | yes | yes |
+| cmd | yes | no – cmd tells nothing before a command runs | yes |
+| WSL | only from a shell that sends them itself (fish 4, Nushell) | the same | the same |
+
+Aliases, functions and lines for PowerShell (both) go in a file of Terminaal's
+own, <span class="sb">`Documents\PowerShell\terminaal.ps1`</span>, loaded only in Terminaal; your
+profile isn't touched.
+
+The tab title names the program running in it, as on Linux; programs inside WSL
+are Linux processes and don't show.
+
+The built-in command buttons (winget updates, disks, services, …) are there for
+PowerShell and cmd tabs, and for SSH hosts running Windows' OpenSSH server – not
+for WSL or Git Bash tabs.
+
+Negative exit codes, which Windows programs use for their errors, show in hex:
+<span class="sb">`✘ 0x8A15002C`</span>.
+
+<span class="gu">## SSH agents</span>
+
+Windows' own OpenSSH agent listens on the pipe <span class="sb">`\\.\pipe\openssh-ssh-agent`</span>, and
+Terminaal uses it whenever <span class="sb">`SSH_AUTH_SOCK`</span> isn't set. 1Password, Bitwarden and
+KeePassXC can offer their keys on that same pipe – switch on their "SSH agent"
+option and they work without more.
+
+<span class="gs">**Pageant**</span> has a pipe of its own: run <span class="sb">`pageant --openssh-config &lt;file&gt;`</span> once,
+and put the pipe path written into that file as <span class="sb">`IdentityAgent`</span> for your hosts
+(in <span class="sb">`~/.ssh/config`</span> or under the host's <span class="gs">**Advanced**</span>). Agent forwarding
+(<span class="sb">`ForwardAgent`</span>) works with all of them.
+
+<span class="sb">`ProxyCommand`</span> runs through <span class="sb">`cmd /C`</span>. Unix-socket forwards work with <span class="sb">`C:\…`</span>
+paths.
+
+<span class="gu">## The drop-down window</span>
+
+<span class="sb">`terminaal --quake`</span> shows a terminal along the top of the screen and hides it
+again ([The drop-down window](drop-down-window.md)). On Windows it registers a
+global shortcut of its own once it runs: &lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Alt&lt;/kbd&gt;+&lt;kbd&gt;T&lt;/kbd&gt;
+by default, changed under <span class="gs">**Settings → General → Drop-down window → Shortcut**</span>
+(<span class="sb">`quake_hotkey`</span>, empty for none). To have it ready after signing in, tick the
+setup's option, or put <span class="sb">`terminaal --quake`</span> in your Startup folder
+(&lt;kbd&gt;Win&lt;/kbd&gt;+&lt;kbd&gt;R&lt;/kbd&gt;, <span class="sb">`shell:startup`</span>).
+
+<span class="gu">## The look</span>
+
+<span class="k">-</span><span class="w"> </span><span class="gs">**The title bar**</span> is dark with a dark theme and light with a light one,
+  whatever Windows' own mode is.
+<span class="k">-</span><span class="w"> </span><span class="gs">**The theme "Windows"**</span> follows Windows' light or dark app mode and its accent
+  colour, also when you change them under **Settings → Personalization →
+  Colors**. The console then has Windows Terminal's colors.
+<span class="k">-</span><span class="w"> </span><span class="gs">**Translucency**</span> (<span class="gs">**Opacity**</span>, <span class="gs">**Interface opacity**</span>) works as on Wayland.
+<span class="k">-</span><span class="w"> </span><span class="gs">**Blur**</span> is Windows' Acrylic. It needs Windows 11 22H2 or newer, a graphics
+  card (Windows draws it as a plain colour without hardware acceleration, as in
+  many virtual machines), and <span class="gs">**Transparency effects**</span> switched on under
+  <span class="gs">**Settings → Personalization → Colors**</span>. Where one is missing, the settings
+  say which, and the window is see-through without blur.
+
+<span class="gs">**Start maximized**</span> under <span class="gs">**Settings → General → Window size**</span> (<span class="sb">`maximized`</span>)
+opens the window maximized; Terminaal notes it whenever you maximize or restore
+the window, so it opens the way you left it.
+
+<span class="gu">## Notifications</span>
+
+Long commands and silent tabs notify with a Windows toast, named Terminaal when
+the setup installed it (a plain exe's come under Windows PowerShell's name). The
+bell flashes the taskbar button.
+
+<span class="gu">## When something's wrong</span>
+
+<span class="k">-</span><span class="w"> </span><span class="gs">**The window stays empty or black.**</span> Terminaal draws through DirectComposition
+  so the window can be see-through. Should a graphics driver show nothing that
+  way, start it with the plain path – opaque only:
+<span class="sb">  ```powershell</span>
+  <span class="nv">$env:WGPU_DX12_PRESENTATION_SYSTEM</span> <span class="p">=</span> <span class="s2">"hwnd"</span><span class="p">;</span> <span class="n">terminaal</span>
+<span class="sb">  ```</span>
+<span class="k">-</span><span class="w"> </span><span class="gs">**A tab opens and closes again.**</span> A shell that fails within five seconds of
+  starting keeps its tab with what it printed – read it there. WSL in a virtual
+  machine usually needs nested virtualization.
+<span class="k">-</span><span class="w"> </span><span class="gs">**Logs**</span>: Terminaal is a window program, but started from a console it writes
+  there:
+<span class="sb">  ```powershell</span>
+  <span class="nv">$env:RUST_LOG</span> <span class="p">=</span> <span class="s2">"terminaal=info"</span><span class="p">;</span> <span class="n">terminaal</span>
+<span class="sb">  ```</span>
+<span class="k">-</span><span class="w"> </span><span class="gs">**An update didn't install**</span>: the setup's log is in <span class="sb">`%TEMP%\terminaal\update`</span>.
+
+More in [<span class="nt">Troubleshooting</span>](<span class="na">../troubleshooting.md</span>).
+</pre></div></td></tr></table></div>
+
+      </section>
+    </main>
+  </div>
+</body>
+</html>

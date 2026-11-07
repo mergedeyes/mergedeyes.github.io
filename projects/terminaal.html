@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Terminaal — Jan</title>
-  <link rel="stylesheet" href="../styles.css?v=1674c792" />
+  <link rel="stylesheet" href="../styles.css?v=808cdec3" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -44,8 +44,8 @@
         <div class="card__foot project-page__foot">
           <div class="card__links">
             <a href="https://github.com/mergedeyes/terminaal" class="link">Repository</a>
-            <a href="terminaal-source.html" class="link">Browse source (118 files)</a>
-            <a href="terminaal-commits.html" class="link">Commit history (77)</a>
+            <a href="terminaal-source.html" class="link">Browse source (131 files)</a>
+            <a href="terminaal-commits.html" class="link">Commit history (147)</a>
           </div>
           <span class="license-badge">GPL-3.0</span>
         </div>
@@ -73,7 +73,7 @@ tabs and split panes, keep your hosts, logins and keys in a sidebar, work with a
 server's files over the same connection – and never have a secret written to
 disk.</p>
 <div class="markdown-alert markdown-alert-note" dir="auto"><p class="markdown-alert-title" dir="auto"><svg aria-hidden="true" class="octicon octicon-info mr-2" data-component="Octicon" height="16" version="1.1" viewbox="0 0 16 16" width="16"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p><p dir="auto"><strong>Status:</strong> under active development and used as a daily driver on Linux
-(CachyOS, Wayland and X11). Expect rough edges, and expect the config format
+(CachyOS, Wayland and X11); also for Windows 10 1809 and newer. Expect rough edges, and expect the config format
 to change.</p>
 </div>
 <div class="markdown-alert markdown-alert-important" dir="auto"><p class="markdown-alert-title" dir="auto"><svg aria-hidden="true" class="octicon octicon-report mr-2" data-component="Octicon" height="16" version="1.1" viewbox="0 0 16 16" width="16"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Important</p><p dir="auto"><strong>Disclaimer:</strong> this project is coded mostly by Claude Code. I make all the
@@ -269,6 +269,11 @@ the man page under <code>~/.local/share</code>. It needs a GPU driver with Vulka
 and OpenSSL 3, zlib and libxkbcommon, which practically every desktop has. From
 then on Terminaal <strong>updates itself</strong>: it offers new releases at start
 (<a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/updates.md">Updates</a>).</p>
+<p dir="auto"><strong>On Windows</strong> (10 version 1809 or newer, 64-bit): run
+<code>terminaal-x86_64-windows-setup.exe</code> from the same release – for all users or
+just for you – or start <code>terminaal-x86_64-windows.exe</code> from any folder without
+installing. The setup isn't signed yet, so SmartScreen asks first: <strong>More info →
+Run anyway</strong>. → <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/windows.md">Terminaal on Windows</a></p>
 <p dir="auto"><strong>From source</strong></p>
 <p dir="auto"><strong>Requirements</strong></p>
 <ul dir="auto">
@@ -517,7 +522,9 @@ terminaal --connect web -c <span class="pl-s"><span class="pl-pds">"</span>htop<
 terminaal --quake                      <span class="pl-c"><span class="pl-c">#</span> show or hide the drop-down window (bind it to a key)</span>
 terminaal --help                       <span class="pl-c"><span class="pl-c">#</span> all of it, and `man terminaal` for more</span></pre></div>
 <p dir="auto">With <code>--connect</code>, <code>-s</code> or <code>-c</code> the saved session is neither restored nor
-written. → <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/command-line.md">The command line</a></p>
+written. Any tab whose shell or command fails within five seconds of starting
+stays open with its status, so the error can be read.
+→ <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/command-line.md">The command line</a></p>
 <h2 class="heading-element" dir="auto" id="configuration">Configuration</h2>
 <p dir="auto">Everything is optional and can be set in the settings tab (<strong>⚙</strong> in the sidebar,
 or <kbd>Ctrl</kbd>+<kbd>,</kbd>). Behind it, everything lives in
@@ -680,7 +687,7 @@ key of every file, including <code>hosts.toml</code> and <code>snippets.toml</co
 </tr>
 <tr>
 <td><strong>Guides</strong></td>
-<td><a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/configuration.md">Configuration</a> · <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/keyboard-shortcuts.md">Shortcuts</a> · <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/command-line.md">Command line</a> · <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/ssh-hosts.md">SSH hosts</a> · <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/ibm-i-5250.md">IBM i (5250)</a> · <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/host-keys.md">Host keys</a> · <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/files-and-sftp.md">Files and SFTP</a> · <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/shell-integration.md">Shell integration</a> · <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/commands-and-snippets.md">Commands and snippets</a> · <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/command-palette.md">Command palette</a> · <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/search-and-links.md">Search and links</a> · <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/split-panes.md">Split panes</a> · <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/sessions.md">Sessions</a> · <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/drop-down-window.md">Drop-down window</a> · <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/appearance.md">Appearance</a></td>
+<td><a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/configuration.md">Configuration</a> · <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/keyboard-shortcuts.md">Shortcuts</a> · <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/command-line.md">Command line</a> · <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/ssh-hosts.md">SSH hosts</a> · <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/ibm-i-5250.md">IBM i (5250)</a> · <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/host-keys.md">Host keys</a> · <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/files-and-sftp.md">Files and SFTP</a> · <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/shell-integration.md">Shell integration</a> · <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/commands-and-snippets.md">Commands and snippets</a> · <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/command-palette.md">Command palette</a> · <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/search-and-links.md">Search and links</a> · <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/split-panes.md">Split panes</a> · <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/sessions.md">Sessions</a> · <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/drop-down-window.md">Drop-down window</a> · <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/appearance.md">Appearance</a> · <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/guides/windows.md">Windows</a></td>
 </tr>
 <tr>
 <td><strong>Background</strong></td>
@@ -691,13 +698,17 @@ key of every file, including <code>hosts.toml</code> and <code>snippets.toml</co
 <h2 class="heading-element" dir="auto" id="known-limitations">Known limitations</h2>
 <p dir="auto"><strong>Platform</strong></p>
 <ul dir="auto">
-<li>Linux only for now</li>
-<li>A see-through window needs Wayland; on X11 it stays opaque</li>
+<li>Linux and Windows; no macOS</li>
+<li>A see-through window needs Wayland on Linux; on X11 it stays opaque</li>
 <li>The drop-down window needs a Wayland desktop with the layer shell (not GNOME);
 on X11 it's an always-on-top window. It takes no dropped files and no input
 method (dead keys work)</li>
 <li>Desktop notifications need <code>notify-send</code>, opening links <code>xdg-open</code>, the local
 trash <code>gio</code></li>
+<li>Windows: the setup and exe aren't signed (SmartScreen warns once); blur needs
+Windows 11 22H2, a graphics card and Windows' transparency effects; cmd tabs
+have prompt marks but no exit codes or run times; WSL tabs are plain
+terminals, and programs in them don't show in the tab title</li>
 </ul>
 <p dir="auto"><strong>SSH</strong></p>
 <ul dir="auto">
@@ -747,6 +758,9 @@ the window to keep your tabs</li>
 <summary><b>Done</b></summary>
 <ul class="contains-task-list">
 <li class="task-list-item"><input aria-label="Completed task" checked="" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Local terminal core, tabs and sessions</li>
+<li class="task-list-item"><input aria-label="Completed task" checked="" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Windows: setup and updates, ConPTY, PowerShell/cmd/Git Bash integration,
+SSH agents on named pipes, a global shortcut for the drop-down window, Windows
+theme, Acrylic blur</li>
 <li class="task-list-item"><input aria-label="Completed task" checked="" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Shell management with per-shell aliases, functions and lines of your own</li>
 <li class="task-list-item"><input aria-label="Completed task" checked="" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> SSH sessions, host manager, keys, per-host options</li>
 <li class="task-list-item"><input aria-label="Completed task" checked="" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Configurable keyboard shortcuts for every action</li>
@@ -772,6 +786,7 @@ through sudo where needed</li>
 <li class="task-list-item"><input aria-label="Completed task" checked="" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> A warning before risky pastes</li>
 <li class="task-list-item"><input aria-label="Completed task" checked="" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Activity in background tabs</li>
 <li class="task-list-item"><input aria-label="Completed task" checked="" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> <code>terminaal -c</code>, <code>-s</code> and <code>--hold</code>, and a <code>terminaal(1)</code> man page</li>
+<li class="task-list-item"><input aria-label="Completed task" checked="" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> A tab whose shell fails right after starting stays open with its status</li>
 <li class="task-list-item"><input aria-label="Completed task" checked="" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Folder sync over SFTP – two-way or one-way, on opening or live in the background</li>
 <li class="task-list-item"><input aria-label="Completed task" checked="" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Selecting several files at once in the files tab</li>
 <li class="task-list-item"><input aria-label="Completed task" checked="" class="task-list-item-checkbox" disabled="" id="" type="checkbox"/> Updates from the GitHub releases, offered at start and installed on request</li>
