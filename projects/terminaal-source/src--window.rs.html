@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>src/window.rs — Terminaal — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=249e56a0" />
+  <link rel="stylesheet" href="../../styles.css?v=bc627d1e" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -181,7 +181,20 @@
 <span class="normal">108</span>
 <span class="normal">109</span>
 <span class="normal">110</span>
-<span class="normal">111</span></pre></div></td><td class="code"><div><pre><span></span><span class="sd">//! What the app draws into: a winit window, or the drop-down window's</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span></pre></div></td><td class="code"><div><pre><span></span><span class="sd">//! What the app draws into: a winit window, or the drop-down window's</span>
 <span class="sd">//! layer surface (`quake::layer`), which winit knows nothing about. The</span>
 <span class="sd">//! methods are the handful of winit's `Window` that `app.rs` uses; for the</span>
 <span class="sd">//! layer surface most of them have nothing to do.</span>
@@ -192,6 +205,7 @@
 <span class="k">use</span><span class="w"> </span><span class="n">std</span><span class="p">::</span><span class="n">sync</span><span class="p">::</span><span class="n">Arc</span><span class="p">;</span>
 
 <span class="k">use</span><span class="w"> </span><span class="n">winit</span><span class="p">::</span><span class="n">dpi</span><span class="p">::</span><span class="n">PhysicalSize</span><span class="p">;</span>
+<span class="k">use</span><span class="w"> </span><span class="n">winit</span><span class="p">::</span><span class="n">raw_window_handle</span><span class="p">::{</span><span class="n">HasWindowHandle</span><span class="p">,</span><span class="w"> </span><span class="n">RawWindowHandle</span><span class="p">};</span>
 <span class="k">use</span><span class="w"> </span><span class="n">winit</span><span class="p">::</span><span class="n">window</span><span class="p">::{</span><span class="n">CursorIcon</span><span class="p">,</span><span class="w"> </span><span class="n">UserAttentionType</span><span class="p">,</span><span class="w"> </span><span class="n">Window</span><span class="p">};</span>
 
 <span class="k">use</span><span class="w"> </span><span class="k">crate</span><span class="p">::</span><span class="n">gpu</span><span class="p">::</span><span class="n">Target</span><span class="p">;</span>
@@ -248,8 +262,15 @@
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 
+<span class="w">    </span><span class="sd">/// Mark the window as wanting the user: the urgency hint under X11, a</span>
+<span class="w">    </span><span class="sd">/// flashing taskbar button on Windows. Not under Wayland: winit asks</span>
+<span class="w">    </span><span class="sd">/// through `xdg_activation_v1::activate`, and compositors like COSMIC</span>
+<span class="w">    </span><span class="sd">/// take that as "bring it to the front" -- a finished command or a bell</span>
+<span class="w">    </span><span class="sd">/// pulled Terminaal over whatever the user was working in.</span>
 <span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">request_user_attention</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">kind</span><span class="p">:</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="n">UserAttentionType</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="bp">Self</span><span class="p">::</span><span class="n">Winit</span><span class="p">(</span><span class="n">window</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="bp">Self</span><span class="p">::</span><span class="n">Winit</span><span class="p">(</span><span class="n">window</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span>
+<span class="w">            </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="n">is_wayland</span><span class="p">(</span><span class="n">window</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
 <span class="w">            </span><span class="n">window</span><span class="p">.</span><span class="n">request_user_attention</span><span class="p">(</span><span class="n">kind</span><span class="p">);</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
@@ -291,6 +312,11 @@
 <span class="w">            </span><span class="bp">Self</span><span class="p">::</span><span class="n">Layer</span><span class="p">(</span><span class="n">_</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nb">None</span><span class="p">,</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="sd">/// Whether the window lives on a Wayland compositor (not X11/Xwayland).</span>
+<span class="k">fn</span><span class="w"> </span><span class="nf">is_wayland</span><span class="p">(</span><span class="n">window</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">Window</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">window</span><span class="p">.</span><span class="n">window_handle</span><span class="p">().</span><span class="n">is_ok_and</span><span class="p">(</span><span class="o">|</span><span class="n">handle</span><span class="o">|</span><span class="w"> </span><span class="fm">matches!</span><span class="p">(</span><span class="n">handle</span><span class="p">.</span><span class="n">as_raw</span><span class="p">(),</span><span class="w"> </span><span class="n">RawWindowHandle</span><span class="p">::</span><span class="n">Wayland</span><span class="p">(</span><span class="n">_</span><span class="p">)))</span>
 <span class="p">}</span>
 </pre></div></td></tr></table></div>
 

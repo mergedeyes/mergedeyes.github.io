@@ -297,7 +297,7 @@
     ]
   },
   "mergedeyes/mergedeyes.github.io": {
-    "commit_count": 687,
+    "commit_count": 688,
     "files": {
       ".github/scripts/generate_project_pages.py": "1192a1f3c831b8a4df56cd16b79b8fdcb5bfb752",
       ".github/scripts/update_visitor_count.py": "6b3f83843602f650466aef1cce25e691f1e2d4dc",
@@ -319,8 +319,8 @@
       "skills/nginx.html": "80c4b61efb0493e6411b8b9caab170e3db5d80dd",
       "styles.css": "edba3eece9cbecffbd2b034ea5412aad4c0cffc4"
     },
-    "newest_commit_sha": "249e56a08f935d8b0786264b3baee97036f5ab97",
-    "pushed_at": "2026-11-08T02:35:27Z",
+    "newest_commit_sha": "bc627d1ecee4b00d1d6f321516256bef5d92037f",
+    "pushed_at": "2026-11-08T05:50:04Z",
     "readme_format": 2,
     "source_entries": [
       "index.html",
@@ -370,10 +370,10 @@
     ]
   },
   "mergedeyes/terminaal": {
-    "commit_count": 147,
+    "commit_count": 151,
     "files": {
-      "Cargo.lock": "db176f0a933627ea4d72a8922ec8f69085be90b5",
-      "Cargo.toml": "1f1ffd854f6badba20f3a5d15dae705fc1b27eaa",
+      "Cargo.lock": "e3c91f62d591503e5d5e4cb67ea83db6572e7b46",
+      "Cargo.toml": "c7b82f61e6f8bfefda06dc36bdf8b2da433ffed4",
       "LICENSE": "f288702d2fa16d3cdf0035b15a9fcbc552cd88e7",
       "assets/terminaal.desktop": "02c94ccb7f06db0ebf26ab8029a809af7d7a1136",
       "docs/README.md": "3e48294ae3649c0a6dfe3b882fb42659682712f0",
@@ -394,7 +394,7 @@
       "docs/guides/keyboard-shortcuts.md": "8e447455f4aa6763f56c765210b983529d8953a5",
       "docs/guides/search-and-links.md": "24de4c889d8c0d793d0604b9edfba135dbe21715",
       "docs/guides/sessions.md": "4fa4ad09974630e95f705c50deb71f8fda9268c3",
-      "docs/guides/shell-integration.md": "eafbb6c477ce5d19b5375a3b4995cfa7d7847248",
+      "docs/guides/shell-integration.md": "2140889a5bfd2bbe4f4906406d9b0920403b9a9a",
       "docs/guides/split-panes.md": "0007a9e2cc776eff17c401153ab2393a1bdce31d",
       "docs/guides/ssh-hosts.md": "7c4ede2bc603861ac491826a4c9b7ffc09633eca",
       "docs/guides/updates.md": "6ae5e4060a8d75579e8a4abb663246d49c607a4e",
@@ -502,10 +502,10 @@
       "src/ui/update_dialog.rs": "e62240f2dc38955fcc08d0c756c2c7d624ad7827",
       "src/ui/widgets.rs": "5b7a280d004f3e4a5847c2020e2c85a409aa9dae",
       "src/update.rs": "0b4d0560820b2393ae425e3411d3839ca1cf2909",
-      "src/window.rs": "e965f78c136b7ce5fba518d1f170602b34ecbf97"
+      "src/window.rs": "8fa6f199f5da25061aa23b6e8f741cf0db511e26"
     },
-    "newest_commit_sha": "cc77ad7232ab1ddb18ae859006b58c53774d557b",
-    "pushed_at": "2026-11-07T18:41:13Z",
+    "newest_commit_sha": "20d8a0f0672089a25eb190753fbecca2e2ecd81d",
+    "pushed_at": "2026-11-08T14:48:21Z",
     "readme_format": 2,
     "source_entries": [
       "src/*",
@@ -519,12 +519,12 @@
     ]
   },
   "mergedeyes/yarncalculator": {
-    "commit_count": 5,
+    "commit_count": 10,
     "files": {
-      "GarnRechnerProzedural.java": "291c468fa9ba2a99d77da2f3257f2c5e52e8f54d"
+      "GarnRechnerProzedural.java": ""
     },
-    "newest_commit_sha": "da93ae5f697739a85d1ef48ca7aad05e4993a14c",
-    "pushed_at": "2025-12-31T22:13:36Z",
+    "newest_commit_sha": "1d94f4f50f7065710c54ccf4e8bb1925225a4d06",
+    "pushed_at": "2026-11-08T14:14:43Z",
     "readme_format": 2,
     "source_entries": [
       "GarnRechnerProzedural.java"
