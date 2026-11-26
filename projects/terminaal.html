@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Terminaal — Jan</title>
-  <link rel="stylesheet" href="../styles.css?v=41ca8b66" />
+  <link rel="stylesheet" href="../styles.css?v=77eb044b" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -259,9 +259,7 @@ Alacritty's format (its themes work as they are)</li>
 <p dir="auto"><strong>From a release</strong> (x86_64 Linux): download <code>terminaal-x86_64-linux.tar.gz</code> from
 the <a href="https://github.com/mergedeyes/terminaal/releases/latest">latest release</a>,
 unpack it and run the installer:</p>
-<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="tar xzf terminaal-x86_64-linux.tar.gz
-cd terminaal-x86_64-linux
-./install.sh" dir="auto"><pre>tar xzf terminaal-x86_64-linux.tar.gz
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto"><pre>tar xzf terminaal-x86_64-linux.tar.gz
 <span class="pl-c1">cd</span> terminaal-x86_64-linux
 ./install.sh</pre></div>
 <p dir="auto">This puts Terminaal in <code>~/.local/bin/terminaal</code>, plus a desktop entry, icons and
@@ -284,9 +282,7 @@ On Debian/Ubuntu: <code>sudo apt install build-essential pkg-config libssl-dev z
 <li><a href="https://imagemagick.org/" rel="nofollow">ImageMagick</a> (<code>magick</code>), only for <code>install.sh</code>, which scales the icons</li>
 </ul>
 <p dir="auto"><strong>Install for the current user</strong></p>
-<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="git clone https://github.com/mergedeyes/terminaal terminaal
-cd terminaal
-./install.sh" dir="auto"><pre>git clone https://github.com/mergedeyes/terminaal terminaal
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto"><pre>git clone https://github.com/mergedeyes/terminaal terminaal
 <span class="pl-c1">cd</span> terminaal
 ./install.sh</pre></div>
 <p dir="auto">This builds and installs <code>~/.cargo/bin/terminaal</code>, plus a desktop entry,
@@ -319,7 +315,7 @@ the installed binary. Installed from source, Terminaal still offers new releases
 turn that off under Settings → General → Updates to stay on your own builds.</p>
 <p dir="auto">Making releases: <a href="https://github.com/mergedeyes/terminaal/blob/main/RELEASING.md">RELEASING.md</a>.</p>
 <p dir="auto"><strong>Just try it</strong></p>
-<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="cargo run --release" dir="auto"><pre>cargo run --release</pre></div>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto"><pre>cargo run --release</pre></div>
 <p dir="auto">New here? <a href="https://github.com/mergedeyes/terminaal/blob/main/docs/getting-started.md">Getting started</a> walks through the window
 and the first steps.</p>
 <h2 class="heading-element" dir="auto" id="getting-around">Getting around</h2>
@@ -502,16 +498,7 @@ settings tab under <strong>Shortcuts</strong> (click <strong>+</strong> and pres
 <li>Right-click in a terminal for copy, paste, broadcast, splitting and the files tab</li>
 </ul>
 <h3 class="heading-element" dir="auto" id="command-line">Command line</h3>
-<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="terminaal                              # a local shell
-terminaal --connect myserver           # connect to a saved or ~/.ssh/config host
-terminaal --connect admin@myserver     # ...using that host's login for &quot;admin&quot;
-terminaal -s                           # list the installed shells and exit
-terminaal -s fish                      # first tab with that shell (name or path)
-terminaal -c &quot;journalctl -f&quot;           # run that line instead of a shell, like xterm -e
-terminaal -s bash -c &quot;make&quot; --hold     # ...in bash, and keep the tab once it ends
-terminaal --connect web -c &quot;htop&quot;      # run it on the server (RemoteCommand)
-terminaal --quake                      # show or hide the drop-down window (bind it to a key)
-terminaal --help                       # all of it, and `man terminaal` for more" dir="auto"><pre>terminaal                              <span class="pl-c"><span class="pl-c">#</span> a local shell</span>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto"><pre>terminaal                              <span class="pl-c"><span class="pl-c">#</span> a local shell</span>
 terminaal --connect myserver           <span class="pl-c"><span class="pl-c">#</span> connect to a saved or ~/.ssh/config host</span>
 terminaal --connect admin@myserver     <span class="pl-c"><span class="pl-c">#</span> ...using that host's login for "admin"</span>
 terminaal -s                           <span class="pl-c"><span class="pl-c">#</span> list the installed shells and exit</span>
@@ -567,55 +554,7 @@ anything secret.</p>
 <p dir="auto">A missing or broken <code>config.toml</code> just means defaults, never a failed start.</p>
 <details>
 <summary><b>Example <code>config.toml</code> with every option</b></summary>
-<div class="highlight highlight-source-toml notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="font_size = 15.0              # logical pixels
-line_height_factor = 1.25
-padding = 8.0                 # around the terminal grid
-scrollback_lines = 10000
-scroll_lines = 3.0            # lines per mouse-wheel notch
-scrollbar = true              # scrollbar at the right edge, shown when scrolling or on hover
-scroll_select_factor = 3.0    # wheel multiplier while marking text (1 = off)
-select_path_segments = false  # double-click marks one folder of a path, not all of it
-default_width = 1000.0        # window size at start
-default_height = 650.0
-cursor_blink = true
-cursor_blink_interval_ms = 600
-notifications = true          # desktop notifications at all
-notify_after_secs = 10        # notify when a command ran this long unseen (0: never)
-paste_warning = true          # ask before risky pastes (several lines, sudo, curl | sh, rm -rf)
-kitty_keyboard = true         # programs may switch on the kitty keyboard protocol
-clipboard_write = true        # programs may set the clipboard (OSC 52)
-images = true                 # programs may show images (kitty graphics protocol)
-clipboard_read = &quot;ask&quot;        # programs reading the clipboard: &quot;never&quot;, &quot;ask&quot; or &quot;always&quot;
-silence_secs = 15             # a terminal watched for silence is quiet after this long
-tab_bar = true
-sidebar = true                # show the sidebar at start
-sidebar_width = 300.0
-splash = true                 # start-up animation
-restore_session = true        # open last time's tabs again
-update_check = true           # offer new releases at start
-quake_height = 50.0           # drop-down window height, percent of the screen
-quake_hide_on_unfocus = true  # hide it when another window gets the keyboard
-# shell = &quot;/usr/bin/fish&quot;     # default shell for new tabs (default: $SHELL)
-# language = &quot;en&quot;             # &quot;en&quot; or &quot;de&quot; (default: from your locale)
-# theme = &quot;Dracula&quot;           # color theme (default: &quot;Terminaal&quot;)
-# font_family = &quot;Hack&quot;        # console font (default: Noto Sans Mono)
-# ui_font_family = &quot;Inter&quot;    # font of menus and panels (default: built in)
-opacity = 1.0                 # below 1 the window is see-through (0.2–1.0)
-# ui_opacity = 0.85           # tab bar, sidebar, settings in a see-through window
-                              # (default: the theme's, else 0.85)
-blur = true                   # blur what's behind a see-through window
-commands_run = true           # command buttons run at once; off: typed into the prompt
-commands_assume_yes = false   # let them skip confirmations (-y, --noconfirm)
-# system = &quot;debian&quot;           # what the built-in commands build for
-                              # (default: from /etc/os-release)
-# editor = &quot;code&quot;             # opens server files edited locally
-                              # (default: the desktop's default app)
-
-[shortcuts]                   # only what differs from the defaults
-new_tab = &quot;Ctrl+Alt+N&quot;
-copy = [&quot;Ctrl+Shift+C&quot;, &quot;Ctrl+Insert&quot;]
-paste_and_run = &quot;Ctrl+Shift+Alt+V&quot;
-tab_9 = []                    # no shortcut" dir="auto"><pre><span class="pl-smi">font_size</span> = <span class="pl-c1">15.0</span>              <span class="pl-c"><span class="pl-c">#</span> logical pixels</span>
+<div class="highlight highlight-source-toml notranslate position-relative overflow-auto" dir="auto"><pre><span class="pl-smi">font_size</span> = <span class="pl-c1">15.0</span>              <span class="pl-c"><span class="pl-c">#</span> logical pixels</span>
 <span class="pl-smi">line_height_factor</span> = <span class="pl-c1">1.25</span>
 <span class="pl-smi">padding</span> = <span class="pl-c1">8.0</span>                 <span class="pl-c"><span class="pl-c">#</span> around the terminal grid</span>
 <span class="pl-smi">scrollback_lines</span> = <span class="pl-c1">10000</span>
@@ -835,12 +774,7 @@ through sudo where needed</li>
 </ul>
 <h2 class="heading-element" dir="auto" id="contributing">Contributing</h2>
 <h3 class="heading-element" dir="auto" id="development">Development</h3>
-<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="cargo run                            # dev build
-cargo run -- --connect myserver      # pass arguments after --
-cargo test
-cargo clippy --all-targets           # should stay warning-free
-RUST_LOG=terminaal=debug cargo run   # per-frame timing
-RUST_LOG=terminaal=trace cargo run   # plus the SSH worker's timeline" dir="auto"><pre>cargo run                            <span class="pl-c"><span class="pl-c">#</span> dev build</span>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto"><pre>cargo run                            <span class="pl-c"><span class="pl-c">#</span> dev build</span>
 cargo run -- --connect myserver      <span class="pl-c"><span class="pl-c">#</span> pass arguments after --</span>
 cargo <span class="pl-c1">test</span>
 cargo clippy --all-targets           <span class="pl-c"><span class="pl-c">#</span> should stay warning-free</span>

@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>docs/guides/appearance.md — Terminaal — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=41ca8b66" />
+  <link rel="stylesheet" href="../../styles.css?v=77eb044b" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -71,203 +71,126 @@
           <h1 class="section__title">docs/guides/appearance.md</h1>
           <a href="../terminaal.html" class="link">← Back to Terminaal</a>
         </div>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span>
-<span class="normal">43</span>
-<span class="normal">44</span>
-<span class="normal">45</span>
-<span class="normal">46</span>
-<span class="normal">47</span>
-<span class="normal">48</span>
-<span class="normal">49</span>
-<span class="normal">50</span>
-<span class="normal">51</span>
-<span class="normal">52</span>
-<span class="normal">53</span>
-<span class="normal">54</span>
-<span class="normal">55</span>
-<span class="normal">56</span>
-<span class="normal">57</span>
-<span class="normal">58</span>
-<span class="normal">59</span>
-<span class="normal">60</span>
-<span class="normal">61</span>
-<span class="normal">62</span>
-<span class="normal">63</span>
-<span class="normal">64</span>
-<span class="normal">65</span>
-<span class="normal">66</span>
-<span class="normal">67</span>
-<span class="normal">68</span>
-<span class="normal">69</span>
-<span class="normal">70</span>
-<span class="normal">71</span>
-<span class="normal">72</span>
-<span class="normal">73</span>
-<span class="normal">74</span>
-<span class="normal">75</span>
-<span class="normal">76</span>
-<span class="normal">77</span>
-<span class="normal">78</span>
-<span class="normal">79</span>
-<span class="normal">80</span>
-<span class="normal">81</span>
-<span class="normal">82</span>
-<span class="normal">83</span>
-<span class="normal">84</span>
-<span class="normal">85</span>
-<span class="normal">86</span>
-<span class="normal">87</span>
-<span class="normal">88</span>
-<span class="normal">89</span>
-<span class="normal">90</span>
-<span class="normal">91</span>
-<span class="normal">92</span>
-<span class="normal">93</span>
-<span class="normal">94</span>
-<span class="normal">95</span>
-<span class="normal">96</span>
-<span class="normal">97</span>
-<span class="normal">98</span></pre></div></td><td class="code"><div><pre><span></span><span class="gh"># Appearance</span>
-
-Everything here is under <span class="gs">**Settings → Appearance**</span> and applies immediately.
-
-<span class="gu">## Themes</span>
-
-A theme colors the console and the interface (sidebar, tab bar, settings)
-together.
-
-<span class="gs">**Built in:**</span> Terminaal (the default), Catppuccin Mocha, Dracula, Gruvbox Dark,
-Nord, Solarized Dark, Solarized Light.
-
-<span class="gs">**Your own:**</span> TOML files in <span class="sb">`~/.config/terminaal/themes/`</span>, in Alacritty's color
-format, optionally with a <span class="sb">`[ui]`</span> table for the interface. The name is the file
-name, or <span class="sb">`name = "…"`</span> inside; one named like a built-in theme replaces it. After
-editing, click <span class="gs">**Reload**</span>. Errors in a file show under the theme list.
-
-The full format, step by step: [<span class="nt">Make your own theme</span>](<span class="na">../tutorials/05-make-your-own-theme.md</span>).
-
-A saved SSH host can have a theme of its own for its terminals, and a warning
-color for its tabs: <span class="gs">**Advanced → Look**</span> in the host form, see
-[<span class="nt">SSH hosts</span>](<span class="na">ssh-hosts.md#look</span>).
-
-Summary of what a theme file can contain:
-
-| Table | Keys | Required |
-| --- | --- | --- |
-| <span class="sb">`[colors.primary]`</span> | <span class="sb">`background`</span>, <span class="sb">`foreground`</span>, <span class="sb">`bright_foreground`</span>, <span class="sb">`dim_foreground`</span> | background, foreground |
-| <span class="sb">`[colors.normal]`</span> | <span class="sb">`black`</span> <span class="sb">`red`</span> <span class="sb">`green`</span> <span class="sb">`yellow`</span> <span class="sb">`blue`</span> <span class="sb">`magenta`</span> <span class="sb">`cyan`</span> <span class="sb">`white`</span> | all eight |
-| <span class="sb">`[colors.bright]`</span>, <span class="sb">`[colors.dim]`</span> | same eight | no |
-| <span class="sb">`[colors.cursor]`</span> | <span class="sb">`cursor`</span> | no |
-| <span class="sb">`[colors.selection]`</span> | <span class="sb">`background`</span>, <span class="sb">`text`</span> | no |
-| <span class="sb">`[colors.search.matches]`</span>, <span class="sb">`[colors.search.focused_match]`</span> | <span class="sb">`background`</span>, <span class="sb">`foreground`</span> | no |
-| <span class="sb">`[ui]`</span> | <span class="sb">`accent`</span> <span class="sb">`background`</span> <span class="sb">`row`</span> <span class="sb">`hover`</span> <span class="sb">`selected`</span> <span class="sb">`border`</span> <span class="sb">`border_strong`</span> <span class="sb">`text`</span> <span class="sb">`text_weak`</span> <span class="sb">`error`</span> <span class="sb">`success`</span> <span class="sb">`input`</span> <span class="sb">`text_selection`</span>, and <span class="sb">`opacity`</span> (0–1, how opaque the panels are in a see-through window) | no |
-
-Colors are <span class="sb">`#rrggbb`</span>, <span class="sb">`#rgb`</span> or <span class="sb">`0xrrggbb`</span>. Alacritty's <span class="sb">`CellForeground`</span> /
-<span class="sb">`CellBackground`</span> values count as "not set", and unknown keys are ignored – so
-Alacritty theme files load as they are.
-
-<span class="gu">## COSMIC</span>
-
-On the COSMIC desktop there's a <span class="gs">**COSMIC**</span> theme built from your desktop theme:
-
-<span class="k">-</span><span class="w"> </span>Background and text from COSMIC's background colors, the ANSI colors from its
-  palette, the cursor in your accent color
-<span class="k">-</span><span class="w"> </span>The interface like COSMIC's own panels – with frosted glass on, as see-through
-  as they are (85 %)
-<span class="k">-</span><span class="w"> </span>Follows changes live – switching between light and dark, a new accent color –
-  without restarting
-
-It doesn't copy COSMIC's "frosted" window look; use translucency below for that.
-
-<span class="gu">## Windows</span>
-
-On Windows there's a <span class="gs">**Windows**</span> theme instead: Windows' light or dark app mode
+        <div class="readme-content">
+<h1 class="heading-element" dir="auto" id="appearance">Appearance</h1>
+<p dir="auto">Everything here is under <strong>Settings → Appearance</strong> and applies immediately.</p>
+<h2 class="heading-element" dir="auto" id="themes">Themes</h2>
+<p dir="auto">A theme colors the console and the interface (sidebar, tab bar, settings)
+together.</p>
+<p dir="auto"><strong>Built in:</strong> Terminaal (the default), Catppuccin Mocha, Dracula, Gruvbox Dark,
+Nord, Solarized Dark, Solarized Light.</p>
+<p dir="auto"><strong>Your own:</strong> TOML files in <code>~/.config/terminaal/themes/</code>, in Alacritty's color
+format, optionally with a <code>[ui]</code> table for the interface. The name is the file
+name, or <code>name = "…"</code> inside; one named like a built-in theme replaces it. After
+editing, click <strong>Reload</strong>. Errors in a file show under the theme list.</p>
+<p dir="auto">The full format, step by step: <a href="docs--tutorials--05-make-your-own-theme.md.html">Make your own theme</a>.</p>
+<p dir="auto">A saved SSH host can have a theme of its own for its terminals, and a warning
+color for its tabs: <strong>Advanced → Look</strong> in the host form, see
+<a href="docs--guides--ssh-hosts.md.html#look">SSH hosts</a>.</p>
+<p dir="auto">Summary of what a theme file can contain:</p>
+<markdown-accessiblity-table><table>
+<thead>
+<tr>
+<th>Table</th>
+<th>Keys</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>[colors.primary]</code></td>
+<td><code>background</code>, <code>foreground</code>, <code>bright_foreground</code>, <code>dim_foreground</code></td>
+<td>background, foreground</td>
+</tr>
+<tr>
+<td><code>[colors.normal]</code></td>
+<td><code>black</code> <code>red</code> <code>green</code> <code>yellow</code> <code>blue</code> <code>magenta</code> <code>cyan</code> <code>white</code></td>
+<td>all eight</td>
+</tr>
+<tr>
+<td><code>[colors.bright]</code>, <code>[colors.dim]</code></td>
+<td>same eight</td>
+<td>no</td>
+</tr>
+<tr>
+<td><code>[colors.cursor]</code></td>
+<td><code>cursor</code></td>
+<td>no</td>
+</tr>
+<tr>
+<td><code>[colors.selection]</code></td>
+<td><code>background</code>, <code>text</code></td>
+<td>no</td>
+</tr>
+<tr>
+<td><code>[colors.search.matches]</code>, <code>[colors.search.focused_match]</code></td>
+<td><code>background</code>, <code>foreground</code></td>
+<td>no</td>
+</tr>
+<tr>
+<td><code>[ui]</code></td>
+<td><code>accent</code> <code>background</code> <code>row</code> <code>hover</code> <code>selected</code> <code>border</code> <code>border_strong</code> <code>text</code> <code>text_weak</code> <code>error</code> <code>success</code> <code>input</code> <code>text_selection</code>, and <code>opacity</code> (0–1, how opaque the panels are in a see-through window)</td>
+<td>no</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto">Colors are <code>#rrggbb</code>, <code>#rgb</code> or <code>0xrrggbb</code>. Alacritty's <code>CellForeground</code> /
+<code>CellBackground</code> values count as "not set", and unknown keys are ignored – so
+Alacritty theme files load as they are.</p>
+<h2 class="heading-element" dir="auto" id="cosmic">COSMIC</h2>
+<p dir="auto">On the COSMIC desktop there's a <strong>COSMIC</strong> theme built from your desktop theme:</p>
+<ul dir="auto">
+<li>Background and text from COSMIC's background colors, the ANSI colors from its
+palette, the cursor in your accent color</li>
+<li>The interface like COSMIC's own panels – with frosted glass on, as see-through
+as they are (85 %)</li>
+<li>Follows changes live – switching between light and dark, a new accent color –
+without restarting</li>
+</ul>
+<p dir="auto">It doesn't copy COSMIC's "frosted" window look; use translucency below for that.</p>
+<h2 class="heading-element" dir="auto" id="windows">Windows</h2>
+<p dir="auto">On Windows there's a <strong>Windows</strong> theme instead: Windows' light or dark app mode
 with its accent color, live when you change them, the console in Windows
 Terminal's colors. The title bar follows whichever theme you pick – dark or
-light. More in [<span class="nt">Terminaal on Windows</span>](<span class="na">windows.md#the-look</span>).
+light. More in <a href="docs--guides--windows.md.html#the-look">Terminaal on Windows</a>.</p>
+<h2 class="heading-element" dir="auto" id="translucency">Translucency</h2>
+<ul dir="auto">
+<li><strong>Opacity</strong> (0.2–1): below 1, the terminal background, tab bar, sidebar and
+settings become see-through. Text, lines, colored cells and popups stay solid.</li>
+<li><strong>Interface opacity</strong>: how see-through the tab bar, sidebar and settings are –
+never more than the terminal. Text sits on them, and a bright wallpaper behind
+a dark theme's grey text leaves little to read, so by default they stay at 85 %
+(the COSMIC theme: whatever COSMIC's own panels use, a theme file: <code>[ui] opacity</code>). <strong>Theme default</strong> goes back to that. The lower it is, the more the
+interface text moves towards white (black for light themes).</li>
+<li><strong>Blur what's behind (frosted)</strong>: blurs the desktop behind the window. Works on
+COSMIC and other compositors with <code>ext-background-effect</code>, and on KDE. On
+Windows it's Acrylic: Windows 11 22H2 or newer, a graphics card, and Windows'
+transparency effects on.</li>
+</ul>
+<p dir="auto">On Linux translucency needs <strong>Wayland</strong>. On X11 the window stays opaque, and the
+settings say so. On Windows it works everywhere.</p>
+<h2 class="heading-element" dir="auto" id="fonts">Fonts</h2>
+<ul dir="auto">
+<li><strong>Console:</strong> any installed monospace family. The tab bar uses it too. Default:
+Noto Sans Mono.</li>
+<li><strong>Menus:</strong> any installed family, for the sidebar and settings.</li>
+<li><strong>Font size</strong> and <strong>line height</strong> apply live. <kbd>Ctrl</kbd>+<kbd>+</kbd> /
+<kbd>-</kbd> / <kbd>0</kbd> zoom temporarily without changing the setting.</li>
+</ul>
+<p dir="auto">A font that's no longer installed falls back to the default; the list marks it
+"(not installed)".</p>
+<h2 class="heading-element" dir="auto" id="window">Window</h2>
+<ul dir="auto">
+<li><strong>Padding</strong> around the terminal grid (0–40 px)</li>
+<li><strong>Sidebar width</strong> – applies when you let go of the slider</li>
+<li><strong>Show tab bar</strong></li>
+<li><strong>Cursor:</strong> blinking on/off and interval</li>
+</ul>
+<p dir="auto">Window size at start, showing the sidebar at start and the start-up animation are
+under <strong>Settings → General</strong> and apply at the next start. <strong>Use current</strong> takes
+the window's current size.</p>
 
-<span class="gu">## Translucency</span>
-
-<span class="k">-</span><span class="w"> </span><span class="gs">**Opacity**</span> (0.2–1): below 1, the terminal background, tab bar, sidebar and
-  settings become see-through. Text, lines, colored cells and popups stay solid.
-<span class="k">-</span><span class="w"> </span><span class="gs">**Interface opacity**</span>: how see-through the tab bar, sidebar and settings are –
-  never more than the terminal. Text sits on them, and a bright wallpaper behind
-  a dark theme's grey text leaves little to read, so by default they stay at 85 %
-  (the COSMIC theme: whatever COSMIC's own panels use, a theme file: `[ui]
-  opacity`). <span class="gs">**Theme default**</span> goes back to that. The lower it is, the more the
-  interface text moves towards white (black for light themes).
-<span class="k">-</span><span class="w"> </span><span class="gs">**Blur what's behind (frosted)**</span>: blurs the desktop behind the window. Works on
-  COSMIC and other compositors with <span class="sb">`ext-background-effect`</span>, and on KDE. On
-  Windows it's Acrylic: Windows 11 22H2 or newer, a graphics card, and Windows'
-  transparency effects on.
-
-On Linux translucency needs <span class="gs">**Wayland**</span>. On X11 the window stays opaque, and the
-settings say so. On Windows it works everywhere.
-
-<span class="gu">## Fonts</span>
-
-<span class="k">-</span><span class="w"> </span><span class="gs">**Console:**</span> any installed monospace family. The tab bar uses it too. Default:
-  Noto Sans Mono.
-<span class="k">-</span><span class="w"> </span><span class="gs">**Menus:**</span> any installed family, for the sidebar and settings.
-<span class="k">-</span><span class="w"> </span><span class="gs">**Font size**</span> and <span class="gs">**line height**</span> apply live. &lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;+&lt;/kbd&gt; /
-  &lt;kbd&gt;-&lt;/kbd&gt; / &lt;kbd&gt;0&lt;/kbd&gt; zoom temporarily without changing the setting.
-
-A font that's no longer installed falls back to the default; the list marks it
-"(not installed)".
-
-<span class="gu">## Window</span>
-
-<span class="k">-</span><span class="w"> </span><span class="gs">**Padding**</span> around the terminal grid (0–40 px)
-<span class="k">-</span><span class="w"> </span><span class="gs">**Sidebar width**</span> – applies when you let go of the slider
-<span class="k">-</span><span class="w"> </span><span class="gs">**Show tab bar**</span>
-<span class="k">-</span><span class="w"> </span><span class="gs">**Cursor:**</span> blinking on/off and interval
-
-Window size at start, showing the sidebar at start and the start-up animation are
-under <span class="gs">**Settings → General**</span> and apply at the next start. <span class="gs">**Use current**</span> takes
-the window's current size.
-</pre></div></td></tr></table></div>
-
+        </div>
       </section>
     </main>
   </div>

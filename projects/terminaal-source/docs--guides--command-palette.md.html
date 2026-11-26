@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>docs/guides/command-palette.md — Terminaal — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=41ca8b66" />
+  <link rel="stylesheet" href="../../styles.css?v=77eb044b" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -71,105 +71,109 @@
           <h1 class="section__title">docs/guides/command-palette.md</h1>
           <a href="../terminaal.html" class="link">← Back to Terminaal</a>
         </div>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span>
-<span class="normal">43</span>
-<span class="normal">44</span>
-<span class="normal">45</span>
-<span class="normal">46</span>
-<span class="normal">47</span>
-<span class="normal">48</span>
-<span class="normal">49</span></pre></div></td><td class="code"><div><pre><span></span><span class="gh"># Command palette</span>
-
-&lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;P&lt;/kbd&gt; (<span class="sb">`command_palette`</span> in
-[<span class="sb">`[shortcuts]`</span>](keyboard-shortcuts.md)) opens a search field at the top of the
+        <div class="readme-content">
+<h1 class="heading-element" dir="auto" id="command-palette">Command palette</h1>
+<p dir="auto"><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> (<code>command_palette</code> in
+<a href="docs--guides--keyboard-shortcuts.md.html"><code>[shortcuts]</code></a>) opens a search field at the top of the
 terminal. Type a few letters, pick a line with the arrow keys, press
-&lt;kbd&gt;Enter&lt;/kbd&gt;.
-
-<span class="gu">## What it finds</span>
-
-Without a query the list shows everything in this order:
-
-| Kind | Line | Picking it |
-| --- | --- | --- |
-| <span class="gs">**Tab**</span> | the tab's title, with its number | switches to it |
-| <span class="gs">**Host**</span> | the host's name, one line per login (<span class="sb">`user@address`</span> on the right) | opens an SSH tab with that login |
-| <span class="gs">**Snippet**</span> | your own commands that apply to the active terminal (hidden ones too) | runs it, like its button |
-| Action group (<span class="gs">**Tabs**</span>, <span class="gs">**Split panes**</span>, …) | every keyboard shortcut action, with its shortcut | does what the shortcut does |
-| <span class="gs">**Theme**</span> | every theme, the one in use marked <span class="ge">*current*</span> | switches to it and saves that |
-| <span class="gs">**Shell**</span> | <span class="gs">**New tab:**</span> and each installed shell | opens a tab with it |
-
-Hosts from <span class="sb">`~/.ssh/config`</span> show up unless a saved host has the same name. A
-snippet runs the way <span class="sb">`commands_run`</span> says, and before the very first command
-ever runs, the warning in the sidebar comes up instead.
-
-<span class="gu">## Matching</span>
-
-<span class="k">-</span><span class="w"> </span>The letters of the query have to appear in order, not necessarily next to
-  each other: <span class="sb">`spr`</span> finds <span class="gs">**Sp**</span>lit <span class="gs">**r**</span>ight.
-<span class="k">-</span><span class="w"> </span>Matches at the start of a word and runs of letters rank higher; the query as
-  one piece ranks highest. Matched letters are highlighted.
-<span class="k">-</span><span class="w"> </span>Several words must all match: <span class="sb">`prod root`</span> finds the host <span class="ge">*prod*</span> with the login
-  <span class="ge">*root*</span>.
-<span class="k">-</span><span class="w"> </span>A word that isn't in the title may match the text on the right (a login, a
-  shortcut, a snippet's command) or the kind – it ranks lower then.
-
-<span class="gu">## Keys</span>
-
-| Key | |
-| --- | --- |
-| typing, &lt;kbd&gt;Backspace&lt;/kbd&gt; | edit the query |
-| &lt;kbd&gt;↑&lt;/kbd&gt; / &lt;kbd&gt;↓&lt;/kbd&gt;, &lt;kbd&gt;Tab&lt;/kbd&gt; / &lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;Tab&lt;/kbd&gt; | previous / next line (wraps around) |
-| &lt;kbd&gt;PageUp&lt;/kbd&gt; / &lt;kbd&gt;PageDown&lt;/kbd&gt; | eight lines up / down |
-| &lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;V&lt;/kbd&gt;, &lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;V&lt;/kbd&gt; | paste the clipboard's first line into the query |
-| &lt;kbd&gt;Enter&lt;/kbd&gt; or a click | run the line |
-| &lt;kbd&gt;Esc&lt;/kbd&gt;, &lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;P&lt;/kbd&gt;, a click elsewhere | close |
-
-While the palette is open, every key belongs to it – nothing reaches the
+<kbd>Enter</kbd>.</p>
+<h2 class="heading-element" dir="auto" id="what-it-finds">What it finds</h2>
+<p dir="auto">Without a query the list shows everything in this order:</p>
+<markdown-accessiblity-table><table>
+<thead>
+<tr>
+<th>Kind</th>
+<th>Line</th>
+<th>Picking it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Tab</strong></td>
+<td>the tab's title, with its number</td>
+<td>switches to it</td>
+</tr>
+<tr>
+<td><strong>Host</strong></td>
+<td>the host's name, one line per login (<code>user@address</code> on the right)</td>
+<td>opens an SSH tab with that login</td>
+</tr>
+<tr>
+<td><strong>Snippet</strong></td>
+<td>your own commands that apply to the active terminal (hidden ones too)</td>
+<td>runs it, like its button</td>
+</tr>
+<tr>
+<td>Action group (<strong>Tabs</strong>, <strong>Split panes</strong>, …)</td>
+<td>every keyboard shortcut action, with its shortcut</td>
+<td>does what the shortcut does</td>
+</tr>
+<tr>
+<td><strong>Theme</strong></td>
+<td>every theme, the one in use marked <em>current</em></td>
+<td>switches to it and saves that</td>
+</tr>
+<tr>
+<td><strong>Shell</strong></td>
+<td><strong>New tab:</strong> and each installed shell</td>
+<td>opens a tab with it</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto">Hosts from <code>~/.ssh/config</code> show up unless a saved host has the same name. A
+snippet runs the way <code>commands_run</code> says, and before the very first command
+ever runs, the warning in the sidebar comes up instead.</p>
+<h2 class="heading-element" dir="auto" id="matching">Matching</h2>
+<ul dir="auto">
+<li>The letters of the query have to appear in order, not necessarily next to
+each other: <code>spr</code> finds <strong>Sp</strong>lit <strong>r</strong>ight.</li>
+<li>Matches at the start of a word and runs of letters rank higher; the query as
+one piece ranks highest. Matched letters are highlighted.</li>
+<li>Several words must all match: <code>prod root</code> finds the host <em>prod</em> with the login
+<em>root</em>.</li>
+<li>A word that isn't in the title may match the text on the right (a login, a
+shortcut, a snippet's command) or the kind – it ranks lower then.</li>
+</ul>
+<h2 class="heading-element" dir="auto" id="keys">Keys</h2>
+<markdown-accessiblity-table><table>
+<thead>
+<tr>
+<th>Key</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>typing, <kbd>Backspace</kbd></td>
+<td>edit the query</td>
+</tr>
+<tr>
+<td><kbd>↑</kbd> / <kbd>↓</kbd>, <kbd>Tab</kbd> / <kbd>Shift</kbd>+<kbd>Tab</kbd></td>
+<td>previous / next line (wraps around)</td>
+</tr>
+<tr>
+<td><kbd>PageUp</kbd> / <kbd>PageDown</kbd></td>
+<td>eight lines up / down</td>
+</tr>
+<tr>
+<td><kbd>Ctrl</kbd>+<kbd>V</kbd>, <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>V</kbd></td>
+<td>paste the clipboard's first line into the query</td>
+</tr>
+<tr>
+<td><kbd>Enter</kbd> or a click</td>
+<td>run the line</td>
+</tr>
+<tr>
+<td><kbd>Esc</kbd>, <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd>, a click elsewhere</td>
+<td>close</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto">While the palette is open, every key belongs to it – nothing reaches the
 terminal. The list is made when the palette opens; a host added meanwhile shows
-up the next time.
-</pre></div></td></tr></table></div>
+up the next time.</p>
 
+        </div>
       </section>
     </main>
   </div>

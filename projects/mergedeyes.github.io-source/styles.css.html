@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>styles.css — Personal Website — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=41ca8b66" />
+  <link rel="stylesheet" href="../../styles.css?v=77eb044b" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -934,7 +934,19 @@
 <span class="normal">861</span>
 <span class="normal">862</span>
 <span class="normal">863</span>
-<span class="normal">864</span></pre></div></td><td class="code"><div><pre><span></span><span class="c">/* ============================================================</span>
+<span class="normal">864</span>
+<span class="normal">865</span>
+<span class="normal">866</span>
+<span class="normal">867</span>
+<span class="normal">868</span>
+<span class="normal">869</span>
+<span class="normal">870</span>
+<span class="normal">871</span>
+<span class="normal">872</span>
+<span class="normal">873</span>
+<span class="normal">874</span>
+<span class="normal">875</span>
+<span class="normal">876</span></pre></div></td><td class="code"><div><pre><span></span><span class="c">/* ============================================================</span>
 <span class="c">   Jan — personal site</span>
 <span class="c">   Design: dark "instrument panel" — deep slate, amber-gold signal</span>
 <span class="c">   accent, filesystem-path section labels. Plain CSS, no build step.</span>
@@ -1512,6 +1524,14 @@
 <span class="c">   just don't fit well at 720px.</span>
 <span class="c">   ============================================================ */</span>
 <span class="p">.</span><span class="nc">main</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="p">.</span><span class="nc">source-page</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">max-width</span><span class="p">:</span><span class="w"> </span><span class="kc">none</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="c">/* Markdown files in the source browser are rendered like the README</span>
+<span class="c">   (see fetch_rendered_markdown in generate_project_pages.py) - prose, so</span>
+<span class="c">   back to the same reading column width as the README on a project page,</span>
+<span class="c">   instead of the full width the code view gets. */</span>
+<span class="p">.</span><span class="nc">source-page</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="p">.</span><span class="nc">readme-content</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">max-width</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--maxw</span><span class="p">);</span><span class="w"> </span><span class="k">margin-bottom</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="kt">rem</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="c">/* File paths have no spaces to break at - a long one (docs/guides/...)</span>
+<span class="c">   would run off the side of a phone screen instead of wrapping. */</span>
+<span class="p">.</span><span class="nc">source-page__head</span><span class="w"> </span><span class="p">.</span><span class="nc">section__title</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">overflow-wrap</span><span class="p">:</span><span class="w"> </span><span class="n">anywhere</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 <span class="p">.</span><span class="nc">source-page__head</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">flex</span><span class="p">;</span>
 <span class="w">  </span><span class="k">align-items</span><span class="p">:</span><span class="w"> </span><span class="kc">baseline</span><span class="p">;</span>
@@ -1531,8 +1551,12 @@
 <span class="c">   td.code below (2 element-type selectors vs 1, with class counts tied),</span>
 <span class="c">   so it would silently win the cascade and null out their padding/border</span>
 <span class="c">   regardless of source order. Each cell rule sets everything it needs</span>
-<span class="c">   directly instead. */</span>
-<span class="p">.</span><span class="nc">source-page</span><span class="w"> </span><span class="p">.</span><span class="nc">highlight</span><span class="w"> </span><span class="p">{</span>
+<span class="c">   directly instead.</span>
+<span class="c">   Scoped with "&gt;" to the code box that sits directly in the section, so</span>
+<span class="c">   it doesn't also restyle GitHub's own &lt;div class="highlight"&gt; code</span>
+<span class="c">   blocks inside a rendered markdown file (.readme-content below) - those</span>
+<span class="c">   keep the README's plain &lt;pre&gt; look instead of a box inside a box. */</span>
+<span class="p">.</span><span class="nc">source-page</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="p">.</span><span class="nc">highlight</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--surface</span><span class="p">);</span>
 <span class="w">  </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--border</span><span class="p">);</span>
 <span class="w">  </span><span class="k">border-radius</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="kt">px</span><span class="p">;</span>
@@ -1543,9 +1567,9 @@
 <span class="w">  </span><span class="k">line-height</span><span class="p">:</span><span class="w"> </span><span class="mf">1.6</span><span class="p">;</span>
 <span class="w">  </span><span class="k">margin-bottom</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="kt">rem</span><span class="p">;</span>
 <span class="p">}</span>
-<span class="p">.</span><span class="nc">source-page</span><span class="w"> </span><span class="p">.</span><span class="nc">highlight</span><span class="w"> </span><span class="nt">pre</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="kc">none</span><span class="p">;</span><span class="w"> </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="p">.</span><span class="nc">source-page</span><span class="w"> </span><span class="p">.</span><span class="nc">highlight</span><span class="w"> </span><span class="nt">table</span><span class="p">.</span><span class="nc">highlighttable</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">border-collapse</span><span class="p">:</span><span class="w"> </span><span class="kc">collapse</span><span class="p">;</span><span class="w"> </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">%</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="p">.</span><span class="nc">source-page</span><span class="w"> </span><span class="p">.</span><span class="nc">highlight</span><span class="w"> </span><span class="nt">td</span><span class="p">.</span><span class="nc">linenos</span><span class="w"> </span><span class="p">{</span>
+<span class="p">.</span><span class="nc">source-page</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="p">.</span><span class="nc">highlight</span><span class="w"> </span><span class="nt">pre</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="kc">none</span><span class="p">;</span><span class="w"> </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">.</span><span class="nc">source-page</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="p">.</span><span class="nc">highlight</span><span class="w"> </span><span class="nt">table</span><span class="p">.</span><span class="nc">highlighttable</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">border-collapse</span><span class="p">:</span><span class="w"> </span><span class="kc">collapse</span><span class="p">;</span><span class="w"> </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">%</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">.</span><span class="nc">source-page</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="p">.</span><span class="nc">highlight</span><span class="w"> </span><span class="nt">td</span><span class="p">.</span><span class="nc">linenos</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">vertical-align</span><span class="p">:</span><span class="w"> </span><span class="kc">top</span><span class="p">;</span>
 <span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--muted</span><span class="p">);</span>
 <span class="w">  </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mf">1.5</span><span class="kt">rem</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mf">.5</span><span class="kt">rem</span><span class="p">;</span>
@@ -1554,7 +1578,7 @@
 <span class="w">  </span><span class="k">white-space</span><span class="p">:</span><span class="w"> </span><span class="kc">nowrap</span><span class="p">;</span>
 <span class="w">  </span><span class="k">user-select</span><span class="p">:</span><span class="w"> </span><span class="kc">none</span><span class="p">;</span><span class="w">  </span><span class="c">/* selecting/copying code shouldn't grab line numbers too */</span>
 <span class="p">}</span>
-<span class="p">.</span><span class="nc">source-page</span><span class="w"> </span><span class="p">.</span><span class="nc">highlight</span><span class="w"> </span><span class="nt">td</span><span class="p">.</span><span class="nc">code</span><span class="w"> </span><span class="p">{</span>
+<span class="p">.</span><span class="nc">source-page</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="p">.</span><span class="nc">highlight</span><span class="w"> </span><span class="nt">td</span><span class="p">.</span><span class="nc">code</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">vertical-align</span><span class="p">:</span><span class="w"> </span><span class="kc">top</span><span class="p">;</span>
 <span class="w">  </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
 <span class="w">  </span><span class="k">padding-left</span><span class="p">:</span><span class="w"> </span><span class="mf">1.5</span><span class="kt">rem</span><span class="p">;</span>

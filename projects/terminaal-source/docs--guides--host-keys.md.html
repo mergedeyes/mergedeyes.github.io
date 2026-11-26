@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>docs/guides/host-keys.md — Terminaal — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=41ca8b66" />
+  <link rel="stylesheet" href="../../styles.css?v=77eb044b" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -71,165 +71,89 @@
           <h1 class="section__title">docs/guides/host-keys.md</h1>
           <a href="../terminaal.html" class="link">← Back to Terminaal</a>
         </div>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span>
-<span class="normal">43</span>
-<span class="normal">44</span>
-<span class="normal">45</span>
-<span class="normal">46</span>
-<span class="normal">47</span>
-<span class="normal">48</span>
-<span class="normal">49</span>
-<span class="normal">50</span>
-<span class="normal">51</span>
-<span class="normal">52</span>
-<span class="normal">53</span>
-<span class="normal">54</span>
-<span class="normal">55</span>
-<span class="normal">56</span>
-<span class="normal">57</span>
-<span class="normal">58</span>
-<span class="normal">59</span>
-<span class="normal">60</span>
-<span class="normal">61</span>
-<span class="normal">62</span>
-<span class="normal">63</span>
-<span class="normal">64</span>
-<span class="normal">65</span>
-<span class="normal">66</span>
-<span class="normal">67</span>
-<span class="normal">68</span>
-<span class="normal">69</span>
-<span class="normal">70</span>
-<span class="normal">71</span>
-<span class="normal">72</span>
-<span class="normal">73</span>
-<span class="normal">74</span>
-<span class="normal">75</span>
-<span class="normal">76</span>
-<span class="normal">77</span>
-<span class="normal">78</span>
-<span class="normal">79</span></pre></div></td><td class="code"><div><pre><span></span><span class="gh"># Host keys and `known_hosts`</span>
-
-A host key proves you're talking to the server you think you are. Terminaal checks
-it against <span class="sb">`~/.ssh/known_hosts`</span> – the same file OpenSSH uses – or the host's
-<span class="sb">`UserKnownHostsFile`</span>.
-
-<span class="gu">## A new host</span>
-
-The first time you connect, the key isn't known yet. What happens depends on
-<span class="gs">**Advanced → Host key → Unknown host keys**</span> (<span class="sb">`StrictHostKeyChecking`</span>):
-
-| Setting | What happens |
-| --- | --- |
-| <span class="gs">**Ask**</span> (default) | The tab shows the key type and SHA256 fingerprint and asks <span class="sb">`(yes/no)`</span>. On yes, the key is saved |
-| <span class="gs">**Save new ones without asking**</span> (<span class="sb">`accept-new`</span>) | Saved right away; the tab says so |
-| <span class="gs">**Known hosts only**</span> (<span class="sb">`yes`</span>) | The connection is refused |
-
-Compare the fingerprint with one you got another way – from your hosting
-provider's console, or by running this on the server:
-
-<span class="sb">```sh</span>
-ssh-keygen<span class="w"> </span>-lf<span class="w"> </span>/etc/ssh/ssh_host_ed25519_key.pub
-<span class="sb">```</span>
-
-New entries are <span class="gs">**appended**</span> to the file as one line each; nothing else in it is
-changed. Comments and lines Terminaal doesn't understand stay as they are.
-
-<span class="gu">## A changed key</span>
-
-If the server presents a different key than the one stored, Terminaal always
-aborts, whatever the settings say:
-
-<span class="sb">```</span>
-<span class="sb">WARNING: The host key of [10.0.0.5]:2222 has changed!</span>
-<span class="sb">This may be an attack (man-in-the-middle) – or the server was set up anew.</span>
-<span class="sb">Stored in ~/.ssh/known_hosts:</span>
-<span class="sb">  ssh-ed25519 SHA256:Gwkz… (line 2)</span>
-<span class="sb">New from the server: ssh-ed25519 SHA256:Oiqu…</span>
-<span class="sb">```</span>
-
-<span class="gs">**Stop and think.**</span> Did the server get reinstalled, or its SSH keys
+        <div class="readme-content">
+<h1 class="heading-element" dir="auto" id="host-keys-and-known_hosts">Host keys and <code>known_hosts</code></h1>
+<p dir="auto">A host key proves you're talking to the server you think you are. Terminaal checks
+it against <code>~/.ssh/known_hosts</code> – the same file OpenSSH uses – or the host's
+<code>UserKnownHostsFile</code>.</p>
+<h2 class="heading-element" dir="auto" id="a-new-host">A new host</h2>
+<p dir="auto">The first time you connect, the key isn't known yet. What happens depends on
+<strong>Advanced → Host key → Unknown host keys</strong> (<code>StrictHostKeyChecking</code>):</p>
+<markdown-accessiblity-table><table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>What happens</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Ask</strong> (default)</td>
+<td>The tab shows the key type and SHA256 fingerprint and asks <code>(yes/no)</code>. On yes, the key is saved</td>
+</tr>
+<tr>
+<td><strong>Save new ones without asking</strong> (<code>accept-new</code>)</td>
+<td>Saved right away; the tab says so</td>
+</tr>
+<tr>
+<td><strong>Known hosts only</strong> (<code>yes</code>)</td>
+<td>The connection is refused</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto">Compare the fingerprint with one you got another way – from your hosting
+provider's console, or by running this on the server:</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto"><pre>ssh-keygen -lf /etc/ssh/ssh_host_ed25519_key.pub</pre></div>
+<p dir="auto">New entries are <strong>appended</strong> to the file as one line each; nothing else in it is
+changed. Comments and lines Terminaal doesn't understand stay as they are.</p>
+<h2 class="heading-element" dir="auto" id="a-changed-key">A changed key</h2>
+<p dir="auto">If the server presents a different key than the one stored, Terminaal always
+aborts, whatever the settings say:</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto"><pre class="notranslate"><code>WARNING: The host key of [10.0.0.5]:2222 has changed!
+This may be an attack (man-in-the-middle) – or the server was set up anew.
+Stored in ~/.ssh/known_hosts:
+  ssh-ed25519 SHA256:Gwkz… (line 2)
+New from the server: ssh-ed25519 SHA256:Oiqu…
+</code></pre></div>
+<p dir="auto"><strong>Stop and think.</strong> Did the server get reinstalled, or its SSH keys
 regenerated? Did the IP address move to another machine? If you can't explain the
-change, don't connect.
+change, don't connect.</p>
+<h2 class="heading-element" dir="auto" id="removing-the-old-key">Removing the old key</h2>
+<p dir="auto">When the change is expected:</p>
+<ol dir="auto">
+<li>In the SSH section, select the host and click <strong>🔑 Host key</strong>.</li>
+<li>You see the stored entries: key type, fingerprint, line number, and which
+names each line applies to.</li>
+<li>Click <strong>Remove entry</strong> (or <strong>Remove N entries</strong>) and confirm.</li>
+<li>Connect again. The new key is treated like a new host – you're asked to confirm
+its fingerprint.</li>
+</ol>
+<p dir="auto">The removal is careful:</p>
+<ul dir="auto">
+<li>Only the lines shown are removed; every other byte of the file stays the same.</li>
+<li>The file is written next to the original and swapped in when complete, keeping
+its permissions. A symlinked <code>known_hosts</code> stays a symlink.</li>
+<li>If the file changed since you opened the view, nothing is removed – reload and
+try again.</li>
+<li>A line may list several names (<code>web1,10.0.0.5 ssh-ed25519 …</code>). The whole line
+goes, so the confirmation tells you which names it covers.</li>
+</ul>
+<p dir="auto">The command-line way works too: <code>ssh-keygen -R '[10.0.0.5]:2222'</code>.</p>
+<h2 class="heading-element" dir="auto" id="details">Details</h2>
+<ul dir="auto">
+<li><strong>Hashed entries</strong> (<code>|1|…</code>) are found and removed like plain ones; the view
+shows "name hashed" instead of the names.</li>
+<li><strong>Ports:</strong> OpenSSH stores non-standard ports as <code>[host]:port</code>. libssh2, which
+Terminaal uses, also accepts a plain <code>host</code> line for <em>any</em> port. That's why the
+view can list a <code>host</code> line for a host on port 2222 – removing only the
+<code>[host]:2222</code> line would leave the old key in force.</li>
+<li><strong><code>@cert-authority</code> and <code>@revoked</code></strong> lines aren't understood by libssh2; they're
+left alone and not shown.</li>
+<li><strong>Jump hosts</strong> are checked hop by hop. Open the view on the jump host itself to
+manage its key.</li>
+</ul>
 
-<span class="gu">## Removing the old key</span>
-
-When the change is expected:
-
-<span class="k">1.</span> In the SSH section, select the host and click <span class="gs">**🔑 Host key**</span>.
-<span class="k">2.</span> You see the stored entries: key type, fingerprint, line number, and which
-   names each line applies to.
-<span class="k">3.</span> Click <span class="gs">**Remove entry**</span> (or <span class="gs">**Remove N entries**</span>) and confirm.
-<span class="k">4.</span> Connect again. The new key is treated like a new host – you're asked to confirm
-   its fingerprint.
-
-The removal is careful:
-
-<span class="k">-</span><span class="w"> </span>Only the lines shown are removed; every other byte of the file stays the same.
-<span class="k">-</span><span class="w"> </span>The file is written next to the original and swapped in when complete, keeping
-  its permissions. A symlinked <span class="sb">`known_hosts`</span> stays a symlink.
-<span class="k">-</span><span class="w"> </span>If the file changed since you opened the view, nothing is removed – reload and
-  try again.
-<span class="k">-</span><span class="w"> </span>A line may list several names (<span class="sb">`web1,10.0.0.5 ssh-ed25519 …`</span>). The whole line
-  goes, so the confirmation tells you which names it covers.
-
-The command-line way works too: <span class="sb">`ssh-keygen -R '[10.0.0.5]:2222'`</span>.
-
-<span class="gu">## Details</span>
-
-<span class="k">-</span><span class="w"> </span><span class="gs">**Hashed entries**</span> (<span class="sb">`|1|…`</span>) are found and removed like plain ones; the view
-  shows "name hashed" instead of the names.
-<span class="k">-</span><span class="w"> </span><span class="gs">**Ports:**</span> OpenSSH stores non-standard ports as <span class="sb">`[host]:port`</span>. libssh2, which
-  Terminaal uses, also accepts a plain <span class="sb">`host`</span> line for <span class="ge">*any*</span> port. That's why the
-  view can list a <span class="sb">`host`</span> line for a host on port 2222 – removing only the
-  <span class="sb">`[host]:2222`</span> line would leave the old key in force.
-<span class="k">-</span><span class="w"> </span><span class="gs">**`@cert-authority` and `@revoked`**</span> lines aren't understood by libssh2; they're
-  left alone and not shown.
-<span class="k">-</span><span class="w"> </span><span class="gs">**Jump hosts**</span> are checked hop by hop. Open the view on the jump host itself to
-  manage its key.
-</pre></div></td></tr></table></div>
-
+        </div>
       </section>
     </main>
   </div>

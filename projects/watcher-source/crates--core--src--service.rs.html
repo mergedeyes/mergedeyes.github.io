@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>crates/core/src/service.rs — Watcher — Jan</title>
+  <link rel="stylesheet" href="../../styles.css?v=77eb044b" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="layout">
+    <header class="rail" id="rail">
+<div class="rail__top">
+<a class="brand" href="../../index.html#top">
+<span class="brand__name">Jan</span>
+<span class="brand__meta">systems &amp; infrastructure<br/>Code, Code &amp; Code</span>
+</a>
+<button aria-controls="nav" aria-expanded="false" aria-label="Toggle menu" class="menu-toggle" id="menuToggle">
+<span></span><span></span><span></span>
+</button>
+</div>
+<nav aria-label="Sections" class="nav" id="nav">
+<a data-path="~/projects" href="../../index.html#projects">Projects</a>
+<a data-path="~/work" href="../../index.html#work">Work</a>
+<a data-path="~/education" href="../../index.html#education">Education</a>
+<a data-path="~/skills" href="../../index.html#skills">Skills</a>
+<a data-path="~/about" href="../../index.html#about">About Me</a>
+<a data-path="~/contact" href="../../index.html#contact">Contact</a>
+</nav>
+<div class="rail__status">
+<span aria-hidden="true" class="dot"></span>
+<span>open to work</span>
+</div>
+</header>
+    <nav class="file-tree" data-tree-key="watcher"><p class="file-tree__title">Files</p><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">crates/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">config/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">src/</span><ul class="tree"><li class="tree-file"><a href="crates--config--src--bootstrap.rs.html">bootstrap.rs</a></li><li class="tree-file"><a href="crates--config--src--check_dirs.rs.html">check_dirs.rs</a></li><li class="tree-file"><a href="crates--config--src--diff.rs.html">diff.rs</a></li><li class="tree-file"><a href="crates--config--src--edit.rs.html">edit.rs</a></li><li class="tree-file"><a href="crates--config--src--expr.rs.html">expr.rs</a></li><li class="tree-file"><a href="crates--config--src--files.rs.html">files.rs</a></li><li class="tree-file"><a href="crates--config--src--lib.rs.html">lib.rs</a></li><li class="tree-file"><a href="crates--config--src--load.rs.html">load.rs</a></li><li class="tree-file"><a href="crates--config--src--load_tests.rs.html">load_tests.rs</a></li><li class="tree-file"><a href="crates--config--src--locks.rs.html">locks.rs</a></li><li class="tree-file"><a href="crates--config--src--macros.rs.html">macros.rs</a></li><li class="tree-file"><a href="crates--config--src--schedule.rs.html">schedule.rs</a></li><li class="tree-file"><a href="crates--config--src--select.rs.html">select.rs</a></li><li class="tree-file"><a href="crates--config--src--tree.rs.html">tree.rs</a></li></ul></li><li class="tree-file"><a href="crates--config--Cargo.toml.html">Cargo.toml</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">core/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">src/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">parse/</span><ul class="tree"><li class="tree-file"><a href="crates--core--src--parse--json.rs.html">json.rs</a></li><li class="tree-file"><a href="crates--core--src--parse--kv.rs.html">kv.rs</a></li><li class="tree-file"><a href="crates--core--src--parse--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="crates--core--src--parse--nagios.rs.html">nagios.rs</a></li></ul></li><li class="tree-file"><a href="crates--core--src--eval.rs.html">eval.rs</a></li><li class="tree-file"><a href="crates--core--src--lib.rs.html">lib.rs</a></li><li class="tree-file"><a href="crates--core--src--metric.rs.html">metric.rs</a></li><li class="tree-file"><a href="crates--core--src--num.rs.html">num.rs</a></li><li class="tree-file tree-file--active"><a href="crates--core--src--service.rs.html">service.rs</a></li><li class="tree-file"><a href="crates--core--src--state.rs.html">state.rs</a></li><li class="tree-file"><a href="crates--core--src--threshold.rs.html">threshold.rs</a></li><li class="tree-file"><a href="crates--core--src--time.rs.html">time.rs</a></li><li class="tree-file"><a href="crates--core--src--unit.rs.html">unit.rs</a></li></ul></li><li class="tree-file"><a href="crates--core--Cargo.toml.html">Cargo.toml</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">exec/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">src/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">builtin/</span><ul class="tree"><li class="tree-file"><a href="crates--exec--src--builtin--dns.rs.html">dns.rs</a></li><li class="tree-file"><a href="crates--exec--src--builtin--http.rs.html">http.rs</a></li><li class="tree-file"><a href="crates--exec--src--builtin--info.rs.html">info.rs</a></li><li class="tree-file"><a href="crates--exec--src--builtin--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="crates--exec--src--builtin--ping.rs.html">ping.rs</a></li><li class="tree-file"><a href="crates--exec--src--builtin--proxmox.rs.html">proxmox.rs</a></li><li class="tree-file"><a href="crates--exec--src--builtin--tcp.rs.html">tcp.rs</a></li><li class="tree-file"><a href="crates--exec--src--builtin--tls.rs.html">tls.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">ssh/</span><ul class="tree"><li class="tree-file"><a href="crates--exec--src--ssh--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="crates--exec--src--ssh--secret.rs.html">secret.rs</a></li></ul></li><li class="tree-file"><a href="crates--exec--src--lib.rs.html">lib.rs</a></li><li class="tree-file"><a href="crates--exec--src--scheduler.rs.html">scheduler.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">tests/</span><ul class="tree"><li class="tree-file"><a href="crates--exec--tests--run.rs.html">run.rs</a></li><li class="tree-file"><a href="crates--exec--tests--ssh.rs.html">ssh.rs</a></li></ul></li><li class="tree-file"><a href="crates--exec--Cargo.toml.html">Cargo.toml</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">hub/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">src/</span><ul class="tree"><li class="tree-file"><a href="crates--hub--src--api.rs.html">api.rs</a></li><li class="tree-file"><a href="crates--hub--src--auth.rs.html">auth.rs</a></li><li class="tree-file"><a href="crates--hub--src--ca.rs.html">ca.rs</a></li><li class="tree-file"><a href="crates--hub--src--config.rs.html">config.rs</a></li><li class="tree-file"><a href="crates--hub--src--discovery.rs.html">discovery.rs</a></li><li class="tree-file"><a href="crates--hub--src--lib.rs.html">lib.rs</a></li><li class="tree-file"><a href="crates--hub--src--link.rs.html">link.rs</a></li><li class="tree-file"><a href="crates--hub--src--list.rs.html">list.rs</a></li><li class="tree-file"><a href="crates--hub--src--locks.rs.html">locks.rs</a></li><li class="tree-file"><a href="crates--hub--src--nodes.rs.html">nodes.rs</a></li><li class="tree-file"><a href="crates--hub--src--ops.rs.html">ops.rs</a></li><li class="tree-file"><a href="crates--hub--src--ssh.rs.html">ssh.rs</a></li><li class="tree-file"><a href="crates--hub--src--stream.rs.html">stream.rs</a></li><li class="tree-file"><a href="crates--hub--src--totp.rs.html">totp.rs</a></li><li class="tree-file"><a href="crates--hub--src--ui.rs.html">ui.rs</a></li><li class="tree-file"><a href="crates--hub--src--view.rs.html">view.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">tests/</span><ul class="tree"><li class="tree-file"><a href="crates--hub--tests--api.rs.html">api.rs</a></li><li class="tree-file"><a href="crates--hub--tests--auth.rs.html">auth.rs</a></li><li class="tree-file"><a href="crates--hub--tests--config.rs.html">config.rs</a></li><li class="tree-file"><a href="crates--hub--tests--discovery.rs.html">discovery.rs</a></li></ul></li><li class="tree-file"><a href="crates--hub--Cargo.toml.html">Cargo.toml</a></li><li class="tree-file"><a href="crates--hub--build.rs.html">build.rs</a></li><li class="tree-file"><a href="crates--hub--openapi.yaml.html">openapi.yaml</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">node/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">src/</span><ul class="tree"><li class="tree-file"><a href="crates--node--src--lib.rs.html">lib.rs</a></li><li class="tree-file"><a href="crates--node--src--tls.rs.html">tls.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">tests/</span><ul class="tree"><li class="tree-file"><a href="crates--node--tests--link.rs.html">link.rs</a></li></ul></li><li class="tree-file"><a href="crates--node--Cargo.toml.html">Cargo.toml</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">notify/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">src/</span><ul class="tree"><li class="tree-file"><a href="crates--notify--src--channels.rs.html">channels.rs</a></li><li class="tree-file"><a href="crates--notify--src--email.rs.html">email.rs</a></li><li class="tree-file"><a href="crates--notify--src--jira.rs.html">jira.rs</a></li><li class="tree-file"><a href="crates--notify--src--lib.rs.html">lib.rs</a></li><li class="tree-file"><a href="crates--notify--src--repeat.rs.html">repeat.rs</a></li><li class="tree-file"><a href="crates--notify--src--webhook.rs.html">webhook.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">tests/</span><ul class="tree"><li class="tree-file"><a href="crates--notify--tests--delivery.rs.html">delivery.rs</a></li></ul></li><li class="tree-file"><a href="crates--notify--Cargo.toml.html">Cargo.toml</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">proto/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">proto/</span><ul class="tree"><li class="tree-file"><a href="crates--proto--proto--link.proto.html">link.proto</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">src/</span><ul class="tree"><li class="tree-file"><a href="crates--proto--src--lib.rs.html">lib.rs</a></li></ul></li><li class="tree-file"><a href="crates--proto--Cargo.toml.html">Cargo.toml</a></li><li class="tree-file"><a href="crates--proto--build.rs.html">build.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">store/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">migrations/</span><ul class="tree"><li class="tree-file"><a href="crates--store--migrations--0001_init.sql.html">0001_init.sql</a></li><li class="tree-file"><a href="crates--store--migrations--0002_auth.sql.html">0002_auth.sql</a></li><li class="tree-file"><a href="crates--store--migrations--0003_sink_progress.sql.html">0003_sink_progress.sql</a></li><li class="tree-file"><a href="crates--store--migrations--0004_flapping.sql.html">0004_flapping.sql</a></li><li class="tree-file"><a href="crates--store--migrations--0005_event_kinds.sql.html">0005_event_kinds.sql</a></li><li class="tree-file"><a href="crates--store--migrations--0006_host_groups.sql.html">0006_host_groups.sql</a></li><li class="tree-file"><a href="crates--store--migrations--0007_ops.sql.html">0007_ops.sql</a></li><li class="tree-file"><a href="crates--store--migrations--0008_ops_events.sql.html">0008_ops_events.sql</a></li><li class="tree-file"><a href="crates--store--migrations--0009_ssh.sql.html">0009_ssh.sql</a></li><li class="tree-file"><a href="crates--store--migrations--0010_notifications.sql.html">0010_notifications.sql</a></li><li class="tree-file"><a href="crates--store--migrations--0011_totp.sql.html">0011_totp.sql</a></li><li class="tree-file"><a href="crates--store--migrations--0012_node_join.sql.html">0012_node_join.sql</a></li><li class="tree-file"><a href="crates--store--migrations--0013_token_secrets.sql.html">0013_token_secrets.sql</a></li><li class="tree-file"><a href="crates--store--migrations--0014_discovery.sql.html">0014_discovery.sql</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">src/</span><ul class="tree"><li class="tree-file"><a href="crates--store--src--auth.rs.html">auth.rs</a></li><li class="tree-file"><a href="crates--store--src--discovery.rs.html">discovery.rs</a></li><li class="tree-file"><a href="crates--store--src--ingest.rs.html">ingest.rs</a></li><li class="tree-file"><a href="crates--store--src--lib.rs.html">lib.rs</a></li><li class="tree-file"><a href="crates--store--src--nodes.rs.html">nodes.rs</a></li><li class="tree-file"><a href="crates--store--src--notifications.rs.html">notifications.rs</a></li><li class="tree-file"><a href="crates--store--src--ops.rs.html">ops.rs</a></li><li class="tree-file"><a href="crates--store--src--query.rs.html">query.rs</a></li><li class="tree-file"><a href="crates--store--src--reader.rs.html">reader.rs</a></li><li class="tree-file"><a href="crates--store--src--spool.rs.html">spool.rs</a></li><li class="tree-file"><a href="crates--store--src--ssh.rs.html">ssh.rs</a></li><li class="tree-file"><a href="crates--store--src--sync.rs.html">sync.rs</a></li><li class="tree-file"><a href="crates--store--src--write.rs.html">write.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">tests/</span><ul class="tree"><li class="tree-file"><a href="crates--store--tests--db.rs.html">db.rs</a></li></ul></li><li class="tree-file"><a href="crates--store--Cargo.toml.html">Cargo.toml</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">watcher/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">src/</span><ul class="tree"><li class="tree-file"><a href="crates--watcher--src--acme.rs.html">acme.rs</a></li><li class="tree-file"><a href="crates--watcher--src--config_cmd.rs.html">config_cmd.rs</a></li><li class="tree-file"><a href="crates--watcher--src--init_cmd.rs.html">init_cmd.rs</a></li><li class="tree-file"><a href="crates--watcher--src--main.rs.html">main.rs</a></li><li class="tree-file"><a href="crates--watcher--src--node_cmd.rs.html">node_cmd.rs</a></li><li class="tree-file"><a href="crates--watcher--src--notify_cmd.rs.html">notify_cmd.rs</a></li><li class="tree-file"><a href="crates--watcher--src--run.rs.html">run.rs</a></li><li class="tree-file"><a href="crates--watcher--src--run_check.rs.html">run_check.rs</a></li><li class="tree-file"><a href="crates--watcher--src--setup.rs.html">setup.rs</a></li><li class="tree-file"><a href="crates--watcher--src--sinks.rs.html">sinks.rs</a></li><li class="tree-file"><a href="crates--watcher--src--ssh_cmd.rs.html">ssh_cmd.rs</a></li><li class="tree-file"><a href="crates--watcher--src--tls.rs.html">tls.rs</a></li><li class="tree-file"><a href="crates--watcher--src--user_cmd.rs.html">user_cmd.rs</a></li><li class="tree-file"><a href="crates--watcher--src--watch.rs.html">watch.rs</a></li></ul></li><li class="tree-file"><a href="crates--watcher--Cargo.toml.html">Cargo.toml</a></li></ul></li></ul></li><li class="tree-dir"><span class="tree-dir__name">docs/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">guides/</span><ul class="tree"><li class="tree-file"><a href="docs--guides--alerting-recipes.md.html">alerting-recipes.md</a></li><li class="tree-file"><a href="docs--guides--configuration.md.html">configuration.md</a></li><li class="tree-file"><a href="docs--guides--data.md.html">data.md</a></li><li class="tree-file"><a href="docs--guides--first-steps.md.html">first-steps.md</a></li><li class="tree-file"><a href="docs--guides--nodes.md.html">nodes.md</a></li><li class="tree-file"><a href="docs--guides--notifications.md.html">notifications.md</a></li><li class="tree-file"><a href="docs--guides--operations.md.html">operations.md</a></li><li class="tree-file"><a href="docs--guides--proxmox.md.html">proxmox.md</a></li><li class="tree-file"><a href="docs--guides--ssh.md.html">ssh.md</a></li><li class="tree-file"><a href="docs--guides--web-ui.md.html">web-ui.md</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">images/</span><ul class="tree"><li class="tree-file"><a href="docs--images--config-tree-dark.png.html">config-tree-dark.png</a></li><li class="tree-file"><a href="docs--images--config-tree.png.html">config-tree.png</a></li><li class="tree-file"><a href="docs--images--host-groups-dark.png.html">host-groups-dark.png</a></li><li class="tree-file"><a href="docs--images--host-groups.png.html">host-groups.png</a></li><li class="tree-file"><a href="docs--images--nodes-dark.png.html">nodes-dark.png</a></li><li class="tree-file"><a href="docs--images--nodes.png.html">nodes.png</a></li><li class="tree-file"><a href="docs--images--overview-dark.png.html">overview-dark.png</a></li><li class="tree-file"><a href="docs--images--overview.png.html">overview.png</a></li><li class="tree-file"><a href="docs--images--two-factor-dark.png.html">two-factor-dark.png</a></li><li class="tree-file"><a href="docs--images--two-factor.png.html">two-factor.png</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">objects/</span><ul class="tree"><li class="tree-file"><a href="docs--objects--check.md.html">check.md</a></li><li class="tree-file"><a href="docs--objects--contact.md.html">contact.md</a></li><li class="tree-file"><a href="docs--objects--contactgroup.md.html">contactgroup.md</a></li><li class="tree-file"><a href="docs--objects--dependency.md.html">dependency.md</a></li><li class="tree-file"><a href="docs--objects--downtimegroup.md.html">downtimegroup.md</a></li><li class="tree-file"><a href="docs--objects--host.md.html">host.md</a></li><li class="tree-file"><a href="docs--objects--hostgroup.md.html">hostgroup.md</a></li><li class="tree-file"><a href="docs--objects--notify.md.html">notify.md</a></li><li class="tree-file"><a href="docs--objects--service.md.html">service.md</a></li><li class="tree-file"><a href="docs--objects--servicegroup.md.html">servicegroup.md</a></li><li class="tree-file"><a href="docs--objects--sink.md.html">sink.md</a></li><li class="tree-file"><a href="docs--objects--timeperiod.md.html">timeperiod.md</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">reference/</span><ul class="tree"><li class="tree-file"><a href="docs--reference--api.md.html">api.md</a></li><li class="tree-file"><a href="docs--reference--cli.md.html">cli.md</a></li><li class="tree-file"><a href="docs--reference--watcher-toml.md.html">watcher-toml.md</a></li></ul></li><li class="tree-file"><a href="docs--README.md.html">README.md</a></li><li class="tree-file"><a href="docs--examples.md.html">examples.md</a></li><li class="tree-file"><a href="docs--install.md.html">install.md</a></li><li class="tree-file"><a href="docs--introduction.md.html">introduction.md</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">examples/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">demo/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">conf.d/</span><ul class="tree"><li class="tree-file"><a href="examples--demo--conf.d--checks.toml.html">checks.toml</a></li><li class="tree-file"><a href="examples--demo--conf.d--groups.toml.html">groups.toml</a></li><li class="tree-file"><a href="examples--demo--conf.d--hosts.toml.html">hosts.toml</a></li><li class="tree-file"><a href="examples--demo--conf.d--services.toml.html">services.toml</a></li></ul></li><li class="tree-file"><a href="examples--demo--watcher.toml.html">watcher.toml</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">local/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">conf.d/</span><ul class="tree"><li class="tree-file"><a href="examples--local--conf.d--checks.toml.html">checks.toml</a></li><li class="tree-file"><a href="examples--local--conf.d--contacts.toml.html">contacts.toml</a></li><li class="tree-file"><a href="examples--local--conf.d--hosts.toml.html">hosts.toml</a></li><li class="tree-file"><a href="examples--local--conf.d--services.toml.html">services.toml</a></li></ul></li><li class="tree-file"><a href="examples--local--watcher.toml.html">watcher.toml</a></li></ul></li><li class="tree-file"><a href="examples--init-answers.toml.html">init-answers.toml</a></li><li class="tree-file"><a href="examples--sinks.toml.html">sinks.toml</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">web/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">src/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">lib/</span><ul class="tree"><li class="tree-file"><a href="web--src--lib--ActionLayer.svelte.html">ActionLayer.svelte</a></li><li class="tree-file"><a href="web--src--lib--AlertTable.svelte.html">AlertTable.svelte</a></li><li class="tree-file"><a href="web--src--lib--ApplyDialog.svelte.html">ApplyDialog.svelte</a></li><li class="tree-file"><a href="web--src--lib--Chart.svelte.html">Chart.svelte</a></li><li class="tree-file"><a href="web--src--lib--Combobox.svelte.html">Combobox.svelte</a></li><li class="tree-file"><a href="web--src--lib--Commands.svelte.html">Commands.svelte</a></li><li class="tree-file"><a href="web--src--lib--ConfigHead.svelte.html">ConfigHead.svelte</a></li><li class="tree-file"><a href="web--src--lib--ConfigTree.svelte.html">ConfigTree.svelte</a></li><li class="tree-file"><a href="web--src--lib--EditMenu.svelte.html">EditMenu.svelte</a></li><li class="tree-file"><a href="web--src--lib--Flags.svelte.html">Flags.svelte</a></li><li class="tree-file"><a href="web--src--lib--Graphs.svelte.html">Graphs.svelte</a></li><li class="tree-file"><a href="web--src--lib--GroupSummary.svelte.html">GroupSummary.svelte</a></li><li class="tree-file"><a href="web--src--lib--HostProblems.svelte.html">HostProblems.svelte</a></li><li class="tree-file"><a href="web--src--lib--HostProblemsPanel.svelte.html">HostProblemsPanel.svelte</a></li><li class="tree-file"><a href="web--src--lib--HostServices.svelte.html">HostServices.svelte</a></li><li class="tree-file"><a href="web--src--lib--LockNotice.svelte.html">LockNotice.svelte</a></li><li class="tree-file"><a href="web--src--lib--MatchPreview.svelte.html">MatchPreview.svelte</a></li><li class="tree-file"><a href="web--src--lib--NotificationTable.svelte.html">NotificationTable.svelte</a></li><li class="tree-file"><a href="web--src--lib--Pager.svelte.html">Pager.svelte</a></li><li class="tree-file"><a href="web--src--lib--SelectBox.svelte.html">SelectBox.svelte</a></li><li class="tree-file"><a href="web--src--lib--SelectionBar.svelte.html">SelectionBar.svelte</a></li><li class="tree-file"><a href="web--src--lib--ServicePanel.svelte.html">ServicePanel.svelte</a></li><li class="tree-file"><a href="web--src--lib--ServiceTable.svelte.html">ServiceTable.svelte</a></li><li class="tree-file"><a href="web--src--lib--Status.svelte.html">Status.svelte</a></li><li class="tree-file"><a href="web--src--lib--TomlEditor.svelte.html">TomlEditor.svelte</a></li><li class="tree-file"><a href="web--src--lib--Totals.svelte.html">Totals.svelte</a></li><li class="tree-file"><a href="web--src--lib--VarTree.svelte.html">VarTree.svelte</a></li><li class="tree-file"><a href="web--src--lib--actions.svelte.ts.html">actions.svelte.ts</a></li><li class="tree-file"><a href="web--src--lib--api.ts.html">api.ts</a></li><li class="tree-file"><a href="web--src--lib--auth.svelte.ts.html">auth.svelte.ts</a></li><li class="tree-file"><a href="web--src--lib--config.svelte.ts.html">config.svelte.ts</a></li><li class="tree-file"><a href="web--src--lib--format.ts.html">format.ts</a></li><li class="tree-file"><a href="web--src--lib--lease.svelte.ts.html">lease.svelte.ts</a></li><li class="tree-file"><a href="web--src--lib--list.svelte.ts.html">list.svelte.ts</a></li><li class="tree-file"><a href="web--src--lib--live.svelte.ts.html">live.svelte.ts</a></li><li class="tree-file"><a href="web--src--lib--membership.ts.html">membership.ts</a></li><li class="tree-file"><a href="web--src--lib--schema.ts.html">schema.ts</a></li><li class="tree-file"><a href="web--src--lib--selection.svelte.ts.html">selection.svelte.ts</a></li><li class="tree-file"><a href="web--src--lib--sort.svelte.ts.html">sort.svelte.ts</a></li><li class="tree-file"><a href="web--src--lib--suggest.ts.html">suggest.ts</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">routes/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">account/</span><ul class="tree"><li class="tree-file"><a href="web--src--routes--account--+page.svelte.html">+page.svelte</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">alerts/</span><ul class="tree"><li class="tree-file"><a href="web--src--routes--alerts--+page.svelte.html">+page.svelte</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">config/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">[kind]/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">edit/</span><ul class="tree"><li class="tree-file"><a href="web--src--routes--config--[kind]--edit--+page.svelte.html">+page.svelte</a></li></ul></li><li class="tree-file"><a href="web--src--routes--config--[kind]--+page.svelte.html">+page.svelte</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">files/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">edit/</span><ul class="tree"><li class="tree-file"><a href="web--src--routes--config--files--edit--+page.svelte.html">+page.svelte</a></li></ul></li><li class="tree-file"><a href="web--src--routes--config--files--+page.svelte.html">+page.svelte</a></li></ul></li><li class="tree-file"><a href="web--src--routes--config--+page.ts.html">+page.ts</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">discovery/</span><ul class="tree"><li class="tree-file"><a href="web--src--routes--discovery--+page.svelte.html">+page.svelte</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">downtimes/</span><ul class="tree"><li class="tree-file"><a href="web--src--routes--downtimes--+page.svelte.html">+page.svelte</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">hostgroups/</span><ul class="tree"><li class="tree-file"><a href="web--src--routes--hostgroups--+page.svelte.html">+page.svelte</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">hosts/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">[host]/</span><ul class="tree"><li class="tree-file"><a href="web--src--routes--hosts--[host]--+page.svelte.html">+page.svelte</a></li></ul></li><li class="tree-file"><a href="web--src--routes--hosts--+page.svelte.html">+page.svelte</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">login/</span><ul class="tree"><li class="tree-file"><a href="web--src--routes--login--+page.svelte.html">+page.svelte</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">nodes/</span><ul class="tree"><li class="tree-file"><a href="web--src--routes--nodes--+page.svelte.html">+page.svelte</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">problems/</span><ul class="tree"><li class="tree-file"><a href="web--src--routes--problems--+page.svelte.html">+page.svelte</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">process/</span><ul class="tree"><li class="tree-file"><a href="web--src--routes--process--+page.svelte.html">+page.svelte</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">scheduler/</span><ul class="tree"><li class="tree-file"><a href="web--src--routes--scheduler--+page.svelte.html">+page.svelte</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">secrets/</span><ul class="tree"><li class="tree-file"><a href="web--src--routes--secrets--+page.svelte.html">+page.svelte</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">servicegroups/</span><ul class="tree"><li class="tree-file"><a href="web--src--routes--servicegroups--+page.svelte.html">+page.svelte</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">services/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">[host]/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">[service]/</span><ul class="tree"><li class="tree-file"><a href="web--src--routes--services--[host]--[service]--+page.svelte.html">+page.svelte</a></li></ul></li></ul></li><li class="tree-file"><a href="web--src--routes--services--+page.svelte.html">+page.svelte</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">setup/</span><ul class="tree"><li class="tree-file"><a href="web--src--routes--setup--+page.svelte.html">+page.svelte</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">users/</span><ul class="tree"><li class="tree-file"><a href="web--src--routes--users--+page.svelte.html">+page.svelte</a></li></ul></li><li class="tree-file"><a href="web--src--routes--+layout.svelte.html">+layout.svelte</a></li><li class="tree-file"><a href="web--src--routes--+layout.ts.html">+layout.ts</a></li><li class="tree-file"><a href="web--src--routes--+page.svelte.html">+page.svelte</a></li></ul></li><li class="tree-file"><a href="web--src--app.css.html">app.css</a></li><li class="tree-file"><a href="web--src--app.html.html">app.html</a></li></ul></li></ul></li><li class="tree-file"><a href="Cargo.lock.html">Cargo.lock</a></li><li class="tree-file"><a href="Cargo.toml.html">Cargo.toml</a></li><li class="tree-file"><a href="Cross.toml.html">Cross.toml</a></li><li class="tree-file"><a href="LICENSE.html">LICENSE</a></li><li class="tree-file"><a href="compose.yaml.html">compose.yaml</a></li><li class="tree-file"><a href="deny.toml.html">deny.toml</a></li></ul></nav><script>
+(function () {
+  var tree = document.currentScript.previousElementSibling;
+  var key = "file-tree-scroll:" + tree.dataset.treeKey;
+  var saved = null;
+  try {
+    saved = sessionStorage.getItem(key);
+    sessionStorage.removeItem(key);
+  } catch (e) {}
+
+  if (saved !== null) {
+    tree.scrollTop = +saved;
+  } else {
+    var active = tree.querySelector(".tree-file--active");
+    if (active) {
+      var a = active.getBoundingClientRect();
+      var t = tree.getBoundingClientRect();
+      if (a.bottom > t.bottom) {
+        tree.scrollTop += a.top - t.top - (tree.clientHeight - a.height) / 2;
+      }
+    }
+  }
+
+  tree.addEventListener("click", function (e) {
+    if (!e.target.closest("a")) return;
+    try { sessionStorage.setItem(key, String(tree.scrollTop)); } catch (err) {}
+  });
+})();
+</script>
+    <main class="main" id="main">
+      <section class="section source-page">
+        <p class="section__path">
+          <a href="../../index.html#projects" class="link">~/projects</a> /
+          <a href="../watcher.html" class="link">watcher</a> / source
+        </p>
+        <div class="source-page__head">
+          <h1 class="section__title">crates/core/src/service.rs</h1>
+          <a href="../watcher.html" class="link">← Back to Watcher</a>
+        </div>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">  1</span>
+<span class="normal">  2</span>
+<span class="normal">  3</span>
+<span class="normal">  4</span>
+<span class="normal">  5</span>
+<span class="normal">  6</span>
+<span class="normal">  7</span>
+<span class="normal">  8</span>
+<span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span>
+<span class="normal">245</span>
+<span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span>
+<span class="normal">250</span>
+<span class="normal">251</span>
+<span class="normal">252</span>
+<span class="normal">253</span>
+<span class="normal">254</span>
+<span class="normal">255</span>
+<span class="normal">256</span>
+<span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span>
+<span class="normal">262</span>
+<span class="normal">263</span>
+<span class="normal">264</span>
+<span class="normal">265</span>
+<span class="normal">266</span>
+<span class="normal">267</span>
+<span class="normal">268</span>
+<span class="normal">269</span>
+<span class="normal">270</span>
+<span class="normal">271</span>
+<span class="normal">272</span>
+<span class="normal">273</span>
+<span class="normal">274</span>
+<span class="normal">275</span>
+<span class="normal">276</span>
+<span class="normal">277</span>
+<span class="normal">278</span>
+<span class="normal">279</span>
+<span class="normal">280</span>
+<span class="normal">281</span>
+<span class="normal">282</span>
+<span class="normal">283</span>
+<span class="normal">284</span>
+<span class="normal">285</span>
+<span class="normal">286</span>
+<span class="normal">287</span>
+<span class="normal">288</span>
+<span class="normal">289</span>
+<span class="normal">290</span>
+<span class="normal">291</span>
+<span class="normal">292</span>
+<span class="normal">293</span>
+<span class="normal">294</span>
+<span class="normal">295</span>
+<span class="normal">296</span>
+<span class="normal">297</span>
+<span class="normal">298</span>
+<span class="normal">299</span>
+<span class="normal">300</span>
+<span class="normal">301</span>
+<span class="normal">302</span>
+<span class="normal">303</span>
+<span class="normal">304</span>
+<span class="normal">305</span>
+<span class="normal">306</span>
+<span class="normal">307</span>
+<span class="normal">308</span>
+<span class="normal">309</span>
+<span class="normal">310</span>
+<span class="normal">311</span>
+<span class="normal">312</span>
+<span class="normal">313</span>
+<span class="normal">314</span>
+<span class="normal">315</span>
+<span class="normal">316</span>
+<span class="normal">317</span>
+<span class="normal">318</span>
+<span class="normal">319</span>
+<span class="normal">320</span>
+<span class="normal">321</span>
+<span class="normal">322</span>
+<span class="normal">323</span>
+<span class="normal">324</span>
+<span class="normal">325</span>
+<span class="normal">326</span>
+<span class="normal">327</span>
+<span class="normal">328</span>
+<span class="normal">329</span>
+<span class="normal">330</span>
+<span class="normal">331</span>
+<span class="normal">332</span>
+<span class="normal">333</span>
+<span class="normal">334</span>
+<span class="normal">335</span>
+<span class="normal">336</span>
+<span class="normal">337</span>
+<span class="normal">338</span>
+<span class="normal">339</span>
+<span class="normal">340</span>
+<span class="normal">341</span>
+<span class="normal">342</span>
+<span class="normal">343</span>
+<span class="normal">344</span>
+<span class="normal">345</span>
+<span class="normal">346</span>
+<span class="normal">347</span>
+<span class="normal">348</span>
+<span class="normal">349</span>
+<span class="normal">350</span>
+<span class="normal">351</span>
+<span class="normal">352</span>
+<span class="normal">353</span>
+<span class="normal">354</span>
+<span class="normal">355</span>
+<span class="normal">356</span>
+<span class="normal">357</span>
+<span class="normal">358</span>
+<span class="normal">359</span>
+<span class="normal">360</span>
+<span class="normal">361</span>
+<span class="normal">362</span>
+<span class="normal">363</span>
+<span class="normal">364</span>
+<span class="normal">365</span>
+<span class="normal">366</span>
+<span class="normal">367</span>
+<span class="normal">368</span>
+<span class="normal">369</span>
+<span class="normal">370</span>
+<span class="normal">371</span>
+<span class="normal">372</span>
+<span class="normal">373</span>
+<span class="normal">374</span>
+<span class="normal">375</span>
+<span class="normal">376</span>
+<span class="normal">377</span>
+<span class="normal">378</span>
+<span class="normal">379</span>
+<span class="normal">380</span>
+<span class="normal">381</span>
+<span class="normal">382</span>
+<span class="normal">383</span>
+<span class="normal">384</span>
+<span class="normal">385</span>
+<span class="normal">386</span>
+<span class="normal">387</span>
+<span class="normal">388</span>
+<span class="normal">389</span>
+<span class="normal">390</span>
+<span class="normal">391</span>
+<span class="normal">392</span>
+<span class="normal">393</span>
+<span class="normal">394</span>
+<span class="normal">395</span>
+<span class="normal">396</span>
+<span class="normal">397</span>
+<span class="normal">398</span>
+<span class="normal">399</span>
+<span class="normal">400</span>
+<span class="normal">401</span>
+<span class="normal">402</span>
+<span class="normal">403</span>
+<span class="normal">404</span>
+<span class="normal">405</span>
+<span class="normal">406</span>
+<span class="normal">407</span>
+<span class="normal">408</span>
+<span class="normal">409</span>
+<span class="normal">410</span>
+<span class="normal">411</span>
+<span class="normal">412</span>
+<span class="normal">413</span>
+<span class="normal">414</span>
+<span class="normal">415</span>
+<span class="normal">416</span>
+<span class="normal">417</span>
+<span class="normal">418</span>
+<span class="normal">419</span>
+<span class="normal">420</span>
+<span class="normal">421</span>
+<span class="normal">422</span>
+<span class="normal">423</span>
+<span class="normal">424</span>
+<span class="normal">425</span>
+<span class="normal">426</span>
+<span class="normal">427</span>
+<span class="normal">428</span>
+<span class="normal">429</span>
+<span class="normal">430</span>
+<span class="normal">431</span>
+<span class="normal">432</span>
+<span class="normal">433</span>
+<span class="normal">434</span>
+<span class="normal">435</span>
+<span class="normal">436</span>
+<span class="normal">437</span>
+<span class="normal">438</span>
+<span class="normal">439</span>
+<span class="normal">440</span>
+<span class="normal">441</span>
+<span class="normal">442</span>
+<span class="normal">443</span>
+<span class="normal">444</span>
+<span class="normal">445</span>
+<span class="normal">446</span>
+<span class="normal">447</span>
+<span class="normal">448</span>
+<span class="normal">449</span>
+<span class="normal">450</span>
+<span class="normal">451</span>
+<span class="normal">452</span>
+<span class="normal">453</span>
+<span class="normal">454</span>
+<span class="normal">455</span>
+<span class="normal">456</span>
+<span class="normal">457</span>
+<span class="normal">458</span>
+<span class="normal">459</span>
+<span class="normal">460</span>
+<span class="normal">461</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">use</span><span class="w"> </span><span class="k">crate</span><span class="p">::</span><span class="n">state</span><span class="p">::{</span><span class="n">HostState</span><span class="p">,</span><span class="w"> </span><span class="n">State</span><span class="p">};</span>
+<span class="k">use</span><span class="w"> </span><span class="n">serde</span><span class="p">::{</span><span class="n">Deserialize</span><span class="p">,</span><span class="w"> </span><span class="n">Serialize</span><span class="p">};</span>
+<span class="k">use</span><span class="w"> </span><span class="n">std</span><span class="p">::</span><span class="n">time</span><span class="p">::</span><span class="n">SystemTime</span><span class="p">;</span>
+
+<span class="sd">/// Whether a state is confirmed (Nagios semantics).</span>
+<span class="sd">///</span>
+<span class="sd">/// A problem starts SOFT and becomes HARD after `max_attempts` consecutive</span>
+<span class="sd">/// non-OK results. Only hard changes are meant to notify.</span>
+<span class="cp">#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]</span>
+<span class="cp">#[serde(rename_all = </span><span class="s">"lowercase"</span><span class="cp">)]</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">enum</span><span class="w"> </span><span class="nc">StateType</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Soft</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Hard</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="sd">/// The tracked state of a service.</span>
+<span class="cp">#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">ServiceState</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">state</span><span class="p">:</span><span class="w"> </span><span class="nc">State</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">state_type</span><span class="p">:</span><span class="w"> </span><span class="nc">StateType</span><span class="p">,</span>
+<span class="w">    </span><span class="sd">/// Current attempt, `1..=max_attempts`. Stays at 1 while OK.</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">attempt</span><span class="p">:</span><span class="w"> </span><span class="kt">u32</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">last_check</span><span class="p">:</span><span class="w"> </span><span class="nc">SystemTime</span><span class="p">,</span>
+<span class="w">    </span><span class="sd">/// When `state` last changed (soft or hard).</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">last_change</span><span class="p">:</span><span class="w"> </span><span class="nc">SystemTime</span><span class="p">,</span>
+<span class="w">    </span><span class="sd">/// When the state last changed as a hard change.</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">last_hard_change</span><span class="p">:</span><span class="w"> </span><span class="nc">SystemTime</span><span class="p">,</span>
+<span class="w">    </span><span class="sd">/// Recent results, for flap detection.</span>
+<span class="w">    </span><span class="cp">#[serde(default)]</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">history</span><span class="p">:</span><span class="w"> </span><span class="nc">FlapHistory</span><span class="p">,</span>
+<span class="w">    </span><span class="sd">/// The state changes too often; see [`ServiceState::detect_flapping`].</span>
+<span class="w">    </span><span class="cp">#[serde(default)]</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">flapping</span><span class="p">:</span><span class="w"> </span><span class="kt">bool</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="sd">/// How many results flap detection looks at (Nagios: 21, so 20 possible</span>
+<span class="sd">/// changes).</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">FLAP_WINDOW</span><span class="p">:</span><span class="w"> </span><span class="kt">u8</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">21</span><span class="p">;</span>
+
+<span class="sd">/// The last [`FLAP_WINDOW`] states, 2 bits each, newest in the lowest bits.</span>
+<span class="cp">#[derive(Debug, Clone, Copy, Default, PartialEq, Eq, Hash, Serialize, Deserialize)]</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">FlapHistory</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">bits</span><span class="p">:</span><span class="w"> </span><span class="kt">u64</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">len</span><span class="p">:</span><span class="w"> </span><span class="kt">u8</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="k">impl</span><span class="w"> </span><span class="n">FlapHistory</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">push</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">state</span><span class="p">:</span><span class="w"> </span><span class="nc">State</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">mask</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="k">u64</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">FLAP_WINDOW</span><span class="p">))</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">        </span><span class="bp">self</span><span class="p">.</span><span class="n">bits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">((</span><span class="bp">self</span><span class="p">.</span><span class="n">bits</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">state</span><span class="p">.</span><span class="n">exit_code</span><span class="p">()</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="kt">u64</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">mask</span><span class="p">;</span>
+<span class="w">        </span><span class="bp">self</span><span class="p">.</span><span class="n">len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">len</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">).</span><span class="n">min</span><span class="p">(</span><span class="n">FLAP_WINDOW</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="sd">/// The `i`-th newest state's code.</span>
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">:</span><span class="w"> </span><span class="kt">u8</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="kt">u64</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">bits</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">i</span><span class="p">))</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mi">3</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="sd">/// Percent state change over the window, 0 to 100. As in Nagios,</span>
+<span class="w">    </span><span class="sd">/// recent changes weigh more: from 0.8 for the oldest possible change</span>
+<span class="w">    </span><span class="sd">/// to 1.2 for the newest.</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">percent_change</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="kt">f64</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">changes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">f64</span><span class="p">::</span><span class="n">from</span><span class="p">(</span><span class="n">FLAP_WINDOW</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="mi">1</span><span class="o">..</span><span class="bp">self</span><span class="p">.</span><span class="n">len</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="c1">// 0 for the oldest change in a full window, 19 for the newest.</span>
+<span class="w">                </span><span class="kd">let</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">f64</span><span class="p">::</span><span class="n">from</span><span class="p">(</span><span class="n">FLAP_WINDOW</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">i</span><span class="p">);</span>
+<span class="w">                </span><span class="n">total</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mf">0.8</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">0.4</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="n">changes</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">1.0</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">total</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">100.0</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">changes</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="sd">/// Percent state change that starts (`high`) and ends (`low`) flapping.</span>
+<span class="cp">#[derive(Debug, Clone, Copy, PartialEq)]</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">FlapThresholds</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">low</span><span class="p">:</span><span class="w"> </span><span class="kt">f64</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">high</span><span class="p">:</span><span class="w"> </span><span class="kt">f64</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="k">impl</span><span class="w"> </span><span class="n">FlapThresholds</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="sd">/// The Nagios defaults for services.</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">DEFAULT</span><span class="p">:</span><span class="w"> </span><span class="nc">FlapThresholds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FlapThresholds</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">low</span><span class="p">:</span><span class="w"> </span><span class="mf">5.0</span><span class="p">,</span>
+<span class="w">        </span><span class="n">high</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="p">}</span>
+
+<span class="sd">/// A state change caused by a check result.</span>
+<span class="cp">#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">StateChange</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="sd">/// `None` for the first result of a service.</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">from</span><span class="p">:</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="p">(</span><span class="n">State</span><span class="p">,</span><span class="w"> </span><span class="n">StateType</span><span class="p">)</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">to</span><span class="p">:</span><span class="w"> </span><span class="p">(</span><span class="n">State</span><span class="p">,</span><span class="w"> </span><span class="n">StateType</span><span class="p">),</span>
+<span class="w">    </span><span class="sd">/// A hard change: a confirmed problem, a change between problem</span>
+<span class="w">    </span><span class="sd">/// states, or a recovery from a hard problem.</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">hard</span><span class="p">:</span><span class="w"> </span><span class="kt">bool</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="sd">/// A change of a host's UP/DOWN state, caused by its host check.</span>
+<span class="cp">#[derive(Debug, Clone, Copy, PartialEq, Eq)]</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">HostChange</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">from</span><span class="p">:</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="p">(</span><span class="n">HostState</span><span class="p">,</span><span class="w"> </span><span class="n">StateType</span><span class="p">)</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">to</span><span class="p">:</span><span class="w"> </span><span class="p">(</span><span class="n">HostState</span><span class="p">,</span><span class="w"> </span><span class="n">StateType</span><span class="p">),</span>
+<span class="w">    </span><span class="sd">/// A confirmed DOWN, or a recovery from a confirmed DOWN.</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">hard</span><span class="p">:</span><span class="w"> </span><span class="kt">bool</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="k">impl</span><span class="w"> </span><span class="n">StateChange</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="sd">/// The host's change if this is a change of its host check: `None`</span>
+<span class="w">    </span><span class="sd">/// when UP/DOWN and the state type stay the same (CRITICAL -&gt; UNKNOWN,</span>
+<span class="w">    </span><span class="sd">/// WARNING -&gt; OK). UP is always HARD.</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">host</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="n">HostChange</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">host</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">|</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">):</span><span class="w"> </span><span class="p">(</span><span class="n">State</span><span class="p">,</span><span class="w"> </span><span class="n">StateType</span><span class="p">)</span><span class="o">|</span><span class="w"> </span><span class="k">match</span><span class="w"> </span><span class="n">HostState</span><span class="p">::</span><span class="n">from_check</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">HostState</span><span class="p">::</span><span class="n">Up</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">HostState</span><span class="p">::</span><span class="n">Up</span><span class="p">,</span><span class="w"> </span><span class="n">StateType</span><span class="p">::</span><span class="n">Hard</span><span class="p">),</span>
+<span class="w">            </span><span class="n">HostState</span><span class="p">::</span><span class="n">Down</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">HostState</span><span class="p">::</span><span class="n">Down</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">),</span>
+<span class="w">        </span><span class="p">};</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">from</span><span class="p">.</span><span class="n">map</span><span class="p">(</span><span class="n">host</span><span class="p">);</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">host</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">to</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">to</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">None</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="c1">// The hard state before: soft problems start from a hard UP.</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">before</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">from</span><span class="p">.</span><span class="n">map</span><span class="p">(</span><span class="o">|</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">)</span><span class="o">|</span><span class="w"> </span><span class="k">match</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">StateType</span><span class="p">::</span><span class="n">Soft</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">HostState</span><span class="p">::</span><span class="n">Up</span><span class="p">,</span>
+<span class="w">            </span><span class="n">StateType</span><span class="p">::</span><span class="n">Hard</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">HostState</span><span class="p">::</span><span class="n">from_check</span><span class="p">(</span><span class="n">s</span><span class="p">),</span>
+<span class="w">        </span><span class="p">});</span>
+<span class="w">        </span><span class="nb">Some</span><span class="p">(</span><span class="n">HostChange</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">from</span><span class="p">,</span>
+<span class="w">            </span><span class="n">to</span><span class="p">,</span>
+<span class="w">            </span><span class="n">hard</span><span class="p">:</span><span class="w"> </span><span class="nc">self</span><span class="p">.</span><span class="n">hard</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">before</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">to</span><span class="p">.</span><span class="mi">0</span><span class="p">),</span>
+<span class="w">        </span><span class="p">})</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="sd">/// Whether `state` is a failed attempt. For a host check only DOWN</span>
+<span class="sd">/// (CRITICAL, UNKNOWN) is: WARNING means UP, as in Nagios.</span>
+<span class="k">fn</span><span class="w"> </span><span class="nf">failed</span><span class="p">(</span><span class="n">state</span><span class="p">:</span><span class="w"> </span><span class="nc">State</span><span class="p">,</span><span class="w"> </span><span class="n">host_check</span><span class="p">:</span><span class="w"> </span><span class="kt">bool</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">match</span><span class="w"> </span><span class="n">host_check</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kc">true</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">HostState</span><span class="p">::</span><span class="n">from_check</span><span class="p">(</span><span class="n">state</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">HostState</span><span class="p">::</span><span class="n">Down</span><span class="p">,</span>
+<span class="w">        </span><span class="kc">false</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">state</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">State</span><span class="p">::</span><span class="nb">Ok</span><span class="p">,</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">impl</span><span class="w"> </span><span class="n">ServiceState</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="sd">/// The state after the first result of a service.</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">first</span><span class="p">(</span>
+<span class="w">        </span><span class="n">state</span><span class="p">:</span><span class="w"> </span><span class="nc">State</span><span class="p">,</span>
+<span class="w">        </span><span class="n">max_attempts</span><span class="p">:</span><span class="w"> </span><span class="kt">u32</span><span class="p">,</span>
+<span class="w">        </span><span class="n">host_check</span><span class="p">:</span><span class="w"> </span><span class="kt">bool</span><span class="p">,</span>
+<span class="w">        </span><span class="n">now</span><span class="p">:</span><span class="w"> </span><span class="nc">SystemTime</span><span class="p">,</span>
+<span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="bp">Self</span><span class="p">,</span><span class="w"> </span><span class="n">StateChange</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">state_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="o">!</span><span class="n">failed</span><span class="p">(</span><span class="n">state</span><span class="p">,</span><span class="w"> </span><span class="n">host_check</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">max_attempts</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">StateType</span><span class="p">::</span><span class="n">Hard</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">StateType</span><span class="p">::</span><span class="n">Soft</span>
+<span class="w">        </span><span class="p">};</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ServiceState</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">state</span><span class="p">,</span>
+<span class="w">            </span><span class="n">state_type</span><span class="p">,</span>
+<span class="w">            </span><span class="n">attempt</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">            </span><span class="n">last_check</span><span class="p">:</span><span class="w"> </span><span class="nc">now</span><span class="p">,</span>
+<span class="w">            </span><span class="n">last_change</span><span class="p">:</span><span class="w"> </span><span class="nc">now</span><span class="p">,</span>
+<span class="w">            </span><span class="n">last_hard_change</span><span class="p">:</span><span class="w"> </span><span class="nc">now</span><span class="p">,</span>
+<span class="w">            </span><span class="n">history</span><span class="p">:</span><span class="w"> </span><span class="nc">FlapHistory</span><span class="p">::</span><span class="n">default</span><span class="p">(),</span>
+<span class="w">            </span><span class="n">flapping</span><span class="p">:</span><span class="w"> </span><span class="nc">false</span><span class="p">,</span>
+<span class="w">        </span><span class="p">};</span>
+<span class="w">        </span><span class="n">s</span><span class="p">.</span><span class="n">history</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">state</span><span class="p">);</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">change</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">StateChange</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">from</span><span class="p">:</span><span class="w"> </span><span class="nb">None</span><span class="p">,</span>
+<span class="w">            </span><span class="n">to</span><span class="p">:</span><span class="w"> </span><span class="p">(</span><span class="n">state</span><span class="p">,</span><span class="w"> </span><span class="n">state_type</span><span class="p">),</span>
+<span class="w">            </span><span class="n">hard</span><span class="p">:</span><span class="w"> </span><span class="nc">state_type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">StateType</span><span class="p">::</span><span class="n">Hard</span><span class="p">,</span>
+<span class="w">        </span><span class="p">};</span>
+<span class="w">        </span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="n">change</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="sd">/// Applies a check result and returns the change, if the state or state</span>
+<span class="w">    </span><span class="sd">/// type changed.</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">apply</span><span class="p">(</span>
+<span class="w">        </span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="bp">self</span><span class="p">,</span>
+<span class="w">        </span><span class="n">state</span><span class="p">:</span><span class="w"> </span><span class="nc">State</span><span class="p">,</span>
+<span class="w">        </span><span class="n">max_attempts</span><span class="p">:</span><span class="w"> </span><span class="kt">u32</span><span class="p">,</span>
+<span class="w">        </span><span class="n">host_check</span><span class="p">:</span><span class="w"> </span><span class="kt">bool</span><span class="p">,</span>
+<span class="w">        </span><span class="n">now</span><span class="p">:</span><span class="w"> </span><span class="nc">SystemTime</span><span class="p">,</span>
+<span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="n">StateChange</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">before</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">state</span><span class="p">,</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">state_type</span><span class="p">);</span>
+<span class="w">        </span><span class="bp">self</span><span class="p">.</span><span class="n">last_check</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">now</span><span class="p">;</span>
+<span class="w">        </span><span class="bp">self</span><span class="p">.</span><span class="n">history</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">state</span><span class="p">);</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">was_failed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">failed</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">state</span><span class="p">,</span><span class="w"> </span><span class="n">host_check</span><span class="p">);</span>
+
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">hard</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">match</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">state_type</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// Recovery. From a hard problem this is a hard change; from a soft</span>
+<span class="w">            </span><span class="c1">// one it just ends the retries.</span>
+<span class="w">            </span><span class="n">_</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="o">!</span><span class="n">failed</span><span class="p">(</span><span class="n">state</span><span class="p">,</span><span class="w"> </span><span class="n">host_check</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="kd">let</span><span class="w"> </span><span class="n">hard</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">was_failed</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">state_type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">StateType</span><span class="p">::</span><span class="n">Hard</span><span class="p">;</span>
+<span class="w">                </span><span class="bp">self</span><span class="p">.</span><span class="n">state_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">StateType</span><span class="p">::</span><span class="n">Hard</span><span class="p">;</span>
+<span class="w">                </span><span class="bp">self</span><span class="p">.</span><span class="n">attempt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">                </span><span class="n">hard</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="c1">// A confirmed problem stays confirmed; changing between problem</span>
+<span class="w">            </span><span class="c1">// states (WARNING -&gt; CRITICAL) is a hard change.</span>
+<span class="w">            </span><span class="n">StateType</span><span class="p">::</span><span class="n">Hard</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">was_failed</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">state</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">state</span><span class="p">,</span>
+<span class="w">            </span><span class="c1">// A new problem, or another failed attempt.</span>
+<span class="w">            </span><span class="n">_</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="bp">self</span><span class="p">.</span><span class="n">attempt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="o">!</span><span class="n">was_failed</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">attempt</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">};</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">attempt</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">max_attempts</span><span class="p">.</span><span class="n">max</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="bp">self</span><span class="p">.</span><span class="n">attempt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">max_attempts</span><span class="p">.</span><span class="n">max</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">                    </span><span class="bp">self</span><span class="p">.</span><span class="n">state_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">StateType</span><span class="p">::</span><span class="n">Hard</span><span class="p">;</span>
+<span class="w">                    </span><span class="kc">true</span>
+<span class="w">                </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="bp">self</span><span class="p">.</span><span class="n">state_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">StateType</span><span class="p">::</span><span class="n">Soft</span><span class="p">;</span>
+<span class="w">                    </span><span class="kc">false</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">};</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="p">.</span><span class="n">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">state</span><span class="p">;</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">state</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">before</span><span class="p">.</span><span class="mi">0</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="bp">self</span><span class="p">.</span><span class="n">last_change</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">now</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">hard</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="bp">self</span><span class="p">.</span><span class="n">last_hard_change</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">now</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">after</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">state</span><span class="p">,</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">state_type</span><span class="p">);</span>
+<span class="w">        </span><span class="p">(</span><span class="n">after</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">before</span><span class="p">).</span><span class="n">then_some</span><span class="p">(</span><span class="n">StateChange</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">from</span><span class="p">:</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">before</span><span class="p">),</span>
+<span class="w">            </span><span class="n">to</span><span class="p">:</span><span class="w"> </span><span class="nc">after</span><span class="p">,</span>
+<span class="w">            </span><span class="n">hard</span><span class="p">,</span>
+<span class="w">        </span><span class="p">})</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="sd">/// Updates [`flapping`](Self::flapping) after a result: it starts when the</span>
+<span class="w">    </span><span class="sd">/// percent state change reaches `high` and ends below `low`. Returns</span>
+<span class="w">    </span><span class="sd">/// `Some(true)` when flapping starts, `Some(false)` when it ends.</span>
+<span class="w">    </span><span class="sd">/// `None` thresholds turn detection off.</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">detect_flapping</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">thresholds</span><span class="p">:</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="n">FlapThresholds</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">flapping</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">match</span><span class="w"> </span><span class="n">thresholds</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nb">None</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">            </span><span class="nb">Some</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="kd">let</span><span class="w"> </span><span class="n">percent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">history</span><span class="p">.</span><span class="n">percent_change</span><span class="p">();</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">flapping</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">percent</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">t</span><span class="p">.</span><span class="n">low</span>
+<span class="w">                </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">percent</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">t</span><span class="p">.</span><span class="n">high</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">};</span>
+<span class="w">        </span><span class="p">(</span><span class="n">flapping</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">flapping</span><span class="p">).</span><span class="n">then</span><span class="p">(</span><span class="o">||</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="bp">self</span><span class="p">.</span><span class="n">flapping</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">flapping</span><span class="p">;</span>
+<span class="w">            </span><span class="n">flapping</span>
+<span class="w">        </span><span class="p">})</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="sd">/// Whether the next check should use the retry interval.</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">retrying</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="bp">self</span><span class="p">.</span><span class="n">state_type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">StateType</span><span class="p">::</span><span class="n">Soft</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cp">#[cfg(test)]</span>
+<span class="k">mod</span><span class="w"> </span><span class="nn">tests</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">use</span><span class="w"> </span><span class="k">super</span><span class="p">::</span><span class="o">*</span><span class="p">;</span>
+<span class="w">    </span><span class="k">use</span><span class="w"> </span><span class="n">State</span><span class="p">::</span><span class="o">*</span><span class="p">;</span>
+<span class="w">    </span><span class="k">use</span><span class="w"> </span><span class="n">StateType</span><span class="p">::</span><span class="o">*</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">T</span><span class="p">:</span><span class="w"> </span><span class="nc">SystemTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SystemTime</span><span class="p">::</span><span class="n">UNIX_EPOCH</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">type</span><span class="w"> </span><span class="nc">Run</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="p">(</span><span class="n">State</span><span class="p">,</span><span class="w"> </span><span class="n">StateType</span><span class="p">,</span><span class="w"> </span><span class="kt">u32</span><span class="p">,</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="p">)</span><span class="o">&gt;</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="n">results</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="p">[</span><span class="n">State</span><span class="p">],</span><span class="w"> </span><span class="n">max_attempts</span><span class="p">:</span><span class="w"> </span><span class="kt">u32</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">Run</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">run_as</span><span class="p">(</span><span class="n">results</span><span class="p">,</span><span class="w"> </span><span class="n">max_attempts</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">run_as</span><span class="p">(</span><span class="n">results</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="p">[</span><span class="n">State</span><span class="p">],</span><span class="w"> </span><span class="n">max_attempts</span><span class="p">:</span><span class="w"> </span><span class="kt">u32</span><span class="p">,</span><span class="w"> </span><span class="n">host_check</span><span class="p">:</span><span class="w"> </span><span class="kt">bool</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">Run</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="p">(</span><span class="k">mut</span><span class="w"> </span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="n">change</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ServiceState</span><span class="p">::</span><span class="n">first</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="n">max_attempts</span><span class="p">,</span><span class="w"> </span><span class="n">host_check</span><span class="p">,</span><span class="w"> </span><span class="n">T</span><span class="p">);</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="fm">vec!</span><span class="p">[(</span><span class="n">s</span><span class="p">.</span><span class="n">state</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">state_type</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">attempt</span><span class="p">,</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">change</span><span class="p">.</span><span class="n">hard</span><span class="p">))];</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="o">&amp;</span><span class="n">r</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="o">&amp;</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="o">..</span><span class="p">]</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="n">change</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">apply</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">max_attempts</span><span class="p">,</span><span class="w"> </span><span class="n">host_check</span><span class="p">,</span><span class="w"> </span><span class="n">T</span><span class="p">);</span>
+<span class="w">            </span><span class="n">out</span><span class="p">.</span><span class="n">push</span><span class="p">((</span><span class="n">s</span><span class="p">.</span><span class="n">state</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">state_type</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">attempt</span><span class="p">,</span><span class="w"> </span><span class="n">change</span><span class="p">.</span><span class="n">map</span><span class="p">(</span><span class="o">|</span><span class="n">c</span><span class="o">|</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">hard</span><span class="p">)));</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">out</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cp">#[test]</span>
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">problem_becomes_hard_after_max_attempts</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span>
+<span class="w">            </span><span class="n">run</span><span class="p">(</span><span class="o">&amp;</span><span class="p">[</span><span class="nb">Ok</span><span class="p">,</span><span class="w"> </span><span class="n">Critical</span><span class="p">,</span><span class="w"> </span><span class="n">Critical</span><span class="p">,</span><span class="w"> </span><span class="n">Critical</span><span class="p">,</span><span class="w"> </span><span class="n">Critical</span><span class="p">,</span><span class="w"> </span><span class="nb">Ok</span><span class="p">],</span><span class="w"> </span><span class="mi">3</span><span class="p">),</span>
+<span class="w">            </span><span class="p">[</span>
+<span class="w">                </span><span class="p">(</span><span class="nb">Ok</span><span class="p">,</span><span class="w"> </span><span class="n">Hard</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="kc">true</span><span class="p">)),</span>
+<span class="w">                </span><span class="p">(</span><span class="n">Critical</span><span class="p">,</span><span class="w"> </span><span class="n">Soft</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="kc">false</span><span class="p">)),</span>
+<span class="w">                </span><span class="p">(</span><span class="n">Critical</span><span class="p">,</span><span class="w"> </span><span class="n">Soft</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nb">None</span><span class="p">),</span>
+<span class="w">                </span><span class="p">(</span><span class="n">Critical</span><span class="p">,</span><span class="w"> </span><span class="n">Hard</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="kc">true</span><span class="p">)),</span>
+<span class="w">                </span><span class="p">(</span><span class="n">Critical</span><span class="p">,</span><span class="w"> </span><span class="n">Hard</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="nb">None</span><span class="p">),</span>
+<span class="w">                </span><span class="p">(</span><span class="nb">Ok</span><span class="p">,</span><span class="w"> </span><span class="n">Hard</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="kc">true</span><span class="p">)),</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cp">#[test]</span>
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">soft_recovery_is_not_hard</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span>
+<span class="w">            </span><span class="n">run</span><span class="p">(</span><span class="o">&amp;</span><span class="p">[</span><span class="nb">Ok</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="nb">Ok</span><span class="p">],</span><span class="w"> </span><span class="mi">3</span><span class="p">),</span>
+<span class="w">            </span><span class="p">[</span>
+<span class="w">                </span><span class="p">(</span><span class="nb">Ok</span><span class="p">,</span><span class="w"> </span><span class="n">Hard</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="kc">true</span><span class="p">)),</span>
+<span class="w">                </span><span class="p">(</span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">Soft</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="kc">false</span><span class="p">)),</span>
+<span class="w">                </span><span class="p">(</span><span class="nb">Ok</span><span class="p">,</span><span class="w"> </span><span class="n">Hard</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="kc">false</span><span class="p">))</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cp">#[test]</span>
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">soft_state_can_change_and_hard_problem_changes_are_hard</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span>
+<span class="w">            </span><span class="n">run</span><span class="p">(</span><span class="o">&amp;</span><span class="p">[</span><span class="nb">Ok</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">Critical</span><span class="p">,</span><span class="w"> </span><span class="n">Critical</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">],</span><span class="w"> </span><span class="mi">3</span><span class="p">),</span>
+<span class="w">            </span><span class="p">[</span>
+<span class="w">                </span><span class="p">(</span><span class="nb">Ok</span><span class="p">,</span><span class="w"> </span><span class="n">Hard</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="kc">true</span><span class="p">)),</span>
+<span class="w">                </span><span class="p">(</span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">Soft</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="kc">false</span><span class="p">)),</span>
+<span class="w">                </span><span class="p">(</span><span class="n">Critical</span><span class="p">,</span><span class="w"> </span><span class="n">Soft</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="kc">false</span><span class="p">)),</span>
+<span class="w">                </span><span class="p">(</span><span class="n">Critical</span><span class="p">,</span><span class="w"> </span><span class="n">Hard</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="kc">true</span><span class="p">)),</span>
+<span class="w">                </span><span class="p">(</span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">Hard</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="kc">true</span><span class="p">)),</span>
+<span class="w">                </span><span class="p">(</span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">Hard</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="nb">None</span><span class="p">),</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cp">#[test]</span>
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">host_check_warning_is_up_without_retries</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span>
+<span class="w">            </span><span class="n">run_as</span><span class="p">(</span>
+<span class="w">                </span><span class="o">&amp;</span><span class="p">[</span>
+<span class="w">                    </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">Critical</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">Critical</span><span class="p">,</span><span class="w"> </span><span class="n">Critical</span><span class="p">,</span><span class="w"> </span><span class="n">Critical</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span>
+<span class="w">                </span><span class="p">],</span>
+<span class="w">                </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">                </span><span class="kc">true</span>
+<span class="w">            </span><span class="p">),</span>
+<span class="w">            </span><span class="p">[</span>
+<span class="w">                </span><span class="p">(</span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">Hard</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="kc">true</span><span class="p">)),</span>
+<span class="w">                </span><span class="p">(</span><span class="n">Critical</span><span class="p">,</span><span class="w"> </span><span class="n">Soft</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="kc">false</span><span class="p">)),</span>
+<span class="w">                </span><span class="c1">// Ends the retries instead of counting as attempt 2.</span>
+<span class="w">                </span><span class="p">(</span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">Hard</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="kc">false</span><span class="p">)),</span>
+<span class="w">                </span><span class="p">(</span><span class="n">Critical</span><span class="p">,</span><span class="w"> </span><span class="n">Soft</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="kc">false</span><span class="p">)),</span>
+<span class="w">                </span><span class="p">(</span><span class="n">Critical</span><span class="p">,</span><span class="w"> </span><span class="n">Soft</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nb">None</span><span class="p">),</span>
+<span class="w">                </span><span class="p">(</span><span class="n">Critical</span><span class="p">,</span><span class="w"> </span><span class="n">Hard</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="kc">true</span><span class="p">)),</span>
+<span class="w">                </span><span class="c1">// Recovery: UP again.</span>
+<span class="w">                </span><span class="p">(</span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">Hard</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="kc">true</span><span class="p">)),</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cp">#[test]</span>
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">max_attempts_one_is_immediately_hard</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span>
+<span class="w">            </span><span class="n">run</span><span class="p">(</span><span class="o">&amp;</span><span class="p">[</span><span class="n">Critical</span><span class="p">,</span><span class="w"> </span><span class="nb">Ok</span><span class="p">,</span><span class="w"> </span><span class="n">Unknown</span><span class="p">],</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span>
+<span class="w">            </span><span class="p">[</span>
+<span class="w">                </span><span class="p">(</span><span class="n">Critical</span><span class="p">,</span><span class="w"> </span><span class="n">Hard</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="kc">true</span><span class="p">)),</span>
+<span class="w">                </span><span class="p">(</span><span class="nb">Ok</span><span class="p">,</span><span class="w"> </span><span class="n">Hard</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="kc">true</span><span class="p">)),</span>
+<span class="w">                </span><span class="p">(</span><span class="n">Unknown</span><span class="p">,</span><span class="w"> </span><span class="n">Hard</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="kc">true</span><span class="p">))</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cp">#[test]</span>
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">first_result_problem_is_soft</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="n">change</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ServiceState</span><span class="p">::</span><span class="n">first</span><span class="p">(</span><span class="n">Critical</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="n">T</span><span class="p">);</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">((</span><span class="n">s</span><span class="p">.</span><span class="n">state_type</span><span class="p">,</span><span class="w"> </span><span class="n">change</span><span class="p">.</span><span class="n">hard</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="n">Soft</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">));</span>
+<span class="w">        </span><span class="fm">assert!</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">retrying</span><span class="p">());</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">history</span><span class="p">(</span><span class="n">states</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="p">[</span><span class="n">State</span><span class="p">])</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">FlapHistory</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FlapHistory</span><span class="p">::</span><span class="n">default</span><span class="p">();</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="o">&amp;</span><span class="n">s</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">states</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">h</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">h</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cp">#[test]</span>
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">percent_change_weighs_recent_changes_more</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">history</span><span class="p">(</span><span class="o">&amp;</span><span class="p">[</span><span class="nb">Ok</span><span class="p">;</span><span class="w"> </span><span class="mi">30</span><span class="p">]).</span><span class="n">percent_change</span><span class="p">(),</span><span class="w"> </span><span class="mf">0.0</span><span class="p">);</span>
+<span class="w">        </span><span class="c1">// Every result differs: all 20 changes, weights 0.8..=1.2 average 1.</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">alternating</span><span class="p">:</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="n">State</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="o">..</span><span class="mi">21</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="n">map</span><span class="p">(</span><span class="o">|</span><span class="n">i</span><span class="o">|</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">Ok</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Critical</span><span class="w"> </span><span class="p">})</span>
+<span class="w">            </span><span class="p">.</span><span class="n">collect</span><span class="p">();</span>
+<span class="w">        </span><span class="fm">assert!</span><span class="p">((</span><span class="n">history</span><span class="p">(</span><span class="o">&amp;</span><span class="n">alternating</span><span class="p">).</span><span class="n">percent_change</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">100.0</span><span class="p">).</span><span class="n">abs</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">1e-9</span><span class="p">);</span>
+<span class="w">        </span><span class="c1">// One change, newest vs. oldest position in a full window.</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">newest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="fm">vec!</span><span class="p">[</span><span class="nb">Ok</span><span class="p">;</span><span class="w"> </span><span class="mi">20</span><span class="p">];</span>
+<span class="w">        </span><span class="n">newest</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">Critical</span><span class="p">);</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">oldest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="fm">vec!</span><span class="p">[</span><span class="nb">Ok</span><span class="p">];</span>
+<span class="w">        </span><span class="n">oldest</span><span class="p">.</span><span class="n">extend</span><span class="p">([</span><span class="n">Critical</span><span class="p">;</span><span class="w"> </span><span class="mi">20</span><span class="p">]);</span>
+<span class="w">        </span><span class="fm">assert!</span><span class="p">((</span><span class="n">history</span><span class="p">(</span><span class="o">&amp;</span><span class="n">newest</span><span class="p">).</span><span class="n">percent_change</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">6.0</span><span class="p">).</span><span class="n">abs</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">1e-9</span><span class="p">);</span>
+<span class="w">        </span><span class="fm">assert!</span><span class="p">((</span><span class="n">history</span><span class="p">(</span><span class="o">&amp;</span><span class="n">oldest</span><span class="p">).</span><span class="n">percent_change</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">4.0</span><span class="p">).</span><span class="n">abs</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">1e-9</span><span class="p">);</span>
+<span class="w">        </span><span class="c1">// Older results fall out of the window.</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">gone</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">oldest</span><span class="p">.</span><span class="n">clone</span><span class="p">();</span>
+<span class="w">        </span><span class="n">gone</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">Critical</span><span class="p">);</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">history</span><span class="p">(</span><span class="o">&amp;</span><span class="n">gone</span><span class="p">).</span><span class="n">percent_change</span><span class="p">(),</span><span class="w"> </span><span class="mf">0.0</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cp">#[test]</span>
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">flapping_starts_high_and_ends_low</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">FlapThresholds</span><span class="p">::</span><span class="n">DEFAULT</span><span class="p">);</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="p">(</span><span class="k">mut</span><span class="w"> </span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="n">_</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ServiceState</span><span class="p">::</span><span class="n">first</span><span class="p">(</span><span class="nb">Ok</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="n">T</span><span class="p">);</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">started</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">None</span><span class="p">;</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">state</span><span class="p">)</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">[</span><span class="n">Critical</span><span class="p">,</span><span class="w"> </span><span class="nb">Ok</span><span class="p">,</span><span class="w"> </span><span class="n">Critical</span><span class="p">,</span><span class="w"> </span><span class="nb">Ok</span><span class="p">,</span><span class="w"> </span><span class="n">Critical</span><span class="p">]</span>
+<span class="w">            </span><span class="p">.</span><span class="n">into_iter</span><span class="p">()</span>
+<span class="w">            </span><span class="p">.</span><span class="n">enumerate</span><span class="p">()</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">s</span><span class="p">.</span><span class="n">apply</span><span class="p">(</span><span class="n">state</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="n">T</span><span class="p">);</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">detect_flapping</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">started</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="c1">// 4 changes of weight ~1.2 = 24% &gt;= 20%; 3 are 18%.</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">started</span><span class="p">,</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="mi">3</span><span class="p">));</span>
+<span class="w">        </span><span class="fm">assert!</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">flapping</span><span class="p">);</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">ended</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">None</span><span class="p">;</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="mi">0</span><span class="o">..</span><span class="mi">21</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">s</span><span class="p">.</span><span class="n">apply</span><span class="p">(</span><span class="n">Critical</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="n">T</span><span class="p">);</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">detect_flapping</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">ended</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+<span class="w">                </span><span class="k">break</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="fm">assert!</span><span class="p">(</span><span class="n">ended</span><span class="p">.</span><span class="n">is_some</span><span class="p">());</span>
+<span class="w">        </span><span class="fm">assert!</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">history</span><span class="p">.</span><span class="n">percent_change</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">5.0</span><span class="p">);</span>
+<span class="w">        </span><span class="c1">// Turning detection off ends flapping.</span>
+<span class="w">        </span><span class="n">s</span><span class="p">.</span><span class="n">flapping</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">detect_flapping</span><span class="p">(</span><span class="nb">None</span><span class="p">),</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="kc">false</span><span class="p">));</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">detect_flapping</span><span class="p">(</span><span class="nb">None</span><span class="p">),</span><span class="w"> </span><span class="nb">None</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cp">#[test]</span>
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">host_changes_follow_up_down</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">use</span><span class="w"> </span><span class="n">HostState</span><span class="p">::{</span><span class="n">Down</span><span class="p">,</span><span class="w"> </span><span class="n">Up</span><span class="p">};</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">changes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Vec</span><span class="p">::</span><span class="n">new</span><span class="p">();</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="p">(</span><span class="k">mut</span><span class="w"> </span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="n">first</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ServiceState</span><span class="p">::</span><span class="n">first</span><span class="p">(</span><span class="nb">Ok</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="n">T</span><span class="p">);</span>
+<span class="w">        </span><span class="n">changes</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">first</span><span class="p">.</span><span class="n">host</span><span class="p">());</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">[</span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="nb">Ok</span><span class="p">,</span><span class="w"> </span><span class="n">Critical</span><span class="p">,</span><span class="w"> </span><span class="n">Unknown</span><span class="p">,</span><span class="w"> </span><span class="n">Unknown</span><span class="p">,</span><span class="w"> </span><span class="nb">Ok</span><span class="p">,</span><span class="w"> </span><span class="n">Critical</span><span class="p">,</span><span class="w"> </span><span class="nb">Ok</span><span class="p">]</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">changes</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">apply</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="n">T</span><span class="p">).</span><span class="n">and_then</span><span class="p">(</span><span class="o">|</span><span class="n">c</span><span class="o">|</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">host</span><span class="p">()));</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">change</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">|</span><span class="n">from</span><span class="p">,</span><span class="w"> </span><span class="n">to</span><span class="p">,</span><span class="w"> </span><span class="n">hard</span><span class="o">|</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">HostChange</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">from</span><span class="p">,</span><span class="w"> </span><span class="n">to</span><span class="p">,</span><span class="w"> </span><span class="n">hard</span><span class="w"> </span><span class="p">});</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span>
+<span class="w">            </span><span class="n">changes</span><span class="p">,</span>
+<span class="w">            </span><span class="p">[</span>
+<span class="w">                </span><span class="n">change</span><span class="p">(</span><span class="nb">None</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">Up</span><span class="p">,</span><span class="w"> </span><span class="n">Hard</span><span class="p">),</span><span class="w"> </span><span class="kc">true</span><span class="p">),</span>
+<span class="w">                </span><span class="c1">// WARNING is still UP.</span>
+<span class="w">                </span><span class="nb">None</span><span class="p">,</span>
+<span class="w">                </span><span class="nb">None</span><span class="p">,</span>
+<span class="w">                </span><span class="n">change</span><span class="p">(</span><span class="nb">Some</span><span class="p">((</span><span class="n">Up</span><span class="p">,</span><span class="w"> </span><span class="n">Hard</span><span class="p">)),</span><span class="w"> </span><span class="p">(</span><span class="n">Down</span><span class="p">,</span><span class="w"> </span><span class="n">Soft</span><span class="p">),</span><span class="w"> </span><span class="kc">false</span><span class="p">),</span>
+<span class="w">                </span><span class="n">change</span><span class="p">(</span><span class="nb">Some</span><span class="p">((</span><span class="n">Down</span><span class="p">,</span><span class="w"> </span><span class="n">Soft</span><span class="p">)),</span><span class="w"> </span><span class="p">(</span><span class="n">Down</span><span class="p">,</span><span class="w"> </span><span class="n">Hard</span><span class="p">),</span><span class="w"> </span><span class="kc">true</span><span class="p">),</span>
+<span class="w">                </span><span class="c1">// CRITICAL -&gt; UNKNOWN: DOWN either way.</span>
+<span class="w">                </span><span class="nb">None</span><span class="p">,</span>
+<span class="w">                </span><span class="n">change</span><span class="p">(</span><span class="nb">Some</span><span class="p">((</span><span class="n">Down</span><span class="p">,</span><span class="w"> </span><span class="n">Hard</span><span class="p">)),</span><span class="w"> </span><span class="p">(</span><span class="n">Up</span><span class="p">,</span><span class="w"> </span><span class="n">Hard</span><span class="p">),</span><span class="w"> </span><span class="kc">true</span><span class="p">),</span>
+<span class="w">                </span><span class="n">change</span><span class="p">(</span><span class="nb">Some</span><span class="p">((</span><span class="n">Up</span><span class="p">,</span><span class="w"> </span><span class="n">Hard</span><span class="p">)),</span><span class="w"> </span><span class="p">(</span><span class="n">Down</span><span class="p">,</span><span class="w"> </span><span class="n">Soft</span><span class="p">),</span><span class="w"> </span><span class="kc">false</span><span class="p">),</span>
+<span class="w">                </span><span class="c1">// A soft DOWN that ends isn't a hard change.</span>
+<span class="w">                </span><span class="n">change</span><span class="p">(</span><span class="nb">Some</span><span class="p">((</span><span class="n">Down</span><span class="p">,</span><span class="w"> </span><span class="n">Soft</span><span class="p">)),</span><span class="w"> </span><span class="p">(</span><span class="n">Up</span><span class="p">,</span><span class="w"> </span><span class="n">Hard</span><span class="p">),</span><span class="w"> </span><span class="kc">false</span><span class="p">),</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div></td></tr></table></div>
+
+      </section>
+    </main>
+  </div>
+</body>
+</html>

@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>docs/guides/configuration.md — Terminaal — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=41ca8b66" />
+  <link rel="stylesheet" href="../../styles.css?v=77eb044b" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -71,463 +71,457 @@
           <h1 class="section__title">docs/guides/configuration.md</h1>
           <a href="../terminaal.html" class="link">← Back to Terminaal</a>
         </div>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">  1</span>
-<span class="normal">  2</span>
-<span class="normal">  3</span>
-<span class="normal">  4</span>
-<span class="normal">  5</span>
-<span class="normal">  6</span>
-<span class="normal">  7</span>
-<span class="normal">  8</span>
-<span class="normal">  9</span>
-<span class="normal"> 10</span>
-<span class="normal"> 11</span>
-<span class="normal"> 12</span>
-<span class="normal"> 13</span>
-<span class="normal"> 14</span>
-<span class="normal"> 15</span>
-<span class="normal"> 16</span>
-<span class="normal"> 17</span>
-<span class="normal"> 18</span>
-<span class="normal"> 19</span>
-<span class="normal"> 20</span>
-<span class="normal"> 21</span>
-<span class="normal"> 22</span>
-<span class="normal"> 23</span>
-<span class="normal"> 24</span>
-<span class="normal"> 25</span>
-<span class="normal"> 26</span>
-<span class="normal"> 27</span>
-<span class="normal"> 28</span>
-<span class="normal"> 29</span>
-<span class="normal"> 30</span>
-<span class="normal"> 31</span>
-<span class="normal"> 32</span>
-<span class="normal"> 33</span>
-<span class="normal"> 34</span>
-<span class="normal"> 35</span>
-<span class="normal"> 36</span>
-<span class="normal"> 37</span>
-<span class="normal"> 38</span>
-<span class="normal"> 39</span>
-<span class="normal"> 40</span>
-<span class="normal"> 41</span>
-<span class="normal"> 42</span>
-<span class="normal"> 43</span>
-<span class="normal"> 44</span>
-<span class="normal"> 45</span>
-<span class="normal"> 46</span>
-<span class="normal"> 47</span>
-<span class="normal"> 48</span>
-<span class="normal"> 49</span>
-<span class="normal"> 50</span>
-<span class="normal"> 51</span>
-<span class="normal"> 52</span>
-<span class="normal"> 53</span>
-<span class="normal"> 54</span>
-<span class="normal"> 55</span>
-<span class="normal"> 56</span>
-<span class="normal"> 57</span>
-<span class="normal"> 58</span>
-<span class="normal"> 59</span>
-<span class="normal"> 60</span>
-<span class="normal"> 61</span>
-<span class="normal"> 62</span>
-<span class="normal"> 63</span>
-<span class="normal"> 64</span>
-<span class="normal"> 65</span>
-<span class="normal"> 66</span>
-<span class="normal"> 67</span>
-<span class="normal"> 68</span>
-<span class="normal"> 69</span>
-<span class="normal"> 70</span>
-<span class="normal"> 71</span>
-<span class="normal"> 72</span>
-<span class="normal"> 73</span>
-<span class="normal"> 74</span>
-<span class="normal"> 75</span>
-<span class="normal"> 76</span>
-<span class="normal"> 77</span>
-<span class="normal"> 78</span>
-<span class="normal"> 79</span>
-<span class="normal"> 80</span>
-<span class="normal"> 81</span>
-<span class="normal"> 82</span>
-<span class="normal"> 83</span>
-<span class="normal"> 84</span>
-<span class="normal"> 85</span>
-<span class="normal"> 86</span>
-<span class="normal"> 87</span>
-<span class="normal"> 88</span>
-<span class="normal"> 89</span>
-<span class="normal"> 90</span>
-<span class="normal"> 91</span>
-<span class="normal"> 92</span>
-<span class="normal"> 93</span>
-<span class="normal"> 94</span>
-<span class="normal"> 95</span>
-<span class="normal"> 96</span>
-<span class="normal"> 97</span>
-<span class="normal"> 98</span>
-<span class="normal"> 99</span>
-<span class="normal">100</span>
-<span class="normal">101</span>
-<span class="normal">102</span>
-<span class="normal">103</span>
-<span class="normal">104</span>
-<span class="normal">105</span>
-<span class="normal">106</span>
-<span class="normal">107</span>
-<span class="normal">108</span>
-<span class="normal">109</span>
-<span class="normal">110</span>
-<span class="normal">111</span>
-<span class="normal">112</span>
-<span class="normal">113</span>
-<span class="normal">114</span>
-<span class="normal">115</span>
-<span class="normal">116</span>
-<span class="normal">117</span>
-<span class="normal">118</span>
-<span class="normal">119</span>
-<span class="normal">120</span>
-<span class="normal">121</span>
-<span class="normal">122</span>
-<span class="normal">123</span>
-<span class="normal">124</span>
-<span class="normal">125</span>
-<span class="normal">126</span>
-<span class="normal">127</span>
-<span class="normal">128</span>
-<span class="normal">129</span>
-<span class="normal">130</span>
-<span class="normal">131</span>
-<span class="normal">132</span>
-<span class="normal">133</span>
-<span class="normal">134</span>
-<span class="normal">135</span>
-<span class="normal">136</span>
-<span class="normal">137</span>
-<span class="normal">138</span>
-<span class="normal">139</span>
-<span class="normal">140</span>
-<span class="normal">141</span>
-<span class="normal">142</span>
-<span class="normal">143</span>
-<span class="normal">144</span>
-<span class="normal">145</span>
-<span class="normal">146</span>
-<span class="normal">147</span>
-<span class="normal">148</span>
-<span class="normal">149</span>
-<span class="normal">150</span>
-<span class="normal">151</span>
-<span class="normal">152</span>
-<span class="normal">153</span>
-<span class="normal">154</span>
-<span class="normal">155</span>
-<span class="normal">156</span>
-<span class="normal">157</span>
-<span class="normal">158</span>
-<span class="normal">159</span>
-<span class="normal">160</span>
-<span class="normal">161</span>
-<span class="normal">162</span>
-<span class="normal">163</span>
-<span class="normal">164</span>
-<span class="normal">165</span>
-<span class="normal">166</span>
-<span class="normal">167</span>
-<span class="normal">168</span>
-<span class="normal">169</span>
-<span class="normal">170</span>
-<span class="normal">171</span>
-<span class="normal">172</span>
-<span class="normal">173</span>
-<span class="normal">174</span>
-<span class="normal">175</span>
-<span class="normal">176</span>
-<span class="normal">177</span>
-<span class="normal">178</span>
-<span class="normal">179</span>
-<span class="normal">180</span>
-<span class="normal">181</span>
-<span class="normal">182</span>
-<span class="normal">183</span>
-<span class="normal">184</span>
-<span class="normal">185</span>
-<span class="normal">186</span>
-<span class="normal">187</span>
-<span class="normal">188</span>
-<span class="normal">189</span>
-<span class="normal">190</span>
-<span class="normal">191</span>
-<span class="normal">192</span>
-<span class="normal">193</span>
-<span class="normal">194</span>
-<span class="normal">195</span>
-<span class="normal">196</span>
-<span class="normal">197</span>
-<span class="normal">198</span>
-<span class="normal">199</span>
-<span class="normal">200</span>
-<span class="normal">201</span>
-<span class="normal">202</span>
-<span class="normal">203</span>
-<span class="normal">204</span>
-<span class="normal">205</span>
-<span class="normal">206</span>
-<span class="normal">207</span>
-<span class="normal">208</span>
-<span class="normal">209</span>
-<span class="normal">210</span>
-<span class="normal">211</span>
-<span class="normal">212</span>
-<span class="normal">213</span>
-<span class="normal">214</span>
-<span class="normal">215</span>
-<span class="normal">216</span>
-<span class="normal">217</span>
-<span class="normal">218</span>
-<span class="normal">219</span>
-<span class="normal">220</span>
-<span class="normal">221</span>
-<span class="normal">222</span>
-<span class="normal">223</span>
-<span class="normal">224</span>
-<span class="normal">225</span>
-<span class="normal">226</span>
-<span class="normal">227</span>
-<span class="normal">228</span></pre></div></td><td class="code"><div><pre><span></span><span class="gh"># Configuration reference</span>
+        <div class="readme-content">
+<h1 class="heading-element" dir="auto" id="configuration-reference">Configuration reference</h1>
+<p dir="auto">Terminaal keeps everything in <code>~/.config/terminaal/</code> – always under your home
+folder, <code>$XDG_CONFIG_HOME</code> doesn't move it (only the generated
+<code>shell-integration/</code> folder follows <code>$XDG_CONFIG_HOME</code>). On Windows it's
+<code>%APPDATA%\terminaal</code> (<a href="docs--guides--windows.md.html#where-things-are">Terminaal on Windows</a>). All
+files are optional, and none holds a password or passphrase.</p>
+<markdown-accessiblity-table><table>
+<thead>
+<tr>
+<th>File</th>
+<th>What's in it</th>
+<th>Who writes it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#configtoml"><code>config.toml</code></a></td>
+<td>Options and shortcuts</td>
+<td>You and the settings tab</td>
+</tr>
+<tr>
+<td><a href="#hoststoml"><code>hosts.toml</code></a></td>
+<td>Saved SSH and IBM i hosts</td>
+<td>The SSH section (you may edit it)</td>
+</tr>
+<tr>
+<td><a href="#keystoml"><code>keys.toml</code></a></td>
+<td>Named SSH keys</td>
+<td>The Keys section (you may edit it)</td>
+</tr>
+<tr>
+<td><a href="#snippetstoml"><code>snippets.toml</code></a></td>
+<td>Your own commands</td>
+<td>"Your commands" (you may edit it)</td>
+</tr>
+<tr>
+<td><code>themes/*.toml</code></td>
+<td>Your color themes</td>
+<td>You – see <a href="docs--guides--appearance.md.html">Appearance</a></td>
+</tr>
+<tr>
+<td><code>shell-integration/</code></td>
+<td>Startup files for bash, zsh and fish</td>
+<td>Terminaal – don't edit, they're regenerated</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto">The open tabs are kept elsewhere, in <code>~/.local/state/terminaal/session.toml</code>
+(or <code>$XDG_STATE_HOME/terminaal/</code>) – see <a href="docs--guides--sessions.md.html">Restoring the last session</a>.</p>
+<h2 class="heading-element" dir="auto" id="configtoml">config.toml</h2>
+<p dir="auto">The settings tab edits this file in place: it changes just the key you touched
+and keeps your comments and formatting. A missing file means defaults.</p>
+<h3 class="heading-element" dir="auto" id="appearance">Appearance</h3>
+<markdown-accessiblity-table><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>theme</code></td>
+<td><code>"Terminaal"</code></td>
+<td>Theme name, any case. See <a href="docs--guides--appearance.md.html">Appearance</a></td>
+</tr>
+<tr>
+<td><code>font_family</code></td>
+<td>Noto Sans Mono</td>
+<td>Console and tab bar font; must be an installed monospace family</td>
+</tr>
+<tr>
+<td><code>ui_font_family</code></td>
+<td>built in</td>
+<td>Font of the sidebar, menus and settings</td>
+</tr>
+<tr>
+<td><code>font_size</code></td>
+<td><code>15.0</code></td>
+<td>In logical pixels</td>
+</tr>
+<tr>
+<td><code>line_height_factor</code></td>
+<td><code>1.25</code></td>
+<td>Line height as a multiple of the font size</td>
+</tr>
+<tr>
+<td><code>padding</code></td>
+<td><code>8.0</code></td>
+<td>Space around the terminal grid, in logical pixels</td>
+</tr>
+<tr>
+<td><code>opacity</code></td>
+<td><code>1.0</code></td>
+<td><code>0.2</code>–<code>1.0</code>; below 1 the window is see-through (Wayland only)</td>
+</tr>
+<tr>
+<td><code>ui_opacity</code></td>
+<td>theme's, else <code>0.85</code></td>
+<td><code>0.2</code>–<code>1.0</code>; how opaque tab bar, sidebar and settings are in a see-through window, never below <code>opacity</code></td>
+</tr>
+<tr>
+<td><code>blur</code></td>
+<td><code>true</code></td>
+<td>Blur what's behind a see-through window</td>
+</tr>
+<tr>
+<td><code>cursor_blink</code></td>
+<td><code>true</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>cursor_blink_interval_ms</code></td>
+<td><code>600</code></td>
+<td></td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<h3 class="heading-element" dir="auto" id="window-and-startup">Window and startup</h3>
+<markdown-accessiblity-table><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>default_width</code>, <code>default_height</code></td>
+<td><code>1000.0</code>, <code>650.0</code></td>
+<td>Window size at start</td>
+</tr>
+<tr>
+<td><code>maximized</code></td>
+<td><code>false</code></td>
+<td>Windows only: start maximized. Terminaal sets it whenever you maximize or restore the window</td>
+</tr>
+<tr>
+<td><code>tab_bar</code></td>
+<td><code>true</code></td>
+<td>Show the tab bar</td>
+</tr>
+<tr>
+<td><code>sidebar</code></td>
+<td><code>true</code></td>
+<td>Show the sidebar at start</td>
+</tr>
+<tr>
+<td><code>sidebar_width</code></td>
+<td><code>300.0</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>splash</code></td>
+<td><code>true</code></td>
+<td>Start-up animation</td>
+</tr>
+<tr>
+<td><code>quake_height</code></td>
+<td><code>50</code></td>
+<td>Height of the drop-down window in percent of the screen, <code>20</code>–<code>100</code>. See <a href="docs--guides--drop-down-window.md.html">The drop-down window</a></td>
+</tr>
+<tr>
+<td><code>quake_hide_on_unfocus</code></td>
+<td><code>true</code></td>
+<td>Hide the drop-down window when another window gets the keyboard</td>
+</tr>
+<tr>
+<td><code>quake_hotkey</code></td>
+<td><code>"Ctrl+Alt+T"</code></td>
+<td>Windows only: the global shortcut that shows and hides the drop-down window once it runs, written like those in <code>[shortcuts]</code>; <code>""</code> for none. Applies from its next start</td>
+</tr>
+<tr>
+<td><code>update_check</code></td>
+<td><code>true</code></td>
+<td>Ask GitHub for a newer release at start. See <a href="docs--guides--updates.md.html">Updates</a></td>
+</tr>
+<tr>
+<td><code>update_skipped</code></td>
+<td>not set</td>
+<td>A version <strong>Skip this version</strong> was clicked for; not offered again</td>
+</tr>
+<tr>
+<td><code>restore_session</code></td>
+<td><code>true</code></td>
+<td>Open last time's tabs again. Turning it off deletes the saved session. See <a href="docs--guides--sessions.md.html">Restoring the last session</a></td>
+</tr>
+<tr>
+<td><code>language</code></td>
+<td>from the locale</td>
+<td><code>"en"</code> or <code>"de"</code></td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<h3 class="heading-element" dir="auto" id="terminal">Terminal</h3>
+<markdown-accessiblity-table><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>shell</code></td>
+<td><code>$SHELL</code></td>
+<td>Default shell for new tabs, a path</td>
+</tr>
+<tr>
+<td><code>scrollback_lines</code></td>
+<td><code>10000</code></td>
+<td>Lines kept per tab; lowering it drops the oldest</td>
+</tr>
+<tr>
+<td><code>scroll_lines</code></td>
+<td><code>3.0</code></td>
+<td>Lines per mouse-wheel notch</td>
+</tr>
+<tr>
+<td><code>scrollbar</code></td>
+<td><code>true</code></td>
+<td>A scrollbar at the right edge of each terminal while scrolled back, after scrolling and on hover</td>
+</tr>
+<tr>
+<td><code>scroll_select_factor</code></td>
+<td><code>3.0</code></td>
+<td>How much faster the wheel scrolls while text is being marked (1–10, <code>1</code> for the usual speed)</td>
+</tr>
+<tr>
+<td><code>select_path_segments</code></td>
+<td><code>false</code></td>
+<td>A double-click in a path marks only the folder or file under the pointer instead of the whole path</td>
+</tr>
+<tr>
+<td><code>notifications</code></td>
+<td><code>true</code></td>
+<td>Desktop notifications (and the dock highlight) when a long command finishes or a watched terminal goes quiet out of view. <code>false</code> turns them all off; the dots in the tab bar stay</td>
+</tr>
+<tr>
+<td><code>notify_after_secs</code></td>
+<td><code>10</code></td>
+<td>Notify when a command that ran this long finishes unseen; <code>0</code> = never</td>
+</tr>
+<tr>
+<td><code>silence_secs</code></td>
+<td><code>15</code></td>
+<td>A terminal watched for silence counts as quiet after this many seconds without output (3–300)</td>
+</tr>
+<tr>
+<td><code>paste_warning</code></td>
+<td><code>true</code></td>
+<td>Ask before pasting several lines that would run at once, <code>sudo</code>, a download piped into a shell, <code>rm -rf</code> and the like</td>
+</tr>
+<tr>
+<td><code>kitty_keyboard</code></td>
+<td><code>true</code></td>
+<td>Programs may switch on the kitty keyboard protocol (fish 4, Neovim, Helix). <code>false</code> keeps every program on the classic xterm keys</td>
+</tr>
+<tr>
+<td><code>clipboard_write</code></td>
+<td><code>true</code></td>
+<td>Programs may put text into the clipboard (OSC 52) – vim, Neovim or tmux, on a server too</td>
+</tr>
+<tr>
+<td><code>images</code></td>
+<td><code>true</code></td>
+<td>Programs may show images (kitty graphics protocol: yazi, <code>kitten icat</code>, chafa)</td>
+</tr>
+<tr>
+<td><code>clipboard_read</code></td>
+<td><code>"ask"</code></td>
+<td>Whether programs may read the clipboard (OSC 52): <code>"never"</code> (they get an empty one), <code>"ask"</code> (a dialog each time) or <code>"always"</code></td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<h3 class="heading-element" dir="auto" id="built-in-commands">Built-in commands</h3>
+<markdown-accessiblity-table><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>commands_run</code></td>
+<td><code>true</code></td>
+<td>A click runs the command; <code>false</code> only types it into the prompt</td>
+</tr>
+<tr>
+<td><code>commands_assume_yes</code></td>
+<td><code>false</code></td>
+<td>Add <code>-y</code>/<code>--noconfirm</code> so updates don't ask</td>
+</tr>
+<tr>
+<td><code>commands_warned</code></td>
+<td><code>false</code></td>
+<td>Set once you confirmed the first-run warning</td>
+</tr>
+<tr>
+<td><code>commands_collapsed</code></td>
+<td><code>[]</code></td>
+<td>Command groups folded away in the sidebar; set by clicking their headings (built-in groups by key, your categories as <code>custom:&lt;name&gt;</code>)</td>
+</tr>
+<tr>
+<td><code>system</code></td>
+<td>detected</td>
+<td>Which system local tabs' commands are for: <code>arch</code>, <code>debian</code>, <code>fedora</code>, <code>suse</code>, <code>alpine</code>, <code>void</code>, <code>gentoo</code>, <code>nixos</code>, <code>macos</code>, <code>freebsd</code></td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<h3 class="heading-element" dir="auto" id="files">Files</h3>
+<markdown-accessiblity-table><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>editor</code></td>
+<td>unset</td>
+<td>Command a server file edited locally opens with, its path appended (<code>code</code>, <code>gedit</code>, <code>alacritty -e nvim</code>). Unset: the desktop's default application. See <a href="docs--guides--files-and-sftp.md.html">Files on a server</a></td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<h3 class="heading-element" dir="auto" id="shortcuts">Shortcuts</h3>
+<div class="highlight highlight-source-toml notranslate position-relative overflow-auto" dir="auto"><pre>[<span class="pl-en">shortcuts</span>]
+<span class="pl-smi">new_tab</span> = <span class="pl-s"><span class="pl-pds">"</span>Ctrl+Alt+N<span class="pl-pds">"</span></span>                    <span class="pl-c"><span class="pl-c">#</span> one combination</span>
+<span class="pl-smi">copy</span> = [<span class="pl-s"><span class="pl-pds">"</span>Ctrl+Shift+C<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>Ctrl+Insert<span class="pl-pds">"</span></span>]    <span class="pl-c"><span class="pl-c">#</span> several</span>
+<span class="pl-smi">tab_9</span> = []                                <span class="pl-c"><span class="pl-c">#</span> none</span></pre></div>
+<p dir="auto">Actions left out keep their defaults. See <a href="docs--guides--keyboard-shortcuts.md.html">Keyboard shortcuts</a>
+for the action names and key syntax.</p>
+<h2 class="heading-element" dir="auto" id="hoststoml">hosts.toml</h2>
+<p dir="auto">One <code>[[host]]</code> table per saved host. The keys of the per-host options are the
+<code>ssh_config</code> keywords in <code>snake_case</code>. An IBM i host
+(<code>protocol = "tn5250"</code>, see <a href="docs--guides--ibm-i-5250.md.html">IBM i green screens</a>) uses only
+<code>name</code>, <code>host</code>, <code>port</code>, <code>color</code>, <code>theme</code> and its own keys <code>tls</code>, <code>ccsid</code>, <code>wide</code>
+and <code>device</code>.</p>
+<div class="highlight highlight-source-toml notranslate position-relative overflow-auto" dir="auto"><pre>[[<span class="pl-en">host</span>]]
+<span class="pl-smi">name</span> = <span class="pl-s"><span class="pl-pds">"</span>web1<span class="pl-pds">"</span></span>                 <span class="pl-c"><span class="pl-c">#</span> shown in the sidebar; defaults to `host`</span>
+<span class="pl-smi">host</span> = <span class="pl-s"><span class="pl-pds">"</span>server.example.com<span class="pl-pds">"</span></span>
+<span class="pl-smi">port</span> = <span class="pl-c1">22</span>
+<span class="pl-smi">user</span> = <span class="pl-s"><span class="pl-pds">"</span>deploy<span class="pl-pds">"</span></span>               <span class="pl-c"><span class="pl-c">#</span> empty: your local user name</span>
+<span class="pl-smi">key</span> = <span class="pl-s"><span class="pl-pds">"</span>Work<span class="pl-pds">"</span></span>                  <span class="pl-c"><span class="pl-c">#</span> a name from keys.toml; leave out for automatic</span>
 
-Terminaal keeps everything in <span class="sb">`~/.config/terminaal/`</span> – always under your home
-folder, <span class="sb">`$XDG_CONFIG_HOME`</span> doesn't move it (only the generated
-<span class="sb">`shell-integration/`</span> folder follows <span class="sb">`$XDG_CONFIG_HOME`</span>). On Windows it's
-<span class="sb">`%APPDATA%\terminaal`</span> ([Terminaal on Windows](windows.md#where-things-are)). All
-files are optional, and none holds a password or passphrase.
+<span class="pl-c"><span class="pl-c">#</span> Further logins (the first one above is the default)</span>
+[[<span class="pl-en">host</span>.<span class="pl-en">login</span>]]
+<span class="pl-smi">user</span> = <span class="pl-s"><span class="pl-pds">"</span>root<span class="pl-pds">"</span></span>
+<span class="pl-smi">key</span> = <span class="pl-s"><span class="pl-pds">"</span>1Password<span class="pl-pds">"</span></span>
 
-| File | What's in it | Who writes it |
-| --- | --- | --- |
-| [<span class="sb">`config.toml`</span>](#configtoml) | Options and shortcuts | You and the settings tab |
-| [<span class="sb">`hosts.toml`</span>](#hoststoml) | Saved SSH and IBM i hosts | The SSH section (you may edit it) |
-| [<span class="sb">`keys.toml`</span>](#keystoml) | Named SSH keys | The Keys section (you may edit it) |
-| [<span class="sb">`snippets.toml`</span>](#snippetstoml) | Your own commands | "Your commands" (you may edit it) |
-| <span class="sb">`themes/*.toml`</span> | Your color themes | You – see [<span class="nt">Appearance</span>](<span class="na">appearance.md</span>) |
-| <span class="sb">`shell-integration/`</span> | Startup files for bash, zsh and fish | Terminaal – don't edit, they're regenerated |
+[[<span class="pl-en">host</span>]]
+<span class="pl-smi">name</span> = <span class="pl-s"><span class="pl-pds">"</span>db1<span class="pl-pds">"</span></span>
+<span class="pl-smi">host</span> = <span class="pl-s"><span class="pl-pds">"</span>10.0.0.5<span class="pl-pds">"</span></span>
+<span class="pl-smi">user</span> = <span class="pl-s"><span class="pl-pds">"</span>deploy<span class="pl-pds">"</span></span>
+<span class="pl-smi">proxy_jump</span> = <span class="pl-s"><span class="pl-pds">"</span>web1<span class="pl-pds">"</span></span>           <span class="pl-c"><span class="pl-c">#</span> a host name, or [user@]host[:port], comma-separated for a chain</span>
+<span class="pl-smi">identity</span> = [<span class="pl-s"><span class="pl-pds">"</span>~/.ssh/id_db<span class="pl-pds">"</span></span>]   <span class="pl-c"><span class="pl-c">#</span> IdentityFile, one or more</span>
+<span class="pl-smi">identities_only</span> = <span class="pl-c1">true</span>
+<span class="pl-smi">identity_agent</span> = <span class="pl-s"><span class="pl-pds">"</span>~/.1password/agent.sock<span class="pl-pds">"</span></span>
+<span class="pl-smi">connect_timeout</span> = <span class="pl-c1">10</span>
+<span class="pl-smi">server_alive_interval</span> = <span class="pl-c1">30</span>    <span class="pl-c"><span class="pl-c">#</span> 0 turns keepalives off</span>
+<span class="pl-smi">server_alive_count_max</span> = <span class="pl-c1">3</span>
+<span class="pl-smi">compression</span> = <span class="pl-c1">true</span>
+<span class="pl-smi">address_family</span> = <span class="pl-s"><span class="pl-pds">"</span>inet<span class="pl-pds">"</span></span>       <span class="pl-c"><span class="pl-c">#</span> any, inet, inet6</span>
+<span class="pl-c"><span class="pl-c">#</span> proxy_command = "nc -X connect -x proxy:3128 %h %p"   # instead of proxy_jump, not both</span>
+<span class="pl-smi">preferred_authentications</span> = <span class="pl-s"><span class="pl-pds">"</span>publickey,keyboard-interactive,password<span class="pl-pds">"</span></span>
+<span class="pl-smi">forward_agent</span> = <span class="pl-s"><span class="pl-pds">"</span>yes<span class="pl-pds">"</span></span>         <span class="pl-c"><span class="pl-c">#</span> yes, a socket path, or $VARIABLE</span>
+<span class="pl-smi">strict_host_key_checking</span> = <span class="pl-s"><span class="pl-pds">"</span>accept-new<span class="pl-pds">"</span></span>   <span class="pl-c"><span class="pl-c">#</span> ask, accept-new, yes</span>
+<span class="pl-smi">user_known_hosts_file</span> = <span class="pl-s"><span class="pl-pds">"</span>~/.ssh/known_hosts_work<span class="pl-pds">"</span></span>
+<span class="pl-smi">remote_command</span> = <span class="pl-s"><span class="pl-pds">"</span>tmux new -A -s main<span class="pl-pds">"</span></span>
+<span class="pl-smi">set_env</span> = [<span class="pl-s"><span class="pl-pds">"</span>LANG=en_US.UTF-8<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>TERM=xterm-256color<span class="pl-pds">"</span></span>]
+<span class="pl-smi">send_env</span> = [<span class="pl-s"><span class="pl-pds">"</span>LC_*<span class="pl-pds">"</span></span>]
+<span class="pl-smi">local_forward</span> = [<span class="pl-s"><span class="pl-pds">"</span>5432 db.internal:5432<span class="pl-pds">"</span></span>]
+<span class="pl-smi">remote_forward</span> = [<span class="pl-s"><span class="pl-pds">"</span>8080 localhost:3000<span class="pl-pds">"</span></span>]
+<span class="pl-smi">dynamic_forward</span> = [<span class="pl-s"><span class="pl-pds">"</span>1080<span class="pl-pds">"</span></span>]
+<span class="pl-smi">kex_algorithms</span> = <span class="pl-s"><span class="pl-pds">"</span>+diffie-hellman-group14-sha1<span class="pl-pds">"</span></span>
+<span class="pl-smi">host_key_algorithms</span> = <span class="pl-s"><span class="pl-pds">"</span>^ssh-ed25519<span class="pl-pds">"</span></span>
+<span class="pl-smi">ciphers</span> = <span class="pl-s"><span class="pl-pds">"</span>aes256-gcm@openssh.com<span class="pl-pds">"</span></span>
+<span class="pl-smi">macs</span> = <span class="pl-s"><span class="pl-pds">"</span>hmac-sha2-256<span class="pl-pds">"</span></span>
+<span class="pl-smi">system</span> = <span class="pl-s"><span class="pl-pds">"</span>debian<span class="pl-pds">"</span></span>             <span class="pl-c"><span class="pl-c">#</span> Terminaal's own: skip detecting the system</span>
+<span class="pl-smi">color</span> = <span class="pl-s"><span class="pl-pds">"</span>red<span class="pl-pds">"</span></span>                 <span class="pl-c"><span class="pl-c">#</span> Terminaal's own: red, orange, yellow, green, blue, purple or "#rrggbb"</span>
+<span class="pl-smi">theme</span> = <span class="pl-s"><span class="pl-pds">"</span>Dracula<span class="pl-pds">"</span></span>             <span class="pl-c"><span class="pl-c">#</span> Terminaal's own: console colors of this host's terminals</span>
 
-The open tabs are kept elsewhere, in <span class="sb">`~/.local/state/terminaal/session.toml`</span>
-(or <span class="sb">`$XDG_STATE_HOME/terminaal/`</span>) – see [<span class="nt">Restoring the last session</span>](<span class="na">sessions.md</span>).
+<span class="pl-c"><span class="pl-c">#</span> Folders kept in sync over SFTP, any number per host</span>
+[[<span class="pl-en">host</span>.<span class="pl-en">sync</span>]]
+<span class="pl-smi">local</span> = <span class="pl-s"><span class="pl-pds">"</span>~/www<span class="pl-pds">"</span></span>
+<span class="pl-smi">remote</span> = <span class="pl-s"><span class="pl-pds">"</span>/srv/www<span class="pl-pds">"</span></span>           <span class="pl-c"><span class="pl-c">#</span> absolute, or relative to the login's home</span>
+<span class="pl-smi">direction</span> = <span class="pl-s"><span class="pl-pds">"</span>both<span class="pl-pds">"</span></span>            <span class="pl-c"><span class="pl-c">#</span> both, upload, download</span>
+<span class="pl-smi">live</span> = <span class="pl-c1">true</span>                   <span class="pl-c"><span class="pl-c">#</span> in the background, on every local change</span>
+<span class="pl-smi">exclude</span> = [<span class="pl-s"><span class="pl-pds">"</span>node_modules<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>*.log<span class="pl-pds">"</span></span>]
 
-<span class="gu">## config.toml</span>
+<span class="pl-c"><span class="pl-c">#</span> An IBM i 5250 screen instead of SSH</span>
+[[<span class="pl-en">host</span>]]
+<span class="pl-smi">name</span> = <span class="pl-s"><span class="pl-pds">"</span>PUB400<span class="pl-pds">"</span></span>
+<span class="pl-smi">host</span> = <span class="pl-s"><span class="pl-pds">"</span>pub400.com<span class="pl-pds">"</span></span>
+<span class="pl-smi">port</span> = <span class="pl-c1">992</span>                    <span class="pl-c"><span class="pl-c">#</span> 23 for plain telnet</span>
+<span class="pl-smi">protocol</span> = <span class="pl-s"><span class="pl-pds">"</span>tn5250<span class="pl-pds">"</span></span>           <span class="pl-c"><span class="pl-c">#</span> Terminaal's own: ssh (default) or tn5250</span>
+<span class="pl-smi">tls</span> = <span class="pl-c1">true</span>                    <span class="pl-c"><span class="pl-c">#</span> telnet over TLS</span>
+<span class="pl-smi">ccsid</span> = <span class="pl-c1">273</span>                   <span class="pl-c"><span class="pl-c">#</span> the screen's code page (default 37)</span>
+<span class="pl-smi">wide</span> = <span class="pl-c1">false</span>                  <span class="pl-c"><span class="pl-c">#</span> offer 27×132 screens too</span>
+<span class="pl-c"><span class="pl-c">#</span> device = "MYDEV01"          # display device to ask for; default: the server picks</span>
+<span class="pl-c"><span class="pl-c">#</span> delete_remote = true        # deletions may go to the server (upload/both)</span>
+<span class="pl-c"><span class="pl-c">#</span> delete_local = true         # … or come from it (download/both)</span></pre></div>
+<p dir="auto"><code>proxy_jump</code> and <code>proxy_command</code> exclude each other. Details on every option:
+<a href="docs--guides--ssh-hosts.md.html">SSH hosts</a>; on folder sync: <a href="docs--guides--files-and-sftp.md.html">Files on a server</a>.</p>
+<h2 class="heading-element" dir="auto" id="keystoml">keys.toml</h2>
+<div class="highlight highlight-source-toml notranslate position-relative overflow-auto" dir="auto"><pre>[[<span class="pl-en">key</span>]]
+<span class="pl-smi">name</span> = <span class="pl-s"><span class="pl-pds">"</span>Work<span class="pl-pds">"</span></span>
+<span class="pl-smi">file</span> = <span class="pl-s"><span class="pl-pds">"</span>~/.ssh/id_ed25519_work<span class="pl-pds">"</span></span>
+<span class="pl-smi">generated</span> = <span class="pl-c1">true</span>              <span class="pl-c"><span class="pl-c">#</span> created in Terminaal: removing may delete the files</span>
 
-The settings tab edits this file in place: it changes just the key you touched
-and keeps your comments and formatting. A missing file means defaults.
+[[<span class="pl-en">key</span>]]
+<span class="pl-smi">name</span> = <span class="pl-s"><span class="pl-pds">"</span>1Password<span class="pl-pds">"</span></span>
+<span class="pl-smi">agent_key</span> = <span class="pl-s"><span class="pl-pds">"</span>ssh-ed25519 AAAAC3Nza... laptop<span class="pl-pds">"</span></span>   <span class="pl-c"><span class="pl-c">#</span> public half of a key kept in the agent</span></pre></div>
+<h2 class="heading-element" dir="auto" id="snippetstoml">snippets.toml</h2>
+<div class="highlight highlight-source-toml notranslate position-relative overflow-auto" dir="auto"><pre>[[<span class="pl-en">snippet</span>]]
+<span class="pl-smi">name</span> = <span class="pl-s"><span class="pl-pds">"</span>Follow logs<span class="pl-pds">"</span></span>
+<span class="pl-smi">command</span> = <span class="pl-s"><span class="pl-pds">"</span>journalctl -f<span class="pl-pds">"</span></span>
+<span class="pl-smi">category</span> = <span class="pl-s"><span class="pl-pds">"</span>Logs<span class="pl-pds">"</span></span>             <span class="pl-c"><span class="pl-c">#</span> optional: a heading the button sits under</span>
+<span class="pl-smi">system</span> = <span class="pl-s"><span class="pl-pds">"</span>arch<span class="pl-pds">"</span></span>               <span class="pl-c"><span class="pl-c">#</span> optional: only on this system (same values as `system` above)</span>
 
-<span class="gu">### Appearance</span>
+[[<span class="pl-en">snippet</span>]]
+<span class="pl-smi">name</span> = <span class="pl-s"><span class="pl-pds">"</span>Deploy<span class="pl-pds">"</span></span>
+<span class="pl-smi">command</span> = <span class="pl-s"><span class="pl-pds">"""</span></span>
+<span class="pl-s">cd /srv/app</span>
+<span class="pl-s">./deploy.sh<span class="pl-pds">"""</span></span>
+<span class="pl-smi">host</span> = <span class="pl-s"><span class="pl-pds">"</span>web1<span class="pl-pds">"</span></span>                 <span class="pl-c"><span class="pl-c">#</span> optional: only in SSH tabs of this host</span>
+<span class="pl-c"><span class="pl-c">#</span> local = true                # optional instead of host: only in local terminals</span>
+<span class="pl-smi">autorun</span> = <span class="pl-s"><span class="pl-pds">"</span>login<span class="pl-pds">"</span></span>             <span class="pl-c"><span class="pl-c">#</span> optional: run by itself -- "shell" in every new</span>
+                              <span class="pl-c"><span class="pl-c">#</span> terminal, "login" in SSH terminals after login</span>
+<span class="pl-smi">hidden</span> = <span class="pl-c1">true</span>                 <span class="pl-c"><span class="pl-c">#</span> optional: no button, only listed under Manage</span></pre></div>
+<h2 class="heading-element" dir="auto" id="editing-files-by-hand">Editing files by hand</h2>
+<ul dir="auto">
+<li>Terminaal reads <code>hosts.toml</code>, <code>keys.toml</code> and <code>snippets.toml</code> at startup.
+Edit them while it's closed, or your change may be overwritten the next time
+you save something in the sidebar.</li>
+<li>If one of them can't be read, the sidebar shows the error and refuses to save
+over the file, so a typo never costs you your hosts.</li>
+<li><code>config.toml</code> is safe to edit any time – the settings tab changes only the keys
+you touch there – but your own edits take effect at the next start.</li>
+<li>Theme files are read again with the <strong>Reload</strong> button.</li>
+</ul>
 
-| Key | Default | Meaning |
-| --- | --- | --- |
-| <span class="sb">`theme`</span> | <span class="sb">`"Terminaal"`</span> | Theme name, any case. See [<span class="nt">Appearance</span>](<span class="na">appearance.md</span>) |
-| <span class="sb">`font_family`</span> | Noto Sans Mono | Console and tab bar font; must be an installed monospace family |
-| <span class="sb">`ui_font_family`</span> | built in | Font of the sidebar, menus and settings |
-| <span class="sb">`font_size`</span> | <span class="sb">`15.0`</span> | In logical pixels |
-| <span class="sb">`line_height_factor`</span> | <span class="sb">`1.25`</span> | Line height as a multiple of the font size |
-| <span class="sb">`padding`</span> | <span class="sb">`8.0`</span> | Space around the terminal grid, in logical pixels |
-| <span class="sb">`opacity`</span> | <span class="sb">`1.0`</span> | <span class="sb">`0.2`</span>–<span class="sb">`1.0`</span>; below 1 the window is see-through (Wayland only) |
-| <span class="sb">`ui_opacity`</span> | theme's, else <span class="sb">`0.85`</span> | <span class="sb">`0.2`</span>–<span class="sb">`1.0`</span>; how opaque tab bar, sidebar and settings are in a see-through window, never below <span class="sb">`opacity`</span> |
-| <span class="sb">`blur`</span> | <span class="sb">`true`</span> | Blur what's behind a see-through window |
-| <span class="sb">`cursor_blink`</span> | <span class="sb">`true`</span> | |
-| <span class="sb">`cursor_blink_interval_ms`</span> | <span class="sb">`600`</span> | |
-
-<span class="gu">### Window and startup</span>
-
-| Key | Default | Meaning |
-| --- | --- | --- |
-| <span class="sb">`default_width`</span>, <span class="sb">`default_height`</span> | <span class="sb">`1000.0`</span>, <span class="sb">`650.0`</span> | Window size at start |
-| <span class="sb">`maximized`</span> | <span class="sb">`false`</span> | Windows only: start maximized. Terminaal sets it whenever you maximize or restore the window |
-| <span class="sb">`tab_bar`</span> | <span class="sb">`true`</span> | Show the tab bar |
-| <span class="sb">`sidebar`</span> | <span class="sb">`true`</span> | Show the sidebar at start |
-| <span class="sb">`sidebar_width`</span> | <span class="sb">`300.0`</span> | |
-| <span class="sb">`splash`</span> | <span class="sb">`true`</span> | Start-up animation |
-| <span class="sb">`quake_height`</span> | <span class="sb">`50`</span> | Height of the drop-down window in percent of the screen, <span class="sb">`20`</span>–<span class="sb">`100`</span>. See [<span class="nt">The drop-down window</span>](<span class="na">drop-down-window.md</span>) |
-| <span class="sb">`quake_hide_on_unfocus`</span> | <span class="sb">`true`</span> | Hide the drop-down window when another window gets the keyboard |
-| <span class="sb">`quake_hotkey`</span> | <span class="sb">`"Ctrl+Alt+T"`</span> | Windows only: the global shortcut that shows and hides the drop-down window once it runs, written like those in <span class="sb">`[shortcuts]`</span>; <span class="sb">`""`</span> for none. Applies from its next start |
-| <span class="sb">`update_check`</span> | <span class="sb">`true`</span> | Ask GitHub for a newer release at start. See [<span class="nt">Updates</span>](<span class="na">updates.md</span>) |
-| <span class="sb">`update_skipped`</span> | not set | A version <span class="gs">**Skip this version**</span> was clicked for; not offered again |
-| <span class="sb">`restore_session`</span> | <span class="sb">`true`</span> | Open last time's tabs again. Turning it off deletes the saved session. See [<span class="nt">Restoring the last session</span>](<span class="na">sessions.md</span>) |
-| <span class="sb">`language`</span> | from the locale | <span class="sb">`"en"`</span> or <span class="sb">`"de"`</span> |
-
-<span class="gu">### Terminal</span>
-
-| Key | Default | Meaning |
-| --- | --- | --- |
-| <span class="sb">`shell`</span> | <span class="sb">`$SHELL`</span> | Default shell for new tabs, a path |
-| <span class="sb">`scrollback_lines`</span> | <span class="sb">`10000`</span> | Lines kept per tab; lowering it drops the oldest |
-| <span class="sb">`scroll_lines`</span> | <span class="sb">`3.0`</span> | Lines per mouse-wheel notch |
-| <span class="sb">`scrollbar`</span> | <span class="sb">`true`</span> | A scrollbar at the right edge of each terminal while scrolled back, after scrolling and on hover |
-| <span class="sb">`scroll_select_factor`</span> | <span class="sb">`3.0`</span> | How much faster the wheel scrolls while text is being marked (1–10, <span class="sb">`1`</span> for the usual speed) |
-| <span class="sb">`select_path_segments`</span> | <span class="sb">`false`</span> | A double-click in a path marks only the folder or file under the pointer instead of the whole path |
-| <span class="sb">`notifications`</span> | <span class="sb">`true`</span> | Desktop notifications (and the dock highlight) when a long command finishes or a watched terminal goes quiet out of view. <span class="sb">`false`</span> turns them all off; the dots in the tab bar stay |
-| <span class="sb">`notify_after_secs`</span> | <span class="sb">`10`</span> | Notify when a command that ran this long finishes unseen; <span class="sb">`0`</span> = never |
-| <span class="sb">`silence_secs`</span> | <span class="sb">`15`</span> | A terminal watched for silence counts as quiet after this many seconds without output (3–300) |
-| <span class="sb">`paste_warning`</span> | <span class="sb">`true`</span> | Ask before pasting several lines that would run at once, <span class="sb">`sudo`</span>, a download piped into a shell, <span class="sb">`rm -rf`</span> and the like |
-| <span class="sb">`kitty_keyboard`</span> | <span class="sb">`true`</span> | Programs may switch on the kitty keyboard protocol (fish 4, Neovim, Helix). <span class="sb">`false`</span> keeps every program on the classic xterm keys |
-| <span class="sb">`clipboard_write`</span> | <span class="sb">`true`</span> | Programs may put text into the clipboard (OSC 52) – vim, Neovim or tmux, on a server too |
-| <span class="sb">`images`</span> | <span class="sb">`true`</span> | Programs may show images (kitty graphics protocol: yazi, <span class="sb">`kitten icat`</span>, chafa) |
-| <span class="sb">`clipboard_read`</span> | <span class="sb">`"ask"`</span> | Whether programs may read the clipboard (OSC 52): <span class="sb">`"never"`</span> (they get an empty one), <span class="sb">`"ask"`</span> (a dialog each time) or <span class="sb">`"always"`</span> |
-
-<span class="gu">### Built-in commands</span>
-
-| Key | Default | Meaning |
-| --- | --- | --- |
-| <span class="sb">`commands_run`</span> | <span class="sb">`true`</span> | A click runs the command; <span class="sb">`false`</span> only types it into the prompt |
-| <span class="sb">`commands_assume_yes`</span> | <span class="sb">`false`</span> | Add <span class="sb">`-y`</span>/<span class="sb">`--noconfirm`</span> so updates don't ask |
-| <span class="sb">`commands_warned`</span> | <span class="sb">`false`</span> | Set once you confirmed the first-run warning |
-| <span class="sb">`commands_collapsed`</span> | <span class="sb">`[]`</span> | Command groups folded away in the sidebar; set by clicking their headings (built-in groups by key, your categories as <span class="sb">`custom:&lt;name&gt;`</span>) |
-| <span class="sb">`system`</span> | detected | Which system local tabs' commands are for: <span class="sb">`arch`</span>, <span class="sb">`debian`</span>, <span class="sb">`fedora`</span>, <span class="sb">`suse`</span>, <span class="sb">`alpine`</span>, <span class="sb">`void`</span>, <span class="sb">`gentoo`</span>, <span class="sb">`nixos`</span>, <span class="sb">`macos`</span>, <span class="sb">`freebsd`</span> |
-
-<span class="gu">### Files</span>
-
-| Key | Default | Meaning |
-| --- | --- | --- |
-| <span class="sb">`editor`</span> | unset | Command a server file edited locally opens with, its path appended (<span class="sb">`code`</span>, <span class="sb">`gedit`</span>, <span class="sb">`alacritty -e nvim`</span>). Unset: the desktop's default application. See [<span class="nt">Files on a server</span>](<span class="na">files-and-sftp.md</span>) |
-
-<span class="gu">### Shortcuts</span>
-
-<span class="sb">```toml</span>
-<span class="k">[shortcuts]</span>
-<span class="n">new_tab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Ctrl+Alt+N"</span><span class="w">                    </span><span class="c1"># one combination</span>
-<span class="n">copy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"Ctrl+Shift+C"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Ctrl+Insert"</span><span class="p">]</span><span class="w">    </span><span class="c1"># several</span>
-<span class="n">tab_9</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[]</span><span class="w">                                </span><span class="c1"># none</span>
-<span class="sb">```</span>
-
-Actions left out keep their defaults. See [<span class="nt">Keyboard shortcuts</span>](<span class="na">keyboard-shortcuts.md</span>)
-for the action names and key syntax.
-
-<span class="gu">## hosts.toml</span>
-
-One <span class="sb">`[[host]]`</span> table per saved host. The keys of the per-host options are the
-<span class="sb">`ssh_config`</span> keywords in <span class="sb">`snake_case`</span>. An IBM i host
-(<span class="sb">`protocol = "tn5250"`</span>, see [<span class="nt">IBM i green screens</span>](<span class="na">ibm-i-5250.md</span>)) uses only
-<span class="sb">`name`</span>, <span class="sb">`host`</span>, <span class="sb">`port`</span>, <span class="sb">`color`</span>, <span class="sb">`theme`</span> and its own keys <span class="sb">`tls`</span>, <span class="sb">`ccsid`</span>, <span class="sb">`wide`</span>
-and <span class="sb">`device`</span>.
-
-<span class="sb">```toml</span>
-<span class="k">[[host]]</span>
-<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"web1"</span><span class="w">                 </span><span class="c1"># shown in the sidebar; defaults to `host`</span>
-<span class="n">host</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"server.example.com"</span>
-<span class="n">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">22</span>
-<span class="n">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"deploy"</span><span class="w">               </span><span class="c1"># empty: your local user name</span>
-<span class="n">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Work"</span><span class="w">                  </span><span class="c1"># a name from keys.toml; leave out for automatic</span>
-
-<span class="c1"># Further logins (the first one above is the default)</span>
-<span class="k">[[host.login]]</span>
-<span class="n">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"root"</span>
-<span class="n">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"1Password"</span>
-
-<span class="k">[[host]]</span>
-<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"db1"</span>
-<span class="n">host</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"10.0.0.5"</span>
-<span class="n">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"deploy"</span>
-<span class="n">proxy_jump</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"web1"</span><span class="w">           </span><span class="c1"># a host name, or [user@]host[:port], comma-separated for a chain</span>
-<span class="n">identity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"~/.ssh/id_db"</span><span class="p">]</span><span class="w">   </span><span class="c1"># IdentityFile, one or more</span>
-<span class="n">identities_only</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
-<span class="n">identity_agent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"~/.1password/agent.sock"</span>
-<span class="n">connect_timeout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span>
-<span class="n">server_alive_interval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">30</span><span class="w">    </span><span class="c1"># 0 turns keepalives off</span>
-<span class="n">server_alive_count_max</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span>
-<span class="n">compression</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
-<span class="n">address_family</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"inet"</span><span class="w">       </span><span class="c1"># any, inet, inet6</span>
-<span class="c1"># proxy_command = "nc -X connect -x proxy:3128 %h %p"   # instead of proxy_jump, not both</span>
-<span class="n">preferred_authentications</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"publickey,keyboard-interactive,password"</span>
-<span class="n">forward_agent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"yes"</span><span class="w">         </span><span class="c1"># yes, a socket path, or $VARIABLE</span>
-<span class="n">strict_host_key_checking</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"accept-new"</span><span class="w">   </span><span class="c1"># ask, accept-new, yes</span>
-<span class="n">user_known_hosts_file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"~/.ssh/known_hosts_work"</span>
-<span class="n">remote_command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"tmux new -A -s main"</span>
-<span class="n">set_env</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"LANG=en_US.UTF-8"</span><span class="p">,</span><span class="w"> </span><span class="s2">"TERM=xterm-256color"</span><span class="p">]</span>
-<span class="n">send_env</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"LC_*"</span><span class="p">]</span>
-<span class="n">local_forward</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"5432 db.internal:5432"</span><span class="p">]</span>
-<span class="n">remote_forward</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"8080 localhost:3000"</span><span class="p">]</span>
-<span class="n">dynamic_forward</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"1080"</span><span class="p">]</span>
-<span class="n">kex_algorithms</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"+diffie-hellman-group14-sha1"</span>
-<span class="n">host_key_algorithms</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"^ssh-ed25519"</span>
-<span class="n">ciphers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"aes256-gcm@openssh.com"</span>
-<span class="n">macs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"hmac-sha2-256"</span>
-<span class="n">system</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"debian"</span><span class="w">             </span><span class="c1"># Terminaal's own: skip detecting the system</span>
-<span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"red"</span><span class="w">                 </span><span class="c1"># Terminaal's own: red, orange, yellow, green, blue, purple or "#rrggbb"</span>
-<span class="n">theme</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Dracula"</span><span class="w">             </span><span class="c1"># Terminaal's own: console colors of this host's terminals</span>
-
-<span class="c1"># Folders kept in sync over SFTP, any number per host</span>
-<span class="k">[[host.sync]]</span>
-<span class="n">local</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"~/www"</span>
-<span class="n">remote</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"/srv/www"</span><span class="w">           </span><span class="c1"># absolute, or relative to the login's home</span>
-<span class="n">direction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"both"</span><span class="w">            </span><span class="c1"># both, upload, download</span>
-<span class="n">live</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="w">                   </span><span class="c1"># in the background, on every local change</span>
-<span class="n">exclude</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"node_modules"</span><span class="p">,</span><span class="w"> </span><span class="s2">"*.log"</span><span class="p">]</span>
-
-<span class="c1"># An IBM i 5250 screen instead of SSH</span>
-<span class="k">[[host]]</span>
-<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"PUB400"</span>
-<span class="n">host</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"pub400.com"</span>
-<span class="n">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">992</span><span class="w">                    </span><span class="c1"># 23 for plain telnet</span>
-<span class="n">protocol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"tn5250"</span><span class="w">           </span><span class="c1"># Terminaal's own: ssh (default) or tn5250</span>
-<span class="n">tls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="w">                    </span><span class="c1"># telnet over TLS</span>
-<span class="n">ccsid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">273</span><span class="w">                   </span><span class="c1"># the screen's code page (default 37)</span>
-<span class="n">wide</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="w">                  </span><span class="c1"># offer 27×132 screens too</span>
-<span class="c1"># device = "MYDEV01"          # display device to ask for; default: the server picks</span>
-<span class="c1"># delete_remote = true        # deletions may go to the server (upload/both)</span>
-<span class="c1"># delete_local = true         # … or come from it (download/both)</span>
-<span class="sb">```</span>
-
-<span class="sb">`proxy_jump`</span> and <span class="sb">`proxy_command`</span> exclude each other. Details on every option:
-[<span class="nt">SSH hosts</span>](<span class="na">ssh-hosts.md</span>); on folder sync: [<span class="nt">Files on a server</span>](<span class="na">files-and-sftp.md</span>).
-
-<span class="gu">## keys.toml</span>
-
-<span class="sb">```toml</span>
-<span class="k">[[key]]</span>
-<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Work"</span>
-<span class="n">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"~/.ssh/id_ed25519_work"</span>
-<span class="n">generated</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="w">              </span><span class="c1"># created in Terminaal: removing may delete the files</span>
-
-<span class="k">[[key]]</span>
-<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"1Password"</span>
-<span class="n">agent_key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"ssh-ed25519 AAAAC3Nza... laptop"</span><span class="w">   </span><span class="c1"># public half of a key kept in the agent</span>
-<span class="sb">```</span>
-
-<span class="gu">## snippets.toml</span>
-
-<span class="sb">```toml</span>
-<span class="k">[[snippet]]</span>
-<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Follow logs"</span>
-<span class="n">command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"journalctl -f"</span>
-<span class="n">category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Logs"</span><span class="w">             </span><span class="c1"># optional: a heading the button sits under</span>
-<span class="n">system</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"arch"</span><span class="w">               </span><span class="c1"># optional: only on this system (same values as `system` above)</span>
-
-<span class="k">[[snippet]]</span>
-<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Deploy"</span>
-<span class="n">command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"""</span>
-<span class="s2">cd /srv/app</span>
-<span class="s2">./deploy.sh"""</span>
-<span class="n">host</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"web1"</span><span class="w">                 </span><span class="c1"># optional: only in SSH tabs of this host</span>
-<span class="c1"># local = true                # optional instead of host: only in local terminals</span>
-<span class="n">autorun</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"login"</span><span class="w">             </span><span class="c1"># optional: run by itself -- "shell" in every new</span>
-<span class="w">                              </span><span class="c1"># terminal, "login" in SSH terminals after login</span>
-<span class="n">hidden</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="w">                 </span><span class="c1"># optional: no button, only listed under Manage</span>
-<span class="sb">```</span>
-
-<span class="gu">## Editing files by hand</span>
-
-<span class="k">-</span><span class="w"> </span>Terminaal reads <span class="sb">`hosts.toml`</span>, <span class="sb">`keys.toml`</span> and <span class="sb">`snippets.toml`</span> at startup.
-  Edit them while it's closed, or your change may be overwritten the next time
-  you save something in the sidebar.
-<span class="k">-</span><span class="w"> </span>If one of them can't be read, the sidebar shows the error and refuses to save
-  over the file, so a typo never costs you your hosts.
-<span class="k">-</span><span class="w"> </span><span class="sb">`config.toml`</span> is safe to edit any time – the settings tab changes only the keys
-  you touch there – but your own edits take effect at the next start.
-<span class="k">-</span><span class="w"> </span>Theme files are read again with the <span class="gs">**Reload**</span> button.
-</pre></div></td></tr></table></div>
-
+        </div>
       </section>
     </main>
   </div>

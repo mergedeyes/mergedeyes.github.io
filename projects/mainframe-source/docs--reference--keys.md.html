@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>docs/reference/keys.md — Mainframe — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=41ca8b66" />
+  <link rel="stylesheet" href="../../styles.css?v=77eb044b" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -71,369 +71,479 @@
           <h1 class="section__title">docs/reference/keys.md</h1>
           <a href="../mainframe.html" class="link">← Back to Mainframe</a>
         </div>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">  1</span>
-<span class="normal">  2</span>
-<span class="normal">  3</span>
-<span class="normal">  4</span>
-<span class="normal">  5</span>
-<span class="normal">  6</span>
-<span class="normal">  7</span>
-<span class="normal">  8</span>
-<span class="normal">  9</span>
-<span class="normal"> 10</span>
-<span class="normal"> 11</span>
-<span class="normal"> 12</span>
-<span class="normal"> 13</span>
-<span class="normal"> 14</span>
-<span class="normal"> 15</span>
-<span class="normal"> 16</span>
-<span class="normal"> 17</span>
-<span class="normal"> 18</span>
-<span class="normal"> 19</span>
-<span class="normal"> 20</span>
-<span class="normal"> 21</span>
-<span class="normal"> 22</span>
-<span class="normal"> 23</span>
-<span class="normal"> 24</span>
-<span class="normal"> 25</span>
-<span class="normal"> 26</span>
-<span class="normal"> 27</span>
-<span class="normal"> 28</span>
-<span class="normal"> 29</span>
-<span class="normal"> 30</span>
-<span class="normal"> 31</span>
-<span class="normal"> 32</span>
-<span class="normal"> 33</span>
-<span class="normal"> 34</span>
-<span class="normal"> 35</span>
-<span class="normal"> 36</span>
-<span class="normal"> 37</span>
-<span class="normal"> 38</span>
-<span class="normal"> 39</span>
-<span class="normal"> 40</span>
-<span class="normal"> 41</span>
-<span class="normal"> 42</span>
-<span class="normal"> 43</span>
-<span class="normal"> 44</span>
-<span class="normal"> 45</span>
-<span class="normal"> 46</span>
-<span class="normal"> 47</span>
-<span class="normal"> 48</span>
-<span class="normal"> 49</span>
-<span class="normal"> 50</span>
-<span class="normal"> 51</span>
-<span class="normal"> 52</span>
-<span class="normal"> 53</span>
-<span class="normal"> 54</span>
-<span class="normal"> 55</span>
-<span class="normal"> 56</span>
-<span class="normal"> 57</span>
-<span class="normal"> 58</span>
-<span class="normal"> 59</span>
-<span class="normal"> 60</span>
-<span class="normal"> 61</span>
-<span class="normal"> 62</span>
-<span class="normal"> 63</span>
-<span class="normal"> 64</span>
-<span class="normal"> 65</span>
-<span class="normal"> 66</span>
-<span class="normal"> 67</span>
-<span class="normal"> 68</span>
-<span class="normal"> 69</span>
-<span class="normal"> 70</span>
-<span class="normal"> 71</span>
-<span class="normal"> 72</span>
-<span class="normal"> 73</span>
-<span class="normal"> 74</span>
-<span class="normal"> 75</span>
-<span class="normal"> 76</span>
-<span class="normal"> 77</span>
-<span class="normal"> 78</span>
-<span class="normal"> 79</span>
-<span class="normal"> 80</span>
-<span class="normal"> 81</span>
-<span class="normal"> 82</span>
-<span class="normal"> 83</span>
-<span class="normal"> 84</span>
-<span class="normal"> 85</span>
-<span class="normal"> 86</span>
-<span class="normal"> 87</span>
-<span class="normal"> 88</span>
-<span class="normal"> 89</span>
-<span class="normal"> 90</span>
-<span class="normal"> 91</span>
-<span class="normal"> 92</span>
-<span class="normal"> 93</span>
-<span class="normal"> 94</span>
-<span class="normal"> 95</span>
-<span class="normal"> 96</span>
-<span class="normal"> 97</span>
-<span class="normal"> 98</span>
-<span class="normal"> 99</span>
-<span class="normal">100</span>
-<span class="normal">101</span>
-<span class="normal">102</span>
-<span class="normal">103</span>
-<span class="normal">104</span>
-<span class="normal">105</span>
-<span class="normal">106</span>
-<span class="normal">107</span>
-<span class="normal">108</span>
-<span class="normal">109</span>
-<span class="normal">110</span>
-<span class="normal">111</span>
-<span class="normal">112</span>
-<span class="normal">113</span>
-<span class="normal">114</span>
-<span class="normal">115</span>
-<span class="normal">116</span>
-<span class="normal">117</span>
-<span class="normal">118</span>
-<span class="normal">119</span>
-<span class="normal">120</span>
-<span class="normal">121</span>
-<span class="normal">122</span>
-<span class="normal">123</span>
-<span class="normal">124</span>
-<span class="normal">125</span>
-<span class="normal">126</span>
-<span class="normal">127</span>
-<span class="normal">128</span>
-<span class="normal">129</span>
-<span class="normal">130</span>
-<span class="normal">131</span>
-<span class="normal">132</span>
-<span class="normal">133</span>
-<span class="normal">134</span>
-<span class="normal">135</span>
-<span class="normal">136</span>
-<span class="normal">137</span>
-<span class="normal">138</span>
-<span class="normal">139</span>
-<span class="normal">140</span>
-<span class="normal">141</span>
-<span class="normal">142</span>
-<span class="normal">143</span>
-<span class="normal">144</span>
-<span class="normal">145</span>
-<span class="normal">146</span>
-<span class="normal">147</span>
-<span class="normal">148</span>
-<span class="normal">149</span>
-<span class="normal">150</span>
-<span class="normal">151</span>
-<span class="normal">152</span>
-<span class="normal">153</span>
-<span class="normal">154</span>
-<span class="normal">155</span>
-<span class="normal">156</span>
-<span class="normal">157</span>
-<span class="normal">158</span>
-<span class="normal">159</span>
-<span class="normal">160</span>
-<span class="normal">161</span>
-<span class="normal">162</span>
-<span class="normal">163</span>
-<span class="normal">164</span>
-<span class="normal">165</span>
-<span class="normal">166</span>
-<span class="normal">167</span>
-<span class="normal">168</span>
-<span class="normal">169</span>
-<span class="normal">170</span>
-<span class="normal">171</span>
-<span class="normal">172</span>
-<span class="normal">173</span>
-<span class="normal">174</span>
-<span class="normal">175</span>
-<span class="normal">176</span>
-<span class="normal">177</span>
-<span class="normal">178</span>
-<span class="normal">179</span>
-<span class="normal">180</span>
-<span class="normal">181</span></pre></div></td><td class="code"><div><pre><span></span><span class="gh"># Keys</span>
+        <div class="readme-content">
+<h1 class="heading-element" dir="auto" id="keys">Keys</h1>
+<p dir="auto">Every key, by view. Inside Mainframe, <code>?</code> shows the most important ones.
+Custom actions from the <a href="docs--reference--config.md.html">configuration</a> come first: a custom
+action on a key replaces what the key does here.</p>
+<h2 class="heading-element" dir="auto" id="file-list">File list</h2>
+<h3 class="heading-element" dir="auto" id="moving">Moving</h3>
+<markdown-accessiblity-table><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>j</code> <code>k</code>, ↓ ↑</td>
+<td>down, up</td>
+</tr>
+<tr>
+<td><code>l</code>, →</td>
+<td>open the folder</td>
+</tr>
+<tr>
+<td><code>h</code>, ←, Backspace</td>
+<td>parent folder</td>
+</tr>
+<tr>
+<td><code>PgDn</code> <code>PgUp</code></td>
+<td>a page down, up</td>
+</tr>
+<tr>
+<td><code>Ctrl-D</code> <code>Ctrl-U</code></td>
+<td>half a page down, up</td>
+</tr>
+<tr>
+<td><code>Home</code> <code>End</code></td>
+<td>first, last entry</td>
+</tr>
+<tr>
+<td><code>Enter</code></td>
+<td>open a folder, edit a text file, run a program, open anything else with the default app</td>
+</tr>
+<tr>
+<td><code>/</code></td>
+<td>filter the list; <code>Enter</code> keeps it, <code>Esc</code> clears it</td>
+</tr>
+<tr>
+<td><code>c</code></td>
+<td>go to a path, or zoxide keywords</td>
+</tr>
+<tr>
+<td><code>Z</code></td>
+<td>zoxide's picker</td>
+</tr>
+<tr>
+<td><code>Ctrl-P</code></td>
+<td>find a file in the project</td>
+</tr>
+<tr>
+<td><code>J</code></td>
+<td>project picker</td>
+</tr>
+<tr>
+<td><code>~</code></td>
+<td>home folder</td>
+</tr>
+<tr>
+<td><code>.</code></td>
+<td>show or hide hidden files</td>
+</tr>
+<tr>
+<td><code>S</code></td>
+<td>sort by name, newest first, largest first</td>
+</tr>
+<tr>
+<td><code>Ctrl-R</code></td>
+<td>reload</td>
+</tr>
+<tr>
+<td><code>Esc</code></td>
+<td>clear the filter, then the marks</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<h3 class="heading-element" dir="auto" id="files">Files</h3>
+<markdown-accessiblity-table><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>a</code></td>
+<td>new file</td>
+</tr>
+<tr>
+<td><code>A</code></td>
+<td>new folder</td>
+</tr>
+<tr>
+<td><code>m</code>, F2</td>
+<td>rename or move</td>
+</tr>
+<tr>
+<td><code>d</code>, Delete</td>
+<td>move to the trash</td>
+</tr>
+<tr>
+<td><code>Space</code></td>
+<td>mark (for <code>y</code>, <code>d</code>, <code>s</code>, <code>u</code>)</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td>yank the marked or selected entries</td>
+</tr>
+<tr>
+<td><code>p</code> / <code>P</code></td>
+<td>paste a copy / move here</td>
+</tr>
+<tr>
+<td><code>s</code> / <code>u</code></td>
+<td>git stage / unstage</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<h3 class="heading-element" dir="auto" id="doing-things">Doing things</h3>
+<markdown-accessiblity-table><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>e</code></td>
+<td>edit in your editor</td>
+</tr>
+<tr>
+<td><code>o</code> / <code>O</code></td>
+<td>open the file / the project in VS Code</td>
+</tr>
+<tr>
+<td><code>r</code> / <code>R</code></td>
+<td>run here / in the full terminal</td>
+</tr>
+<tr>
+<td><code>b</code> / <code>B</code></td>
+<td>build / release build</td>
+</tr>
+<tr>
+<td><code>t</code></td>
+<td>test</td>
+</tr>
+<tr>
+<td><code>T</code></td>
+<td>task picker</td>
+</tr>
+<tr>
+<td><code>i</code></td>
+<td>install picker</td>
+</tr>
+<tr>
+<td><code>D</code></td>
+<td>deploy picker</td>
+</tr>
+<tr>
+<td><code>C</code></td>
+<td>cleanup</td>
+</tr>
+<tr>
+<td><code>g</code></td>
+<td>git menu</td>
+</tr>
+<tr>
+<td><code>M</code></td>
+<td>notes and todos</td>
+</tr>
+<tr>
+<td><code>Ctrl-L</code></td>
+<td>bring the CLAUDE.md preset into this project</td>
+</tr>
+<tr>
+<td><code>:</code></td>
+<td>run a shell command</td>
+</tr>
+<tr>
+<td><code>!</code></td>
+<td>open your shell here</td>
+</tr>
+<tr>
+<td><code>,</code></td>
+<td>edit the configuration</td>
+</tr>
+<tr>
+<td><code>?</code></td>
+<td>help</td>
+</tr>
+<tr>
+<td><code>q</code></td>
+<td>quit</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<h3 class="heading-element" dir="auto" id="output">Output</h3>
+<markdown-accessiblity-table><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>[</code> <code>]</code></td>
+<td>previous, next tab</td>
+</tr>
+<tr>
+<td><code>x</code></td>
+<td>stop the shown task, or close its tab when it's done</td>
+</tr>
+<tr>
+<td><code>Ctrl-C</code></td>
+<td>stop the shown task</td>
+</tr>
+<tr>
+<td><code>@</code></td>
+<td>run the shown tab's command again</td>
+</tr>
+<tr>
+<td><code>W</code></td>
+<td>watch mode on or off</td>
+</tr>
+<tr>
+<td><code>n</code> <code>N</code></td>
+<td>next, previous <code>file:line</code> in the output</td>
+</tr>
+<tr>
+<td><code>w</code></td>
+<td>show or hide the output pane</td>
+</tr>
+<tr>
+<td><code>z</code></td>
+<td>output fills the screen, and back</td>
+</tr>
+<tr>
+<td><code>+</code> <code>-</code></td>
+<td>output pane bigger, smaller</td>
+</tr>
+<tr>
+<td><code>Tab</code></td>
+<td>focus the output pane, and back</td>
+</tr>
+<tr>
+<td><code>v</code></td>
+<td>show or hide the preview</td>
+</tr>
+<tr>
+<td><code>V</code></td>
+<td>changed files preview as diff or contents</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<h2 class="heading-element" dir="auto" id="output-pane-focused-tab">Output pane, focused (<code>Tab</code>)</h2>
+<markdown-accessiblity-table><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>j</code> <code>k</code>, ↓ ↑</td>
+<td>scroll</td>
+</tr>
+<tr>
+<td><code>PgDn</code> <code>PgUp</code></td>
+<td>a page</td>
+</tr>
+<tr>
+<td><code>Home</code> <code>End</code></td>
+<td>top, bottom (<code>End</code> follows new output)</td>
+</tr>
+<tr>
+<td><code>Enter</code></td>
+<td>open the <code>file:line</code> that <code>n</code> jumped to, in your editor</td>
+</tr>
+<tr>
+<td><code>o</code></td>
+<td>the same in VS Code</td>
+</tr>
+<tr>
+<td><code>/</code></td>
+<td>search; then <code>n</code> <code>N</code> step through the matches</td>
+</tr>
+<tr>
+<td><code>Ctrl-S</code></td>
+<td>save the output to a file</td>
+</tr>
+<tr>
+<td><code>Esc</code></td>
+<td>clear the search, then back to the file list</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<h2 class="heading-element" dir="auto" id="prompts">Prompts</h2>
+<p dir="auto">The footer prompts (<code>:</code>, <code>c</code>, <code>a</code>, <code>m</code>, commit message …):</p>
+<markdown-accessiblity-table><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Tab</code> / Shift-Tab</td>
+<td>complete; again to cycle through the suggestions</td>
+</tr>
+<tr>
+<td>↓ ↑</td>
+<td>step through the suggestions; in <code>:</code> without suggestions, the command history</td>
+</tr>
+<tr>
+<td><code>Enter</code></td>
+<td>done</td>
+</tr>
+<tr>
+<td><code>Esc</code>, <code>Ctrl-C</code></td>
+<td>cancel</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto">Tab completes paths, programs on your PATH in <code>:</code>, zoxide matches in <code>c</code>,
+and branch names where a branch is asked for.</p>
+<h2 class="heading-element" dir="auto" id="forms">Forms</h2>
+<p dir="auto">The forms for new projects, deploy targets, releases and GitHub repos go
+field by field. Every field has a default.</p>
+<markdown-accessiblity-table><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>typing</td>
+<td>replaces the default</td>
+</tr>
+<tr>
+<td><code>Enter</code>, ↓, <code>Tab</code></td>
+<td>next field (the default stays when you didn't type)</td>
+</tr>
+<tr>
+<td>↑, Shift-Tab</td>
+<td>previous field; Backspace too, in an empty field</td>
+</tr>
+<tr>
+<td>← → or <code>Space</code></td>
+<td>change a choice</td>
+</tr>
+<tr>
+<td><code>Enter</code> or <code>y</code> on the last step</td>
+<td>go</td>
+</tr>
+<tr>
+<td><code>Esc</code>, <code>Ctrl-C</code></td>
+<td>cancel</td>
+</tr>
+<tr>
+<td><code>Ctrl-T</code></td>
+<td>in the new-project form: edit your CLAUDE.md template</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<h2 class="heading-element" dir="auto" id="git-menu-g">Git menu (<code>g</code>)</h2>
+<p dir="auto"><code>s</code> status · <code>d</code> <code>D</code> diff, staged diff · <code>l</code> log · <code>L</code> file history ·
+<code>w</code> blame · <code>a</code> <code>A</code> stage selected, all · <code>u</code> unstage · <code>c</code> commit · <code>C</code>
+stage all and commit · <code>e</code> amend · <code>x</code> discard changes · <code>f</code> fetch · <code>p</code>
+pull · <code>P</code> push · <code>B</code> push another branch · <code>b</code> branches · <code>o</code> switch branch · <code>n</code>
+new branch · <code>W</code> remove a worktree · <code>z</code> <code>Z</code> stash, pop · <code>r</code> release ·
+<code>R</code> releases and CI · <code>i</code> init · <code>h</code> GitHub repo · <code>g</code> lazygit, gitui or
+tig. See <a href="docs--guides--git.md.html">Git</a>.</p>
+<h2 class="heading-element" dir="auto" id="pickers">Pickers</h2>
+<p dir="auto"><strong>Project picker (<code>J</code>):</strong> type to filter · <code>Enter</code> go · <code>Ctrl-T</code> notes ·
+<code>Ctrl-O</code> VS Code · <code>Ctrl-G</code> new project · <code>Ctrl-L</code> CLAUDE.md preset · <code>Esc</code>
+close</p>
+<p dir="auto"><strong>Branch picker (<code>g o</code>):</strong> type to filter · <code>Enter</code> switch · <code>Esc</code> close.
+Numbered in merge order; see <a href="docs--guides--git.md.html#switching-branches-in-merge-order">Git</a>.</p>
+<p dir="auto"><strong>Task picker (<code>T</code>):</strong> type to filter · <code>Enter</code> run · <code>Ctrl-R</code> run in the
+full terminal · <code>Esc</code> close</p>
+<p dir="auto"><strong>File finder (<code>Ctrl-P</code>):</strong> type to filter · <code>Enter</code> show in the list ·
+<code>Ctrl-E</code> edit · <code>Esc</code> close</p>
+<p dir="auto">In these three, ↓ ↑, <code>Tab</code> Shift-Tab and <code>Ctrl-N</code> <code>Ctrl-P</code> move.</p>
+<p dir="auto"><strong>Install picker (<code>i</code>):</strong> <code>Enter</code> or <code>i</code> install · <code>p</code> pull, then install · <code>r</code> run · <code>d</code> desktop
+entry · <code>u</code> remove a copy that shadows it on PATH · <code>Esc</code> close</p>
+<p dir="auto"><strong>Desktop entry review:</strong> <code>Enter</code> or <code>y</code> update · <code>n</code> skip · <code>j</code> <code>k</code> scroll
+· <code>Esc</code> cancel all</p>
+<p dir="auto"><strong>Deploy picker (<code>D</code>):</strong> <code>Enter</code> or <code>D</code> deploy · <code>u</code> roll back · <code>l</code> list
+backups · <code>a</code> add a target · <code>e</code> edit the target · <code>x</code> delete it · <code>E</code> the
+settings file in your editor · <code>Esc</code> close</p>
+<p dir="auto"><strong>Cleanup (<code>C</code>):</strong> <code>Space</code> mark · <code>a</code> mark all like this · <code>Enter</code> delete ·
+<code>Esc</code> close</p>
+<h2 class="heading-element" dir="auto" id="notes-m">Notes (<code>M</code>)</h2>
+<markdown-accessiblity-table><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>j</code> <code>k</code>, ↓ ↑</td>
+<td>move</td>
+</tr>
+<tr>
+<td><code>g</code> <code>G</code>, <code>Home</code> <code>End</code></td>
+<td>first, last line</td>
+</tr>
+<tr>
+<td><code>a</code> or <code>o</code></td>
+<td>add a todo</td>
+</tr>
+<tr>
+<td><code>n</code></td>
+<td>add a note line</td>
+</tr>
+<tr>
+<td><code>Enter</code>, <code>e</code> or <code>i</code></td>
+<td>edit the line</td>
+</tr>
+<tr>
+<td><code>Space</code> or <code>x</code></td>
+<td>check a todo off, or on</td>
+</tr>
+<tr>
+<td><code>t</code></td>
+<td>todo ⇄ note</td>
+</tr>
+<tr>
+<td><code>d</code>, Delete</td>
+<td>delete</td>
+</tr>
+<tr>
+<td><code>u</code></td>
+<td>undo</td>
+</tr>
+<tr>
+<td><code>J</code> <code>K</code></td>
+<td>move the line down, up</td>
+</tr>
+<tr>
+<td><code>C</code></td>
+<td>remove checked todos</td>
+</tr>
+<tr>
+<td><code>E</code></td>
+<td>the whole file in your editor</td>
+</tr>
+<tr>
+<td><code>Esc</code>, <code>q</code> or <code>M</code></td>
+<td>close</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
 
-Every key, by view. Inside Mainframe, <span class="sb">`?`</span> shows the most important ones.
-Custom actions from the [<span class="nt">configuration</span>](<span class="na">config.md</span>) come first: a custom
-action on a key replaces what the key does here.
-
-<span class="gu">## File list</span>
-
-<span class="gu">### Moving</span>
-
-| Key | What it does |
-|---|---|
-| <span class="sb">`j`</span> <span class="sb">`k`</span>, ↓ ↑ | down, up |
-| <span class="sb">`l`</span>, → | open the folder |
-| <span class="sb">`h`</span>, ←, Backspace | parent folder |
-| <span class="sb">`PgDn`</span> <span class="sb">`PgUp`</span> | a page down, up |
-| <span class="sb">`Ctrl-D`</span> <span class="sb">`Ctrl-U`</span> | half a page down, up |
-| <span class="sb">`Home`</span> <span class="sb">`End`</span> | first, last entry |
-| <span class="sb">`Enter`</span> | open a folder, edit a text file, run a program, open anything else with the default app |
-| <span class="sb">`/`</span> | filter the list; <span class="sb">`Enter`</span> keeps it, <span class="sb">`Esc`</span> clears it |
-| <span class="sb">`c`</span> | go to a path, or zoxide keywords |
-| <span class="sb">`Z`</span> | zoxide's picker |
-| <span class="sb">`Ctrl-P`</span> | find a file in the project |
-| <span class="sb">`J`</span> | project picker |
-| <span class="sb">`~`</span> | home folder |
-| <span class="sb">`.`</span> | show or hide hidden files |
-| <span class="sb">`S`</span> | sort by name, newest first, largest first |
-| <span class="sb">`Ctrl-R`</span> | reload |
-| <span class="sb">`Esc`</span> | clear the filter, then the marks |
-
-<span class="gu">### Files</span>
-
-| Key | What it does |
-|---|---|
-| <span class="sb">`a`</span> | new file |
-| <span class="sb">`A`</span> | new folder |
-| <span class="sb">`m`</span>, F2 | rename or move |
-| <span class="sb">`d`</span>, Delete | move to the trash |
-| <span class="sb">`Space`</span> | mark (for <span class="sb">`y`</span>, <span class="sb">`d`</span>, <span class="sb">`s`</span>, <span class="sb">`u`</span>) |
-| <span class="sb">`y`</span> | yank the marked or selected entries |
-| <span class="sb">`p`</span> / <span class="sb">`P`</span> | paste a copy / move here |
-| <span class="sb">`s`</span> / <span class="sb">`u`</span> | git stage / unstage |
-
-<span class="gu">### Doing things</span>
-
-| Key | What it does |
-|---|---|
-| <span class="sb">`e`</span> | edit in your editor |
-| <span class="sb">`o`</span> / <span class="sb">`O`</span> | open the file / the project in VS Code |
-| <span class="sb">`r`</span> / <span class="sb">`R`</span> | run here / in the full terminal |
-| <span class="sb">`b`</span> / <span class="sb">`B`</span> | build / release build |
-| <span class="sb">`t`</span> | test |
-| <span class="sb">`T`</span> | task picker |
-| <span class="sb">`i`</span> | install picker |
-| <span class="sb">`D`</span> | deploy picker |
-| <span class="sb">`C`</span> | cleanup |
-| <span class="sb">`g`</span> | git menu |
-| <span class="sb">`M`</span> | notes and todos |
-| <span class="sb">`Ctrl-L`</span> | bring the CLAUDE.md preset into this project |
-| <span class="sb">`:`</span> | run a shell command |
-| <span class="sb">`!`</span> | open your shell here |
-| <span class="sb">`,`</span> | edit the configuration |
-| <span class="sb">`?`</span> | help |
-| <span class="sb">`q`</span> | quit |
-
-<span class="gu">### Output</span>
-
-| Key | What it does |
-|---|---|
-| <span class="sb">`[`</span> <span class="sb">`]`</span> | previous, next tab |
-| <span class="sb">`x`</span> | stop the shown task, or close its tab when it's done |
-| <span class="sb">`Ctrl-C`</span> | stop the shown task |
-| <span class="sb">`@`</span> | run the shown tab's command again |
-| <span class="sb">`W`</span> | watch mode on or off |
-| <span class="sb">`n`</span> <span class="sb">`N`</span> | next, previous <span class="sb">`file:line`</span> in the output |
-| <span class="sb">`w`</span> | show or hide the output pane |
-| <span class="sb">`z`</span> | output fills the screen, and back |
-| <span class="sb">`+`</span> <span class="sb">`-`</span> | output pane bigger, smaller |
-| <span class="sb">`Tab`</span> | focus the output pane, and back |
-| <span class="sb">`v`</span> | show or hide the preview |
-| <span class="sb">`V`</span> | changed files preview as diff or contents |
-
-<span class="gu">## Output pane, focused (`Tab`)</span>
-
-| Key | What it does |
-|---|---|
-| <span class="sb">`j`</span> <span class="sb">`k`</span>, ↓ ↑ | scroll |
-| <span class="sb">`PgDn`</span> <span class="sb">`PgUp`</span> | a page |
-| <span class="sb">`Home`</span> <span class="sb">`End`</span> | top, bottom (<span class="sb">`End`</span> follows new output) |
-| <span class="sb">`Enter`</span> | open the <span class="sb">`file:line`</span> that <span class="sb">`n`</span> jumped to, in your editor |
-| <span class="sb">`o`</span> | the same in VS Code |
-| <span class="sb">`/`</span> | search; then <span class="sb">`n`</span> <span class="sb">`N`</span> step through the matches |
-| <span class="sb">`Ctrl-S`</span> | save the output to a file |
-| <span class="sb">`Esc`</span> | clear the search, then back to the file list |
-
-<span class="gu">## Prompts</span>
-
-The footer prompts (<span class="sb">`:`</span>, <span class="sb">`c`</span>, <span class="sb">`a`</span>, <span class="sb">`m`</span>, commit message …):
-
-| Key | What it does |
-|---|---|
-| <span class="sb">`Tab`</span> / Shift-Tab | complete; again to cycle through the suggestions |
-| ↓ ↑ | step through the suggestions; in <span class="sb">`:`</span> without suggestions, the command history |
-| <span class="sb">`Enter`</span> | done |
-| <span class="sb">`Esc`</span>, <span class="sb">`Ctrl-C`</span> | cancel |
-
-Tab completes paths, programs on your PATH in <span class="sb">`:`</span>, zoxide matches in <span class="sb">`c`</span>,
-and branch names where a branch is asked for.
-
-<span class="gu">## Forms</span>
-
-The forms for new projects, deploy targets, releases and GitHub repos go
-field by field. Every field has a default.
-
-| Key | What it does |
-|---|---|
-| typing | replaces the default |
-| <span class="sb">`Enter`</span>, ↓, <span class="sb">`Tab`</span> | next field (the default stays when you didn't type) |
-| ↑, Shift-Tab | previous field; Backspace too, in an empty field |
-| ← → or <span class="sb">`Space`</span> | change a choice |
-| <span class="sb">`Enter`</span> or <span class="sb">`y`</span> on the last step | go |
-| <span class="sb">`Esc`</span>, <span class="sb">`Ctrl-C`</span> | cancel |
-| <span class="sb">`Ctrl-T`</span> | in the new-project form: edit your CLAUDE.md template |
-
-<span class="gu">## Git menu (`g`)</span>
-
-<span class="sb">`s`</span> status · <span class="sb">`d`</span> <span class="sb">`D`</span> diff, staged diff · <span class="sb">`l`</span> log · <span class="sb">`L`</span> file history ·
-<span class="sb">`w`</span> blame · <span class="sb">`a`</span> <span class="sb">`A`</span> stage selected, all · <span class="sb">`u`</span> unstage · <span class="sb">`c`</span> commit · <span class="sb">`C`</span>
-stage all and commit · <span class="sb">`e`</span> amend · <span class="sb">`x`</span> discard changes · <span class="sb">`f`</span> fetch · <span class="sb">`p`</span>
-pull · <span class="sb">`P`</span> push · <span class="sb">`B`</span> push another branch · <span class="sb">`b`</span> branches · <span class="sb">`o`</span> switch branch · <span class="sb">`n`</span>
-new branch · <span class="sb">`W`</span> remove a worktree · <span class="sb">`z`</span> <span class="sb">`Z`</span> stash, pop · <span class="sb">`r`</span> release ·
-<span class="sb">`R`</span> releases and CI · <span class="sb">`i`</span> init · <span class="sb">`h`</span> GitHub repo · <span class="sb">`g`</span> lazygit, gitui or
-tig. See [<span class="nt">Git</span>](<span class="na">../guides/git.md</span>).
-
-<span class="gu">## Pickers</span>
-
-<span class="gs">**Project picker (`J`):**</span> type to filter · <span class="sb">`Enter`</span> go · <span class="sb">`Ctrl-T`</span> notes ·
-<span class="sb">`Ctrl-O`</span> VS Code · <span class="sb">`Ctrl-G`</span> new project · <span class="sb">`Ctrl-L`</span> CLAUDE.md preset · <span class="sb">`Esc`</span>
-close
-
-<span class="gs">**Branch picker (`g o`):**</span> type to filter · <span class="sb">`Enter`</span> switch · <span class="sb">`Esc`</span> close.
-Numbered in merge order; see [<span class="nt">Git</span>](<span class="na">../guides/git.md#switching-branches-in-merge-order</span>).
-
-<span class="gs">**Task picker (`T`):**</span> type to filter · <span class="sb">`Enter`</span> run · <span class="sb">`Ctrl-R`</span> run in the
-full terminal · <span class="sb">`Esc`</span> close
-
-<span class="gs">**File finder (`Ctrl-P`):**</span> type to filter · <span class="sb">`Enter`</span> show in the list ·
-<span class="sb">`Ctrl-E`</span> edit · <span class="sb">`Esc`</span> close
-
-In these three, ↓ ↑, <span class="sb">`Tab`</span> Shift-Tab and <span class="sb">`Ctrl-N`</span> <span class="sb">`Ctrl-P`</span> move.
-
-<span class="gs">**Install picker (`i`):**</span> <span class="sb">`Enter`</span> or <span class="sb">`i`</span> install · <span class="sb">`p`</span> pull, then install · <span class="sb">`r`</span> run · <span class="sb">`d`</span> desktop
-entry · <span class="sb">`u`</span> remove a copy that shadows it on PATH · <span class="sb">`Esc`</span> close
-
-<span class="gs">**Desktop entry review:**</span> <span class="sb">`Enter`</span> or <span class="sb">`y`</span> update · <span class="sb">`n`</span> skip · <span class="sb">`j`</span> <span class="sb">`k`</span> scroll
-· <span class="sb">`Esc`</span> cancel all
-
-<span class="gs">**Deploy picker (`D`):**</span> <span class="sb">`Enter`</span> or <span class="sb">`D`</span> deploy · <span class="sb">`u`</span> roll back · <span class="sb">`l`</span> list
-backups · <span class="sb">`a`</span> add a target · <span class="sb">`e`</span> edit the target · <span class="sb">`x`</span> delete it · <span class="sb">`E`</span> the
-settings file in your editor · <span class="sb">`Esc`</span> close
-
-<span class="gs">**Cleanup (`C`):**</span> <span class="sb">`Space`</span> mark · <span class="sb">`a`</span> mark all like this · <span class="sb">`Enter`</span> delete ·
-<span class="sb">`Esc`</span> close
-
-<span class="gu">## Notes (`M`)</span>
-
-| Key | What it does |
-|---|---|
-| <span class="sb">`j`</span> <span class="sb">`k`</span>, ↓ ↑ | move |
-| <span class="sb">`g`</span> <span class="sb">`G`</span>, <span class="sb">`Home`</span> <span class="sb">`End`</span> | first, last line |
-| <span class="sb">`a`</span> or <span class="sb">`o`</span> | add a todo |
-| <span class="sb">`n`</span> | add a note line |
-| <span class="sb">`Enter`</span>, <span class="sb">`e`</span> or <span class="sb">`i`</span> | edit the line |
-| <span class="sb">`Space`</span> or <span class="sb">`x`</span> | check a todo off, or on |
-| <span class="sb">`t`</span> | todo ⇄ note |
-| <span class="sb">`d`</span>, Delete | delete |
-| <span class="sb">`u`</span> | undo |
-| <span class="sb">`J`</span> <span class="sb">`K`</span> | move the line down, up |
-| <span class="sb">`C`</span> | remove checked todos |
-| <span class="sb">`E`</span> | the whole file in your editor |
-| <span class="sb">`Esc`</span>, <span class="sb">`q`</span> or <span class="sb">`M`</span> | close |
-</pre></div></td></tr></table></div>
-
+        </div>
       </section>
     </main>
   </div>

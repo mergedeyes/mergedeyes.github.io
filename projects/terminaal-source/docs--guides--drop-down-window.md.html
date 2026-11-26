@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>docs/guides/drop-down-window.md — Terminaal — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=41ca8b66" />
+  <link rel="stylesheet" href="../../styles.css?v=77eb044b" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -71,197 +71,136 @@
           <h1 class="section__title">docs/guides/drop-down-window.md</h1>
           <a href="../terminaal.html" class="link">← Back to Terminaal</a>
         </div>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span>
-<span class="normal">43</span>
-<span class="normal">44</span>
-<span class="normal">45</span>
-<span class="normal">46</span>
-<span class="normal">47</span>
-<span class="normal">48</span>
-<span class="normal">49</span>
-<span class="normal">50</span>
-<span class="normal">51</span>
-<span class="normal">52</span>
-<span class="normal">53</span>
-<span class="normal">54</span>
-<span class="normal">55</span>
-<span class="normal">56</span>
-<span class="normal">57</span>
-<span class="normal">58</span>
-<span class="normal">59</span>
-<span class="normal">60</span>
-<span class="normal">61</span>
-<span class="normal">62</span>
-<span class="normal">63</span>
-<span class="normal">64</span>
-<span class="normal">65</span>
-<span class="normal">66</span>
-<span class="normal">67</span>
-<span class="normal">68</span>
-<span class="normal">69</span>
-<span class="normal">70</span>
-<span class="normal">71</span>
-<span class="normal">72</span>
-<span class="normal">73</span>
-<span class="normal">74</span>
-<span class="normal">75</span>
-<span class="normal">76</span>
-<span class="normal">77</span>
-<span class="normal">78</span>
-<span class="normal">79</span>
-<span class="normal">80</span>
-<span class="normal">81</span>
-<span class="normal">82</span>
-<span class="normal">83</span>
-<span class="normal">84</span>
-<span class="normal">85</span>
-<span class="normal">86</span>
-<span class="normal">87</span>
-<span class="normal">88</span>
-<span class="normal">89</span>
-<span class="normal">90</span>
-<span class="normal">91</span>
-<span class="normal">92</span>
-<span class="normal">93</span>
-<span class="normal">94</span>
-<span class="normal">95</span></pre></div></td><td class="code"><div><pre><span></span><span class="gh"># The drop-down window</span>
-
-A terminal that drops down from the top of the screen when you press a key,
+        <div class="readme-content">
+<h1 class="heading-element" dir="auto" id="the-drop-down-window">The drop-down window</h1>
+<p dir="auto">A terminal that drops down from the top of the screen when you press a key,
 and goes away when you press it again. It works like Guake or Yakuake, and
 like the console in Quake that the idea comes from. The terminals in it keep
-running while it's hidden.
-
-<span class="gu">## Set it up</span>
-
-On Linux Terminaal can't grab a global key itself: on Wayland, programs aren't
-allowed to. (On Windows it can – see [<span class="nt">below</span>](<span class="na">#on-windows</span>).) Your desktop runs a
-command for the key instead:
-
-<span class="sb">```sh</span>
-terminaal<span class="w"> </span>--quake
-<span class="sb">```</span>
-
-The first time, the command starts the drop-down Terminaal and shows it. After
-that, each run hides it or shows it again.
-
-Settings → General → <span class="gs">**Drop-down window**</span> shows the command with Terminaal's
-full path and a <span class="gs">**Copy command**</span> button. Use the full path: shortcut settings
-often don't have <span class="sb">`~/.cargo/bin`</span> in their <span class="sb">`PATH`</span>.
-
-<span class="gs">**On COSMIC:**</span> Settings → Input Devices → Keyboard → View and customize
+running while it's hidden.</p>
+<h2 class="heading-element" dir="auto" id="set-it-up">Set it up</h2>
+<p dir="auto">On Linux Terminaal can't grab a global key itself: on Wayland, programs aren't
+allowed to. (On Windows it can – see <a href="#on-windows">below</a>.) Your desktop runs a
+command for the key instead:</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto"><pre>terminaal --quake</pre></div>
+<p dir="auto">The first time, the command starts the drop-down Terminaal and shows it. After
+that, each run hides it or shows it again.</p>
+<p dir="auto">Settings → General → <strong>Drop-down window</strong> shows the command with Terminaal's
+full path and a <strong>Copy command</strong> button. Use the full path: shortcut settings
+often don't have <code>~/.cargo/bin</code> in their <code>PATH</code>.</p>
+<p dir="auto"><strong>On COSMIC:</strong> Settings → Input Devices → Keyboard → View and customize
 shortcuts → Custom shortcuts → Add shortcut. Paste the command, give it a name,
-and press the keys you want, for example &lt;kbd&gt;F12&lt;/kbd&gt; or
-&lt;kbd&gt;Super&lt;/kbd&gt;+&lt;kbd&gt;`&lt;/kbd&gt;.
-
-<span class="gs">**On KDE Plasma:**</span> System Settings → Keyboard → Shortcuts → Add New → Command
-or Script.
-
-<span class="gs">**On Sway or Hyprland:**</span> a <span class="sb">`bindsym`</span> or <span class="sb">`bind`</span> line that runs the command.
-
-<span class="gu">## Using it</span>
-
-The drop-down window is a Terminaal of its own. It has its own tabs, splits,
+and press the keys you want, for example <kbd>F12</kbd> or
+<kbd>Super</kbd>+<kbd>`</kbd>.</p>
+<p dir="auto"><strong>On KDE Plasma:</strong> System Settings → Keyboard → Shortcuts → Add New → Command
+or Script.</p>
+<p dir="auto"><strong>On Sway or Hyprland:</strong> a <code>bindsym</code> or <code>bind</code> line that runs the command.</p>
+<h2 class="heading-element" dir="auto" id="using-it">Using it</h2>
+<p dir="auto">The drop-down window is a Terminaal of its own. It has its own tabs, splits,
 sidebar and settings tab, and everything works as in the normal window. It
-doesn't touch the tabs of your normal Terminaal window.
-
-| Situation | What the key does |
-| --- | --- |
-| Not running | Starts it and shows it |
-| Showing, you're typing in it | Hides it |
-| Showing, but you clicked another window | Brings it back to the keyboard |
-| Hidden | Shows it |
-
-By default it also hides when another window gets the keyboard. You can turn
+doesn't touch the tabs of your normal Terminaal window.</p>
+<markdown-accessiblity-table><table>
+<thead>
+<tr>
+<th>Situation</th>
+<th>What the key does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Not running</td>
+<td>Starts it and shows it</td>
+</tr>
+<tr>
+<td>Showing, you're typing in it</td>
+<td>Hides it</td>
+</tr>
+<tr>
+<td>Showing, but you clicked another window</td>
+<td>Brings it back to the keyboard</td>
+</tr>
+<tr>
+<td>Hidden</td>
+<td>Shows it</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto">By default it also hides when another window gets the keyboard. You can turn
 that off under Settings → General → Drop-down window, or with
-<span class="sb">`quake_hide_on_unfocus = false`</span>.
-
-To quit it for good, close its last tab.
-
-<span class="gu">## Settings</span>
-
-| Setting | Key | Default |
-| --- | --- | --- |
-| Height | <span class="sb">`quake_height`</span> | <span class="sb">`50`</span> – percent of the screen's height, 20–100. Changes apply while it's showing |
-| Hide when another window gets the focus | <span class="sb">`quake_hide_on_unfocus`</span> | <span class="sb">`true`</span> |
-
-It opens full width on the screen the compositor picks, usually the one you're
+<code>quake_hide_on_unfocus = false</code>.</p>
+<p dir="auto">To quit it for good, close its last tab.</p>
+<h2 class="heading-element" dir="auto" id="settings">Settings</h2>
+<markdown-accessiblity-table><table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Key</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Height</td>
+<td><code>quake_height</code></td>
+<td><code>50</code> – percent of the screen's height, 20–100. Changes apply while it's showing</td>
+</tr>
+<tr>
+<td>Hide when another window gets the focus</td>
+<td><code>quake_hide_on_unfocus</code></td>
+<td><code>true</code></td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto">It opens full width on the screen the compositor picks, usually the one you're
 working on. It sits below panels like COSMIC's top bar. Theme, font, opacity
-and blur are the same as in the normal window.
-
-<span class="gu">## Its session</span>
-
-The drop-down Terminaal saves its tabs separately from the normal window, in
-<span class="sb">`~/.local/state/terminaal/quake-session.toml`</span>. When it starts again, for example
-after logging in, its tabs come back. See [<span class="nt">Restoring the last session</span>](<span class="na">sessions.md</span>).
-
-<span class="gu">## Where it works</span>
-
-| Desktop | What you get |
-| --- | --- |
-| COSMIC, KDE Plasma, Sway, Hyprland and other Wayland desktops with the layer shell | A real drop-down along the top edge, above other windows |
-| X11 | A borderless, always-on-top window at the top of the screen that shows and hides |
-| GNOME on Wayland | A normal window. GNOME has no layer shell, and Wayland doesn't let a window place or hide itself, so the key can't hide it |
-| Windows | A borderless, always-on-top window at the top of the screen, not in the taskbar |
-
-<span class="gu">## On Windows</span>
-
-Once <span class="sb">`terminaal --quake`</span> runs, it registers a global shortcut itself:
-&lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Alt&lt;/kbd&gt;+&lt;kbd&gt;T&lt;/kbd&gt;, or what you set under **Settings →
-General → Drop-down window → Shortcut** (<span class="sb">`quake_hotkey`</span>; empty for none,
+and blur are the same as in the normal window.</p>
+<h2 class="heading-element" dir="auto" id="its-session">Its session</h2>
+<p dir="auto">The drop-down Terminaal saves its tabs separately from the normal window, in
+<code>~/.local/state/terminaal/quake-session.toml</code>. When it starts again, for example
+after logging in, its tabs come back. See <a href="docs--guides--sessions.md.html">Restoring the last session</a>.</p>
+<h2 class="heading-element" dir="auto" id="where-it-works">Where it works</h2>
+<markdown-accessiblity-table><table>
+<thead>
+<tr>
+<th>Desktop</th>
+<th>What you get</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>COSMIC, KDE Plasma, Sway, Hyprland and other Wayland desktops with the layer shell</td>
+<td>A real drop-down along the top edge, above other windows</td>
+</tr>
+<tr>
+<td>X11</td>
+<td>A borderless, always-on-top window at the top of the screen that shows and hides</td>
+</tr>
+<tr>
+<td>GNOME on Wayland</td>
+<td>A normal window. GNOME has no layer shell, and Wayland doesn't let a window place or hide itself, so the key can't hide it</td>
+</tr>
+<tr>
+<td>Windows</td>
+<td>A borderless, always-on-top window at the top of the screen, not in the taskbar</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<h2 class="heading-element" dir="auto" id="on-windows">On Windows</h2>
+<p dir="auto">Once <code>terminaal --quake</code> runs, it registers a global shortcut itself:
+<kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>T</kbd>, or what you set under <strong>Settings →
+General → Drop-down window → Shortcut</strong> (<code>quake_hotkey</code>; empty for none,
 applies from its next start). So it only has to be started once per sign-in:
-tick <span class="gs">**Start the drop-down window when I sign in**</span> in the setup, or put the
-command in your Startup folder (&lt;kbd&gt;Win&lt;/kbd&gt;+&lt;kbd&gt;R&lt;/kbd&gt;, <span class="sb">`shell:startup`</span>).
+tick <strong>Start the drop-down window when I sign in</strong> in the setup, or put the
+command in your Startup folder (<kbd>Win</kbd>+<kbd>R</kbd>, <code>shell:startup</code>).</p>
+<h2 class="heading-element" dir="auto" id="limits">Limits</h2>
+<ul dir="auto">
+<li>You can't drop files onto the drop-down window to upload them to a files tab.</li>
+<li>Input methods (IME) don't work in it. Dead keys and compose sequences do.</li>
+<li>It has no window title and doesn't flash in the dock when a long command
+finishes. Desktop notifications still come.</li>
+<li>There's no slide animation. It appears and disappears at once.</li>
+</ul>
 
-<span class="gu">## Limits</span>
-
-<span class="k">-</span><span class="w"> </span>You can't drop files onto the drop-down window to upload them to a files tab.
-<span class="k">-</span><span class="w"> </span>Input methods (IME) don't work in it. Dead keys and compose sequences do.
-<span class="k">-</span><span class="w"> </span>It has no window title and doesn't flash in the dock when a long command
-  finishes. Desktop notifications still come.
-<span class="k">-</span><span class="w"> </span>There's no slide animation. It appears and disappears at once.
-</pre></div></td></tr></table></div>
-
+        </div>
       </section>
     </main>
   </div>

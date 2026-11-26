@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>docs/guides/install-and-deploy.md — Mainframe — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=41ca8b66" />
+  <link rel="stylesheet" href="../../styles.css?v=77eb044b" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -71,421 +71,280 @@
           <h1 class="section__title">docs/guides/install-and-deploy.md</h1>
           <a href="../mainframe.html" class="link">← Back to Mainframe</a>
         </div>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">  1</span>
-<span class="normal">  2</span>
-<span class="normal">  3</span>
-<span class="normal">  4</span>
-<span class="normal">  5</span>
-<span class="normal">  6</span>
-<span class="normal">  7</span>
-<span class="normal">  8</span>
-<span class="normal">  9</span>
-<span class="normal"> 10</span>
-<span class="normal"> 11</span>
-<span class="normal"> 12</span>
-<span class="normal"> 13</span>
-<span class="normal"> 14</span>
-<span class="normal"> 15</span>
-<span class="normal"> 16</span>
-<span class="normal"> 17</span>
-<span class="normal"> 18</span>
-<span class="normal"> 19</span>
-<span class="normal"> 20</span>
-<span class="normal"> 21</span>
-<span class="normal"> 22</span>
-<span class="normal"> 23</span>
-<span class="normal"> 24</span>
-<span class="normal"> 25</span>
-<span class="normal"> 26</span>
-<span class="normal"> 27</span>
-<span class="normal"> 28</span>
-<span class="normal"> 29</span>
-<span class="normal"> 30</span>
-<span class="normal"> 31</span>
-<span class="normal"> 32</span>
-<span class="normal"> 33</span>
-<span class="normal"> 34</span>
-<span class="normal"> 35</span>
-<span class="normal"> 36</span>
-<span class="normal"> 37</span>
-<span class="normal"> 38</span>
-<span class="normal"> 39</span>
-<span class="normal"> 40</span>
-<span class="normal"> 41</span>
-<span class="normal"> 42</span>
-<span class="normal"> 43</span>
-<span class="normal"> 44</span>
-<span class="normal"> 45</span>
-<span class="normal"> 46</span>
-<span class="normal"> 47</span>
-<span class="normal"> 48</span>
-<span class="normal"> 49</span>
-<span class="normal"> 50</span>
-<span class="normal"> 51</span>
-<span class="normal"> 52</span>
-<span class="normal"> 53</span>
-<span class="normal"> 54</span>
-<span class="normal"> 55</span>
-<span class="normal"> 56</span>
-<span class="normal"> 57</span>
-<span class="normal"> 58</span>
-<span class="normal"> 59</span>
-<span class="normal"> 60</span>
-<span class="normal"> 61</span>
-<span class="normal"> 62</span>
-<span class="normal"> 63</span>
-<span class="normal"> 64</span>
-<span class="normal"> 65</span>
-<span class="normal"> 66</span>
-<span class="normal"> 67</span>
-<span class="normal"> 68</span>
-<span class="normal"> 69</span>
-<span class="normal"> 70</span>
-<span class="normal"> 71</span>
-<span class="normal"> 72</span>
-<span class="normal"> 73</span>
-<span class="normal"> 74</span>
-<span class="normal"> 75</span>
-<span class="normal"> 76</span>
-<span class="normal"> 77</span>
-<span class="normal"> 78</span>
-<span class="normal"> 79</span>
-<span class="normal"> 80</span>
-<span class="normal"> 81</span>
-<span class="normal"> 82</span>
-<span class="normal"> 83</span>
-<span class="normal"> 84</span>
-<span class="normal"> 85</span>
-<span class="normal"> 86</span>
-<span class="normal"> 87</span>
-<span class="normal"> 88</span>
-<span class="normal"> 89</span>
-<span class="normal"> 90</span>
-<span class="normal"> 91</span>
-<span class="normal"> 92</span>
-<span class="normal"> 93</span>
-<span class="normal"> 94</span>
-<span class="normal"> 95</span>
-<span class="normal"> 96</span>
-<span class="normal"> 97</span>
-<span class="normal"> 98</span>
-<span class="normal"> 99</span>
-<span class="normal">100</span>
-<span class="normal">101</span>
-<span class="normal">102</span>
-<span class="normal">103</span>
-<span class="normal">104</span>
-<span class="normal">105</span>
-<span class="normal">106</span>
-<span class="normal">107</span>
-<span class="normal">108</span>
-<span class="normal">109</span>
-<span class="normal">110</span>
-<span class="normal">111</span>
-<span class="normal">112</span>
-<span class="normal">113</span>
-<span class="normal">114</span>
-<span class="normal">115</span>
-<span class="normal">116</span>
-<span class="normal">117</span>
-<span class="normal">118</span>
-<span class="normal">119</span>
-<span class="normal">120</span>
-<span class="normal">121</span>
-<span class="normal">122</span>
-<span class="normal">123</span>
-<span class="normal">124</span>
-<span class="normal">125</span>
-<span class="normal">126</span>
-<span class="normal">127</span>
-<span class="normal">128</span>
-<span class="normal">129</span>
-<span class="normal">130</span>
-<span class="normal">131</span>
-<span class="normal">132</span>
-<span class="normal">133</span>
-<span class="normal">134</span>
-<span class="normal">135</span>
-<span class="normal">136</span>
-<span class="normal">137</span>
-<span class="normal">138</span>
-<span class="normal">139</span>
-<span class="normal">140</span>
-<span class="normal">141</span>
-<span class="normal">142</span>
-<span class="normal">143</span>
-<span class="normal">144</span>
-<span class="normal">145</span>
-<span class="normal">146</span>
-<span class="normal">147</span>
-<span class="normal">148</span>
-<span class="normal">149</span>
-<span class="normal">150</span>
-<span class="normal">151</span>
-<span class="normal">152</span>
-<span class="normal">153</span>
-<span class="normal">154</span>
-<span class="normal">155</span>
-<span class="normal">156</span>
-<span class="normal">157</span>
-<span class="normal">158</span>
-<span class="normal">159</span>
-<span class="normal">160</span>
-<span class="normal">161</span>
-<span class="normal">162</span>
-<span class="normal">163</span>
-<span class="normal">164</span>
-<span class="normal">165</span>
-<span class="normal">166</span>
-<span class="normal">167</span>
-<span class="normal">168</span>
-<span class="normal">169</span>
-<span class="normal">170</span>
-<span class="normal">171</span>
-<span class="normal">172</span>
-<span class="normal">173</span>
-<span class="normal">174</span>
-<span class="normal">175</span>
-<span class="normal">176</span>
-<span class="normal">177</span>
-<span class="normal">178</span>
-<span class="normal">179</span>
-<span class="normal">180</span>
-<span class="normal">181</span>
-<span class="normal">182</span>
-<span class="normal">183</span>
-<span class="normal">184</span>
-<span class="normal">185</span>
-<span class="normal">186</span>
-<span class="normal">187</span>
-<span class="normal">188</span>
-<span class="normal">189</span>
-<span class="normal">190</span>
-<span class="normal">191</span>
-<span class="normal">192</span>
-<span class="normal">193</span>
-<span class="normal">194</span>
-<span class="normal">195</span>
-<span class="normal">196</span>
-<span class="normal">197</span>
-<span class="normal">198</span>
-<span class="normal">199</span>
-<span class="normal">200</span>
-<span class="normal">201</span>
-<span class="normal">202</span>
-<span class="normal">203</span>
-<span class="normal">204</span>
-<span class="normal">205</span>
-<span class="normal">206</span>
-<span class="normal">207</span></pre></div></td><td class="code"><div><pre><span></span><span class="gh"># Installing and deploying</span>
-
-<span class="sb">`i`</span> puts a program you built onto your own PATH. <span class="sb">`D`</span> puts it onto another
+        <div class="readme-content">
+<h1 class="heading-element" dir="auto" id="installing-and-deploying">Installing and deploying</h1>
+<p dir="auto"><code>i</code> puts a program you built onto your own PATH. <code>D</code> puts it onto another
 machine, like a Raspberry Pi or a server, and keeps the old version there as
-a backup.
-
-<span class="gu">## Installing on this machine</span>
-
-Press <span class="sb">`i`</span> in a project. The install picker lists every program in it: cargo
-builds in <span class="sb">`target/`</span> (release, debug, examples, cross builds), scripts and
-other executables. For each one it shows:
-
-<span class="k">-</span><span class="w"> </span>what it is (release build, debug build, script …) and what it was built
-  for (<span class="sb">`x86_64 · dynamic`</span>, <span class="sb">`aarch64 · static`</span>, …), its size and age
-<span class="k">-</span><span class="w"> </span>whether it's installed: ✓ installed, ↑ newer than the installed copy, ↓ older
-<span class="k">-</span><span class="w"> </span>a warning when the sources changed after it was built (<span class="sb">`b`</span> or <span class="sb">`B`</span> builds
-  it again)
-<span class="k">-</span><span class="w"> </span>a warning when another copy comes earlier on your PATH and would run
-  instead
-
-| Key | What it does |
-|---|---|
-| <span class="sb">`Enter`</span> or <span class="sb">`i`</span> | install it |
-| <span class="sb">`p`</span> | pull, then install the newest version; see below |
-| <span class="sb">`r`</span> | run it |
-| <span class="sb">`d`</span> | review the project's <span class="sb">`.desktop`</span> entry for it |
-| <span class="sb">`u`</span> | remove the other copy that comes earlier on your PATH |
-| <span class="sb">`Esc`</span> | close |
-
-<span class="gu">### Installing the newest version</span>
-
-After merging pull requests on GitHub, the new commits aren't on disk yet:
-<span class="sb">`Enter`</span> would install the version you have checked out. <span class="sb">`p`</span> pulls first,
-then installs:
-
-<span class="k">-</span><span class="w"> </span>the <span class="sb">`cargo install`</span> row: <span class="sb">`git pull --ff-only`</span>, then <span class="sb">`cargo install`</span>
-<span class="k">-</span><span class="w"> </span>a release or debug build in <span class="sb">`target/`</span>: the pull, then `cargo build
-  --release` or <span class="sb">`cargo build`</span>, then the install
-<span class="k">-</span><span class="w"> </span>a script: the pull, then the install
-
-Examples and cross builds can't be rebuilt this way; for those, <span class="sb">`g p`</span>,
-build, then <span class="sb">`i`</span>. <span class="sb">`--ff-only`</span> means the pull only takes commits from the
+a backup.</p>
+<h2 class="heading-element" dir="auto" id="installing-on-this-machine">Installing on this machine</h2>
+<p dir="auto">Press <code>i</code> in a project. The install picker lists every program in it: cargo
+builds in <code>target/</code> (release, debug, examples, cross builds), scripts and
+other executables. For each one it shows:</p>
+<ul dir="auto">
+<li>what it is (release build, debug build, script …) and what it was built
+for (<code>x86_64 · dynamic</code>, <code>aarch64 · static</code>, …), its size and age</li>
+<li>whether it's installed: ✓ installed, ↑ newer than the installed copy, ↓ older</li>
+<li>a warning when the sources changed after it was built (<code>b</code> or <code>B</code> builds
+it again)</li>
+<li>a warning when another copy comes earlier on your PATH and would run
+instead</li>
+</ul>
+<markdown-accessiblity-table><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Enter</code> or <code>i</code></td>
+<td>install it</td>
+</tr>
+<tr>
+<td><code>p</code></td>
+<td>pull, then install the newest version; see below</td>
+</tr>
+<tr>
+<td><code>r</code></td>
+<td>run it</td>
+</tr>
+<tr>
+<td><code>d</code></td>
+<td>review the project's <code>.desktop</code> entry for it</td>
+</tr>
+<tr>
+<td><code>u</code></td>
+<td>remove the other copy that comes earlier on your PATH</td>
+</tr>
+<tr>
+<td><code>Esc</code></td>
+<td>close</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<h3 class="heading-element" dir="auto" id="installing-the-newest-version">Installing the newest version</h3>
+<p dir="auto">After merging pull requests on GitHub, the new commits aren't on disk yet:
+<code>Enter</code> would install the version you have checked out. <code>p</code> pulls first,
+then installs:</p>
+<ul dir="auto">
+<li>the <code>cargo install</code> row: <code>git pull --ff-only</code>, then <code>cargo install</code></li>
+<li>a release or debug build in <code>target/</code>: the pull, then <code>cargo build --release</code> or <code>cargo build</code>, then the install</li>
+<li>a script: the pull, then the install</li>
+</ul>
+<p dir="auto">Examples and cross builds can't be rebuilt this way; for those, <code>g p</code>,
+build, then <code>i</code>. <code>--ff-only</code> means the pull only takes commits from the
 remote: when your branch has commits of its own that aren't pushed, it
-stops with a message instead of merging, and nothing is installed.
-
-When the branch you have checked out is behind its remote branch, the
+stops with a message instead of merging, and nothing is installed.</p>
+<p dir="auto">When the branch you have checked out is behind its remote branch, the
 picker also says so at the top ("main is 8 commits behind origin/main"),
-and <span class="sb">`Enter`</span> asks before installing the old version. It only knows commits
-up to your last fetch; <span class="sb">`p`</span> fetches right then, so it always gets the
-newest.
-
-Installing copies the program to <span class="sb">`~/.local/bin`</span> (<span class="sb">`install_dir`</span> in the
-[<span class="nt">configuration</span>](<span class="na">../reference/config.md</span>)). In a Cargo project, the first row
-runs <span class="sb">`cargo install --path .`</span> instead.
-
-<span class="gu">### Desktop entries</span>
-
-When the project has a <span class="sb">`.desktop`</span> file that starts the program, installing
+and <code>Enter</code> asks before installing the old version. It only knows commits
+up to your last fetch; <code>p</code> fetches right then, so it always gets the
+newest.</p>
+<p dir="auto">Installing copies the program to <code>~/.local/bin</code> (<code>install_dir</code> in the
+<a href="docs--reference--config.md.html">configuration</a>). In a Cargo project, the first row
+runs <code>cargo install --path .</code> instead.</p>
+<h3 class="heading-element" dir="auto" id="desktop-entries">Desktop entries</h3>
+<p dir="auto">When the project has a <code>.desktop</code> file that starts the program, installing
 also installs or updates that entry, so your app menu starts the version you
-just installed. Its <span class="sb">`Exec`</span> points at the installed program, and a relative
-<span class="sb">`Icon`</span> becomes an absolute path. Before changing an entry, Mainframe shows
-the diff: <span class="sb">`Enter`</span> or <span class="sb">`y`</span> updates it, <span class="sb">`n`</span> skips it, <span class="sb">`Esc`</span> cancels.
-
-<span class="sb">`desktop_entries`</span> in the configuration changes this: <span class="sb">`"ask"`</span> (the default)
-shows the diff, <span class="sb">`"always"`</span> updates without asking, <span class="sb">`"never"`</span> leaves desktop
-entries alone.
-
-<span class="gu">## Deploying to another machine</span>
-
-<span class="sb">`D`</span> builds the project, copies the result to another machine over ssh and
+just installed. Its <code>Exec</code> points at the installed program, and a relative
+<code>Icon</code> becomes an absolute path. Before changing an entry, Mainframe shows
+the diff: <code>Enter</code> or <code>y</code> updates it, <code>n</code> skips it, <code>Esc</code> cancels.</p>
+<p dir="auto"><code>desktop_entries</code> in the configuration changes this: <code>"ask"</code> (the default)
+shows the diff, <code>"always"</code> updates without asking, <code>"never"</code> leaves desktop
+entries alone.</p>
+<h2 class="heading-element" dir="auto" id="deploying-to-another-machine">Deploying to another machine</h2>
+<p dir="auto"><code>D</code> builds the project, copies the result to another machine over ssh and
 swaps it in for the program there. The old program stays next to it as
-<span class="sb">`&lt;name&gt;.bak-&lt;date-time&gt;`</span>, so you can go back.
-
-<span class="gu">### The first deploy target</span>
-
-The first time you press <span class="sb">`D`</span> in a project, a form asks for the target:
-
-| Field | What it means |
-|---|---|
-| name | what the picker calls it, like <span class="sb">`pi`</span> |
-| host | <span class="sb">`user@host`</span>, or a name from <span class="sb">`~/.ssh/config`</span> |
-| remote path | the program on that machine that gets replaced, like <span class="sb">`/usr/local/bin/myapp`</span> |
-| build | the command that builds it; <span class="sb">`-`</span> for none |
-| from | a branch to build, like <span class="sb">`main`</span>; empty builds your project folder as it is |
-| artifact | the built file, relative to the project, like <span class="sb">`target/aarch64-unknown-linux-gnu/release/myapp`</span> |
-| sudo | replace it as root, needed for <span class="sb">`/usr/local/bin`</span> and the like |
-| service | a systemd service, like <span class="sb">`myapp`</span>: restarted after each deploy, created if missing; see [<span class="nt">below</span>](<span class="na">#running-it-as-a-systemd-service</span>) |
-| restart | any other command to run there afterwards |
-| keep | how many backups stay there; <span class="sb">`0`</span> keeps all |
-| ssh | extra ssh options, like <span class="sb">`-p 2222 -i ~/.ssh/pi`</span> |
-| key | a key that deploys to this target without the picker, like <span class="sb">`F9`</span> |
-| run | <span class="ge">*background*</span> in the output pane, or <span class="ge">*terminal*</span> when ssh or sudo ask for a password |
-
-For a Rust project, the form suggests an ARM build for a Raspberry Pi, with
-[<span class="nt">cross</span>](<span class="na">https://github.com/cross-rs/cross</span>) when it's installed.
-cross mounts <span class="sb">`~/.cargo`</span> into its container, and settings in
-<span class="sb">`~/.cargo/config.toml`</span> made for your machine (an sccache wrapper, a clang or
-mold linker) would break the build in there, so a build that runs <span class="sb">`cross`</span>
-hides that file from the container. Your file stays as it is.
-
-The target is saved in <span class="sb">`~/.config/mainframe/projects/`</span>, outside the project,
-so host names never end up in a commit. <span class="sb">`D`</span> then <span class="sb">`e`</span> opens the same form
-for the selected target, <span class="sb">`x`</span> deletes it, and <span class="sb">`E`</span> opens the whole file in
+<code>&lt;name&gt;.bak-&lt;date-time&gt;</code>, so you can go back.</p>
+<h3 class="heading-element" dir="auto" id="the-first-deploy-target">The first deploy target</h3>
+<p dir="auto">The first time you press <code>D</code> in a project, a form asks for the target:</p>
+<markdown-accessiblity-table><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>What it means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>what the picker calls it, like <code>pi</code></td>
+</tr>
+<tr>
+<td>host</td>
+<td><code>user@host</code>, or a name from <code>~/.ssh/config</code></td>
+</tr>
+<tr>
+<td>remote path</td>
+<td>the program on that machine that gets replaced, like <code>/usr/local/bin/myapp</code></td>
+</tr>
+<tr>
+<td>build</td>
+<td>the command that builds it; <code>-</code> for none</td>
+</tr>
+<tr>
+<td>from</td>
+<td>a branch to build, like <code>main</code>; empty builds your project folder as it is</td>
+</tr>
+<tr>
+<td>artifact</td>
+<td>the built file, relative to the project, like <code>target/aarch64-unknown-linux-gnu/release/myapp</code></td>
+</tr>
+<tr>
+<td>sudo</td>
+<td>replace it as root, needed for <code>/usr/local/bin</code> and the like</td>
+</tr>
+<tr>
+<td>service</td>
+<td>a systemd service, like <code>myapp</code>: restarted after each deploy, created if missing; see <a href="#running-it-as-a-systemd-service">below</a></td>
+</tr>
+<tr>
+<td>restart</td>
+<td>any other command to run there afterwards</td>
+</tr>
+<tr>
+<td>keep</td>
+<td>how many backups stay there; <code>0</code> keeps all</td>
+</tr>
+<tr>
+<td>ssh</td>
+<td>extra ssh options, like <code>-p 2222 -i ~/.ssh/pi</code></td>
+</tr>
+<tr>
+<td>key</td>
+<td>a key that deploys to this target without the picker, like <code>F9</code></td>
+</tr>
+<tr>
+<td>run</td>
+<td><em>background</em> in the output pane, or <em>terminal</em> when ssh or sudo ask for a password</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto">For a Rust project, the form suggests an ARM build for a Raspberry Pi, with
+<a href="https://github.com/cross-rs/cross">cross</a> when it's installed.
+cross mounts <code>~/.cargo</code> into its container, and settings in
+<code>~/.cargo/config.toml</code> made for your machine (an sccache wrapper, a clang or
+mold linker) would break the build in there, so a build that runs <code>cross</code>
+hides that file from the container. Your file stays as it is.</p>
+<p dir="auto">The target is saved in <code>~/.config/mainframe/projects/</code>, outside the project,
+so host names never end up in a commit. <code>D</code> then <code>e</code> opens the same form
+for the selected target, <code>x</code> deletes it, and <code>E</code> opens the whole file in
 your editor; see
-[<span class="nt">Configuration</span>](<span class="na">../reference/config.md#per-project-settings</span>) for every
-setting.
-
-<span class="gu">### Deploying</span>
-
-<span class="sb">`D`</span> opens the picker with your targets. It shows what a deploy will do,
-step by step.
-
-| Key | What it does |
-|---|---|
-| <span class="sb">`Enter`</span> or <span class="sb">`D`</span> | deploy |
-| <span class="sb">`u`</span> | roll back: put the newest backup back |
-| <span class="sb">`l`</span> | list the program and its backups on the machine |
-| <span class="sb">`a`</span> | add another target |
-| <span class="sb">`e`</span> | edit the selected target in the form |
-| <span class="sb">`x`</span> | delete the selected target (only from the settings; nothing on the machine) |
-| <span class="sb">`E`</span> | open the settings file in your editor |
-| <span class="sb">`Esc`</span> | close |
-
-A deploy runs these steps in the output pane:
-
-<span class="k">1.</span> <span class="gs">**Build**</span>, with the build command.
-<span class="k">2.</span> <span class="gs">**Copy**</span> the artifact to <span class="sb">`/tmp`</span> on the machine.
-<span class="k">3.</span> <span class="gs">**Swap it in:**</span> back up the current program, then rename the new one into
-   its place. Because it's a rename, a program that is running can be
-   replaced. Mode and owner stay the same. If the new build is identical to
-   what's there, nothing changes and no backup is made.
-<span class="k">4.</span> <span class="gs">**Restart**</span> the systemd service and check that it runs, if you set one.
-<span class="k">5.</span> <span class="gs">**Run the restart command**</span>, if you set one.
-
-Only the newest 3 backups are kept (<span class="sb">`keep`</span> in the settings). <span class="sb">`u`</span> puts the
-newest one back; press it again to go back one more.
-
-The script that ran is kept in <span class="sb">`~/.local/state/mainframe/deploy/`</span>, so you
-can read exactly what happened.
-
-<span class="gu">### Running it as a systemd service</span>
-
-Set "service" to a name, like <span class="sb">`myapp`</span>, and after the swap the deploy runs
-<span class="sb">`systemctl restart myapp`</span> and waits two seconds. If the service isn't
+<a href="docs--reference--config.md.html#per-project-settings">Configuration</a> for every
+setting.</p>
+<h3 class="heading-element" dir="auto" id="deploying">Deploying</h3>
+<p dir="auto"><code>D</code> opens the picker with your targets. It shows what a deploy will do,
+step by step.</p>
+<markdown-accessiblity-table><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Enter</code> or <code>D</code></td>
+<td>deploy</td>
+</tr>
+<tr>
+<td><code>u</code></td>
+<td>roll back: put the newest backup back</td>
+</tr>
+<tr>
+<td><code>l</code></td>
+<td>list the program and its backups on the machine</td>
+</tr>
+<tr>
+<td><code>a</code></td>
+<td>add another target</td>
+</tr>
+<tr>
+<td><code>e</code></td>
+<td>edit the selected target in the form</td>
+</tr>
+<tr>
+<td><code>x</code></td>
+<td>delete the selected target (only from the settings; nothing on the machine)</td>
+</tr>
+<tr>
+<td><code>E</code></td>
+<td>open the settings file in your editor</td>
+</tr>
+<tr>
+<td><code>Esc</code></td>
+<td>close</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto">A deploy runs these steps in the output pane:</p>
+<ol dir="auto">
+<li><strong>Build</strong>, with the build command.</li>
+<li><strong>Copy</strong> the artifact to <code>/tmp</code> on the machine.</li>
+<li><strong>Swap it in:</strong> back up the current program, then rename the new one into
+its place. Because it's a rename, a program that is running can be
+replaced. Mode and owner stay the same. If the new build is identical to
+what's there, nothing changes and no backup is made.</li>
+<li><strong>Restart</strong> the systemd service and check that it runs, if you set one.</li>
+<li><strong>Run the restart command</strong>, if you set one.</li>
+</ol>
+<p dir="auto">Only the newest 3 backups are kept (<code>keep</code> in the settings). <code>u</code> puts the
+newest one back; press it again to go back one more.</p>
+<p dir="auto">The script that ran is kept in <code>~/.local/state/mainframe/deploy/</code>, so you
+can read exactly what happened.</p>
+<h3 class="heading-element" dir="auto" id="running-it-as-a-systemd-service">Running it as a systemd service</h3>
+<p dir="auto">Set "service" to a name, like <code>myapp</code>, and after the swap the deploy runs
+<code>systemctl restart myapp</code> and waits two seconds. If the service isn't
 running then, the deploy fails and shows its status and last log lines.
-<span class="sb">`u`</span> rolls back, and restarts the service with the old program.
+<code>u</code> rolls back, and restarts the service with the old program.</p>
+<p dir="auto">If there's no such service yet, the first deploy creates a minimal one that
+runs the remote path, enables it so it starts at boot, and starts it:</p>
+<div class="highlight highlight-source-ini notranslate position-relative overflow-auto" dir="auto"><pre><span class="pl-en">[Unit]</span>
+<span class="pl-k">Description</span>=myapp (deployed with mainframe)
+<span class="pl-k">After</span>=network-online.target
+<span class="pl-k">Wants</span>=network-online.target
 
-If there's no such service yet, the first deploy creates a minimal one that
-runs the remote path, enables it so it starts at boot, and starts it:
+<span class="pl-en">[Service]</span>
+<span class="pl-k">ExecStart</span>=/usr/local/bin/myapp
+<span class="pl-k">Restart</span>=on-failure
 
-<span class="sb">```ini</span>
-<span class="k">[Unit]</span>
-<span class="na">Description</span><span class="o">=</span><span class="s">myapp (deployed with mainframe)</span>
-<span class="na">After</span><span class="o">=</span><span class="s">network-online.target</span>
-<span class="na">Wants</span><span class="o">=</span><span class="s">network-online.target</span>
-
-<span class="k">[Service]</span>
-<span class="na">ExecStart</span><span class="o">=</span><span class="s">/usr/local/bin/myapp</span>
-<span class="na">Restart</span><span class="o">=</span><span class="s">on-failure</span>
-
-<span class="k">[Install]</span>
-<span class="na">WantedBy</span><span class="o">=</span><span class="s">multi-user.target</span>
-<span class="sb">```</span>
-
-With sudo, or when you log in as root, it's a system service in
-<span class="sb">`/etc/systemd/system/`</span>. Otherwise it's a user service in
-<span class="sb">`~/.config/systemd/user/`</span>; for that one to start at boot without you being
-logged in, run <span class="sb">`loginctl enable-linger`</span> there once.
-
-Mainframe only creates the unit when there's none, and never changes it
+<span class="pl-en">[Install]</span>
+<span class="pl-k">WantedBy</span>=multi-user.target</pre></div>
+<p dir="auto">With sudo, or when you log in as root, it's a system service in
+<code>/etc/systemd/system/</code>. Otherwise it's a user service in
+<code>~/.config/systemd/user/</code>; for that one to start at boot without you being
+logged in, run <code>loginctl enable-linger</code> there once.</p>
+<p dir="auto">Mainframe only creates the unit when there's none, and never changes it
 afterwards. Add arguments, a user or environment variables there, and the
-next deploys keep them.
-
-<span class="gu">### ssh keys and sudo</span>
-
-Deploys run in the background, where nothing can ask for a password. So the
-machine needs your ssh key (<span class="sb">`ssh-copy-id user@host`</span>), and with sudo, sudo
+next deploys keep them.</p>
+<h3 class="heading-element" dir="auto" id="ssh-keys-and-sudo">ssh keys and sudo</h3>
+<p dir="auto">Deploys run in the background, where nothing can ask for a password. So the
+machine needs your ssh key (<code>ssh-copy-id user@host</code>), and with sudo, sudo
 without a password. Raspberry Pi OS's default user has that. If not, choose
-<span class="ge">*terminal*</span> for "run" (<span class="sb">`interactive = true`</span>): the deploy then runs in the full
-terminal, where ssh and sudo can ask, and you type the password once.
-
-<span class="gu">### Deploying a branch, not your work in progress</span>
-
-Usually <span class="sb">`D`</span> builds your project folder as it is, including changes you
+<em>terminal</em> for "run" (<code>interactive = true</code>): the deploy then runs in the full
+terminal, where ssh and sudo can ask, and you type the password once.</p>
+<h3 class="heading-element" dir="auto" id="deploying-a-branch-not-your-work-in-progress">Deploying a branch, not your work in progress</h3>
+<p dir="auto">Usually <code>D</code> builds your project folder as it is, including changes you
 haven't committed. When you're in the middle of a feature but want to ship
-<span class="sb">`main`</span>, set <span class="sb">`from = "main"`</span> on the target.
-
-Mainframe then checks <span class="sb">`main`</span> out in a separate folder under
-<span class="sb">`~/.cache/mainframe/deploy/`</span>, builds it there and deploys that build. Your
+<code>main</code>, set <code>from = "main"</code> on the target.</p>
+<p dir="auto">Mainframe then checks <code>main</code> out in a separate folder under
+<code>~/.cache/mainframe/deploy/</code>, builds it there and deploys that build. Your
 own folder, its branch and your uncommitted changes aren't touched. It
-builds your local <span class="sb">`main`</span>; pull first to get what's on GitHub, or use
-<span class="sb">`from = "origin/main"`</span> after a fetch.
-
-<span class="gs">**The separate checkout only has what's committed.**</span> Files that git ignores,
-like a web UI built into <span class="sb">`web/build`</span>, a <span class="sb">`.env`</span> or anything generated, aren't
+builds your local <code>main</code>; pull first to get what's on GitHub, or use
+<code>from = "origin/main"</code> after a fetch.</p>
+<p dir="auto"><strong>The separate checkout only has what's committed.</strong> Files that git ignores,
+like a web UI built into <code>web/build</code>, a <code>.env</code> or anything generated, aren't
 there. Let the build command make them. For a program that embeds a web UI,
-for example:
-
-<span class="sb">```toml</span>
-<span class="n">build</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"npm --prefix web ci &amp;&amp; npm --prefix web run build &amp;&amp; cross build --release --target aarch64-unknown-linux-musl"</span>
-<span class="sb">```</span>
-
-After the deploy, worked or not, the checkout and its build output are
+for example:</p>
+<div class="highlight highlight-source-toml notranslate position-relative overflow-auto" dir="auto"><pre><span class="pl-smi">build</span> = <span class="pl-s"><span class="pl-pds">"</span>npm --prefix web ci &amp;&amp; npm --prefix web run build &amp;&amp; cross build --release --target aarch64-unknown-linux-musl<span class="pl-pds">"</span></span></pre></div>
+<p dir="auto">After the deploy, worked or not, the checkout and its build output are
 deleted again, so they don't fill your disk. The next deploy builds from
-scratch. With <span class="sb">`keep_deploy_builds = true`</span> in the
-[<span class="nt">configuration</span>](<span class="na">../reference/config.md</span>), the checkout stays, and later
-deploys only rebuild what changed.
-</pre></div></td></tr></table></div>
+scratch. With <code>keep_deploy_builds = true</code> in the
+<a href="docs--reference--config.md.html">configuration</a>, the checkout stays, and later
+deploys only rebuild what changed.</p>
 
+        </div>
       </section>
     </main>
   </div>

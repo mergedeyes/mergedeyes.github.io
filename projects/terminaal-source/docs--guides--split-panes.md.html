@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>docs/guides/split-panes.md — Terminaal — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=41ca8b66" />
+  <link rel="stylesheet" href="../../styles.css?v=77eb044b" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -71,191 +71,102 @@
           <h1 class="section__title">docs/guides/split-panes.md</h1>
           <a href="../terminaal.html" class="link">← Back to Terminaal</a>
         </div>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span>
-<span class="normal">43</span>
-<span class="normal">44</span>
-<span class="normal">45</span>
-<span class="normal">46</span>
-<span class="normal">47</span>
-<span class="normal">48</span>
-<span class="normal">49</span>
-<span class="normal">50</span>
-<span class="normal">51</span>
-<span class="normal">52</span>
-<span class="normal">53</span>
-<span class="normal">54</span>
-<span class="normal">55</span>
-<span class="normal">56</span>
-<span class="normal">57</span>
-<span class="normal">58</span>
-<span class="normal">59</span>
-<span class="normal">60</span>
-<span class="normal">61</span>
-<span class="normal">62</span>
-<span class="normal">63</span>
-<span class="normal">64</span>
-<span class="normal">65</span>
-<span class="normal">66</span>
-<span class="normal">67</span>
-<span class="normal">68</span>
-<span class="normal">69</span>
-<span class="normal">70</span>
-<span class="normal">71</span>
-<span class="normal">72</span>
-<span class="normal">73</span>
-<span class="normal">74</span>
-<span class="normal">75</span>
-<span class="normal">76</span>
-<span class="normal">77</span>
-<span class="normal">78</span>
-<span class="normal">79</span>
-<span class="normal">80</span>
-<span class="normal">81</span>
-<span class="normal">82</span>
-<span class="normal">83</span>
-<span class="normal">84</span>
-<span class="normal">85</span>
-<span class="normal">86</span>
-<span class="normal">87</span>
-<span class="normal">88</span>
-<span class="normal">89</span>
-<span class="normal">90</span>
-<span class="normal">91</span>
-<span class="normal">92</span></pre></div></td><td class="code"><div><pre><span></span><span class="gh"># Split panes</span>
-
-A tab can hold several terminals at once, side by side or one above the other –
+        <div class="readme-content">
+<h1 class="heading-element" dir="auto" id="split-panes">Split panes</h1>
+<p dir="auto">A tab can hold several terminals at once, side by side or one above the other –
 a server's log next to its shell, or three servers in view while you broadcast
-to them.
-
-<span class="gu">## Splitting</span>
-
-| To… | Press | Or right-click into the terminal |
-| --- | --- | --- |
-| Put a new pane right of this one | &lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;D&lt;/kbd&gt; | <span class="gs">**Split right**</span> |
-| Put a new pane below this one | &lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;Alt&lt;/kbd&gt;+&lt;kbd&gt;D&lt;/kbd&gt; | <span class="gs">**Split down**</span> |
-
-The pane you split halves its room with the new one. What the new pane runs
-follows the one you split:
-
-<span class="k">-</span><span class="w"> </span><span class="gs">**A local shell**</span>: the same shell, in the same working directory (when the
-  shell reports it, see [<span class="nt">Shell integration</span>](<span class="na">shell-integration.md</span>)).
-<span class="k">-</span><span class="w"> </span><span class="gs">**An SSH session**</span>: a new connection to the same host with the same login.
-  Prompts for passphrases or passwords come up again, in the new pane.
-
-A pane that would end up smaller than 8 columns or 2 rows isn't split.
-
-<span class="gu">## Moving around</span>
-
-<span class="k">-</span><span class="w"> </span><span class="gs">**Click**</span> into a pane to give it the keyboard.
-<span class="k">-</span><span class="w"> </span>&lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Alt&lt;/kbd&gt;+&lt;kbd&gt;←&lt;/kbd&gt; &lt;kbd&gt;→&lt;/kbd&gt; &lt;kbd&gt;↑&lt;/kbd&gt; &lt;kbd&gt;↓&lt;/kbd&gt;
-  moves to the neighbouring pane in that direction.
-
-The pane with the keyboard shows a solid cursor, the others an outlined one. The
+to them.</p>
+<h2 class="heading-element" dir="auto" id="splitting">Splitting</h2>
+<markdown-accessiblity-table><table>
+<thead>
+<tr>
+<th>To…</th>
+<th>Press</th>
+<th>Or right-click into the terminal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Put a new pane right of this one</td>
+<td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>D</kbd></td>
+<td><strong>Split right</strong></td>
+</tr>
+<tr>
+<td>Put a new pane below this one</td>
+<td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>D</kbd></td>
+<td><strong>Split down</strong></td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto">The pane you split halves its room with the new one. What the new pane runs
+follows the one you split:</p>
+<ul dir="auto">
+<li><strong>A local shell</strong>: the same shell, in the same working directory (when the
+shell reports it, see <a href="docs--guides--shell-integration.md.html">Shell integration</a>).</li>
+<li><strong>An SSH session</strong>: a new connection to the same host with the same login.
+Prompts for passphrases or passwords come up again, in the new pane.</li>
+</ul>
+<p dir="auto">A pane that would end up smaller than 8 columns or 2 rows isn't split.</p>
+<h2 class="heading-element" dir="auto" id="moving-around">Moving around</h2>
+<ul dir="auto">
+<li><strong>Click</strong> into a pane to give it the keyboard.</li>
+<li><kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>←</kbd> <kbd>→</kbd> <kbd>↑</kbd> <kbd>↓</kbd>
+moves to the neighbouring pane in that direction.</li>
+</ul>
+<p dir="auto">The pane with the keyboard shows a solid cursor, the others an outlined one. The
 tab bar and the window title show its title. Everything that acts on "the
 terminal" acts on that pane: copy and paste, search, prompt jumps, the command
-buttons, the port forwards listed in the SSH section. Only the <span class="gs">**mouse wheel**</span>
-scrolls whichever pane is under the mouse.
-
-<span class="gu">## Resizing</span>
-
-Drag the thin line between two panes. The mouse pointer turns into a resize arrow
-over it. Each side keeps room for at least a few columns or rows.
-
-With the keyboard, &lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;Alt&lt;/kbd&gt;+arrow moves a
+buttons, the port forwards listed in the SSH section. Only the <strong>mouse wheel</strong>
+scrolls whichever pane is under the mouse.</p>
+<h2 class="heading-element" dir="auto" id="resizing">Resizing</h2>
+<p dir="auto">Drag the thin line between two panes. The mouse pointer turns into a resize arrow
+over it. Each side keeps room for at least a few columns or rows.</p>
+<p dir="auto">With the keyboard, <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Alt</kbd>+arrow moves a
 line of the focused pane that way, two columns or one row at a time. At the edge
 of the window the line on the other side moves instead, so the key always moves
-a line in its own direction.
-
-<span class="gu">## Swapping</span>
-
-<span class="gs">**Swap with the pane on the left / right / above / below**</span> lets the focused pane
+a line in its own direction.</p>
+<h2 class="heading-element" dir="auto" id="swapping">Swapping</h2>
+<p dir="auto"><strong>Swap with the pane on the left / right / above / below</strong> lets the focused pane
 trade places with its neighbour; the keyboard goes along. It has no default
-shortcut – give it one under <span class="gs">**Settings → Shortcuts → Split panes**</span>, or run it
-from the command palette.
-
-<span class="gu">## Maximizing</span>
-
-&lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;Enter&lt;/kbd&gt; shows the focused pane over the
+shortcut – give it one under <strong>Settings → Shortcuts → Split panes</strong>, or run it
+from the command palette.</p>
+<h2 class="heading-element" dir="auto" id="maximizing">Maximizing</h2>
+<p dir="auto"><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Enter</kbd> shows the focused pane over the
 whole tab; press it again for all panes. Moving to another pane with
-&lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Alt&lt;/kbd&gt;+arrow keeps the tab maximized and shows that one
-instead. Splitting, or closing the focused pane, brings all panes back.
-
-<span class="gu">## Closing</span>
-
-<span class="k">-</span><span class="w"> </span>&lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;W&lt;/kbd&gt; or <span class="gs">**Close pane**</span> in the right-click
-  menu closes the focused pane; its neighbour takes over the room.
-<span class="k">-</span><span class="w"> </span>Ending the shell (<span class="sb">`exit`</span>, &lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;D&lt;/kbd&gt;) closes its pane too —
-  unless it failed within five seconds of starting: then the pane stays with a
-  line naming the status, so the error can be read.
-<span class="k">-</span><span class="w"> </span>A tab closes with its last pane.
-<span class="k">-</span><span class="w"> </span>&lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;Alt&lt;/kbd&gt;+&lt;kbd&gt;W&lt;/kbd&gt;, the tab's <span class="gs">**×**</span> or
-  a middle click on it close the whole tab with all its panes.
-
-<span class="gu">## Broadcast</span>
-
-The broadcast group is made of terminals, not tabs:
-&lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;I&lt;/kbd&gt; puts the focused pane in or takes it
+<kbd>Ctrl</kbd>+<kbd>Alt</kbd>+arrow keeps the tab maximized and shows that one
+instead. Splitting, or closing the focused pane, brings all panes back.</p>
+<h2 class="heading-element" dir="auto" id="closing">Closing</h2>
+<ul dir="auto">
+<li><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>W</kbd> or <strong>Close pane</strong> in the right-click
+menu closes the focused pane; its neighbour takes over the room.</li>
+<li>Ending the shell (<code>exit</code>, <kbd>Ctrl</kbd>+<kbd>D</kbd>) closes its pane too —
+unless it failed within five seconds of starting: then the pane stays with a
+line naming the status, so the error can be read.</li>
+<li>A tab closes with its last pane.</li>
+<li><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>W</kbd>, the tab's <strong>×</strong> or
+a middle click on it close the whole tab with all its panes.</li>
+</ul>
+<h2 class="heading-element" dir="auto" id="broadcast">Broadcast</h2>
+<p dir="auto">The broadcast group is made of terminals, not tabs:
+<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>I</kbd> puts the focused pane in or takes it
 out. Panes in the group get a red frame, and their tab a red line in the tab bar.
 Typing into a pane of the group reaches every terminal in it, in this tab and in
-others. See [<span class="nt">One command on many servers</span>](<span class="na">../tutorials/04-one-command-many-servers.md</span>).
+others. See <a href="docs--tutorials--04-one-command-many-servers.md.html">One command on many servers</a>.</p>
+<h2 class="heading-element" dir="auto" id="shortcuts">Shortcuts</h2>
+<p dir="auto">All of these can be changed under <strong>Settings → Shortcuts → Split panes</strong> or in
+<code>config.toml</code>: <code>split_right</code>, <code>split_down</code>, <code>close_pane</code>, <code>focus_pane_left</code>,
+<code>focus_pane_right</code>, <code>focus_pane_up</code>, <code>focus_pane_down</code>, <code>resize_pane_left</code>,
+<code>resize_pane_right</code>, <code>resize_pane_up</code>, <code>resize_pane_down</code>, <code>swap_pane_left</code>,
+<code>swap_pane_right</code>, <code>swap_pane_up</code>, <code>swap_pane_down</code>, <code>zoom_pane</code>. See
+<a href="docs--guides--keyboard-shortcuts.md.html">Keyboard shortcuts</a>.</p>
+<h2 class="heading-element" dir="auto" id="limits">Limits</h2>
+<ul dir="auto">
+<li>The layout is saved with the session and comes back at the next start, but
+every pane starts a fresh shell or connection. See
+<a href="docs--guides--sessions.md.html">Restoring the last session</a>.</li>
+</ul>
 
-<span class="gu">## Shortcuts</span>
-
-All of these can be changed under <span class="gs">**Settings → Shortcuts → Split panes**</span> or in
-<span class="sb">`config.toml`</span>: <span class="sb">`split_right`</span>, <span class="sb">`split_down`</span>, <span class="sb">`close_pane`</span>, <span class="sb">`focus_pane_left`</span>,
-<span class="sb">`focus_pane_right`</span>, <span class="sb">`focus_pane_up`</span>, <span class="sb">`focus_pane_down`</span>, <span class="sb">`resize_pane_left`</span>,
-<span class="sb">`resize_pane_right`</span>, <span class="sb">`resize_pane_up`</span>, <span class="sb">`resize_pane_down`</span>, <span class="sb">`swap_pane_left`</span>,
-<span class="sb">`swap_pane_right`</span>, <span class="sb">`swap_pane_up`</span>, <span class="sb">`swap_pane_down`</span>, <span class="sb">`zoom_pane`</span>. See
-[<span class="nt">Keyboard shortcuts</span>](<span class="na">keyboard-shortcuts.md</span>).
-
-<span class="gu">## Limits</span>
-
-<span class="k">-</span><span class="w"> </span>The layout is saved with the session and comes back at the next start, but
-  every pane starts a fresh shell or connection. See
-  [<span class="nt">Restoring the last session</span>](<span class="na">sessions.md</span>).
-</pre></div></td></tr></table></div>
-
+        </div>
       </section>
     </main>
   </div>

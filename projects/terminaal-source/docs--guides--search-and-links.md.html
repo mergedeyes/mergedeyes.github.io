@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>docs/guides/search-and-links.md — Terminaal — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=41ca8b66" />
+  <link rel="stylesheet" href="../../styles.css?v=77eb044b" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -71,405 +71,295 @@
           <h1 class="section__title">docs/guides/search-and-links.md</h1>
           <a href="../terminaal.html" class="link">← Back to Terminaal</a>
         </div>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">  1</span>
-<span class="normal">  2</span>
-<span class="normal">  3</span>
-<span class="normal">  4</span>
-<span class="normal">  5</span>
-<span class="normal">  6</span>
-<span class="normal">  7</span>
-<span class="normal">  8</span>
-<span class="normal">  9</span>
-<span class="normal"> 10</span>
-<span class="normal"> 11</span>
-<span class="normal"> 12</span>
-<span class="normal"> 13</span>
-<span class="normal"> 14</span>
-<span class="normal"> 15</span>
-<span class="normal"> 16</span>
-<span class="normal"> 17</span>
-<span class="normal"> 18</span>
-<span class="normal"> 19</span>
-<span class="normal"> 20</span>
-<span class="normal"> 21</span>
-<span class="normal"> 22</span>
-<span class="normal"> 23</span>
-<span class="normal"> 24</span>
-<span class="normal"> 25</span>
-<span class="normal"> 26</span>
-<span class="normal"> 27</span>
-<span class="normal"> 28</span>
-<span class="normal"> 29</span>
-<span class="normal"> 30</span>
-<span class="normal"> 31</span>
-<span class="normal"> 32</span>
-<span class="normal"> 33</span>
-<span class="normal"> 34</span>
-<span class="normal"> 35</span>
-<span class="normal"> 36</span>
-<span class="normal"> 37</span>
-<span class="normal"> 38</span>
-<span class="normal"> 39</span>
-<span class="normal"> 40</span>
-<span class="normal"> 41</span>
-<span class="normal"> 42</span>
-<span class="normal"> 43</span>
-<span class="normal"> 44</span>
-<span class="normal"> 45</span>
-<span class="normal"> 46</span>
-<span class="normal"> 47</span>
-<span class="normal"> 48</span>
-<span class="normal"> 49</span>
-<span class="normal"> 50</span>
-<span class="normal"> 51</span>
-<span class="normal"> 52</span>
-<span class="normal"> 53</span>
-<span class="normal"> 54</span>
-<span class="normal"> 55</span>
-<span class="normal"> 56</span>
-<span class="normal"> 57</span>
-<span class="normal"> 58</span>
-<span class="normal"> 59</span>
-<span class="normal"> 60</span>
-<span class="normal"> 61</span>
-<span class="normal"> 62</span>
-<span class="normal"> 63</span>
-<span class="normal"> 64</span>
-<span class="normal"> 65</span>
-<span class="normal"> 66</span>
-<span class="normal"> 67</span>
-<span class="normal"> 68</span>
-<span class="normal"> 69</span>
-<span class="normal"> 70</span>
-<span class="normal"> 71</span>
-<span class="normal"> 72</span>
-<span class="normal"> 73</span>
-<span class="normal"> 74</span>
-<span class="normal"> 75</span>
-<span class="normal"> 76</span>
-<span class="normal"> 77</span>
-<span class="normal"> 78</span>
-<span class="normal"> 79</span>
-<span class="normal"> 80</span>
-<span class="normal"> 81</span>
-<span class="normal"> 82</span>
-<span class="normal"> 83</span>
-<span class="normal"> 84</span>
-<span class="normal"> 85</span>
-<span class="normal"> 86</span>
-<span class="normal"> 87</span>
-<span class="normal"> 88</span>
-<span class="normal"> 89</span>
-<span class="normal"> 90</span>
-<span class="normal"> 91</span>
-<span class="normal"> 92</span>
-<span class="normal"> 93</span>
-<span class="normal"> 94</span>
-<span class="normal"> 95</span>
-<span class="normal"> 96</span>
-<span class="normal"> 97</span>
-<span class="normal"> 98</span>
-<span class="normal"> 99</span>
-<span class="normal">100</span>
-<span class="normal">101</span>
-<span class="normal">102</span>
-<span class="normal">103</span>
-<span class="normal">104</span>
-<span class="normal">105</span>
-<span class="normal">106</span>
-<span class="normal">107</span>
-<span class="normal">108</span>
-<span class="normal">109</span>
-<span class="normal">110</span>
-<span class="normal">111</span>
-<span class="normal">112</span>
-<span class="normal">113</span>
-<span class="normal">114</span>
-<span class="normal">115</span>
-<span class="normal">116</span>
-<span class="normal">117</span>
-<span class="normal">118</span>
-<span class="normal">119</span>
-<span class="normal">120</span>
-<span class="normal">121</span>
-<span class="normal">122</span>
-<span class="normal">123</span>
-<span class="normal">124</span>
-<span class="normal">125</span>
-<span class="normal">126</span>
-<span class="normal">127</span>
-<span class="normal">128</span>
-<span class="normal">129</span>
-<span class="normal">130</span>
-<span class="normal">131</span>
-<span class="normal">132</span>
-<span class="normal">133</span>
-<span class="normal">134</span>
-<span class="normal">135</span>
-<span class="normal">136</span>
-<span class="normal">137</span>
-<span class="normal">138</span>
-<span class="normal">139</span>
-<span class="normal">140</span>
-<span class="normal">141</span>
-<span class="normal">142</span>
-<span class="normal">143</span>
-<span class="normal">144</span>
-<span class="normal">145</span>
-<span class="normal">146</span>
-<span class="normal">147</span>
-<span class="normal">148</span>
-<span class="normal">149</span>
-<span class="normal">150</span>
-<span class="normal">151</span>
-<span class="normal">152</span>
-<span class="normal">153</span>
-<span class="normal">154</span>
-<span class="normal">155</span>
-<span class="normal">156</span>
-<span class="normal">157</span>
-<span class="normal">158</span>
-<span class="normal">159</span>
-<span class="normal">160</span>
-<span class="normal">161</span>
-<span class="normal">162</span>
-<span class="normal">163</span>
-<span class="normal">164</span>
-<span class="normal">165</span>
-<span class="normal">166</span>
-<span class="normal">167</span>
-<span class="normal">168</span>
-<span class="normal">169</span>
-<span class="normal">170</span>
-<span class="normal">171</span>
-<span class="normal">172</span>
-<span class="normal">173</span>
-<span class="normal">174</span>
-<span class="normal">175</span>
-<span class="normal">176</span>
-<span class="normal">177</span>
-<span class="normal">178</span>
-<span class="normal">179</span>
-<span class="normal">180</span>
-<span class="normal">181</span>
-<span class="normal">182</span>
-<span class="normal">183</span>
-<span class="normal">184</span>
-<span class="normal">185</span>
-<span class="normal">186</span>
-<span class="normal">187</span>
-<span class="normal">188</span>
-<span class="normal">189</span>
-<span class="normal">190</span>
-<span class="normal">191</span>
-<span class="normal">192</span>
-<span class="normal">193</span>
-<span class="normal">194</span>
-<span class="normal">195</span>
-<span class="normal">196</span>
-<span class="normal">197</span>
-<span class="normal">198</span>
-<span class="normal">199</span></pre></div></td><td class="code"><div><pre><span></span><span class="gh"># Search, links and the scrollback</span>
-
-<span class="gu">## Scrolling</span>
-
-<span class="k">-</span><span class="w"> </span><span class="gs">**Mouse wheel:**</span> 3 lines per notch by default (**Settings → Terminal → Mouse
-  wheel**, 1–20). Touchpads scroll smoothly, pixel by pixel.
-<span class="k">-</span><span class="w"> </span><span class="gs">**Scrollbar:**</span> at the right edge of each terminal. It shows while you're
-  scrolled back, for a moment after scrolling, and when the pointer is on the
-  edge. Drag the thumb, or click beside it to jump there. Off with **Settings →
-  Terminal → Scrollbar** (<span class="sb">`scrollbar = false`</span>). Full-screen programs have none.
-<span class="k">-</span><span class="w"> </span><span class="gs">**Keyboard:**</span> &lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;PageUp&lt;/kbd&gt;/&lt;kbd&gt;PageDown&lt;/kbd&gt; by page,
-  &lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;Home&lt;/kbd&gt;/&lt;kbd&gt;End&lt;/kbd&gt; to the top or bottom.
-<span class="k">-</span><span class="w"> </span><span class="gs">**Typing**</span> jumps back to the bottom.
-<span class="k">-</span><span class="w"> </span><span class="gs">**How much is kept:**</span> <span class="gs">**Settings → Terminal → Scrollback**</span> (default 10 000 lines
-  per tab). Lowering it drops the oldest lines of every tab.
-
-<span class="gu">### In full-screen programs</span>
-
-Programs like <span class="sb">`less`</span>, <span class="sb">`man`</span>, <span class="sb">`vim`</span> and <span class="sb">`htop`</span> use the "alternate screen", which
-has no scrollback. There:
-
-<span class="k">-</span><span class="w"> </span>With mouse support (<span class="sb">`htop`</span>, <span class="sb">`mc`</span>, <span class="sb">`vim`</span> with <span class="sb">`set mouse=a`</span>) the wheel goes to
-  the program as wheel events.
-<span class="k">-</span><span class="w"> </span>Without (<span class="sb">`less`</span>, <span class="sb">`man`</span>) it becomes arrow keys.
-<span class="k">-</span><span class="w"> </span>&lt;kbd&gt;Shift&lt;/kbd&gt;+wheel always scrolls Terminaal's own scrollback instead.
-<span class="k">-</span><span class="w"> </span>The keyboard scroll shortcuts go to the program.
-
-<span class="gu">## Search</span>
-
-&lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;F&lt;/kbd&gt; opens the search bar in the
-bottom right corner (it moves to the top if it would cover the match).
-
-<span class="gs">**While typing the query:**</span>
-
-| Key | Does |
-| --- | --- |
-| characters | search as you type, upwards from the bottom of the screen |
-| &lt;kbd&gt;Backspace&lt;/kbd&gt; | remove a character; an empty query scrolls back to where you started |
-| &lt;kbd&gt;Enter&lt;/kbd&gt; | next match upwards (older), and stop typing |
-| &lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;Enter&lt;/kbd&gt; | next match downwards (newer), and stop typing |
-| &lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;V&lt;/kbd&gt; | paste into the query |
-| &lt;kbd&gt;Alt&lt;/kbd&gt;+&lt;kbd&gt;R&lt;/kbd&gt; | read the query as a regular expression, or as plain text again |
-| &lt;kbd&gt;Esc&lt;/kbd&gt; | close |
-
-<span class="gs">**After Enter:**</span>
-
-| Key | Does |
-| --- | --- |
-| &lt;kbd&gt;n&lt;/kbd&gt; | next match up |
-| &lt;kbd&gt;N&lt;/kbd&gt; | next match down |
-| &lt;kbd&gt;/&lt;/kbd&gt; or &lt;kbd&gt;Backspace&lt;/kbd&gt; | edit the query again (a click on the bar too) |
-| &lt;kbd&gt;Alt&lt;/kbd&gt;+&lt;kbd&gt;R&lt;/kbd&gt; | regular expression on / off |
-| &lt;kbd&gt;Esc&lt;/kbd&gt; | close |
-| anything else | close the bar, and the key goes to the shell |
-
-Good to know:
-
-<span class="k">-</span><span class="w"> </span>The query is plain text: <span class="sb">`a.b`</span> finds "a.b". &lt;kbd&gt;Alt&lt;/kbd&gt;+&lt;kbd&gt;R&lt;/kbd&gt; reads it
-  as a regular expression instead – the bar then says <span class="gs">**Search (regex)**</span>, and
-  <span class="gs">**Not a valid pattern**</span> while what you've typed isn't one yet.
-<span class="k">-</span><span class="w"> </span>The bar counts the matches: <span class="sb">`3/12`</span> is the third of twelve, counted from the
-  top of the scrollback. <span class="sb">`1000+`</span> means there are at least that many – it stops
-  counting at 1000, and while you type it only looks as far up as the search
-  does.
-<span class="k">-</span><span class="w"> </span>Case is ignored until you type a capital letter.
-<span class="k">-</span><span class="w"> </span>Matches across wrapped lines are found.
-<span class="k">-</span><span class="w"> </span>Searching wraps around the ends of the scrollback.
-<span class="k">-</span><span class="w"> </span>While typing, each keystroke looks at most 1000 lines up from where the search
-  started; &lt;kbd&gt;Enter&lt;/kbd&gt; searches the whole scrollback.
-<span class="k">-</span><span class="w"> </span>All matches on screen are highlighted, the current one brighter. Themes can set
-  both colors (<span class="sb">`[colors.search]`</span>).
-
-<span class="gu">## Vi mode</span>
-
-&lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;Space&lt;/kbd&gt; gives the terminal a second
+        <div class="readme-content">
+<h1 class="heading-element" dir="auto" id="search-links-and-the-scrollback">Search, links and the scrollback</h1>
+<h2 class="heading-element" dir="auto" id="scrolling">Scrolling</h2>
+<ul dir="auto">
+<li><strong>Mouse wheel:</strong> 3 lines per notch by default (<strong>Settings → Terminal → Mouse
+wheel</strong>, 1–20). Touchpads scroll smoothly, pixel by pixel.</li>
+<li><strong>Scrollbar:</strong> at the right edge of each terminal. It shows while you're
+scrolled back, for a moment after scrolling, and when the pointer is on the
+edge. Drag the thumb, or click beside it to jump there. Off with <strong>Settings →
+Terminal → Scrollbar</strong> (<code>scrollbar = false</code>). Full-screen programs have none.</li>
+<li><strong>Keyboard:</strong> <kbd>Shift</kbd>+<kbd>PageUp</kbd>/<kbd>PageDown</kbd> by page,
+<kbd>Shift</kbd>+<kbd>Home</kbd>/<kbd>End</kbd> to the top or bottom.</li>
+<li><strong>Typing</strong> jumps back to the bottom.</li>
+<li><strong>How much is kept:</strong> <strong>Settings → Terminal → Scrollback</strong> (default 10 000 lines
+per tab). Lowering it drops the oldest lines of every tab.</li>
+</ul>
+<h3 class="heading-element" dir="auto" id="in-full-screen-programs">In full-screen programs</h3>
+<p dir="auto">Programs like <code>less</code>, <code>man</code>, <code>vim</code> and <code>htop</code> use the "alternate screen", which
+has no scrollback. There:</p>
+<ul dir="auto">
+<li>With mouse support (<code>htop</code>, <code>mc</code>, <code>vim</code> with <code>set mouse=a</code>) the wheel goes to
+the program as wheel events.</li>
+<li>Without (<code>less</code>, <code>man</code>) it becomes arrow keys.</li>
+<li><kbd>Shift</kbd>+wheel always scrolls Terminaal's own scrollback instead.</li>
+<li>The keyboard scroll shortcuts go to the program.</li>
+</ul>
+<h2 class="heading-element" dir="auto" id="search">Search</h2>
+<p dir="auto"><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>F</kbd> opens the search bar in the
+bottom right corner (it moves to the top if it would cover the match).</p>
+<p dir="auto"><strong>While typing the query:</strong></p>
+<markdown-accessiblity-table><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>characters</td>
+<td>search as you type, upwards from the bottom of the screen</td>
+</tr>
+<tr>
+<td><kbd>Backspace</kbd></td>
+<td>remove a character; an empty query scrolls back to where you started</td>
+</tr>
+<tr>
+<td><kbd>Enter</kbd></td>
+<td>next match upwards (older), and stop typing</td>
+</tr>
+<tr>
+<td><kbd>Shift</kbd>+<kbd>Enter</kbd></td>
+<td>next match downwards (newer), and stop typing</td>
+</tr>
+<tr>
+<td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>V</kbd></td>
+<td>paste into the query</td>
+</tr>
+<tr>
+<td><kbd>Alt</kbd>+<kbd>R</kbd></td>
+<td>read the query as a regular expression, or as plain text again</td>
+</tr>
+<tr>
+<td><kbd>Esc</kbd></td>
+<td>close</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto"><strong>After Enter:</strong></p>
+<markdown-accessiblity-table><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><kbd>n</kbd></td>
+<td>next match up</td>
+</tr>
+<tr>
+<td><kbd>N</kbd></td>
+<td>next match down</td>
+</tr>
+<tr>
+<td><kbd>/</kbd> or <kbd>Backspace</kbd></td>
+<td>edit the query again (a click on the bar too)</td>
+</tr>
+<tr>
+<td><kbd>Alt</kbd>+<kbd>R</kbd></td>
+<td>regular expression on / off</td>
+</tr>
+<tr>
+<td><kbd>Esc</kbd></td>
+<td>close</td>
+</tr>
+<tr>
+<td>anything else</td>
+<td>close the bar, and the key goes to the shell</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto">Good to know:</p>
+<ul dir="auto">
+<li>The query is plain text: <code>a.b</code> finds "a.b". <kbd>Alt</kbd>+<kbd>R</kbd> reads it
+as a regular expression instead – the bar then says <strong>Search (regex)</strong>, and
+<strong>Not a valid pattern</strong> while what you've typed isn't one yet.</li>
+<li>The bar counts the matches: <code>3/12</code> is the third of twelve, counted from the
+top of the scrollback. <code>1000+</code> means there are at least that many – it stops
+counting at 1000, and while you type it only looks as far up as the search
+does.</li>
+<li>Case is ignored until you type a capital letter.</li>
+<li>Matches across wrapped lines are found.</li>
+<li>Searching wraps around the ends of the scrollback.</li>
+<li>While typing, each keystroke looks at most 1000 lines up from where the search
+started; <kbd>Enter</kbd> searches the whole scrollback.</li>
+<li>All matches on screen are highlighted, the current one brighter. Themes can set
+both colors (<code>[colors.search]</code>).</li>
+</ul>
+<h2 class="heading-element" dir="auto" id="vi-mode">Vi mode</h2>
+<p dir="auto"><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Space</kbd> gives the terminal a second
 cursor that moves through the scrollback with vi's keys – to select and copy
 without the mouse. It starts where the terminal's cursor is; the bar at the
 bottom says on which line of how many you are. Nothing you type reaches the
-program meanwhile; the program keeps running and printing.
-
-| Key | Does |
-| --- | --- |
-| &lt;kbd&gt;h&lt;/kbd&gt; &lt;kbd&gt;j&lt;/kbd&gt; &lt;kbd&gt;k&lt;/kbd&gt; &lt;kbd&gt;l&lt;/kbd&gt;, arrows | left, down, up, right |
-| &lt;kbd&gt;w&lt;/kbd&gt; &lt;kbd&gt;b&lt;/kbd&gt; &lt;kbd&gt;e&lt;/kbd&gt; | next word, word back, end of word (words as for a double-click) |
-| &lt;kbd&gt;W&lt;/kbd&gt; &lt;kbd&gt;B&lt;/kbd&gt; &lt;kbd&gt;E&lt;/kbd&gt; | the same for words between spaces |
-| &lt;kbd&gt;0&lt;/kbd&gt; &lt;kbd&gt;^&lt;/kbd&gt; &lt;kbd&gt;$&lt;/kbd&gt;, &lt;kbd&gt;Home&lt;/kbd&gt; &lt;kbd&gt;End&lt;/kbd&gt; | start of line, first character, end of line |
-| &lt;kbd&gt;H&lt;/kbd&gt; &lt;kbd&gt;M&lt;/kbd&gt; &lt;kbd&gt;L&lt;/kbd&gt; | top, middle, bottom of the screen |
-| &lt;kbd&gt;g&lt;/kbd&gt; / &lt;kbd&gt;G&lt;/kbd&gt; | top of the scrollback / the bottom |
-| &lt;kbd&gt;{&lt;/kbd&gt; &lt;kbd&gt;}&lt;/kbd&gt;, &lt;kbd&gt;%&lt;/kbd&gt; | paragraph up / down, matching bracket |
-| &lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;U&lt;/kbd&gt; / &lt;kbd&gt;D&lt;/kbd&gt;, &lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;B&lt;/kbd&gt; / &lt;kbd&gt;F&lt;/kbd&gt;, &lt;kbd&gt;PageUp&lt;/kbd&gt; / &lt;kbd&gt;PageDown&lt;/kbd&gt; | half a page, a page up / down |
-| &lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Y&lt;/kbd&gt; / &lt;kbd&gt;E&lt;/kbd&gt; | scroll a line, the cursor along |
-| &lt;kbd&gt;v&lt;/kbd&gt;, &lt;kbd&gt;V&lt;/kbd&gt;, &lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;V&lt;/kbd&gt;, &lt;kbd&gt;Alt&lt;/kbd&gt;+&lt;kbd&gt;V&lt;/kbd&gt; | select characters, lines, a block, words – from the cursor on; the same key again ends the selection, another changes its kind |
-| &lt;kbd&gt;y&lt;/kbd&gt; | copy the selection and leave vi mode |
-| &lt;kbd&gt;/&lt;/kbd&gt; or &lt;kbd&gt;?&lt;/kbd&gt; | search; the cursor goes to each match, to select from there |
-| &lt;kbd&gt;Enter&lt;/kbd&gt; | open the link under the cursor |
-| &lt;kbd&gt;Esc&lt;/kbd&gt; | drop the selection; without one, leave vi mode |
-| &lt;kbd&gt;i&lt;/kbd&gt;, &lt;kbd&gt;q&lt;/kbd&gt;, &lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;C&lt;/kbd&gt;, &lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;Space&lt;/kbd&gt; | leave vi mode |
-
-A click moves the vi cursor there, and a selection made with the mouse goes on
+program meanwhile; the program keeps running and printing.</p>
+<markdown-accessiblity-table><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><kbd>h</kbd> <kbd>j</kbd> <kbd>k</kbd> <kbd>l</kbd>, arrows</td>
+<td>left, down, up, right</td>
+</tr>
+<tr>
+<td><kbd>w</kbd> <kbd>b</kbd> <kbd>e</kbd></td>
+<td>next word, word back, end of word (words as for a double-click)</td>
+</tr>
+<tr>
+<td><kbd>W</kbd> <kbd>B</kbd> <kbd>E</kbd></td>
+<td>the same for words between spaces</td>
+</tr>
+<tr>
+<td><kbd>0</kbd> <kbd>^</kbd> <kbd>$</kbd>, <kbd>Home</kbd> <kbd>End</kbd></td>
+<td>start of line, first character, end of line</td>
+</tr>
+<tr>
+<td><kbd>H</kbd> <kbd>M</kbd> <kbd>L</kbd></td>
+<td>top, middle, bottom of the screen</td>
+</tr>
+<tr>
+<td><kbd>g</kbd> / <kbd>G</kbd></td>
+<td>top of the scrollback / the bottom</td>
+</tr>
+<tr>
+<td><kbd>{</kbd> <kbd>}</kbd>, <kbd>%</kbd></td>
+<td>paragraph up / down, matching bracket</td>
+</tr>
+<tr>
+<td><kbd>Ctrl</kbd>+<kbd>U</kbd> / <kbd>D</kbd>, <kbd>Ctrl</kbd>+<kbd>B</kbd> / <kbd>F</kbd>, <kbd>PageUp</kbd> / <kbd>PageDown</kbd></td>
+<td>half a page, a page up / down</td>
+</tr>
+<tr>
+<td><kbd>Ctrl</kbd>+<kbd>Y</kbd> / <kbd>E</kbd></td>
+<td>scroll a line, the cursor along</td>
+</tr>
+<tr>
+<td><kbd>v</kbd>, <kbd>V</kbd>, <kbd>Ctrl</kbd>+<kbd>V</kbd>, <kbd>Alt</kbd>+<kbd>V</kbd></td>
+<td>select characters, lines, a block, words – from the cursor on; the same key again ends the selection, another changes its kind</td>
+</tr>
+<tr>
+<td><kbd>y</kbd></td>
+<td>copy the selection and leave vi mode</td>
+</tr>
+<tr>
+<td><kbd>/</kbd> or <kbd>?</kbd></td>
+<td>search; the cursor goes to each match, to select from there</td>
+</tr>
+<tr>
+<td><kbd>Enter</kbd></td>
+<td>open the link under the cursor</td>
+</tr>
+<tr>
+<td><kbd>Esc</kbd></td>
+<td>drop the selection; without one, leave vi mode</td>
+</tr>
+<tr>
+<td><kbd>i</kbd>, <kbd>q</kbd>, <kbd>Ctrl</kbd>+<kbd>C</kbd>, <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Space</kbd></td>
+<td>leave vi mode</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto">A click moves the vi cursor there, and a selection made with the mouse goes on
 with the keys. Vi mode belongs to one terminal: in a split tab, the others keep
-taking typing.
-
-<span class="gu">## Selection and clipboard</span>
-
-<span class="k">-</span><span class="w"> </span>Drag with the left mouse button to select.
-<span class="k">-</span><span class="w"> </span>Double-click selects a word – an IP address, a file name or a whole path.
-  With <span class="gs">**Double-click marks one part of a path**</span> (Settings → Terminal) only the
-  folder or file you clicked. Triple-click selects the whole line. Keep the button down and drag to extend by words or lines.
-<span class="k">-</span><span class="w"> </span>&lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;C&lt;/kbd&gt; or right-click → <span class="gs">**Copy**</span>.
-<span class="k">-</span><span class="w"> </span>&lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;V&lt;/kbd&gt; or right-click → <span class="gs">**Paste**</span>.
-<span class="k">-</span><span class="w"> </span>Right-click → <span class="gs">**Paste and run**</span>: pastes, removes trailing line breaks and
-  presses Enter exactly once. Give it a shortcut in the settings if you use it
-  often.
-
-Pasting is safe: when the program supports bracketed paste (bash, zsh, fish, vim
+taking typing.</p>
+<h2 class="heading-element" dir="auto" id="selection-and-clipboard">Selection and clipboard</h2>
+<ul dir="auto">
+<li>Drag with the left mouse button to select.</li>
+<li>Double-click selects a word – an IP address, a file name or a whole path.
+With <strong>Double-click marks one part of a path</strong> (Settings → Terminal) only the
+folder or file you clicked. Triple-click selects the whole line. Keep the button down and drag to extend by words or lines.</li>
+<li><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>C</kbd> or right-click → <strong>Copy</strong>.</li>
+<li><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>V</kbd> or right-click → <strong>Paste</strong>.</li>
+<li>Right-click → <strong>Paste and run</strong>: pastes, removes trailing line breaks and
+presses Enter exactly once. Give it a shortcut in the settings if you use it
+often.</li>
+</ul>
+<p dir="auto">Pasting is safe: when the program supports bracketed paste (bash, zsh, fish, vim
 do), a multi-line paste is inserted as a whole instead of running line by line.
 Escape characters and Ctrl+C in the clipboard are always removed, so pasted text
 can't smuggle in terminal sequences. Before a paste that would run several lines
-at once, or contains <span class="sb">`sudo`</span>, <span class="sb">`curl … | sh`</span>, <span class="sb">`rm -rf`</span> and the like, Terminaal shows
-it and asks (<span class="gs">**Settings → Terminal → Pasting**</span>, see
-[<span class="nt">Security</span>](<span class="na">../explanations/security-and-your-files.md#pasting</span>)).
-
-<span class="gu">### Programs and the clipboard (OSC 52)</span>
-
-Programs can copy into the clipboard themselves with the OSC 52 escape
+at once, or contains <code>sudo</code>, <code>curl … | sh</code>, <code>rm -rf</code> and the like, Terminaal shows
+it and asks (<strong>Settings → Terminal → Pasting</strong>, see
+<a href="docs--explanations--security-and-your-files.md.html#pasting">Security</a>).</p>
+<h3 class="heading-element" dir="auto" id="programs-and-the-clipboard-osc-52">Programs and the clipboard (OSC 52)</h3>
+<p dir="auto">Programs can copy into the clipboard themselves with the OSC 52 escape
 sequence – vim, Neovim, tmux, and that works over SSH too: copy in vim on the
 server and paste on your computer. That's on by default; turn it off with
-<span class="gs">**Programs may write to the clipboard**</span> (Settings → Terminal → Clipboard for
-programs, <span class="sb">`clipboard_write`</span>).
-
-The other direction – a program <span class="ge">*reading*</span> your clipboard – is riskier: it would
+<strong>Programs may write to the clipboard</strong> (Settings → Terminal → Clipboard for
+programs, <code>clipboard_write</code>).</p>
+<p dir="auto">The other direction – a program <em>reading</em> your clipboard – is riskier: it would
 get whatever you copied last, a password too. By default Terminaal asks each
-time (<span class="sb">`clipboard_read = "ask"`</span>): a dialog at the top names the terminal and how
-many characters the clipboard holds, never the text itself.
-
-<span class="k">-</span><span class="w"> </span><span class="gs">**Allow**</span> – this once.
-<span class="k">-</span><span class="w"> </span><span class="gs">**Always for this terminal**</span> – this and every later request of that
-  terminal, until it closes.
-<span class="k">-</span><span class="w"> </span><span class="gs">**Deny**</span> – the program gets an empty clipboard right away.
-
-The dialog doesn't take the keyboard – an &lt;kbd&gt;Enter&lt;/kbd&gt; typed just then goes
+time (<code>clipboard_read = "ask"</code>): a dialog at the top names the terminal and how
+many characters the clipboard holds, never the text itself.</p>
+<ul dir="auto">
+<li><strong>Allow</strong> – this once.</li>
+<li><strong>Always for this terminal</strong> – this and every later request of that
+terminal, until it closes.</li>
+<li><strong>Deny</strong> – the program gets an empty clipboard right away.</li>
+</ul>
+<p dir="auto">The dialog doesn't take the keyboard – an <kbd>Enter</kbd> typed just then goes
 to the terminal, not to the dialog – and lapses unanswered after 20 seconds.
 Only one terminal can ask at a time; another one asking meanwhile is turned
-down. <span class="sb">`"never"`</span> answers every request with an empty clipboard, <span class="sb">`"always"`</span>
-hands it over without asking.
-
-<span class="gu">## Links</span>
-
-Hold &lt;kbd&gt;Ctrl&lt;/kbd&gt;: whatever is clickable under the mouse gets underlined and
-the pointer becomes a hand. &lt;kbd&gt;Ctrl&lt;/kbd&gt;+click opens it with your default
-application (<span class="sb">`xdg-open`</span>).
-
-What counts, in this order:
-
-<span class="k">1.</span> <span class="gs">**Hyperlinks**</span> a program set (OSC 8) – e.g. <span class="sb">`ls --hyperlink`</span>, <span class="sb">`gcc`</span>, <span class="sb">`systemctl`</span>
-   in newer versions. Opened only for common schemes: <span class="sb">`https://`</span>, <span class="sb">`http://`</span>,
-   <span class="sb">`mailto:`</span>, <span class="sb">`file:`</span>, <span class="sb">`ftp://`</span>, <span class="sb">`git://`</span>, <span class="sb">`gemini://`</span>, <span class="sb">`gopher://`</span>, <span class="sb">`news:`</span>,
-   <span class="sb">`magnet:`</span>, <span class="sb">`ipfs:`</span>, <span class="sb">`ipns:`</span>. A program can't make a click launch an arbitrary
-   URL handler.
-<span class="k">2.</span> <span class="gs">**URLs**</span> in the text, with those schemes. A trailing full stop, comma or an
-   unmatched closing bracket isn't part of the link.
-<span class="k">3.</span> <span class="gs">**Files and folders that exist**</span>: absolute paths, <span class="sb">`~/…`</span>, or names relative to
-   the shell's working directory (needs [<span class="nt">shell integration</span>](<span class="na">shell-integration.md</span>)).
-   <span class="sb">`src/main.rs:42:7`</span> opens <span class="sb">`src/main.rs`</span>. Only in local tabs – over SSH the files
-   would be on the server.
-
-An <span class="gs">**executable file**</span> isn't opened (that could run it); its folder opens
-instead.
-
-<span class="gu">## Hints</span>
-
-&lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;H&lt;/kbd&gt; labels everything on the screen
+down. <code>"never"</code> answers every request with an empty clipboard, <code>"always"</code>
+hands it over without asking.</p>
+<h2 class="heading-element" dir="auto" id="links">Links</h2>
+<p dir="auto">Hold <kbd>Ctrl</kbd>: whatever is clickable under the mouse gets underlined and
+the pointer becomes a hand. <kbd>Ctrl</kbd>+click opens it with your default
+application (<code>xdg-open</code>).</p>
+<p dir="auto">What counts, in this order:</p>
+<ol dir="auto">
+<li><strong>Hyperlinks</strong> a program set (OSC 8) – e.g. <code>ls --hyperlink</code>, <code>gcc</code>, <code>systemctl</code>
+in newer versions. Opened only for common schemes: <code>https://</code>, <code>http://</code>,
+<code>mailto:</code>, <code>file:</code>, <code>ftp://</code>, <code>git://</code>, <code>gemini://</code>, <code>gopher://</code>, <code>news:</code>,
+<code>magnet:</code>, <code>ipfs:</code>, <code>ipns:</code>. A program can't make a click launch an arbitrary
+URL handler.</li>
+<li><strong>URLs</strong> in the text, with those schemes. A trailing full stop, comma or an
+unmatched closing bracket isn't part of the link.</li>
+<li><strong>Files and folders that exist</strong>: absolute paths, <code>~/…</code>, or names relative to
+the shell's working directory (needs <a href="docs--guides--shell-integration.md.html">shell integration</a>).
+<code>src/main.rs:42:7</code> opens <code>src/main.rs</code>. Only in local tabs – over SSH the files
+would be on the server.</li>
+</ol>
+<p dir="auto">An <strong>executable file</strong> isn't opened (that could run it); its folder opens
+instead.</p>
+<h2 class="heading-element" dir="auto" id="hints">Hints</h2>
+<p dir="auto"><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>H</kbd> labels everything on the screen
 worth picking with a letter or two, highlighted over its start, and the bar at
-the bottom shows how many there are. Type a label:
-
-<span class="k">-</span><span class="w"> </span>its letters <span class="gs">**copy**</span> the text,
-<span class="k">-</span><span class="w"> </span>with &lt;kbd&gt;Shift&lt;/kbd&gt; held for the last letter, it's <span class="gs">**opened**</span> like a
-  &lt;kbd&gt;Ctrl&lt;/kbd&gt;-clicked link (what can't be opened – an IP, a hash – is copied),
-<span class="k">-</span><span class="w"> </span>with &lt;kbd&gt;Alt&lt;/kbd&gt;, it's <span class="gs">**typed into the terminal**</span> – a hash into
-  <span class="sb">`git show `</span>, a path into the command line.
-
-&lt;kbd&gt;Backspace&lt;/kbd&gt; takes a letter back, &lt;kbd&gt;Esc&lt;/kbd&gt;, a click or any other key
+the bottom shows how many there are. Type a label:</p>
+<ul dir="auto">
+<li>its letters <strong>copy</strong> the text,</li>
+<li>with <kbd>Shift</kbd> held for the last letter, it's <strong>opened</strong> like a
+<kbd>Ctrl</kbd>-clicked link (what can't be opened – an IP, a hash – is copied),</li>
+<li>with <kbd>Alt</kbd>, it's <strong>typed into the terminal</strong> – a hash into
+<code>git show </code>, a path into the command line.</li>
+</ul>
+<p dir="auto"><kbd>Backspace</kbd> takes a letter back, <kbd>Esc</kbd>, a click or any other key
 ends the hints (the key then goes on as usual). The labels follow the screen: new
-output or scrolling relabels.
+output or scrolling relabels.</p>
+<p dir="auto">What gets a label, earlier kinds first where they overlap:</p>
+<ol dir="auto">
+<li>Hyperlinks a program set (OSC 8) and URLs, as for <kbd>Ctrl</kbd>+click</li>
+<li>Paths: absolute, <code>~/…</code>, <code>./…</code>, <code>../…</code>, and any word naming a file or folder
+that exists here (relative to the shell's working directory). Over SSH all of
+these can be copied or inserted, but not opened – they're the server's.</li>
+<li>IPv4 and IPv6 addresses – only valid ones, so a time like <code>12:30:45</code> or a
+version like <code>v1.2.3.4</code> isn't one</li>
+<li>Hashes and IDs: hex of 7 characters or more with a letter and a digit (git
+commits, container IDs, checksums), UUIDs, MAC addresses</li>
+</ol>
+<p dir="auto">Labels start at the bottom of the screen, so the newest output gets the easiest
+letters (<code>f</code>, <code>j</code>, <code>d</code>, <code>k</code>, …). Labels use no <code>y</code> or <code>z</code>, which swap places
+between German and US keyboards.</p>
 
-What gets a label, earlier kinds first where they overlap:
-
-<span class="k">1.</span> Hyperlinks a program set (OSC 8) and URLs, as for &lt;kbd&gt;Ctrl&lt;/kbd&gt;+click
-<span class="k">2.</span> Paths: absolute, <span class="sb">`~/…`</span>, <span class="sb">`./…`</span>, <span class="sb">`../…`</span>, and any word naming a file or folder
-   that exists here (relative to the shell's working directory). Over SSH all of
-   these can be copied or inserted, but not opened – they're the server's.
-<span class="k">3.</span> IPv4 and IPv6 addresses – only valid ones, so a time like <span class="sb">`12:30:45`</span> or a
-   version like <span class="sb">`v1.2.3.4`</span> isn't one
-<span class="k">4.</span> Hashes and IDs: hex of 7 characters or more with a letter and a digit (git
-   commits, container IDs, checksums), UUIDs, MAC addresses
-
-Labels start at the bottom of the screen, so the newest output gets the easiest
-letters (<span class="sb">`f`</span>, <span class="sb">`j`</span>, <span class="sb">`d`</span>, <span class="sb">`k`</span>, …). Labels use no <span class="sb">`y`</span> or <span class="sb">`z`</span>, which swap places
-between German and US keyboards.
-</pre></div></td></tr></table></div>
-
+        </div>
       </section>
     </main>
   </div>

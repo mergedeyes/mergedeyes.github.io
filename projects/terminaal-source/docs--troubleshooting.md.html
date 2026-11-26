@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>docs/troubleshooting.md — Terminaal — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=41ca8b66" />
+  <link rel="stylesheet" href="../../styles.css?v=77eb044b" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -71,515 +71,212 @@
           <h1 class="section__title">docs/troubleshooting.md</h1>
           <a href="../terminaal.html" class="link">← Back to Terminaal</a>
         </div>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">  1</span>
-<span class="normal">  2</span>
-<span class="normal">  3</span>
-<span class="normal">  4</span>
-<span class="normal">  5</span>
-<span class="normal">  6</span>
-<span class="normal">  7</span>
-<span class="normal">  8</span>
-<span class="normal">  9</span>
-<span class="normal"> 10</span>
-<span class="normal"> 11</span>
-<span class="normal"> 12</span>
-<span class="normal"> 13</span>
-<span class="normal"> 14</span>
-<span class="normal"> 15</span>
-<span class="normal"> 16</span>
-<span class="normal"> 17</span>
-<span class="normal"> 18</span>
-<span class="normal"> 19</span>
-<span class="normal"> 20</span>
-<span class="normal"> 21</span>
-<span class="normal"> 22</span>
-<span class="normal"> 23</span>
-<span class="normal"> 24</span>
-<span class="normal"> 25</span>
-<span class="normal"> 26</span>
-<span class="normal"> 27</span>
-<span class="normal"> 28</span>
-<span class="normal"> 29</span>
-<span class="normal"> 30</span>
-<span class="normal"> 31</span>
-<span class="normal"> 32</span>
-<span class="normal"> 33</span>
-<span class="normal"> 34</span>
-<span class="normal"> 35</span>
-<span class="normal"> 36</span>
-<span class="normal"> 37</span>
-<span class="normal"> 38</span>
-<span class="normal"> 39</span>
-<span class="normal"> 40</span>
-<span class="normal"> 41</span>
-<span class="normal"> 42</span>
-<span class="normal"> 43</span>
-<span class="normal"> 44</span>
-<span class="normal"> 45</span>
-<span class="normal"> 46</span>
-<span class="normal"> 47</span>
-<span class="normal"> 48</span>
-<span class="normal"> 49</span>
-<span class="normal"> 50</span>
-<span class="normal"> 51</span>
-<span class="normal"> 52</span>
-<span class="normal"> 53</span>
-<span class="normal"> 54</span>
-<span class="normal"> 55</span>
-<span class="normal"> 56</span>
-<span class="normal"> 57</span>
-<span class="normal"> 58</span>
-<span class="normal"> 59</span>
-<span class="normal"> 60</span>
-<span class="normal"> 61</span>
-<span class="normal"> 62</span>
-<span class="normal"> 63</span>
-<span class="normal"> 64</span>
-<span class="normal"> 65</span>
-<span class="normal"> 66</span>
-<span class="normal"> 67</span>
-<span class="normal"> 68</span>
-<span class="normal"> 69</span>
-<span class="normal"> 70</span>
-<span class="normal"> 71</span>
-<span class="normal"> 72</span>
-<span class="normal"> 73</span>
-<span class="normal"> 74</span>
-<span class="normal"> 75</span>
-<span class="normal"> 76</span>
-<span class="normal"> 77</span>
-<span class="normal"> 78</span>
-<span class="normal"> 79</span>
-<span class="normal"> 80</span>
-<span class="normal"> 81</span>
-<span class="normal"> 82</span>
-<span class="normal"> 83</span>
-<span class="normal"> 84</span>
-<span class="normal"> 85</span>
-<span class="normal"> 86</span>
-<span class="normal"> 87</span>
-<span class="normal"> 88</span>
-<span class="normal"> 89</span>
-<span class="normal"> 90</span>
-<span class="normal"> 91</span>
-<span class="normal"> 92</span>
-<span class="normal"> 93</span>
-<span class="normal"> 94</span>
-<span class="normal"> 95</span>
-<span class="normal"> 96</span>
-<span class="normal"> 97</span>
-<span class="normal"> 98</span>
-<span class="normal"> 99</span>
-<span class="normal">100</span>
-<span class="normal">101</span>
-<span class="normal">102</span>
-<span class="normal">103</span>
-<span class="normal">104</span>
-<span class="normal">105</span>
-<span class="normal">106</span>
-<span class="normal">107</span>
-<span class="normal">108</span>
-<span class="normal">109</span>
-<span class="normal">110</span>
-<span class="normal">111</span>
-<span class="normal">112</span>
-<span class="normal">113</span>
-<span class="normal">114</span>
-<span class="normal">115</span>
-<span class="normal">116</span>
-<span class="normal">117</span>
-<span class="normal">118</span>
-<span class="normal">119</span>
-<span class="normal">120</span>
-<span class="normal">121</span>
-<span class="normal">122</span>
-<span class="normal">123</span>
-<span class="normal">124</span>
-<span class="normal">125</span>
-<span class="normal">126</span>
-<span class="normal">127</span>
-<span class="normal">128</span>
-<span class="normal">129</span>
-<span class="normal">130</span>
-<span class="normal">131</span>
-<span class="normal">132</span>
-<span class="normal">133</span>
-<span class="normal">134</span>
-<span class="normal">135</span>
-<span class="normal">136</span>
-<span class="normal">137</span>
-<span class="normal">138</span>
-<span class="normal">139</span>
-<span class="normal">140</span>
-<span class="normal">141</span>
-<span class="normal">142</span>
-<span class="normal">143</span>
-<span class="normal">144</span>
-<span class="normal">145</span>
-<span class="normal">146</span>
-<span class="normal">147</span>
-<span class="normal">148</span>
-<span class="normal">149</span>
-<span class="normal">150</span>
-<span class="normal">151</span>
-<span class="normal">152</span>
-<span class="normal">153</span>
-<span class="normal">154</span>
-<span class="normal">155</span>
-<span class="normal">156</span>
-<span class="normal">157</span>
-<span class="normal">158</span>
-<span class="normal">159</span>
-<span class="normal">160</span>
-<span class="normal">161</span>
-<span class="normal">162</span>
-<span class="normal">163</span>
-<span class="normal">164</span>
-<span class="normal">165</span>
-<span class="normal">166</span>
-<span class="normal">167</span>
-<span class="normal">168</span>
-<span class="normal">169</span>
-<span class="normal">170</span>
-<span class="normal">171</span>
-<span class="normal">172</span>
-<span class="normal">173</span>
-<span class="normal">174</span>
-<span class="normal">175</span>
-<span class="normal">176</span>
-<span class="normal">177</span>
-<span class="normal">178</span>
-<span class="normal">179</span>
-<span class="normal">180</span>
-<span class="normal">181</span>
-<span class="normal">182</span>
-<span class="normal">183</span>
-<span class="normal">184</span>
-<span class="normal">185</span>
-<span class="normal">186</span>
-<span class="normal">187</span>
-<span class="normal">188</span>
-<span class="normal">189</span>
-<span class="normal">190</span>
-<span class="normal">191</span>
-<span class="normal">192</span>
-<span class="normal">193</span>
-<span class="normal">194</span>
-<span class="normal">195</span>
-<span class="normal">196</span>
-<span class="normal">197</span>
-<span class="normal">198</span>
-<span class="normal">199</span>
-<span class="normal">200</span>
-<span class="normal">201</span>
-<span class="normal">202</span>
-<span class="normal">203</span>
-<span class="normal">204</span>
-<span class="normal">205</span>
-<span class="normal">206</span>
-<span class="normal">207</span>
-<span class="normal">208</span>
-<span class="normal">209</span>
-<span class="normal">210</span>
-<span class="normal">211</span>
-<span class="normal">212</span>
-<span class="normal">213</span>
-<span class="normal">214</span>
-<span class="normal">215</span>
-<span class="normal">216</span>
-<span class="normal">217</span>
-<span class="normal">218</span>
-<span class="normal">219</span>
-<span class="normal">220</span>
-<span class="normal">221</span>
-<span class="normal">222</span>
-<span class="normal">223</span>
-<span class="normal">224</span>
-<span class="normal">225</span>
-<span class="normal">226</span>
-<span class="normal">227</span>
-<span class="normal">228</span>
-<span class="normal">229</span>
-<span class="normal">230</span>
-<span class="normal">231</span>
-<span class="normal">232</span>
-<span class="normal">233</span>
-<span class="normal">234</span>
-<span class="normal">235</span>
-<span class="normal">236</span>
-<span class="normal">237</span>
-<span class="normal">238</span>
-<span class="normal">239</span>
-<span class="normal">240</span>
-<span class="normal">241</span>
-<span class="normal">242</span>
-<span class="normal">243</span>
-<span class="normal">244</span>
-<span class="normal">245</span>
-<span class="normal">246</span>
-<span class="normal">247</span>
-<span class="normal">248</span>
-<span class="normal">249</span>
-<span class="normal">250</span>
-<span class="normal">251</span>
-<span class="normal">252</span>
-<span class="normal">253</span>
-<span class="normal">254</span></pre></div></td><td class="code"><div><pre><span></span><span class="gh"># Troubleshooting</span>
-
-<span class="gu">## Getting more information</span>
-
-Start Terminaal from another terminal with logging:
-
-<span class="sb">```sh</span>
-<span class="nv">RUST_LOG</span><span class="o">=</span><span class="nv">terminaal</span><span class="o">=</span>info<span class="w"> </span>terminaal<span class="w">                   </span><span class="c1"># connection failures, warnings</span>
-<span class="nv">RUST_LOG</span><span class="o">=</span><span class="nv">terminaal</span><span class="o">=</span>debug<span class="w"> </span>terminaal<span class="w">                  </span><span class="c1"># plus per-frame timing</span>
-<span class="nv">RUST_LOG</span><span class="o">=</span><span class="nv">terminaal</span><span class="o">=</span>trace<span class="w"> </span>terminaal<span class="w"> </span>--connect<span class="w"> </span>web1<span class="w">   </span><span class="c1"># plus the SSH worker's timeline</span>
-<span class="sb">```</span>
-
-<span class="gu">## Installation and startup</span>
-
-<span class="gs">**On Windows**</span>: SmartScreen, an empty window, a WSL tab that ends at once, logs
-and update logs are in [<span class="nt">Terminaal on Windows</span>](<span class="na">guides/windows.md#when-somethings-wrong</span>).
-
-<span class="gs">**The launcher doesn't start Terminaal, or starts an old version.**</span>
-Run <span class="sb">`./install.sh`</span> again after updating the source. The desktop entry points at
-<span class="sb">`~/.cargo/bin/terminaal`</span> (from source) or <span class="sb">`~/.local/bin/terminaal`</span> (from a
-release) with its full path.
-
-<span class="gs">**The update dialog says Terminaal can't write to its folder.**</span>
-It was installed somewhere only root may change (a package manager, <span class="sb">`/usr/bin`</span>).
+        <div class="readme-content">
+<h1 class="heading-element" dir="auto" id="troubleshooting">Troubleshooting</h1>
+<h2 class="heading-element" dir="auto" id="getting-more-information">Getting more information</h2>
+<p dir="auto">Start Terminaal from another terminal with logging:</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto"><pre>RUST_LOG=terminaal=info terminaal                   <span class="pl-c"><span class="pl-c">#</span> connection failures, warnings</span>
+RUST_LOG=terminaal=debug terminaal                  <span class="pl-c"><span class="pl-c">#</span> plus per-frame timing</span>
+RUST_LOG=terminaal=trace terminaal --connect web1   <span class="pl-c"><span class="pl-c">#</span> plus the SSH worker's timeline</span></pre></div>
+<h2 class="heading-element" dir="auto" id="installation-and-startup">Installation and startup</h2>
+<p dir="auto"><strong>On Windows</strong>: SmartScreen, an empty window, a WSL tab that ends at once, logs
+and update logs are in <a href="docs--guides--windows.md.html#when-somethings-wrong">Terminaal on Windows</a>.</p>
+<p dir="auto"><strong>The launcher doesn't start Terminaal, or starts an old version.</strong>
+Run <code>./install.sh</code> again after updating the source. The desktop entry points at
+<code>~/.cargo/bin/terminaal</code> (from source) or <code>~/.local/bin/terminaal</code> (from a
+release) with its full path.</p>
+<p dir="auto"><strong>The update dialog says Terminaal can't write to its folder.</strong>
+It was installed somewhere only root may change (a package manager, <code>/usr/bin</code>).
 Update it the way it was installed, or install from a release, which goes to
-<span class="sb">`~/.local/bin`</span>.
-
-<span class="gs">**"Checking for updates failed".**</span>
-No connection to <span class="sb">`api.github.com`</span>, or GitHub limits how often one address may ask
-(60 times an hour). Terminaal just tries again at the next start.
-
-<span class="gs">**The dock shows a generic icon, or can't restore the window after minimizing.**</span>
-The desktop entry is missing. Run <span class="sb">`./install.sh`</span> (or <span class="sb">`./install.sh --no-binary`</span> if
-you installed the binary another way).
-
-<span class="gs">**Build fails with errors about OpenSSL or libssh2.**</span>
-Install the C toolchain, <span class="sb">`pkg-config`</span>, and the OpenSSL and zlib development
-packages (see [<span class="nt">Getting started</span>](<span class="na">getting-started.md#install</span>)).
-
-<span class="gs">**My tabs didn't come back.**</span>
+<code>~/.local/bin</code>.</p>
+<p dir="auto"><strong>"Checking for updates failed".</strong>
+No connection to <code>api.github.com</code>, or GitHub limits how often one address may ask
+(60 times an hour). Terminaal just tries again at the next start.</p>
+<p dir="auto"><strong>The dock shows a generic icon, or can't restore the window after minimizing.</strong>
+The desktop entry is missing. Run <code>./install.sh</code> (or <code>./install.sh --no-binary</code> if
+you installed the binary another way).</p>
+<p dir="auto"><strong>Build fails with errors about OpenSSL or libssh2.</strong>
+Install the C toolchain, <code>pkg-config</code>, and the OpenSSL and zlib development
+packages (see <a href="docs--getting-started.md.html#install">Getting started</a>).</p>
+<p dir="auto"><strong>My tabs didn't come back.</strong>
 Tabs are only restored by the first Terminaal that runs: a second window starts
-with one tab, and so does a start with <span class="sb">`--connect`</span>, <span class="sb">`-s`</span> or <span class="sb">`-c`</span>. Closing the last tab (or <span class="sb">`exit`</span>
+with one tab, and so does a start with <code>--connect</code>, <code>-s</code> or <code>-c</code>. Closing the last tab (or <code>exit</code>
 in the last shell) also leaves nothing to restore. Hosts that were deleted or
-renamed are left out; <span class="sb">`RUST_LOG=terminaal=info`</span> names them. See
-[<span class="nt">Restoring the last session</span>](<span class="na">guides/sessions.md</span>).
-
-<span class="gs">**Terminaal keeps opening tabs I don't want.**</span>
+renamed are left out; <code>RUST_LOG=terminaal=info</code> names them. See
+<a href="docs--guides--sessions.md.html">Restoring the last session</a>.</p>
+<p dir="auto"><strong>Terminaal keeps opening tabs I don't want.</strong>
 Close them before closing the window, delete
-<span class="sb">`~/.local/state/terminaal/session.toml`</span>, or turn off <span class="gs">**Restore last session**</span>
-under Settings → General.
-
-<span class="gs">**The shortcut for `terminaal --quake` does nothing.**</span>
+<code>~/.local/state/terminaal/session.toml</code>, or turn off <strong>Restore last session</strong>
+under Settings → General.</p>
+<p dir="auto"><strong>The shortcut for <code>terminaal --quake</code> does nothing.</strong>
 Put Terminaal's full path in the shortcut: shortcut settings often don't have
-<span class="sb">`~/.cargo/bin`</span> in their <span class="sb">`PATH`</span>. Settings → General → Drop-down window shows the
-exact command. Run it in a terminal first; errors show up there.
-
-<span class="gs">**The drop-down window is a normal window and doesn't hide.**</span>
+<code>~/.cargo/bin</code> in their <code>PATH</code>. Settings → General → Drop-down window shows the
+exact command. Run it in a terminal first; errors show up there.</p>
+<p dir="auto"><strong>The drop-down window is a normal window and doesn't hide.</strong>
 Your desktop has no layer shell (GNOME on Wayland). See
-[<span class="nt">Where it works</span>](<span class="na">guides/drop-down-window.md#where-it-works</span>).
-
-<span class="gs">**The drop-down window hides when I click a dialog or another window.**</span>
-That's <span class="gs">**Hide when another window gets the focus**</span> under Settings → General.
-Turn it off to keep the window up.
-
-<span class="gs">**A warning about an sRGB framebuffer at start.**</span>
-Harmless – colors are correct.
-
-<span class="gu">## Display</span>
-
-<span class="gs">**The window isn't see-through.**</span>
+<a href="docs--guides--drop-down-window.md.html#where-it-works">Where it works</a>.</p>
+<p dir="auto"><strong>The drop-down window hides when I click a dialog or another window.</strong>
+That's <strong>Hide when another window gets the focus</strong> under Settings → General.
+Turn it off to keep the window up.</p>
+<p dir="auto"><strong>A warning about an sRGB framebuffer at start.</strong>
+Harmless – colors are correct.</p>
+<h2 class="heading-element" dir="auto" id="display">Display</h2>
+<p dir="auto"><strong>The window isn't see-through.</strong>
 Translucency needs Wayland; on X11 the window stays opaque. Also check the
-settings: the page says when the driver or compositor doesn't offer it.
-
-<span class="gs">**No blur behind the window.**</span>
-Blur needs a compositor with <span class="sb">`ext-background-effect`</span> (COSMIC) or KDE.
-
-<span class="gs">**Text looks misaligned with the cursor.**</span>
-Choose a real monospace font under Settings → Appearance → Console.
-
-<span class="gs">**The font I set isn't used.**</span>
+settings: the page says when the driver or compositor doesn't offer it.</p>
+<p dir="auto"><strong>No blur behind the window.</strong>
+Blur needs a compositor with <code>ext-background-effect</code> (COSMIC) or KDE.</p>
+<p dir="auto"><strong>Text looks misaligned with the cursor.</strong>
+Choose a real monospace font under Settings → Appearance → Console.</p>
+<p dir="auto"><strong>The font I set isn't used.</strong>
 The list marks fonts that aren't installed. Check the family name with
-<span class="sb">`fc-list : family`</span>.
-
-<span class="gs">**Terminaal uses CPU while idle.**</span>
+<code>fc-list : family</code>.</p>
+<p dir="auto"><strong>Terminaal uses CPU while idle.</strong>
 It should draw about two frames per second for the blinking cursor. Check with
-<span class="sb">`RUST_LOG=terminaal=debug`</span>: dozens of frames per second while idle is a bug worth
-reporting.
-
-<span class="gs">**A program shows no images, or coloured blocks instead.**</span>
-Programs that ask the terminal (yazi, <span class="sb">`kitten icat`</span>) find the kitty graphics
-protocol themselves; others go by the terminal's name – tell them: `chafa -f
-kitty`, <span class="sb">`timg -pk`</span>. Check that <span class="gs">**Settings → Terminal → Images**</span> is on. Inside
+<code>RUST_LOG=terminaal=debug</code>: dozens of frames per second while idle is a bug worth
+reporting.</p>
+<p dir="auto"><strong>A program shows no images, or coloured blocks instead.</strong>
+Programs that ask the terminal (yazi, <code>kitten icat</code>) find the kitty graphics
+protocol themselves; others go by the terminal's name – tell them: <code>chafa -f kitty</code>, <code>timg -pk</code>. Check that <strong>Settings → Terminal → Images</strong> is on. Inside
 tmux images don't work (that needs kitty's unicode placeholders, not
-supported).
-
-<span class="gu">## Keyboard</span>
-
-<span class="gs">**A shortcut does nothing.**</span>
-<span class="k">-</span><span class="w"> </span>A text field in the sidebar or settings may have the keyboard – click into the
-  terminal.
-<span class="k">-</span><span class="w"> </span>In full-screen programs, scrolling and prompt-jump keys go to the program.
-<span class="k">-</span><span class="w"> </span>Your desktop may grab the combination first.
-<span class="k">-</span><span class="w"> </span>Another action may use it: Settings → Shortcuts strikes shadowed combinations
-  through.
-
-<span class="gs">**A program gets keys wrong, or shows things like `[99;5u` when I press a key.**</span>
+supported).</p>
+<h2 class="heading-element" dir="auto" id="keyboard">Keyboard</h2>
+<p dir="auto"><strong>A shortcut does nothing.</strong></p>
+<ul dir="auto">
+<li>A text field in the sidebar or settings may have the keyboard – click into the
+terminal.</li>
+<li>In full-screen programs, scrolling and prompt-jump keys go to the program.</li>
+<li>Your desktop may grab the combination first.</li>
+<li>Another action may use it: Settings → Shortcuts strikes shadowed combinations
+through.</li>
+</ul>
+<p dir="auto"><strong>A program gets keys wrong, or shows things like <code>[99;5u</code> when I press a key.</strong>
 The program asked for the kitty keyboard protocol and doesn't understand all of
 it, or one that crashed left it on. Turn it off under Settings → Terminal →
-Keyboard (<span class="sb">`kitty_keyboard = false`</span>): that works at once, and every program gets
-the classic xterm keys. <span class="sb">`reset`</span> in the shell clears what a crashed program left
-behind, too.
-
-<span class="gs">**The settings refuse my shortcut.**</span>
+Keyboard (<code>kitty_keyboard = false</code>): that works at once, and every program gets
+the classic xterm keys. <code>reset</code> in the shell clears what a crashed program left
+behind, too.</p>
+<p dir="auto"><strong>The settings refuse my shortcut.</strong>
 It's either taken, or it would swallow typing (no Ctrl/Alt/Super, and not an
-F-key or Shift+navigation key). You can still set it in <span class="sb">`config.toml`</span>.
-
-<span class="gu">## Shell integration</span>
-
-<span class="gs">**No prompt jumps, exit codes or directory titles.**</span>
-<span class="k">-</span><span class="w"> </span>The integration is set up for fish, bash and zsh started by Terminaal – not for
-  a shell started from inside another shell.
-<span class="k">-</span><span class="w"> </span>Over SSH, the remote shell has to send the sequences; see
-  [<span class="nt">Shell integration</span>](<span class="na">guides/shell-integration.md#other-shells-or-shells-over-ssh</span>).
-
-<span class="gs">**The tab title shows `user@host: dir` instead of just the directory.**</span>
+F-key or Shift+navigation key). You can still set it in <code>config.toml</code>.</p>
+<h2 class="heading-element" dir="auto" id="shell-integration">Shell integration</h2>
+<p dir="auto"><strong>No prompt jumps, exit codes or directory titles.</strong></p>
+<ul dir="auto">
+<li>The integration is set up for fish, bash and zsh started by Terminaal – not for
+a shell started from inside another shell.</li>
+<li>Over SSH, the remote shell has to send the sequences; see
+<a href="docs--guides--shell-integration.md.html#other-shells-or-shells-over-ssh">Shell integration</a>.</li>
+</ul>
+<p dir="auto"><strong>The tab title shows <code>user@host: dir</code> instead of just the directory.</strong>
 At the prompt, a title set by a program (often your distribution's bash setup)
-wins over the directory.
-
-<span class="gs">**The tab isn't named after the program that's running.**</span>
-<span class="k">-</span><span class="w"> </span>Only local tabs can tell: over SSH the program runs on the server, so the tab
-  shows whatever title it sends, if any.
-<span class="k">-</span><span class="w"> </span>The shell needs job control, which it has when Terminaal starts it as an
-  interactive shell.
-<span class="k">-</span><span class="w"> </span>The name follows the output, a quarter of a second behind it.
-
-<span class="gs">**No notification when a command finishes.**</span>
-<span class="k">-</span><span class="w"> </span><span class="gs">**Desktop notifications**</span> must be on (Settings → Terminal → Notifications,
-  <span class="sb">`notifications`</span>).
-<span class="k">-</span><span class="w"> </span>It only fires when the command ran at least <span class="sb">`notify_after_secs`</span> and the tab
-  wasn't visible (window unfocused, or another tab active).
-<span class="k">-</span><span class="w"> </span><span class="sb">`notify-send`</span> must be installed (<span class="sb">`libnotify`</span>).
-<span class="k">-</span><span class="w"> </span>The shell must send OSC 133 <span class="sb">`C`</span> and <span class="sb">`D`</span>.
-
-<span class="gs">**Ctrl+click on a file name does nothing.**</span>
-<span class="k">-</span><span class="w"> </span>The file must exist; relative names need shell integration (the working
-  directory) and a local tab.
-<span class="k">-</span><span class="w"> </span><span class="sb">`xdg-open`</span> must be installed and have a default application for the type.
-
-<span class="gu">## SSH</span>
-
-<span class="gs">**"Too many authentication failures".**</span>
+wins over the directory.</p>
+<p dir="auto"><strong>The tab isn't named after the program that's running.</strong></p>
+<ul dir="auto">
+<li>Only local tabs can tell: over SSH the program runs on the server, so the tab
+shows whatever title it sends, if any.</li>
+<li>The shell needs job control, which it has when Terminaal starts it as an
+interactive shell.</li>
+<li>The name follows the output, a quarter of a second behind it.</li>
+</ul>
+<p dir="auto"><strong>No notification when a command finishes.</strong></p>
+<ul dir="auto">
+<li><strong>Desktop notifications</strong> must be on (Settings → Terminal → Notifications,
+<code>notifications</code>).</li>
+<li>It only fires when the command ran at least <code>notify_after_secs</code> and the tab
+wasn't visible (window unfocused, or another tab active).</li>
+<li><code>notify-send</code> must be installed (<code>libnotify</code>).</li>
+<li>The shell must send OSC 133 <code>C</code> and <code>D</code>.</li>
+</ul>
+<p dir="auto"><strong>Ctrl+click on a file name does nothing.</strong></p>
+<ul dir="auto">
+<li>The file must exist; relative names need shell integration (the working
+directory) and a local tab.</li>
+<li><code>xdg-open</code> must be installed and have a default application for the type.</li>
+</ul>
+<h2 class="heading-element" dir="auto" id="ssh">SSH</h2>
+<p dir="auto"><strong>"Too many authentication failures".</strong>
 Your agent offered too many keys. Pick the host's key in its login, or enable
-<span class="gs">**Offer only configured keys**</span>. The error message mentions this when the agent
-tried three or more keys.
-
-<span class="gs">**The host key changed – I reinstalled the server.**</span>
-See [<span class="nt">Host keys</span>](<span class="na">guides/host-keys.md#removing-the-old-key</span>).
-
-<span class="gs">**The tab hangs for a moment right after login.**</span>
+<strong>Offer only configured keys</strong>. The error message mentions this when the agent
+tried three or more keys.</p>
+<p dir="auto"><strong>The host key changed – I reinstalled the server.</strong>
+See <a href="docs--guides--host-keys.md.html#removing-the-old-key">Host keys</a>.</p>
+<p dir="auto"><strong>The tab hangs for a moment right after login.</strong>
 Terminaal asks the host which system it runs, for the command buttons (up to two
-seconds). Set <span class="gs">**Advanced → Session → System**</span> to skip it.
-
-<span class="gs">**The connection drops after some idle time.**</span>
+seconds). Set <strong>Advanced → Session → System</strong> to skip it.</p>
+<p dir="auto"><strong>The connection drops after some idle time.</strong>
 Keepalives are on by default (30 s). If a firewall is stricter, lower
-<span class="gs">**ServerAliveInterval**</span>.
-
-<span class="gs">**A dead connection takes a while to be noticed.**</span>
+<strong>ServerAliveInterval</strong>.</p>
+<p dir="auto"><strong>A dead connection takes a while to be noticed.</strong>
 With the defaults, after three unanswered keepalives 30 seconds apart – roughly a
 minute and a half. Lower the interval or count for faster detection. Once noticed,
-the tab reconnects by itself (see below), and a files tab carries on.
-
-<span class="gs">**The tab says "Connection lost" and counts down.**</span>
+the tab reconnects by itself (see below), and a files tab carries on.</p>
+<p dir="auto"><strong>The tab says "Connection lost" and counts down.</strong>
 Terminaal tries again after 2, 4, 8 … seconds (at most a minute), keeping the
-scrollback. Press &lt;kbd&gt;Enter&lt;/kbd&gt; to try right away, &lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;D&lt;/kbd&gt;
-to close the tab. Programs that were running on the server are gone – use <span class="sb">`tmux`</span>
-(see [<span class="nt">Tips</span>](<span class="na">tips.md</span>)) to keep them.
-
-<span class="gs">**It says "Logging in needs an answer" and stops trying.**</span>
+scrollback. Press <kbd>Enter</kbd> to try right away, <kbd>Ctrl</kbd>+<kbd>D</kbd>
+to close the tab. Programs that were running on the server are gone – use <code>tmux</code>
+(see <a href="docs--tips.md.html">Tips</a>) to keep them.</p>
+<p dir="auto"><strong>It says "Logging in needs an answer" and stops trying.</strong>
 Automatic attempts can't type a passphrase, a password or answer a host-key
-question. Press &lt;kbd&gt;Enter&lt;/kbd&gt; and answer in the tab – or use the SSH agent or a
-key without passphrase for that host.
-
-<span class="gs">**`unknown terminal type` or broken colors on a server.**</span>
-Set <span class="sb">`TERM=xterm-256color`</span> (the default) or <span class="sb">`TERM=xterm`</span> under **Advanced →
-Session → Environment variables**.
-
-<span class="gs">**`SetEnv`/`SendEnv` variables don't arrive.**</span>
-The server only accepts variables listed in its <span class="sb">`AcceptEnv`</span>.
-
-<span class="gs">**A port forward fails with "Address already in use".**</span>
-Something else listens on the port: <span class="sb">`ss -ltnp | grep PORT`</span>. Free it, then **Try
-again** in the SSH section.
-
-<span class="gs">**A remote forward fails.**</span>
-The server may forbid it (<span class="sb">`AllowTcpForwarding`</span>, <span class="sb">`GatewayPorts`</span> for non-local
-binds). The reason is shown in the SSH section and in the tab.
-
-<span class="gs">**Connecting through a remote forward's target freezes the tab for a moment.**</span>
+question. Press <kbd>Enter</kbd> and answer in the tab – or use the SSH agent or a
+key without passphrase for that host.</p>
+<p dir="auto"><strong><code>unknown terminal type</code> or broken colors on a server.</strong>
+Set <code>TERM=xterm-256color</code> (the default) or <code>TERM=xterm</code> under <strong>Advanced →
+Session → Environment variables</strong>.</p>
+<p dir="auto"><strong><code>SetEnv</code>/<code>SendEnv</code> variables don't arrive.</strong>
+The server only accepts variables listed in its <code>AcceptEnv</code>.</p>
+<p dir="auto"><strong>A port forward fails with "Address already in use".</strong>
+Something else listens on the port: <code>ss -ltnp | grep PORT</code>. Free it, then <strong>Try
+again</strong> in the SSH section.</p>
+<p dir="auto"><strong>A remote forward fails.</strong>
+The server may forbid it (<code>AllowTcpForwarding</code>, <code>GatewayPorts</code> for non-local
+binds). The reason is shown in the SSH section and in the tab.</p>
+<p dir="auto"><strong>Connecting through a remote forward's target freezes the tab for a moment.</strong>
 Connecting to the local target blocks the connection's worker for up to three
-seconds if the target doesn't answer.
-
-<span class="gs">**A remote shell with `RemoteCommand` closes the tab immediately.**</span>
+seconds if the target doesn't answer.</p>
+<p dir="auto"><strong>A remote shell with <code>RemoteCommand</code> closes the tab immediately.</strong>
 The tab closes when the command ends, like a local shell. If it failed within five
 seconds of starting, the tab stays with its output and a line naming the status;
 a command that ended cleanly (status 0) closes it at once. Use something that
-stays, e.g. <span class="sb">`tmux new -A -s main`</span>, or <span class="sb">`--hold`</span> on the
-[<span class="nt">command line</span>](<span class="na">guides/command-line.md#--hold-keep-the-tab-when-the-command-ends</span>).
-
-<span class="gs">**A tab says "Ended with status … right after starting".**</span>
+stays, e.g. <code>tmux new -A -s main</code>, or <code>--hold</code> on the
+<a href="docs--guides--command-line.md.html#--hold-keep-the-tab-when-the-command-ends">command line</a>.</p>
+<p dir="auto"><strong>A tab says "Ended with status … right after starting".</strong>
 Its shell or command failed within five seconds of starting, so Terminaal kept the
 tab instead of closing it with the error. Read what the program printed above that
-line — a misconfigured shell, a startup file that fails, <span class="sb">`wsl.exe`</span> without a Linux
+line — a misconfigured shell, a startup file that fails, <code>wsl.exe</code> without a Linux
 distribution — fix it, and close the tab with
-&lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;W&lt;/kbd&gt;.
-
-<span class="gs">**Agent forwarding doesn't work.**</span>
-The server must allow it (<span class="sb">`AllowAgentForwarding`</span>), and the local agent socket must
-exist – the tab prints a line when either fails.
-
-<span class="gu">## IBM i (5250)</span>
-
-<span class="gs">**Umlauts, `@`, `#` or brackets come out wrong.**</span>
-The host's <span class="gs">**Code page (CCSID)**</span> doesn't match the system's language. Pick the
+<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>W</kbd>.</p>
+<p dir="auto"><strong>Agent forwarding doesn't work.</strong>
+The server must allow it (<code>AllowAgentForwarding</code>), and the local agent socket must
+exist – the tab prints a line when either fails.</p>
+<h2 class="heading-element" dir="auto" id="ibm-i-5250">IBM i (5250)</h2>
+<p dir="auto"><strong>Umlauts, <code>@</code>, <code>#</code> or brackets come out wrong.</strong>
+The host's <strong>Code page (CCSID)</strong> doesn't match the system's language. Pick the
 one for your language – 273 or 1141 for German, for example; see
-[<span class="nt">Code pages</span>](<span class="na">guides/ibm-i-5250.md#code-pages</span>).
-
-<span class="gs">**"TLS connection to … failed".**</span>
+<a href="docs--guides--ibm-i-5250.md.html#code-pages">Code pages</a>.</p>
+<p dir="auto"><strong>"TLS connection to … failed".</strong>
 The server doesn't speak TLS on that port (plain telnet is 23, TLS usually 992),
-or its certificate isn't trusted by your system.
-
-<span class="gs">**The right or bottom of the screen is cut off.**</span>
+or its certificate isn't trusted by your system.</p>
+<p dir="auto"><strong>The right or bottom of the screen is cut off.</strong>
 A 5250 screen is 24 × 80 (27 × 132 when wide) and doesn't shrink. Make the pane
-bigger, hide the sidebar (&lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;B&lt;/kbd&gt;), or
-make the font smaller (&lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;-&lt;/kbd&gt;).
-
-<span class="gs">**Keys do nothing and the status line says `X SYSTEM`.**</span>
-The server hasn't answered yet; wait for the screen. <span class="sb">`X II`</span> means a key wasn't
-allowed – the number says why; any key or &lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;R&lt;/kbd&gt; clears it.
-
-<span class="gs">**Field− or Field Exit don't work.**</span>
-Keypad &lt;kbd&gt;−&lt;/kbd&gt; and &lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Enter&lt;/kbd&gt; need the kitty keyboard
-protocol (<span class="gs">**Settings → Terminal → Keyboard**</span>). Without it use
-&lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;K&lt;/kbd&gt; for Field Exit.
-
-<span class="gu">## Files</span>
-
-<span class="gs">**My hosts/keys/snippets disappeared, or saving says the file is unreadable.**</span>
+bigger, hide the sidebar (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>B</kbd>), or
+make the font smaller (<kbd>Ctrl</kbd>+<kbd>-</kbd>).</p>
+<p dir="auto"><strong>Keys do nothing and the status line says <code>X SYSTEM</code>.</strong>
+The server hasn't answered yet; wait for the screen. <code>X II</code> means a key wasn't
+allowed – the number says why; any key or <kbd>Ctrl</kbd>+<kbd>R</kbd> clears it.</p>
+<p dir="auto"><strong>Field− or Field Exit don't work.</strong>
+Keypad <kbd>−</kbd> and <kbd>Ctrl</kbd>+<kbd>Enter</kbd> need the kitty keyboard
+protocol (<strong>Settings → Terminal → Keyboard</strong>). Without it use
+<kbd>Ctrl</kbd>+<kbd>K</kbd> for Field Exit.</p>
+<h2 class="heading-element" dir="auto" id="files">Files</h2>
+<p dir="auto"><strong>My hosts/keys/snippets disappeared, or saving says the file is unreadable.</strong>
 The file has a syntax error. Terminaal shows the error and refuses to save over the
-file, so nothing is lost. Fix it in an editor, then click <span class="gs">**Reload**</span> in the SSH or
-Keys section – for <span class="sb">`snippets.toml`</span>, restart Terminaal.
-
-<span class="gs">**Changes I made to `hosts.toml` by hand were lost.**</span>
+file, so nothing is lost. Fix it in an editor, then click <strong>Reload</strong> in the SSH or
+Keys section – for <code>snippets.toml</code>, restart Terminaal.</p>
+<p dir="auto"><strong>Changes I made to <code>hosts.toml</code> by hand were lost.</strong>
 Edit it while Terminaal is closed – saving in the sidebar writes the whole file
-from what Terminaal loaded at startup.
-</pre></div></td></tr></table></div>
+from what Terminaal loaded at startup.</p>
 
+        </div>
       </section>
     </main>
   </div>

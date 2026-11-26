@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>docs/guides/sessions.md — Terminaal — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=41ca8b66" />
+  <link rel="stylesheet" href="../../styles.css?v=77eb044b" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -71,243 +71,132 @@
           <h1 class="section__title">docs/guides/sessions.md</h1>
           <a href="../terminaal.html" class="link">← Back to Terminaal</a>
         </div>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">  1</span>
-<span class="normal">  2</span>
-<span class="normal">  3</span>
-<span class="normal">  4</span>
-<span class="normal">  5</span>
-<span class="normal">  6</span>
-<span class="normal">  7</span>
-<span class="normal">  8</span>
-<span class="normal">  9</span>
-<span class="normal"> 10</span>
-<span class="normal"> 11</span>
-<span class="normal"> 12</span>
-<span class="normal"> 13</span>
-<span class="normal"> 14</span>
-<span class="normal"> 15</span>
-<span class="normal"> 16</span>
-<span class="normal"> 17</span>
-<span class="normal"> 18</span>
-<span class="normal"> 19</span>
-<span class="normal"> 20</span>
-<span class="normal"> 21</span>
-<span class="normal"> 22</span>
-<span class="normal"> 23</span>
-<span class="normal"> 24</span>
-<span class="normal"> 25</span>
-<span class="normal"> 26</span>
-<span class="normal"> 27</span>
-<span class="normal"> 28</span>
-<span class="normal"> 29</span>
-<span class="normal"> 30</span>
-<span class="normal"> 31</span>
-<span class="normal"> 32</span>
-<span class="normal"> 33</span>
-<span class="normal"> 34</span>
-<span class="normal"> 35</span>
-<span class="normal"> 36</span>
-<span class="normal"> 37</span>
-<span class="normal"> 38</span>
-<span class="normal"> 39</span>
-<span class="normal"> 40</span>
-<span class="normal"> 41</span>
-<span class="normal"> 42</span>
-<span class="normal"> 43</span>
-<span class="normal"> 44</span>
-<span class="normal"> 45</span>
-<span class="normal"> 46</span>
-<span class="normal"> 47</span>
-<span class="normal"> 48</span>
-<span class="normal"> 49</span>
-<span class="normal"> 50</span>
-<span class="normal"> 51</span>
-<span class="normal"> 52</span>
-<span class="normal"> 53</span>
-<span class="normal"> 54</span>
-<span class="normal"> 55</span>
-<span class="normal"> 56</span>
-<span class="normal"> 57</span>
-<span class="normal"> 58</span>
-<span class="normal"> 59</span>
-<span class="normal"> 60</span>
-<span class="normal"> 61</span>
-<span class="normal"> 62</span>
-<span class="normal"> 63</span>
-<span class="normal"> 64</span>
-<span class="normal"> 65</span>
-<span class="normal"> 66</span>
-<span class="normal"> 67</span>
-<span class="normal"> 68</span>
-<span class="normal"> 69</span>
-<span class="normal"> 70</span>
-<span class="normal"> 71</span>
-<span class="normal"> 72</span>
-<span class="normal"> 73</span>
-<span class="normal"> 74</span>
-<span class="normal"> 75</span>
-<span class="normal"> 76</span>
-<span class="normal"> 77</span>
-<span class="normal"> 78</span>
-<span class="normal"> 79</span>
-<span class="normal"> 80</span>
-<span class="normal"> 81</span>
-<span class="normal"> 82</span>
-<span class="normal"> 83</span>
-<span class="normal"> 84</span>
-<span class="normal"> 85</span>
-<span class="normal"> 86</span>
-<span class="normal"> 87</span>
-<span class="normal"> 88</span>
-<span class="normal"> 89</span>
-<span class="normal"> 90</span>
-<span class="normal"> 91</span>
-<span class="normal"> 92</span>
-<span class="normal"> 93</span>
-<span class="normal"> 94</span>
-<span class="normal"> 95</span>
-<span class="normal"> 96</span>
-<span class="normal"> 97</span>
-<span class="normal"> 98</span>
-<span class="normal"> 99</span>
-<span class="normal">100</span>
-<span class="normal">101</span>
-<span class="normal">102</span>
-<span class="normal">103</span>
-<span class="normal">104</span>
-<span class="normal">105</span>
-<span class="normal">106</span>
-<span class="normal">107</span>
-<span class="normal">108</span>
-<span class="normal">109</span>
-<span class="normal">110</span>
-<span class="normal">111</span>
-<span class="normal">112</span>
-<span class="normal">113</span>
-<span class="normal">114</span>
-<span class="normal">115</span>
-<span class="normal">116</span>
-<span class="normal">117</span>
-<span class="normal">118</span></pre></div></td><td class="code"><div><pre><span></span><span class="gh"># Restoring the last session</span>
-
-When Terminaal starts, it opens the tabs you had open last time: same order,
-same splits, and the tab you were in comes up in front.
-
-<span class="gu">## What comes back</span>
-
-| Tab | Restored as |
-| --- | --- |
-| Local shell | The same shell, in the working directory it was last in |
-| SSH terminal | A new connection to the same host with the same login |
-| IBM i (5250) | A new connection to the same host, at its sign-on screen |
-| Split panes | The same layout, divider positions and focused pane; a maximized pane stays maximized |
-| Settings | The settings tab |
-| Files (SFTP) | The files tab over the restored terminal to that host, in the folder it showed |
-
-The working directory needs [<span class="nt">shell integration</span>](<span class="na">shell-integration.md</span>) (fish,
+        <div class="readme-content">
+<h1 class="heading-element" dir="auto" id="restoring-the-last-session">Restoring the last session</h1>
+<p dir="auto">When Terminaal starts, it opens the tabs you had open last time: same order,
+same splits, and the tab you were in comes up in front.</p>
+<h2 class="heading-element" dir="auto" id="what-comes-back">What comes back</h2>
+<markdown-accessiblity-table><table>
+<thead>
+<tr>
+<th>Tab</th>
+<th>Restored as</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Local shell</td>
+<td>The same shell, in the working directory it was last in</td>
+</tr>
+<tr>
+<td>SSH terminal</td>
+<td>A new connection to the same host with the same login</td>
+</tr>
+<tr>
+<td>IBM i (5250)</td>
+<td>A new connection to the same host, at its sign-on screen</td>
+</tr>
+<tr>
+<td>Split panes</td>
+<td>The same layout, divider positions and focused pane; a maximized pane stays maximized</td>
+</tr>
+<tr>
+<td>Settings</td>
+<td>The settings tab</td>
+</tr>
+<tr>
+<td>Files (SFTP)</td>
+<td>The files tab over the restored terminal to that host, in the folder it showed</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto">The working directory needs <a href="docs--guides--shell-integration.md.html">shell integration</a> (fish,
 bash and zsh have it in Terminaal). A shell that never reports its directory
-starts in the folder it started in last time.
-
-SSH terminals connect again as if you had opened them from the sidebar.
+starts in the folder it started in last time.</p>
+<p dir="auto">SSH terminals connect again as if you had opened them from the sidebar.
 Passphrase and password prompts come up in their tabs, and changes you made
 to the host in the meantime apply. If a host was deleted or renamed, its
 terminal is left out. A files tab without its terminal is left out too. An
-[<span class="nt">IBM i tab</span>](<span class="na">ibm-i-5250.md</span>) comes back at its sign-on screen.
-
-What doesn't come back:
-
-<span class="k">-</span><span class="w"> </span><span class="gs">**The scrollback**</span> and anything running in the shells. Every terminal starts
-  fresh.
-<span class="k">-</span><span class="w"> </span><span class="gs">**Broadcast.**</span> No terminal is in the broadcast group after a start, so input
-  never goes to several servers without you choosing it.
-<span class="k">-</span><span class="w"> </span><span class="gs">**Search, zoom and the window size.**</span> The window opens at the size from
-  Settings → General.
-
-<span class="gu">## When it's saved</span>
-
-Terminaal saves the session a couple of seconds after you open, close,
-split, move or switch tabs, or <span class="sb">`cd`</span> somewhere. It also saves when you close
+<a href="docs--guides--ibm-i-5250.md.html">IBM i tab</a> comes back at its sign-on screen.</p>
+<p dir="auto">What doesn't come back:</p>
+<ul dir="auto">
+<li><strong>The scrollback</strong> and anything running in the shells. Every terminal starts
+fresh.</li>
+<li><strong>Broadcast.</strong> No terminal is in the broadcast group after a start, so input
+never goes to several servers without you choosing it.</li>
+<li><strong>Search, zoom and the window size.</strong> The window opens at the size from
+Settings → General.</li>
+</ul>
+<h2 class="heading-element" dir="auto" id="when-its-saved">When it's saved</h2>
+<p dir="auto">Terminaal saves the session a couple of seconds after you open, close,
+split, move or switch tabs, or <code>cd</code> somewhere. It also saves when you close
 the window. If Terminaal crashes or your computer turns off, the next start
-still finds your tabs from a few seconds before.
-
-<span class="gs">**Closing the last tab**</span> ends Terminaal with nothing to restore. That also
-happens when you type <span class="sb">`exit`</span> in the last shell. The next start opens one tab
+still finds your tabs from a few seconds before.</p>
+<p dir="auto"><strong>Closing the last tab</strong> ends Terminaal with nothing to restore. That also
+happens when you type <code>exit</code> in the last shell. The next start opens one tab
 with your default shell. To keep your tabs for next time, close the window
-instead.
-
-A terminal tab closed by mistake while Terminaal keeps running comes back with
-&lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;Alt&lt;/kbd&gt;+&lt;kbd&gt;T&lt;/kbd&gt; – the same shells
+instead.</p>
+<p dir="auto">A terminal tab closed by mistake while Terminaal keeps running comes back with
+<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>T</kbd> – the same shells
 in the same split and folders, SSH terminals connecting anew, no scrollback.
-The last ten closed tabs are remembered, until Terminaal quits.
-
-<span class="gu">## Several windows</span>
-
-Only the first Terminaal that's running restores and saves the session. A
+The last ten closed tabs are remembered, until Terminaal quits.</p>
+<h2 class="heading-element" dir="auto" id="several-windows">Several windows</h2>
+<p dir="auto">Only the first Terminaal that's running restores and saves the session. A
 second window, started while the first is still open, starts with a single
 tab and doesn't touch the saved session. Without that, the second window would
 open all your SSH connections again, and the two windows would overwrite each
-other's tabs.
+other's tabs.</p>
+<p dir="auto">Started for one thing – <code>terminaal --connect HOST</code>, <code>-s SHELL</code> or <code>-c LINE</code> –
+Terminaal never restores the session and never saves it.</p>
+<h2 class="heading-element" dir="auto" id="turning-it-off">Turning it off</h2>
+<p dir="auto">Untick <strong>Restore last session</strong> under Settings → General, or set
+<code>restore_session = false</code> in <code>config.toml</code>. Turning it off deletes the saved
+session. From then on Terminaal starts with one tab.</p>
+<h2 class="heading-element" dir="auto" id="the-file">The file</h2>
+<p dir="auto">The session is stored in <code>~/.local/state/terminaal/session.toml</code> (or
+<code>$XDG_STATE_HOME/terminaal/</code>; on Windows <code>%LOCALAPPDATA%\terminaal</code>). It holds shell paths, directories, and host
+names with user names. Nothing secret is in it.</p>
+<p dir="auto">You can edit or delete it while Terminaal isn't running. If the file can't be
+read, Terminaal starts with one tab and the next save replaces the file.</p>
+<div class="highlight highlight-source-toml notranslate position-relative overflow-auto" dir="auto"><pre><span class="pl-smi">active</span> = <span class="pl-c1">0</span>              <span class="pl-c"><span class="pl-c">#</span> the tab in front, counted from 0</span>
 
-Started for one thing – <span class="sb">`terminaal --connect HOST`</span>, <span class="sb">`-s SHELL`</span> or <span class="sb">`-c LINE`</span> –
-Terminaal never restores the session and never saves it.
+[[<span class="pl-en">tab</span>]]
+<span class="pl-smi">kind</span> = <span class="pl-s"><span class="pl-pds">"</span>terminals<span class="pl-pds">"</span></span>
+<span class="pl-smi">focus</span> = <span class="pl-c1">1</span>               <span class="pl-c"><span class="pl-c">#</span> the pane with the keyboard, an index into the panes below</span>
+<span class="pl-c"><span class="pl-c">#</span> Leaves are pane indices; a split has axis "horizontal" (side by side)</span>
+<span class="pl-c"><span class="pl-c">#</span> or "vertical" (one above the other) and the first half's share.</span>
+<span class="pl-smi">layout</span> = { <span class="pl-smi">axis</span> = <span class="pl-s"><span class="pl-pds">"</span>horizontal<span class="pl-pds">"</span></span>, <span class="pl-smi">ratio</span> = <span class="pl-c1">0.5</span>, <span class="pl-smi">first</span> = <span class="pl-c1">0</span>, <span class="pl-smi">second</span> = <span class="pl-c1">1</span> }
+<span class="pl-c"><span class="pl-c">#</span> zoomed = true         # the focused pane over the whole tab</span>
 
-<span class="gu">## Turning it off</span>
+[[<span class="pl-en">tab</span>.<span class="pl-en">panes</span>]]
+<span class="pl-smi">kind</span> = <span class="pl-s"><span class="pl-pds">"</span>shell<span class="pl-pds">"</span></span>
+<span class="pl-smi">shell</span> = <span class="pl-s"><span class="pl-pds">"</span>/usr/bin/fish<span class="pl-pds">"</span></span>
+<span class="pl-smi">cwd</span> = <span class="pl-s"><span class="pl-pds">"</span>/home/me/src<span class="pl-pds">"</span></span>    <span class="pl-c"><span class="pl-c">#</span> optional</span>
 
-Untick <span class="gs">**Restore last session**</span> under Settings → General, or set
-<span class="sb">`restore_session = false`</span> in <span class="sb">`config.toml`</span>. Turning it off deletes the saved
-session. From then on Terminaal starts with one tab.
+[[<span class="pl-en">tab</span>.<span class="pl-en">panes</span>]]
+<span class="pl-smi">kind</span> = <span class="pl-s"><span class="pl-pds">"</span>ssh<span class="pl-pds">"</span></span>
+<span class="pl-smi">host</span> = <span class="pl-s"><span class="pl-pds">"</span>web1<span class="pl-pds">"</span></span>           <span class="pl-c"><span class="pl-c">#</span> the host's name in the sidebar</span>
+<span class="pl-smi">user</span> = <span class="pl-s"><span class="pl-pds">"</span>admin<span class="pl-pds">"</span></span>
 
-<span class="gu">## The file</span>
+[[<span class="pl-en">tab</span>]]
+<span class="pl-smi">kind</span> = <span class="pl-s"><span class="pl-pds">"</span>terminals<span class="pl-pds">"</span></span>
+<span class="pl-smi">layout</span> = <span class="pl-c1">0</span>
 
-The session is stored in <span class="sb">`~/.local/state/terminaal/session.toml`</span> (or
-<span class="sb">`$XDG_STATE_HOME/terminaal/`</span>; on Windows <span class="sb">`%LOCALAPPDATA%\terminaal`</span>). It holds shell paths, directories, and host
-names with user names. Nothing secret is in it.
+[[<span class="pl-en">tab</span>.<span class="pl-en">panes</span>]]
+<span class="pl-smi">kind</span> = <span class="pl-s"><span class="pl-pds">"</span>tn5250<span class="pl-pds">"</span></span>         <span class="pl-c"><span class="pl-c">#</span> an IBM i screen: just the host's name</span>
+<span class="pl-smi">host</span> = <span class="pl-s"><span class="pl-pds">"</span>PUB400<span class="pl-pds">"</span></span>
 
-You can edit or delete it while Terminaal isn't running. If the file can't be
-read, Terminaal starts with one tab and the next save replaces the file.
+[[<span class="pl-en">tab</span>]]
+<span class="pl-smi">kind</span> = <span class="pl-s"><span class="pl-pds">"</span>files<span class="pl-pds">"</span></span>
+<span class="pl-smi">host</span> = <span class="pl-s"><span class="pl-pds">"</span>web1<span class="pl-pds">"</span></span>
+<span class="pl-smi">user</span> = <span class="pl-s"><span class="pl-pds">"</span>admin<span class="pl-pds">"</span></span>
+<span class="pl-smi">dir</span> = <span class="pl-s"><span class="pl-pds">"</span>/var/log<span class="pl-pds">"</span></span>        <span class="pl-c"><span class="pl-c">#</span> optional</span>
 
-<span class="sb">```toml</span>
-<span class="n">active</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w">              </span><span class="c1"># the tab in front, counted from 0</span>
+[[<span class="pl-en">tab</span>]]
+<span class="pl-smi">kind</span> = <span class="pl-s"><span class="pl-pds">"</span>settings<span class="pl-pds">"</span></span></pre></div>
+<p dir="auto">A tab whose layout doesn't name each of its panes exactly once is left out.</p>
 
-<span class="k">[[tab]]</span>
-<span class="n">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"terminals"</span>
-<span class="n">focus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">               </span><span class="c1"># the pane with the keyboard, an index into the panes below</span>
-<span class="c1"># Leaves are pane indices; a split has axis "horizontal" (side by side)</span>
-<span class="c1"># or "vertical" (one above the other) and the first half's share.</span>
-<span class="n">layout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">axis</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"horizontal"</span><span class="p">,</span><span class="w"> </span><span class="n">ratio</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="n">first</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">second</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">}</span>
-<span class="c1"># zoomed = true         # the focused pane over the whole tab</span>
-
-<span class="k">[[tab.panes]]</span>
-<span class="n">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"shell"</span>
-<span class="n">shell</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"/usr/bin/fish"</span>
-<span class="n">cwd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"/home/me/src"</span><span class="w">    </span><span class="c1"># optional</span>
-
-<span class="k">[[tab.panes]]</span>
-<span class="n">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"ssh"</span>
-<span class="n">host</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"web1"</span><span class="w">           </span><span class="c1"># the host's name in the sidebar</span>
-<span class="n">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"admin"</span>
-
-<span class="k">[[tab]]</span>
-<span class="n">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"terminals"</span>
-<span class="n">layout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-
-<span class="k">[[tab.panes]]</span>
-<span class="n">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"tn5250"</span><span class="w">         </span><span class="c1"># an IBM i screen: just the host's name</span>
-<span class="n">host</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"PUB400"</span>
-
-<span class="k">[[tab]]</span>
-<span class="n">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"files"</span>
-<span class="n">host</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"web1"</span>
-<span class="n">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"admin"</span>
-<span class="n">dir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"/var/log"</span><span class="w">        </span><span class="c1"># optional</span>
-
-<span class="k">[[tab]]</span>
-<span class="n">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"settings"</span>
-<span class="sb">```</span>
-
-A tab whose layout doesn't name each of its panes exactly once is left out.
-</pre></div></td></tr></table></div>
-
+        </div>
       </section>
     </main>
   </div>

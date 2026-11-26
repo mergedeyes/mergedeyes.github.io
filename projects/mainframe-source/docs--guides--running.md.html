@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>docs/guides/running.md — Mainframe — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=41ca8b66" />
+  <link rel="stylesheet" href="../../styles.css?v=77eb044b" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -71,227 +71,149 @@
           <h1 class="section__title">docs/guides/running.md</h1>
           <a href="../mainframe.html" class="link">← Back to Mainframe</a>
         </div>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">  1</span>
-<span class="normal">  2</span>
-<span class="normal">  3</span>
-<span class="normal">  4</span>
-<span class="normal">  5</span>
-<span class="normal">  6</span>
-<span class="normal">  7</span>
-<span class="normal">  8</span>
-<span class="normal">  9</span>
-<span class="normal"> 10</span>
-<span class="normal"> 11</span>
-<span class="normal"> 12</span>
-<span class="normal"> 13</span>
-<span class="normal"> 14</span>
-<span class="normal"> 15</span>
-<span class="normal"> 16</span>
-<span class="normal"> 17</span>
-<span class="normal"> 18</span>
-<span class="normal"> 19</span>
-<span class="normal"> 20</span>
-<span class="normal"> 21</span>
-<span class="normal"> 22</span>
-<span class="normal"> 23</span>
-<span class="normal"> 24</span>
-<span class="normal"> 25</span>
-<span class="normal"> 26</span>
-<span class="normal"> 27</span>
-<span class="normal"> 28</span>
-<span class="normal"> 29</span>
-<span class="normal"> 30</span>
-<span class="normal"> 31</span>
-<span class="normal"> 32</span>
-<span class="normal"> 33</span>
-<span class="normal"> 34</span>
-<span class="normal"> 35</span>
-<span class="normal"> 36</span>
-<span class="normal"> 37</span>
-<span class="normal"> 38</span>
-<span class="normal"> 39</span>
-<span class="normal"> 40</span>
-<span class="normal"> 41</span>
-<span class="normal"> 42</span>
-<span class="normal"> 43</span>
-<span class="normal"> 44</span>
-<span class="normal"> 45</span>
-<span class="normal"> 46</span>
-<span class="normal"> 47</span>
-<span class="normal"> 48</span>
-<span class="normal"> 49</span>
-<span class="normal"> 50</span>
-<span class="normal"> 51</span>
-<span class="normal"> 52</span>
-<span class="normal"> 53</span>
-<span class="normal"> 54</span>
-<span class="normal"> 55</span>
-<span class="normal"> 56</span>
-<span class="normal"> 57</span>
-<span class="normal"> 58</span>
-<span class="normal"> 59</span>
-<span class="normal"> 60</span>
-<span class="normal"> 61</span>
-<span class="normal"> 62</span>
-<span class="normal"> 63</span>
-<span class="normal"> 64</span>
-<span class="normal"> 65</span>
-<span class="normal"> 66</span>
-<span class="normal"> 67</span>
-<span class="normal"> 68</span>
-<span class="normal"> 69</span>
-<span class="normal"> 70</span>
-<span class="normal"> 71</span>
-<span class="normal"> 72</span>
-<span class="normal"> 73</span>
-<span class="normal"> 74</span>
-<span class="normal"> 75</span>
-<span class="normal"> 76</span>
-<span class="normal"> 77</span>
-<span class="normal"> 78</span>
-<span class="normal"> 79</span>
-<span class="normal"> 80</span>
-<span class="normal"> 81</span>
-<span class="normal"> 82</span>
-<span class="normal"> 83</span>
-<span class="normal"> 84</span>
-<span class="normal"> 85</span>
-<span class="normal"> 86</span>
-<span class="normal"> 87</span>
-<span class="normal"> 88</span>
-<span class="normal"> 89</span>
-<span class="normal"> 90</span>
-<span class="normal"> 91</span>
-<span class="normal"> 92</span>
-<span class="normal"> 93</span>
-<span class="normal"> 94</span>
-<span class="normal"> 95</span>
-<span class="normal"> 96</span>
-<span class="normal"> 97</span>
-<span class="normal"> 98</span>
-<span class="normal"> 99</span>
-<span class="normal">100</span>
-<span class="normal">101</span>
-<span class="normal">102</span>
-<span class="normal">103</span>
-<span class="normal">104</span>
-<span class="normal">105</span>
-<span class="normal">106</span>
-<span class="normal">107</span>
-<span class="normal">108</span>
-<span class="normal">109</span>
-<span class="normal">110</span></pre></div></td><td class="code"><div><pre><span></span><span class="gh"># Running things</span>
-
-Everything Mainframe runs, it runs in the output pane: builds, tests, your
+        <div class="readme-content">
+<h1 class="heading-element" dir="auto" id="running-things">Running things</h1>
+<p dir="auto">Everything Mainframe runs, it runs in the output pane: builds, tests, your
 program, git commands, deploys. Each task shows the exact command first, so
-you can always see what ran.
-
-<span class="gu">## Build, run and test</span>
-
-| Key | What it does |
-|---|---|
-| <span class="sb">`b`</span> | build |
-| <span class="sb">`B`</span> | release build |
-| <span class="sb">`t`</span> | test |
-| <span class="sb">`r`</span> | run |
-| <span class="sb">`R`</span> | run in the full terminal, for programs that ask for input |
-
-What these mean depends on the project; see the table in the
-[<span class="nt">introduction</span>](<span class="na">../introduction.md#projects</span>). With a file selected, <span class="sb">`r`</span>
-runs that file instead:
-
-<span class="k">-</span><span class="w"> </span>a Rust file in <span class="sb">`src/bin/`</span> or <span class="sb">`examples/`</span>: <span class="sb">`cargo run --bin …`</span> or <span class="sb">`--example …`</span>
-<span class="k">-</span><span class="w"> </span>a script: <span class="sb">`.py`</span>, <span class="sb">`.sh`</span>, <span class="sb">`.bash`</span>, <span class="sb">`.zsh`</span>, <span class="sb">`.fish`</span>, <span class="sb">`.js`</span>, <span class="sb">`.ts`</span>, <span class="sb">`.rb`</span>, <span class="sb">`.lua`</span>, <span class="sb">`.pl`</span>, <span class="sb">`.php`</span>, <span class="sb">`.go`</span>
-<span class="k">-</span><span class="w"> </span>a single <span class="sb">`.rs`</span>, <span class="sb">`.c`</span> or <span class="sb">`.cpp`</span> file: compiled to a temporary program and run
-<span class="k">-</span><span class="w"> </span>anything executable
-
-The <span class="sb">`runners`</span> setting in the [<span class="nt">configuration</span>](<span class="na">../reference/config.md</span>)
-changes or adds commands per file extension.
-
-<span class="gu">## The task picker</span>
-
-<span class="sb">`T`</span> lists everything the project can run: the build tool's usual commands,
-every cargo binary and example, <span class="sb">`go run ./cmd/…`</span>, Python entry points,
+you can always see what ran.</p>
+<h2 class="heading-element" dir="auto" id="build-run-and-test">Build, run and test</h2>
+<markdown-accessiblity-table><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>b</code></td>
+<td>build</td>
+</tr>
+<tr>
+<td><code>B</code></td>
+<td>release build</td>
+</tr>
+<tr>
+<td><code>t</code></td>
+<td>test</td>
+</tr>
+<tr>
+<td><code>r</code></td>
+<td>run</td>
+</tr>
+<tr>
+<td><code>R</code></td>
+<td>run in the full terminal, for programs that ask for input</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto">What these mean depends on the project; see the table in the
+<a href="docs--introduction.md.html#projects">introduction</a>. With a file selected, <code>r</code>
+runs that file instead:</p>
+<ul dir="auto">
+<li>a Rust file in <code>src/bin/</code> or <code>examples/</code>: <code>cargo run --bin …</code> or <code>--example …</code></li>
+<li>a script: <code>.py</code>, <code>.sh</code>, <code>.bash</code>, <code>.zsh</code>, <code>.fish</code>, <code>.js</code>, <code>.ts</code>, <code>.rb</code>, <code>.lua</code>, <code>.pl</code>, <code>.php</code>, <code>.go</code></li>
+<li>a single <code>.rs</code>, <code>.c</code> or <code>.cpp</code> file: compiled to a temporary program and run</li>
+<li>anything executable</li>
+</ul>
+<p dir="auto">The <code>runners</code> setting in the <a href="docs--reference--config.md.html">configuration</a>
+changes or adds commands per file extension.</p>
+<h2 class="heading-element" dir="auto" id="the-task-picker">The task picker</h2>
+<p dir="auto"><code>T</code> lists everything the project can run: the build tool's usual commands,
+every cargo binary and example, <code>go run ./cmd/…</code>, Python entry points,
 package.json scripts, make targets and just recipes. Type to filter,
-<span class="sb">`Enter`</span> runs the selected one, <span class="sb">`Ctrl-R`</span> runs it in the full terminal.
-
-<span class="gu">## Any command</span>
-
-<span class="sb">`:`</span> runs a shell command in the current folder, with Tab completing
+<code>Enter</code> runs the selected one, <code>Ctrl-R</code> runs it in the full terminal.</p>
+<h2 class="heading-element" dir="auto" id="any-command">Any command</h2>
+<p dir="auto"><code>:</code> runs a shell command in the current folder, with Tab completing
 programs and paths. ↑ and ↓ go through the commands you ran before; type the
-start of one first to see only those. <span class="sb">`!`</span> opens your shell in the current
-folder; leave it with <span class="sb">`exit`</span> to come back.
-
-For commands you run often, give them a key with a
-[<span class="nt">custom action</span>](<span class="na">../reference/config.md#custom-actions</span>).
-
-<span class="gu">## Output tabs</span>
-
-Starting a task while another one is running opens a new tab, so a dev
-server can keep running while you build. Up to 9 tasks run at once.
-
-| Key | What it does |
-|---|---|
-| <span class="sb">`[`</span> <span class="sb">`]`</span> | previous, next tab |
-| <span class="sb">`x`</span> | stop the shown task; once it's done, close the tab |
-| <span class="sb">`Ctrl-C`</span> | stop the shown task (it doesn't quit Mainframe; <span class="sb">`q`</span> does) |
-| <span class="sb">`@`</span> | run the shown tab's command again |
-| <span class="sb">`w`</span> | hide or show the output pane |
-| <span class="sb">`z`</span> | make the output fill the screen, and back |
-| <span class="sb">`+`</span> <span class="sb">`-`</span> | make the output pane bigger, smaller |
-| <span class="sb">`Tab`</span> | move the focus between the file list and the output |
-
-With the output focused, <span class="sb">`j`</span> <span class="sb">`k`</span>, <span class="sb">`PgUp`</span> <span class="sb">`PgDn`</span>, <span class="sb">`Home`</span> and <span class="sb">`End`</span> scroll
-it. <span class="sb">`End`</span> follows new output again.
-
-Tasks run in the background without a terminal. A command that asks for a
-password fails right away instead of waiting forever. Use <span class="sb">`R`</span>, <span class="sb">`!`</span> or an
-<span class="sb">`interactive`</span> custom action for those.
-
-<span class="gu">## Each project keeps its output</span>
-
-Every project in your [<span class="nt">projects folder</span>](<span class="na">../introduction.md#your-projects-folder</span>)
-has its own tabs. Move to another project, with <span class="sb">`J`</span> or by browsing there,
+start of one first to see only those. <code>!</code> opens your shell in the current
+folder; leave it with <code>exit</code> to come back.</p>
+<p dir="auto">For commands you run often, give them a key with a
+<a href="docs--reference--config.md.html#custom-actions">custom action</a>.</p>
+<h2 class="heading-element" dir="auto" id="output-tabs">Output tabs</h2>
+<p dir="auto">Starting a task while another one is running opens a new tab, so a dev
+server can keep running while you build. Up to 9 tasks run at once.</p>
+<markdown-accessiblity-table><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>[</code> <code>]</code></td>
+<td>previous, next tab</td>
+</tr>
+<tr>
+<td><code>x</code></td>
+<td>stop the shown task; once it's done, close the tab</td>
+</tr>
+<tr>
+<td><code>Ctrl-C</code></td>
+<td>stop the shown task (it doesn't quit Mainframe; <code>q</code> does)</td>
+</tr>
+<tr>
+<td><code>@</code></td>
+<td>run the shown tab's command again</td>
+</tr>
+<tr>
+<td><code>w</code></td>
+<td>hide or show the output pane</td>
+</tr>
+<tr>
+<td><code>z</code></td>
+<td>make the output fill the screen, and back</td>
+</tr>
+<tr>
+<td><code>+</code> <code>-</code></td>
+<td>make the output pane bigger, smaller</td>
+</tr>
+<tr>
+<td><code>Tab</code></td>
+<td>move the focus between the file list and the output</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto">With the output focused, <code>j</code> <code>k</code>, <code>PgUp</code> <code>PgDn</code>, <code>Home</code> and <code>End</code> scroll
+it. <code>End</code> follows new output again.</p>
+<p dir="auto">Tasks run in the background without a terminal. A command that asks for a
+password fails right away instead of waiting forever. Use <code>R</code>, <code>!</code> or an
+<code>interactive</code> custom action for those.</p>
+<h2 class="heading-element" dir="auto" id="each-project-keeps-its-output">Each project keeps its output</h2>
+<p dir="auto">Every project in your <a href="docs--introduction.md.html#your-projects-folder">projects folder</a>
+has its own tabs. Move to another project, with <code>J</code> or by browsing there,
 and you see the output it had when you left. The tasks of the project you
-left keep running in the background.
-
-The tabs are saved with their colors (the last 5,000 lines of each), so
-after a restart every project shows its output again, and <span class="sb">`@`</span>, <span class="sb">`n`</span> and <span class="sb">`N`</span>
+left keep running in the background.</p>
+<p dir="auto">The tabs are saved with their colors (the last 5,000 lines of each), so
+after a restart every project shows its output again, and <code>@</code>, <code>n</code> and <code>N</code>
 still work. Tasks that were still running when you quit are marked as
-stopped.
-
-<span class="gu">## When a task finishes</span>
-
-A task that ran for at least 10 seconds rings the terminal bell and sends a
+stopped.</p>
+<h2 class="heading-element" dir="auto" id="when-a-task-finishes">When a task finishes</h2>
+<p dir="auto">A task that ran for at least 10 seconds rings the terminal bell and sends a
 desktop notification when it ends, also when it belongs to a project you
-moved away from. <span class="sb">`notify_after`</span> in the configuration changes the 10
-seconds, 0 turns it off.
-
-<span class="gu">## Jumping to errors</span>
-
-<span class="sb">`n`</span> jumps to the next <span class="sb">`file:line`</span> in the output: compiler errors, warnings,
-panics, Python tracebacks. <span class="sb">`N`</span> goes to the previous one. With the output
-focused (<span class="sb">`Tab`</span>), <span class="sb">`Enter`</span> opens the file in your editor at that line, <span class="sb">`o`</span> in
-VS Code.
-
-<span class="gu">## Watch mode</span>
-
-<span class="sb">`W`</span> turns on watch mode for the shown tab: whenever a file in the project
+moved away from. <code>notify_after</code> in the configuration changes the 10
+seconds, 0 turns it off.</p>
+<h2 class="heading-element" dir="auto" id="jumping-to-errors">Jumping to errors</h2>
+<p dir="auto"><code>n</code> jumps to the next <code>file:line</code> in the output: compiler errors, warnings,
+panics, Python tracebacks. <code>N</code> goes to the previous one. With the output
+focused (<code>Tab</code>), <code>Enter</code> opens the file in your editor at that line, <code>o</code> in
+VS Code.</p>
+<h2 class="heading-element" dir="auto" id="watch-mode">Watch mode</h2>
+<p dir="auto"><code>W</code> turns on watch mode for the shown tab: whenever a file in the project
 changes, its command runs again. A task that is still running, like a
-server, is restarted. <span class="sb">`W`</span> again turns it off.
+server, is restarted. <code>W</code> again turns it off.</p>
+<p dir="auto">Watch mode pauses while you're in another project and catches up when you
+come back.</p>
+<h2 class="heading-element" dir="auto" id="searching-and-saving-output">Searching and saving output</h2>
+<p dir="auto">With the output focused (<code>Tab</code>):</p>
+<ul dir="auto">
+<li><code>/</code> searches it; <code>Enter</code> keeps the search, then <code>n</code> and <code>N</code> step through
+the matches, <code>Esc</code> clears it</li>
+<li><code>Ctrl-S</code> saves the whole output to a file; it asks for the name</li>
+</ul>
 
-Watch mode pauses while you're in another project and catches up when you
-come back.
-
-<span class="gu">## Searching and saving output</span>
-
-With the output focused (<span class="sb">`Tab`</span>):
-
-<span class="k">-</span><span class="w"> </span><span class="sb">`/`</span> searches it; <span class="sb">`Enter`</span> keeps the search, then <span class="sb">`n`</span> and <span class="sb">`N`</span> step through
-  the matches, <span class="sb">`Esc`</span> clears it
-<span class="k">-</span><span class="w"> </span><span class="sb">`Ctrl-S`</span> saves the whole output to a file; it asks for the name
-</pre></div></td></tr></table></div>
-
+        </div>
       </section>
     </main>
   </div>

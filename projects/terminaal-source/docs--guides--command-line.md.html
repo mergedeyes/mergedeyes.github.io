@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>docs/guides/command-line.md — Terminaal — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=41ca8b66" />
+  <link rel="stylesheet" href="../../styles.css?v=77eb044b" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -71,289 +71,109 @@
           <h1 class="section__title">docs/guides/command-line.md</h1>
           <a href="../terminaal.html" class="link">← Back to Terminaal</a>
         </div>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">  1</span>
-<span class="normal">  2</span>
-<span class="normal">  3</span>
-<span class="normal">  4</span>
-<span class="normal">  5</span>
-<span class="normal">  6</span>
-<span class="normal">  7</span>
-<span class="normal">  8</span>
-<span class="normal">  9</span>
-<span class="normal"> 10</span>
-<span class="normal"> 11</span>
-<span class="normal"> 12</span>
-<span class="normal"> 13</span>
-<span class="normal"> 14</span>
-<span class="normal"> 15</span>
-<span class="normal"> 16</span>
-<span class="normal"> 17</span>
-<span class="normal"> 18</span>
-<span class="normal"> 19</span>
-<span class="normal"> 20</span>
-<span class="normal"> 21</span>
-<span class="normal"> 22</span>
-<span class="normal"> 23</span>
-<span class="normal"> 24</span>
-<span class="normal"> 25</span>
-<span class="normal"> 26</span>
-<span class="normal"> 27</span>
-<span class="normal"> 28</span>
-<span class="normal"> 29</span>
-<span class="normal"> 30</span>
-<span class="normal"> 31</span>
-<span class="normal"> 32</span>
-<span class="normal"> 33</span>
-<span class="normal"> 34</span>
-<span class="normal"> 35</span>
-<span class="normal"> 36</span>
-<span class="normal"> 37</span>
-<span class="normal"> 38</span>
-<span class="normal"> 39</span>
-<span class="normal"> 40</span>
-<span class="normal"> 41</span>
-<span class="normal"> 42</span>
-<span class="normal"> 43</span>
-<span class="normal"> 44</span>
-<span class="normal"> 45</span>
-<span class="normal"> 46</span>
-<span class="normal"> 47</span>
-<span class="normal"> 48</span>
-<span class="normal"> 49</span>
-<span class="normal"> 50</span>
-<span class="normal"> 51</span>
-<span class="normal"> 52</span>
-<span class="normal"> 53</span>
-<span class="normal"> 54</span>
-<span class="normal"> 55</span>
-<span class="normal"> 56</span>
-<span class="normal"> 57</span>
-<span class="normal"> 58</span>
-<span class="normal"> 59</span>
-<span class="normal"> 60</span>
-<span class="normal"> 61</span>
-<span class="normal"> 62</span>
-<span class="normal"> 63</span>
-<span class="normal"> 64</span>
-<span class="normal"> 65</span>
-<span class="normal"> 66</span>
-<span class="normal"> 67</span>
-<span class="normal"> 68</span>
-<span class="normal"> 69</span>
-<span class="normal"> 70</span>
-<span class="normal"> 71</span>
-<span class="normal"> 72</span>
-<span class="normal"> 73</span>
-<span class="normal"> 74</span>
-<span class="normal"> 75</span>
-<span class="normal"> 76</span>
-<span class="normal"> 77</span>
-<span class="normal"> 78</span>
-<span class="normal"> 79</span>
-<span class="normal"> 80</span>
-<span class="normal"> 81</span>
-<span class="normal"> 82</span>
-<span class="normal"> 83</span>
-<span class="normal"> 84</span>
-<span class="normal"> 85</span>
-<span class="normal"> 86</span>
-<span class="normal"> 87</span>
-<span class="normal"> 88</span>
-<span class="normal"> 89</span>
-<span class="normal"> 90</span>
-<span class="normal"> 91</span>
-<span class="normal"> 92</span>
-<span class="normal"> 93</span>
-<span class="normal"> 94</span>
-<span class="normal"> 95</span>
-<span class="normal"> 96</span>
-<span class="normal"> 97</span>
-<span class="normal"> 98</span>
-<span class="normal"> 99</span>
-<span class="normal">100</span>
-<span class="normal">101</span>
-<span class="normal">102</span>
-<span class="normal">103</span>
-<span class="normal">104</span>
-<span class="normal">105</span>
-<span class="normal">106</span>
-<span class="normal">107</span>
-<span class="normal">108</span>
-<span class="normal">109</span>
-<span class="normal">110</span>
-<span class="normal">111</span>
-<span class="normal">112</span>
-<span class="normal">113</span>
-<span class="normal">114</span>
-<span class="normal">115</span>
-<span class="normal">116</span>
-<span class="normal">117</span>
-<span class="normal">118</span>
-<span class="normal">119</span>
-<span class="normal">120</span>
-<span class="normal">121</span>
-<span class="normal">122</span>
-<span class="normal">123</span>
-<span class="normal">124</span>
-<span class="normal">125</span>
-<span class="normal">126</span>
-<span class="normal">127</span>
-<span class="normal">128</span>
-<span class="normal">129</span>
-<span class="normal">130</span>
-<span class="normal">131</span>
-<span class="normal">132</span>
-<span class="normal">133</span>
-<span class="normal">134</span>
-<span class="normal">135</span>
-<span class="normal">136</span>
-<span class="normal">137</span>
-<span class="normal">138</span>
-<span class="normal">139</span>
-<span class="normal">140</span>
-<span class="normal">141</span></pre></div></td><td class="code"><div><pre><span></span><span class="gh"># The command line</span>
-
-Terminaal can be started for one particular job: a server, a shell, a command.
-That is what desktop entries, file-manager actions and scripts use.
-
-<span class="sb">```sh</span>
-terminaal<span class="w">                              </span><span class="c1"># a local shell (or the last session)</span>
-terminaal<span class="w"> </span>--connect<span class="w"> </span>myserver<span class="w">           </span><span class="c1"># a saved or ~/.ssh/config host</span>
-terminaal<span class="w"> </span>--connect<span class="w"> </span>admin@myserver<span class="w">     </span><span class="c1"># ...with that host's login for "admin"</span>
-terminaal<span class="w"> </span>--connect<span class="w"> </span>PUB400<span class="w">             </span><span class="c1"># an IBM i host: its 5250 sign-on screen</span>
-terminaal<span class="w"> </span>-s<span class="w">                           </span><span class="c1"># list the installed shells and exit</span>
-terminaal<span class="w"> </span>-s<span class="w"> </span>fish<span class="w">                      </span><span class="c1"># first tab with that shell</span>
-terminaal<span class="w"> </span>-c<span class="w"> </span><span class="s2">"journalctl -fu nginx"</span><span class="w">    </span><span class="c1"># run that line instead of a shell</span>
-terminaal<span class="w"> </span>-s<span class="w"> </span>bash<span class="w"> </span>-c<span class="w"> </span><span class="s2">"make"</span><span class="w"> </span>--hold<span class="w">     </span><span class="c1"># ...in bash, and keep the tab afterwards</span>
-terminaal<span class="w"> </span>--connect<span class="w"> </span>web<span class="w"> </span>-c<span class="w"> </span><span class="s2">"htop"</span><span class="w">      </span><span class="c1"># run it on the server</span>
-terminaal<span class="w"> </span>--quake<span class="w">                      </span><span class="c1"># show or hide the drop-down window</span>
-terminaal<span class="w"> </span>--help<span class="w">                       </span><span class="c1"># the summary; `man terminaal` has it all</span>
-terminaal<span class="w"> </span>--version<span class="w">                    </span><span class="c1"># the version (also -V)</span>
-<span class="sb">```</span>
-
-Anything else is refused with a usage line and exit status 2 — including a
+        <div class="readme-content">
+<h1 class="heading-element" dir="auto" id="the-command-line">The command line</h1>
+<p dir="auto">Terminaal can be started for one particular job: a server, a shell, a command.
+That is what desktop entries, file-manager actions and scripts use.</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto"><pre>terminaal                              <span class="pl-c"><span class="pl-c">#</span> a local shell (or the last session)</span>
+terminaal --connect myserver           <span class="pl-c"><span class="pl-c">#</span> a saved or ~/.ssh/config host</span>
+terminaal --connect admin@myserver     <span class="pl-c"><span class="pl-c">#</span> ...with that host's login for "admin"</span>
+terminaal --connect PUB400             <span class="pl-c"><span class="pl-c">#</span> an IBM i host: its 5250 sign-on screen</span>
+terminaal -s                           <span class="pl-c"><span class="pl-c">#</span> list the installed shells and exit</span>
+terminaal -s fish                      <span class="pl-c"><span class="pl-c">#</span> first tab with that shell</span>
+terminaal -c <span class="pl-s"><span class="pl-pds">"</span>journalctl -fu nginx<span class="pl-pds">"</span></span>    <span class="pl-c"><span class="pl-c">#</span> run that line instead of a shell</span>
+terminaal -s bash -c <span class="pl-s"><span class="pl-pds">"</span>make<span class="pl-pds">"</span></span> --hold     <span class="pl-c"><span class="pl-c">#</span> ...in bash, and keep the tab afterwards</span>
+terminaal --connect web -c <span class="pl-s"><span class="pl-pds">"</span>htop<span class="pl-pds">"</span></span>      <span class="pl-c"><span class="pl-c">#</span> run it on the server</span>
+terminaal --quake                      <span class="pl-c"><span class="pl-c">#</span> show or hide the drop-down window</span>
+terminaal --help                       <span class="pl-c"><span class="pl-c">#</span> the summary; `man terminaal` has it all</span>
+terminaal --version                    <span class="pl-c"><span class="pl-c">#</span> the version (also -V)</span></pre></div>
+<p dir="auto">Anything else is refused with a usage line and exit status 2 — including a
 misspelled host or shell name, so a launcher entry fails visibly instead of
-opening a window that isn't what you asked for.
-
-<span class="gu">## `-c`: one command instead of a shell</span>
-
-<span class="sb">`-c`</span> takes <span class="gs">**one line**</span>, the way <span class="sb">`sh -c`</span> does, not a command with separate
+opening a window that isn't what you asked for.</p>
+<h2 class="heading-element" dir="auto" id="-c-one-command-instead-of-a-shell"><code>-c</code>: one command instead of a shell</h2>
+<p dir="auto"><code>-c</code> takes <strong>one line</strong>, the way <code>sh -c</code> does, not a command with separate
 arguments. The shell evaluates it, so pipes, redirections, quoting and several
-commands separated by <span class="sb">`;`</span> all work:
-
-<span class="sb">```sh</span>
-terminaal<span class="w"> </span>-c<span class="w"> </span><span class="s2">"ssh-add -l; echo ---; ssh-add -L | wc -l"</span>
-<span class="sb">```</span>
-
-Two things follow from "the shell evaluates it":
-
-<span class="k">-</span><span class="w"> </span>The line is one argument. Quote it, and let the shell inside Terminaal do the
-  splitting — <span class="sb">`terminaal -c ls -l`</span> is a usage error, <span class="sb">`terminaal -c "ls -l"`</span> is
-  what you want.
-<span class="k">-</span><span class="w"> </span>That shell is <span class="gs">**not interactive**</span>. As with <span class="sb">`sh -c`</span> anywhere else, bash and zsh
-  read no startup file, so your aliases — including the ones Terminaal manages
-  in the sidebar — are not available. Write out what the alias stands for, or
-  call a function from a file you source in the line itself. fish does read its
-  <span class="sb">`config.fish`</span> for <span class="sb">`-c`</span>, so its functions are there.
-
-Which shell runs the line: the one from <span class="sb">`-s`</span>, else the default shell
-(<span class="gs">**Settings → Shell**</span>, else <span class="sb">`$SHELL`</span>).
-
-<span class="gu">## `--hold`: keep the tab when the command ends</span>
-
-Without <span class="sb">`--hold`</span> the tab closes as soon as the command ends — like a shell that
-you <span class="sb">`exit`</span>, and the window goes with the last tab. Only a command that fails
+commands separated by <code>;</code> all work:</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto"><pre>terminaal -c <span class="pl-s"><span class="pl-pds">"</span>ssh-add -l; echo ---; ssh-add -L | wc -l<span class="pl-pds">"</span></span></pre></div>
+<p dir="auto">Two things follow from "the shell evaluates it":</p>
+<ul dir="auto">
+<li>The line is one argument. Quote it, and let the shell inside Terminaal do the
+splitting — <code>terminaal -c ls -l</code> is a usage error, <code>terminaal -c "ls -l"</code> is
+what you want.</li>
+<li>That shell is <strong>not interactive</strong>. As with <code>sh -c</code> anywhere else, bash and zsh
+read no startup file, so your aliases — including the ones Terminaal manages
+in the sidebar — are not available. Write out what the alias stands for, or
+call a function from a file you source in the line itself. fish does read its
+<code>config.fish</code> for <code>-c</code>, so its functions are there.</li>
+</ul>
+<p dir="auto">Which shell runs the line: the one from <code>-s</code>, else the default shell
+(<strong>Settings → Shell</strong>, else <code>$SHELL</code>).</p>
+<h2 class="heading-element" dir="auto" id="--hold-keep-the-tab-when-the-command-ends"><code>--hold</code>: keep the tab when the command ends</h2>
+<p dir="auto">Without <code>--hold</code> the tab closes as soon as the command ends — like a shell that
+you <code>exit</code>, and the window goes with the last tab. Only a command that fails
 right away keeps its tab: one that ends with a status other than 0 within five
-seconds of starting stays, with a last line
-
-<span class="sb">```</span>
-<span class="sb">[ Ended with status 3 right after starting, kept open so you can read why. Close the tab with Ctrl+Shift+W ]</span>
-<span class="sb">```</span>
-
-That holds for every tab, not just <span class="sb">`-c`</span>: a shell that can't start, or a host
-whose <span class="sb">`RemoteCommand`</span> fails at once.
-
-With <span class="sb">`--hold`</span> the tab stays and a last line names the status:
-
-<span class="sb">```</span>
-<span class="sb">[ Finished with status 3. Close the tab with Ctrl+Shift+W ]</span>
-<span class="sb">```</span>
-
-Nothing is running in that tab any more; it is there to be read, scrolled and
-copied from. <span class="sb">`--hold`</span> works for <span class="sb">`--connect`</span> too, where the tab would otherwise
-close when the server's <span class="sb">`RemoteCommand`</span> ends; the status is the remote
+seconds of starting stays, with a last line</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto"><pre class="notranslate"><code>[ Ended with status 3 right after starting, kept open so you can read why. Close the tab with Ctrl+Shift+W ]
+</code></pre></div>
+<p dir="auto">That holds for every tab, not just <code>-c</code>: a shell that can't start, or a host
+whose <code>RemoteCommand</code> fails at once.</p>
+<p dir="auto">With <code>--hold</code> the tab stays and a last line names the status:</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto"><pre class="notranslate"><code>[ Finished with status 3. Close the tab with Ctrl+Shift+W ]
+</code></pre></div>
+<p dir="auto">Nothing is running in that tab any more; it is there to be read, scrolled and
+copied from. <code>--hold</code> works for <code>--connect</code> too, where the tab would otherwise
+close when the server's <code>RemoteCommand</code> ends; the status is the remote
 command's, as the server reports it when it closes the channel. If it doesn't
-report one in time, the line says only that the command finished. On its own, without <span class="sb">`--connect`</span>,
-<span class="sb">`-s`</span> or <span class="sb">`-c`</span>, it is refused: a plain start restores the saved session, and there
-is nothing one-off to keep open.
-
-<span class="gu">## `-s`: which shell</span>
-
-<span class="sb">`-s`</span> takes a name as listed in <span class="sb">`/etc/shells`</span> (<span class="sb">`fish`</span>) or a path
-(<span class="sb">`/usr/bin/fish`</span>). A path is started as given, even if it isn't listed — useful
-for a shell in <span class="sb">`~/.local/bin`</span>. A name that isn't installed is an error, and the
-message lists what is.
-
-On its own, <span class="sb">`-s`</span> prints the installed shells with their paths and exits — the
-same list the sidebar's <span class="gs">**Shells**</span> section shows:
-
-<span class="sb">```</span>
-<span class="sb">$ terminaal -s</span>
-<span class="sb">bash         /bin/bash</span>
-<span class="sb">fish         /usr/bin/fish</span>
-<span class="sb">zsh          /bin/zsh</span>
-<span class="sb">```</span>
-
-<span class="gu">## With `--connect`</span>
-
-<span class="sb">`--connect`</span> and <span class="sb">`-c`</span> together mean: run the line <span class="gs">**on the server**</span>. It becomes
-that connection's <span class="sb">`RemoteCommand`</span>, exactly as if the host had one set in
-<span class="sb">`~/.ssh/config`</span>, and <span class="sb">`-s`</span> is then about the local machine and does nothing for
+report one in time, the line says only that the command finished. On its own, without <code>--connect</code>,
+<code>-s</code> or <code>-c</code>, it is refused: a plain start restores the saved session, and there
+is nothing one-off to keep open.</p>
+<h2 class="heading-element" dir="auto" id="-s-which-shell"><code>-s</code>: which shell</h2>
+<p dir="auto"><code>-s</code> takes a name as listed in <code>/etc/shells</code> (<code>fish</code>) or a path
+(<code>/usr/bin/fish</code>). A path is started as given, even if it isn't listed — useful
+for a shell in <code>~/.local/bin</code>. A name that isn't installed is an error, and the
+message lists what is.</p>
+<p dir="auto">On its own, <code>-s</code> prints the installed shells with their paths and exits — the
+same list the sidebar's <strong>Shells</strong> section shows:</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto"><pre class="notranslate"><code>$ terminaal -s
+bash         /bin/bash
+fish         /usr/bin/fish
+zsh          /bin/zsh
+</code></pre></div>
+<h2 class="heading-element" dir="auto" id="with---connect">With <code>--connect</code></h2>
+<p dir="auto"><code>--connect</code> and <code>-c</code> together mean: run the line <strong>on the server</strong>. It becomes
+that connection's <code>RemoteCommand</code>, exactly as if the host had one set in
+<code>~/.ssh/config</code>, and <code>-s</code> is then about the local machine and does nothing for
 it. The server's shell evaluates the line, so the same "one line, not
-interactive" rules apply there.
-
-<span class="sb">```sh</span>
-terminaal<span class="w"> </span>--connect<span class="w"> </span>web<span class="w"> </span>-c<span class="w"> </span><span class="s2">"sudo journalctl -fu nginx"</span><span class="w"> </span>--hold
-<span class="sb">```</span>
-
-<span class="gu">## The session stays as it is</span>
-
-Started plainly, Terminaal restores the tabs of
-[<span class="nt">the last session</span>](<span class="na">sessions.md</span>) and keeps saving it. Started with <span class="sb">`--connect`</span>,
-<span class="sb">`-s`</span> or <span class="sb">`-c`</span>, it does neither: the window is what the command line asked for,
+interactive" rules apply there.</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto"><pre>terminaal --connect web -c <span class="pl-s"><span class="pl-pds">"</span>sudo journalctl -fu nginx<span class="pl-pds">"</span></span> --hold</pre></div>
+<h2 class="heading-element" dir="auto" id="the-session-stays-as-it-is">The session stays as it is</h2>
+<p dir="auto">Started plainly, Terminaal restores the tabs of
+<a href="docs--guides--sessions.md.html">the last session</a> and keeps saving it. Started with <code>--connect</code>,
+<code>-s</code> or <code>-c</code>, it does neither: the window is what the command line asked for,
 and the session on disk is left untouched for the next plain start. So a
-launcher entry for one server never overwrites the tabs you had open.
-
-<span class="gu">## `--quake`</span>
-
-<span class="sb">`--quake`</span> shows or hides [<span class="nt">the drop-down window</span>](<span class="na">drop-down-window.md</span>) and goes
+launcher entry for one server never overwrites the tabs you had open.</p>
+<h2 class="heading-element" dir="auto" id="--quake"><code>--quake</code></h2>
+<p dir="auto"><code>--quake</code> shows or hides <a href="docs--guides--drop-down-window.md.html">the drop-down window</a> and goes
 with no other argument — it keeps its own tabs and its own session. Bind it as
-a keyboard shortcut in your desktop's settings; <span class="gs">**Settings → General**</span> shows the
-command with its full path and copies it for you.
-
-<span class="gu">## Desktop entries and scripts</span>
-
-A <span class="sb">`.desktop`</span> file for one server, dropped into <span class="sb">`~/.local/share/applications`</span>:
-
-<span class="sb">```ini</span>
-<span class="k">[Desktop Entry]</span>
-<span class="na">Type</span><span class="o">=</span><span class="s">Application</span>
-<span class="na">Name</span><span class="o">=</span><span class="s">Logs on web</span>
-<span class="na">Exec</span><span class="o">=</span><span class="s">/home/you/.cargo/bin/terminaal --connect web -c "sudo journalctl -f" --hold</span>
-<span class="na">Icon</span><span class="o">=</span><span class="s">terminaal</span>
-<span class="na">Terminal</span><span class="o">=</span><span class="s">false</span>
-<span class="sb">```</span>
-
-Use the absolute path to the binary – <span class="sb">`~/.local/bin/terminaal`</span> when installed
-from a release, <span class="sb">`~/.cargo/bin/terminaal`</span> when built from source: launchers don't
-necessarily have either in their <span class="sb">`PATH`</span>.
-
-Terminaal is a window, not a filter: it does not pass the command's output to
+a keyboard shortcut in your desktop's settings; <strong>Settings → General</strong> shows the
+command with its full path and copies it for you.</p>
+<h2 class="heading-element" dir="auto" id="desktop-entries-and-scripts">Desktop entries and scripts</h2>
+<p dir="auto">A <code>.desktop</code> file for one server, dropped into <code>~/.local/share/applications</code>:</p>
+<div class="highlight highlight-source-ini notranslate position-relative overflow-auto" dir="auto"><pre><span class="pl-en">[Desktop Entry]</span>
+<span class="pl-k">Type</span>=Application
+<span class="pl-k">Name</span>=Logs on web
+<span class="pl-k">Exec</span>=/home/you/.cargo/bin/terminaal --connect web -c <span class="pl-s"><span class="pl-pds">"</span>sudo journalctl -f<span class="pl-pds">"</span></span> --hold
+<span class="pl-k">Icon</span>=terminaal
+<span class="pl-k">Terminal</span>=false</pre></div>
+<p dir="auto">Use the absolute path to the binary – <code>~/.local/bin/terminaal</code> when installed
+from a release, <code>~/.cargo/bin/terminaal</code> when built from source: launchers don't
+necessarily have either in their <code>PATH</code>.</p>
+<p dir="auto">Terminaal is a window, not a filter: it does not pass the command's output to
 standard output, and its exit status says whether the window started, not how
 the command ended. For output in a pipeline use the shell; use Terminaal when
-you want a window to watch.
-</pre></div></td></tr></table></div>
+you want a window to watch.</p>
 
+        </div>
       </section>
     </main>
   </div>

@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>docs/explanations/architecture.md — Terminaal — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=41ca8b66" />
+  <link rel="stylesheet" href="../../styles.css?v=77eb044b" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -71,405 +71,251 @@
           <h1 class="section__title">docs/explanations/architecture.md</h1>
           <a href="../terminaal.html" class="link">← Back to Terminaal</a>
         </div>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">  1</span>
-<span class="normal">  2</span>
-<span class="normal">  3</span>
-<span class="normal">  4</span>
-<span class="normal">  5</span>
-<span class="normal">  6</span>
-<span class="normal">  7</span>
-<span class="normal">  8</span>
-<span class="normal">  9</span>
-<span class="normal"> 10</span>
-<span class="normal"> 11</span>
-<span class="normal"> 12</span>
-<span class="normal"> 13</span>
-<span class="normal"> 14</span>
-<span class="normal"> 15</span>
-<span class="normal"> 16</span>
-<span class="normal"> 17</span>
-<span class="normal"> 18</span>
-<span class="normal"> 19</span>
-<span class="normal"> 20</span>
-<span class="normal"> 21</span>
-<span class="normal"> 22</span>
-<span class="normal"> 23</span>
-<span class="normal"> 24</span>
-<span class="normal"> 25</span>
-<span class="normal"> 26</span>
-<span class="normal"> 27</span>
-<span class="normal"> 28</span>
-<span class="normal"> 29</span>
-<span class="normal"> 30</span>
-<span class="normal"> 31</span>
-<span class="normal"> 32</span>
-<span class="normal"> 33</span>
-<span class="normal"> 34</span>
-<span class="normal"> 35</span>
-<span class="normal"> 36</span>
-<span class="normal"> 37</span>
-<span class="normal"> 38</span>
-<span class="normal"> 39</span>
-<span class="normal"> 40</span>
-<span class="normal"> 41</span>
-<span class="normal"> 42</span>
-<span class="normal"> 43</span>
-<span class="normal"> 44</span>
-<span class="normal"> 45</span>
-<span class="normal"> 46</span>
-<span class="normal"> 47</span>
-<span class="normal"> 48</span>
-<span class="normal"> 49</span>
-<span class="normal"> 50</span>
-<span class="normal"> 51</span>
-<span class="normal"> 52</span>
-<span class="normal"> 53</span>
-<span class="normal"> 54</span>
-<span class="normal"> 55</span>
-<span class="normal"> 56</span>
-<span class="normal"> 57</span>
-<span class="normal"> 58</span>
-<span class="normal"> 59</span>
-<span class="normal"> 60</span>
-<span class="normal"> 61</span>
-<span class="normal"> 62</span>
-<span class="normal"> 63</span>
-<span class="normal"> 64</span>
-<span class="normal"> 65</span>
-<span class="normal"> 66</span>
-<span class="normal"> 67</span>
-<span class="normal"> 68</span>
-<span class="normal"> 69</span>
-<span class="normal"> 70</span>
-<span class="normal"> 71</span>
-<span class="normal"> 72</span>
-<span class="normal"> 73</span>
-<span class="normal"> 74</span>
-<span class="normal"> 75</span>
-<span class="normal"> 76</span>
-<span class="normal"> 77</span>
-<span class="normal"> 78</span>
-<span class="normal"> 79</span>
-<span class="normal"> 80</span>
-<span class="normal"> 81</span>
-<span class="normal"> 82</span>
-<span class="normal"> 83</span>
-<span class="normal"> 84</span>
-<span class="normal"> 85</span>
-<span class="normal"> 86</span>
-<span class="normal"> 87</span>
-<span class="normal"> 88</span>
-<span class="normal"> 89</span>
-<span class="normal"> 90</span>
-<span class="normal"> 91</span>
-<span class="normal"> 92</span>
-<span class="normal"> 93</span>
-<span class="normal"> 94</span>
-<span class="normal"> 95</span>
-<span class="normal"> 96</span>
-<span class="normal"> 97</span>
-<span class="normal"> 98</span>
-<span class="normal"> 99</span>
-<span class="normal">100</span>
-<span class="normal">101</span>
-<span class="normal">102</span>
-<span class="normal">103</span>
-<span class="normal">104</span>
-<span class="normal">105</span>
-<span class="normal">106</span>
-<span class="normal">107</span>
-<span class="normal">108</span>
-<span class="normal">109</span>
-<span class="normal">110</span>
-<span class="normal">111</span>
-<span class="normal">112</span>
-<span class="normal">113</span>
-<span class="normal">114</span>
-<span class="normal">115</span>
-<span class="normal">116</span>
-<span class="normal">117</span>
-<span class="normal">118</span>
-<span class="normal">119</span>
-<span class="normal">120</span>
-<span class="normal">121</span>
-<span class="normal">122</span>
-<span class="normal">123</span>
-<span class="normal">124</span>
-<span class="normal">125</span>
-<span class="normal">126</span>
-<span class="normal">127</span>
-<span class="normal">128</span>
-<span class="normal">129</span>
-<span class="normal">130</span>
-<span class="normal">131</span>
-<span class="normal">132</span>
-<span class="normal">133</span>
-<span class="normal">134</span>
-<span class="normal">135</span>
-<span class="normal">136</span>
-<span class="normal">137</span>
-<span class="normal">138</span>
-<span class="normal">139</span>
-<span class="normal">140</span>
-<span class="normal">141</span>
-<span class="normal">142</span>
-<span class="normal">143</span>
-<span class="normal">144</span>
-<span class="normal">145</span>
-<span class="normal">146</span>
-<span class="normal">147</span>
-<span class="normal">148</span>
-<span class="normal">149</span>
-<span class="normal">150</span>
-<span class="normal">151</span>
-<span class="normal">152</span>
-<span class="normal">153</span>
-<span class="normal">154</span>
-<span class="normal">155</span>
-<span class="normal">156</span>
-<span class="normal">157</span>
-<span class="normal">158</span>
-<span class="normal">159</span>
-<span class="normal">160</span>
-<span class="normal">161</span>
-<span class="normal">162</span>
-<span class="normal">163</span>
-<span class="normal">164</span>
-<span class="normal">165</span>
-<span class="normal">166</span>
-<span class="normal">167</span>
-<span class="normal">168</span>
-<span class="normal">169</span>
-<span class="normal">170</span>
-<span class="normal">171</span>
-<span class="normal">172</span>
-<span class="normal">173</span>
-<span class="normal">174</span>
-<span class="normal">175</span>
-<span class="normal">176</span>
-<span class="normal">177</span>
-<span class="normal">178</span>
-<span class="normal">179</span>
-<span class="normal">180</span>
-<span class="normal">181</span>
-<span class="normal">182</span>
-<span class="normal">183</span>
-<span class="normal">184</span>
-<span class="normal">185</span>
-<span class="normal">186</span>
-<span class="normal">187</span>
-<span class="normal">188</span>
-<span class="normal">189</span>
-<span class="normal">190</span>
-<span class="normal">191</span>
-<span class="normal">192</span>
-<span class="normal">193</span>
-<span class="normal">194</span>
-<span class="normal">195</span>
-<span class="normal">196</span>
-<span class="normal">197</span>
-<span class="normal">198</span>
-<span class="normal">199</span></pre></div></td><td class="code"><div><pre><span></span><span class="gh"># Architecture</span>
-
-This page explains how Terminaal is put together – useful if you want to
-contribute, or just wonder why it behaves the way it does.
-
-<span class="gu">## The big pieces</span>
-
-<span class="sb">```</span>
-<span class="sb">                ┌──────────────────── main thread ─────────────────────┐</span>
-<span class="sb"> keyboard,      │ winit event loop (app.rs)                            │</span>
-<span class="sb"> mouse, resize ─▶  ├─ routes input: egui (sidebar/settings) or terminal │</span>
-<span class="sb">                │  ├─ egui pass: sidebar, settings, menus              │</span>
-<span class="sb">                │  └─ wgpu frame: grid, tab bar, search bar, egui       │</span>
-<span class="sb">                └───────────▲──────────────────────────────────────────┘</span>
-<span class="sb">                            │ UserEvent (wakeup, title, shell events …)</span>
-<span class="sb">          ┌─────────────────┼──────────────────┐</span>
-<span class="sb">          │                 │                  │</span>
-<span class="sb"> ┌────────┴────────┐ ┌──────┴───────┐  ┌───────┴────────┐</span>
-<span class="sb"> │ PTY event loop  │ │ PTY filter   │  │ SSH worker     │  one per SSH pane</span>
-<span class="sb"> │ (alacritty)     │◀┤ thread       │  │ (libssh2)      │</span>
-<span class="sb"> │ parses into Term│ │ per local    │  │ parses into    │</span>
-<span class="sb"> │                 │ │ pane         │  │ Term, forwards │</span>
-<span class="sb"> └─────────────────┘ └──────────────┘  │                │</span>
-<span class="sb">                                       └────────────────┘</span>
-<span class="sb">```</span>
-
-<span class="k">-</span><span class="w"> </span><span class="gs">**`alacritty_terminal`**</span> is the "brain" of each terminal – every pane of every
-  tab has its own: it parses the byte stream
-  (VT sequences) into a grid of cells with a scrollback. Terminaal doesn't use
-  Alacritty's renderer – only this library.
-<span class="k">-</span><span class="w"> </span><span class="gs">**The renderer**</span> is Terminaal's own, on <span class="gs">**wgpu**</span>: colored rectangles
-  ("quads") for backgrounds, selection, cursor and underlines, and glyphon for
-  text.
-<span class="k">-</span><span class="w"> </span><span class="gs">**egui**</span> draws only the chrome – sidebar, settings, context menu – in a
-  separate pass on top.
-<span class="k">-</span><span class="w"> </span><span class="gs">**libssh2**</span> (through the <span class="sb">`ssh2`</span> crate) runs SSH, on a worker thread per SSH pane.
-<span class="k">-</span><span class="w"> </span><span class="gs">**SFTP**</span> runs over the terminal's own connection: the SSH worker opens the
-  <span class="sb">`sftp`</span> subsystem on a channel and ties it to a socket, like a port forward. A
-  thread per files tab speaks SFTP over that socket with Terminaal's own client
-  (<span class="sb">`src/sftp/protocol.rs`</span>), keeping many reads or writes in flight at once –
-  one at a time, every chunk would cost a round trip.
-<span class="k">-</span><span class="w"> </span><span class="gs">**Split panes**</span> are a binary tree per tab (<span class="sb">`src/panes.rs`</span>): each split halves
-  its rectangle side by side or one above the other at a draggable ratio, the
-  leaves are the terminals. Every layout change resizes only the terminals whose
-  grid actually changed. A frame builds the visible panes one after another into
-  the same quads and shares one shaping cache between them.
-
-<span class="gu">## One frame</span>
-
-<span class="k">1.</span> <span class="gs">**UI pass:**</span> egui lays out the sidebar and settings.
-<span class="k">2.</span> <span class="gs">**Build:**</span> under the terminal's lock, Terminaal walks the visible cells once,
-   pushing background quads and copying each row's text and style runs. The lock
-   is held only for this copy.
-<span class="k">3.</span> <span class="gs">**Shape:**</span> after releasing the lock, each row is turned into positioned
-   glyphs – but rows are cached by their content, so a row that didn't change,
-   or only scrolled, is never shaped again. Shaping is by far the most expensive
-   step; caching it is what keeps scrolling fast.
-<span class="k">4.</span> <span class="gs">**Draw:**</span> per pane its cell backgrounds, then its images, then what lies over
-   the cells (search bar, scrollbar, borders, tab bar); then all text, and egui
-   on top – one render pass plus egui's.
-
-The font size in physical pixels is rounded to whole pixels, so every glyph
-lands exactly on its cell even at fractional scale factors (125 %, 150 %).
-
-<span class="gu">## When it redraws</span>
-
-Terminaal redraws only when there's a reason: output arrived, you typed or
+        <div class="readme-content">
+<h1 class="heading-element" dir="auto" id="architecture">Architecture</h1>
+<p dir="auto">This page explains how Terminaal is put together – useful if you want to
+contribute, or just wonder why it behaves the way it does.</p>
+<h2 class="heading-element" dir="auto" id="the-big-pieces">The big pieces</h2>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto"><pre class="notranslate"><code>                ┌──────────────────── main thread ─────────────────────┐
+ keyboard,      │ winit event loop (app.rs)                            │
+ mouse, resize ─▶  ├─ routes input: egui (sidebar/settings) or terminal │
+                │  ├─ egui pass: sidebar, settings, menus              │
+                │  └─ wgpu frame: grid, tab bar, search bar, egui       │
+                └───────────▲──────────────────────────────────────────┘
+                            │ UserEvent (wakeup, title, shell events …)
+          ┌─────────────────┼──────────────────┐
+          │                 │                  │
+ ┌────────┴────────┐ ┌──────┴───────┐  ┌───────┴────────┐
+ │ PTY event loop  │ │ PTY filter   │  │ SSH worker     │  one per SSH pane
+ │ (alacritty)     │◀┤ thread       │  │ (libssh2)      │
+ │ parses into Term│ │ per local    │  │ parses into    │
+ │                 │ │ pane         │  │ Term, forwards │
+ └─────────────────┘ └──────────────┘  │                │
+                                       └────────────────┘
+</code></pre></div>
+<ul dir="auto">
+<li><strong><code>alacritty_terminal</code></strong> is the "brain" of each terminal – every pane of every
+tab has its own: it parses the byte stream
+(VT sequences) into a grid of cells with a scrollback. Terminaal doesn't use
+Alacritty's renderer – only this library.</li>
+<li><strong>The renderer</strong> is Terminaal's own, on <strong>wgpu</strong>: colored rectangles
+("quads") for backgrounds, selection, cursor and underlines, and glyphon for
+text.</li>
+<li><strong>egui</strong> draws only the chrome – sidebar, settings, context menu – in a
+separate pass on top.</li>
+<li><strong>libssh2</strong> (through the <code>ssh2</code> crate) runs SSH, on a worker thread per SSH pane.</li>
+<li><strong>SFTP</strong> runs over the terminal's own connection: the SSH worker opens the
+<code>sftp</code> subsystem on a channel and ties it to a socket, like a port forward. A
+thread per files tab speaks SFTP over that socket with Terminaal's own client
+(<code>src/sftp/protocol.rs</code>), keeping many reads or writes in flight at once –
+one at a time, every chunk would cost a round trip.</li>
+<li><strong>Split panes</strong> are a binary tree per tab (<code>src/panes.rs</code>): each split halves
+its rectangle side by side or one above the other at a draggable ratio, the
+leaves are the terminals. Every layout change resizes only the terminals whose
+grid actually changed. A frame builds the visible panes one after another into
+the same quads and shares one shaping cache between them.</li>
+</ul>
+<h2 class="heading-element" dir="auto" id="one-frame">One frame</h2>
+<ol dir="auto">
+<li><strong>UI pass:</strong> egui lays out the sidebar and settings.</li>
+<li><strong>Build:</strong> under the terminal's lock, Terminaal walks the visible cells once,
+pushing background quads and copying each row's text and style runs. The lock
+is held only for this copy.</li>
+<li><strong>Shape:</strong> after releasing the lock, each row is turned into positioned
+glyphs – but rows are cached by their content, so a row that didn't change,
+or only scrolled, is never shaped again. Shaping is by far the most expensive
+step; caching it is what keeps scrolling fast.</li>
+<li><strong>Draw:</strong> per pane its cell backgrounds, then its images, then what lies over
+the cells (search bar, scrollbar, borders, tab bar); then all text, and egui
+on top – one render pass plus egui's.</li>
+</ol>
+<p dir="auto">The font size in physical pixels is rounded to whole pixels, so every glyph
+lands exactly on its cell even at fractional scale factors (125 %, 150 %).</p>
+<h2 class="heading-element" dir="auto" id="when-it-redraws">When it redraws</h2>
+<p dir="auto">Terminaal redraws only when there's a reason: output arrived, you typed or
 clicked, the window changed, the cursor blinks, or egui asks for an animation
 frame. An idle window draws about two frames per second – for the cursor. Turn
-blinking off and it draws nothing.
-
-On Wayland, a minimized or hidden window gets no frame callbacks from the
-compositor, so it simply stops drawing instead of blocking.
-
-<span class="gu">## Input routing</span>
-
-The keyboard belongs to the terminal unless you clicked into the sidebar or
+blinking off and it draws nothing.</p>
+<p dir="auto">On Wayland, a minimized or hidden window gets no frame callbacks from the
+compositor, so it simply stops drawing instead of blocking.</p>
+<h2 class="heading-element" dir="auto" id="input-routing">Input routing</h2>
+<p dir="auto">The keyboard belongs to the terminal unless you clicked into the sidebar or
 settings and a text field there has focus. This is deliberate: otherwise a
-&lt;kbd&gt;Tab&lt;/kbd&gt; meant for shell completion would move egui's focus into the
-sidebar, and the next &lt;kbd&gt;Enter&lt;/kbd&gt; would press a button. Clicking the
-terminal, hiding the sidebar or switching tabs gives the keyboard back.
-
-Keys that reach the terminal are encoded per terminal (<span class="sb">`input/keyboard.rs`</span>):
+<kbd>Tab</kbd> meant for shell completion would move egui's focus into the
+sidebar, and the next <kbd>Enter</kbd> would press a button. Clicking the
+terminal, hiding the sidebar or switching tabs gives the keyboard back.</p>
+<p dir="auto">Keys that reach the terminal are encoded per terminal (<code>input/keyboard.rs</code>):
 the classic xterm way, or the kitty keyboard protocol if the program in that
 terminal switched it on – a broadcast can send the same key both ways. A key
 release goes only to the terminals that got the press, and only if they asked
-for releases.
-
-<span class="gu">## Images</span>
-
-Kitty graphics commands (APC <span class="sb">`ESC _ G …`</span>) are picked out of the output by the
-same filter as the shell integration (<span class="sb">`terminal/graphics.rs`</span> decodes and keeps
+for releases.</p>
+<h2 class="heading-element" dir="auto" id="images">Images</h2>
+<p dir="auto">Kitty graphics commands (APC <code>ESC _ G …</code>) are picked out of the output by the
+same filter as the shell integration (<code>terminal/graphics.rs</code> decodes and keeps
 them). The filter doesn't know the cursor position – the parser runs later – so
-it writes an <span class="ge">*anchor*</span> instead: one blank cell with a hyperlink naming the
+it writes an <em>anchor</em> instead: one blank cell with a hyperlink naming the
 placement, then moves the cursor past the image. The anchor scrolls and gets
 erased like any text; each frame the renderer looks for anchors on screen (and
 a few screens above, for images reaching down into view) and draws their
-images as textured quads (<span class="sb">`render/image.rs`</span>), between each pane's cell
-backgrounds and what's drawn over the cells.
-
-<span class="gu">## The drop-down window</span>
-
-<span class="sb">`terminaal --quake`</span> needs a window along the top edge of the screen, above the
-others. On Wayland only a <span class="ge">*layer surface*</span> (<span class="sb">`zwlr_layer_shell_v1`</span>) can be that,
+images as textured quads (<code>render/image.rs</code>), between each pane's cell
+backgrounds and what's drawn over the cells.</p>
+<h2 class="heading-element" dir="auto" id="the-drop-down-window">The drop-down window</h2>
+<p dir="auto"><code>terminaal --quake</code> needs a window along the top edge of the screen, above the
+others. On Wayland only a <em>layer surface</em> (<code>zwlr_layer_shell_v1</code>) can be that,
 and winit can't make one. So the drop-down Terminaal doesn't have a winit window
-at all (<span class="sb">`src/quake/layer.rs`</span>):
-
-<span class="k">-</span><span class="w"> </span>It speaks Wayland itself, on winit's own connection with an event queue of
-  its own. winit still runs the event loop and wakes up for anything on the
-  socket; before the loop sleeps, <span class="sb">`app.rs`</span> dispatches the layer surface's events.
-<span class="k">-</span><span class="w"> </span>The keyboard goes through xkbcommon (<span class="sb">`src/quake/keys.rs`</span>) into the same key
-  type the winit window produces. Key repeat is timed by Terminaal, as winit
-  would do.
-<span class="k">-</span><span class="w"> </span>egui can't use egui-winit without a winit window, so <span class="sb">`src/ui/mod.rs`</span> builds
-  egui's input from the layer surface's events by hand.
-<span class="k">-</span><span class="w"> </span><span class="sb">`src/window.rs`</span> hides the difference from the rest of the app: redraw
-  requests, size, scale, cursor shape.
-<span class="k">-</span><span class="w"> </span>Hiding destroys the surface, and showing makes a new one. The GPU surface and
-  the blur are made again with it; the terminals and egui stay.
-
-A second <span class="sb">`--quake`</span> finds the running drop-down Terminaal through a socket in
-<span class="sb">`$XDG_RUNTIME_DIR/terminaal/`</span> and tells it to toggle, then exits.
-
-<span class="gu">## Local shells</span>
-
-A local tab runs its shell in a PTY. Output is read by alacritty's event loop –
-but first it passes Terminaal's <span class="gs">**shell integration filter**</span>, on a thread of its
+at all (<code>src/quake/layer.rs</code>):</p>
+<ul dir="auto">
+<li>It speaks Wayland itself, on winit's own connection with an event queue of
+its own. winit still runs the event loop and wakes up for anything on the
+socket; before the loop sleeps, <code>app.rs</code> dispatches the layer surface's events.</li>
+<li>The keyboard goes through xkbcommon (<code>src/quake/keys.rs</code>) into the same key
+type the winit window produces. Key repeat is timed by Terminaal, as winit
+would do.</li>
+<li>egui can't use egui-winit without a winit window, so <code>src/ui/mod.rs</code> builds
+egui's input from the layer surface's events by hand.</li>
+<li><code>src/window.rs</code> hides the difference from the rest of the app: redraw
+requests, size, scale, cursor shape.</li>
+<li>Hiding destroys the surface, and showing makes a new one. The GPU surface and
+the blur are made again with it; the terminals and egui stay.</li>
+</ul>
+<p dir="auto">A second <code>--quake</code> finds the running drop-down Terminaal through a socket in
+<code>$XDG_RUNTIME_DIR/terminaal/</code> and tells it to toggle, then exits.</p>
+<h2 class="heading-element" dir="auto" id="local-shells">Local shells</h2>
+<p dir="auto">A local tab runs its shell in a PTY. Output is read by alacritty's event loop –
+but first it passes Terminaal's <strong>shell integration filter</strong>, on a thread of its
 own, which picks out working-directory and prompt sequences. See
-[<span class="nt">How prompt marks work</span>](<span class="na">prompt-marks.md</span>).
-
-<span class="gu">## SSH tabs</span>
-
-Each SSH tab has a worker thread that owns its libssh2 session:
-
-<span class="k">-</span><span class="w"> </span><span class="gs">**Connecting**</span> plays out in the tab: host-key questions, passphrases and
-  passwords are read from what you type, the way OpenSSH does it.
-<span class="k">-</span><span class="w"> </span><span class="gs">**Jump hosts:**</span> each hop is a session; the next one runs over a
-  <span class="sb">`direct-tcpip`</span> channel bridged through a socket pair.
-<span class="k">-</span><span class="w"> </span><span class="gs">**The pump loop**</span> moves bytes between the shell channel and the terminal, and
-  services every port forward on the same non-blocking session. It sleeps in
-  <span class="sb">`poll()`</span> on the session socket, the forward sockets and a wakeup socket that
-  input and resize messages ping.
-<span class="k">-</span><span class="w"> </span><span class="gs">**Keepalives**</span> detect a dead connection (30 s interval, 3 misses by default).
-  The worker thread then stays and connects again into the same terminal: on its
-  own after 2, 4, 8 … seconds (up to a minute) while no prompt is needed, at once
-  on Enter. Other parts (a files tab) ask it for channels through a handle that
-  doesn't keep the tab alive, and see a number that changes with each connection.
-
-libssh2 can open only one channel at a time per session, so new forwarded
+<a href="docs--explanations--prompt-marks.md.html">How prompt marks work</a>.</p>
+<h2 class="heading-element" dir="auto" id="ssh-tabs">SSH tabs</h2>
+<p dir="auto">Each SSH tab has a worker thread that owns its libssh2 session:</p>
+<ul dir="auto">
+<li><strong>Connecting</strong> plays out in the tab: host-key questions, passphrases and
+passwords are read from what you type, the way OpenSSH does it.</li>
+<li><strong>Jump hosts:</strong> each hop is a session; the next one runs over a
+<code>direct-tcpip</code> channel bridged through a socket pair.</li>
+<li><strong>The pump loop</strong> moves bytes between the shell channel and the terminal, and
+services every port forward on the same non-blocking session. It sleeps in
+<code>poll()</code> on the session socket, the forward sockets and a wakeup socket that
+input and resize messages ping.</li>
+<li><strong>Keepalives</strong> detect a dead connection (30 s interval, 3 misses by default).
+The worker thread then stays and connects again into the same terminal: on its
+own after 2, 4, 8 … seconds (up to a minute) while no prompt is needed, at once
+on Enter. Other parts (a files tab) ask it for channels through a handle that
+doesn't keep the tab alive, and see a number that changes with each connection.</li>
+</ul>
+<p dir="auto">libssh2 can open only one channel at a time per session, so new forwarded
 connections queue up briefly; and because it reads data for all channels
 whenever it reads for one, the loop doesn't sleep while any channel still has
-data buffered.
-
-<span class="gu">## IBM i (5250) tabs</span>
-
-A 5250 terminal works in whole screens with input fields, not as a stream of
+data buffered.</p>
+<h2 class="heading-element" dir="auto" id="ibm-i-5250-tabs">IBM i (5250) tabs</h2>
+<p dir="auto">A 5250 terminal works in whole screens with input fields, not as a stream of
 VT output, so Terminaal emulates it in a worker thread of its own
-(<span class="sb">`src/tn5250/`</span>): telnet negotiation and records, the screen buffer with its
+(<code>src/tn5250/</code>): telnet negotiation and records, the screen buffer with its
 format table, editing in the fields, and the replies to the server. It draws the
 screen as VT output into the pane's ordinary terminal grid. Rendering,
 selection, search and themes then need nothing special. Keys arrive as the
 bytes the pane would send any program; the worker asks for the kitty keyboard
-protocol so that keys like keypad &lt;kbd&gt;+&lt;/kbd&gt; come through distinct, and turns
-them back into 5250 keys.
+protocol so that keys like keypad <kbd>+</kbd> come through distinct, and turns
+them back into 5250 keys.</p>
+<h2 class="heading-element" dir="auto" id="files-and-settings">Files and settings</h2>
+<ul dir="auto">
+<li><code>config.toml</code> is read with serde and <strong>written with <code>toml_edit</code></strong>, one key at
+a time, so your comments and layout survive.</li>
+<li>Hosts, keys and snippets are written as whole files – first to a temporary file
+next to the real one, then renamed. Only after that succeeds does the change
+show in the sidebar, so a failed save never leaves the UI showing something
+that isn't on disk.</li>
+<li>All UI text comes from Fluent files (<code>locales/en.ftl</code>, <code>locales/de.ftl</code>)
+compiled into the binary.</li>
+</ul>
+<h2 class="heading-element" dir="auto" id="module-map">Module map</h2>
+<markdown-accessiblity-table><table>
+<thead>
+<tr>
+<th>Path</th>
+<th>Responsibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>src/app.rs</code></td>
+<td>Event loop, tabs and their panes, input routing, frame assembly</td>
+</tr>
+<tr>
+<td><code>src/panes.rs</code></td>
+<td>Split-pane layout: tree, rectangles, dividers, neighbours</td>
+</tr>
+<tr>
+<td><code>src/window.rs</code>, <code>src/quake/</code></td>
+<td>winit window or layer surface; the drop-down window: toggle socket, Wayland layer surface, xkb keyboard</td>
+</tr>
+<tr>
+<td><code>src/session.rs</code></td>
+<td>Saving and restoring the open tabs</td>
+</tr>
+<tr>
+<td><code>src/input.rs</code>, <code>src/input/keyboard.rs</code></td>
+<td>Keys, wheel and paste into bytes: the xterm encoding and the kitty keyboard protocol</td>
+</tr>
+<tr>
+<td><code>src/render/</code></td>
+<td>Grid, tab bar, search bar, scrollbar, labels, quads, images, palette</td>
+</tr>
+<tr>
+<td><code>src/gpu.rs</code>, <code>src/blur.rs</code>, <code>src/blur_windows.rs</code></td>
+<td>wgpu device and surface (on Windows through DirectComposition, so it can be see-through); blur behind a see-through window: <code>ext-background-effect</code> on Wayland, DWM's Acrylic and the dark title bar on Windows</td>
+</tr>
+<tr>
+<td><code>src/terminal/</code></td>
+<td>Sessions, PTY filter, shell integration, prompts, search, links, hints, vi mode, images (kitty graphics)</td>
+</tr>
+<tr>
+<td><code>src/sftp/</code></td>
+<td>SFTP client over the terminal's connection, its session thread (listing, pipelined transfers), editing files locally with sudo, folder sync</td>
+</tr>
+<tr>
+<td><code>src/tn5250/</code></td>
+<td>IBM i 5250 terminal: telnet, EBCDIC code pages, screen and fields, drawing it as VT, key decoding, the connection worker</td>
+</tr>
+<tr>
+<td><code>src/ssh/</code></td>
+<td>Host catalog, <code>~/.ssh/config</code> parser, connection worker, forwards, SOCKS, agent forwarding, keys, <code>known_hosts</code></td>
+</tr>
+<tr>
+<td><code>src/ui/</code></td>
+<td>egui sidebar, settings, SSH/keys/commands panels, files tab, context menu, command palette, the paste, clipboard and update dialogs, splash</td>
+</tr>
+<tr>
+<td><code>src/update.rs</code></td>
+<td>Checking the GitHub releases, downloading and replacing the program</td>
+</tr>
+<tr>
+<td><code>src/shells/</code></td>
+<td>Shell detection, managed aliases, generated startup files</td>
+</tr>
+<tr>
+<td><code>src/commands.rs</code>, <code>src/snippets.rs</code></td>
+<td>Built-in commands, your own commands</td>
+</tr>
+<tr>
+<td><code>src/theme.rs</code>, <code>src/theme/cosmic.rs</code>, <code>src/theme/windows.rs</code></td>
+<td>Themes, the COSMIC theme and its file watcher, the Windows theme and its registry watcher</td>
+</tr>
+<tr>
+<td><code>src/platform/</code></td>
+<td>What differs between Unix and Windows underneath: local socket pairs and polling, locks, file modes, the trash, links, the program running in a tab, Unix sockets on Windows</td>
+</tr>
+<tr>
+<td><code>build.rs</code>, <code>installer/</code></td>
+<td>Windows: the exe's icon and version info; the Inno Setup script</td>
+</tr>
+<tr>
+<td><code>src/shortcuts.rs</code>, <code>src/config.rs</code>, <code>src/i18n.rs</code></td>
+<td>Shortcuts, config, translations</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
 
-<span class="gu">## Files and settings</span>
-
-<span class="k">-</span><span class="w"> </span><span class="sb">`config.toml`</span> is read with serde and <span class="gs">**written with `toml_edit`**</span>, one key at
-  a time, so your comments and layout survive.
-<span class="k">-</span><span class="w"> </span>Hosts, keys and snippets are written as whole files – first to a temporary file
-  next to the real one, then renamed. Only after that succeeds does the change
-  show in the sidebar, so a failed save never leaves the UI showing something
-  that isn't on disk.
-<span class="k">-</span><span class="w"> </span>All UI text comes from Fluent files (<span class="sb">`locales/en.ftl`</span>, <span class="sb">`locales/de.ftl`</span>)
-  compiled into the binary.
-
-<span class="gu">## Module map</span>
-
-| Path | Responsibility |
-| --- | --- |
-| <span class="sb">`src/app.rs`</span> | Event loop, tabs and their panes, input routing, frame assembly |
-| <span class="sb">`src/panes.rs`</span> | Split-pane layout: tree, rectangles, dividers, neighbours |
-| <span class="sb">`src/window.rs`</span>, <span class="sb">`src/quake/`</span> | winit window or layer surface; the drop-down window: toggle socket, Wayland layer surface, xkb keyboard |
-| <span class="sb">`src/session.rs`</span> | Saving and restoring the open tabs |
-| <span class="sb">`src/input.rs`</span>, <span class="sb">`src/input/keyboard.rs`</span> | Keys, wheel and paste into bytes: the xterm encoding and the kitty keyboard protocol |
-| <span class="sb">`src/render/`</span> | Grid, tab bar, search bar, scrollbar, labels, quads, images, palette |
-| <span class="sb">`src/gpu.rs`</span>, <span class="sb">`src/blur.rs`</span>, <span class="sb">`src/blur_windows.rs`</span> | wgpu device and surface (on Windows through DirectComposition, so it can be see-through); blur behind a see-through window: <span class="sb">`ext-background-effect`</span> on Wayland, DWM's Acrylic and the dark title bar on Windows |
-| <span class="sb">`src/terminal/`</span> | Sessions, PTY filter, shell integration, prompts, search, links, hints, vi mode, images (kitty graphics) |
-| <span class="sb">`src/sftp/`</span> | SFTP client over the terminal's connection, its session thread (listing, pipelined transfers), editing files locally with sudo, folder sync |
-| <span class="sb">`src/tn5250/`</span> | IBM i 5250 terminal: telnet, EBCDIC code pages, screen and fields, drawing it as VT, key decoding, the connection worker |
-| <span class="sb">`src/ssh/`</span> | Host catalog, <span class="sb">`~/.ssh/config`</span> parser, connection worker, forwards, SOCKS, agent forwarding, keys, <span class="sb">`known_hosts`</span> |
-| <span class="sb">`src/ui/`</span> | egui sidebar, settings, SSH/keys/commands panels, files tab, context menu, command palette, the paste, clipboard and update dialogs, splash |
-| <span class="sb">`src/update.rs`</span> | Checking the GitHub releases, downloading and replacing the program |
-| <span class="sb">`src/shells/`</span> | Shell detection, managed aliases, generated startup files |
-| <span class="sb">`src/commands.rs`</span>, <span class="sb">`src/snippets.rs`</span> | Built-in commands, your own commands |
-| <span class="sb">`src/theme.rs`</span>, <span class="sb">`src/theme/cosmic.rs`</span>, <span class="sb">`src/theme/windows.rs`</span> | Themes, the COSMIC theme and its file watcher, the Windows theme and its registry watcher |
-| <span class="sb">`src/platform/`</span> | What differs between Unix and Windows underneath: local socket pairs and polling, locks, file modes, the trash, links, the program running in a tab, Unix sockets on Windows |
-| <span class="sb">`build.rs`</span>, <span class="sb">`installer/`</span> | Windows: the exe's icon and version info; the Inno Setup script |
-| <span class="sb">`src/shortcuts.rs`</span>, <span class="sb">`src/config.rs`</span>, <span class="sb">`src/i18n.rs`</span> | Shortcuts, config, translations |
-</pre></div></td></tr></table></div>
-
+        </div>
       </section>
     </main>
   </div>

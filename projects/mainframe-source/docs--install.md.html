@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>docs/install.md — Mainframe — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=41ca8b66" />
+  <link rel="stylesheet" href="../../styles.css?v=77eb044b" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -71,165 +71,92 @@
           <h1 class="section__title">docs/install.md</h1>
           <a href="../mainframe.html" class="link">← Back to Mainframe</a>
         </div>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span>
-<span class="normal">43</span>
-<span class="normal">44</span>
-<span class="normal">45</span>
-<span class="normal">46</span>
-<span class="normal">47</span>
-<span class="normal">48</span>
-<span class="normal">49</span>
-<span class="normal">50</span>
-<span class="normal">51</span>
-<span class="normal">52</span>
-<span class="normal">53</span>
-<span class="normal">54</span>
-<span class="normal">55</span>
-<span class="normal">56</span>
-<span class="normal">57</span>
-<span class="normal">58</span>
-<span class="normal">59</span>
-<span class="normal">60</span>
-<span class="normal">61</span>
-<span class="normal">62</span>
-<span class="normal">63</span>
-<span class="normal">64</span>
-<span class="normal">65</span>
-<span class="normal">66</span>
-<span class="normal">67</span>
-<span class="normal">68</span>
-<span class="normal">69</span>
-<span class="normal">70</span>
-<span class="normal">71</span>
-<span class="normal">72</span>
-<span class="normal">73</span>
-<span class="normal">74</span>
-<span class="normal">75</span>
-<span class="normal">76</span>
-<span class="normal">77</span>
-<span class="normal">78</span>
-<span class="normal">79</span></pre></div></td><td class="code"><div><pre><span></span><span class="gh"># Installation</span>
-
-Mainframe runs on Linux. There are no prebuilt releases yet, so you build it
-from source.
-
-<span class="gu">## Build and install</span>
-
-You need Rust 1.88 or newer ([rustup.rs](https://rustup.rs)) and git.
-
-<span class="sb">```sh</span>
-git<span class="w"> </span>clone<span class="w"> </span>https://github.com/mergedeyes/Mainframe<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>Mainframe
-cargo<span class="w"> </span>install<span class="w"> </span>--path<span class="w"> </span>.<span class="w"> </span>--root<span class="w"> </span>~/.local
-<span class="sb">```</span>
-
-This puts <span class="sb">`mainframe`</span> into <span class="sb">`~/.local/bin`</span>. Make sure that folder is on your
-<span class="sb">`PATH`</span>. Then start it in any folder:
-
-<span class="sb">```sh</span>
-mainframe<span class="w">            </span><span class="c1"># the current folder</span>
-mainframe<span class="w"> </span>~/Projekte<span class="w"> </span><span class="c1"># or any other</span>
-<span class="sb">```</span>
-
-Press <span class="sb">`?`</span> for the keys and <span class="sb">`q`</span> to quit.
-
-<span class="gs">**Updating:**</span> pull the new version, then either run the <span class="sb">`cargo install`</span> line
-again, or start Mainframe in its own folder, press <span class="sb">`i`</span> and pick the release
-build. See [<span class="nt">Installing and deploying</span>](<span class="na">guides/install-and-deploy.md</span>).
-
-<span class="gu">## Optional tools</span>
-
-Mainframe works without these. Each one switches on a feature:
-
-| Tool | What it adds |
-|---|---|
-| <span class="sb">`nano`</span> or any editor | <span class="sb">`e`</span> and <span class="sb">`Enter`</span> edit files. nano is the default; set <span class="sb">`editor`</span> in the [<span class="nt">configuration</span>](<span class="na">reference/config.md</span>). |
-| VS Code (<span class="sb">`code`</span>) | <span class="sb">`o`</span> and <span class="sb">`O`</span> open a file or the whole project. |
-| [<span class="nt">zoxide</span>](<span class="na">https://github.com/ajeetdsouza/zoxide</span>) | <span class="sb">`c`</span> accepts keywords like <span class="sb">`c watch`</span>, <span class="sb">`Z`</span> opens zoxide's picker. |
-| <span class="sb">`gio`</span> (GLib) or <span class="sb">`trash-put`</span> | <span class="sb">`d`</span> moves files to the trash instead of deleting them. |
-| <span class="sb">`notify-send`</span> | A desktop notification when a long task finishes. |
-| [<span class="nt">GitHub CLI</span>](<span class="na">https://cli.github.com</span>) (<span class="sb">`gh`</span>) | Creating GitHub repos, pull requests in releases, release workflows. |
-| lazygit, gitui or tig | <span class="sb">`g g`</span> opens the first one installed. |
-| [<span class="nt">cross</span>](<span class="na">https://github.com/cross-rs/cross</span>) | Deploy builds for a Raspberry Pi; suggested automatically when installed. |
-
-<span class="gu">## `cd` on exit</span>
-
-When you quit, your shell stays in the folder you started in. To end up in
+        <div class="readme-content">
+<h1 class="heading-element" dir="auto" id="installation">Installation</h1>
+<p dir="auto">Mainframe runs on Linux. There are no prebuilt releases yet, so you build it
+from source.</p>
+<h2 class="heading-element" dir="auto" id="build-and-install">Build and install</h2>
+<p dir="auto">You need Rust 1.88 or newer (<a href="https://rustup.rs" rel="nofollow">rustup.rs</a>) and git.</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto"><pre>git clone https://github.com/mergedeyes/Mainframe <span class="pl-k">&amp;&amp;</span> <span class="pl-c1">cd</span> Mainframe
+cargo install --path <span class="pl-c1">.</span> --root <span class="pl-k">~</span>/.local</pre></div>
+<p dir="auto">This puts <code>mainframe</code> into <code>~/.local/bin</code>. Make sure that folder is on your
+<code>PATH</code>. Then start it in any folder:</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto"><pre>mainframe            <span class="pl-c"><span class="pl-c">#</span> the current folder</span>
+mainframe <span class="pl-k">~</span>/Projekte <span class="pl-c"><span class="pl-c">#</span> or any other</span></pre></div>
+<p dir="auto">Press <code>?</code> for the keys and <code>q</code> to quit.</p>
+<p dir="auto"><strong>Updating:</strong> pull the new version, then either run the <code>cargo install</code> line
+again, or start Mainframe in its own folder, press <code>i</code> and pick the release
+build. See <a href="docs--guides--install-and-deploy.md.html">Installing and deploying</a>.</p>
+<h2 class="heading-element" dir="auto" id="optional-tools">Optional tools</h2>
+<p dir="auto">Mainframe works without these. Each one switches on a feature:</p>
+<markdown-accessiblity-table><table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>What it adds</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>nano</code> or any editor</td>
+<td><code>e</code> and <code>Enter</code> edit files. nano is the default; set <code>editor</code> in the <a href="docs--reference--config.md.html">configuration</a>.</td>
+</tr>
+<tr>
+<td>VS Code (<code>code</code>)</td>
+<td><code>o</code> and <code>O</code> open a file or the whole project.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/ajeetdsouza/zoxide">zoxide</a></td>
+<td><code>c</code> accepts keywords like <code>c watch</code>, <code>Z</code> opens zoxide's picker.</td>
+</tr>
+<tr>
+<td><code>gio</code> (GLib) or <code>trash-put</code></td>
+<td><code>d</code> moves files to the trash instead of deleting them.</td>
+</tr>
+<tr>
+<td><code>notify-send</code></td>
+<td>A desktop notification when a long task finishes.</td>
+</tr>
+<tr>
+<td><a href="https://cli.github.com">GitHub CLI</a> (<code>gh</code>)</td>
+<td>Creating GitHub repos, pull requests in releases, release workflows.</td>
+</tr>
+<tr>
+<td>lazygit, gitui or tig</td>
+<td><code>g g</code> opens the first one installed.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/cross-rs/cross">cross</a></td>
+<td>Deploy builds for a Raspberry Pi; suggested automatically when installed.</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<h2 class="heading-element" dir="auto" id="cd-on-exit"><code>cd</code> on exit</h2>
+<p dir="auto">When you quit, your shell stays in the folder you started in. To end up in
 the folder you were browsing instead, start Mainframe through a small shell
 function. Mainframe writes its last folder to the file named in
-<span class="sb">`MAINFRAME_CWD_FILE`</span>.
-
-<span class="gs">**fish**</span> (<span class="sb">`~/.config/fish/functions/mf.fish`</span>):
-
-<span class="sb">```fish</span>
-<span class="k">function</span> mf
-    <span class="k">set</span> -l f <span class="o">(</span>mktemp<span class="o">)</span>
-    <span class="nv">MAINFRAME_CWD_FILE</span><span class="o">=</span><span class="nv">$f</span> mainframe <span class="nv">$argv</span>
-    <span class="k">and</span> <span class="k">cd</span> <span class="o">(</span>cat <span class="nv">$f</span><span class="o">)</span>
-    rm -f <span class="nv">$f</span>
-<span class="k">end</span>
-<span class="sb">```</span>
-
-<span class="gs">**bash or zsh**</span> (<span class="sb">`~/.bashrc`</span> or <span class="sb">`~/.zshrc`</span>):
-
-<span class="sb">```sh</span>
-mf<span class="o">()</span><span class="w"> </span><span class="o">{</span>
-<span class="w">    </span><span class="nb">local</span><span class="w"> </span>f
-<span class="w">    </span><span class="nv">f</span><span class="o">=</span><span class="k">$(</span>mktemp<span class="k">)</span>
-<span class="w">    </span><span class="nv">MAINFRAME_CWD_FILE</span><span class="o">=</span><span class="nv">$f</span><span class="w"> </span>mainframe<span class="w"> </span><span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span><span class="s2">"</span><span class="k">$(</span>cat<span class="w"> </span><span class="s2">"</span><span class="nv">$f</span><span class="s2">"</span><span class="k">)</span><span class="s2">"</span>
-<span class="w">    </span>rm<span class="w"> </span>-f<span class="w"> </span><span class="s2">"</span><span class="nv">$f</span><span class="s2">"</span>
-<span class="o">}</span>
-<span class="sb">```</span>
-
-Then start it with <span class="sb">`mf`</span>.
-
-<span class="gu">## Configuration</span>
-
-Press <span class="sb">`,`</span> inside Mainframe. It creates <span class="sb">`~/.config/mainframe/config.toml`</span> with
+<code>MAINFRAME_CWD_FILE</code>.</p>
+<p dir="auto"><strong>fish</strong> (<code>~/.config/fish/functions/mf.fish</code>):</p>
+<div class="highlight highlight-source-fish notranslate position-relative overflow-auto" dir="auto"><pre><span class="pl-k">function</span> mf
+    <span class="pl-c1">set</span> <span class="pl-s">-l</span> f (mktemp)
+    MAINFRAME_CWD_FILE=<span class="pl-smi">$f</span> mainframe <span class="pl-smi">$argv</span>
+    <span class="pl-c1">and</span> <span class="pl-c1">cd</span> (<span class="pl-c1">cat</span> <span class="pl-smi">$f</span>)
+    <span class="pl-c1">rm</span> <span class="pl-s">-f</span> <span class="pl-smi">$f</span>
+<span class="pl-k">end</span></pre></div>
+<p dir="auto"><strong>bash or zsh</strong> (<code>~/.bashrc</code> or <code>~/.zshrc</code>):</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto"><pre><span class="pl-en">mf</span>() {
+    <span class="pl-k">local</span> f
+    f=<span class="pl-s"><span class="pl-pds">$(</span>mktemp<span class="pl-pds">)</span></span>
+    MAINFRAME_CWD_FILE=<span class="pl-smi">$f</span> mainframe <span class="pl-s"><span class="pl-pds">"</span><span class="pl-smi">$@</span><span class="pl-pds">"</span></span> <span class="pl-k">&amp;&amp;</span> <span class="pl-c1">cd</span> <span class="pl-s"><span class="pl-pds">"</span><span class="pl-s"><span class="pl-pds">$(</span>cat <span class="pl-s"><span class="pl-pds">"</span><span class="pl-smi">$f</span><span class="pl-pds">"</span></span><span class="pl-pds">)</span></span><span class="pl-pds">"</span></span>
+    rm -f <span class="pl-s"><span class="pl-pds">"</span><span class="pl-smi">$f</span><span class="pl-pds">"</span></span>
+}</pre></div>
+<p dir="auto">Then start it with <code>mf</code>.</p>
+<h2 class="heading-element" dir="auto" id="configuration">Configuration</h2>
+<p dir="auto">Press <code>,</code> inside Mainframe. It creates <code>~/.config/mainframe/config.toml</code> with
 every option explained and opens it in your editor. See
-[<span class="nt">Configuration</span>](<span class="na">reference/config.md</span>).
-</pre></div></td></tr></table></div>
+<a href="docs--reference--config.md.html">Configuration</a>.</p>
 
+        </div>
       </section>
     </main>
   </div>

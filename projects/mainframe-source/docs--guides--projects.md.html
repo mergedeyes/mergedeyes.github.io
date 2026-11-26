@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>docs/guides/projects.md — Mainframe — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=41ca8b66" />
+  <link rel="stylesheet" href="../../styles.css?v=77eb044b" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -71,215 +71,160 @@
           <h1 class="section__title">docs/guides/projects.md</h1>
           <a href="../mainframe.html" class="link">← Back to Mainframe</a>
         </div>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">  1</span>
-<span class="normal">  2</span>
-<span class="normal">  3</span>
-<span class="normal">  4</span>
-<span class="normal">  5</span>
-<span class="normal">  6</span>
-<span class="normal">  7</span>
-<span class="normal">  8</span>
-<span class="normal">  9</span>
-<span class="normal"> 10</span>
-<span class="normal"> 11</span>
-<span class="normal"> 12</span>
-<span class="normal"> 13</span>
-<span class="normal"> 14</span>
-<span class="normal"> 15</span>
-<span class="normal"> 16</span>
-<span class="normal"> 17</span>
-<span class="normal"> 18</span>
-<span class="normal"> 19</span>
-<span class="normal"> 20</span>
-<span class="normal"> 21</span>
-<span class="normal"> 22</span>
-<span class="normal"> 23</span>
-<span class="normal"> 24</span>
-<span class="normal"> 25</span>
-<span class="normal"> 26</span>
-<span class="normal"> 27</span>
-<span class="normal"> 28</span>
-<span class="normal"> 29</span>
-<span class="normal"> 30</span>
-<span class="normal"> 31</span>
-<span class="normal"> 32</span>
-<span class="normal"> 33</span>
-<span class="normal"> 34</span>
-<span class="normal"> 35</span>
-<span class="normal"> 36</span>
-<span class="normal"> 37</span>
-<span class="normal"> 38</span>
-<span class="normal"> 39</span>
-<span class="normal"> 40</span>
-<span class="normal"> 41</span>
-<span class="normal"> 42</span>
-<span class="normal"> 43</span>
-<span class="normal"> 44</span>
-<span class="normal"> 45</span>
-<span class="normal"> 46</span>
-<span class="normal"> 47</span>
-<span class="normal"> 48</span>
-<span class="normal"> 49</span>
-<span class="normal"> 50</span>
-<span class="normal"> 51</span>
-<span class="normal"> 52</span>
-<span class="normal"> 53</span>
-<span class="normal"> 54</span>
-<span class="normal"> 55</span>
-<span class="normal"> 56</span>
-<span class="normal"> 57</span>
-<span class="normal"> 58</span>
-<span class="normal"> 59</span>
-<span class="normal"> 60</span>
-<span class="normal"> 61</span>
-<span class="normal"> 62</span>
-<span class="normal"> 63</span>
-<span class="normal"> 64</span>
-<span class="normal"> 65</span>
-<span class="normal"> 66</span>
-<span class="normal"> 67</span>
-<span class="normal"> 68</span>
-<span class="normal"> 69</span>
-<span class="normal"> 70</span>
-<span class="normal"> 71</span>
-<span class="normal"> 72</span>
-<span class="normal"> 73</span>
-<span class="normal"> 74</span>
-<span class="normal"> 75</span>
-<span class="normal"> 76</span>
-<span class="normal"> 77</span>
-<span class="normal"> 78</span>
-<span class="normal"> 79</span>
-<span class="normal"> 80</span>
-<span class="normal"> 81</span>
-<span class="normal"> 82</span>
-<span class="normal"> 83</span>
-<span class="normal"> 84</span>
-<span class="normal"> 85</span>
-<span class="normal"> 86</span>
-<span class="normal"> 87</span>
-<span class="normal"> 88</span>
-<span class="normal"> 89</span>
-<span class="normal"> 90</span>
-<span class="normal"> 91</span>
-<span class="normal"> 92</span>
-<span class="normal"> 93</span>
-<span class="normal"> 94</span>
-<span class="normal"> 95</span>
-<span class="normal"> 96</span>
-<span class="normal"> 97</span>
-<span class="normal"> 98</span>
-<span class="normal"> 99</span>
-<span class="normal">100</span>
-<span class="normal">101</span>
-<span class="normal">102</span>
-<span class="normal">103</span>
-<span class="normal">104</span></pre></div></td><td class="code"><div><pre><span></span><span class="gh"># Projects, notes and Claude</span>
-
-Mainframe keeps a few things per project: output tabs, notes and todos, and
+        <div class="readme-content">
+<h1 class="heading-element" dir="auto" id="projects-notes-and-claude">Projects, notes and Claude</h1>
+<p dir="auto">Mainframe keeps a few things per project: output tabs, notes and todos, and
 settings like deploy targets. All of it lives outside the project, so none
-of it ends up in a commit.
-
-<span class="gu">## The project picker</span>
-
-<span class="sb">`J`</span> lists the projects in your
-[<span class="nt">projects folder</span>](<span class="na">../introduction.md#your-projects-folder</span>), the most
-recently active first. Group folders like <span class="sb">`Games/`</span> are opened up into the
+of it ends up in a commit.</p>
+<h2 class="heading-element" dir="auto" id="the-project-picker">The project picker</h2>
+<p dir="auto"><code>J</code> lists the projects in your
+<a href="docs--introduction.md.html#your-projects-folder">projects folder</a>, the most
+recently active first. Group folders like <code>Games/</code> are opened up into the
 projects inside them. Each row shows the project type, tasks still running
-in it, and open todos.
-
-Type a few letters to filter, then:
-
-| Key | What it does |
-|---|---|
-| <span class="sb">`Enter`</span> | go there |
-| <span class="sb">`Ctrl-T`</span> | its notes and todos |
-| <span class="sb">`Ctrl-O`</span> | open it in VS Code |
-| <span class="sb">`Ctrl-G`</span> | make a new project |
-| <span class="sb">`Ctrl-L`</span> | bring the CLAUDE.md preset into it |
-| <span class="sb">`Esc`</span> | close |
-
-<span class="gu">## Notes and todos</span>
-
-<span class="sb">`M`</span> opens the notes of the project you're in. Lines with a checkbox are
-todos, everything else is a note. Every change is saved right away.
-
-| Key | What it does |
-|---|---|
-| <span class="sb">`a`</span> | add a todo |
-| <span class="sb">`n`</span> | add a note line |
-| <span class="sb">`Enter`</span> | edit the line |
-| <span class="sb">`Space`</span> | check a todo off, or on again |
-| <span class="sb">`t`</span> | turn a todo into a note, or back |
-| <span class="sb">`d`</span> | delete the line |
-| <span class="sb">`u`</span> | undo |
-| <span class="sb">`J`</span> <span class="sb">`K`</span> | move the line down, up |
-| <span class="sb">`C`</span> | remove all checked todos |
-| <span class="sb">`E`</span> | the whole file in your editor |
-| <span class="sb">`Esc`</span> | close |
-
-The header shows the open todos of the current project (☐ 3).
-
-The notes are plain Markdown files in <span class="sb">`~/.local/share/mainframe/notes/`</span>, one
-per project. <span class="sb">`- [ ]`</span> and <span class="sb">`- [x]`</span> lines are todos. You can edit them by hand
-or with any other tool.
-
-<span class="gu">## New projects</span>
-
-<span class="sb">`Ctrl-G`</span> in the <span class="sb">`J`</span> picker asks for:
-
-<span class="k">1.</span> <span class="gs">**name:**</span> the folder name
-<span class="k">2.</span> <span class="gs">**location:**</span> the projects folder, or a group folder in it like <span class="sb">`Games/`</span>
-<span class="k">3.</span> <span class="gs">**stack:**</span> none, rust, node or python
-<span class="k">4.</span> <span class="gs">**CLAUDE.md:**</span> whether to write one, see below
-
-Mainframe creates the folder, runs <span class="sb">`git init -b main`</span> there and takes you
-in.
-
-<span class="gu">## CLAUDE.md for Claude Code</span>
-
-[<span class="nt">Claude Code</span>](<span class="na">https://claude.com/claude-code</span>) reads a project's <span class="sb">`CLAUDE.md`</span>
+in it, and open todos.</p>
+<p dir="auto">Type a few letters to filter, then:</p>
+<markdown-accessiblity-table><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Enter</code></td>
+<td>go there</td>
+</tr>
+<tr>
+<td><code>Ctrl-T</code></td>
+<td>its notes and todos</td>
+</tr>
+<tr>
+<td><code>Ctrl-O</code></td>
+<td>open it in VS Code</td>
+</tr>
+<tr>
+<td><code>Ctrl-G</code></td>
+<td>make a new project</td>
+</tr>
+<tr>
+<td><code>Ctrl-L</code></td>
+<td>bring the CLAUDE.md preset into it</td>
+</tr>
+<tr>
+<td><code>Esc</code></td>
+<td>close</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<h2 class="heading-element" dir="auto" id="notes-and-todos">Notes and todos</h2>
+<p dir="auto"><code>M</code> opens the notes of the project you're in. Lines with a checkbox are
+todos, everything else is a note. Every change is saved right away.</p>
+<markdown-accessiblity-table><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>a</code></td>
+<td>add a todo</td>
+</tr>
+<tr>
+<td><code>n</code></td>
+<td>add a note line</td>
+</tr>
+<tr>
+<td><code>Enter</code></td>
+<td>edit the line</td>
+</tr>
+<tr>
+<td><code>Space</code></td>
+<td>check a todo off, or on again</td>
+</tr>
+<tr>
+<td><code>t</code></td>
+<td>turn a todo into a note, or back</td>
+</tr>
+<tr>
+<td><code>d</code></td>
+<td>delete the line</td>
+</tr>
+<tr>
+<td><code>u</code></td>
+<td>undo</td>
+</tr>
+<tr>
+<td><code>J</code> <code>K</code></td>
+<td>move the line down, up</td>
+</tr>
+<tr>
+<td><code>C</code></td>
+<td>remove all checked todos</td>
+</tr>
+<tr>
+<td><code>E</code></td>
+<td>the whole file in your editor</td>
+</tr>
+<tr>
+<td><code>Esc</code></td>
+<td>close</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto">The header shows the open todos of the current project (☐ 3).</p>
+<p dir="auto">The notes are plain Markdown files in <code>~/.local/share/mainframe/notes/</code>, one
+per project. <code>- [ ]</code> and <code>- [x]</code> lines are todos. You can edit them by hand
+or with any other tool.</p>
+<h2 class="heading-element" dir="auto" id="new-projects">New projects</h2>
+<p dir="auto"><code>Ctrl-G</code> in the <code>J</code> picker asks for:</p>
+<ol dir="auto">
+<li><strong>name:</strong> the folder name</li>
+<li><strong>location:</strong> the projects folder, or a group folder in it like <code>Games/</code></li>
+<li><strong>stack:</strong> none, rust, node or python</li>
+<li><strong>CLAUDE.md:</strong> whether to write one, see below</li>
+</ol>
+<p dir="auto">Mainframe creates the folder, runs <code>git init -b main</code> there and takes you
+in.</p>
+<h2 class="heading-element" dir="auto" id="claudemd-for-claude-code">CLAUDE.md for Claude Code</h2>
+<p dir="auto"><a href="https://claude.com/claude-code" rel="nofollow">Claude Code</a> reads a project's <code>CLAUDE.md</code>
 at every start. Mainframe can write one from a template: the project's
-name, the checks to run for its stack (for Rust <span class="sb">`cargo fmt`</span>, <span class="sb">`cargo clippy`</span>
-and <span class="sb">`cargo test`</span>), and rules for working on the project, keeping its README
-and docs in good shape, and git.
-
-The CLAUDE.md of a new project stays local: it's listed in
-<span class="sb">`.git/info/exclude`</span>, so it never shows up in <span class="sb">`git status`</span> and never gets
-committed.
-
-<span class="gu">### Your own template</span>
-
-The built-in template is a starting point. To change it, press <span class="sb">`Ctrl-T`</span> in
+name, the checks to run for its stack (for Rust <code>cargo fmt</code>, <code>cargo clippy</code>
+and <code>cargo test</code>), and rules for working on the project, keeping its README
+and docs in good shape, and git.</p>
+<p dir="auto">The CLAUDE.md of a new project stays local: it's listed in
+<code>.git/info/exclude</code>, so it never shows up in <code>git status</code> and never gets
+committed.</p>
+<h3 class="heading-element" dir="auto" id="your-own-template">Your own template</h3>
+<p dir="auto">The built-in template is a starting point. To change it, press <code>Ctrl-T</code> in
 the new-project form. Mainframe copies the built-in template to
-<span class="sb">`~/.config/mainframe/CLAUDE.md`</span> and opens it in your editor. From then on,
-new projects get your version.
-
-In the template, <span class="sb">`{name}`</span> becomes the project's folder name. Lines between
-<span class="sb">`&lt;!-- if rust --&gt;`</span> and <span class="sb">`&lt;!-- end --&gt;`</span> only stay for Rust projects; the same
-works for <span class="sb">`node`</span>, <span class="sb">`python`</span> and <span class="sb">`none`</span>. So one template can hold the checks
-for every stack.
-
-<span class="gu">### Bringing the preset into an existing project</span>
-
-<span class="sb">`Ctrl-L`</span> brings the template into the project you're in, with the checks
-for the build tools it uses. In the <span class="sb">`J`</span> picker, <span class="sb">`Ctrl-L`</span> does the same for
+<code>~/.config/mainframe/CLAUDE.md</code> and opens it in your editor. From then on,
+new projects get your version.</p>
+<p dir="auto">In the template, <code>{name}</code> becomes the project's folder name. Lines between
+<code>&lt;!-- if rust --&gt;</code> and <code>&lt;!-- end --&gt;</code> only stay for Rust projects; the same
+works for <code>node</code>, <code>python</code> and <code>none</code>. So one template can hold the checks
+for every stack.</p>
+<h3 class="heading-element" dir="auto" id="bringing-the-preset-into-an-existing-project">Bringing the preset into an existing project</h3>
+<p dir="auto"><code>Ctrl-L</code> brings the template into the project you're in, with the checks
+for the build tools it uses. In the <code>J</code> picker, <code>Ctrl-L</code> does the same for
 the selected project. A Tauri app, for example, gets
-both the Rust and the Node checks. Mainframe asks first, then:
+both the Rust and the Node checks. Mainframe asks first, then:</p>
+<ul dir="auto">
+<li><strong>The project has no instructions yet</strong> (no <code>CLAUDE.md</code>,
+<code>.claude/CLAUDE.md</code>, <code>CLAUDE.local.md</code> or <code>AGENTS.md</code>): the template
+becomes its local CLAUDE.md, like for a new project.</li>
+<li><strong>It has instructions already:</strong> Mainframe doesn't touch them. It writes
+the template to <code>.claude/rules/mainframe-preset.md</code>, which Claude Code
+loads at its next start, with a note asking Claude to merge it into the
+project's own instructions. What's already there wins where the two
+disagree, and Claude points out each conflict. Then Claude deletes the
+note and tells you what it added and changed.</li>
+</ul>
+<p dir="auto">Git ignores whatever <code>Ctrl-L</code> writes.</p>
 
-<span class="k">-</span><span class="w"> </span><span class="gs">**The project has no instructions yet**</span> (no <span class="sb">`CLAUDE.md`</span>,
-  <span class="sb">`.claude/CLAUDE.md`</span>, <span class="sb">`CLAUDE.local.md`</span> or <span class="sb">`AGENTS.md`</span>): the template
-  becomes its local CLAUDE.md, like for a new project.
-<span class="k">-</span><span class="w"> </span><span class="gs">**It has instructions already:**</span> Mainframe doesn't touch them. It writes
-  the template to <span class="sb">`.claude/rules/mainframe-preset.md`</span>, which Claude Code
-  loads at its next start, with a note asking Claude to merge it into the
-  project's own instructions. What's already there wins where the two
-  disagree, and Claude points out each conflict. Then Claude deletes the
-  note and tells you what it added and changed.
-
-Git ignores whatever <span class="sb">`Ctrl-L`</span> writes.
-</pre></div></td></tr></table></div>
-
+        </div>
       </section>
     </main>
   </div>

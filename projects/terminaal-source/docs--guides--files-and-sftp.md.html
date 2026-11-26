@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>docs/guides/files-and-sftp.md — Terminaal — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=41ca8b66" />
+  <link rel="stylesheet" href="../../styles.css?v=77eb044b" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -71,537 +71,300 @@
           <h1 class="section__title">docs/guides/files-and-sftp.md</h1>
           <a href="../terminaal.html" class="link">← Back to Terminaal</a>
         </div>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">  1</span>
-<span class="normal">  2</span>
-<span class="normal">  3</span>
-<span class="normal">  4</span>
-<span class="normal">  5</span>
-<span class="normal">  6</span>
-<span class="normal">  7</span>
-<span class="normal">  8</span>
-<span class="normal">  9</span>
-<span class="normal"> 10</span>
-<span class="normal"> 11</span>
-<span class="normal"> 12</span>
-<span class="normal"> 13</span>
-<span class="normal"> 14</span>
-<span class="normal"> 15</span>
-<span class="normal"> 16</span>
-<span class="normal"> 17</span>
-<span class="normal"> 18</span>
-<span class="normal"> 19</span>
-<span class="normal"> 20</span>
-<span class="normal"> 21</span>
-<span class="normal"> 22</span>
-<span class="normal"> 23</span>
-<span class="normal"> 24</span>
-<span class="normal"> 25</span>
-<span class="normal"> 26</span>
-<span class="normal"> 27</span>
-<span class="normal"> 28</span>
-<span class="normal"> 29</span>
-<span class="normal"> 30</span>
-<span class="normal"> 31</span>
-<span class="normal"> 32</span>
-<span class="normal"> 33</span>
-<span class="normal"> 34</span>
-<span class="normal"> 35</span>
-<span class="normal"> 36</span>
-<span class="normal"> 37</span>
-<span class="normal"> 38</span>
-<span class="normal"> 39</span>
-<span class="normal"> 40</span>
-<span class="normal"> 41</span>
-<span class="normal"> 42</span>
-<span class="normal"> 43</span>
-<span class="normal"> 44</span>
-<span class="normal"> 45</span>
-<span class="normal"> 46</span>
-<span class="normal"> 47</span>
-<span class="normal"> 48</span>
-<span class="normal"> 49</span>
-<span class="normal"> 50</span>
-<span class="normal"> 51</span>
-<span class="normal"> 52</span>
-<span class="normal"> 53</span>
-<span class="normal"> 54</span>
-<span class="normal"> 55</span>
-<span class="normal"> 56</span>
-<span class="normal"> 57</span>
-<span class="normal"> 58</span>
-<span class="normal"> 59</span>
-<span class="normal"> 60</span>
-<span class="normal"> 61</span>
-<span class="normal"> 62</span>
-<span class="normal"> 63</span>
-<span class="normal"> 64</span>
-<span class="normal"> 65</span>
-<span class="normal"> 66</span>
-<span class="normal"> 67</span>
-<span class="normal"> 68</span>
-<span class="normal"> 69</span>
-<span class="normal"> 70</span>
-<span class="normal"> 71</span>
-<span class="normal"> 72</span>
-<span class="normal"> 73</span>
-<span class="normal"> 74</span>
-<span class="normal"> 75</span>
-<span class="normal"> 76</span>
-<span class="normal"> 77</span>
-<span class="normal"> 78</span>
-<span class="normal"> 79</span>
-<span class="normal"> 80</span>
-<span class="normal"> 81</span>
-<span class="normal"> 82</span>
-<span class="normal"> 83</span>
-<span class="normal"> 84</span>
-<span class="normal"> 85</span>
-<span class="normal"> 86</span>
-<span class="normal"> 87</span>
-<span class="normal"> 88</span>
-<span class="normal"> 89</span>
-<span class="normal"> 90</span>
-<span class="normal"> 91</span>
-<span class="normal"> 92</span>
-<span class="normal"> 93</span>
-<span class="normal"> 94</span>
-<span class="normal"> 95</span>
-<span class="normal"> 96</span>
-<span class="normal"> 97</span>
-<span class="normal"> 98</span>
-<span class="normal"> 99</span>
-<span class="normal">100</span>
-<span class="normal">101</span>
-<span class="normal">102</span>
-<span class="normal">103</span>
-<span class="normal">104</span>
-<span class="normal">105</span>
-<span class="normal">106</span>
-<span class="normal">107</span>
-<span class="normal">108</span>
-<span class="normal">109</span>
-<span class="normal">110</span>
-<span class="normal">111</span>
-<span class="normal">112</span>
-<span class="normal">113</span>
-<span class="normal">114</span>
-<span class="normal">115</span>
-<span class="normal">116</span>
-<span class="normal">117</span>
-<span class="normal">118</span>
-<span class="normal">119</span>
-<span class="normal">120</span>
-<span class="normal">121</span>
-<span class="normal">122</span>
-<span class="normal">123</span>
-<span class="normal">124</span>
-<span class="normal">125</span>
-<span class="normal">126</span>
-<span class="normal">127</span>
-<span class="normal">128</span>
-<span class="normal">129</span>
-<span class="normal">130</span>
-<span class="normal">131</span>
-<span class="normal">132</span>
-<span class="normal">133</span>
-<span class="normal">134</span>
-<span class="normal">135</span>
-<span class="normal">136</span>
-<span class="normal">137</span>
-<span class="normal">138</span>
-<span class="normal">139</span>
-<span class="normal">140</span>
-<span class="normal">141</span>
-<span class="normal">142</span>
-<span class="normal">143</span>
-<span class="normal">144</span>
-<span class="normal">145</span>
-<span class="normal">146</span>
-<span class="normal">147</span>
-<span class="normal">148</span>
-<span class="normal">149</span>
-<span class="normal">150</span>
-<span class="normal">151</span>
-<span class="normal">152</span>
-<span class="normal">153</span>
-<span class="normal">154</span>
-<span class="normal">155</span>
-<span class="normal">156</span>
-<span class="normal">157</span>
-<span class="normal">158</span>
-<span class="normal">159</span>
-<span class="normal">160</span>
-<span class="normal">161</span>
-<span class="normal">162</span>
-<span class="normal">163</span>
-<span class="normal">164</span>
-<span class="normal">165</span>
-<span class="normal">166</span>
-<span class="normal">167</span>
-<span class="normal">168</span>
-<span class="normal">169</span>
-<span class="normal">170</span>
-<span class="normal">171</span>
-<span class="normal">172</span>
-<span class="normal">173</span>
-<span class="normal">174</span>
-<span class="normal">175</span>
-<span class="normal">176</span>
-<span class="normal">177</span>
-<span class="normal">178</span>
-<span class="normal">179</span>
-<span class="normal">180</span>
-<span class="normal">181</span>
-<span class="normal">182</span>
-<span class="normal">183</span>
-<span class="normal">184</span>
-<span class="normal">185</span>
-<span class="normal">186</span>
-<span class="normal">187</span>
-<span class="normal">188</span>
-<span class="normal">189</span>
-<span class="normal">190</span>
-<span class="normal">191</span>
-<span class="normal">192</span>
-<span class="normal">193</span>
-<span class="normal">194</span>
-<span class="normal">195</span>
-<span class="normal">196</span>
-<span class="normal">197</span>
-<span class="normal">198</span>
-<span class="normal">199</span>
-<span class="normal">200</span>
-<span class="normal">201</span>
-<span class="normal">202</span>
-<span class="normal">203</span>
-<span class="normal">204</span>
-<span class="normal">205</span>
-<span class="normal">206</span>
-<span class="normal">207</span>
-<span class="normal">208</span>
-<span class="normal">209</span>
-<span class="normal">210</span>
-<span class="normal">211</span>
-<span class="normal">212</span>
-<span class="normal">213</span>
-<span class="normal">214</span>
-<span class="normal">215</span>
-<span class="normal">216</span>
-<span class="normal">217</span>
-<span class="normal">218</span>
-<span class="normal">219</span>
-<span class="normal">220</span>
-<span class="normal">221</span>
-<span class="normal">222</span>
-<span class="normal">223</span>
-<span class="normal">224</span>
-<span class="normal">225</span>
-<span class="normal">226</span>
-<span class="normal">227</span>
-<span class="normal">228</span>
-<span class="normal">229</span>
-<span class="normal">230</span>
-<span class="normal">231</span>
-<span class="normal">232</span>
-<span class="normal">233</span>
-<span class="normal">234</span>
-<span class="normal">235</span>
-<span class="normal">236</span>
-<span class="normal">237</span>
-<span class="normal">238</span>
-<span class="normal">239</span>
-<span class="normal">240</span>
-<span class="normal">241</span>
-<span class="normal">242</span>
-<span class="normal">243</span>
-<span class="normal">244</span>
-<span class="normal">245</span>
-<span class="normal">246</span>
-<span class="normal">247</span>
-<span class="normal">248</span>
-<span class="normal">249</span>
-<span class="normal">250</span>
-<span class="normal">251</span>
-<span class="normal">252</span>
-<span class="normal">253</span>
-<span class="normal">254</span>
-<span class="normal">255</span>
-<span class="normal">256</span>
-<span class="normal">257</span>
-<span class="normal">258</span>
-<span class="normal">259</span>
-<span class="normal">260</span>
-<span class="normal">261</span>
-<span class="normal">262</span>
-<span class="normal">263</span>
-<span class="normal">264</span>
-<span class="normal">265</span></pre></div></td><td class="code"><div><pre><span></span><span class="gh"># Files on a server (SFTP)</span>
-
-Every SSH connection can show its server's files: browse folders, copy files
+        <div class="readme-content">
+<h1 class="heading-element" dir="auto" id="files-on-a-server-sftp">Files on a server (SFTP)</h1>
+<p dir="auto">Every SSH connection can show its server's files: browse folders, copy files
 and folders in both directions, keep folders in sync, and edit a file in your
 local editor – every save goes back to the server. Files only root may change
-work too, through sudo in the terminal.
-
-<span class="gu">## Opening the files tab</span>
-
-In a terminal connected over SSH, press &lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;O&lt;/kbd&gt;
-or right-click and choose <span class="gs">**Files (SFTP)**</span>. A tab <span class="gs">**Files: user@host**</span> opens
+work too, through sudo in the terminal.</p>
+<h2 class="heading-element" dir="auto" id="opening-the-files-tab">Opening the files tab</h2>
+<p dir="auto">In a terminal connected over SSH, press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>O</kbd>
+or right-click and choose <strong>Files (SFTP)</strong>. A tab <strong>Files: user@host</strong> opens
 next to the terminal; pressing the shortcut again in that terminal switches to
-it.
-
-The files tab uses the terminal's connection – no second login, no second
+it.</p>
+<p dir="auto">The files tab uses the terminal's connection – no second login, no second
 passphrase prompt. It needs the server's SFTP subsystem, which OpenSSH servers
 have by default. Opened before the login in the terminal is done, it waits for
-it. If the server has no SFTP, the tab says why; <span class="gs">**Reconnect**</span> tries again.
-
-Closing the files tab ends the SFTP session, the terminal keeps running.
-
-<span class="gu">## When the connection drops</span>
-
-The files tab checks every second whether its connection is still there. When
-it's gone, it says <span class="gs">**Connection interrupted**</span>; transfers and saves wait. As soon
+it. If the server has no SFTP, the tab says why; <strong>Reconnect</strong> tries again.</p>
+<p dir="auto">Closing the files tab ends the SFTP session, the terminal keeps running.</p>
+<h2 class="heading-element" dir="auto" id="when-the-connection-drops">When the connection drops</h2>
+<p dir="auto">The files tab checks every second whether its connection is still there. When
+it's gone, it says <strong>Connection interrupted</strong>; transfers and saves wait. As soon
 as the terminal is connected again – it reconnects by itself – the files tab
-carries on:
-
-<span class="k">-</span><span class="w"> </span>A <span class="gs">**download**</span> continues from its hidden <span class="sb">`.name.part`</span> file, an <span class="gs">**upload**</span> from
-  the part already on the server – as long as the source file didn't change
-  meanwhile; otherwise it starts over.
-<span class="k">-</span><span class="w"> </span><span class="gs">**Saves**</span> you made in the editor meanwhile are uploaded, after the usual check
-  that nobody changed the file.
-
-If you close the terminal, the files tab stays and says so. Open the same host
+carries on:</p>
+<ul dir="auto">
+<li>A <strong>download</strong> continues from its hidden <code>.name.part</code> file, an <strong>upload</strong> from
+the part already on the server – as long as the source file didn't change
+meanwhile; otherwise it starts over.</li>
+<li><strong>Saves</strong> you made in the editor meanwhile are uploaded, after the usual check
+that nobody changed the file.</li>
+</ul>
+<p dir="auto">If you close the terminal, the files tab stays and says so. Open the same host
 with the same login again (from the sidebar, for example) and the files tab takes
-over the new connection. This lasts as long as Terminaal is open.
+over the new connection. This lasts as long as Terminaal is open.</p>
+<h2 class="heading-element" dir="auto" id="browsing">Browsing</h2>
+<p dir="auto">The left side is this computer, the right side the server.</p>
+<ul dir="auto">
+<li><strong>Double-click</strong> a folder to open it. On the server, double-clicking a file
+edits it (see below); a symlink opens whatever it points to.</li>
+<li><strong>⬆</strong> goes to the parent folder, <strong>~</strong> (server) to the home folder, <strong>⟳</strong>
+reloads.</li>
+<li>Click the path above a side to type one and press <kbd>Enter</kbd>
+(<code>~/</code> works on the local side).</li>
+<li><strong>Click</strong> an entry to select it. <kbd>Ctrl</kbd>+click adds or removes one
+more, <kbd>Shift</kbd>+click selects everything from the last click to this
+one (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+click adds that range). With more than one
+selected, the buttons show how many.</li>
+<li><strong>New folder</strong>, <strong>Rename</strong> and <strong>Delete</strong> on the server side act on the
+server. Delete removes all selected entries – folders with everything in them
+(symlinks inside are removed, not followed) – and asks with <strong>Really delete?</strong>
+first. <strong>Rename</strong> and <strong>Edit</strong> need exactly one entry selected.</li>
+<li><strong>Delete</strong> on the local side moves the selected entries to the desktop's
+trash (with <code>gio trash</code>), after the same <strong>Really delete?</strong>.</li>
+</ul>
+<h2 class="heading-element" dir="auto" id="copying">Copying</h2>
+<ul dir="auto">
+<li>Select local entries and click <strong>Upload</strong>: they go into the server folder on
+show. Select server entries and click <strong>Download</strong>: they go into the local
+folder on show.</li>
+<li>Folders are copied with everything in them. Symlinks inside a folder are
+skipped.</li>
+<li><strong>Drag files from your file manager</strong> onto the files tab to upload them.</li>
+<li><strong>Nothing is ever overwritten.</strong> If the name is taken, the copy gets a
+number: <code>notes (1).txt</code>.</li>
+<li><strong>Transfers</strong> below the lists show progress; <strong>×</strong> cancels one and removes
+what was copied so far. <strong>Remove finished</strong> clears the list.</li>
+</ul>
+<p dir="auto">Transfers run one after another, each with many requests in flight at once, so
+they stay fast even over a slow round trip.</p>
+<h2 class="heading-element" dir="auto" id="syncing-folders">Syncing folders</h2>
+<p dir="auto">A host can keep pairs of folders in sync – a folder here and one on the server.
+Set them up in the host form under <strong>Folder sync</strong> (saved hosts only):</p>
+<markdown-accessiblity-table><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>In hosts.toml</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Direction</td>
+<td><code>direction</code></td>
+<td><strong>Two-way</strong> (<code>both</code>, the default): whatever changed goes to the other side. <strong>Upload only</strong> (<code>upload</code>): this computer's folder is the original. <strong>Download only</strong> (<code>download</code>): the server's is</td>
+</tr>
+<tr>
+<td>Folder here</td>
+<td><code>local</code></td>
+<td>Absolute, or starting with <code>~/</code>. Created if it doesn't exist yet on the first sync</td>
+</tr>
+<tr>
+<td>Folder on the server</td>
+<td><code>remote</code></td>
+<td>Absolute (<code>/srv/www</code>), or relative to the login's home folder (<code>site</code>, <code>~/site</code>). Also created on the first sync</td>
+</tr>
+<tr>
+<td>In the background, live</td>
+<td><code>live</code></td>
+<td>See <a href="#when-it-syncs">When it syncs</a></td>
+</tr>
+<tr>
+<td>Delete on the server what's deleted here</td>
+<td><code>delete_remote</code></td>
+<td>Two-way and upload only. Off by default</td>
+</tr>
+<tr>
+<td>Delete here what's deleted on the server</td>
+<td><code>delete_local</code></td>
+<td>Two-way and download only. Off by default</td>
+</tr>
+<tr>
+<td>Leave out</td>
+<td><code>exclude</code></td>
+<td>Names like <code>.git</code> or <code>*.log</code>; a pattern with a <code>/</code> is a path inside the folder (<code>build/out</code>). <code>*</code> and <code>?</code> are wildcards</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto">In <code>hosts.toml</code>, each pair is a <code>[[host.sync]]</code> table after the host's other
+settings:</p>
+<div class="highlight highlight-source-toml notranslate position-relative overflow-auto" dir="auto"><pre>[[<span class="pl-en">host</span>]]
+<span class="pl-smi">name</span> = <span class="pl-s"><span class="pl-pds">"</span>web1<span class="pl-pds">"</span></span>
+<span class="pl-smi">host</span> = <span class="pl-s"><span class="pl-pds">"</span>web1.example.com<span class="pl-pds">"</span></span>
+<span class="pl-smi">user</span> = <span class="pl-s"><span class="pl-pds">"</span>deploy<span class="pl-pds">"</span></span>
 
-<span class="gu">## Browsing</span>
+[[<span class="pl-en">host</span>.<span class="pl-en">sync</span>]]
+<span class="pl-smi">local</span> = <span class="pl-s"><span class="pl-pds">"</span>~/Projects/site/public<span class="pl-pds">"</span></span>
+<span class="pl-smi">remote</span> = <span class="pl-s"><span class="pl-pds">"</span>/srv/www/site<span class="pl-pds">"</span></span>
+<span class="pl-smi">direction</span> = <span class="pl-s"><span class="pl-pds">"</span>upload<span class="pl-pds">"</span></span>
+<span class="pl-smi">delete_remote</span> = <span class="pl-c1">true</span>
+<span class="pl-smi">live</span> = <span class="pl-c1">true</span>
+<span class="pl-smi">exclude</span> = [<span class="pl-s"><span class="pl-pds">"</span>.git<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>*.tmp<span class="pl-pds">"</span></span>]
 
-The left side is this computer, the right side the server.
-
-<span class="k">-</span><span class="w"> </span><span class="gs">**Double-click**</span> a folder to open it. On the server, double-clicking a file
-  edits it (see below); a symlink opens whatever it points to.
-<span class="k">-</span><span class="w"> </span><span class="gs">**⬆**</span> goes to the parent folder, <span class="gs">**~**</span> (server) to the home folder, <span class="gs">**⟳**</span>
-  reloads.
-<span class="k">-</span><span class="w"> </span>Click the path above a side to type one and press &lt;kbd&gt;Enter&lt;/kbd&gt;
-  (<span class="sb">`~/`</span> works on the local side).
-<span class="k">-</span><span class="w"> </span><span class="gs">**Click**</span> an entry to select it. &lt;kbd&gt;Ctrl&lt;/kbd&gt;+click adds or removes one
-  more, &lt;kbd&gt;Shift&lt;/kbd&gt;+click selects everything from the last click to this
-  one (&lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Shift&lt;/kbd&gt;+click adds that range). With more than one
-  selected, the buttons show how many.
-<span class="k">-</span><span class="w"> </span><span class="gs">**New folder**</span>, <span class="gs">**Rename**</span> and <span class="gs">**Delete**</span> on the server side act on the
-  server. Delete removes all selected entries – folders with everything in them
-  (symlinks inside are removed, not followed) – and asks with <span class="gs">**Really delete?**</span>
-  first. <span class="gs">**Rename**</span> and <span class="gs">**Edit**</span> need exactly one entry selected.
-<span class="k">-</span><span class="w"> </span><span class="gs">**Delete**</span> on the local side moves the selected entries to the desktop's
-  trash (with <span class="sb">`gio trash`</span>), after the same <span class="gs">**Really delete?**</span>.
-
-<span class="gu">## Copying</span>
-
-<span class="k">-</span><span class="w"> </span>Select local entries and click <span class="gs">**Upload**</span>: they go into the server folder on
-  show. Select server entries and click <span class="gs">**Download**</span>: they go into the local
-  folder on show.
-<span class="k">-</span><span class="w"> </span>Folders are copied with everything in them. Symlinks inside a folder are
-  skipped.
-<span class="k">-</span><span class="w"> </span><span class="gs">**Drag files from your file manager**</span> onto the files tab to upload them.
-<span class="k">-</span><span class="w"> </span><span class="gs">**Nothing is ever overwritten.**</span> If the name is taken, the copy gets a
-  number: <span class="sb">`notes (1).txt`</span>.
-<span class="k">-</span><span class="w"> </span><span class="gs">**Transfers**</span> below the lists show progress; <span class="gs">**×**</span> cancels one and removes
-  what was copied so far. <span class="gs">**Remove finished**</span> clears the list.
-
-Transfers run one after another, each with many requests in flight at once, so
-they stay fast even over a slow round trip.
-
-<span class="gu">## Syncing folders</span>
-
-A host can keep pairs of folders in sync – a folder here and one on the server.
-Set them up in the host form under <span class="gs">**Folder sync**</span> (saved hosts only):
-
-| Field | In hosts.toml | Meaning |
-| --- | --- | --- |
-| Direction | <span class="sb">`direction`</span> | <span class="gs">**Two-way**</span> (<span class="sb">`both`</span>, the default): whatever changed goes to the other side. <span class="gs">**Upload only**</span> (<span class="sb">`upload`</span>): this computer's folder is the original. <span class="gs">**Download only**</span> (<span class="sb">`download`</span>): the server's is |
-| Folder here | <span class="sb">`local`</span> | Absolute, or starting with <span class="sb">`~/`</span>. Created if it doesn't exist yet on the first sync |
-| Folder on the server | <span class="sb">`remote`</span> | Absolute (<span class="sb">`/srv/www`</span>), or relative to the login's home folder (<span class="sb">`site`</span>, <span class="sb">`~/site`</span>). Also created on the first sync |
-| In the background, live | <span class="sb">`live`</span> | See [<span class="nt">When it syncs</span>](<span class="na">#when-it-syncs</span>) |
-| Delete on the server what's deleted here | <span class="sb">`delete_remote`</span> | Two-way and upload only. Off by default |
-| Delete here what's deleted on the server | <span class="sb">`delete_local`</span> | Two-way and download only. Off by default |
-| Leave out | <span class="sb">`exclude`</span> | Names like <span class="sb">`.git`</span> or <span class="sb">`*.log`</span>; a pattern with a <span class="sb">`/`</span> is a path inside the folder (<span class="sb">`build/out`</span>). <span class="sb">`*`</span> and <span class="sb">`?`</span> are wildcards |
-
-In <span class="sb">`hosts.toml`</span>, each pair is a <span class="sb">`[[host.sync]]`</span> table after the host's other
-settings:
-
-<span class="sb">```toml</span>
-<span class="k">[[host]]</span>
-<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"web1"</span>
-<span class="n">host</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"web1.example.com"</span>
-<span class="n">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"deploy"</span>
-
-<span class="k">[[host.sync]]</span>
-<span class="n">local</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"~/Projects/site/public"</span>
-<span class="n">remote</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"/srv/www/site"</span>
-<span class="n">direction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"upload"</span>
-<span class="n">delete_remote</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
-<span class="n">live</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
-<span class="n">exclude</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">".git"</span><span class="p">,</span><span class="w"> </span><span class="s2">"*.tmp"</span><span class="p">]</span>
-
-<span class="k">[[host.sync]]</span>
-<span class="n">local</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"~/Notes"</span>
-<span class="n">remote</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"notes"</span>
-<span class="sb">```</span>
-
-The pairs apply to every login of the host. Saving the host form applies them
-right away – to open files tabs and background syncs too.
-
-<span class="gu">### When it syncs</span>
-
-<span class="k">-</span><span class="w"> </span>A normal pair syncs <span class="gs">**when you open the files tab**</span> of a terminal on that host,
-  and again after every reconnect.
-<span class="k">-</span><span class="w"> </span>A <span class="gs">**live**</span> pair syncs <span class="gs">**in the background**</span> as long as a terminal to the host
-  is open – no files tab needed. It syncs when the terminal has logged in, after
-  every reconnect, and about a second after something changes in its local
-  folder (a folder that keeps changing waits up to 10 seconds). Changes on the
-  server show up with the next sync; there's no watching the server.
-<span class="k">-</span><span class="w"> </span><span class="gs">**Sync now**</span> in the files tab syncs a pair right away; <span class="gs">**Stop**</span> ends a sync
-  under way – what's copied stays copied.
-
-The files tab lists all of the host's pairs under <span class="gs">**Synced folders**</span> – the live
-ones too, marked <span class="gs">**live**</span> – with what they're doing and when they were last in
-sync. Copies of a sync don't show up under <span class="gs">**Transfers**</span>.
-
-<span class="gu">### How it decides</span>
-
-After each sync, Terminaal remembers every file's size and modification time on
+[[<span class="pl-en">host</span>.<span class="pl-en">sync</span>]]
+<span class="pl-smi">local</span> = <span class="pl-s"><span class="pl-pds">"</span>~/Notes<span class="pl-pds">"</span></span>
+<span class="pl-smi">remote</span> = <span class="pl-s"><span class="pl-pds">"</span>notes<span class="pl-pds">"</span></span></pre></div>
+<p dir="auto">The pairs apply to every login of the host. Saving the host form applies them
+right away – to open files tabs and background syncs too.</p>
+<h3 class="heading-element" dir="auto" id="when-it-syncs">When it syncs</h3>
+<ul dir="auto">
+<li>A normal pair syncs <strong>when you open the files tab</strong> of a terminal on that host,
+and again after every reconnect.</li>
+<li>A <strong>live</strong> pair syncs <strong>in the background</strong> as long as a terminal to the host
+is open – no files tab needed. It syncs when the terminal has logged in, after
+every reconnect, and about a second after something changes in its local
+folder (a folder that keeps changing waits up to 10 seconds). Changes on the
+server show up with the next sync; there's no watching the server.</li>
+<li><strong>Sync now</strong> in the files tab syncs a pair right away; <strong>Stop</strong> ends a sync
+under way – what's copied stays copied.</li>
+</ul>
+<p dir="auto">The files tab lists all of the host's pairs under <strong>Synced folders</strong> – the live
+ones too, marked <strong>live</strong> – with what they're doing and when they were last in
+sync. Copies of a sync don't show up under <strong>Transfers</strong>.</p>
+<h3 class="heading-element" dir="auto" id="how-it-decides">How it decides</h3>
+<p dir="auto">After each sync, Terminaal remembers every file's size and modification time on
 both sides. Next time, a file that differs from that changed on that side.
 Copies keep their source's modification time, so after a sync both sides agree
-even without that record.
-
-<span class="k">-</span><span class="w"> </span><span class="gs">**Changed on one side:**</span> copied to the other, replacing the old version. The
-  copy is written next to the target under a hidden name and renamed over it at
-  the end, so an interrupted copy never leaves half a file. A file on the server
-  keeps its mode; new files get the mode of their source.
-<span class="k">-</span><span class="w"> </span><span class="gs">**Changed on both sides**</span> (two-way), or in one-way mode **the target changed
-  too:** nothing is lost. If both versions are the same size, their SHA-256 is
-  compared first (on the server with <span class="sb">`sha256sum`</span> or <span class="sb">`shasum`</span>) – the same content
-  is no conflict. Otherwise the other version is kept next to the file as
-  <span class="sb">`name (conflict).ext`</span>: in two-way mode the newer version takes the name and the
-  older one is kept on both sides; one-way, the target's own version is kept, on
-  the target only. The files tab lists each conflict.
-<span class="k">-</span><span class="w"> </span><span class="gs">**New on one side:**</span> copied to the other – except in one-way mode, where a file
-  only the target has is left alone.
-<span class="k">-</span><span class="w"> </span><span class="gs">**Deleted on one side:**</span> by default it comes back from the other side (in
-  one-way mode, a file deleted on the target comes back; one deleted at the
-  source stays on the target). In two-way mode the files tab then says how many
-  came back and which switch would have deleted them instead. With deleting switched on for that direction, the
-  other side's file is deleted too – but only if it was synced before and hasn't
-  changed since. A change always wins over a deletion. Folders are deleted only
-  when they're empty by then.
-<span class="k">-</span><span class="w"> </span><span class="gs">**A side whose folder is completely empty never deletes anything**</span> on the other
-  side – an unmounted disk or a wrong path mustn't empty the server.
-
-Left out on both sides: symlinks, names that aren't valid UTF-8 or contain a
-line break, Terminaal's own <span class="sb">`.name.part`</span> files and whatever matches <span class="gs">**Leave out**</span>.
+even without that record.</p>
+<ul dir="auto">
+<li><strong>Changed on one side:</strong> copied to the other, replacing the old version. The
+copy is written next to the target under a hidden name and renamed over it at
+the end, so an interrupted copy never leaves half a file. A file on the server
+keeps its mode; new files get the mode of their source.</li>
+<li><strong>Changed on both sides</strong> (two-way), or in one-way mode <strong>the target changed
+too:</strong> nothing is lost. If both versions are the same size, their SHA-256 is
+compared first (on the server with <code>sha256sum</code> or <code>shasum</code>) – the same content
+is no conflict. Otherwise the other version is kept next to the file as
+<code>name (conflict).ext</code>: in two-way mode the newer version takes the name and the
+older one is kept on both sides; one-way, the target's own version is kept, on
+the target only. The files tab lists each conflict.</li>
+<li><strong>New on one side:</strong> copied to the other – except in one-way mode, where a file
+only the target has is left alone.</li>
+<li><strong>Deleted on one side:</strong> by default it comes back from the other side (in
+one-way mode, a file deleted on the target comes back; one deleted at the
+source stays on the target). In two-way mode the files tab then says how many
+came back and which switch would have deleted them instead. With deleting switched on for that direction, the
+other side's file is deleted too – but only if it was synced before and hasn't
+changed since. A change always wins over a deletion. Folders are deleted only
+when they're empty by then.</li>
+<li><strong>A side whose folder is completely empty never deletes anything</strong> on the other
+side – an unmounted disk or a wrong path mustn't empty the server.</li>
+</ul>
+<p dir="auto">Left out on both sides: symlinks, names that aren't valid UTF-8 or contain a
+line break, Terminaal's own <code>.name.part</code> files and whatever matches <strong>Leave out</strong>.
 A folder that can't be read is left alone as a whole, and a name that's a file on
-one side and a folder on the other is reported and skipped.
-
-<span class="gu">### Where the record lives</span>
-
-In <span class="sb">`$XDG_STATE_HOME/terminaal/sync/`</span> (else <span class="sb">`~/.local/state/terminaal/sync/`</span>; on
-Windows <span class="sb">`%LOCALAPPDATA%\terminaal\sync`</span>), one
+one side and a folder on the other is reported and skipped.</p>
+<h3 class="heading-element" dir="auto" id="where-the-record-lives">Where the record lives</h3>
+<p dir="auto">In <code>$XDG_STATE_HOME/terminaal/sync/</code> (else <code>~/.local/state/terminaal/sync/</code>; on
+Windows <code>%LOCALAPPDATA%\terminaal\sync</code>), one
 file per host login and folder pair. Delete it to start over: the next sync then
 treats both sides as new – equal files are recognized, different ones become
-conflicts.
-
-A pair syncs in one place at a time. If another files tab or a second Terminaal
-is syncing it right now, it says <span class="gs">**running elsewhere**</span> and tries again 30 seconds
-later.
-
-<span class="gu">## Editing a server file locally</span>
-
-Select a file and click <span class="gs">**Edit**</span>, or double-click it. Terminaal downloads it and
+conflicts.</p>
+<p dir="auto">A pair syncs in one place at a time. If another files tab or a second Terminaal
+is syncing it right now, it says <strong>running elsewhere</strong> and tries again 30 seconds
+later.</p>
+<h2 class="heading-element" dir="auto" id="editing-a-server-file-locally">Editing a server file locally</h2>
+<p dir="auto">Select a file and click <strong>Edit</strong>, or double-click it. Terminaal downloads it and
 opens it in your editor. Whenever you save, the change goes back to the server.
-The section <span class="gs">**Edited locally**</span> lists these files with their state:
-
-| State | Meaning |
-| --- | --- |
-| on the server | Your last save is on the server |
-| uploading … | It's on its way |
-| changed on the server meanwhile | Someone else changed the file since you opened it. Nothing was overwritten – choose <span class="gs">**Overwrite**</span> (your version wins) or <span class="gs">**Take the server's version**</span> (your changes are discarded and the file reloads) |
-| no permission to read / write | See [<span class="nt">Files only root may change</span>](<span class="na">#files-only-root-may-change</span>) |
-
-<span class="gs">**Open in editor**</span> opens it again; <span class="gs">**Close**</span> deletes the local copy (with
-unsaved changes it asks <span class="gs">**Discard changes?**</span> first).
-
-<span class="gu">### Which editor</span>
-
-By default the desktop's default application for the file type opens it
-(<span class="sb">`xdg-open`</span>). To pick one, set **Settings → Shell → Editor for files from the
-server**, or <span class="sb">`editor`</span> in <span class="sb">`config.toml`</span>: a command the path is appended to, such
-as <span class="sb">`code`</span>, <span class="sb">`gedit`</span>, <span class="sb">`kate`</span> or <span class="sb">`alacritty -e nvim`</span>.
-
-<span class="gu">### How it stays safe</span>
-
-<span class="k">-</span><span class="w"> </span>The local copy lives in a private folder (<span class="sb">`$XDG_RUNTIME_DIR/terminaal/edit/`</span>,
-  mode <span class="sb">`0700`</span>, the file <span class="sb">`0600`</span>). That folder is in memory and gone when you log
-  out. On Windows it's <span class="sb">`%TEMP%\terminaal\edit\`</span>, private through your user
-  profile. Closing an edit, or the files tab, deletes it – except a copy with changes
-  the server never got, which stays until you close it.
-<span class="k">-</span><span class="w"> </span>Before uploading, Terminaal checks that the server's file is still what it
-  last synced: the server computes its SHA-256 (<span class="sb">`sha256sum`</span>, or <span class="sb">`shasum`</span> on macOS
-  and BSD) and only that one line comes back, however big the file. Without either
-  tool, files up to 1 MB are downloaded and compared, bigger ones by size and
-  modification time.
-<span class="k">-</span><span class="w"> </span>The upload writes a hidden file next to the original and renames it over the
-  original, with the original's mode – an interrupted upload never leaves half a
-  file. Where that would change the file's owner, or the server can't rename
-  over a file, it's written in place instead.
-<span class="k">-</span><span class="w"> </span>Files over 32 MB aren't opened for editing; download them instead.
-
-<span class="gu">## Files only root may change</span>
-
-When the server says <span class="gs">**no permission to read**</span> or <span class="gs">**no permission to write**</span>,
-click <span class="gs">**With sudo …**</span>. Terminaal then:
-
-<span class="k">1.</span> Puts a small script into <span class="sb">`~/.cache/terminaal/sudo/&lt;random&gt;/`</span> on the server –
-   for saving, together with your version of the file.
-<span class="k">2.</span> Shows the command to run, like <span class="sb">` sh '/home/you/.cache/terminaal/sudo/…/run.sh'`</span>.
-<span class="k">3.</span> <span class="gs">**Run in terminal**</span> pastes it into the connection's terminal, runs it and
-   switches to that terminal. sudo asks for your password there, as usual.
-
-The script reads the file with <span class="sb">`sudo cat`</span>, or writes it with <span class="sb">`sudo cp`</span> – writing
+The section <strong>Edited locally</strong> lists these files with their state:</p>
+<markdown-accessiblity-table><table>
+<thead>
+<tr>
+<th>State</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>on the server</td>
+<td>Your last save is on the server</td>
+</tr>
+<tr>
+<td>uploading …</td>
+<td>It's on its way</td>
+</tr>
+<tr>
+<td>changed on the server meanwhile</td>
+<td>Someone else changed the file since you opened it. Nothing was overwritten – choose <strong>Overwrite</strong> (your version wins) or <strong>Take the server's version</strong> (your changes are discarded and the file reloads)</td>
+</tr>
+<tr>
+<td>no permission to read / write</td>
+<td>See <a href="#files-only-root-may-change">Files only root may change</a></td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto"><strong>Open in editor</strong> opens it again; <strong>Close</strong> deletes the local copy (with
+unsaved changes it asks <strong>Discard changes?</strong> first).</p>
+<h3 class="heading-element" dir="auto" id="which-editor">Which editor</h3>
+<p dir="auto">By default the desktop's default application for the file type opens it
+(<code>xdg-open</code>). To pick one, set <strong>Settings → Shell → Editor for files from the
+server</strong>, or <code>editor</code> in <code>config.toml</code>: a command the path is appended to, such
+as <code>code</code>, <code>gedit</code>, <code>kate</code> or <code>alacritty -e nvim</code>.</p>
+<h3 class="heading-element" dir="auto" id="how-it-stays-safe">How it stays safe</h3>
+<ul dir="auto">
+<li>The local copy lives in a private folder (<code>$XDG_RUNTIME_DIR/terminaal/edit/</code>,
+mode <code>0700</code>, the file <code>0600</code>). That folder is in memory and gone when you log
+out. On Windows it's <code>%TEMP%\terminaal\edit\</code>, private through your user
+profile. Closing an edit, or the files tab, deletes it – except a copy with changes
+the server never got, which stays until you close it.</li>
+<li>Before uploading, Terminaal checks that the server's file is still what it
+last synced: the server computes its SHA-256 (<code>sha256sum</code>, or <code>shasum</code> on macOS
+and BSD) and only that one line comes back, however big the file. Without either
+tool, files up to 1 MB are downloaded and compared, bigger ones by size and
+modification time.</li>
+<li>The upload writes a hidden file next to the original and renames it over the
+original, with the original's mode – an interrupted upload never leaves half a
+file. Where that would change the file's owner, or the server can't rename
+over a file, it's written in place instead.</li>
+<li>Files over 32 MB aren't opened for editing; download them instead.</li>
+</ul>
+<h2 class="heading-element" dir="auto" id="files-only-root-may-change">Files only root may change</h2>
+<p dir="auto">When the server says <strong>no permission to read</strong> or <strong>no permission to write</strong>,
+click <strong>With sudo …</strong>. Terminaal then:</p>
+<ol dir="auto">
+<li>Puts a small script into <code>~/.cache/terminaal/sudo/&lt;random&gt;/</code> on the server –
+for saving, together with your version of the file.</li>
+<li>Shows the command to run, like <code> sh '/home/you/.cache/terminaal/sudo/…/run.sh'</code>.</li>
+<li><strong>Run in terminal</strong> pastes it into the connection's terminal, runs it and
+switches to that terminal. sudo asks for your password there, as usual.</li>
+</ol>
+<p dir="auto">The script reads the file with <code>sudo cat</code>, or writes it with <code>sudo cp</code> – writing
 into the existing file, so it keeps its owner and mode – and leaves its exit
 code for Terminaal. Once it's done, the edit continues: the file opens in your
 editor, or the save is marked as on the server. A file opened this way saves
 through sudo each time; since sudo remembers your password for a few minutes,
-running the next command is usually just a click.
+running the next command is usually just a click.</p>
+<p dir="auto">Things to know:</p>
+<ul dir="auto">
+<li><strong>Run it at a shell prompt.</strong> The command is typed into the terminal like a
+paste – if an editor or another program is running there, it goes there.</li>
+<li>Only the short command passes through your shell, whatever shell that is. The
+paths are inside the script, which <code>sh</code> reads.</li>
+<li>The command starts with a space, so shells set to ignore such lines leave it
+out of their history.</li>
+<li><strong>Cancel</strong> removes the script again. The script deletes itself when it has run,
+and Terminaal removes its folder.</li>
+<li>The script compares the file's SHA-256 with what you last synced right before
+copying. If someone changed it meanwhile, it copies nothing and the edit shows
+the conflict; <strong>Overwrite</strong> then makes a script without that check.</li>
+</ul>
+<h2 class="heading-element" dir="auto" id="limits">Limits</h2>
+<ul dir="auto">
+<li>Folder sync compares by size and modification time (to the second); a change
+that keeps both isn't noticed. Live pairs watch only the local folder; inotify
+has a per-user limit on watched folders (<code>fs.inotify.max_user_watches</code>), beyond
+which changes in further folders wait for the next sync.</li>
+<li>Scanning a pair goes through the whole tree on both sides; while it runs, the
+files tab's other actions wait.</li>
+<li>Nothing is overwritten on copying; to replace a file, delete it first or edit it.</li>
+<li>Deleting on the server is final – there's no trash there.</li>
+<li>Transfers resume only while Terminaal stays open.</li>
+<li>On a server without <code>sha256sum</code> or <code>shasum</code>, a change within the same second
+that keeps the size isn't noticed for files over 1 MB, or at all for files
+edited through sudo.</li>
+</ul>
 
-Things to know:
-
-<span class="k">-</span><span class="w"> </span><span class="gs">**Run it at a shell prompt.**</span> The command is typed into the terminal like a
-  paste – if an editor or another program is running there, it goes there.
-<span class="k">-</span><span class="w"> </span>Only the short command passes through your shell, whatever shell that is. The
-  paths are inside the script, which <span class="sb">`sh`</span> reads.
-<span class="k">-</span><span class="w"> </span>The command starts with a space, so shells set to ignore such lines leave it
-  out of their history.
-<span class="k">-</span><span class="w"> </span><span class="gs">**Cancel**</span> removes the script again. The script deletes itself when it has run,
-  and Terminaal removes its folder.
-<span class="k">-</span><span class="w"> </span>The script compares the file's SHA-256 with what you last synced right before
-  copying. If someone changed it meanwhile, it copies nothing and the edit shows
-  the conflict; <span class="gs">**Overwrite**</span> then makes a script without that check.
-
-<span class="gu">## Limits</span>
-
-<span class="k">-</span><span class="w"> </span>Folder sync compares by size and modification time (to the second); a change
-  that keeps both isn't noticed. Live pairs watch only the local folder; inotify
-  has a per-user limit on watched folders (<span class="sb">`fs.inotify.max_user_watches`</span>), beyond
-  which changes in further folders wait for the next sync.
-<span class="k">-</span><span class="w"> </span>Scanning a pair goes through the whole tree on both sides; while it runs, the
-  files tab's other actions wait.
-<span class="k">-</span><span class="w"> </span>Nothing is overwritten on copying; to replace a file, delete it first or edit it.
-<span class="k">-</span><span class="w"> </span>Deleting on the server is final – there's no trash there.
-<span class="k">-</span><span class="w"> </span>Transfers resume only while Terminaal stays open.
-<span class="k">-</span><span class="w"> </span>On a server without <span class="sb">`sha256sum`</span> or <span class="sb">`shasum`</span>, a change within the same second
-  that keeps the size isn't noticed for files over 1 MB, or at all for files
-  edited through sudo.
-</pre></div></td></tr></table></div>
-
+        </div>
       </section>
     </main>
   </div>

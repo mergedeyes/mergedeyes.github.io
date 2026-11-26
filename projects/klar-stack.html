@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Klar — Jan</title>
-  <link rel="stylesheet" href="../styles.css?v=41ca8b66" />
+  <link rel="stylesheet" href="../styles.css?v=77eb044b" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -156,11 +156,7 @@
 </tr>
 </tbody>
 </table></markdown-accessiblity-table>
-<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="Klar/        Rust backend: handlers in src/handlers/, routes in src/routes.rs, migrations/
-klar-web/    Next.js frontend: pages in src/app/, API client in src/lib/api.ts
-deploy/      Postgres and backup-sidecar images
-tools/       prod-snapshot: an anonymised copy of production data for local work
-docs/        manual-checks.md: what to test by hand before merging"><pre class="notranslate"><code>Klar/        Rust backend: handlers in src/handlers/, routes in src/routes.rs, migrations/
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto"><pre class="notranslate"><code>Klar/        Rust backend: handlers in src/handlers/, routes in src/routes.rs, migrations/
 klar-web/    Next.js frontend: pages in src/app/, API client in src/lib/api.ts
 deploy/      Postgres and backup-sidecar images
 tools/       prod-snapshot: an anonymised copy of production data for local work
@@ -178,20 +174,15 @@ docs/        manual-checks.md: what to test by hand before merging
 <h2 class="heading-element" dir="auto" id="development">Development</h2>
 <p dir="auto"><strong>You need:</strong> Rust (1.97, as in CI), Node.js 20, PostgreSQL, Redis and <a href="https://github.com/mailhog/MailHog">MailHog</a> running locally, and a <code>Klar/.env</code> (the variables are listed in <code>Klar/Dockerfile</code>; set <code>STORAGE_PROVIDER=local</code> to store files on disk).</p>
 <p dir="auto"><strong>Run everything:</strong></p>
-<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="cd klar-web
-npm install
-npm run dev     # MailHog, the backend on :3000 (runs migrations first) and the frontend on :3001" dir="auto"><pre><span class="pl-c1">cd</span> klar-web
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto"><pre><span class="pl-c1">cd</span> klar-web
 npm install
 npm run dev     <span class="pl-c"><span class="pl-c">#</span> MailHog, the backend on :3000 (runs migrations first) and the frontend on :3001</span></pre></div>
 <p dir="auto"><strong>Realistic data:</strong> <code>tools/prod-snapshot/</code> builds an anonymised copy of the production database: structure and volumes as in production, nothing personal. See its <a href="https://github.com/mergedeyes/Klar-Stack/blob/main/tools/prod-snapshot/README.md">README</a>.</p>
 <p dir="auto"><strong>Checks</strong> (CI runs these on every pull request):</p>
-<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="(cd Klar &amp;&amp; export SQLX_OFFLINE=true &amp;&amp; cargo clippy --all-targets -- -D warnings &amp;&amp; cargo test)
-(cd klar-web &amp;&amp; npx tsc --noEmit &amp;&amp; npx eslint --max-warnings 0 src)" dir="auto"><pre>(cd Klar <span class="pl-k">&amp;&amp;</span> <span class="pl-k">export</span> SQLX_OFFLINE=true <span class="pl-k">&amp;&amp;</span> cargo clippy --all-targets -- -D warnings <span class="pl-k">&amp;&amp;</span> cargo test)
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto"><pre>(cd Klar <span class="pl-k">&amp;&amp;</span> <span class="pl-k">export</span> SQLX_OFFLINE=true <span class="pl-k">&amp;&amp;</span> cargo clippy --all-targets -- -D warnings <span class="pl-k">&amp;&amp;</span> cargo test)
 (cd klar-web <span class="pl-k">&amp;&amp;</span> npx tsc --noEmit <span class="pl-k">&amp;&amp;</span> npx eslint --max-warnings 0 src)</pre></div>
 <p dir="auto"><strong>Integration tests</strong> run the API against a real Postgres (a fresh database per test) and Redis, covering moderation, evidence, rights claims, feedback and link previews. CI runs them on every pull request; locally, with both running:</p>
-<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="cd Klar
-DATABASE_URL=postgres://postgres:postgres@localhost:5432/postgres REDIS_URL=redis://127.0.0.1:6379 \
-SQLX_OFFLINE=true cargo test --features integration-tests integration_tests" dir="auto"><pre><span class="pl-c1">cd</span> Klar
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto"><pre><span class="pl-c1">cd</span> Klar
 DATABASE_URL=postgres://postgres:postgres@localhost:5432/postgres REDIS_URL=redis://127.0.0.1:6379 \
 SQLX_OFFLINE=true cargo <span class="pl-c1">test</span> --features integration-tests integration_tests</pre></div>
 <p dir="auto"><strong>Browser tests</strong> (Playwright) cover the page layout, the post modal and page, sharing and link previews; CI runs them against a full stack on every pull request. See <a href="https://github.com/mergedeyes/Klar-Stack/blob/main/klar-web/e2e/README.md">klar-web/e2e</a> to run them locally.</p>

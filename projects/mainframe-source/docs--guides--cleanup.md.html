@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>docs/guides/cleanup.md — Mainframe — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=41ca8b66" />
+  <link rel="stylesheet" href="../../styles.css?v=77eb044b" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -71,165 +71,125 @@
           <h1 class="section__title">docs/guides/cleanup.md</h1>
           <a href="../mainframe.html" class="link">← Back to Mainframe</a>
         </div>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span>
-<span class="normal">43</span>
-<span class="normal">44</span>
-<span class="normal">45</span>
-<span class="normal">46</span>
-<span class="normal">47</span>
-<span class="normal">48</span>
-<span class="normal">49</span>
-<span class="normal">50</span>
-<span class="normal">51</span>
-<span class="normal">52</span>
-<span class="normal">53</span>
-<span class="normal">54</span>
-<span class="normal">55</span>
-<span class="normal">56</span>
-<span class="normal">57</span>
-<span class="normal">58</span>
-<span class="normal">59</span>
-<span class="normal">60</span>
-<span class="normal">61</span>
-<span class="normal">62</span>
-<span class="normal">63</span>
-<span class="normal">64</span>
-<span class="normal">65</span>
-<span class="normal">66</span>
-<span class="normal">67</span>
-<span class="normal">68</span>
-<span class="normal">69</span>
-<span class="normal">70</span>
-<span class="normal">71</span>
-<span class="normal">72</span>
-<span class="normal">73</span>
-<span class="normal">74</span>
-<span class="normal">75</span>
-<span class="normal">76</span>
-<span class="normal">77</span>
-<span class="normal">78</span>
-<span class="normal">79</span></pre></div></td><td class="code"><div><pre><span></span><span class="gh"># Cleaning up</span>
-
-Build output grows quietly: a Rust project's <span class="sb">`target/debug`</span> easily takes
-several gigabytes, and every project has its <span class="sb">`node_modules`</span> or virtualenv.
-<span class="sb">`C`</span> finds all of it, shows how much space each part takes, and deletes what
-you pick. Your build tools bring everything back the next time you build.
-
-<span class="gu">## What it finds</span>
-
-Press <span class="sb">`C`</span>. In a project it scans that project. In a folder that isn't a
-project, like <span class="sb">`~/Projekte`</span> or a group folder, it scans every project below
-it.
-
-| Build tool | What it offers |
-|---|---|
-| Cargo | debug builds (for every target, also cross builds), the incremental cache on its own, release builds, other profiles, docs, or all of <span class="sb">`target`</span> with <span class="sb">`cargo clean`</span> |
-| npm and others | <span class="sb">`node_modules`</span>, <span class="sb">`dist`</span>, <span class="sb">`build`</span>, <span class="sb">`out`</span>, <span class="sb">`coverage`</span>, <span class="sb">`.next`</span>, <span class="sb">`.nuxt`</span>, <span class="sb">`.output`</span>, <span class="sb">`.svelte-kit`</span>, <span class="sb">`.turbo`</span>, <span class="sb">`.parcel-cache`</span>, <span class="sb">`.angular`</span> |
-| Python | <span class="sb">`.venv`</span>, <span class="sb">`venv`</span>, every <span class="sb">`__pycache__`</span>, <span class="sb">`.pytest_cache`</span>, <span class="sb">`.mypy_cache`</span>, <span class="sb">`.ruff_cache`</span>, <span class="sb">`.tox`</span>, <span class="sb">`.nox`</span>, coverage, <span class="sb">`build`</span>, <span class="sb">`dist`</span>, <span class="sb">`*.egg-info`</span> |
-| Zig | <span class="sb">`zig-out`</span>, <span class="sb">`.zig-cache`</span> |
-| CMake, Meson | <span class="sb">`build`</span>, <span class="sb">`build-release`</span>, <span class="sb">`builddir`</span>, <span class="sb">`cmake-build-*`</span> |
-| Go | <span class="sb">`build`</span>, <span class="sb">`bin`</span>, and Go's build cache (shared by all your Go projects) |
-| any | the project's own <span class="sb">`clean`</span> target (make, just, npm script, CMake), and folders marked as a cache (<span class="sb">`CACHEDIR.TAG`</span>), like a <span class="sb">`target`</span> whose <span class="sb">`Cargo.toml`</span> is gone |
-
-It also looks at:
-
-<span class="k">-</span><span class="w"> </span><span class="gs">**Projects inside the project,**</span> like a Tauri app's <span class="sb">`src-tauri`</span> or the
-  members of a Cargo workspace. Their rows start with where they are:
-  <span class="sb">`src-tauri · debug builds`</span>.
-<span class="k">-</span><span class="w"> </span><span class="gs">**The repo's other worktrees,**</span> wherever they are:
-  <span class="sb">`windows · debug builds`</span>, or from <span class="sb">`~/Projekte`</span>,
-  <span class="sb">`Terminal ⎇ windows · debug builds`</span>.
-
-Folders that git tracks files in are never offered, so a <span class="sb">`build/`</span> folder
-with your own scripts in it is safe. Hidden folders, <span class="sb">`node_modules`</span>,
-<span class="sb">`target`</span> and virtualenvs aren't searched for projects, which keeps the scan
-fast.
-
-<span class="gu">## Deleting</span>
-
-| Key | What it does |
-|---|---|
-| <span class="sb">`j`</span> <span class="sb">`k`</span> | move |
-| <span class="sb">`Space`</span> | mark the row |
-| <span class="sb">`a`</span> | mark every row of the same kind, like all debug builds; again to unmark |
-| <span class="sb">`Enter`</span> | delete the marked rows, or the selected one, after asking |
-| <span class="sb">`Esc`</span> | close |
-
-The question says what you're about to delete and how much space it frees,
-like <span class="sb">`Delete debug builds ×14 (~44.6G on disk, 71.0G of files)? [y/N]`</span>. The
-deletion runs in the output pane and ends with what was really freed:
-
-<span class="sb">```</span>
-<span class="sb">cleaned debug builds ×14 — 44.8G freed on disk</span>
-<span class="sb">```</span>
-
-<span class="gs">**Getting all your debug builds at once:**</span> go to your projects folder, press
-<span class="sb">`C`</span>, then <span class="sb">`a`</span> on any "debug builds" row and <span class="sb">`Enter`</span>. Each project compiles
+        <div class="readme-content">
+<h1 class="heading-element" dir="auto" id="cleaning-up">Cleaning up</h1>
+<p dir="auto">Build output grows quietly: a Rust project's <code>target/debug</code> easily takes
+several gigabytes, and every project has its <code>node_modules</code> or virtualenv.
+<code>C</code> finds all of it, shows how much space each part takes, and deletes what
+you pick. Your build tools bring everything back the next time you build.</p>
+<h2 class="heading-element" dir="auto" id="what-it-finds">What it finds</h2>
+<p dir="auto">Press <code>C</code>. In a project it scans that project. In a folder that isn't a
+project, like <code>~/Projekte</code> or a group folder, it scans every project below
+it.</p>
+<markdown-accessiblity-table><table>
+<thead>
+<tr>
+<th>Build tool</th>
+<th>What it offers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cargo</td>
+<td>debug builds (for every target, also cross builds), the incremental cache on its own, release builds, other profiles, docs, or all of <code>target</code> with <code>cargo clean</code></td>
+</tr>
+<tr>
+<td>npm and others</td>
+<td><code>node_modules</code>, <code>dist</code>, <code>build</code>, <code>out</code>, <code>coverage</code>, <code>.next</code>, <code>.nuxt</code>, <code>.output</code>, <code>.svelte-kit</code>, <code>.turbo</code>, <code>.parcel-cache</code>, <code>.angular</code></td>
+</tr>
+<tr>
+<td>Python</td>
+<td><code>.venv</code>, <code>venv</code>, every <code>__pycache__</code>, <code>.pytest_cache</code>, <code>.mypy_cache</code>, <code>.ruff_cache</code>, <code>.tox</code>, <code>.nox</code>, coverage, <code>build</code>, <code>dist</code>, <code>*.egg-info</code></td>
+</tr>
+<tr>
+<td>Zig</td>
+<td><code>zig-out</code>, <code>.zig-cache</code></td>
+</tr>
+<tr>
+<td>CMake, Meson</td>
+<td><code>build</code>, <code>build-release</code>, <code>builddir</code>, <code>cmake-build-*</code></td>
+</tr>
+<tr>
+<td>Go</td>
+<td><code>build</code>, <code>bin</code>, and Go's build cache (shared by all your Go projects)</td>
+</tr>
+<tr>
+<td>any</td>
+<td>the project's own <code>clean</code> target (make, just, npm script, CMake), and folders marked as a cache (<code>CACHEDIR.TAG</code>), like a <code>target</code> whose <code>Cargo.toml</code> is gone</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto">It also looks at:</p>
+<ul dir="auto">
+<li><strong>Projects inside the project,</strong> like a Tauri app's <code>src-tauri</code> or the
+members of a Cargo workspace. Their rows start with where they are:
+<code>src-tauri · debug builds</code>.</li>
+<li><strong>The repo's other worktrees,</strong> wherever they are:
+<code>windows · debug builds</code>, or from <code>~/Projekte</code>,
+<code>Terminal ⎇ windows · debug builds</code>.</li>
+</ul>
+<p dir="auto">Folders that git tracks files in are never offered, so a <code>build/</code> folder
+with your own scripts in it is safe. Hidden folders, <code>node_modules</code>,
+<code>target</code> and virtualenvs aren't searched for projects, which keeps the scan
+fast.</p>
+<h2 class="heading-element" dir="auto" id="deleting">Deleting</h2>
+<markdown-accessiblity-table><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>j</code> <code>k</code></td>
+<td>move</td>
+</tr>
+<tr>
+<td><code>Space</code></td>
+<td>mark the row</td>
+</tr>
+<tr>
+<td><code>a</code></td>
+<td>mark every row of the same kind, like all debug builds; again to unmark</td>
+</tr>
+<tr>
+<td><code>Enter</code></td>
+<td>delete the marked rows, or the selected one, after asking</td>
+</tr>
+<tr>
+<td><code>Esc</code></td>
+<td>close</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto">The question says what you're about to delete and how much space it frees,
+like <code>Delete debug builds ×14 (~44.6G on disk, 71.0G of files)? [y/N]</code>. The
+deletion runs in the output pane and ends with what was really freed:</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto"><pre class="notranslate"><code>cleaned debug builds ×14 — 44.8G freed on disk
+</code></pre></div>
+<p dir="auto"><strong>Getting all your debug builds at once:</strong> go to your projects folder, press
+<code>C</code>, then <code>a</code> on any "debug builds" row and <code>Enter</code>. Each project compiles
 from scratch the next time you build it; release builds and installed
-programs stay.
-
-The <span class="gs">**incremental cache**</span> is a lighter option: the part of a debug build
+programs stay.</p>
+<p dir="auto">The <strong>incremental cache</strong> is a lighter option: the part of a debug build
 that grows with every edit. Deleting only that keeps your dependencies
-compiled, so the next build is quicker.
-
-<span class="gu">## Sizes on btrfs</span>
-
-btrfs can store files compressed. <span class="sb">`du`</span> and file managers then show how big
+compiled, so the next build is quicker.</p>
+<h2 class="heading-element" dir="auto" id="sizes-on-btrfs">Sizes on btrfs</h2>
+<p dir="auto">btrfs can store files compressed. <code>du</code> and file managers then show how big
 the files are, not how much disk they take, and deleting 71G of files may
 free only 45G. On a compressed btrfs, Mainframe shows both: the size column
-shows an estimate of the space on disk (<span class="sb">`~44.6G`</span>), and the details show the
+shows an estimate of the space on disk (<code>~44.6G</code>), and the details show the
 file size next to it. The estimate comes from compressing a sample of each
 folder the way btrfs does. For build output it's usually within a few
-percent; folders with many tiny files, like <span class="sb">`node_modules`</span>, take a bit less
-than estimated.
-
-The line at the end of a deletion is measured, not estimated: Mainframe
+percent; folders with many tiny files, like <code>node_modules</code>, take a bit less
+than estimated.</p>
+<p dir="auto">The line at the end of a deletion is measured, not estimated: Mainframe
 checks the free space before and after. If it's far below the estimate,
 it says so. The usual reason is btrfs snapshots: a snapshot keeps deleted
-files on disk until the snapshot itself is deleted.
-</pre></div></td></tr></table></div>
+files on disk until the snapshot itself is deleted.</p>
 
+        </div>
       </section>
     </main>
   </div>

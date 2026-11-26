@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>docs/guides/images.md — Terminaal — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=41ca8b66" />
+  <link rel="stylesheet" href="../../styles.css?v=77eb044b" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -71,91 +71,48 @@
           <h1 class="section__title">docs/guides/images.md</h1>
           <a href="../terminaal.html" class="link">← Back to Terminaal</a>
         </div>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span></pre></div></td><td class="code"><div><pre><span></span><span class="gh"># Images in the terminal</span>
-
-Programs can show pictures right in the terminal with the
-[<span class="nt">kitty graphics protocol</span>](<span class="na">https://sw.kovidgoyal.net/kitty/graphics-protocol/</span>) –
+        <div class="readme-content">
+<h1 class="heading-element" dir="auto" id="images-in-the-terminal">Images in the terminal</h1>
+<p dir="auto">Programs can show pictures right in the terminal with the
+<a href="https://sw.kovidgoyal.net/kitty/graphics-protocol/" rel="nofollow">kitty graphics protocol</a> –
 locally and over SSH. File managers preview images, and command-line tools print
-them between the text:
-
-<span class="k">-</span><span class="w"> </span>[<span class="nt">yazi</span>](<span class="na">https://yazi-rs.github.io/</span>) previews images in its right column,
-<span class="k">-</span><span class="w"> </span><span class="sb">`kitten icat picture.png`</span> (from kitty) prints one,
-<span class="k">-</span><span class="w"> </span><span class="sb">`chafa -f kitty picture.png`</span>, <span class="sb">`timg -pk picture.png`</span>, <span class="sb">`viu`</span> and others too.
-
-Programs that ask the terminal what it can do (yazi, icat) find out by
+them between the text:</p>
+<ul dir="auto">
+<li><a href="https://yazi-rs.github.io/" rel="nofollow">yazi</a> previews images in its right column,</li>
+<li><code>kitten icat picture.png</code> (from kitty) prints one,</li>
+<li><code>chafa -f kitty picture.png</code>, <code>timg -pk picture.png</code>, <code>viu</code> and others too.</li>
+</ul>
+<p dir="auto">Programs that ask the terminal what it can do (yazi, icat) find out by
 themselves. Others decide by the name of the terminal and may need to be told:
-<span class="sb">`chafa -f kitty`</span>, <span class="sb">`timg -pk`</span>.
+<code>chafa -f kitty</code>, <code>timg -pk</code>.</p>
+<p dir="auto">Turn it off under <strong>Settings → Terminal → Images</strong> (<code>images = false</code> in
+<code>config.toml</code>): programs then get no answer when they ask and fall back to
+something else – coloured blocks, or no picture.</p>
+<h2 class="heading-element" dir="auto" id="how-it-behaves">How it behaves</h2>
+<ul dir="auto">
+<li>An image sits at the cursor where the program put it and <strong>scrolls with the
+text</strong>. Scrolled out of view and back, it's still there; <code>clear</code> (or anything
+else that erases those cells) takes it away.</li>
+<li>After an image, the cursor is below it on the right, as in kitty, so the next
+line of text starts under the picture.</li>
+<li>A program can show the same image several times, move it, and delete it.</li>
+<li>Images lie above the cell backgrounds and below the text.</li>
+<li>Selecting or copying over an image gives the blanks under it.</li>
+</ul>
+<h2 class="heading-element" dir="auto" id="what-isnt-supported">What isn't supported</h2>
+<ul dir="auto">
+<li><strong>Reading image files or shared memory</strong>: a program has to send the picture
+itself. A program on a server could otherwise name files on your computer.
+Programs that try the faster ways first (icat) fall back to sending the data.</li>
+<li>Animation, sixel images, and kitty's "unicode placeholders" (used for images
+inside tmux).</li>
+<li>Deleting by position (<code>d=c</code>, <code>d=p</code>, <code>d=x</code>, …): only all at once, by id, by
+number or by a range of ids.</li>
+</ul>
+<p dir="auto">A terminal keeps at most 256 MB of images; past that the oldest go. A single
+image may be at most 10 000 pixels wide or high and 64 MB once decoded.</p>
 
-Turn it off under <span class="gs">**Settings → Terminal → Images**</span> (<span class="sb">`images = false`</span> in
-<span class="sb">`config.toml`</span>): programs then get no answer when they ask and fall back to
-something else – coloured blocks, or no picture.
-
-<span class="gu">## How it behaves</span>
-
-<span class="k">-</span><span class="w"> </span>An image sits at the cursor where the program put it and **scrolls with the
-  text**. Scrolled out of view and back, it's still there; <span class="sb">`clear`</span> (or anything
-  else that erases those cells) takes it away.
-<span class="k">-</span><span class="w"> </span>After an image, the cursor is below it on the right, as in kitty, so the next
-  line of text starts under the picture.
-<span class="k">-</span><span class="w"> </span>A program can show the same image several times, move it, and delete it.
-<span class="k">-</span><span class="w"> </span>Images lie above the cell backgrounds and below the text.
-<span class="k">-</span><span class="w"> </span>Selecting or copying over an image gives the blanks under it.
-
-<span class="gu">## What isn't supported</span>
-
-<span class="k">-</span><span class="w"> </span><span class="gs">**Reading image files or shared memory**</span>: a program has to send the picture
-  itself. A program on a server could otherwise name files on your computer.
-  Programs that try the faster ways first (icat) fall back to sending the data.
-<span class="k">-</span><span class="w"> </span>Animation, sixel images, and kitty's "unicode placeholders" (used for images
-  inside tmux).
-<span class="k">-</span><span class="w"> </span>Deleting by position (<span class="sb">`d=c`</span>, <span class="sb">`d=p`</span>, <span class="sb">`d=x`</span>, …): only all at once, by id, by
-  number or by a range of ids.
-
-A terminal keeps at most 256 MB of images; past that the oldest go. A single
-image may be at most 10 000 pixels wide or high and 64 MB once decoded.
-</pre></div></td></tr></table></div>
-
+        </div>
       </section>
     </main>
   </div>

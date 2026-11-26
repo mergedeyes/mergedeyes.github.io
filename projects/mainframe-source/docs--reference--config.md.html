@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>docs/reference/config.md — Mainframe — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=41ca8b66" />
+  <link rel="stylesheet" href="../../styles.css?v=77eb044b" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -71,267 +71,264 @@
           <h1 class="section__title">docs/reference/config.md</h1>
           <a href="../mainframe.html" class="link">← Back to Mainframe</a>
         </div>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">  1</span>
-<span class="normal">  2</span>
-<span class="normal">  3</span>
-<span class="normal">  4</span>
-<span class="normal">  5</span>
-<span class="normal">  6</span>
-<span class="normal">  7</span>
-<span class="normal">  8</span>
-<span class="normal">  9</span>
-<span class="normal"> 10</span>
-<span class="normal"> 11</span>
-<span class="normal"> 12</span>
-<span class="normal"> 13</span>
-<span class="normal"> 14</span>
-<span class="normal"> 15</span>
-<span class="normal"> 16</span>
-<span class="normal"> 17</span>
-<span class="normal"> 18</span>
-<span class="normal"> 19</span>
-<span class="normal"> 20</span>
-<span class="normal"> 21</span>
-<span class="normal"> 22</span>
-<span class="normal"> 23</span>
-<span class="normal"> 24</span>
-<span class="normal"> 25</span>
-<span class="normal"> 26</span>
-<span class="normal"> 27</span>
-<span class="normal"> 28</span>
-<span class="normal"> 29</span>
-<span class="normal"> 30</span>
-<span class="normal"> 31</span>
-<span class="normal"> 32</span>
-<span class="normal"> 33</span>
-<span class="normal"> 34</span>
-<span class="normal"> 35</span>
-<span class="normal"> 36</span>
-<span class="normal"> 37</span>
-<span class="normal"> 38</span>
-<span class="normal"> 39</span>
-<span class="normal"> 40</span>
-<span class="normal"> 41</span>
-<span class="normal"> 42</span>
-<span class="normal"> 43</span>
-<span class="normal"> 44</span>
-<span class="normal"> 45</span>
-<span class="normal"> 46</span>
-<span class="normal"> 47</span>
-<span class="normal"> 48</span>
-<span class="normal"> 49</span>
-<span class="normal"> 50</span>
-<span class="normal"> 51</span>
-<span class="normal"> 52</span>
-<span class="normal"> 53</span>
-<span class="normal"> 54</span>
-<span class="normal"> 55</span>
-<span class="normal"> 56</span>
-<span class="normal"> 57</span>
-<span class="normal"> 58</span>
-<span class="normal"> 59</span>
-<span class="normal"> 60</span>
-<span class="normal"> 61</span>
-<span class="normal"> 62</span>
-<span class="normal"> 63</span>
-<span class="normal"> 64</span>
-<span class="normal"> 65</span>
-<span class="normal"> 66</span>
-<span class="normal"> 67</span>
-<span class="normal"> 68</span>
-<span class="normal"> 69</span>
-<span class="normal"> 70</span>
-<span class="normal"> 71</span>
-<span class="normal"> 72</span>
-<span class="normal"> 73</span>
-<span class="normal"> 74</span>
-<span class="normal"> 75</span>
-<span class="normal"> 76</span>
-<span class="normal"> 77</span>
-<span class="normal"> 78</span>
-<span class="normal"> 79</span>
-<span class="normal"> 80</span>
-<span class="normal"> 81</span>
-<span class="normal"> 82</span>
-<span class="normal"> 83</span>
-<span class="normal"> 84</span>
-<span class="normal"> 85</span>
-<span class="normal"> 86</span>
-<span class="normal"> 87</span>
-<span class="normal"> 88</span>
-<span class="normal"> 89</span>
-<span class="normal"> 90</span>
-<span class="normal"> 91</span>
-<span class="normal"> 92</span>
-<span class="normal"> 93</span>
-<span class="normal"> 94</span>
-<span class="normal"> 95</span>
-<span class="normal"> 96</span>
-<span class="normal"> 97</span>
-<span class="normal"> 98</span>
-<span class="normal"> 99</span>
-<span class="normal">100</span>
-<span class="normal">101</span>
-<span class="normal">102</span>
-<span class="normal">103</span>
-<span class="normal">104</span>
-<span class="normal">105</span>
-<span class="normal">106</span>
-<span class="normal">107</span>
-<span class="normal">108</span>
-<span class="normal">109</span>
-<span class="normal">110</span>
-<span class="normal">111</span>
-<span class="normal">112</span>
-<span class="normal">113</span>
-<span class="normal">114</span>
-<span class="normal">115</span>
-<span class="normal">116</span>
-<span class="normal">117</span>
-<span class="normal">118</span>
-<span class="normal">119</span>
-<span class="normal">120</span>
-<span class="normal">121</span>
-<span class="normal">122</span>
-<span class="normal">123</span>
-<span class="normal">124</span>
-<span class="normal">125</span>
-<span class="normal">126</span>
-<span class="normal">127</span>
-<span class="normal">128</span>
-<span class="normal">129</span>
-<span class="normal">130</span></pre></div></td><td class="code"><div><pre><span></span><span class="gh"># Configuration</span>
-
-Mainframe works without any configuration. Two kinds of files change what it
-does:
-
-<span class="k">-</span><span class="w"> </span><span class="sb">`~/.config/mainframe/config.toml`</span>: your settings and custom keys, for
-  every project
-<span class="k">-</span><span class="w"> </span><span class="sb">`~/.config/mainframe/projects/&lt;project&gt;.toml`</span>: deploy targets and keys for
-  one project
-
-Both are [<span class="nt">TOML</span>](<span class="na">https://toml.io</span>). A mistake in a file shows up as a message
+        <div class="readme-content">
+<h1 class="heading-element" dir="auto" id="configuration">Configuration</h1>
+<p dir="auto">Mainframe works without any configuration. Two kinds of files change what it
+does:</p>
+<ul dir="auto">
+<li><code>~/.config/mainframe/config.toml</code>: your settings and custom keys, for
+every project</li>
+<li><code>~/.config/mainframe/projects/&lt;project&gt;.toml</code>: deploy targets and keys for
+one project</li>
+</ul>
+<p dir="auto">Both are <a href="https://toml.io" rel="nofollow">TOML</a>. A mistake in a file shows up as a message
 when Mainframe starts, with the line it's on, and the defaults apply until
-it's fixed.
+it's fixed.</p>
+<p dir="auto">In TOML, everything below a <code>[section]</code> header belongs to that section, up to
+the next header. In <code>config.toml</code> that doesn't matter: a setting like
+<code>prune_gone_branches = true</code> works anywhere in the file, also at the end,
+below <code>[runners]</code> or an <code>[[actions]]</code> entry.</p>
+<h2 class="heading-element" dir="auto" id="configtoml">config.toml</h2>
+<p dir="auto">Press <code>,</code> to open it. The first time, Mainframe writes it with every option
+explained.</p>
+<markdown-accessiblity-table><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Default</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>editor</code></td>
+<td><code>"nano"</code></td>
+<td>the editor for <code>e</code> and <code>Enter</code>; anything that waits until you close it, like <code>"vim"</code> or <code>"micro"</code></td>
+</tr>
+<tr>
+<td><code>vscode</code></td>
+<td><code>"code"</code></td>
+<td>the command for <code>o</code> and <code>O</code></td>
+</tr>
+<tr>
+<td><code>install_dir</code></td>
+<td><code>"~/.local/bin"</code></td>
+<td>where <code>i</code> installs programs</td>
+</tr>
+<tr>
+<td><code>projects_dir</code></td>
+<td><code>""</code></td>
+<td>the projects folder for <code>J</code>; empty uses the first that exists of <code>~/Projekte</code>, <code>~/Projects</code>, <code>~/projects</code>, <code>~/Code</code>, <code>~/code</code>, <code>~/dev</code>, <code>~/src</code>, <code>~/repos</code></td>
+</tr>
+<tr>
+<td><code>show_hidden</code></td>
+<td><code>true</code></td>
+<td>show hidden files at start (<code>.</code> toggles)</td>
+</tr>
+<tr>
+<td><code>preview</code></td>
+<td><code>true</code></td>
+<td>show the preview at start (<code>v</code> toggles)</td>
+</tr>
+<tr>
+<td><code>zoxide</code></td>
+<td><code>true</code></td>
+<td>use <a href="https://github.com/ajeetdsouza/zoxide">zoxide</a> when it's installed: keywords in <code>c</code>, the <code>Z</code> picker, and folders you visit are added to its list</td>
+</tr>
+<tr>
+<td><code>desktop_entries</code></td>
+<td><code>"ask"</code></td>
+<td>when <code>i</code> installs a program with a <code>.desktop</code> entry: <code>"ask"</code> shows the change first, <code>"always"</code> updates it, <code>"never"</code> leaves it alone</td>
+</tr>
+<tr>
+<td><code>notify_after</code></td>
+<td><code>10</code></td>
+<td>ring the bell and send a desktop notification when a task that ran this many seconds finishes; <code>0</code> turns it off</td>
+</tr>
+<tr>
+<td><code>prune_gone_branches</code></td>
+<td><code>false</code></td>
+<td><code>g f</code> also deletes local branches whose remote branch was deleted, when their work is in <code>origin/main</code> (also rebased or squashed); see <a href="docs--guides--git.md.html#branches-deleted-on-the-remote">Branches deleted on the remote</a></td>
+</tr>
+<tr>
+<td><code>keep_deploy_builds</code></td>
+<td><code>false</code></td>
+<td>keep the build checkout of deploys with <code>from</code> for faster rebuilds; see <a href="docs--guides--install-and-deploy.md.html#deploying-a-branch-not-your-work-in-progress">Deploying a branch</a></td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<h3 class="heading-element" dir="auto" id="runners">Runners</h3>
+<p dir="auto"><code>r</code> on a single file runs it by its extension. <code>[runners]</code> changes or adds
+those commands. <code>{file}</code> becomes the file's full path, <code>{name}</code> its name;
+the command runs in the file's folder.</p>
+<div class="highlight highlight-source-toml notranslate position-relative overflow-auto" dir="auto"><pre>[<span class="pl-en">runners</span>]
+<span class="pl-smi">py</span> = <span class="pl-s"><span class="pl-pds">"</span>python3 -X dev {file}<span class="pl-pds">"</span></span>
+<span class="pl-smi">lua</span> = <span class="pl-s"><span class="pl-pds">"</span>luajit {file}<span class="pl-pds">"</span></span></pre></div>
+<h3 class="heading-element" dir="auto" id="custom-actions">Custom actions</h3>
+<p dir="auto">A custom action puts a command on a key. It works everywhere in the file
+list and comes before the built-in key.</p>
+<div class="highlight highlight-source-toml notranslate position-relative overflow-auto" dir="auto"><pre>[[<span class="pl-en">actions</span>]]
+<span class="pl-smi">key</span> = <span class="pl-s"><span class="pl-pds">"</span>F5<span class="pl-pds">"</span></span>
+<span class="pl-smi">name</span> = <span class="pl-s"><span class="pl-pds">"</span>clippy<span class="pl-pds">"</span></span>
+<span class="pl-smi">cmd</span> = <span class="pl-s"><span class="pl-pds">"</span>cargo clippy --all-targets<span class="pl-pds">"</span></span>
 
-In TOML, everything below a <span class="sb">`[section]`</span> header belongs to that section, up to
-the next header. In <span class="sb">`config.toml`</span> that doesn't matter: a setting like
-<span class="sb">`prune_gone_branches = true`</span> works anywhere in the file, also at the end,
-below <span class="sb">`[runners]`</span> or an <span class="sb">`[[actions]]`</span> entry.
-
-<span class="gu">## config.toml</span>
-
-Press <span class="sb">`,`</span> to open it. The first time, Mainframe writes it with every option
-explained.
-
-| Option | Default | What it does |
-|---|---|---|
-| <span class="sb">`editor`</span> | <span class="sb">`"nano"`</span> | the editor for <span class="sb">`e`</span> and <span class="sb">`Enter`</span>; anything that waits until you close it, like <span class="sb">`"vim"`</span> or <span class="sb">`"micro"`</span> |
-| <span class="sb">`vscode`</span> | <span class="sb">`"code"`</span> | the command for <span class="sb">`o`</span> and <span class="sb">`O`</span> |
-| <span class="sb">`install_dir`</span> | <span class="sb">`"~/.local/bin"`</span> | where <span class="sb">`i`</span> installs programs |
-| <span class="sb">`projects_dir`</span> | <span class="sb">`""`</span> | the projects folder for <span class="sb">`J`</span>; empty uses the first that exists of <span class="sb">`~/Projekte`</span>, <span class="sb">`~/Projects`</span>, <span class="sb">`~/projects`</span>, <span class="sb">`~/Code`</span>, <span class="sb">`~/code`</span>, <span class="sb">`~/dev`</span>, <span class="sb">`~/src`</span>, <span class="sb">`~/repos`</span> |
-| <span class="sb">`show_hidden`</span> | <span class="sb">`true`</span> | show hidden files at start (<span class="sb">`.`</span> toggles) |
-| <span class="sb">`preview`</span> | <span class="sb">`true`</span> | show the preview at start (<span class="sb">`v`</span> toggles) |
-| <span class="sb">`zoxide`</span> | <span class="sb">`true`</span> | use [<span class="nt">zoxide</span>](<span class="na">https://github.com/ajeetdsouza/zoxide</span>) when it's installed: keywords in <span class="sb">`c`</span>, the <span class="sb">`Z`</span> picker, and folders you visit are added to its list |
-| <span class="sb">`desktop_entries`</span> | <span class="sb">`"ask"`</span> | when <span class="sb">`i`</span> installs a program with a <span class="sb">`.desktop`</span> entry: <span class="sb">`"ask"`</span> shows the change first, <span class="sb">`"always"`</span> updates it, <span class="sb">`"never"`</span> leaves it alone |
-| <span class="sb">`notify_after`</span> | <span class="sb">`10`</span> | ring the bell and send a desktop notification when a task that ran this many seconds finishes; <span class="sb">`0`</span> turns it off |
-| <span class="sb">`prune_gone_branches`</span> | <span class="sb">`false`</span> | <span class="sb">`g f`</span> also deletes local branches whose remote branch was deleted, when their work is in <span class="sb">`origin/main`</span> (also rebased or squashed); see [<span class="nt">Branches deleted on the remote</span>](<span class="na">../guides/git.md#branches-deleted-on-the-remote</span>) |
-| <span class="sb">`keep_deploy_builds`</span> | <span class="sb">`false`</span> | keep the build checkout of deploys with <span class="sb">`from`</span> for faster rebuilds; see [<span class="nt">Deploying a branch</span>](<span class="na">../guides/install-and-deploy.md#deploying-a-branch-not-your-work-in-progress</span>) |
-
-<span class="gu">### Runners</span>
-
-<span class="sb">`r`</span> on a single file runs it by its extension. <span class="sb">`[runners]`</span> changes or adds
-those commands. <span class="sb">`{file}`</span> becomes the file's full path, <span class="sb">`{name}`</span> its name;
-the command runs in the file's folder.
-
-<span class="sb">```toml</span>
-<span class="k">[runners]</span>
-<span class="n">py</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"python3 -X dev {file}"</span>
-<span class="n">lua</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"luajit {file}"</span>
-<span class="sb">```</span>
-
-<span class="gu">### Custom actions</span>
-
-A custom action puts a command on a key. It works everywhere in the file
-list and comes before the built-in key.
-
-<span class="sb">```toml</span>
-<span class="k">[[actions]]</span>
-<span class="n">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"F5"</span>
-<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"clippy"</span>
-<span class="n">cmd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"cargo clippy --all-targets"</span>
-
-<span class="k">[[actions]]</span>
-<span class="n">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"ctrl-g"</span>
-<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"lazygit"</span>
-<span class="n">cmd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"lazygit"</span>
-<span class="n">interactive</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
-<span class="sb">```</span>
-
-| Field | What it means |
-|---|---|
-| <span class="sb">`key`</span> | a character (<span class="sb">`"Z"`</span>), <span class="sb">`"F1"`</span> to <span class="sb">`"F12"`</span>, <span class="sb">`"enter"`</span>, <span class="sb">`"tab"`</span>, <span class="sb">`"space"`</span>, <span class="sb">`"esc"`</span>, <span class="sb">`"delete"`</span>, <span class="sb">`"insert"`</span>, or one of these with <span class="sb">`ctrl-`</span> or <span class="sb">`alt-`</span> in front, like <span class="sb">`"ctrl-g"`</span> or <span class="sb">`"alt-x"`</span> |
-| <span class="sb">`name`</span> | what the output tab is called |
-| <span class="sb">`cmd`</span> | the shell command; it runs in the current folder |
-| <span class="sb">`interactive`</span> | <span class="sb">`true`</span> runs it in the full terminal instead of the output pane, for programs that need your input |
-
-These placeholders in <span class="sb">`cmd`</span> are replaced, already quoted for the shell:
-
-| Placeholder | Becomes |
-|---|---|
-| <span class="sb">`{file}`</span> | the selected entry, full path |
-| <span class="sb">`{name}`</span> | the selected entry's name |
-| <span class="sb">`{dir}`</span> | the folder you're in |
-| <span class="sb">`{root}`</span> | the project's folder (the folder you're in when there's no project) |
-
-<span class="gu">## Per-project settings</span>
-
-Each project can have its own file in <span class="sb">`~/.config/mainframe/projects/`</span>. It's
+[[<span class="pl-en">actions</span>]]
+<span class="pl-smi">key</span> = <span class="pl-s"><span class="pl-pds">"</span>ctrl-g<span class="pl-pds">"</span></span>
+<span class="pl-smi">name</span> = <span class="pl-s"><span class="pl-pds">"</span>lazygit<span class="pl-pds">"</span></span>
+<span class="pl-smi">cmd</span> = <span class="pl-s"><span class="pl-pds">"</span>lazygit<span class="pl-pds">"</span></span>
+<span class="pl-smi">interactive</span> = <span class="pl-c1">true</span></pre></div>
+<markdown-accessiblity-table><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>What it means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>key</code></td>
+<td>a character (<code>"Z"</code>), <code>"F1"</code> to <code>"F12"</code>, <code>"enter"</code>, <code>"tab"</code>, <code>"space"</code>, <code>"esc"</code>, <code>"delete"</code>, <code>"insert"</code>, or one of these with <code>ctrl-</code> or <code>alt-</code> in front, like <code>"ctrl-g"</code> or <code>"alt-x"</code></td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>what the output tab is called</td>
+</tr>
+<tr>
+<td><code>cmd</code></td>
+<td>the shell command; it runs in the current folder</td>
+</tr>
+<tr>
+<td><code>interactive</code></td>
+<td><code>true</code> runs it in the full terminal instead of the output pane, for programs that need your input</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto">These placeholders in <code>cmd</code> are replaced, already quoted for the shell:</p>
+<markdown-accessiblity-table><table>
+<thead>
+<tr>
+<th>Placeholder</th>
+<th>Becomes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>{file}</code></td>
+<td>the selected entry, full path</td>
+</tr>
+<tr>
+<td><code>{name}</code></td>
+<td>the selected entry's name</td>
+</tr>
+<tr>
+<td><code>{dir}</code></td>
+<td>the folder you're in</td>
+</tr>
+<tr>
+<td><code>{root}</code></td>
+<td>the project's folder (the folder you're in when there's no project)</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<h2 class="heading-element" dir="auto" id="per-project-settings">Per-project settings</h2>
+<p dir="auto">Each project can have its own file in <code>~/.config/mainframe/projects/</code>. It's
 kept outside the project, so host names and the like never end up in a
 commit. The file is named after the project's path below your home folder:
-<span class="sb">`~/Projekte/watcher`</span> has <span class="sb">`Projekte%2Fwatcher.toml`</span>.
+<code>~/Projekte/watcher</code> has <code>Projekte%2Fwatcher.toml</code>.</p>
+<p dir="auto"><code>D</code> then <code>e</code> creates it, with every setting explained, and opens it.</p>
+<h3 class="heading-element" dir="auto" id="custom-actions-for-one-project">Custom actions for one project</h3>
+<p dir="auto"><code>[[actions]]</code> work like in <code>config.toml</code>, but only in this project. On the
+same key, the project's action wins.</p>
+<h3 class="heading-element" dir="auto" id="deploy-targets">Deploy targets</h3>
+<p dir="auto">Each <code>[[deploy]]</code> is one target for <code>D</code>. The forms behind <code>D</code> → <code>a</code> (add)
+and <code>D</code> → <code>e</code> (edit) write these for you, and leave the rest of the file as
+it is; see <a href="docs--guides--install-and-deploy.md.html">Installing and deploying</a>.</p>
+<div class="highlight highlight-source-toml notranslate position-relative overflow-auto" dir="auto"><pre>[[<span class="pl-en">deploy</span>]]
+<span class="pl-smi">name</span> = <span class="pl-s"><span class="pl-pds">"</span>pi<span class="pl-pds">"</span></span>
+<span class="pl-smi">host</span> = <span class="pl-s"><span class="pl-pds">"</span>pi@raspberrypi.local<span class="pl-pds">"</span></span>
+<span class="pl-smi">remote_path</span> = <span class="pl-s"><span class="pl-pds">"</span>/usr/local/bin/myapp<span class="pl-pds">"</span></span>
+<span class="pl-smi">build</span> = <span class="pl-s"><span class="pl-pds">"</span>cross build --release --target aarch64-unknown-linux-gnu<span class="pl-pds">"</span></span>
+<span class="pl-smi">artifact</span> = <span class="pl-s"><span class="pl-pds">"</span>target/aarch64-unknown-linux-gnu/release/myapp<span class="pl-pds">"</span></span>
+<span class="pl-smi">sudo</span> = <span class="pl-c1">true</span>
+<span class="pl-smi">service</span> = <span class="pl-s"><span class="pl-pds">"</span>myapp<span class="pl-pds">"</span></span></pre></div>
+<markdown-accessiblity-table><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Default</th>
+<th>What it means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td></td>
+<td>what the picker calls the target</td>
+</tr>
+<tr>
+<td><code>host</code></td>
+<td></td>
+<td>where it goes: <code>user@host</code>, or a name from <code>~/.ssh/config</code></td>
+</tr>
+<tr>
+<td><code>remote_path</code></td>
+<td></td>
+<td>the program there that gets replaced; an absolute path</td>
+</tr>
+<tr>
+<td><code>build</code></td>
+<td><code>""</code></td>
+<td>the build command, run in the project folder; empty skips the build</td>
+</tr>
+<tr>
+<td><code>from</code></td>
+<td><code>""</code></td>
+<td>a branch or commit to build in a separate checkout instead of the project folder as it is</td>
+</tr>
+<tr>
+<td><code>artifact</code></td>
+<td></td>
+<td>the built file to copy, relative to the project folder</td>
+</tr>
+<tr>
+<td><code>sudo</code></td>
+<td><code>false</code></td>
+<td>replace it as root</td>
+</tr>
+<tr>
+<td><code>service</code></td>
+<td><code>""</code></td>
+<td>a systemd service to restart afterwards and check that it runs; created if missing, see <a href="docs--guides--install-and-deploy.md.html#running-it-as-a-systemd-service">Running it as a service</a></td>
+</tr>
+<tr>
+<td><code>restart</code></td>
+<td><code>""</code></td>
+<td>any command to run on the machine afterwards, after the service</td>
+</tr>
+<tr>
+<td><code>keep</code></td>
+<td><code>3</code></td>
+<td>how many backups to keep there; <code>0</code> keeps all</td>
+</tr>
+<tr>
+<td><code>ssh</code></td>
+<td><code>""</code></td>
+<td>extra ssh options, like <code>"-p 2222 -i ~/.ssh/pi"</code></td>
+</tr>
+<tr>
+<td><code>interactive</code></td>
+<td><code>false</code></td>
+<td>run in the full terminal, so ssh and sudo can ask for passwords</td>
+</tr>
+<tr>
+<td><code>key</code></td>
+<td><code>""</code></td>
+<td>a key that deploys to this target right away, like <code>"F9"</code></td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
 
-<span class="sb">`D`</span> then <span class="sb">`e`</span> creates it, with every setting explained, and opens it.
-
-<span class="gu">### Custom actions for one project</span>
-
-<span class="sb">`[[actions]]`</span> work like in <span class="sb">`config.toml`</span>, but only in this project. On the
-same key, the project's action wins.
-
-<span class="gu">### Deploy targets</span>
-
-Each <span class="sb">`[[deploy]]`</span> is one target for <span class="sb">`D`</span>. The forms behind <span class="sb">`D`</span> → <span class="sb">`a`</span> (add)
-and <span class="sb">`D`</span> → <span class="sb">`e`</span> (edit) write these for you, and leave the rest of the file as
-it is; see [<span class="nt">Installing and deploying</span>](<span class="na">../guides/install-and-deploy.md</span>).
-
-<span class="sb">```toml</span>
-<span class="k">[[deploy]]</span>
-<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"pi"</span>
-<span class="n">host</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"pi@raspberrypi.local"</span>
-<span class="n">remote_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"/usr/local/bin/myapp"</span>
-<span class="n">build</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"cross build --release --target aarch64-unknown-linux-gnu"</span>
-<span class="n">artifact</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"target/aarch64-unknown-linux-gnu/release/myapp"</span>
-<span class="n">sudo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
-<span class="n">service</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"myapp"</span>
-<span class="sb">```</span>
-
-| Field | Default | What it means |
-|---|---|---|
-| <span class="sb">`name`</span> | | what the picker calls the target |
-| <span class="sb">`host`</span> | | where it goes: <span class="sb">`user@host`</span>, or a name from <span class="sb">`~/.ssh/config`</span> |
-| <span class="sb">`remote_path`</span> | | the program there that gets replaced; an absolute path |
-| <span class="sb">`build`</span> | <span class="sb">`""`</span> | the build command, run in the project folder; empty skips the build |
-| <span class="sb">`from`</span> | <span class="sb">`""`</span> | a branch or commit to build in a separate checkout instead of the project folder as it is |
-| <span class="sb">`artifact`</span> | | the built file to copy, relative to the project folder |
-| <span class="sb">`sudo`</span> | <span class="sb">`false`</span> | replace it as root |
-| <span class="sb">`service`</span> | <span class="sb">`""`</span> | a systemd service to restart afterwards and check that it runs; created if missing, see [<span class="nt">Running it as a service</span>](<span class="na">../guides/install-and-deploy.md#running-it-as-a-systemd-service</span>) |
-| <span class="sb">`restart`</span> | <span class="sb">`""`</span> | any command to run on the machine afterwards, after the service |
-| <span class="sb">`keep`</span> | <span class="sb">`3`</span> | how many backups to keep there; <span class="sb">`0`</span> keeps all |
-| <span class="sb">`ssh`</span> | <span class="sb">`""`</span> | extra ssh options, like <span class="sb">`"-p 2222 -i ~/.ssh/pi"`</span> |
-| <span class="sb">`interactive`</span> | <span class="sb">`false`</span> | run in the full terminal, so ssh and sudo can ask for passwords |
-| <span class="sb">`key`</span> | <span class="sb">`""`</span> | a key that deploys to this target right away, like <span class="sb">`"F9"`</span> |
-</pre></div></td></tr></table></div>
-
+        </div>
       </section>
     </main>
   </div>

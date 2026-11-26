@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>docs/README.md — Mainframe — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=41ca8b66" />
+  <link rel="stylesheet" href="../../styles.css?v=77eb044b" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -71,57 +71,33 @@
           <h1 class="section__title">docs/README.md</h1>
           <a href="../mainframe.html" class="link">← Back to Mainframe</a>
         </div>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span></pre></div></td><td class="code"><div><pre><span></span><span class="gh"># Mainframe documentation</span>
-
-Mainframe is a file browser for the terminal that also builds, runs, tests,
+        <div class="readme-content">
+<h1 class="heading-element" dir="auto" id="mainframe-documentation">Mainframe documentation</h1>
+<p dir="auto">Mainframe is a file browser for the terminal that also builds, runs, tests,
 installs, deploys and releases your projects. These pages describe what it
-does today, on Linux.
+does today, on Linux.</p>
+<h2 class="heading-element" dir="auto" id="getting-started">Getting started</h2>
+<ul dir="auto">
+<li><a href="docs--introduction.md.html">Introduction</a>: what Mainframe is, how the screen is laid out, which projects it understands</li>
+<li><a href="docs--install.md.html">Installation</a>: build it, optional tools, <code>cd</code> on exit</li>
+<li><a href="docs--guides--first-steps.md.html">First steps</a>: a ten-minute tour, from opening a project to running its tests</li>
+</ul>
+<h2 class="heading-element" dir="auto" id="guides">Guides</h2>
+<ul dir="auto">
+<li><a href="docs--guides--files.md.html">Files</a>: moving around, finding files, creating, renaming, copying, deleting</li>
+<li><a href="docs--guides--running.md.html">Running things</a>: build, run, test, the task picker, output tabs, watch mode, jumping to errors</li>
+<li><a href="docs--guides--git.md.html">Git</a>: the git menu, committing, branches, worktrees, GitHub repos and releases</li>
+<li><a href="docs--guides--projects.md.html">Projects, notes and Claude</a>: the project picker, notes and todos, new projects, the CLAUDE.md preset</li>
+<li><a href="docs--guides--install-and-deploy.md.html">Installing and deploying</a>: putting a binary on your PATH, deploying to a Raspberry Pi or a server</li>
+<li><a href="docs--guides--cleanup.md.html">Cleaning up</a>: getting disk space back from build output, dependencies and caches</li>
+</ul>
+<h2 class="heading-element" dir="auto" id="reference">Reference</h2>
+<ul dir="auto">
+<li><a href="docs--reference--keys.md.html">Keys</a>: every key, in every view</li>
+<li><a href="docs--reference--config.md.html">Configuration</a>: <code>config.toml</code>, custom actions, per-project settings and deploy targets</li>
+</ul>
 
-<span class="gu">## Getting started</span>
-
-<span class="k">-</span><span class="w"> </span>[<span class="nt">Introduction</span>](<span class="na">introduction.md</span>): what Mainframe is, how the screen is laid out, which projects it understands
-<span class="k">-</span><span class="w"> </span>[<span class="nt">Installation</span>](<span class="na">install.md</span>): build it, optional tools, <span class="sb">`cd`</span> on exit
-<span class="k">-</span><span class="w"> </span>[<span class="nt">First steps</span>](<span class="na">guides/first-steps.md</span>): a ten-minute tour, from opening a project to running its tests
-
-<span class="gu">## Guides</span>
-
-<span class="k">-</span><span class="w"> </span>[<span class="nt">Files</span>](<span class="na">guides/files.md</span>): moving around, finding files, creating, renaming, copying, deleting
-<span class="k">-</span><span class="w"> </span>[<span class="nt">Running things</span>](<span class="na">guides/running.md</span>): build, run, test, the task picker, output tabs, watch mode, jumping to errors
-<span class="k">-</span><span class="w"> </span>[<span class="nt">Git</span>](<span class="na">guides/git.md</span>): the git menu, committing, branches, worktrees, GitHub repos and releases
-<span class="k">-</span><span class="w"> </span>[<span class="nt">Projects, notes and Claude</span>](<span class="na">guides/projects.md</span>): the project picker, notes and todos, new projects, the CLAUDE.md preset
-<span class="k">-</span><span class="w"> </span>[<span class="nt">Installing and deploying</span>](<span class="na">guides/install-and-deploy.md</span>): putting a binary on your PATH, deploying to a Raspberry Pi or a server
-<span class="k">-</span><span class="w"> </span>[<span class="nt">Cleaning up</span>](<span class="na">guides/cleanup.md</span>): getting disk space back from build output, dependencies and caches
-
-<span class="gu">## Reference</span>
-
-<span class="k">-</span><span class="w"> </span>[<span class="nt">Keys</span>](<span class="na">reference/keys.md</span>): every key, in every view
-<span class="k">-</span><span class="w"> </span>[<span class="nt">Configuration</span>](<span class="na">reference/config.md</span>): <span class="sb">`config.toml`</span>, custom actions, per-project settings and deploy targets
-</pre></div></td></tr></table></div>
-
+        </div>
       </section>
     </main>
   </div>
