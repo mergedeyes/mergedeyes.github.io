@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>docs/reference/config.md — Mainframe — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=62ac401d" />
+  <link rel="stylesheet" href="../../styles.css?v=2d91b490" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -148,12 +148,12 @@ explained.</p>
 <tr>
 <td><code>prune_gone_branches</code></td>
 <td><code>false</code></td>
-<td><code>g f</code> also deletes local branches whose remote branch was deleted, when their work is in <code>origin/main</code> (also rebased or squashed); see <a href="docs--guides--git.md.html#branches-deleted-on-the-remote">Branches deleted on the remote</a></td>
+<td><code>g f</code> also deletes local branches whose remote branch was deleted, when their work is in <code>origin/main</code> (also rebased or squashed); see <a href="../mainframe-source/docs--guides--git.md.html#branches-deleted-on-the-remote" data-repo-path="docs/guides/git.md">Branches deleted on the remote</a></td>
 </tr>
 <tr>
 <td><code>keep_deploy_builds</code></td>
 <td><code>false</code></td>
-<td>keep the build checkout of deploys with <code>from</code> for faster rebuilds; see <a href="docs--guides--install-and-deploy.md.html#deploying-a-branch-not-your-work-in-progress">Deploying a branch</a></td>
+<td>keep the build checkout of deploys with <code>from</code> for faster rebuilds; see <a href="../mainframe-source/docs--guides--install-and-deploy.md.html#deploying-a-branch-not-your-work-in-progress" data-repo-path="docs/guides/install-and-deploy.md">Deploying a branch</a></td>
 </tr>
 </tbody>
 </table></markdown-accessiblity-table>
@@ -242,7 +242,7 @@ same key, the project's action wins.</p>
 <h3 class="heading-element" dir="auto" id="deploy-targets">Deploy targets</h3>
 <p dir="auto">Each <code>[[deploy]]</code> is one target for <code>D</code>. The forms behind <code>D</code> → <code>a</code> (add)
 and <code>D</code> → <code>e</code> (edit) write these for you, and leave the rest of the file as
-it is; see <a href="docs--guides--install-and-deploy.md.html">Installing and deploying</a>.</p>
+it is; see <a href="../mainframe-source/docs--guides--install-and-deploy.md.html" data-repo-path="docs/guides/install-and-deploy.md">Installing and deploying</a>.</p>
 <div class="highlight highlight-source-toml notranslate position-relative overflow-auto" dir="auto"><pre>[[<span class="pl-en">deploy</span>]]
 <span class="pl-smi">name</span> = <span class="pl-s"><span class="pl-pds">"</span>pi<span class="pl-pds">"</span></span>
 <span class="pl-smi">host</span> = <span class="pl-s"><span class="pl-pds">"</span>pi@raspberrypi.local<span class="pl-pds">"</span></span>
@@ -298,7 +298,7 @@ it is; see <a href="docs--guides--install-and-deploy.md.html">Installing and dep
 <tr>
 <td><code>service</code></td>
 <td><code>""</code></td>
-<td>a systemd service to restart afterwards and check that it runs; created if missing, see <a href="docs--guides--install-and-deploy.md.html#running-it-as-a-systemd-service">Running it as a service</a></td>
+<td>a systemd service to restart afterwards and check that it runs; created if missing, see <a href="../mainframe-source/docs--guides--install-and-deploy.md.html#running-it-as-a-systemd-service" data-repo-path="docs/guides/install-and-deploy.md">Running it as a service</a></td>
 </tr>
 <tr>
 <td><code>restart</code></td>

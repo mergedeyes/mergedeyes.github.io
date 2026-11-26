@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>docs/guides/data.md — Watcher — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=62ac401d" />
+  <link rel="stylesheet" href="../../styles.css?v=2d91b490" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -101,7 +101,7 @@ SQL, Grafana or any BI tool.</p>
 is no history, no graphs, no notification log and no login, and repeated
 notifications and escalations start their time again after a restart.</p>
 <p dir="auto">Values are stored in base units: seconds, bytes and percent. See
-<a href="docs--objects--check.md.html#units">Units</a>.</p>
+<a href="../watcher-source/docs--objects--check.md.html#units" data-repo-path="docs/objects/check.md">Units</a>.</p>
 <h2 class="heading-element" dir="auto" id="tables-and-views">Tables and views</h2>
 <markdown-accessiblity-table><table>
 <thead>
@@ -200,9 +200,9 @@ panel query:</p>
 <h2 class="heading-element" dir="auto" id="over-the-api">Over the API</h2>
 <div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto"><pre>curl -H <span class="pl-s"><span class="pl-pds">"</span>Authorization: Bearer <span class="pl-smi">$T</span><span class="pl-pds">"</span></span> https://watcher.example.com/api/v1/services/web01/http/series
 curl -H <span class="pl-s"><span class="pl-pds">"</span>Authorization: Bearer <span class="pl-smi">$T</span><span class="pl-pds">"</span></span> <span class="pl-s"><span class="pl-pds">'</span>https://watcher.example.com/api/v1/series/42/points?from=6h<span class="pl-pds">'</span></span></pre></div>
-<p dir="auto">See the <a href="docs--reference--api.md.html#history-and-metrics">API reference</a>.</p>
+<p dir="auto">See the <a href="../watcher-source/docs--reference--api.md.html#history-and-metrics" data-repo-path="docs/reference/api.md">API reference</a>.</p>
 <h2 class="heading-element" dir="auto" id="copying-to-another-database">Copying to another database</h2>
-<p dir="auto">A <a href="docs--objects--sink.md.html">sink</a> copies every result to a second PostgreSQL
+<p dir="auto">A <a href="../watcher-source/docs--objects--sink.md.html" data-repo-path="docs/objects/sink.md">sink</a> copies every result to a second PostgreSQL
 database, for example a central reporting database, with a buffer on disk
 so nothing is lost while the target is down.</p>
 <h2 class="heading-element" dir="auto" id="data-repair">Data repair</h2>

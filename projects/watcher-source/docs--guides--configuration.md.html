@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>docs/guides/configuration.md — Watcher — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=62ac401d" />
+  <link rel="stylesheet" href="../../styles.css?v=2d91b490" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -80,7 +80,7 @@ object is listed on the object's own page, see <a href="#objects">Objects</a>.</
 <h2 class="heading-element" dir="auto" id="files">Files</h2>
 <p dir="auto">Watcher reads every <code>*.toml</code> file below the config directory, including
 subdirectories. The directory is <code>conf.d/</code> next to <code>watcher.toml</code> unless
-<code>conf_dir</code> in <a href="docs--reference--watcher-toml.md.html">watcher.toml</a> says otherwise.
+<code>conf_dir</code> in <a href="../watcher-source/docs--reference--watcher-toml.md.html" data-repo-path="docs/reference/watcher-toml.md">watcher.toml</a> says otherwise.
 Files and directories whose names start with a dot are skipped.</p>
 <p dir="auto">Any file may contain any kind of object, and the file names have no
 meaning. A common layout:</p>
@@ -110,62 +110,62 @@ file and line. <code>SIGHUP</code> also triggers a reload.</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="docs--objects--check.md.html">check</a></td>
+<td><a href="../watcher-source/docs--objects--check.md.html" data-repo-path="docs/objects/check.md">check</a></td>
 <td><code>[check.&lt;name&gt;]</code></td>
 <td>What to run and how to judge the result</td>
 </tr>
 <tr>
-<td><a href="docs--objects--service.md.html">service</a></td>
+<td><a href="../watcher-source/docs--objects--service.md.html" data-repo-path="docs/objects/service.md">service</a></td>
 <td><code>[service.&lt;name&gt;]</code></td>
 <td>A check with its settings, ready to be put on hosts</td>
 </tr>
 <tr>
-<td><a href="docs--objects--host.md.html">host</a></td>
+<td><a href="../watcher-source/docs--objects--host.md.html" data-repo-path="docs/objects/host.md">host</a></td>
 <td><code>[[host]]</code></td>
 <td>A machine or device to monitor</td>
 </tr>
 <tr>
-<td><a href="docs--objects--hostgroup.md.html">hostgroup</a></td>
+<td><a href="../watcher-source/docs--objects--hostgroup.md.html" data-repo-path="docs/objects/hostgroup.md">hostgroup</a></td>
 <td><code>[hostgroup.&lt;name&gt;]</code></td>
 <td>A set of hosts that get the same services and settings</td>
 </tr>
 <tr>
-<td><a href="docs--objects--servicegroup.md.html">servicegroup</a></td>
+<td><a href="../watcher-source/docs--objects--servicegroup.md.html" data-repo-path="docs/objects/servicegroup.md">servicegroup</a></td>
 <td><code>[servicegroup.&lt;name&gt;]</code></td>
 <td>A set of services that are assigned together</td>
 </tr>
 <tr>
-<td><a href="docs--objects--contact.md.html">contact</a></td>
+<td><a href="../watcher-source/docs--objects--contact.md.html" data-repo-path="docs/objects/contact.md">contact</a></td>
 <td><code>[contact.&lt;name&gt;]</code></td>
 <td>Someone who receives notifications</td>
 </tr>
 <tr>
-<td><a href="docs--objects--contactgroup.md.html">contactgroup</a></td>
+<td><a href="../watcher-source/docs--objects--contactgroup.md.html" data-repo-path="docs/objects/contactgroup.md">contactgroup</a></td>
 <td><code>[contactgroup.&lt;name&gt;]</code></td>
 <td>A set of contacts</td>
 </tr>
 <tr>
-<td><a href="docs--objects--notify.md.html">notify</a></td>
+<td><a href="../watcher-source/docs--objects--notify.md.html" data-repo-path="docs/objects/notify.md">notify</a></td>
 <td><code>[[notify]]</code></td>
 <td>A rule: which contacts get which notifications</td>
 </tr>
 <tr>
-<td><a href="docs--objects--dependency.md.html">dependency</a></td>
+<td><a href="../watcher-source/docs--objects--dependency.md.html" data-repo-path="docs/objects/dependency.md">dependency</a></td>
 <td><code>[[dependency]]</code></td>
 <td>Holds notifications back while another host or service is down</td>
 </tr>
 <tr>
-<td><a href="docs--objects--downtimegroup.md.html">downtimegroup</a></td>
+<td><a href="../watcher-source/docs--objects--downtimegroup.md.html" data-repo-path="docs/objects/downtimegroup.md">downtimegroup</a></td>
 <td><code>[downtimegroup.&lt;name&gt;]</code></td>
 <td>Hosts with recurring downtime windows</td>
 </tr>
 <tr>
-<td><a href="docs--objects--timeperiod.md.html">timeperiod</a></td>
+<td><a href="../watcher-source/docs--objects--timeperiod.md.html" data-repo-path="docs/objects/timeperiod.md">timeperiod</a></td>
 <td><code>[timeperiod.&lt;name&gt;]</code></td>
 <td>When notify rules apply, for example business hours</td>
 </tr>
 <tr>
-<td><a href="docs--objects--sink.md.html">sink</a></td>
+<td><a href="../watcher-source/docs--objects--sink.md.html" data-repo-path="docs/objects/sink.md">sink</a></td>
 <td><code>[[sink]]</code></td>
 <td>A second database that receives a copy of all results</td>
 </tr>
@@ -206,14 +206,14 @@ for several services from one check.</p>
 service only once.</p>
 <p dir="auto">For a service that only one host needs, you don't need a separate
 <code>[service.&lt;name&gt;]</code>. Write it directly on the host, see
-<a href="docs--objects--host.md.html#host-services">Host services</a>.</p>
+<a href="../watcher-source/docs--objects--host.md.html#host-services" data-repo-path="docs/objects/host.md">Host services</a>.</p>
 <h2 class="heading-element" dir="auto" id="which-value-wins">Which value wins</h2>
 <p dir="auto">The same setting can be made in several places. The more specific place
 wins. From most to least specific:</p>
 <ol dir="auto">
 <li>the host service (<code>[host.service.&lt;name&gt;]</code> on one host)</li>
 <li>the <code>for_each</code> entry (only for <code>vars</code>, see
-<a href="docs--objects--service.md.html#one-service-per-item-for_each">for_each</a>)</li>
+<a href="../watcher-source/docs--objects--service.md.html#one-service-per-item-for_each" data-repo-path="docs/objects/service.md">for_each</a>)</li>
 <li>the host (only for <code>vars</code>)</li>
 <li>the host's host groups (only for <code>vars</code>)</li>
 <li>the service (<code>[service.&lt;name&gt;]</code>)</li>
@@ -226,7 +226,7 @@ check.</p>
 <p dir="auto">Hosts and host groups can only set <code>vars</code> for their services. To change
 another setting such as <code>interval</code> or <code>thresholds</code> on one host, use a host
 service.</p>
-<p dir="auto"><a href="docs--objects--check.md.html#built-in-checks">Built-in checks</a> don't take host
+<p dir="auto"><a href="../watcher-source/docs--objects--check.md.html#built-in-checks" data-repo-path="docs/objects/check.md">Built-in checks</a> don't take host
 and host group vars (3 and 4), so a host var like <code>port</code> can't change them
 by accident. Use a macro such as <code>$host.vars.ssh_port$</code> in the service's
 vars to pass one on.</p>
@@ -295,7 +295,7 @@ every configuration form.</p>
 <h2 class="heading-element" dir="auto" id="editing-in-the-web-ui">Editing in the web UI</h2>
 <p dir="auto">The web UI edits the same files. New objects go to <code>conf.d/ui/</code>, changes to
 existing objects stay in the file where the object is written, and comments
-and formatting are kept. See <a href="docs--guides--web-ui.md.html#configuration">Web UI</a>.</p>
+and formatting are kept. See <a href="../watcher-source/docs--guides--web-ui.md.html#configuration" data-repo-path="docs/guides/web-ui.md">Web UI</a>.</p>
 <h2 class="heading-element" dir="auto" id="editing-at-the-same-time">Editing at the same time</h2>
 <p dir="auto">While someone has a file open in the web UI, nobody else can change it there
 or through the API. Others see who is editing it and since when, and get the
@@ -345,7 +345,7 @@ leave a lock file next to the file they edit:</p>
 over with <code>scp</code> isn't noticed either. In all these cases nothing is lost
 silently: if a file changed on disk after you opened it in the web UI, the
 web UI shows the differences before you save (see
-<a href="docs--guides--web-ui.md.html#configuration">Conflicts</a>).</p>
+<a href="../watcher-source/docs--guides--web-ui.md.html#configuration" data-repo-path="docs/guides/web-ui.md">Conflicts</a>).</p>
 <p dir="auto">Lock files of editors that crashed are ignored: Watcher checks whether the
 process that wrote the lock file still runs.</p>
 

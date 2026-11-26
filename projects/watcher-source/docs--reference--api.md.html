@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>docs/reference/api.md — Watcher — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=62ac401d" />
+  <link rel="stylesheet" href="../../styles.css?v=2d91b490" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -76,7 +76,7 @@
 <p dir="auto">The API speaks JSON under <code>/api/v1</code>. The web UI uses nothing but this API,
 so everything the web UI can do, a script can do too. The full
 specification is OpenAPI 3.1 at <code>/api/v1/openapi.yaml</code>
-(<a href="crates--hub--openapi.yaml.html">crates/hub/openapi.yaml</a>).</p>
+(<a href="../watcher-source/crates--hub--openapi.yaml.html" data-repo-path="crates/hub/openapi.yaml">crates/hub/openapi.yaml</a>).</p>
 <p dir="auto">Paths below are relative to <code>/api/v1</code>.</p>
 <h2 class="heading-element" dir="auto" id="authentication">Authentication</h2>
 <markdown-accessiblity-table><table>
@@ -89,7 +89,7 @@ specification is OpenAPI 3.1 at <code>/api/v1/openapi.yaml</code>
 <tbody>
 <tr>
 <td>Scripts</td>
-<td><code>Authorization: Bearer wt_...</code> header with an API token (see <a href="docs--reference--cli.md.html#token">token</a>, or the Account page).</td>
+<td><code>Authorization: Bearer wt_...</code> header with an API token (see <a href="../watcher-source/docs--reference--cli.md.html#token" data-repo-path="docs/reference/cli.md">token</a>, or the Account page).</td>
 </tr>
 <tr>
 <td>Browser</td>
@@ -297,7 +297,7 @@ curl -H <span class="pl-s"><span class="pl-pds">"</span>Authorization: Bearer <s
   .../api/v1/services/backup01/backup/result</pre></div>
 <p dir="auto">The body contains <code>exit_code</code> (0 to 3) or <code>state</code> (<code>ok</code>, <code>warning</code>,
 <code>critical</code>, <code>unknown</code>), and <code>output</code>, which is read like the output of a
-command. See <a href="docs--objects--check.md.html#passive-checks">Passive checks</a>.</p>
+command. See <a href="../watcher-source/docs--objects--check.md.html#passive-checks" data-repo-path="docs/objects/check.md">Passive checks</a>.</p>
 <h3 class="heading-element" dir="auto" id="live-updates">Live updates</h3>
 <div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto"><pre>curl -N -H <span class="pl-s"><span class="pl-pds">"</span>Authorization: Bearer <span class="pl-smi">$T</span><span class="pl-pds">"</span></span> .../api/v1/stream</pre></div>
 <markdown-accessiblity-table><table>
@@ -659,10 +659,10 @@ curl -H <span class="pl-s"><span class="pl-pds">"</span>Authorization: Bearer <s
 account, logs the user out everywhere.</p>
 <p dir="auto">Each two-factor code works once. Wrong codes count like wrong passwords:
 after five, the username is locked for a minute. See
-<a href="docs--guides--web-ui.md.html#two-factor-authentication">Two-factor authentication</a>.</p>
+<a href="../watcher-source/docs--guides--web-ui.md.html#two-factor-authentication" data-repo-path="docs/guides/web-ui.md">Two-factor authentication</a>.</p>
 <h2 class="heading-element" dir="auto" id="nodes">Nodes</h2>
 <p dir="auto">On a hub (<code>role = "hub"</code>); otherwise 503. Listing is for everyone,
-changes are for admins. See <a href="docs--guides--nodes.md.html">Nodes</a>.</p>
+changes are for admins. See <a href="../watcher-source/docs--guides--nodes.md.html" data-repo-path="docs/guides/nodes.md">Nodes</a>.</p>
 <markdown-accessiblity-table><table>
 <thead>
 <tr>
@@ -752,7 +752,7 @@ changes are for admins. See <a href="docs--guides--nodes.md.html">Nodes</a>.</p>
 </tr>
 <tr>
 <td><code>{"name", "kind": "token", "token_id", "token"}</code></td>
-<td>An API token, for example for the <a href="docs--guides--proxmox.md.html">Proxmox VE checks</a>. <code>token_id</code> is its ID (<code>watcher@pve!monitor</code>), <code>token</code> its secret.</td>
+<td>An API token, for example for the <a href="../watcher-source/docs--guides--proxmox.md.html" data-repo-path="docs/guides/proxmox.md">Proxmox VE checks</a>. <code>token_id</code> is its ID (<code>watcher@pve!monitor</code>), <code>token</code> its secret.</td>
 </tr>
 </tbody>
 </table></markdown-accessiblity-table>
@@ -762,7 +762,7 @@ changes are for admins. See <a href="docs--guides--nodes.md.html">Nodes</a>.</p>
 <h2 class="heading-element" dir="auto" id="discovery">Discovery</h2>
 <p dir="auto">Admins only. Proxmox VE hosts with <code>proxmox = { discover = true }</code> and the
 VMs and containers they found; see
-<a href="docs--guides--proxmox.md.html#5-accept-vms-and-containers">Accept VMs and containers</a>.
+<a href="../watcher-source/docs--guides--proxmox.md.html#5-accept-vms-and-containers" data-repo-path="docs/guides/proxmox.md">Accept VMs and containers</a>.
 <code>{name}</code> is the Proxmox VE host.</p>
 <markdown-accessiblity-table><table>
 <thead>

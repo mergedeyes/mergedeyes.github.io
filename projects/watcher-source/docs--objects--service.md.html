@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>docs/objects/service.md — Watcher — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=62ac401d" />
+  <link rel="stylesheet" href="../../styles.css?v=2d91b490" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -88,7 +88,7 @@ settings. Write a <code>[service.&lt;name&gt;]</code> when the service needs set
 its own, or to make several services from one check, like <code>disk_root</code> and
 <code>disk_var</code> from <code>disk</code>.</p>
 <p dir="auto">A service runs only on hosts that list it, directly or through a group.
-See <a href="docs--guides--configuration.md.html#how-a-host-gets-its-services">How a host gets its services</a>.
+See <a href="../watcher-source/docs--guides--configuration.md.html#how-a-host-gets-its-services" data-repo-path="docs/guides/configuration.md">How a host gets its services</a>.
 A service that is on no host gives a warning.</p>
 <h2 class="heading-element" dir="auto" id="fields">Fields</h2>
 <markdown-accessiblity-table><table>
@@ -103,7 +103,7 @@ A service that is on no host gives a warning.</p>
 <tr>
 <td><code>check</code></td>
 <td>the check with the same name</td>
-<td>The <a href="docs--objects--check.md.html">check</a> to use. Not needed if the service has its own <code>command</code>, or is <code>passive</code>.</td>
+<td>The <a href="../watcher-source/docs--objects--check.md.html" data-repo-path="docs/objects/check.md">check</a> to use. Not needed if the service has its own <code>command</code>, or is <code>passive</code>.</td>
 </tr>
 <tr>
 <td><code>for_each</code></td>
@@ -113,7 +113,7 @@ A service that is on no host gives a warning.</p>
 <tr>
 <td><code>groups</code></td>
 <td></td>
-<td>Service groups this service belongs to. See <a href="docs--objects--servicegroup.md.html">servicegroup</a>.</td>
+<td>Service groups this service belongs to. See <a href="../watcher-source/docs--objects--servicegroup.md.html" data-repo-path="docs/objects/servicegroup.md">servicegroup</a>.</td>
 </tr>
 <tr>
 <td><code>enabled</code></td>
@@ -123,17 +123,17 @@ A service that is on no host gives a warning.</p>
 <tr>
 <td><code>title</code></td>
 <td>the check's <code>title</code></td>
-<td>Name shown in the web UI. Can contain <a href="docs--objects--check.md.html#macros">macros</a>.</td>
+<td>Name shown in the web UI. Can contain <a href="../watcher-source/docs--objects--check.md.html#macros" data-repo-path="docs/objects/check.md">macros</a>.</td>
 </tr>
 <tr>
 <td><code>command</code></td>
 <td>the check's</td>
-<td>The command to run. Can contain <a href="docs--objects--check.md.html#macros">macros</a>.</td>
+<td>The command to run. Can contain <a href="../watcher-source/docs--objects--check.md.html#macros" data-repo-path="docs/objects/check.md">macros</a>.</td>
 </tr>
 <tr>
 <td><code>builtin</code></td>
 <td>the check's</td>
-<td>Use a check built into Watcher instead of a command: <code>ping</code>, <code>tcp</code>, <code>http</code>, <code>dns</code>, <code>tls</code>, or one of the <a href="docs--objects--check.md.html#proxmox-ve-checks">Proxmox VE checks</a>. See <a href="docs--objects--check.md.html#built-in-checks">Built-in checks</a>.</td>
+<td>Use a check built into Watcher instead of a command: <code>ping</code>, <code>tcp</code>, <code>http</code>, <code>dns</code>, <code>tls</code>, or one of the <a href="../watcher-source/docs--objects--check.md.html#proxmox-ve-checks" data-repo-path="docs/objects/check.md">Proxmox VE checks</a>. See <a href="../watcher-source/docs--objects--check.md.html#built-in-checks" data-repo-path="docs/objects/check.md">Built-in checks</a>.</td>
 </tr>
 <tr>
 <td><code>shell</code></td>
@@ -143,7 +143,7 @@ A service that is on no host gives a warning.</p>
 <tr>
 <td><code>run_on</code></td>
 <td><code>local</code></td>
-<td>Where the command runs. <code>local</code>: on the Watcher machine. <code>host</code>: on the monitored host over SSH, see <a href="docs--guides--ssh.md.html">Checks over SSH</a>.</td>
+<td>Where the command runs. <code>local</code>: on the Watcher machine. <code>host</code>: on the monitored host over SSH, see <a href="../watcher-source/docs--guides--ssh.md.html" data-repo-path="docs/guides/ssh.md">Checks over SSH</a>.</td>
 </tr>
 <tr>
 <td><code>copy</code></td>
@@ -153,22 +153,22 @@ A service that is on no host gives a warning.</p>
 <tr>
 <td><code>passive</code></td>
 <td><code>false</code></td>
-<td><code>true</code>: Watcher runs nothing and waits for results sent over the API. See <a href="docs--objects--check.md.html#passive-checks">Passive checks</a>.</td>
+<td><code>true</code>: Watcher runs nothing and waits for results sent over the API. See <a href="../watcher-source/docs--objects--check.md.html#passive-checks" data-repo-path="docs/objects/check.md">Passive checks</a>.</td>
 </tr>
 <tr>
 <td><code>format</code></td>
 <td><code>auto</code></td>
-<td>How the output is read: <code>auto</code>, <code>nagios</code>, <code>key_value</code> or <code>json</code>. See <a href="docs--objects--check.md.html#output-formats">Output formats</a>.</td>
+<td>How the output is read: <code>auto</code>, <code>nagios</code>, <code>key_value</code> or <code>json</code>. See <a href="../watcher-source/docs--objects--check.md.html#output-formats" data-repo-path="docs/objects/check.md">Output formats</a>.</td>
 </tr>
 <tr>
 <td><code>vars</code></td>
 <td></td>
-<td>Values for the <code>$name$</code> macros in the command, or the settings of a <a href="docs--objects--check.md.html#built-in-checks">built-in check</a>. Merged with the check's vars.</td>
+<td>Values for the <code>$name$</code> macros in the command, or the settings of a <a href="../watcher-source/docs--objects--check.md.html#built-in-checks" data-repo-path="docs/objects/check.md">built-in check</a>. Merged with the check's vars.</td>
 </tr>
 <tr>
 <td><code>thresholds.&lt;metric&gt;</code></td>
 <td></td>
-<td>Limits for a metric: <code>{ warn = "...", crit = "..." }</code>. See <a href="docs--objects--check.md.html#thresholds">Thresholds</a>.</td>
+<td>Limits for a metric: <code>{ warn = "...", crit = "..." }</code>. See <a href="../watcher-source/docs--objects--check.md.html#thresholds" data-repo-path="docs/objects/check.md">Thresholds</a>.</td>
 </tr>
 <tr>
 <td><code>interval</code></td>
@@ -198,7 +198,7 @@ A service that is on no host gives a warning.</p>
 <tr>
 <td><code>flap_detection</code></td>
 <td><code>true</code></td>
-<td>Detect services that change state too often. See <a href="docs--objects--check.md.html#flap-detection">Flap detection</a>.</td>
+<td>Detect services that change state too often. See <a href="../watcher-source/docs--objects--check.md.html#flap-detection" data-repo-path="docs/objects/check.md">Flap detection</a>.</td>
 </tr>
 <tr>
 <td><code>flap_low</code></td>
@@ -219,7 +219,7 @@ A service that is on no host gives a warning.</p>
 </table></markdown-accessiblity-table>
 <p dir="auto">Every field from <code>title</code> down can also be set on the check. A value set on
 the service wins over the check's value. A
-<a href="docs--objects--host.md.html#host-services">host service</a> can set every field again for one
+<a href="../watcher-source/docs--objects--host.md.html#host-services" data-repo-path="docs/objects/host.md">host service</a> can set every field again for one
 host.</p>
 <h2 class="heading-element" dir="auto" id="examples">Examples</h2>
 <h3 class="heading-element" dir="auto" id="use-a-check-as-it-is">Use a check as it is</h3>
@@ -249,7 +249,7 @@ host.</p>
 <span class="pl-smi">enabled</span> = <span class="pl-c1">false</span></pre></div>
 <p dir="auto">A host service with <code>enabled = true</code> turns it back on for one host. To turn
 a service off on one host only, see
-<a href="docs--objects--host.md.html#removing-a-service-from-one-host">Removing a service from one host</a>.</p>
+<a href="../watcher-source/docs--objects--host.md.html#removing-a-service-from-one-host" data-repo-path="docs/objects/host.md">Removing a service from one host</a>.</p>
 <h3 class="heading-element" dir="auto" id="put-on-hosts">Put on hosts</h3>
 <p dir="auto">A service runs once a host or host group lists it:</p>
 <div class="highlight highlight-source-toml notranslate position-relative overflow-auto" dir="auto"><pre>[<span class="pl-en">hostgroup</span>.<span class="pl-en">linux</span>]
@@ -325,10 +325,10 @@ web01/https_eu  every 1m     check_http -S -H klarsocial.eu
 </code></pre></div>
 <h2 class="heading-element" dir="auto" id="see-also">See also</h2>
 <ul dir="auto">
-<li><a href="docs--objects--check.md.html">check</a>: the command and how its output is read</li>
-<li><a href="docs--objects--host.md.html">host</a>: change a service on one host</li>
-<li><a href="docs--objects--servicegroup.md.html">servicegroup</a>: assign several services together</li>
-<li><a href="docs--guides--configuration.md.html#which-value-wins">Which value wins</a></li>
+<li><a href="../watcher-source/docs--objects--check.md.html" data-repo-path="docs/objects/check.md">check</a>: the command and how its output is read</li>
+<li><a href="../watcher-source/docs--objects--host.md.html" data-repo-path="docs/objects/host.md">host</a>: change a service on one host</li>
+<li><a href="../watcher-source/docs--objects--servicegroup.md.html" data-repo-path="docs/objects/servicegroup.md">servicegroup</a>: assign several services together</li>
+<li><a href="../watcher-source/docs--guides--configuration.md.html#which-value-wins" data-repo-path="docs/guides/configuration.md">Which value wins</a></li>
 </ul>
 
         </div>

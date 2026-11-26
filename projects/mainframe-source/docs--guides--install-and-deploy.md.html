@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>docs/guides/install-and-deploy.md — Mainframe — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=62ac401d" />
+  <link rel="stylesheet" href="../../styles.css?v=2d91b490" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -142,7 +142,7 @@ and <code>Enter</code> asks before installing the old version. It only knows com
 up to your last fetch; <code>p</code> fetches right then, so it always gets the
 newest.</p>
 <p dir="auto">Installing copies the program to <code>~/.local/bin</code> (<code>install_dir</code> in the
-<a href="docs--reference--config.md.html">configuration</a>). In a Cargo project, the first row
+<a href="../mainframe-source/docs--reference--config.md.html" data-repo-path="docs/reference/config.md">configuration</a>). In a Cargo project, the first row
 runs <code>cargo install --path .</code> instead.</p>
 <h3 class="heading-element" dir="auto" id="desktop-entries">Desktop entries</h3>
 <p dir="auto">When the project has a <code>.desktop</code> file that starts the program, installing
@@ -231,7 +231,7 @@ hides that file from the container. Your file stays as it is.</p>
 so host names never end up in a commit. <code>D</code> then <code>e</code> opens the same form
 for the selected target, <code>x</code> deletes it, and <code>E</code> opens the whole file in
 your editor; see
-<a href="docs--reference--config.md.html#per-project-settings">Configuration</a> for every
+<a href="../mainframe-source/docs--reference--config.md.html#per-project-settings" data-repo-path="docs/reference/config.md">Configuration</a> for every
 setting.</p>
 <h3 class="heading-element" dir="auto" id="deploying">Deploying</h3>
 <p dir="auto"><code>D</code> opens the picker with your targets. It shows what a deploy will do,
@@ -341,7 +341,7 @@ for example:</p>
 <p dir="auto">After the deploy, worked or not, the checkout and its build output are
 deleted again, so they don't fill your disk. The next deploy builds from
 scratch. With <code>keep_deploy_builds = true</code> in the
-<a href="docs--reference--config.md.html">configuration</a>, the checkout stays, and later
+<a href="../mainframe-source/docs--reference--config.md.html" data-repo-path="docs/reference/config.md">configuration</a>, the checkout stays, and later
 deploys only rebuild what changed.</p>
 
         </div>

@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>docs/reference/cli.md — Watcher — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=62ac401d" />
+  <link rel="stylesheet" href="../../styles.css?v=2d91b490" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -187,7 +187,7 @@ path are found in the default check directories.</p>
 <div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto"><pre>watcher run-check -- check_disk -w 20% -c 10% -p /
 watcher run-check --shell <span class="pl-s"><span class="pl-pds">'</span>echo "users=$(who | wc -l)"<span class="pl-pds">'</span></span>
 watcher run-check --crit <span class="pl-s"><span class="pl-pds">'</span>time=&gt; 2s<span class="pl-pds">'</span></span> -- check_http -H example.com</pre></div>
-<p dir="auto">See <a href="docs--objects--check.md.html#testing-a-command">Testing a command</a>.</p>
+<p dir="auto">See <a href="../watcher-source/docs--objects--check.md.html#testing-a-command" data-repo-path="docs/objects/check.md">Testing a command</a>.</p>
 <h2 class="heading-element" dir="auto" id="init">init</h2>
 <p dir="auto">Asks questions in the terminal and writes <code>watcher.toml</code> and <code>conf.d/</code>.</p>
 <div class="snippet-clipboard-content notranslate position-relative overflow-auto"><pre class="notranslate"><code>watcher init [DIR] [--answers FILE] [--force]
@@ -209,7 +209,7 @@ watcher run-check --crit <span class="pl-s"><span class="pl-pds">'</span>time=&g
 <tr>
 <td><code>--answers FILE</code></td>
 <td></td>
-<td>Take the answers from a file instead of asking. Format: <a href="examples--init-answers.toml.html">examples/init-answers.toml</a>.</td>
+<td>Take the answers from a file instead of asking. Format: <a href="../watcher-source/examples--init-answers.toml.html" data-repo-path="examples/init-answers.toml">examples/init-answers.toml</a>.</td>
 </tr>
 <tr>
 <td><code>--force</code></td>
@@ -220,7 +220,7 @@ watcher run-check --crit <span class="pl-s"><span class="pl-pds">'</span>time=&g
 </table></markdown-accessiblity-table>
 <p dir="auto">Answers can also be piped to stdin.</p>
 <p dir="auto">With a database, <code>init</code> creates an admin account and offers
-<a href="docs--guides--web-ui.md.html#two-factor-authentication">two-factor authentication</a>
+<a href="../watcher-source/docs--guides--web-ui.md.html#two-factor-authentication" data-repo-path="docs/guides/web-ui.md">two-factor authentication</a>
 for it: it prints a QR code and the key for an authenticator app, asks
 for a code from the app, and prints the ten recovery codes at the end.
 In an answers file, <code>totp_secret</code> under <code>[admin]</code> turns it on with a key
@@ -280,7 +280,7 @@ watcher config explain web01/http
 watcher config explain service disk
 watcher config explain hostgroup linux
 watcher config explain notify dba-critical</pre></div>
-<p dir="auto">See <a href="docs--guides--configuration.md.html#finding-out-where-a-value-comes-from">Finding out where a value comes from</a>.</p>
+<p dir="auto">See <a href="../watcher-source/docs--guides--configuration.md.html#finding-out-where-a-value-comes-from" data-repo-path="docs/guides/configuration.md">Finding out where a value comes from</a>.</p>
 <h2 class="heading-element" dir="auto" id="config-edit">config edit</h2>
 <p dir="auto">Opens an object file in your editor, locked against changes in the web UI
 while the editor is open. Afterwards it checks the configuration.</p>
@@ -316,7 +316,7 @@ error: not opened; --force edits it anyway
 </code></pre></div>
 <p dir="auto">The exit code is 1 if the file is locked, the editor fails, or the
 configuration has errors afterwards. See
-<a href="docs--guides--configuration.md.html#editing-at-the-same-time">Editing at the same time</a>.</p>
+<a href="../watcher-source/docs--guides--configuration.md.html#editing-at-the-same-time" data-repo-path="docs/guides/configuration.md">Editing at the same time</a>.</p>
 <h2 class="heading-element" dir="auto" id="notify-test">notify test</h2>
 <p dir="auto">Sends a test message to a contact, on all its channels.</p>
 <div class="snippet-clipboard-content notranslate position-relative overflow-auto"><pre class="notranslate"><code>watcher notify test &lt;contact&gt; [PATH]
@@ -336,7 +336,7 @@ from the first line of stdin with <code>--password-stdin</code>.</li>
 <li><code>passwd</code> logs the user out everywhere. <code>remove</code> also deletes the user's
 sessions and API tokens.</li>
 <li><code>list</code> shows <code>totp</code> for users with
-<a href="docs--guides--web-ui.md.html#two-factor-authentication">two-factor authentication</a>.</li>
+<a href="../watcher-source/docs--guides--web-ui.md.html#two-factor-authentication" data-repo-path="docs/guides/web-ui.md">two-factor authentication</a>.</li>
 <li><code>totp-off</code> turns two-factor authentication off, for a user who lost
 their phone and their recovery codes. The password alone logs them in
 until they set it up again under Account.</li>
@@ -355,10 +355,10 @@ again after upgrades.</p>
 <div class="snippet-clipboard-content notranslate position-relative overflow-auto"><pre class="notranslate"><code>watcher db reader &lt;name&gt; [--password-stdin]
 </code></pre></div>
 <p dir="auto">Without <code>--password-stdin</code>, a password is generated and printed. See
-<a href="docs--guides--data.md.html#read-only-login">Read-only login</a>.</p>
+<a href="../watcher-source/docs--guides--data.md.html#read-only-login" data-repo-path="docs/guides/data.md">Read-only login</a>.</p>
 <h2 class="heading-element" dir="auto" id="secret">secret</h2>
-<p dir="auto">Manages keys and passwords for <a href="docs--guides--ssh.md.html#secrets">checks over SSH</a>,
-and API tokens for the <a href="docs--guides--proxmox.md.html">Proxmox VE checks</a>. They are
+<p dir="auto">Manages keys and passwords for <a href="../watcher-source/docs--guides--ssh.md.html#secrets" data-repo-path="docs/guides/ssh.md">checks over SSH</a>,
+and API tokens for the <a href="../watcher-source/docs--guides--proxmox.md.html" data-repo-path="docs/guides/proxmox.md">Proxmox VE checks</a>. They are
 stored in the database, encrypted with <code>data_dir/secret.key</code>.</p>
 <div class="snippet-clipboard-content notranslate position-relative overflow-auto"><pre class="notranslate"><code>watcher secret new &lt;name&gt; [--replace]
 watcher secret import &lt;name&gt; &lt;file&gt; [--passphrase-stdin] [--replace]
@@ -386,9 +386,9 @@ instead.</li>
 watcher hostkey accept &lt;address&gt;[:&lt;port&gt;]
 watcher hostkey forget &lt;address&gt;[:&lt;port&gt;]
 </code></pre></div>
-<p dir="auto">See <a href="docs--guides--ssh.md.html#host-keys">Host keys</a>.</p>
+<p dir="auto">See <a href="../watcher-source/docs--guides--ssh.md.html#host-keys" data-repo-path="docs/guides/ssh.md">Host keys</a>.</p>
 <h2 class="heading-element" dir="auto" id="node">node</h2>
-<p dir="auto">Manages <a href="docs--guides--nodes.md.html">nodes</a>. On the hub (<code>role = "hub"</code>):</p>
+<p dir="auto">Manages <a href="../watcher-source/docs--guides--nodes.md.html" data-repo-path="docs/guides/nodes.md">nodes</a>. On the hub (<code>role = "hub"</code>):</p>
 <div class="snippet-clipboard-content notranslate position-relative overflow-auto"><pre class="notranslate"><code>watcher node add &lt;name&gt;
 watcher node token &lt;name&gt;
 watcher node list

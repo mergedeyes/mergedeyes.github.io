@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>docs/guides/git.md — Mainframe — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=62ac401d" />
+  <link rel="stylesheet" href="../../styles.css?v=2d91b490" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -232,7 +232,7 @@ the remote. Type to filter, <code>Enter</code> switches. When nothing matches,
 <p dir="auto">When a pull request is merged, GitHub usually deletes its branch. <code>g f</code>
 then drops <code>origin/&lt;branch&gt;</code> on the next fetch, but your local branch
 stays; <code>g o</code> shows it as deleted on the remote. To have <code>g f</code> delete those
-too, set this in the <a href="docs--reference--config.md.html">configuration</a>:</p>
+too, set this in the <a href="../mainframe-source/docs--reference--config.md.html" data-repo-path="docs/reference/config.md">configuration</a>:</p>
 <div class="highlight highlight-source-toml notranslate position-relative overflow-auto" dir="auto"><pre><span class="pl-smi">prune_gone_branches</span> = <span class="pl-c1">true</span></pre></div>
 <p dir="auto">It only deletes a local branch when everything on it is in <code>origin/main</code>,
 so no work is lost. That includes branches GitHub rebased or squashed when
@@ -249,7 +249,7 @@ uncommitted changes stay as they are.</p>
 <p dir="auto">A worktree is a second checkout of the same repository in another folder,
 for example to work on two branches at once. Inside a worktree's folder,
 everything in Mainframe works on that checkout and its branch. The
-<a href="docs--guides--cleanup.md.html">cleanup</a> also finds the build output in your other worktrees.</p>
+<a href="../mainframe-source/docs--guides--cleanup.md.html" data-repo-path="docs/guides/cleanup.md">cleanup</a> also finds the build output in your other worktrees.</p>
 <p dir="auto"><code>g W</code> removes one. Pick it by its folder name; Mainframe asks first and
 says which branch it has checked out. The branch itself stays. When the
 worktree has uncommitted changes, the question says how many would be lost.

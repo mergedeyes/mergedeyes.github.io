@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>docs/guides/web-ui.md — Watcher — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=62ac401d" />
+  <link rel="stylesheet" href="../../styles.css?v=2d91b490" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -75,7 +75,7 @@
 <h1 class="heading-element" dir="auto" id="web-ui">Web UI</h1>
 <p dir="auto">The web UI is built into the <code>watcher</code> binary; there is nothing extra to
 install. By default it listens on <a href="http://127.0.0.1:8080" rel="nofollow">http://127.0.0.1:8080</a>. Change this with
-<code>listen</code> in <a href="docs--reference--watcher-toml.md.html">watcher.toml</a>.</p>
+<code>listen</code> in <a href="../watcher-source/docs--reference--watcher-toml.md.html" data-repo-path="docs/reference/watcher-toml.md">watcher.toml</a>.</p>
 <h2 class="heading-element" dir="auto" id="login">Login</h2>
 <p dir="auto">With a database, everyone has to log in. Create accounts on the command
 line:</p>
@@ -133,7 +133,7 @@ the server:</p>
 <ul dir="auto">
 <li>It needs a <code>watcher.toml</code>. The app secrets are stored encrypted in the
 database, with the key file <code>data_dir/secret.key</code> (the same file that
-encrypts <a href="docs--guides--ssh.md.html#secrets">SSH secrets</a>). <strong>Back it up together with the
+encrypts <a href="../watcher-source/docs--guides--ssh.md.html#secrets" data-repo-path="docs/guides/ssh.md">SSH secrets</a>). <strong>Back it up together with the
 database</strong>: without it, users with two-factor authentication can't log
 in until an admin turns it off with <code>watcher user totp-off</code>.</li>
 <li>The clock of the server must be right (use NTP). Codes from 30 seconds
@@ -191,7 +191,7 @@ their token alone.</li>
 </tr>
 <tr>
 <td>Nodes</td>
-<td>On a hub: which <a href="docs--guides--nodes.md.html">nodes</a> are connected; add, join again and remove nodes (admins).</td>
+<td>On a hub: which <a href="../watcher-source/docs--guides--nodes.md.html" data-repo-path="docs/guides/nodes.md">nodes</a> are connected; add, join again and remove nodes (admins).</td>
 </tr>
 <tr>
 <td>Process Info</td>
@@ -203,7 +203,7 @@ their token alone.</li>
 </tr>
 <tr>
 <td>Configuration</td>
-<td>Forms and a file editor for the configuration, secrets, and the VMs and containers that <a href="docs--guides--proxmox.md.html#5-accept-vms-and-containers">discovery</a> found (admins).</td>
+<td>Forms and a file editor for the configuration, secrets, and the VMs and containers that <a href="../watcher-source/docs--guides--proxmox.md.html#5-accept-vms-and-containers" data-repo-path="docs/guides/proxmox.md">discovery</a> found (admins).</td>
 </tr>
 <tr>
 <td>Account</td>
@@ -231,9 +231,9 @@ Notifications, Disable Active Checks, Submit Result (passive services
 only), and the matching undo commands. Hosts and services show badges
 for them: ACK, DOWNTIME, MUTED, CHECKS OFF. To run a command on several
 rows at once, tick their checkboxes (Shift-click selects a range); the
-list's title bar then shows the commands. See <a href="docs--guides--operations.md.html">Operations</a>
+list's title bar then shows the commands. See <a href="../watcher-source/docs--guides--operations.md.html" data-repo-path="docs/guides/operations.md">Operations</a>
 and its section on
-<a href="docs--guides--operations.md.html#commands-on-several-hosts-or-services">commands on several hosts or services</a>.</p>
+<a href="../watcher-source/docs--guides--operations.md.html#commands-on-several-hosts-or-services" data-repo-path="docs/guides/operations.md">commands on several hosts or services</a>.</p>
 <p dir="auto"><strong>Live / Paused</strong> in the top bar: pages update live. New results change
 the rows you see right away. When a state changes, the list is loaded
 again, so services move into or out of it. Paused keeps the page still;
@@ -287,7 +287,7 @@ section, and <strong>Remove</strong> in the section takes the settings out again
 <li>A service runs either a check or a command of its own: while one is
 set, the other field is greyed out. A check runs either a command or a
 built-in check, in the same way.</li>
-<li>Configuration → Checks also lists the <a href="docs--objects--check.md.html#built-in-checks">built-in checks</a>.
+<li>Configuration → Checks also lists the <a href="../watcher-source/docs--objects--check.md.html#built-in-checks" data-repo-path="docs/objects/check.md">built-in checks</a>.
 When a form's check is a built-in one, an <strong>Options</strong> section shows each
 of its options with what it does, its default and whether it is
 required (<code>*</code>). Values a check already sets show as <code>(from check …)</code>.
@@ -323,7 +323,7 @@ read-only, with a note saying who is editing it, where (web UI, <code>watcher co
 reloads the file and you can edit. <strong>Edit Anyway</strong> takes the file over
 right away; the other person's page turns read-only within half a minute.
 The Files list shows who is editing each file. See
-<a href="docs--guides--configuration.md.html#editing-at-the-same-time">Editing at the same time</a>.</p>
+<a href="../watcher-source/docs--guides--configuration.md.html#editing-at-the-same-time" data-repo-path="docs/guides/configuration.md">Editing at the same time</a>.</p>
 <h2 class="heading-element" dir="auto" id="config-mode">Config mode</h2>
 <p dir="auto"><code>config_mode</code> in <code>watcher.toml</code> decides whether the web UI or the files are
 in charge:</p>

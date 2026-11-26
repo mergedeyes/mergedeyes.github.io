@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>docs/guides/running.md — Mainframe — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=62ac401d" />
+  <link rel="stylesheet" href="../../styles.css?v=2d91b490" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -108,7 +108,7 @@ you can always see what ran.</p>
 </tbody>
 </table></markdown-accessiblity-table>
 <p dir="auto">What these mean depends on the project; see the table in the
-<a href="docs--introduction.md.html#projects">introduction</a>. With a file selected, <code>r</code>
+<a href="../mainframe-source/docs--introduction.md.html#projects" data-repo-path="docs/introduction.md">introduction</a>. With a file selected, <code>r</code>
 runs that file instead:</p>
 <ul dir="auto">
 <li>a Rust file in <code>src/bin/</code> or <code>examples/</code>: <code>cargo run --bin …</code> or <code>--example …</code></li>
@@ -116,7 +116,7 @@ runs that file instead:</p>
 <li>a single <code>.rs</code>, <code>.c</code> or <code>.cpp</code> file: compiled to a temporary program and run</li>
 <li>anything executable</li>
 </ul>
-<p dir="auto">The <code>runners</code> setting in the <a href="docs--reference--config.md.html">configuration</a>
+<p dir="auto">The <code>runners</code> setting in the <a href="../mainframe-source/docs--reference--config.md.html" data-repo-path="docs/reference/config.md">configuration</a>
 changes or adds commands per file extension.</p>
 <h2 class="heading-element" dir="auto" id="the-task-picker">The task picker</h2>
 <p dir="auto"><code>T</code> lists everything the project can run: the build tool's usual commands,
@@ -129,7 +129,7 @@ programs and paths. ↑ and ↓ go through the commands you ran before; type the
 start of one first to see only those. <code>!</code> opens your shell in the current
 folder; leave it with <code>exit</code> to come back.</p>
 <p dir="auto">For commands you run often, give them a key with a
-<a href="docs--reference--config.md.html#custom-actions">custom action</a>.</p>
+<a href="../mainframe-source/docs--reference--config.md.html#custom-actions" data-repo-path="docs/reference/config.md">custom action</a>.</p>
 <h2 class="heading-element" dir="auto" id="output-tabs">Output tabs</h2>
 <p dir="auto">Starting a task while another one is running opens a new tab, so a dev
 server can keep running while you build. Up to 9 tasks run at once.</p>
@@ -181,7 +181,7 @@ it. <code>End</code> follows new output again.</p>
 password fails right away instead of waiting forever. Use <code>R</code>, <code>!</code> or an
 <code>interactive</code> custom action for those.</p>
 <h2 class="heading-element" dir="auto" id="each-project-keeps-its-output">Each project keeps its output</h2>
-<p dir="auto">Every project in your <a href="docs--introduction.md.html#your-projects-folder">projects folder</a>
+<p dir="auto">Every project in your <a href="../mainframe-source/docs--introduction.md.html#your-projects-folder" data-repo-path="docs/introduction.md">projects folder</a>
 has its own tabs. Move to another project, with <code>J</code> or by browsing there,
 and you see the output it had when you left. The tasks of the project you
 left keep running in the background.</p>

@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>docs/explanations/prompt-marks.md — Terminaal — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=62ac401d" />
+  <link rel="stylesheet" href="../../styles.css?v=2d91b490" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -97,7 +97,7 @@ unchanged, and only collects OSC sequences to look at them:</p>
 <li><strong>OSC 133 <code>C</code></strong> → "command started", <strong><code>D;code</code></strong> → "command finished".</li>
 <li>Two jobs besides the shell's: kitty graphics commands (APC <code>ESC _ G …</code>) go
 to the terminal's image store and leave an anchor cell behind (see
-<a href="docs--guides--images.md.html">Images</a> and <a href="docs--explanations--architecture.md.html#images">Architecture</a>),
+<a href="../terminaal-source/docs--guides--images.md.html" data-repo-path="docs/guides/images.md">Images</a> and <a href="../terminaal-source/docs--explanations--architecture.md.html#images" data-repo-path="docs/explanations/architecture.md">Architecture</a>),
 and kitty keyboard mode pushes are counted, so a program pushing thousands of
 them can't crash the parser.</li>
 <li>Everything else is untouched.</li>

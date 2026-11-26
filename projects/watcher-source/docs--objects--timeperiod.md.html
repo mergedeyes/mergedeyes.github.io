@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>docs/objects/timeperiod.md — Watcher — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=62ac401d" />
+  <link rel="stylesheet" href="../../styles.css?v=2d91b490" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -74,7 +74,7 @@
         <div class="readme-content">
 <h1 class="heading-element" dir="auto" id="timeperiod">timeperiod</h1>
 <p dir="auto">A time period says when something applies, for example business hours.
-A <a href="docs--objects--notify.md.html">notify rule</a> with <code>period</code> only notifies inside its time
+A <a href="../watcher-source/docs--objects--notify.md.html" data-repo-path="docs/objects/notify.md">notify rule</a> with <code>period</code> only notifies inside its time
 period.</p>
 <div class="highlight highlight-source-toml notranslate position-relative overflow-auto" dir="auto"><pre>[<span class="pl-en">timeperiod</span>.<span class="pl-en">workhours</span>]
 <span class="pl-smi">title</span> = <span class="pl-s"><span class="pl-pds">"</span>Business hours<span class="pl-pds">"</span></span>
@@ -109,7 +109,7 @@ that starts at night and is still open at 08:00 is sent to them at 08:00.</p>
 </table></markdown-accessiblity-table>
 <h3 class="heading-element" dir="auto" id="windows">Windows</h3>
 <p dir="auto">Each window is a table <code>{ days, from, to }</code>. Times are local time; the time
-zone is <code>timezone</code> in <a href="docs--reference--watcher-toml.md.html">watcher.toml</a>, or the
+zone is <code>timezone</code> in <a href="../watcher-source/docs--reference--watcher-toml.md.html" data-repo-path="docs/reference/watcher-toml.md">watcher.toml</a>, or the
 system's.</p>
 <markdown-accessiblity-table><table>
 <thead>
@@ -137,7 +137,7 @@ system's.</p>
 </tr>
 </tbody>
 </table></markdown-accessiblity-table>
-<p dir="auto">The windows are the same as in <a href="docs--objects--downtimegroup.md.html#windows">downtime groups</a>.</p>
+<p dir="auto">The windows are the same as in <a href="../watcher-source/docs--objects--downtimegroup.md.html#windows" data-repo-path="docs/objects/downtimegroup.md">downtime groups</a>.</p>
 <h2 class="heading-element" dir="auto" id="examples">Examples</h2>
 <h3 class="heading-element" dir="auto" id="business-hours">Business hours</h3>
 <div class="highlight highlight-source-toml notranslate position-relative overflow-auto" dir="auto"><pre>[<span class="pl-en">timeperiod</span>.<span class="pl-en">workhours</span>]
@@ -187,7 +187,7 @@ is sent once the downtime is over, if the time period is still active.</li>
 <li><strong>After a restart without a database</strong>, problems that were already open
 are not sent when the time period begins, only through <code>repeat</code>. With a
 database, Watcher knows from the
-<a href="docs--guides--notifications.md.html#notification-log">notification log</a> who got
+<a href="../watcher-source/docs--guides--notifications.md.html#notification-log" data-repo-path="docs/guides/notifications.md">notification log</a> who got
 them, and nothing changes.</li>
 <li><strong>Recoveries</strong> go to the rule's contacts only if they got the problem,
 at any time. So someone who got a problem at 17:55 also gets its
@@ -200,8 +200,8 @@ when the time period begins again.</li>
 <p dir="auto">A time period that no rule uses gives a warning.</p>
 <h2 class="heading-element" dir="auto" id="see-also">See also</h2>
 <ul dir="auto">
-<li><a href="docs--objects--notify.md.html">notify</a>: the <code>period</code> field</li>
-<li><a href="docs--guides--alerting-recipes.md.html">Alerting recipes</a>: on-call at night, the
+<li><a href="../watcher-source/docs--objects--notify.md.html" data-repo-path="docs/objects/notify.md">notify</a>: the <code>period</code> field</li>
+<li><a href="../watcher-source/docs--guides--alerting-recipes.md.html" data-repo-path="docs/guides/alerting-recipes.md">Alerting recipes</a>: on-call at night, the
 team during business hours</li>
 </ul>
 

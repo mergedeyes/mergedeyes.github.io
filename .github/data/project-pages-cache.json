@@ -272,7 +272,7 @@
       "klar-web/src/proxy.ts": "4bb8c9c440630c6d86ce4fb17b2056657f42f87c",
       "klar-web/src/whats-new/releases.ts": "e1016df8dc9bb954bb79f266ef8ffa7ca7481cc3"
     },
-    "markdown_format": 1,
+    "markdown_format": 2,
     "newest_commit_sha": "9d451a2881706cfe9e5a28c5a450d3eb11a45d3b",
     "pushed_at": "2026-11-26T22:16:41Z",
     "readme_format": 3,
@@ -290,7 +290,7 @@
       ".github/workflows/bump-aur.yml": "e939f7ba50b0477234527c7b0d365ec60683da3d",
       "src/main.rs": "40bbdf1597e3de92da426370ce42441703ba3a44"
     },
-    "markdown_format": 1,
+    "markdown_format": 2,
     "newest_commit_sha": "cf7bce850c76d7a3d09727f9ee7fa9dbd9a3c6de",
     "pushed_at": "2026-11-26T19:41:54Z",
     "readme_format": 3,
@@ -374,7 +374,7 @@
       "src/ui/pickers.rs": "04e8bf98b4b446a91dd86082fe9cea3d9b9e2db9",
       "src/watch.rs": "b2a24d593f14051791ad0da36cb29ba005d6d1f6"
     },
-    "markdown_format": 1,
+    "markdown_format": 2,
     "newest_commit_sha": "306e02703fd6d1e1511d01060ede6f107d7cbde3",
     "pushed_at": "2026-11-26T21:17:27Z",
     "readme_format": 3,
@@ -390,10 +390,10 @@
     "source_entries_format": 2
   },
   "mergedeyes/mergedeyes.github.io": {
-    "commit_count": 788,
+    "commit_count": 791,
     "files": {
       ".github/scripts/commit_and_push.sh": "05af7677fdd6c874d6f237ae682003f09d18349b",
-      ".github/scripts/generate_project_pages.py": "c04ae5d1c088ec2307ba58bf63549714c8129709",
+      ".github/scripts/generate_project_pages.py": "50b645756b518d506d040b6b52bc663ca3326326",
       ".github/scripts/update_visitor_count.py": "6b3f83843602f650466aef1cce25e691f1e2d4dc",
       ".github/workflows/generate-project-pages.yml": "17b536ebe81e661c5a9873b09da1096579295496",
       ".github/workflows/jekyll-gh-pages.yml": "e5d903dc63d17f68658e3d4b9726c19f748ce746",
@@ -413,9 +413,9 @@
       "skills/nginx.html": "54719e801660816e5360c1e05b7c98186bdaae02",
       "styles.css": "05f7b0f26ba80e1f73228fc2d4092971a8ce67f0"
     },
-    "markdown_format": 1,
-    "newest_commit_sha": "62ac401d28314380c6b287ad59b1cb74f1e10e17",
-    "pushed_at": "2026-11-26T23:13:56Z",
+    "markdown_format": 2,
+    "newest_commit_sha": "2d91b49074433fdf4b9db0ee2c54553506ba046c",
+    "pushed_at": "2026-11-26T23:21:21Z",
     "readme_format": 3,
     "source_entries": [
       "index.html",
@@ -447,7 +447,7 @@
       "special_demand_utils.py": "cd1581f2a0ebd3a3cb1d9cd4a53bf989a5b52b02",
       "zensus_utils.py": "47e9b32c2988828f6f36f5b9eb3f565dcd77041a"
     },
-    "markdown_format": 1,
+    "markdown_format": 2,
     "newest_commit_sha": "6ca6f112c177934260abb3ab36350243e2fecb40",
     "pushed_at": "2026-07-31T17:16:08Z",
     "readme_format": 3,
@@ -602,7 +602,7 @@
       "src/update.rs": "0b4d0560820b2393ae425e3411d3839ca1cf2909",
       "src/window.rs": "8fa6f199f5da25061aa23b6e8f741cf0db511e26"
     },
-    "markdown_format": 1,
+    "markdown_format": 2,
     "newest_commit_sha": "20d8a0f0672089a25eb190753fbecca2e2ecd81d",
     "pushed_at": "2026-11-08T14:48:21Z",
     "readme_format": 3,
@@ -875,7 +875,7 @@
       "web/src/routes/setup/+page.svelte": "1ecdad44cb151356c16c96957f5fff0e9befcafb",
       "web/src/routes/users/+page.svelte": "1db3cd2ffb0712d539e006a8ba40139d2b93fbae"
     },
-    "markdown_format": 1,
+    "markdown_format": 2,
     "newest_commit_sha": "17c6191648d311e9413b121540da04214144e7c7",
     "pushed_at": "2026-11-20T01:29:40Z",
     "readme_format": 3,
@@ -897,7 +897,7 @@
     "files": {
       "YarnCalculator.java": "5669a8941f4585486e2ee2fa0ff1260dfaf804f6"
     },
-    "markdown_format": 1,
+    "markdown_format": 2,
     "newest_commit_sha": "1d94f4f50f7065710c54ccf4e8bb1925225a4d06",
     "pushed_at": "2026-11-08T14:14:43Z",
     "readme_format": 3,

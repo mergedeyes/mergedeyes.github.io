@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>docs/install.md — Watcher — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=62ac401d" />
+  <link rel="stylesheet" href="../../styles.css?v=2d91b490" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -123,19 +123,19 @@ metric samples are stored in a compressed hypertable.</p>
 <h2 class="heading-element" dir="auto" id="setup">Setup</h2>
 <p dir="auto">Run the setup in an empty directory, for example <code>/etc/watcher</code>. There are
 three ways, and all of them write the same files. For a
-<a href="docs--guides--nodes.md.html">node</a> at another site, skip the setup: <code>watcher node join</code> sets up the machine, see <a href="docs--guides--nodes.md.html#add-a-node">Add a node</a>.</p>
+<a href="../watcher-source/docs--guides--nodes.md.html" data-repo-path="docs/guides/nodes.md">node</a> at another site, skip the setup: <code>watcher node join</code> sets up the machine, see <a href="../watcher-source/docs--guides--nodes.md.html#add-a-node" data-repo-path="docs/guides/nodes.md">Add a node</a>.</p>
 <p dir="auto"><strong>In the browser:</strong></p>
 <div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto"><pre>watcher setup                       <span class="pl-c"><span class="pl-c">#</span> http://127.0.0.1:8080</span>
 watcher setup --listen 0.0.0.0:8080 <span class="pl-c"><span class="pl-c">#</span> to set up a remote machine</span></pre></div>
 <p dir="auto">The log prints a setup token; enter it on the page. The wizard asks for
-the role (standalone, or a hub that <a href="docs--guides--nodes.md.html">nodes</a> connect to;
+the role (standalone, or a hub that <a href="../watcher-source/docs--guides--nodes.md.html" data-repo-path="docs/guides/nodes.md">nodes</a> connect to;
 a hub needs the database), the instance name and time zone, the
 database, web access (listen address, public URL, TLS: none, self-signed,
 certificate files or Let's Encrypt), the admin account, notifications and
 checks for this machine, and shows a summary. <strong>Write &amp; Start</strong> writes the files and
 starts Watcher.</p>
 <p dir="auto">For the admin account you can turn on
-<a href="docs--guides--web-ui.md.html#two-factor-authentication">two-factor authentication</a>
+<a href="../watcher-source/docs--guides--web-ui.md.html#two-factor-authentication" data-repo-path="docs/guides/web-ui.md">two-factor authentication</a>
 right away: tick <strong>Two-Factor</strong>, scan the QR code with an authenticator
 app, and confirm with a code from the app. After <strong>Write &amp; Start</strong>, the
 page shows the ten recovery codes once. Save them before you continue to
@@ -143,7 +143,7 @@ the login.</p>
 <p dir="auto"><strong>In the terminal:</strong></p>
 <div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto"><pre>watcher init /etc/watcher</pre></div>
 <p dir="auto"><strong>Without questions</strong>, from an answers file
-(<a href="examples--init-answers.toml.html">examples/init-answers.toml</a>):</p>
+(<a href="../watcher-source/examples--init-answers.toml.html" data-repo-path="examples/init-answers.toml">examples/init-answers.toml</a>):</p>
 <div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto"><pre>watcher init /etc/watcher --answers answers.toml</pre></div>
 <p dir="auto">The result:</p>
 <div class="snippet-clipboard-content notranslate position-relative overflow-auto"><pre class="notranslate"><code>watcher.toml          listen address, database, SMTP, TLS (mode 0600)
@@ -165,9 +165,9 @@ conf.d/hosts.toml     the host localhost
 <p dir="auto">Then create an admin account:</p>
 <div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto"><pre>watcher user add admin --admin -c /etc/watcher/watcher.toml</pre></div>
 <p dir="auto">After the first login, turn on
-<a href="docs--guides--web-ui.md.html#two-factor-authentication">two-factor authentication</a>
+<a href="../watcher-source/docs--guides--web-ui.md.html#two-factor-authentication" data-repo-path="docs/guides/web-ui.md">two-factor authentication</a>
 for the account on the Account page.</p>
-<p dir="auto">All options: <a href="docs--reference--watcher-toml.md.html">watcher.toml</a>.</p>
+<p dir="auto">All options: <a href="../watcher-source/docs--reference--watcher-toml.md.html" data-repo-path="docs/reference/watcher-toml.md">watcher.toml</a>.</p>
 <h2 class="heading-element" dir="auto" id="run">Run</h2>
 <div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto"><pre>watcher run                              <span class="pl-c"><span class="pl-c">#</span> ./watcher.toml, else /etc/watcher/watcher.toml</span>
 watcher run /etc/watcher/watcher.toml
@@ -266,7 +266,7 @@ Let's Encrypt. Use an internal CA that speaks ACME instead, such as
 <span class="pl-smi">ca</span> = <span class="pl-s"><span class="pl-pds">"</span>/etc/watcher/internal-root.pem<span class="pl-pds">"</span></span></pre></div>
 <p dir="auto">CAs such as ZeroSSL need an <em>external account binding</em>: a key ID and a
 key from your account at the CA. Set them as <code>eab_kid</code> and
-<code>eab_hmac_key</code>. All options: <a href="docs--reference--watcher-toml.md.html#tlsacme"><code>[tls.acme]</code></a>.</p>
+<code>eab_hmac_key</code>. All options: <a href="../watcher-source/docs--reference--watcher-toml.md.html#tlsacme" data-repo-path="docs/reference/watcher-toml.md"><code>[tls.acme]</code></a>.</p>
 <h2 class="heading-element" dir="auto" id="upgrades">Upgrades</h2>
 <p dir="auto">Replace the binary and restart. Database migrations run on start. Run
 <code>watcher db reader &lt;name&gt;</code> again for each read-only database login.</p>

@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>.github/scripts/generate_project_pages.py — Personal Website — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=62ac401d" />
+  <link rel="stylesheet" href="../../styles.css?v=2d91b490" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -1447,7 +1447,26 @@
 <span class="normal">1374</span>
 <span class="normal">1375</span>
 <span class="normal">1376</span>
-<span class="normal">1377</span></pre></div></td><td class="code"><div><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="normal">1377</span>
+<span class="normal">1378</span>
+<span class="normal">1379</span>
+<span class="normal">1380</span>
+<span class="normal">1381</span>
+<span class="normal">1382</span>
+<span class="normal">1383</span>
+<span class="normal">1384</span>
+<span class="normal">1385</span>
+<span class="normal">1386</span>
+<span class="normal">1387</span>
+<span class="normal">1388</span>
+<span class="normal">1389</span>
+<span class="normal">1390</span>
+<span class="normal">1391</span>
+<span class="normal">1392</span>
+<span class="normal">1393</span>
+<span class="normal">1394</span>
+<span class="normal">1395</span>
+<span class="normal">1396</span></pre></div></td><td class="code"><div><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
 <span class="sd">"""</span>
 <span class="sd">Generates a standalone HTML page under /projects for every project card in</span>
 <span class="sd">index.html that has a "Repository" link pointing at GitHub. Each page gets:</span>
@@ -1510,9 +1529,9 @@
 <span class="kn">import</span><span class="w"> </span><span class="nn">posixpath</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">html</span><span class="w"> </span><span class="kn">import</span> <span class="n">escape</span> <span class="k">as</span> <span class="n">html_escape</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">html</span><span class="w"> </span><span class="kn">import</span> <span class="n">escape</span> <span class="k">as</span> <span class="n">html_escape</span><span class="p">,</span> <span class="n">unescape</span> <span class="k">as</span> <span class="n">html_unescape</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">urllib.parse</span><span class="w"> </span><span class="kn">import</span> <span class="n">unquote</span><span class="p">,</span> <span class="n">urljoin</span><span class="p">,</span> <span class="n">urlparse</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">urllib.parse</span><span class="w"> </span><span class="kn">import</span> <span class="n">quote</span><span class="p">,</span> <span class="n">unquote</span><span class="p">,</span> <span class="n">urljoin</span><span class="p">,</span> <span class="n">urlparse</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">bs4</span><span class="w"> </span><span class="kn">import</span> <span class="n">BeautifulSoup</span>
@@ -1544,7 +1563,8 @@
 <span class="c1"># are invalidated by it - the (far more numerous) highlighted code files</span>
 <span class="c1"># keep being reused, so a bump doesn't re-fetch whole source trees.</span>
 <span class="c1"># 1: rendered like the README (before that: highlighted as plain source)</span>
-<span class="n">MARKDOWN_FORMAT</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="c1"># 2: links to repo files kept as blob URLs, made local by link_repo_files</span>
+<span class="n">MARKDOWN_FORMAT</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="n">MARKDOWN_EXTENSIONS</span> <span class="o">=</span> <span class="p">(</span><span class="s2">".md"</span><span class="p">,</span> <span class="s2">".markdown"</span><span class="p">)</span>
 
 <span class="n">GITHUB_TOKEN</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"GITHUB_TOKEN"</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span>
@@ -1896,29 +1916,25 @@
     <span class="k">return</span> <span class="n">path</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="n">MARKDOWN_EXTENSIONS</span><span class="p">)</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">fetch_source_html</span><span class="p">(</span><span class="n">owner</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">repo</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">branch</span><span class="p">,</span> <span class="n">slug</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">files</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">fetch_source_html</span><span class="p">(</span><span class="n">owner</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">repo</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">branch</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">"""Returns the HTML shown for one file in the source browser: markdown</span>
 <span class="sd">    files rendered like the README (a docs/ folder full of .md files is</span>
 <span class="sd">    meant to be read, not to be looked at as markup), everything else</span>
 <span class="sd">    syntax-highlighted (fetch_highlighted_source)."""</span>
     <span class="k">if</span> <span class="n">is_markdown</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">fetch_rendered_markdown</span><span class="p">(</span><span class="n">owner</span><span class="p">,</span> <span class="n">repo</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">branch</span><span class="p">,</span> <span class="n">slug</span><span class="p">,</span> <span class="n">files</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">fetch_rendered_markdown</span><span class="p">(</span><span class="n">owner</span><span class="p">,</span> <span class="n">repo</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">branch</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">fetch_highlighted_source</span><span class="p">(</span><span class="n">owner</span><span class="p">,</span> <span class="n">repo</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">fetch_rendered_markdown</span><span class="p">(</span><span class="n">owner</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">repo</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">branch</span><span class="p">,</span> <span class="n">slug</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">files</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">fetch_rendered_markdown</span><span class="p">(</span><span class="n">owner</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">repo</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">branch</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">"""Fetches one markdown file already rendered to HTML by GitHub - the</span>
 <span class="sd">    contents endpoint takes the same html+json Accept header as the readme</span>
 <span class="sd">    endpoint (see fetch_readme_html), so it's the exact same renderer and</span>
 <span class="sd">    the same clean_readme_html pass, just with relative links resolved</span>
-<span class="sd">    against the file's own directory instead of the repo root.</span>
-
-<span class="sd">    Links to other files that have a page of their own in this source</span>
-<span class="sd">    browser are pointed at that page instead of at github.com (docs that</span>
-<span class="sd">    link to each other stay browsable on this site), and links to the</span>
-<span class="sd">    root README go to the project page, which is where that's shown. The</span>
-<span class="sd">    hrefs are written relative to a per-file page under &lt;slug&gt;-source/;</span>
-<span class="sd">    relocate_source_links fixes them up for &lt;slug&gt;-source.html.</span>
+<span class="sd">    against the file's own directory instead of the repo root. Links to</span>
+<span class="sd">    other repo files come out as github.com blob URLs here, same as in the</span>
+<span class="sd">    README; link_repo_files points them at this site's pages when the page</span>
+<span class="sd">    is rendered.</span>
 
 <span class="sd">    Wrapped in .readme-content so it gets the README's styling as-is."""</span>
     <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"https://api.github.com/repos/</span><span class="si">{</span><span class="n">owner</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">repo</span><span class="si">}</span><span class="s2">/contents/</span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">"</span>
@@ -1929,50 +1945,76 @@
     <span class="k">if</span> <span class="n">resp</span><span class="o">.</span><span class="n">status_code</span> <span class="o">!=</span> <span class="mi">200</span><span class="p">:</span>
         <span class="k">return</span> <span class="sa">f</span><span class="s2">"&lt;p&gt;&lt;em&gt;Could not fetch </span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2"> (HTTP </span><span class="si">{</span><span class="n">resp</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2">).&lt;/em&gt;&lt;/p&gt;"</span>
 
-    <span class="n">branch</span> <span class="o">=</span> <span class="n">branch</span> <span class="ow">or</span> <span class="s2">"HEAD"</span>
-    <span class="n">blob_base</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"https://github.com/</span><span class="si">{</span><span class="n">owner</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">repo</span><span class="si">}</span><span class="s2">/blob/</span><span class="si">{</span><span class="n">branch</span><span class="si">}</span><span class="s2">/"</span>
-    <span class="n">file_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">files</span><span class="p">)</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">local_link</span><span class="p">(</span><span class="n">href</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
-        <span class="c1"># fix_readme_url has already turned every repo-relative link into</span>
-        <span class="c1"># an absolute blob URL, so only those can point at a local page.</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">href</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">blob_base</span><span class="p">):</span>
-            <span class="k">return</span> <span class="kc">None</span>
-        <span class="n">target</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">fragment</span> <span class="o">=</span> <span class="n">href</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">blob_base</span><span class="p">):]</span><span class="o">.</span><span class="n">partition</span><span class="p">(</span><span class="s2">"#"</span><span class="p">)</span>
-        <span class="n">target</span> <span class="o">=</span> <span class="n">unquote</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
-        <span class="n">fragment</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"#</span><span class="si">{</span><span class="n">fragment</span><span class="si">}</span><span class="s2">"</span> <span class="k">if</span> <span class="n">fragment</span> <span class="k">else</span> <span class="s2">""</span>
-        <span class="k">if</span> <span class="n">target</span> <span class="o">==</span> <span class="n">path</span> <span class="ow">and</span> <span class="n">fragment</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">fragment</span>
-        <span class="k">if</span> <span class="n">target</span> <span class="ow">in</span> <span class="n">file_set</span><span class="p">:</span>
-            <span class="k">return</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">safe_filename</span><span class="p">(</span><span class="n">target</span><span class="p">)</span><span class="si">}</span><span class="s2">.html</span><span class="si">{</span><span class="n">fragment</span><span class="si">}</span><span class="s2">"</span>
-        <span class="k">if</span> <span class="n">target</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">"readme.md"</span><span class="p">:</span>
-            <span class="k">return</span> <span class="sa">f</span><span class="s2">"../</span><span class="si">{</span><span class="n">slug</span><span class="si">}</span><span class="s2">.html</span><span class="si">{</span><span class="n">fragment</span><span class="si">}</span><span class="s2">"</span>
-        <span class="k">return</span> <span class="kc">None</span>
-
-    <span class="n">content</span> <span class="o">=</span> <span class="n">clean_readme_html</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">owner</span><span class="p">,</span> <span class="n">repo</span><span class="p">,</span> <span class="n">branch</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="p">,</span> <span class="n">local_link</span><span class="o">=</span><span class="n">local_link</span><span class="p">)</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="n">clean_readme_html</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">owner</span><span class="p">,</span> <span class="n">repo</span><span class="p">,</span> <span class="n">branch</span> <span class="ow">or</span> <span class="s2">"HEAD"</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="p">)</span>
     <span class="k">return</span> <span class="sa">f</span><span class="s1">'&lt;div class="readme-content"&gt;</span><span class="se">\n</span><span class="si">{</span><span class="n">content</span><span class="si">}</span><span class="se">\n</span><span class="s1">        &lt;/div&gt;'</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">relocate_source_links</span><span class="p">(</span><span class="n">html</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">files</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">slug</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">"""Markdown pages are rendered with links relative to a per-file page</span>
-<span class="sd">    under &lt;slug&gt;-source/ (see fetch_rendered_markdown) - this rewrites them</span>
-<span class="sd">    for &lt;slug&gt;-source.html, which sits one directory up and shows the same</span>
-<span class="sd">    content. With a single file there are no per-file pages at all, so a</span>
-<span class="sd">    link to that file goes to &lt;slug&gt;-source.html itself. Safe to run on</span>
-<span class="sd">    already-relocated HTML (nothing matches a second time), which is what</span>
-<span class="sd">    happens when a single-file page is reused from the previous build."""</span>
-    <span class="n">pages</span> <span class="o">=</span> <span class="p">{</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">safe_filename</span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="si">}</span><span class="s2">.html"</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">files</span><span class="p">}</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">link_repo_files</span><span class="p">(</span><span class="n">html</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">project</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">nested</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Points links to repo files at this site's own page for that file</span>
+<span class="sd">    instead of at github.com, wherever one exists: a file in the source</span>
+<span class="sd">    browser -&gt; its source page, the root README -&gt; the project page (where</span>
+<span class="sd">    it's shown). Everything else (issues, actions, files without a page,</span>
+<span class="sd">    other repos) stays on GitHub. Used on the README (project page) and on</span>
+<span class="sd">    rendered markdown files (source browser), so the docs and the README</span>
+<span class="sd">    that links into them can be read without leaving the site.</span>
+
+<span class="sd">    Done at render time on every run, not baked in when the content is</span>
+<span class="sd">    fetched: the content is reused across runs for as long as the repo</span>
+<span class="sd">    doesn't change (see the module docstring), but the file list can change</span>
+<span class="sd">    without a push (a data-source-file edit), so links must always follow</span>
+<span class="sd">    the current one - a file dropped from the source browser has to go</span>
+<span class="sd">    back to its github.com link instead of pointing at a deleted page.</span>
+
+<span class="sd">    So a rewritten link keeps the repo path it stands for, as</span>
+<span class="sd">    data-repo-path="docs/install.md" next to its href. That makes this</span>
+<span class="sd">    idempotent on its own output (reused content comes back through here</span>
+<span class="sd">    every run) and lets the href be recomputed from scratch each time -</span>
+<span class="sd">    including for a different page depth: the same reused markdown is</span>
+<span class="sd">    rendered both into &lt;slug&gt;-source.html (nested=False, in projects/)</span>
+<span class="sd">    and into &lt;slug&gt;-source/&lt;file&gt;.html (nested=True, one level down).</span>
+<span class="sd">    Plain string regex instead of a BeautifulSoup round trip, so reused</span>
+<span class="sd">    content keeps its exact bytes (see extract_readme_html for why that</span>
+<span class="sd">    matters).</span>
+
+<span class="sd">    Blob URLs are matched for any branch and case-insensitively on the</span>
+<span class="sd">    owner/repo part, so absolute links a README spells out by hand</span>
+<span class="sd">    (github.com/Owner/Repo/blob/main/docs/x.md) are caught too, not just</span>
+<span class="sd">    the relative ones clean_readme_html resolved. A link with a query</span>
+<span class="sd">    string (?plain=1 - the raw-markdown view) is left on GitHub, since</span>
+<span class="sd">    that's not what the page on this site shows."""</span>
+    <span class="n">slug</span> <span class="o">=</span> <span class="n">project</span><span class="p">[</span><span class="s2">"repo"</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="n">files</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">project</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"_resolved_files"</span><span class="p">)</span> <span class="ow">or</span> <span class="p">[])</span>
+    <span class="n">single</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">files</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+    <span class="n">up</span> <span class="o">=</span> <span class="s2">"../"</span> <span class="k">if</span> <span class="n">nested</span> <span class="k">else</span> <span class="s2">""</span>
+    <span class="n">blob_re</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span>
+        <span class="sa">rf</span><span class="s1">'href="https://github\.com/</span><span class="si">{</span><span class="n">re</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="n">project</span><span class="p">[</span><span class="s2">"owner"</span><span class="p">])</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">re</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="n">project</span><span class="p">[</span><span class="s2">"repo"</span><span class="p">])</span><span class="si">}</span><span class="s1">/blob/[^/"#?]+/([^"#?]+)(#[^"]*)?"'</span>
+        <span class="sa">r</span><span class="s1">'|href="([^"]*)" data-repo-path="([^"]*)"'</span><span class="p">,</span>
+        <span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">blob_base</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">'https://github.com/</span><span class="si">{</span><span class="n">project</span><span class="p">[</span><span class="s2">"owner"</span><span class="p">]</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">project</span><span class="p">[</span><span class="s2">"repo"</span><span class="p">]</span><span class="si">}</span><span class="s1">/blob/HEAD/'</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">repl</span><span class="p">(</span><span class="n">match</span><span class="p">):</span>
-        <span class="n">target</span><span class="p">,</span> <span class="n">fragment</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">""</span>
-        <span class="k">if</span> <span class="n">target</span> <span class="o">==</span> <span class="sa">f</span><span class="s2">"../</span><span class="si">{</span><span class="n">slug</span><span class="si">}</span><span class="s2">.html"</span><span class="p">:</span>
-            <span class="k">return</span> <span class="sa">f</span><span class="s1">'href="</span><span class="si">{</span><span class="n">slug</span><span class="si">}</span><span class="s1">.html</span><span class="si">{</span><span class="n">fragment</span><span class="si">}</span><span class="s1">"'</span>
-        <span class="k">if</span> <span class="n">target</span> <span class="ow">in</span> <span class="n">pages</span><span class="p">:</span>
-            <span class="n">new_target</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">slug</span><span class="si">}</span><span class="s2">-source.html"</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">files</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">else</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">slug</span><span class="si">}</span><span class="s2">-source/</span><span class="si">{</span><span class="n">target</span><span class="si">}</span><span class="s2">"</span>
-            <span class="k">return</span> <span class="sa">f</span><span class="s1">'href="</span><span class="si">{</span><span class="n">new_target</span><span class="si">}{</span><span class="n">fragment</span><span class="si">}</span><span class="s1">"'</span>
-        <span class="k">return</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">raw_path</span><span class="p">,</span> <span class="n">fragment</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">""</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">raw_path</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+            <span class="n">fragment</span> <span class="o">=</span> <span class="s2">"#"</span> <span class="o">+</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">partition</span><span class="p">(</span><span class="s2">"#"</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span> <span class="k">if</span> <span class="s2">"#"</span> <span class="ow">in</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="k">else</span> <span class="s2">""</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">unquote</span><span class="p">(</span><span class="n">html_unescape</span><span class="p">(</span><span class="n">raw_path</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+            <span class="n">page</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">slug</span><span class="si">}</span><span class="s2">-source.html"</span> <span class="k">if</span> <span class="n">single</span> <span class="k">else</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">slug</span><span class="si">}</span><span class="s2">-source/</span><span class="si">{</span><span class="n">safe_filename</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="si">}</span><span class="s2">.html"</span>
+        <span class="k">elif</span> <span class="n">path</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">"readme.md"</span><span class="p">:</span>
+            <span class="n">page</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">slug</span><span class="si">}</span><span class="s2">.html"</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Only reachable for a link rewritten on an earlier run whose</span>
+            <span class="c1"># file has since left the source browser - back to GitHub.</span>
+            <span class="c1"># HEAD instead of the original branch name (which isn't kept):</span>
+            <span class="c1"># github.com resolves it to the default branch.</span>
+            <span class="k">if</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+            <span class="k">return</span> <span class="sa">f</span><span class="s1">'href="</span><span class="si">{</span><span class="n">blob_base</span><span class="si">}{</span><span class="n">raw_path</span><span class="si">}{</span><span class="n">fragment</span><span class="si">}</span><span class="s1">"'</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s1">'href="</span><span class="si">{</span><span class="n">quote</span><span class="p">(</span><span class="n">up</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">page</span><span class="p">)</span><span class="si">}{</span><span class="n">fragment</span><span class="si">}</span><span class="s1">" data-repo-path="</span><span class="si">{</span><span class="n">raw_path</span><span class="si">}</span><span class="s1">"'</span>
 
-    <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">'href="([^"#]*)(#[^"]*)?"'</span><span class="p">,</span> <span class="n">repl</span><span class="p">,</span> <span class="n">html</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">blob_re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">repl</span><span class="p">,</span> <span class="n">html</span><span class="p">)</span>
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">fetch_highlighted_source</span><span class="p">(</span><span class="n">owner</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">repo</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
@@ -2150,7 +2192,7 @@
     <span class="k">return</span> <span class="n">root_base</span> <span class="o">+</span> <span class="n">resolved</span><span class="o">.</span><span class="n">removeprefix</span><span class="p">(</span><span class="s2">"http://repo/"</span><span class="p">)</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">clean_readme_html</span><span class="p">(</span><span class="n">raw_html</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">owner</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">repo</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">branch</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"README.md"</span><span class="p">,</span> <span class="n">local_link</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">clean_readme_html</span><span class="p">(</span><span class="n">raw_html</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">owner</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">repo</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">branch</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"README.md"</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">"""Strips GitHub-page-only chrome (heading permalink icons, the</span>
 <span class="sd">    outer #readme/article wrapper) so the markup drops cleanly into our</span>
 <span class="sd">    own page template and styling instead of expecting GitHub's own CSS,</span>
@@ -2158,8 +2200,6 @@
 <span class="sd">    fix_readme_url). Relative paths are resolved against the directory of</span>
 <span class="sd">    `path` - the repo root for the README (where it almost always lives),</span>
 <span class="sd">    the file's own folder for markdown files in the source browser.</span>
-<span class="sd">    local_link (optional) gets every link after that fix-up and can return</span>
-<span class="sd">    a replacement href (e.g. a page on this site) or None to keep it.</span>
 <span class="sd">    """</span>
     <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">raw_html</span><span class="p">,</span> <span class="s2">"html.parser"</span><span class="p">)</span>
 
@@ -2178,8 +2218,6 @@
         <span class="n">el</span><span class="p">[</span><span class="s2">"srcset"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">", "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">candidates</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s2">"a"</span><span class="p">,</span> <span class="n">href</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="n">a</span><span class="p">[</span><span class="s2">"href"</span><span class="p">]</span> <span class="o">=</span> <span class="n">fix_readme_url</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="s2">"href"</span><span class="p">],</span> <span class="n">blob_base</span><span class="p">,</span> <span class="n">file_dir</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">local_link</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">a</span><span class="p">[</span><span class="s2">"href"</span><span class="p">]</span> <span class="o">=</span> <span class="n">local_link</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="s2">"href"</span><span class="p">])</span> <span class="ow">or</span> <span class="n">a</span><span class="p">[</span><span class="s2">"href"</span><span class="p">]</span>
 
     <span class="c1"># Unwrap heading-permalink wrappers: &lt;div class="markdown-heading"&gt;</span>
     <span class="c1"># &lt;h2&gt;Text&lt;/h2&gt;&lt;a class="anchor" id="user-content-text" href="#text"&gt;</span>
@@ -2497,7 +2535,7 @@
         <span class="n">tags_html</span><span class="o">=</span><span class="n">tags_html</span><span class="p">,</span>
         <span class="n">repo_url</span><span class="o">=</span><span class="n">project</span><span class="p">[</span><span class="s2">"repo_url"</span><span class="p">],</span>
         <span class="n">license_html</span><span class="o">=</span><span class="n">license_html</span><span class="p">,</span>
-        <span class="n">readme_html</span><span class="o">=</span><span class="n">readme_html</span><span class="p">,</span>
+        <span class="n">readme_html</span><span class="o">=</span><span class="n">link_repo_files</span><span class="p">(</span><span class="n">readme_html</span><span class="p">,</span> <span class="n">project</span><span class="p">,</span> <span class="n">nested</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>
         <span class="n">rail_html</span><span class="o">=</span><span class="n">rail_html</span><span class="p">,</span>
         <span class="n">source_link_html</span><span class="o">=</span><span class="n">source_link_html</span><span class="p">,</span>
         <span class="n">commits_link_html</span><span class="o">=</span><span class="n">commits_link_html</span><span class="p">,</span>
@@ -2527,8 +2565,8 @@
 <span class="sd">    generate_source_pages), not fetched here."""</span>
     <span class="n">slug</span> <span class="o">=</span> <span class="n">project</span><span class="p">[</span><span class="s2">"repo"</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
     <span class="n">tree_base</span> <span class="o">=</span> <span class="s2">""</span> <span class="k">if</span> <span class="n">up</span> <span class="o">==</span> <span class="s2">"../../"</span> <span class="k">else</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">slug</span><span class="si">}</span><span class="s2">-source/"</span>
-    <span class="k">if</span> <span class="n">up</span> <span class="o">==</span> <span class="s2">"../"</span> <span class="ow">and</span> <span class="n">is_markdown</span><span class="p">(</span><span class="n">file_path</span><span class="p">):</span>
-        <span class="n">highlighted</span> <span class="o">=</span> <span class="n">relocate_source_links</span><span class="p">(</span><span class="n">highlighted</span><span class="p">,</span> <span class="n">project</span><span class="p">[</span><span class="s2">"_resolved_files"</span><span class="p">],</span> <span class="n">slug</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">is_markdown</span><span class="p">(</span><span class="n">file_path</span><span class="p">):</span>
+        <span class="n">highlighted</span> <span class="o">=</span> <span class="n">link_repo_files</span><span class="p">(</span><span class="n">highlighted</span><span class="p">,</span> <span class="n">project</span><span class="p">,</span> <span class="n">nested</span><span class="o">=</span><span class="p">(</span><span class="n">up</span> <span class="o">==</span> <span class="s2">"../../"</span><span class="p">))</span>
     <span class="n">tree_html</span> <span class="o">=</span> <span class="s2">""</span>
     <span class="k">if</span> <span class="n">tree</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">rendered</span> <span class="o">=</span> <span class="n">render_tree_html</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="s2">""</span><span class="p">,</span> <span class="n">file_path</span><span class="p">,</span> <span class="n">base</span><span class="o">=</span><span class="n">tree_base</span><span class="p">)</span>
@@ -2584,7 +2622,7 @@
                 <span class="n">stats</span><span class="p">[</span><span class="s2">"reused"</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
                 <span class="k">return</span> <span class="n">cached</span>
         <span class="n">stats</span><span class="p">[</span><span class="s2">"fetched"</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="k">return</span> <span class="n">fetch_source_html</span><span class="p">(</span><span class="n">owner</span><span class="p">,</span> <span class="n">repo</span><span class="p">,</span> <span class="n">file_path</span><span class="p">,</span> <span class="n">branch</span><span class="p">,</span> <span class="n">slug</span><span class="p">,</span> <span class="n">files</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">fetch_source_html</span><span class="p">(</span><span class="n">owner</span><span class="p">,</span> <span class="n">repo</span><span class="p">,</span> <span class="n">file_path</span><span class="p">,</span> <span class="n">branch</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">files</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
         <span class="n">out_path</span> <span class="o">=</span> <span class="n">out_dir</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">slug</span><span class="si">}</span><span class="s2">-source.html"</span>

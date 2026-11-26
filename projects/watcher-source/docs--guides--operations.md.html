@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>docs/guides/operations.md — Watcher — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=62ac401d" />
+  <link rel="stylesheet" href="../../styles.css?v=2d91b490" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -77,12 +77,12 @@
 downtimes, muting notifications and turning checks off. These are stored in
 the database (in memory when there is no database), not in the config
 files. The exception is recurring downtimes, which are
-<a href="docs--objects--downtimegroup.md.html">downtime groups</a> in the config.</p>
+<a href="../watcher-source/docs--objects--downtimegroup.md.html" data-repo-path="docs/objects/downtimegroup.md">downtime groups</a> in the config.</p>
 <p dir="auto">In the web UI, right-click a host or service, or use the Commands panel on
 its page. To run a command on several hosts or services at once, select
 them in a list (see <a href="#commands-on-several-hosts-or-services">below</a>).
 Downtimes are listed under System → Downtimes. Over the API, use
-<a href="docs--reference--api.md.html#commands"><code>POST actions/{action}</code></a>.</p>
+<a href="../watcher-source/docs--reference--api.md.html#commands" data-repo-path="docs/reference/api.md"><code>POST actions/{action}</code></a>.</p>
 <markdown-accessiblity-table><table>
 <thead>
 <tr>
@@ -158,8 +158,8 @@ Submit Result works on one passive service at a time.</p>
 <p dir="auto">Acknowledging tells the team that someone is working on a problem. It
 stops further problem notifications until the service is OK again,
 including the reminders of rules with
-<a href="docs--objects--notify.md.html#repeat"><code>repeat</code></a> and the escalations of rules with
-<a href="docs--objects--notify.md.html#after"><code>after</code></a>. Add a comment so others know what
+<a href="../watcher-source/docs--objects--notify.md.html#repeat" data-repo-path="docs/objects/notify.md"><code>repeat</code></a> and the escalations of rules with
+<a href="../watcher-source/docs--objects--notify.md.html#after" data-repo-path="docs/objects/notify.md"><code>after</code></a>. Add a comment so others know what
 is going on.</p>
 <div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto"><pre>curl -X POST -H <span class="pl-s"><span class="pl-pds">"</span>Authorization: Bearer <span class="pl-smi">$T</span><span class="pl-pds">"</span></span> -H <span class="pl-s"><span class="pl-pds">'</span>content-type: application/json<span class="pl-pds">'</span></span> \
   -d <span class="pl-s"><span class="pl-pds">'</span>{"services": ["db01/replication"], "comment": "on it"}<span class="pl-pds">'</span></span> \
@@ -174,7 +174,7 @@ groups, service groups and downtime groups:</p>
 <p dir="auto">A downtime for a group also covers hosts that join the group after it was
 scheduled.</p>
 <p dir="auto">For recurring windows, like a weekly patch day, use a
-<a href="docs--objects--downtimegroup.md.html">downtime group</a>.</p>
+<a href="../watcher-source/docs--objects--downtimegroup.md.html" data-repo-path="docs/objects/downtimegroup.md">downtime group</a>.</p>
 <p dir="auto">When a downtime starts or ends, the notify rules that match the host or
 service are notified (DOWNTIMESTART, DOWNTIMEEND), unless the rule leaves
 <code>downtime</code> out of <code>on</code> or the host or service is muted:</p>

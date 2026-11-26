@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>docs/troubleshooting.md — Terminaal — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=62ac401d" />
+  <link rel="stylesheet" href="../../styles.css?v=2d91b490" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -80,7 +80,7 @@ RUST_LOG=terminaal=debug terminaal                  <span class="pl-c"><span cla
 RUST_LOG=terminaal=trace terminaal --connect web1   <span class="pl-c"><span class="pl-c">#</span> plus the SSH worker's timeline</span></pre></div>
 <h2 class="heading-element" dir="auto" id="installation-and-startup">Installation and startup</h2>
 <p dir="auto"><strong>On Windows</strong>: SmartScreen, an empty window, a WSL tab that ends at once, logs
-and update logs are in <a href="docs--guides--windows.md.html#when-somethings-wrong">Terminaal on Windows</a>.</p>
+and update logs are in <a href="../terminaal-source/docs--guides--windows.md.html#when-somethings-wrong" data-repo-path="docs/guides/windows.md">Terminaal on Windows</a>.</p>
 <p dir="auto"><strong>The launcher doesn't start Terminaal, or starts an old version.</strong>
 Run <code>./install.sh</code> again after updating the source. The desktop entry points at
 <code>~/.cargo/bin/terminaal</code> (from source) or <code>~/.local/bin/terminaal</code> (from a
@@ -97,13 +97,13 @@ The desktop entry is missing. Run <code>./install.sh</code> (or <code>./install.
 you installed the binary another way).</p>
 <p dir="auto"><strong>Build fails with errors about OpenSSL or libssh2.</strong>
 Install the C toolchain, <code>pkg-config</code>, and the OpenSSL and zlib development
-packages (see <a href="docs--getting-started.md.html#install">Getting started</a>).</p>
+packages (see <a href="../terminaal-source/docs--getting-started.md.html#install" data-repo-path="docs/getting-started.md">Getting started</a>).</p>
 <p dir="auto"><strong>My tabs didn't come back.</strong>
 Tabs are only restored by the first Terminaal that runs: a second window starts
 with one tab, and so does a start with <code>--connect</code>, <code>-s</code> or <code>-c</code>. Closing the last tab (or <code>exit</code>
 in the last shell) also leaves nothing to restore. Hosts that were deleted or
 renamed are left out; <code>RUST_LOG=terminaal=info</code> names them. See
-<a href="docs--guides--sessions.md.html">Restoring the last session</a>.</p>
+<a href="../terminaal-source/docs--guides--sessions.md.html" data-repo-path="docs/guides/sessions.md">Restoring the last session</a>.</p>
 <p dir="auto"><strong>Terminaal keeps opening tabs I don't want.</strong>
 Close them before closing the window, delete
 <code>~/.local/state/terminaal/session.toml</code>, or turn off <strong>Restore last session</strong>
@@ -114,7 +114,7 @@ Put Terminaal's full path in the shortcut: shortcut settings often don't have
 exact command. Run it in a terminal first; errors show up there.</p>
 <p dir="auto"><strong>The drop-down window is a normal window and doesn't hide.</strong>
 Your desktop has no layer shell (GNOME on Wayland). See
-<a href="docs--guides--drop-down-window.md.html#where-it-works">Where it works</a>.</p>
+<a href="../terminaal-source/docs--guides--drop-down-window.md.html#where-it-works" data-repo-path="docs/guides/drop-down-window.md">Where it works</a>.</p>
 <p dir="auto"><strong>The drop-down window hides when I click a dialog or another window.</strong>
 That's <strong>Hide when another window gets the focus</strong> under Settings → General.
 Turn it off to keep the window up.</p>
@@ -165,7 +165,7 @@ F-key or Shift+navigation key). You can still set it in <code>config.toml</code>
 <li>The integration is set up for fish, bash and zsh started by Terminaal – not for
 a shell started from inside another shell.</li>
 <li>Over SSH, the remote shell has to send the sequences; see
-<a href="docs--guides--shell-integration.md.html#other-shells-or-shells-over-ssh">Shell integration</a>.</li>
+<a href="../terminaal-source/docs--guides--shell-integration.md.html#other-shells-or-shells-over-ssh" data-repo-path="docs/guides/shell-integration.md">Shell integration</a>.</li>
 </ul>
 <p dir="auto"><strong>The tab title shows <code>user@host: dir</code> instead of just the directory.</strong>
 At the prompt, a title set by a program (often your distribution's bash setup)
@@ -199,7 +199,7 @@ Your agent offered too many keys. Pick the host's key in its login, or enable
 <strong>Offer only configured keys</strong>. The error message mentions this when the agent
 tried three or more keys.</p>
 <p dir="auto"><strong>The host key changed – I reinstalled the server.</strong>
-See <a href="docs--guides--host-keys.md.html#removing-the-old-key">Host keys</a>.</p>
+See <a href="../terminaal-source/docs--guides--host-keys.md.html#removing-the-old-key" data-repo-path="docs/guides/host-keys.md">Host keys</a>.</p>
 <p dir="auto"><strong>The tab hangs for a moment right after login.</strong>
 Terminaal asks the host which system it runs, for the command buttons (up to two
 seconds). Set <strong>Advanced → Session → System</strong> to skip it.</p>
@@ -214,7 +214,7 @@ the tab reconnects by itself (see below), and a files tab carries on.</p>
 Terminaal tries again after 2, 4, 8 … seconds (at most a minute), keeping the
 scrollback. Press <kbd>Enter</kbd> to try right away, <kbd>Ctrl</kbd>+<kbd>D</kbd>
 to close the tab. Programs that were running on the server are gone – use <code>tmux</code>
-(see <a href="docs--tips.md.html">Tips</a>) to keep them.</p>
+(see <a href="../terminaal-source/docs--tips.md.html" data-repo-path="docs/tips.md">Tips</a>) to keep them.</p>
 <p dir="auto"><strong>It says "Logging in needs an answer" and stops trying.</strong>
 Automatic attempts can't type a passphrase, a password or answer a host-key
 question. Press <kbd>Enter</kbd> and answer in the tab – or use the SSH agent or a
@@ -238,7 +238,7 @@ The tab closes when the command ends, like a local shell. If it failed within fi
 seconds of starting, the tab stays with its output and a line naming the status;
 a command that ended cleanly (status 0) closes it at once. Use something that
 stays, e.g. <code>tmux new -A -s main</code>, or <code>--hold</code> on the
-<a href="docs--guides--command-line.md.html#--hold-keep-the-tab-when-the-command-ends">command line</a>.</p>
+<a href="../terminaal-source/docs--guides--command-line.md.html#--hold-keep-the-tab-when-the-command-ends" data-repo-path="docs/guides/command-line.md">command line</a>.</p>
 <p dir="auto"><strong>A tab says "Ended with status … right after starting".</strong>
 Its shell or command failed within five seconds of starting, so Terminaal kept the
 tab instead of closing it with the error. Read what the program printed above that
@@ -252,7 +252,7 @@ exist – the tab prints a line when either fails.</p>
 <p dir="auto"><strong>Umlauts, <code>@</code>, <code>#</code> or brackets come out wrong.</strong>
 The host's <strong>Code page (CCSID)</strong> doesn't match the system's language. Pick the
 one for your language – 273 or 1141 for German, for example; see
-<a href="docs--guides--ibm-i-5250.md.html#code-pages">Code pages</a>.</p>
+<a href="../terminaal-source/docs--guides--ibm-i-5250.md.html#code-pages" data-repo-path="docs/guides/ibm-i-5250.md">Code pages</a>.</p>
 <p dir="auto"><strong>"TLS connection to … failed".</strong>
 The server doesn't speak TLS on that port (plain telnet is 23, TLS usually 992),
 or its certificate isn't trusted by your system.</p>

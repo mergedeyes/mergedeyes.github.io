@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>docs/guides/ssh.md — Watcher — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=62ac401d" />
+  <link rel="stylesheet" href="../../styles.css?v=2d91b490" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -97,8 +97,8 @@ web UI: Configuration → Secrets → New Key.</p>
 <span class="pl-smi">run_on</span> = <span class="pl-s"><span class="pl-pds">"</span>host<span class="pl-pds">"</span></span></pre></div>
 <p dir="auto">To test, use <strong>Run Check</strong> on a service page; it runs over SSH too.</p>
 <h2 class="heading-element" dir="auto" id="the-ssh-field">The ssh field</h2>
-<p dir="auto"><code>ssh</code> can be set on a <a href="docs--objects--host.md.html#ssh">host</a> and on a
-<a href="docs--objects--hostgroup.md.html#ssh">host group</a>.</p>
+<p dir="auto"><code>ssh</code> can be set on a <a href="../watcher-source/docs--objects--host.md.html#ssh" data-repo-path="docs/objects/host.md">host</a> and on a
+<a href="../watcher-source/docs--objects--hostgroup.md.html#ssh" data-repo-path="docs/objects/hostgroup.md">host group</a>.</p>
 <markdown-accessiblity-table><table>
 <thead>
 <tr>
@@ -133,7 +133,7 @@ and take the rest from its host groups:</p>
 <span class="pl-smi">ssh</span> = { <span class="pl-smi">port</span> = <span class="pl-c1">2222</span> }          <span class="pl-c"><span class="pl-c">#</span> user and secret from linux</span></pre></div>
 <h2 class="heading-element" dir="auto" id="secrets">Secrets</h2>
 <p dir="auto">Keys and passwords are called secrets. Each has a name, which <code>ssh.secret</code>
-refers to. API tokens for the <a href="docs--guides--proxmox.md.html">Proxmox VE checks</a> are secrets too;
+refers to. API tokens for the <a href="../watcher-source/docs--guides--proxmox.md.html" data-repo-path="docs/guides/proxmox.md">Proxmox VE checks</a> are secrets too;
 they are stored the same way, but aren't used for SSH.</p>
 <markdown-accessiblity-table><table>
 <thead>
@@ -157,7 +157,7 @@ they are stored the same way, but aren't used for SSH.</p>
 </tr>
 <tr>
 <td><code>watcher secret token &lt;name&gt; --id &lt;id&gt;</code></td>
-<td>Stores an API token: its ID and, asked for, its secret. See <a href="docs--guides--proxmox.md.html#3-store-the-token-in-watcher">Monitoring Proxmox VE</a>.</td>
+<td>Stores an API token: its ID and, asked for, its secret. See <a href="../watcher-source/docs--guides--proxmox.md.html#3-store-the-token-in-watcher" data-repo-path="docs/guides/proxmox.md">Monitoring Proxmox VE</a>.</td>
 </tr>
 <tr>
 <td><code>watcher secret show &lt;name&gt;</code></td>
@@ -181,7 +181,7 @@ Rust <code>rsa</code> library has an unfixed timing side channel (RUSTSEC-2023-0
 file <code>data_dir/secret.key</code>, created with the first secret (mode 0600).
 <strong>Back it up together with the database</strong>: without it, the secrets can't
 be decrypted. The same file encrypts the secrets of
-<a href="docs--guides--web-ui.md.html#two-factor-authentication">two-factor authentication</a>.</p>
+<a href="../watcher-source/docs--guides--web-ui.md.html#two-factor-authentication" data-repo-path="docs/guides/web-ui.md">two-factor authentication</a>.</p>
 <h2 class="heading-element" dir="auto" id="host-keys">Host keys</h2>
 <p dir="auto">On the first connection to a host, Watcher stores the host's key (trust on
 first use). If the key changes later, for example because the host was
@@ -222,7 +222,7 @@ ksh, zsh and fish work; csh and tcsh only run one-line commands.</li>
 <code>/usr/local/nagios/libexec</code>.</li>
 <li>The working directory is the user's home. There is no input and no
 terminal.</li>
-<li><a href="docs--objects--check.md.html#macros">Macros</a> are replaced on the Watcher machine
+<li><a href="../watcher-source/docs--objects--check.md.html#macros" data-repo-path="docs/objects/check.md">Macros</a> are replaced on the Watcher machine
 before the command is sent. <code>$host.address$</code> is the host's address, as
 for local checks.</li>
 <li><code>shell = true</code> works as it does locally, using the host's <code>sh</code>.</li>
@@ -237,7 +237,7 @@ so you don't have to install it there yourself:</p>
 <span class="pl-smi">run_on</span> = <span class="pl-s"><span class="pl-pds">"</span>host<span class="pl-pds">"</span></span>
 <span class="pl-smi">copy</span> = <span class="pl-c1">true</span></pre></div>
 <p dir="auto">Watcher takes <code>check_raid</code> from its own
-<a href="docs--objects--check.md.html#commands">check directories</a>, uploads it to
+<a href="../watcher-source/docs--objects--check.md.html#commands" data-repo-path="docs/objects/check.md">check directories</a>, uploads it to
 <code>~/.watcher/checks/check_raid/&lt;hash&gt;</code> on the host, and runs it from there.
 It uploads again when the script changes or was deleted on the host, and
 removes older versions.</p>

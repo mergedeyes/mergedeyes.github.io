@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>docs/guides/first-steps.md — Watcher — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=62ac401d" />
+  <link rel="stylesheet" href="../../styles.css?v=2d91b490" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -77,7 +77,7 @@
 email alerts. You need the
 <a href="https://www.monitoring-plugins.org" rel="nofollow">monitoring plugins</a> (for example
 <code>apt install monitoring-plugins</code>) and a database, see
-<a href="docs--install.md.html">Installation</a>.</p>
+<a href="../watcher-source/docs--install.md.html" data-repo-path="docs/install.md">Installation</a>.</p>
 <h2 class="heading-element" dir="auto" id="1-set-up-watcher">1. Set up Watcher</h2>
 <div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto"><pre>mkdir <span class="pl-k">~</span>/watcher <span class="pl-k">&amp;&amp;</span> <span class="pl-c1">cd</span> <span class="pl-k">~</span>/watcher
 watcher init
@@ -86,7 +86,7 @@ watcher run</pre></div>
 <code>conf.d/</code> directory. Open <a href="http://127.0.0.1:8080" rel="nofollow">http://127.0.0.1:8080</a> and log in with the admin
 account you created.</p>
 <h2 class="heading-element" dir="auto" id="2-write-a-check">2. Write a check</h2>
-<p dir="auto">A <a href="docs--objects--check.md.html">check</a> says what to run. Create
+<p dir="auto">A <a href="../watcher-source/docs--objects--check.md.html" data-repo-path="docs/objects/check.md">check</a> says what to run. Create
 <code>conf.d/checks.toml</code>:</p>
 <div class="highlight highlight-source-toml notranslate position-relative overflow-auto" dir="auto"><pre>[<span class="pl-en">check</span>.<span class="pl-en">http</span>]
 <span class="pl-smi">command</span> = <span class="pl-s"><span class="pl-pds">"</span>check_http -H $host.address$ -u $url$<span class="pl-pds">"</span></span>
@@ -98,11 +98,11 @@ than 500 ms, and CRITICAL above 2 seconds.</p>
 <p dir="auto">You can try a command before you configure it:</p>
 <div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto"><pre>watcher run-check -- check_http -H example.com -u /</pre></div>
 <p dir="auto"><strong>No plugins installed?</strong> Leave out <code>checks.toml</code>. Watcher has a
-<a href="docs--objects--check.md.html#http">built-in <code>http</code> check</a>, and the host in the
+<a href="../watcher-source/docs--objects--check.md.html#http" data-repo-path="docs/objects/check.md">built-in <code>http</code> check</a>, and the host in the
 next step uses it automatically. It takes the path from <code>vars.url</code> and
 time limits from <code>vars.warn</code> and <code>vars.crit</code> (for example <code>"500ms"</code> and
 <code>"2s"</code>), set on the host's service (see
-<a href="docs--objects--host.md.html#host-services">Host services</a>).</p>
+<a href="../watcher-source/docs--objects--host.md.html#host-services" data-repo-path="docs/objects/host.md">Host services</a>).</p>
 <h2 class="heading-element" dir="auto" id="3-add-a-host">3. Add a host</h2>
 <p dir="auto">Create <code>conf.d/hosts.toml</code>:</p>
 <div class="highlight highlight-source-toml notranslate position-relative overflow-auto" dir="auto"><pre>[[<span class="pl-en">host</span>]]
@@ -110,14 +110,14 @@ time limits from <code>vars.warn</code> and <code>vars.crit</code> (for example 
 <span class="pl-smi">address</span> = <span class="pl-s"><span class="pl-pds">"</span>10.0.0.5<span class="pl-pds">"</span></span>
 <span class="pl-smi">services</span> = [<span class="pl-s"><span class="pl-pds">"</span>http<span class="pl-pds">"</span></span>]</pre></div>
 <p dir="auto"><code>services = ["http"]</code> puts the check <code>http</code> on the host. On the host it is
-a <a href="docs--objects--service.md.html">service</a> with the ID <code>web01/http</code>. You only
+a <a href="../watcher-source/docs--objects--service.md.html" data-repo-path="docs/objects/service.md">service</a> with the ID <code>web01/http</code>. You only
 write a <code>[service.&lt;name&gt;]</code> when a service needs settings of its own, or to
 make several services from one check, for example one per URL.</p>
 <p dir="auto">Watcher loads saved files within a second. The log shows:</p>
 <div class="snippet-clipboard-content notranslate position-relative overflow-auto"><pre class="notranslate"><code>reloading (file change)
 </code></pre></div>
 <p dir="auto">Because the host has an address, Watcher also pings it to decide whether
-it is UP or DOWN. See <a href="docs--objects--host.md.html#host-state">Host state</a>.</p>
+it is UP or DOWN. See <a href="../watcher-source/docs--objects--host.md.html#host-state" data-repo-path="docs/objects/host.md">Host state</a>.</p>
 <h2 class="heading-element" dir="auto" id="4-check-the-result">4. Check the result</h2>
 <div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto"><pre>watcher config check --services</pre></div>
 <div class="snippet-clipboard-content notranslate position-relative overflow-auto"><pre class="notranslate"><code>OK: 2 files, 1 host, 1 check, 1 on hosts, 1 host check
@@ -128,15 +128,15 @@ it is UP or DOWN. See <a href="docs--objects--host.md.html#host-state">Host stat
 <p dir="auto">In the web UI, open Hosts → web01. The Config Tree on that page shows
 where each value comes from.</p>
 <h2 class="heading-element" dir="auto" id="5-get-alerts">5. Get alerts</h2>
-<p dir="auto">Create <code>conf.d/contacts.toml</code> with a <a href="docs--objects--contact.md.html">contact</a> and a
-<a href="docs--objects--notify.md.html">notify rule</a>:</p>
+<p dir="auto">Create <code>conf.d/contacts.toml</code> with a <a href="../watcher-source/docs--objects--contact.md.html" data-repo-path="docs/objects/contact.md">contact</a> and a
+<a href="../watcher-source/docs--objects--notify.md.html" data-repo-path="docs/objects/notify.md">notify rule</a>:</p>
 <div class="highlight highlight-source-toml notranslate position-relative overflow-auto" dir="auto"><pre>[<span class="pl-en">contact</span>.<span class="pl-en">oncall</span>]
 <span class="pl-smi">email</span> = <span class="pl-s"><span class="pl-pds">"</span>oncall@example.com<span class="pl-pds">"</span></span>
 
 [[<span class="pl-en">notify</span>]]
 <span class="pl-smi">contacts</span> = [<span class="pl-s"><span class="pl-pds">"</span>oncall<span class="pl-pds">"</span></span>]</pre></div>
 <p dir="auto">Email needs an SMTP server in <code>watcher.toml</code>, see
-<a href="docs--guides--notifications.md.html#smtp">Notifications</a>. Then send a test message:</p>
+<a href="../watcher-source/docs--guides--notifications.md.html#smtp" data-repo-path="docs/guides/notifications.md">Notifications</a>. Then send a test message:</p>
 <div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto"><pre>watcher notify <span class="pl-c1">test</span> oncall</pre></div>
 <h2 class="heading-element" dir="auto" id="6-the-same-in-the-web-ui">6. The same in the web UI</h2>
 <p dir="auto">Everything above also works under Configuration → Checks and Hosts → Add.
@@ -144,12 +144,12 @@ Each save shows what will change (+ ~ −) before you click Apply. The web
 UI writes to the same files.</p>
 <h2 class="heading-element" dir="auto" id="next">Next</h2>
 <ul dir="auto">
-<li><a href="docs--guides--configuration.md.html">How the configuration works</a>: how objects fit
+<li><a href="../watcher-source/docs--guides--configuration.md.html" data-repo-path="docs/guides/configuration.md">How the configuration works</a>: how objects fit
 together and which value wins</li>
-<li><a href="docs--objects--hostgroup.md.html">hostgroup</a>: give many hosts the same services</li>
-<li><a href="docs--objects--service.md.html#one-service-per-item-for_each">for_each</a>: one
+<li><a href="../watcher-source/docs--objects--hostgroup.md.html" data-repo-path="docs/objects/hostgroup.md">hostgroup</a>: give many hosts the same services</li>
+<li><a href="../watcher-source/docs--objects--service.md.html#one-service-per-item-for_each" data-repo-path="docs/objects/service.md">for_each</a>: one
 service per disk, website or queue</li>
-<li><a href="docs--examples.md.html">Examples</a>: complete setups</li>
+<li><a href="../watcher-source/docs--examples.md.html" data-repo-path="docs/examples.md">Examples</a>: complete setups</li>
 </ul>
 
         </div>

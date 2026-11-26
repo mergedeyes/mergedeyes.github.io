@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>docs/reference/watcher-toml.md — Watcher — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=62ac401d" />
+  <link rel="stylesheet" href="../../styles.css?v=2d91b490" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -116,7 +116,7 @@ don't go unnoticed.</p>
 <tr>
 <td><code>role</code></td>
 <td><code>standalone</code></td>
-<td><code>standalone</code>: one server. <code>hub</code>: also lets <a href="docs--guides--nodes.md.html">nodes</a> at other sites connect, see <a href="#hub"><code>[hub]</code></a>; needs <code>[database]</code>. <code>node</code>: only keeps the connection to its hub, see <a href="#node"><code>[node]</code></a>; <code>watcher node join</code> sets it.</td>
+<td><code>standalone</code>: one server. <code>hub</code>: also lets <a href="../watcher-source/docs--guides--nodes.md.html" data-repo-path="docs/guides/nodes.md">nodes</a> at other sites connect, see <a href="#hub"><code>[hub]</code></a>; needs <code>[database]</code>. <code>node</code>: only keeps the connection to its hub, see <a href="#node"><code>[node]</code></a>; <code>watcher node join</code> sets it.</td>
 </tr>
 <tr>
 <td><code>instance_name</code></td>
@@ -146,12 +146,12 @@ don't go unnoticed.</p>
 <tr>
 <td><code>data_dir</code></td>
 <td><code>data</code></td>
-<td>Directory for sink buffers, the instance ID, the self-signed certificate, the ACME account and certificate (<code>acme/</code>), a hub's certificate authority (<code>ca/</code>), a node's certificates (<code>node/</code>) and <code>secret.key</code>, which encrypts <a href="docs--guides--ssh.md.html#secrets">SSH secrets</a> and the secrets of <a href="docs--guides--web-ui.md.html#two-factor-authentication">two-factor authentication</a>.</td>
+<td>Directory for sink buffers, the instance ID, the self-signed certificate, the ACME account and certificate (<code>acme/</code>), a hub's certificate authority (<code>ca/</code>), a node's certificates (<code>node/</code>) and <code>secret.key</code>, which encrypts <a href="../watcher-source/docs--guides--ssh.md.html#secrets" data-repo-path="docs/guides/ssh.md">SSH secrets</a> and the secrets of <a href="../watcher-source/docs--guides--web-ui.md.html#two-factor-authentication" data-repo-path="docs/guides/web-ui.md">two-factor authentication</a>.</td>
 </tr>
 <tr>
 <td><code>config_mode</code></td>
 <td><code>hybrid</code></td>
-<td><code>hybrid</code>: web UI and files can both change the config. <code>files</code>: the web UI is read-only. <code>ui</code>: files are not watched. See <a href="docs--guides--web-ui.md.html#config-mode">Config mode</a>.</td>
+<td><code>hybrid</code>: web UI and files can both change the config. <code>files</code>: the web UI is read-only. <code>ui</code>: files are not watched. See <a href="../watcher-source/docs--guides--web-ui.md.html#config-mode" data-repo-path="docs/guides/web-ui.md">Config mode</a>.</td>
 </tr>
 <tr>
 <td><code>check_dirs</code></td>
@@ -184,9 +184,9 @@ don't go unnoticed.</p>
 <p dir="auto"><code>--database</code> on the command line and the environment variable
 <code>WATCHER_DATABASE_URL</code> win over this value.</p>
 <p dir="auto">Without <code>[database]</code>, Watcher runs without a database: current states only,
-in memory, no history and no logins. See <a href="docs--guides--data.md.html">Data</a>.</p>
+in memory, no history and no logins. See <a href="../watcher-source/docs--guides--data.md.html" data-repo-path="docs/guides/data.md">Data</a>.</p>
 <h2 class="heading-element" dir="auto" id="hub">[hub]</h2>
-<p dir="auto">With <code>role = "hub"</code>: where <a href="docs--guides--nodes.md.html">nodes</a> connect. The whole
+<p dir="auto">With <code>role = "hub"</code>: where <a href="../watcher-source/docs--guides--nodes.md.html" data-repo-path="docs/guides/nodes.md">nodes</a> connect. The whole
 section is optional.</p>
 <markdown-accessiblity-table><table>
 <thead>
@@ -265,13 +265,13 @@ ignores the other settings except <code>data_dir</code>.</p>
 <div class="highlight highlight-source-toml notranslate position-relative overflow-auto" dir="auto"><pre>[<span class="pl-en">tls</span>]
 <span class="pl-smi">self_signed</span> = <span class="pl-c1">true</span></pre></div>
 <p dir="auto">Alternatively, run Watcher behind a reverse proxy, see
-<a href="docs--install.md.html#https">HTTPS</a>.</p>
+<a href="../watcher-source/docs--install.md.html#https" data-repo-path="docs/install.md">HTTPS</a>.</p>
 <h3 class="heading-element" dir="auto" id="tlsacme">[tls.acme]</h3>
 <p dir="auto">Certificates from Let's Encrypt or another CA that speaks ACME. Watcher
 orders one when it starts without one, and a new one when a third of its
 lifetime is left (at most 30 days before it ends). To check each name,
 the CA connects to port 443 of the name, which has to reach Watcher. Step
-by step: <a href="docs--install.md.html#certificates-from-lets-encrypt">Certificates from Let's Encrypt</a>.</p>
+by step: <a href="../watcher-source/docs--install.md.html#certificates-from-lets-encrypt" data-repo-path="docs/install.md">Certificates from Let's Encrypt</a>.</p>
 <markdown-accessiblity-table><table>
 <thead>
 <tr>

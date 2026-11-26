@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>docs/getting-started.md — Terminaal — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=62ac401d" />
+  <link rel="stylesheet" href="../../styles.css?v=2d91b490" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -77,14 +77,14 @@
 <p dir="auto">Terminaal runs on Linux (Wayland or X11) and on Windows 10 version 1809 or
 newer. <strong>On Windows</strong>, run <code>terminaal-x86_64-windows-setup.exe</code> from the latest
 release – the rest of this section is about Linux; see
-<a href="docs--guides--windows.md.html">Terminaal on Windows</a> for the setup and what differs.</p>
+<a href="../terminaal-source/docs--guides--windows.md.html" data-repo-path="docs/guides/windows.md">Terminaal on Windows</a> for the setup and what differs.</p>
 <p dir="auto"><strong>From a release</strong> (x86_64): download <code>terminaal-x86_64-linux.tar.gz</code> from the
 <a href="https://github.com/mergedeyes/terminaal/releases/latest">latest release</a>, then</p>
 <div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto"><pre>tar xzf terminaal-x86_64-linux.tar.gz
 <span class="pl-c1">cd</span> terminaal-x86_64-linux
 ./install.sh</pre></div>
 <p dir="auto">That's all: Terminaal lands in <code>~/.local/bin</code>, shows up in your app launcher, and
-offers new versions itself from then on (<a href="docs--guides--updates.md.html">Updates</a>).</p>
+offers new versions itself from then on (<a href="../terminaal-source/docs--guides--updates.md.html" data-repo-path="docs/guides/updates.md">Updates</a>).</p>
 <p dir="auto"><strong>From source</strong> you need:</p>
 <ul dir="auto">
 <li>Rust 1.88 or newer (<a href="https://rustup.rs/" rel="nofollow">rustup</a>)</li>
@@ -135,14 +135,14 @@ forwards of the active tab</li>
 in the directory you're in; <kbd>Alt</kbd>+<kbd>1</kbd>…<kbd>9</kbd> jumps to a
 tab; <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>W</kbd> closes one.
 <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>D</kbd> splits a tab into two terminals
-side by side (see <a href="docs--guides--split-panes.md.html">Split panes</a>).</li>
+side by side (see <a href="../terminaal-source/docs--guides--split-panes.md.html" data-repo-path="docs/guides/split-panes.md">Split panes</a>).</li>
 <li><strong>Pick your shell.</strong> In the sidebar's Shells section, double-click a shell to
 open a tab with it, or select it and click <strong>Make default</strong>.</li>
 <li><strong>Choose a look.</strong> Press <kbd>Ctrl</kbd>+<kbd>,</kbd>, go to <strong>Appearance</strong> and
 try the themes – they apply immediately.</li>
-<li><strong>Add a server.</strong> Follow <a href="docs--tutorials--01-your-first-ssh-host.md.html">Your first SSH host</a>.</li>
+<li><strong>Add a server.</strong> Follow <a href="../terminaal-source/docs--tutorials--01-your-first-ssh-host.md.html" data-repo-path="docs/tutorials/01-your-first-ssh-host.md">Your first SSH host</a>.</li>
 <li><strong>Find anything.</strong> <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> opens the
-<a href="docs--guides--command-palette.md.html">command palette</a>: a few letters find a tab, a
+<a href="../terminaal-source/docs--guides--command-palette.md.html" data-repo-path="docs/guides/command-palette.md">command palette</a>: a few letters find a tab, a
 host, a snippet, an action or a theme.</li>
 </ol>
 <p dir="auto">Everything you change in the settings is saved to
@@ -183,11 +183,11 @@ there. Hover over a setting's name to see its key in the file.</p>
 </tr>
 <tr>
 <td>Copy a URL, path, IP or hash without the mouse</td>
-<td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>H</kbd>, then the letters shown on it (<a href="docs--guides--search-and-links.md.html#hints">hints</a>)</td>
+<td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>H</kbd>, then the letters shown on it (<a href="../terminaal-source/docs--guides--search-and-links.md.html#hints" data-repo-path="docs/guides/search-and-links.md">hints</a>)</td>
 </tr>
 <tr>
 <td>Select and copy with the keyboard</td>
-<td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Space</kbd>, move with vi's keys, <code>v</code> and <code>y</code> (<a href="docs--guides--search-and-links.md.html#vi-mode">vi mode</a>)</td>
+<td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Space</kbd>, move with vi's keys, <code>v</code> and <code>y</code> (<a href="../terminaal-source/docs--guides--search-and-links.md.html#vi-mode" data-repo-path="docs/guides/search-and-links.md">vi mode</a>)</td>
 </tr>
 <tr>
 <td>Make text bigger</td>
@@ -202,17 +202,17 @@ terminaal --connect admin@myserver     <span class="pl-c"><span class="pl-c">#</
 terminaal -s fish                      <span class="pl-c"><span class="pl-c">#</span> first tab with that shell (`-s` alone lists them)</span>
 terminaal -c <span class="pl-s"><span class="pl-pds">"</span>journalctl -f<span class="pl-pds">"</span></span> --hold    <span class="pl-c"><span class="pl-c">#</span> run that line, keep the tab when it ends</span>
 terminaal --quake                      <span class="pl-c"><span class="pl-c">#</span> show or hide the drop-down window</span></pre></div>
-<p dir="auto">All of it is in <a href="docs--guides--command-line.md.html">The command line</a>, and in
+<p dir="auto">All of it is in <a href="../terminaal-source/docs--guides--command-line.md.html" data-repo-path="docs/guides/command-line.md">The command line</a>, and in
 <code>man terminaal</code> once you have installed it. For <code>--quake</code>, see
-<a href="docs--guides--drop-down-window.md.html">The drop-down window</a>: it's meant for a keyboard
+<a href="../terminaal-source/docs--guides--drop-down-window.md.html" data-repo-path="docs/guides/drop-down-window.md">The drop-down window</a>: it's meant for a keyboard
 shortcut in your desktop's settings.</p>
 <h2 class="heading-element" dir="auto" id="language">Language</h2>
 <p dir="auto">The interface is in English or German. By default it follows your system
 locale; switch it under <strong>Settings → General → Language</strong>.</p>
 <h2 class="heading-element" dir="auto" id="where-to-go-next">Where to go next</h2>
 <ul dir="auto">
-<li><a href="docs--tips.md.html">Tips and tricks</a> for small things that make a big difference</li>
-<li><a href="docs--guides--configuration.md.html">Configuration reference</a> if you prefer editing files</li>
+<li><a href="../terminaal-source/docs--tips.md.html" data-repo-path="docs/tips.md">Tips and tricks</a> for small things that make a big difference</li>
+<li><a href="../terminaal-source/docs--guides--configuration.md.html" data-repo-path="docs/guides/configuration.md">Configuration reference</a> if you prefer editing files</li>
 </ul>
 
         </div>

@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>docs/guides/nodes.md — Watcher — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=62ac401d" />
+  <link rel="stylesheet" href="../../styles.css?v=2d91b490" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -113,7 +113,7 @@ nodes there.</p>
 commands. Without it, the hub uses the host of <code>public_url</code>, else the
 <code>listen</code> address unless it is <code>0.0.0.0</code>, else this machine's name; with
 the port of <code>listen</code>. See
-<a href="docs--reference--watcher-toml.md.html#hub"><code>[hub]</code></a>.</p>
+<a href="../watcher-source/docs--reference--watcher-toml.md.html#hub" data-repo-path="docs/reference/watcher-toml.md"><code>[hub]</code></a>.</p>
 </li>
 <li>
 <p dir="auto">Open the port in the firewall for the nodes' addresses.</p>
@@ -139,7 +139,7 @@ command line:</p>
 </code></pre></div>
 </li>
 <li>
-<p dir="auto"><a href="docs--install.md.html#build">Install Watcher</a> on the node's machine. It needs
+<p dir="auto"><a href="../watcher-source/docs--install.md.html#build" data-repo-path="docs/install.md">Install Watcher</a> on the node's machine. It needs
 no database.</p>
 </li>
 <li>
@@ -156,7 +156,7 @@ Start the node with: watcher run
 and sets <code>role = "node"</code> and the hub's address in <code>watcher.toml</code>.</p>
 </li>
 <li>
-<p dir="auto">Start the node: <code>watcher run</code>, or as a <a href="docs--install.md.html#systemd">systemd service</a>.
+<p dir="auto">Start the node: <code>watcher run</code>, or as a <a href="../watcher-source/docs--install.md.html#systemd" data-repo-path="docs/install.md">systemd service</a>.
 The Nodes page on the hub shows it as CONNECTED.</p>
 </li>
 </ol>
@@ -168,7 +168,7 @@ The Nodes page on the hub shows it as CONNECTED.</p>
 <br/>
 <sub>The Nodes page on a hub, right after asking for a join command.</sub>
 </p>
-<p dir="auto">Hosts name their node with <a href="docs--objects--host.md.html"><code>node</code></a>:</p>
+<p dir="auto">Hosts name their node with <a href="../watcher-source/docs--objects--host.md.html" data-repo-path="docs/objects/host.md"><code>node</code></a>:</p>
 <div class="highlight highlight-source-toml notranslate position-relative overflow-auto" dir="auto"><pre>[[<span class="pl-en">host</span>]]
 <span class="pl-smi">name</span> = <span class="pl-s"><span class="pl-pds">"</span>branch-router<span class="pl-pds">"</span></span>
 <span class="pl-smi">address</span> = <span class="pl-s"><span class="pl-pds">"</span>192.0.2.1<span class="pl-pds">"</span></span>
@@ -177,7 +177,7 @@ The Nodes page on the hub shows it as CONNECTED.</p>
 added, as NOT JOINED, with a <strong>Join Command</strong> button.</p>
 <p dir="auto">Hosts without <code>node</code> are checked by the hub itself. Their node is called
 <code>local</code>: <code>node = "local"</code> on a host means the same as no <code>node</code>, and
-selectors like <code>hosts = { node = "local" }</code> in <a href="docs--objects--notify.md.html">notify rules</a>
+selectors like <code>hosts = { node = "local" }</code> in <a href="../watcher-source/docs--objects--notify.md.html" data-repo-path="docs/objects/notify.md">notify rules</a>
 match them.</p>
 <h2 class="heading-element" dir="auto" id="the-nodes-page">The Nodes page</h2>
 <markdown-accessiblity-table><table>

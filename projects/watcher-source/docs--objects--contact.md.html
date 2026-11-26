@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>docs/objects/contact.md — Watcher — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=62ac401d" />
+  <link rel="stylesheet" href="../../styles.css?v=2d91b490" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -76,7 +76,7 @@
 <p dir="auto">A contact is someone who receives notifications: by email, webhook,
 Slack, Microsoft Teams, Telegram, ntfy, Gotify, PagerDuty, Jira or a
 script of your own, or several of them. A contact alone receives nothing: a
-<a href="docs--objects--notify.md.html">notify rule</a> decides which contacts get which notifications.</p>
+<a href="../watcher-source/docs--objects--notify.md.html" data-repo-path="docs/objects/notify.md">notify rule</a> decides which contacts get which notifications.</p>
 <div class="highlight highlight-source-toml notranslate position-relative overflow-auto" dir="auto"><pre>[<span class="pl-en">contact</span>.<span class="pl-en">oncall</span>]
 <span class="pl-smi">email</span> = <span class="pl-s"><span class="pl-pds">"</span>oncall@example.com<span class="pl-pds">"</span></span>
 
@@ -84,7 +84,7 @@ script of your own, or several of them. A contact alone receives nothing: a
 <span class="pl-smi">contacts</span> = [<span class="pl-s"><span class="pl-pds">"</span>oncall<span class="pl-pds">"</span></span>]</pre></div>
 <p dir="auto">The contact <code>oncall</code> gets an email for every problem and recovery.</p>
 <p dir="auto">Email needs an SMTP server in <code>watcher.toml</code>, see
-<a href="docs--guides--notifications.md.html#smtp">Notifications</a>.</p>
+<a href="../watcher-source/docs--guides--notifications.md.html#smtp" data-repo-path="docs/guides/notifications.md">Notifications</a>.</p>
 <h2 class="heading-element" dir="auto" id="fields">Fields</h2>
 <markdown-accessiblity-table><table>
 <thead>
@@ -103,22 +103,22 @@ script of your own, or several of them. A contact alone receives nothing: a
 <tr>
 <td><code>webhook</code></td>
 <td></td>
-<td>An <code>http://</code> or <code>https://</code> URL. Watcher sends each notification as JSON in a POST request; see <a href="docs--guides--notifications.md.html#webhook">Webhook</a>.</td>
+<td>An <code>http://</code> or <code>https://</code> URL. Watcher sends each notification as JSON in a POST request; see <a href="../watcher-source/docs--guides--notifications.md.html#webhook" data-repo-path="docs/guides/notifications.md">Webhook</a>.</td>
 </tr>
 <tr>
 <td><code>slack</code></td>
 <td></td>
-<td>A Slack incoming webhook URL. See <a href="docs--guides--notifications.md.html#slack">Slack</a>.</td>
+<td>A Slack incoming webhook URL. See <a href="../watcher-source/docs--guides--notifications.md.html#slack" data-repo-path="docs/guides/notifications.md">Slack</a>.</td>
 </tr>
 <tr>
 <td><code>teams</code></td>
 <td></td>
-<td>A Microsoft Teams webhook URL, from the Workflows template "Post to a channel when a webhook request is received". See <a href="docs--guides--notifications.md.html#microsoft-teams">Microsoft Teams</a>.</td>
+<td>A Microsoft Teams webhook URL, from the Workflows template "Post to a channel when a webhook request is received". See <a href="../watcher-source/docs--guides--notifications.md.html#microsoft-teams" data-repo-path="docs/guides/notifications.md">Microsoft Teams</a>.</td>
 </tr>
 <tr>
 <td><code>telegram.token</code></td>
 <td></td>
-<td>Telegram: the bot's token from BotFather. See <a href="docs--guides--notifications.md.html#telegram">Telegram</a>.</td>
+<td>Telegram: the bot's token from BotFather. See <a href="../watcher-source/docs--guides--notifications.md.html#telegram" data-repo-path="docs/guides/notifications.md">Telegram</a>.</td>
 </tr>
 <tr>
 <td><code>telegram.chat</code></td>
@@ -128,12 +128,12 @@ script of your own, or several of them. A contact alone receives nothing: a
 <tr>
 <td><code>ntfy</code></td>
 <td></td>
-<td>An ntfy topic URL, <code>https://ntfy.sh/my-topic</code>. Or a table <code>{ url, token }</code> for a topic that needs an access token. See <a href="docs--guides--notifications.md.html#ntfy">ntfy</a>.</td>
+<td>An ntfy topic URL, <code>https://ntfy.sh/my-topic</code>. Or a table <code>{ url, token }</code> for a topic that needs an access token. See <a href="../watcher-source/docs--guides--notifications.md.html#ntfy" data-repo-path="docs/guides/notifications.md">ntfy</a>.</td>
 </tr>
 <tr>
 <td><code>gotify.url</code></td>
 <td></td>
-<td>Gotify: the server's URL. See <a href="docs--guides--notifications.md.html#gotify">Gotify</a>.</td>
+<td>Gotify: the server's URL. See <a href="../watcher-source/docs--guides--notifications.md.html#gotify" data-repo-path="docs/guides/notifications.md">Gotify</a>.</td>
 </tr>
 <tr>
 <td><code>gotify.token</code></td>
@@ -143,12 +143,12 @@ script of your own, or several of them. A contact alone receives nothing: a
 <tr>
 <td><code>pagerduty</code></td>
 <td></td>
-<td>A PagerDuty Events API v2 routing key (integration key). Problems open incidents, recoveries resolve them. See <a href="docs--guides--notifications.md.html#pagerduty">PagerDuty</a>.</td>
+<td>A PagerDuty Events API v2 routing key (integration key). Problems open incidents, recoveries resolve them. See <a href="../watcher-source/docs--guides--notifications.md.html#pagerduty" data-repo-path="docs/guides/notifications.md">PagerDuty</a>.</td>
 </tr>
 <tr>
 <td><code>jira.url</code></td>
 <td></td>
-<td>The Jira site, <code>https://acme.atlassian.net</code> or an on-premise server. Problems become issues, one per open problem; repeats and escalations add comments; the recovery comments and can close the issue. See <a href="docs--guides--notifications.md.html#jira">Jira</a>.</td>
+<td>The Jira site, <code>https://acme.atlassian.net</code> or an on-premise server. Problems become issues, one per open problem; repeats and escalations add comments; the recovery comments and can close the issue. See <a href="../watcher-source/docs--guides--notifications.md.html#jira" data-repo-path="docs/guides/notifications.md">Jira</a>.</td>
 </tr>
 <tr>
 <td><code>jira.project</code></td>
@@ -183,12 +183,12 @@ script of your own, or several of them. A contact alone receives nothing: a
 <tr>
 <td><code>script</code></td>
 <td></td>
-<td>A program to run for each notification, with arguments, for example <code>/usr/local/bin/send-sms --to ops</code>. It gets the notification as JSON on stdin. See <a href="docs--guides--notifications.md.html#scripts">Scripts</a>.</td>
+<td>A program to run for each notification, with arguments, for example <code>/usr/local/bin/send-sms --to ops</code>. It gets the notification as JSON on stdin. See <a href="../watcher-source/docs--guides--notifications.md.html#scripts" data-repo-path="docs/guides/notifications.md">Scripts</a>.</td>
 </tr>
 <tr>
 <td><code>groups</code></td>
 <td></td>
-<td>Contact groups the contact belongs to. See <a href="docs--objects--contactgroup.md.html">contactgroup</a>.</td>
+<td>Contact groups the contact belongs to. See <a href="../watcher-source/docs--objects--contactgroup.md.html" data-repo-path="docs/objects/contactgroup.md">contactgroup</a>.</td>
 </tr>
 </tbody>
 </table></markdown-accessiblity-table>
@@ -247,9 +247,9 @@ token and no email:</p>
 <div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto"><pre>watcher config explain contact oncall</pre></div>
 <h2 class="heading-element" dir="auto" id="see-also">See also</h2>
 <ul dir="auto">
-<li><a href="docs--objects--notify.md.html">notify</a>: who gets which notifications</li>
-<li><a href="docs--objects--contactgroup.md.html">contactgroup</a></li>
-<li><a href="docs--guides--notifications.md.html">Notifications</a>: SMTP, message format, webhooks, setting up each channel</li>
+<li><a href="../watcher-source/docs--objects--notify.md.html" data-repo-path="docs/objects/notify.md">notify</a>: who gets which notifications</li>
+<li><a href="../watcher-source/docs--objects--contactgroup.md.html" data-repo-path="docs/objects/contactgroup.md">contactgroup</a></li>
+<li><a href="../watcher-source/docs--guides--notifications.md.html" data-repo-path="docs/guides/notifications.md">Notifications</a>: SMTP, message format, webhooks, setting up each channel</li>
 </ul>
 
         </div>

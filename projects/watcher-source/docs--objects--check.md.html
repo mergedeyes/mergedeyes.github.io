@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>docs/objects/check.md — Watcher — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=62ac401d" />
+  <link rel="stylesheet" href="../../styles.css?v=2d91b490" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -75,8 +75,8 @@
 <h1 class="heading-element" dir="auto" id="check">check</h1>
 <p dir="auto">A check describes what to run and how to judge the result: a command,
 values for its placeholders, thresholds and timing. A check does nothing
-by itself. It runs once it is on a <a href="docs--objects--host.md.html">host</a>: listed in the host's
-<code>services = [...]</code> as it is, or used by a <a href="docs--objects--service.md.html">service</a> on the
+by itself. It runs once it is on a <a href="../watcher-source/docs--objects--host.md.html" data-repo-path="docs/objects/host.md">host</a>: listed in the host's
+<code>services = [...]</code> as it is, or used by a <a href="../watcher-source/docs--objects--service.md.html" data-repo-path="docs/objects/service.md">service</a> on the
 host.</p>
 <div class="highlight highlight-source-toml notranslate position-relative overflow-auto" dir="auto"><pre>[<span class="pl-en">check</span>.<span class="pl-en">http</span>]
 <span class="pl-smi">command</span> = <span class="pl-s"><span class="pl-pds">"</span>check_http -H $host.address$ -u $url$<span class="pl-pds">"</span></span>
@@ -119,12 +119,12 @@ defaults to <code>/</code>. The plugin's exit code gives the state: 0 is OK, 1 W
 <tr>
 <td><code>run_on</code></td>
 <td><code>local</code></td>
-<td>Where the command runs. <code>local</code>: on the Watcher machine. <code>host</code>: on the monitored host over SSH, see <a href="docs--guides--ssh.md.html">Checks over SSH</a>.</td>
+<td>Where the command runs. <code>local</code>: on the Watcher machine. <code>host</code>: on the monitored host over SSH, see <a href="../watcher-source/docs--guides--ssh.md.html" data-repo-path="docs/guides/ssh.md">Checks over SSH</a>.</td>
 </tr>
 <tr>
 <td><code>copy</code></td>
 <td><code>false</code></td>
-<td>With <code>run_on = "host"</code>: upload the script to the host before running it. See <a href="docs--guides--ssh.md.html#copying-scripts">Copying scripts</a>.</td>
+<td>With <code>run_on = "host"</code>: upload the script to the host before running it. See <a href="../watcher-source/docs--guides--ssh.md.html#copying-scripts" data-repo-path="docs/guides/ssh.md">Copying scripts</a>.</td>
 </tr>
 <tr>
 <td><code>passive</code></td>
@@ -193,7 +193,7 @@ defaults to <code>/</code>. The plugin's exit code gives the state: 0 is OK, 1 W
 </tr>
 </tbody>
 </table></markdown-accessiblity-table>
-<p dir="auto">A <a href="docs--objects--service.md.html">service</a> or a <a href="docs--objects--host.md.html#host-services">host service</a> can set
+<p dir="auto">A <a href="../watcher-source/docs--objects--service.md.html" data-repo-path="docs/objects/service.md">service</a> or a <a href="../watcher-source/docs--objects--host.md.html#host-services" data-repo-path="docs/objects/host.md">host service</a> can set
 every one of these fields again, and its value wins over the check's.</p>
 <p dir="auto"><code>check</code>, <code>for_each</code>, <code>groups</code> and <code>enabled</code> are not allowed on a check;
 they belong on a service.</p>
@@ -228,7 +228,7 @@ they belong on a service.</p>
 <div class="highlight highlight-source-toml notranslate position-relative overflow-auto" dir="auto"><pre>[<span class="pl-en">check</span>.<span class="pl-en">load</span>]
 <span class="pl-smi">command</span> = <span class="pl-s"><span class="pl-pds">"</span>check_load -w 5,4,3 -c 10,8,6<span class="pl-pds">"</span></span>
 <span class="pl-smi">run_on</span> = <span class="pl-s"><span class="pl-pds">"</span>host<span class="pl-pds">"</span></span></pre></div>
-<p dir="auto">The host needs an <code>ssh</code> login, see <a href="docs--guides--ssh.md.html">Checks over SSH</a>.</p>
+<p dir="auto">The host needs an <code>ssh</code> login, see <a href="../watcher-source/docs--guides--ssh.md.html" data-repo-path="docs/guides/ssh.md">Checks over SSH</a>.</p>
 <h3 class="heading-element" dir="auto" id="no-graphs">No graphs</h3>
 <div class="highlight highlight-source-toml notranslate position-relative overflow-auto" dir="auto"><pre>[<span class="pl-en">check</span>.<span class="pl-en">backup</span>]
 <span class="pl-smi">command</span> = <span class="pl-s"><span class="pl-pds">"</span>/opt/scripts/backup.sh<span class="pl-pds">"</span></span>
@@ -244,7 +244,7 @@ directories, in this order:</p>
 <code>/usr/local/nagios/libexec</code></li>
 <li><code>PATH</code></li>
 </ol>
-<p dir="auto"><code>check_dirs</code> in <a href="docs--reference--watcher-toml.md.html">watcher.toml</a> replaces the
+<p dir="auto"><code>check_dirs</code> in <a href="../watcher-source/docs--reference--watcher-toml.md.html" data-repo-path="docs/reference/watcher-toml.md">watcher.toml</a> replaces the
 first two with your own list. New scripts in these directories work
 without a reload. <code>watcher config check</code> warns about commands it can't
 find.</p>
@@ -294,7 +294,7 @@ the command runs.</p>
 </tr>
 <tr>
 <td><code>$service.key$</code></td>
-<td>the key of the <code>for_each</code> entry, see <a href="docs--objects--service.md.html#one-service-per-item-for_each">for_each</a></td>
+<td>the key of the <code>for_each</code> entry, see <a href="../watcher-source/docs--objects--service.md.html#one-service-per-item-for_each" data-repo-path="docs/objects/service.md">for_each</a></td>
 </tr>
 <tr>
 <td><code>$check.name$</code></td>
@@ -326,7 +326,7 @@ services, host groups, hosts and host services can set other values:</p>
 <span class="pl-smi">services</span> = [<span class="pl-s"><span class="pl-pds">"</span>http<span class="pl-pds">"</span></span>]
 <span class="pl-smi">vars.url</span> = <span class="pl-s"><span class="pl-pds">"</span>/health<span class="pl-pds">"</span></span>          <span class="pl-c"><span class="pl-c">#</span> this host runs: check_http -H shop -u /health</span></pre></div>
 <p dir="auto">Which value wins is explained in
-<a href="docs--guides--configuration.md.html#which-value-wins">Which value wins</a>.</p>
+<a href="../watcher-source/docs--guides--configuration.md.html#which-value-wins" data-repo-path="docs/guides/configuration.md">Which value wins</a>.</p>
 <p dir="auto">Built-in checks read their settings from vars too, but not from host and
 host group vars. See <a href="#built-in-checks">Built-in checks</a>.</p>
 <h2 class="heading-element" dir="auto" id="exit-codes">Exit codes</h2>
@@ -616,7 +616,7 @@ Macros work in all of these vars, for example <code>name = "$host.name$"</code>.
 <p dir="auto">Every built-in check also takes <code>address</code>: it then connects there instead
 of the host's address (for <code>dns</code>, that is the server it asks). This is
 useful for hosts that stand for several sites, see
-<a href="docs--examples.md.html#many-websites">Many websites</a>.</p>
+<a href="../watcher-source/docs--examples.md.html#many-websites" data-repo-path="docs/examples.md">Many websites</a>.</p>
 <p dir="auto"><code>warn</code> and <code>crit</code> of <code>tcp</code>, <code>http</code> and <code>dns</code> are response times: seconds
 (<code>0.5</code>) or a duration (<code>500ms</code>, <code>2s</code>). Without them, the response time
 doesn't change the state. A check also ends shortly before its <code>timeout</code>
@@ -898,10 +898,10 @@ IMAP) isn't yet.</p>
 </code></pre></div>
 <h3 class="heading-element" dir="auto" id="proxmox-ve-checks">Proxmox VE checks</h3>
 <p dir="auto">Six checks ask Proxmox VE through its API. They log in with the
-<a href="docs--objects--host.md.html#proxmox"><code>proxmox</code> settings</a> of their host: an API token stored
+<a href="../watcher-source/docs--objects--host.md.html#proxmox" data-repo-path="docs/objects/host.md"><code>proxmox</code> settings</a> of their host: an API token stored
 in Watcher, and the certificate's fingerprint. On a VM or container with
 <code>proxmox = { host = "pve1", vmid = 100 }</code>, they ask the API of that
-Proxmox VE host, with its login. The <a href="docs--guides--proxmox.md.html">Proxmox VE guide</a>
+Proxmox VE host, with its login. The <a href="../watcher-source/docs--guides--proxmox.md.html" data-repo-path="docs/guides/proxmox.md">Proxmox VE guide</a>
 shows every step, from creating the token to discovering VMs and
 containers.</p>
 <markdown-accessiblity-table><table>
@@ -1031,7 +1031,7 @@ name. The <code>cpu</code> of a guest is in percent of its own cores.</p>
 <p dir="auto">Problems with the API itself give UNKNOWN: a wrong token, a missing
 permission, a certificate that doesn't match, or no answer before the
 timeout. <code>proxmox-updates</code> needs more than read access, see
-<a href="docs--guides--proxmox.md.html#permissions">Permissions</a>.</p>
+<a href="../watcher-source/docs--guides--proxmox.md.html#permissions" data-repo-path="docs/guides/proxmox.md">Permissions</a>.</p>
 <div class="snippet-clipboard-content notranslate position-relative overflow-auto"><pre class="notranslate"><code>PROXMOX OK - pve: CPU 5.2%, memory 23.7% (7.4 GiB of 31.2 GiB), load 0.05, up 2 h
 PROXMOX WARNING - pve/local-zfs 85% (363.2 GiB of 427.5 GiB)
 PROXMOX CRITICAL - VM 101 opnsense on pve is stopped
@@ -1086,7 +1086,7 @@ watcher run-check --warn <span class="pl-s"><span class="pl-pds">'</span>depth=&
 exit code 0 · format key_value · took 766.706 µs
 </code></pre></div>
 <p dir="auto">The exit code of <code>run-check</code> is the final state (0 to 3). All options:
-<a href="docs--reference--cli.md.html#run-check">run-check</a>.</p>
+<a href="../watcher-source/docs--reference--cli.md.html#run-check" data-repo-path="docs/reference/cli.md">run-check</a>.</p>
 <p dir="auto">In the web UI, <strong>Run Check</strong> on a service page runs that service's command
 once, the same way the scheduler would.</p>
 <h2 class="heading-element" dir="auto" id="writing-your-own-script">Writing your own script</h2>
@@ -1106,9 +1106,9 @@ depth=<span class="pl-s"><span class="pl-pds">$(</span>find /var/spool/app/queue
 <span class="pl-smi">thresholds.depth</span> = { <span class="pl-smi">warn</span> = <span class="pl-s"><span class="pl-pds">"</span>&gt; 100<span class="pl-pds">"</span></span>, <span class="pl-smi">crit</span> = <span class="pl-s"><span class="pl-pds">"</span>&gt; 500<span class="pl-pds">"</span></span> }</pre></div>
 <h2 class="heading-element" dir="auto" id="see-also">See also</h2>
 <ul dir="auto">
-<li><a href="docs--objects--service.md.html">service</a>: put a check on hosts</li>
-<li><a href="docs--guides--ssh.md.html">Checks over SSH</a></li>
-<li><a href="docs--guides--configuration.md.html#which-value-wins">Which value wins</a></li>
+<li><a href="../watcher-source/docs--objects--service.md.html" data-repo-path="docs/objects/service.md">service</a>: put a check on hosts</li>
+<li><a href="../watcher-source/docs--guides--ssh.md.html" data-repo-path="docs/guides/ssh.md">Checks over SSH</a></li>
+<li><a href="../watcher-source/docs--guides--configuration.md.html#which-value-wins" data-repo-path="docs/guides/configuration.md">Which value wins</a></li>
 </ul>
 
         </div>

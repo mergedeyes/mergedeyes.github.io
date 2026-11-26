@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>docs/guides/proxmox.md — Watcher — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=62ac401d" />
+  <link rel="stylesheet" href="../../styles.css?v=2d91b490" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -111,12 +111,12 @@ the Proxmox servers. Six built-in checks report on:</p>
 </table></markdown-accessiblity-table>
 <p dir="auto">The login is set once, on the host that stands for the Proxmox VE server:
 an <strong>API token</strong> (a login for programs that you create in Proxmox VE),
-which Watcher stores encrypted like the <a href="docs--guides--ssh.md.html#secrets">secrets for SSH</a>.
+which Watcher stores encrypted like the <a href="../watcher-source/docs--guides--ssh.md.html#secrets" data-repo-path="docs/guides/ssh.md">secrets for SSH</a>.
 Watcher can also find your VMs and containers (<strong>discovery</strong>) and add
 them as hosts with one click.</p>
 <p dir="auto">All options are listed under
-<a href="docs--objects--check.md.html#proxmox-ve-checks">Proxmox VE checks</a> and
-<a href="docs--objects--host.md.html#proxmox">proxmox</a> on the host page.</p>
+<a href="../watcher-source/docs--objects--check.md.html#proxmox-ve-checks" data-repo-path="docs/objects/check.md">Proxmox VE checks</a> and
+<a href="../watcher-source/docs--objects--host.md.html#proxmox" data-repo-path="docs/objects/host.md">proxmox</a> on the host page.</p>
 <h2 class="heading-element" dir="auto" id="1-create-a-user-and-an-api-token-in-proxmox-ve">1. Create a user and an API token in Proxmox VE</h2>
 <p dir="auto">Run this on a Proxmox VE node, as root:</p>
 <div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto"><pre>pveum user add watcher@pve --comment <span class="pl-s"><span class="pl-pds">"</span>Watcher monitoring<span class="pl-pds">"</span></span>
@@ -180,7 +180,7 @@ host form with its Proxmox VE section. As a file, for example
 <li>The checks ask the API at the host's <code>address</code> (port 8006). They need no
 <code>[service.…]</code>: built-in checks can be listed as they are.</li>
 </ul>
-<p dir="auto"><code>proxmox-node</code> only reports values; set <a href="docs--objects--check.md.html#thresholds">thresholds</a>
+<p dir="auto"><code>proxmox-node</code> only reports values; set <a href="../watcher-source/docs--objects--check.md.html#thresholds" data-repo-path="docs/objects/check.md">thresholds</a>
 to be warned, on the host's service:</p>
 <div class="highlight highlight-source-toml notranslate position-relative overflow-auto" dir="auto"><pre>  [<span class="pl-en">host</span>.<span class="pl-en">service</span>.<span class="pl-en">proxmox-node</span>]
   <span class="pl-smi">thresholds.cpu</span> = { <span class="pl-smi">warn</span> = <span class="pl-s"><span class="pl-pds">"</span>&gt; 80%<span class="pl-pds">"</span></span>, <span class="pl-smi">crit</span> = <span class="pl-s"><span class="pl-pds">"</span>&gt; 95%<span class="pl-pds">"</span></span> }

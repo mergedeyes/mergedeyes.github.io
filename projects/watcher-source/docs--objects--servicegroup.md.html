@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>docs/objects/servicegroup.md — Watcher — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=62ac401d" />
+  <link rel="stylesheet" href="../../styles.css?v=2d91b490" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -77,7 +77,7 @@
 <ul dir="auto">
 <li><strong>Bundle services</strong> for hosts: a host or host group that lists the group
 gets all its services.</li>
-<li><strong>Group services</strong> for the status pages and <a href="docs--objects--notify.md.html">notify rules</a>,
+<li><strong>Group services</strong> for the status pages and <a href="../watcher-source/docs--objects--notify.md.html" data-repo-path="docs/objects/notify.md">notify rules</a>,
 for example a "Webshop" view of web and database services.</li>
 </ul>
 <div class="highlight highlight-source-toml notranslate position-relative overflow-auto" dir="auto"><pre>[<span class="pl-en">servicegroup</span>.<span class="pl-en">linux-basics</span>]
@@ -106,7 +106,7 @@ for example a "Webshop" view of web and database services.</li>
 <tr>
 <td><code>services</code></td>
 <td></td>
-<td>Names of the services in the group. A <a href="docs--objects--check.md.html">check</a> can be listed as it is, without a <code>[service.&lt;name&gt;]</code>: a <a href="docs--objects--check.md.html#built-in-checks">built-in</a> one like <code>http</code> or <code>tls</code>, or one of yours.</td>
+<td>Names of the services in the group. A <a href="../watcher-source/docs--objects--check.md.html" data-repo-path="docs/objects/check.md">check</a> can be listed as it is, without a <code>[service.&lt;name&gt;]</code>: a <a href="../watcher-source/docs--objects--check.md.html#built-in-checks" data-repo-path="docs/objects/check.md">built-in</a> one like <code>http</code> or <code>tls</code>, or one of yours.</td>
 </tr>
 </tbody>
 </table></markdown-accessiblity-table>
@@ -120,7 +120,7 @@ mixed:</p>
 <span class="pl-c"><span class="pl-c">#</span> On the service</span>
 [<span class="pl-en">service</span>.<span class="pl-en">redis</span>]
 <span class="pl-smi">groups</span> = [<span class="pl-s"><span class="pl-pds">"</span>webshop<span class="pl-pds">"</span></span>]</pre></div>
-<p dir="auto">On one host only, with a <a href="docs--objects--host.md.html#host-services">host service</a>:</p>
+<p dir="auto">On one host only, with a <a href="../watcher-source/docs--objects--host.md.html#host-services" data-repo-path="docs/objects/host.md">host service</a>:</p>
 <div class="highlight highlight-source-toml notranslate position-relative overflow-auto" dir="auto"><pre>[[<span class="pl-en">host</span>]]
 <span class="pl-smi">name</span> = <span class="pl-s"><span class="pl-pds">"</span>db01<span class="pl-pds">"</span></span>
   [<span class="pl-en">host</span>.<span class="pl-en">service</span>.<span class="pl-en">pgsql</span>]
@@ -165,9 +165,9 @@ used in notify rules.</p>
 each group.</p>
 <h2 class="heading-element" dir="auto" id="see-also">See also</h2>
 <ul dir="auto">
-<li><a href="docs--objects--service.md.html">service</a></li>
-<li><a href="docs--objects--hostgroup.md.html">hostgroup</a></li>
-<li><a href="docs--guides--configuration.md.html#how-a-host-gets-its-services">How a host gets its services</a></li>
+<li><a href="../watcher-source/docs--objects--service.md.html" data-repo-path="docs/objects/service.md">service</a></li>
+<li><a href="../watcher-source/docs--objects--hostgroup.md.html" data-repo-path="docs/objects/hostgroup.md">hostgroup</a></li>
+<li><a href="../watcher-source/docs--guides--configuration.md.html#how-a-host-gets-its-services" data-repo-path="docs/guides/configuration.md">How a host gets its services</a></li>
 </ul>
 
         </div>

@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>docs/guides/configuration.md — Terminaal — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=62ac401d" />
+  <link rel="stylesheet" href="../../styles.css?v=2d91b490" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -76,7 +76,7 @@
 <p dir="auto">Terminaal keeps everything in <code>~/.config/terminaal/</code> – always under your home
 folder, <code>$XDG_CONFIG_HOME</code> doesn't move it (only the generated
 <code>shell-integration/</code> folder follows <code>$XDG_CONFIG_HOME</code>). On Windows it's
-<code>%APPDATA%\terminaal</code> (<a href="docs--guides--windows.md.html#where-things-are">Terminaal on Windows</a>). All
+<code>%APPDATA%\terminaal</code> (<a href="../terminaal-source/docs--guides--windows.md.html#where-things-are" data-repo-path="docs/guides/windows.md">Terminaal on Windows</a>). All
 files are optional, and none holds a password or passphrase.</p>
 <markdown-accessiblity-table><table>
 <thead>
@@ -110,7 +110,7 @@ files are optional, and none holds a password or passphrase.</p>
 <tr>
 <td><code>themes/*.toml</code></td>
 <td>Your color themes</td>
-<td>You – see <a href="docs--guides--appearance.md.html">Appearance</a></td>
+<td>You – see <a href="../terminaal-source/docs--guides--appearance.md.html" data-repo-path="docs/guides/appearance.md">Appearance</a></td>
 </tr>
 <tr>
 <td><code>shell-integration/</code></td>
@@ -120,7 +120,7 @@ files are optional, and none holds a password or passphrase.</p>
 </tbody>
 </table></markdown-accessiblity-table>
 <p dir="auto">The open tabs are kept elsewhere, in <code>~/.local/state/terminaal/session.toml</code>
-(or <code>$XDG_STATE_HOME/terminaal/</code>) – see <a href="docs--guides--sessions.md.html">Restoring the last session</a>.</p>
+(or <code>$XDG_STATE_HOME/terminaal/</code>) – see <a href="../terminaal-source/docs--guides--sessions.md.html" data-repo-path="docs/guides/sessions.md">Restoring the last session</a>.</p>
 <h2 class="heading-element" dir="auto" id="configtoml">config.toml</h2>
 <p dir="auto">The settings tab edits this file in place: it changes just the key you touched
 and keeps your comments and formatting. A missing file means defaults.</p>
@@ -137,7 +137,7 @@ and keeps your comments and formatting. A missing file means defaults.</p>
 <tr>
 <td><code>theme</code></td>
 <td><code>"Terminaal"</code></td>
-<td>Theme name, any case. See <a href="docs--guides--appearance.md.html">Appearance</a></td>
+<td>Theme name, any case. See <a href="../terminaal-source/docs--guides--appearance.md.html" data-repo-path="docs/guides/appearance.md">Appearance</a></td>
 </tr>
 <tr>
 <td><code>font_family</code></td>
@@ -234,7 +234,7 @@ and keeps your comments and formatting. A missing file means defaults.</p>
 <tr>
 <td><code>quake_height</code></td>
 <td><code>50</code></td>
-<td>Height of the drop-down window in percent of the screen, <code>20</code>–<code>100</code>. See <a href="docs--guides--drop-down-window.md.html">The drop-down window</a></td>
+<td>Height of the drop-down window in percent of the screen, <code>20</code>–<code>100</code>. See <a href="../terminaal-source/docs--guides--drop-down-window.md.html" data-repo-path="docs/guides/drop-down-window.md">The drop-down window</a></td>
 </tr>
 <tr>
 <td><code>quake_hide_on_unfocus</code></td>
@@ -249,7 +249,7 @@ and keeps your comments and formatting. A missing file means defaults.</p>
 <tr>
 <td><code>update_check</code></td>
 <td><code>true</code></td>
-<td>Ask GitHub for a newer release at start. See <a href="docs--guides--updates.md.html">Updates</a></td>
+<td>Ask GitHub for a newer release at start. See <a href="../terminaal-source/docs--guides--updates.md.html" data-repo-path="docs/guides/updates.md">Updates</a></td>
 </tr>
 <tr>
 <td><code>update_skipped</code></td>
@@ -259,7 +259,7 @@ and keeps your comments and formatting. A missing file means defaults.</p>
 <tr>
 <td><code>restore_session</code></td>
 <td><code>true</code></td>
-<td>Open last time's tabs again. Turning it off deletes the saved session. See <a href="docs--guides--sessions.md.html">Restoring the last session</a></td>
+<td>Open last time's tabs again. Turning it off deletes the saved session. See <a href="../terminaal-source/docs--guides--sessions.md.html" data-repo-path="docs/guides/sessions.md">Restoring the last session</a></td>
 </tr>
 <tr>
 <td><code>language</code></td>
@@ -400,7 +400,7 @@ and keeps your comments and formatting. A missing file means defaults.</p>
 <tr>
 <td><code>editor</code></td>
 <td>unset</td>
-<td>Command a server file edited locally opens with, its path appended (<code>code</code>, <code>gedit</code>, <code>alacritty -e nvim</code>). Unset: the desktop's default application. See <a href="docs--guides--files-and-sftp.md.html">Files on a server</a></td>
+<td>Command a server file edited locally opens with, its path appended (<code>code</code>, <code>gedit</code>, <code>alacritty -e nvim</code>). Unset: the desktop's default application. See <a href="../terminaal-source/docs--guides--files-and-sftp.md.html" data-repo-path="docs/guides/files-and-sftp.md">Files on a server</a></td>
 </tr>
 </tbody>
 </table></markdown-accessiblity-table>
@@ -409,12 +409,12 @@ and keeps your comments and formatting. A missing file means defaults.</p>
 <span class="pl-smi">new_tab</span> = <span class="pl-s"><span class="pl-pds">"</span>Ctrl+Alt+N<span class="pl-pds">"</span></span>                    <span class="pl-c"><span class="pl-c">#</span> one combination</span>
 <span class="pl-smi">copy</span> = [<span class="pl-s"><span class="pl-pds">"</span>Ctrl+Shift+C<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>Ctrl+Insert<span class="pl-pds">"</span></span>]    <span class="pl-c"><span class="pl-c">#</span> several</span>
 <span class="pl-smi">tab_9</span> = []                                <span class="pl-c"><span class="pl-c">#</span> none</span></pre></div>
-<p dir="auto">Actions left out keep their defaults. See <a href="docs--guides--keyboard-shortcuts.md.html">Keyboard shortcuts</a>
+<p dir="auto">Actions left out keep their defaults. See <a href="../terminaal-source/docs--guides--keyboard-shortcuts.md.html" data-repo-path="docs/guides/keyboard-shortcuts.md">Keyboard shortcuts</a>
 for the action names and key syntax.</p>
 <h2 class="heading-element" dir="auto" id="hoststoml">hosts.toml</h2>
 <p dir="auto">One <code>[[host]]</code> table per saved host. The keys of the per-host options are the
 <code>ssh_config</code> keywords in <code>snake_case</code>. An IBM i host
-(<code>protocol = "tn5250"</code>, see <a href="docs--guides--ibm-i-5250.md.html">IBM i green screens</a>) uses only
+(<code>protocol = "tn5250"</code>, see <a href="../terminaal-source/docs--guides--ibm-i-5250.md.html" data-repo-path="docs/guides/ibm-i-5250.md">IBM i green screens</a>) uses only
 <code>name</code>, <code>host</code>, <code>port</code>, <code>color</code>, <code>theme</code> and its own keys <code>tls</code>, <code>ccsid</code>, <code>wide</code>
 and <code>device</code>.</p>
 <div class="highlight highlight-source-toml notranslate position-relative overflow-auto" dir="auto"><pre>[[<span class="pl-en">host</span>]]
@@ -482,7 +482,7 @@ and <code>device</code>.</p>
 <span class="pl-c"><span class="pl-c">#</span> delete_remote = true        # deletions may go to the server (upload/both)</span>
 <span class="pl-c"><span class="pl-c">#</span> delete_local = true         # … or come from it (download/both)</span></pre></div>
 <p dir="auto"><code>proxy_jump</code> and <code>proxy_command</code> exclude each other. Details on every option:
-<a href="docs--guides--ssh-hosts.md.html">SSH hosts</a>; on folder sync: <a href="docs--guides--files-and-sftp.md.html">Files on a server</a>.</p>
+<a href="../terminaal-source/docs--guides--ssh-hosts.md.html" data-repo-path="docs/guides/ssh-hosts.md">SSH hosts</a>; on folder sync: <a href="../terminaal-source/docs--guides--files-and-sftp.md.html" data-repo-path="docs/guides/files-and-sftp.md">Files on a server</a>.</p>
 <h2 class="heading-element" dir="auto" id="keystoml">keys.toml</h2>
 <div class="highlight highlight-source-toml notranslate position-relative overflow-auto" dir="auto"><pre>[[<span class="pl-en">key</span>]]
 <span class="pl-smi">name</span> = <span class="pl-s"><span class="pl-pds">"</span>Work<span class="pl-pds">"</span></span>

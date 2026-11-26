@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>docs/objects/dependency.md — Watcher — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=62ac401d" />
+  <link rel="stylesheet" href="../../styles.css?v=2d91b490" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -144,14 +144,14 @@ dependents too.</p>
 <li>Notifications for a dependent are held back while the master is in one
 of the listed states and that state is confirmed (HARD). A master in a
 SOFT state holds nothing back.</li>
-<li>A master host is DOWN or UP through its <a href="docs--objects--host.md.html#host-state">host
+<li>A master host is DOWN or UP through its <a href="../watcher-source/docs--objects--host.md.html#host-state" data-repo-path="docs/objects/host.md">host
 check</a>. A master host without a host check is
 always UP, so the dependency never applies; loading warns about it.</li>
 <li>The master's own notifications are never held back: the alert that
 tells you the master is down always goes out.</li>
 <li>Checks keep running. The dependents' states stay visible in the web
 UI; only their notifications wait.</li>
-<li><a href="docs--objects--notify.md.html#repeat">Reminders</a> and <a href="docs--objects--notify.md.html#after">escalations</a> for a
+<li><a href="../watcher-source/docs--objects--notify.md.html#repeat" data-repo-path="docs/objects/notify.md">Reminders</a> and <a href="../watcher-source/docs--objects--notify.md.html#after" data-repo-path="docs/objects/notify.md">escalations</a> for a
 held-back problem wait too. Their time keeps running: a problem that
 outlives the master's outage is sent once the master has recovered.</li>
 <li>A dependent that recovers while it is held back sends nothing — there
@@ -160,7 +160,7 @@ simply OK. Contacts see the state in the web UI.</li>
 <li>The log says why nothing was sent: <code>no notification for web01/http: depends on gw (DOWN)</code>.</li>
 </ul>
 <p dir="auto">A host that is DOWN already silences its own services, without any
-configuration: see <a href="docs--objects--notify.md.html#when-notifications-are-sent">When notifications are
+configuration: see <a href="../watcher-source/docs--objects--notify.md.html#when-notifications-are-sent" data-repo-path="docs/objects/notify.md">When notifications are
 sent</a>. Dependencies are for
 problems that reach <em>across</em> hosts: hosts behind a router, services that
 need a database on another machine.</p>
@@ -223,7 +223,7 @@ hosts do (except the master's own alert).</p>
 </tr>
 <tr>
 <td><code>node</code></td>
-<td>on this <a href="docs--guides--nodes.md.html">node</a>, or any of a list. <code>local</code>: hosts without a node, checked by this Watcher itself.</td>
+<td>on this <a href="../watcher-source/docs--guides--nodes.md.html" data-repo-path="docs/guides/nodes.md">node</a>, or any of a list. <code>local</code>: hosts without a node, checked by this Watcher itself.</td>
 </tr>
 <tr>
 <td><code>exclude</code></td>
@@ -392,10 +392,10 @@ different fields, use <code>expr</code>:</p>
 since they are usually typos.</p>
 <h2 class="heading-element" dir="auto" id="see-also">See also</h2>
 <ul dir="auto">
-<li><a href="docs--objects--notify.md.html">notify</a>: who gets which notifications</li>
-<li><a href="docs--objects--host.md.html">host</a>: the host check, which gives a host its UP/DOWN state</li>
-<li><a href="docs--guides--notifications.md.html">Notifications</a></li>
-<li><a href="docs--guides--alerting-recipes.md.html">Alerting recipes</a>: complete setups for common cases</li>
+<li><a href="../watcher-source/docs--objects--notify.md.html" data-repo-path="docs/objects/notify.md">notify</a>: who gets which notifications</li>
+<li><a href="../watcher-source/docs--objects--host.md.html" data-repo-path="docs/objects/host.md">host</a>: the host check, which gives a host its UP/DOWN state</li>
+<li><a href="../watcher-source/docs--guides--notifications.md.html" data-repo-path="docs/guides/notifications.md">Notifications</a></li>
+<li><a href="../watcher-source/docs--guides--alerting-recipes.md.html" data-repo-path="docs/guides/alerting-recipes.md">Alerting recipes</a>: complete setups for common cases</li>
 </ul>
 
         </div>

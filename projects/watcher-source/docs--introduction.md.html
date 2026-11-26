@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>docs/introduction.md — Watcher — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=62ac401d" />
+  <link rel="stylesheet" href="../../styles.css?v=2d91b490" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -87,23 +87,23 @@ script that prints a result work as checks.</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="docs--objects--check.md.html">check</a></td>
+<td><a href="../watcher-source/docs--objects--check.md.html" data-repo-path="docs/objects/check.md">check</a></td>
 <td>What to run: a command, its default values, thresholds.</td>
 </tr>
 <tr>
-<td><a href="docs--objects--service.md.html">service</a></td>
+<td><a href="../watcher-source/docs--objects--service.md.html" data-repo-path="docs/objects/service.md">service</a></td>
 <td>A check with its settings, put on hosts. On a host, a service has the ID <code>host/service</code>.</td>
 </tr>
 <tr>
-<td><a href="docs--objects--host.md.html">host</a></td>
+<td><a href="../watcher-source/docs--objects--host.md.html" data-repo-path="docs/objects/host.md">host</a></td>
 <td>A machine or device to monitor.</td>
 </tr>
 <tr>
-<td><a href="docs--objects--hostgroup.md.html">host group</a></td>
+<td><a href="../watcher-source/docs--objects--hostgroup.md.html" data-repo-path="docs/objects/hostgroup.md">host group</a></td>
 <td>Hosts that get the same services and settings.</td>
 </tr>
 <tr>
-<td><a href="docs--objects--servicegroup.md.html">service group</a></td>
+<td><a href="../watcher-source/docs--objects--servicegroup.md.html" data-repo-path="docs/objects/servicegroup.md">service group</a></td>
 <td>Services that are assigned or viewed together.</td>
 </tr>
 <tr>
@@ -111,39 +111,39 @@ script that prints a result work as checks.</p>
 <td>The service or check that decides whether a host is UP or DOWN. It runs for the host itself and shows on the host's page, not among its services.</td>
 </tr>
 <tr>
-<td><a href="docs--objects--contact.md.html">contact</a></td>
+<td><a href="../watcher-source/docs--objects--contact.md.html" data-repo-path="docs/objects/contact.md">contact</a></td>
 <td>Someone who receives notifications: by email, webhook, Slack, Teams, Telegram, ntfy, Gotify, PagerDuty, Jira or a script.</td>
 </tr>
 <tr>
-<td><a href="docs--objects--contactgroup.md.html">contact group</a></td>
+<td><a href="../watcher-source/docs--objects--contactgroup.md.html" data-repo-path="docs/objects/contactgroup.md">contact group</a></td>
 <td>A set of contacts.</td>
 </tr>
 <tr>
-<td><a href="docs--objects--notify.md.html">notify rule</a></td>
+<td><a href="../watcher-source/docs--objects--notify.md.html" data-repo-path="docs/objects/notify.md">notify rule</a></td>
 <td>Which contacts get which notifications.</td>
 </tr>
 <tr>
-<td><a href="docs--objects--dependency.md.html">dependency</a></td>
+<td><a href="../watcher-source/docs--objects--dependency.md.html" data-repo-path="docs/objects/dependency.md">dependency</a></td>
 <td>Holds notifications back while another host or service has a problem, like the router in front of them.</td>
 </tr>
 <tr>
-<td><a href="docs--objects--downtimegroup.md.html">downtime group</a></td>
+<td><a href="../watcher-source/docs--objects--downtimegroup.md.html" data-repo-path="docs/objects/downtimegroup.md">downtime group</a></td>
 <td>Hosts with recurring downtime windows.</td>
 </tr>
 <tr>
-<td><a href="docs--objects--timeperiod.md.html">time period</a></td>
+<td><a href="../watcher-source/docs--objects--timeperiod.md.html" data-repo-path="docs/objects/timeperiod.md">time period</a></td>
 <td>When notify rules apply, for example business hours.</td>
 </tr>
 <tr>
-<td><a href="docs--objects--sink.md.html">sink</a></td>
+<td><a href="../watcher-source/docs--objects--sink.md.html" data-repo-path="docs/objects/sink.md">sink</a></td>
 <td>A second database that receives a copy of all results.</td>
 </tr>
 <tr>
-<td><a href="docs--guides--nodes.md.html">hub</a></td>
+<td><a href="../watcher-source/docs--guides--nodes.md.html" data-repo-path="docs/guides/nodes.md">hub</a></td>
 <td>A Watcher that nodes at other sites connect to (<code>role = "hub"</code>).</td>
 </tr>
 <tr>
-<td><a href="docs--guides--nodes.md.html">node</a></td>
+<td><a href="../watcher-source/docs--guides--nodes.md.html" data-repo-path="docs/guides/nodes.md">node</a></td>
 <td>A Watcher at another site, for example a customer's network, that connects to a hub.</td>
 </tr>
 </tbody>
@@ -166,7 +166,7 @@ script that prints a result work as checks.</p>
 <p dir="auto">A new problem is first SOFT. It becomes HARD once it was seen
 <code>max_attempts</code> times in a row. Only HARD changes send notifications, so a
 single bad result doesn't wake anyone up. See
-<a href="docs--objects--check.md.html#soft-and-hard-states">SOFT and HARD states</a>.</p>
+<a href="../watcher-source/docs--objects--check.md.html#soft-and-hard-states" data-repo-path="docs/objects/check.md">SOFT and HARD states</a>.</p>
 <h2 class="heading-element" dir="auto" id="what-works-today">What works today</h2>
 <p dir="auto">Single server:</p>
 <ul dir="auto">

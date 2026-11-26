@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>docs/guides/notifications.md — Watcher — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=62ac401d" />
+  <link rel="stylesheet" href="../../styles.css?v=2d91b490" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -78,8 +78,8 @@ Telegram, ntfy, Gotify, PagerDuty or a script of your own. Setting them
 up takes three steps:</p>
 <ol dir="auto">
 <li>An SMTP server in <code>watcher.toml</code>, for email. See <a href="#smtp">SMTP</a>.</li>
-<li><a href="docs--objects--contact.md.html">Contacts</a>: who receives notifications, and where.</li>
-<li><a href="docs--objects--notify.md.html">Notify rules</a>: which contacts get which
+<li><a href="../watcher-source/docs--objects--contact.md.html" data-repo-path="docs/objects/contact.md">Contacts</a>: who receives notifications, and where.</li>
+<li><a href="../watcher-source/docs--objects--notify.md.html" data-repo-path="docs/objects/notify.md">Notify rules</a>: which contacts get which
 notifications.</li>
 </ol>
 <div class="highlight highlight-source-toml notranslate position-relative overflow-auto" dir="auto"><pre><span class="pl-c"><span class="pl-c">#</span> conf.d/contacts.toml</span>
@@ -91,7 +91,7 @@ notifications.</li>
 <p dir="auto">Then test it:</p>
 <div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto"><pre>watcher notify <span class="pl-c1">test</span> oncall</pre></div>
 <p dir="auto">When a notification is sent, and when it isn't, is described in
-<a href="docs--objects--notify.md.html#when-notifications-are-sent">When notifications are sent</a>.</p>
+<a href="../watcher-source/docs--objects--notify.md.html#when-notifications-are-sent" data-repo-path="docs/objects/notify.md">When notifications are sent</a>.</p>
 <h2 class="heading-element" dir="auto" id="smtp">SMTP</h2>
 <p dir="auto">The mail server is set in <code>watcher.toml</code>. Changes need a restart.</p>
 <div class="highlight highlight-source-toml notranslate position-relative overflow-auto" dir="auto"><pre><span class="pl-smi">public_url</span> = <span class="pl-s"><span class="pl-pds">"</span>https://watcher.example.com<span class="pl-pds">"</span></span>   <span class="pl-c"><span class="pl-c">#</span> used for links in messages</span>
@@ -109,7 +109,7 @@ notifications.</li>
 <span class="pl-smi">host</span> = <span class="pl-s"><span class="pl-pds">"</span>localhost<span class="pl-pds">"</span></span>
 <span class="pl-smi">tls</span> = <span class="pl-s"><span class="pl-pds">"</span>none<span class="pl-pds">"</span></span>
 <span class="pl-smi">from</span> = <span class="pl-s"><span class="pl-pds">"</span>watcher@example.com<span class="pl-pds">"</span></span></pre></div>
-<p dir="auto">All SMTP fields: <a href="docs--reference--watcher-toml.md.html#smtp">watcher.toml</a>.</p>
+<p dir="auto">All SMTP fields: <a href="../watcher-source/docs--reference--watcher-toml.md.html#smtp" data-repo-path="docs/reference/watcher-toml.md">watcher.toml</a>.</p>
 <h2 class="heading-element" dir="auto" id="email">Email</h2>
 <p dir="auto">The subject names the event, the host or service, and its state:</p>
 <div class="snippet-clipboard-content notranslate position-relative overflow-auto"><pre class="notranslate"><code>[Watcher] PROBLEM: web01/http is CRITICAL
@@ -130,8 +130,8 @@ Time:     2026-10-23T08:15:02Z
 Details:  https://watcher.example.com/services/web01/http
 </code></pre></div>
 <p dir="auto">The <code>Details</code> link is only there if <code>public_url</code> is set.</p>
-<p dir="auto">A repeated notification (a rule with <a href="docs--objects--notify.md.html#repeat"><code>repeat</code></a>)
-or an escalation (a rule with <a href="docs--objects--notify.md.html#after"><code>after</code></a>) says
+<p dir="auto">A repeated notification (a rule with <a href="../watcher-source/docs--objects--notify.md.html#repeat" data-repo-path="docs/objects/notify.md"><code>repeat</code></a>)
+or an escalation (a rule with <a href="../watcher-source/docs--objects--notify.md.html#after" data-repo-path="docs/objects/notify.md"><code>after</code></a>) says
 how long the problem has been open, and since when:</p>
 <div class="snippet-clipboard-content notranslate position-relative overflow-auto"><pre class="notranslate"><code>web01/http is still CRITICAL (for 2h 10m)
 
@@ -240,7 +240,7 @@ JSON body:</p>
 </tr>
 <tr>
 <td><code>repeat</code></td>
-<td><code>true</code>: a problem sent again because it is still open (see <a href="docs--objects--notify.md.html#repeat"><code>repeat</code></a>), or escalated (see <a href="docs--objects--notify.md.html#after"><code>after</code></a>).</td>
+<td><code>true</code>: a problem sent again because it is still open (see <a href="../watcher-source/docs--objects--notify.md.html#repeat" data-repo-path="docs/objects/notify.md"><code>repeat</code></a>), or escalated (see <a href="../watcher-source/docs--objects--notify.md.html#after" data-repo-path="docs/objects/notify.md"><code>after</code></a>).</td>
 </tr>
 <tr>
 <td><code>url</code></td>
@@ -253,7 +253,7 @@ JSON body:</p>
 </tbody>
 </table></markdown-accessiblity-table>
 <h2 class="heading-element" dir="auto" id="chat-push-and-paging-services">Chat, push and paging services</h2>
-<p dir="auto">Besides email and webhooks, a <a href="docs--objects--contact.md.html">contact</a> can get
+<p dir="auto">Besides email and webhooks, a <a href="../watcher-source/docs--objects--contact.md.html" data-repo-path="docs/objects/contact.md">contact</a> can get
 notifications on Slack, Microsoft Teams, Telegram, ntfy, Gotify,
 PagerDuty and Jira, or through a script. Each service gets the same text as an
 email: what happened, the check output, host, service, state, time and
@@ -453,8 +453,8 @@ ones with the reason:</p>
 2026-11-10 11:30:02  PROBLEM again    CRITICAL  lead     email    SENT
 2026-11-10 10:00:04  PROBLEM          CRITICAL  team     webhook  FAILED webhook: ... Connection refused
 </code></pre></div>
-<p dir="auto"><code>again</code> marks a problem sent again: a <a href="docs--objects--notify.md.html#repeat">repeat</a>
-or an <a href="docs--objects--notify.md.html#after">escalation</a>.</p>
+<p dir="auto"><code>again</code> marks a problem sent again: a <a href="../watcher-source/docs--objects--notify.md.html#repeat" data-repo-path="docs/objects/notify.md">repeat</a>
+or an <a href="../watcher-source/docs--objects--notify.md.html#after" data-repo-path="docs/objects/notify.md">escalation</a>.</p>
 <p dir="auto">The log also keeps repeats and escalations on time across restarts:
 Watcher reads from it who already got an open problem. Without a
 database, that is kept in memory only, and a restart starts the time
@@ -464,7 +464,7 @@ contact got:</p>
 <div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto"><pre>curl -H <span class="pl-s"><span class="pl-pds">"</span>Authorization: Bearer <span class="pl-smi">$T</span><span class="pl-pds">"</span></span> <span class="pl-s"><span class="pl-pds">'</span>.../api/v1/notifications?failed=true&amp;since=7d<span class="pl-pds">'</span></span>
 curl -H <span class="pl-s"><span class="pl-pds">"</span>Authorization: Bearer <span class="pl-smi">$T</span><span class="pl-pds">"</span></span> <span class="pl-s"><span class="pl-pds">'</span>.../api/v1/notifications?contact=lead&amp;since=24h<span class="pl-pds">'</span></span></pre></div>
 <p dir="auto">The table <code>notifications</code> can also be read with SQL, see
-<a href="docs--guides--data.md.html#tables-and-views">Data</a>.</p>
+<a href="../watcher-source/docs--guides--data.md.html#tables-and-views" data-repo-path="docs/guides/data.md">Data</a>.</p>
 <h2 class="heading-element" dir="auto" id="who-gets-a-notification">Who gets a notification</h2>
 <div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto"><pre>watcher config explain web01/http</pre></div>
 <div class="snippet-clipboard-content notranslate position-relative overflow-auto"><pre class="notranslate"><code>└─ notifications
@@ -478,7 +478,7 @@ curl -H <span class="pl-s"><span class="pl-pds">"</span>Authorization: Bearer <s
 <span class="pl-smi">contacts</span> = [<span class="pl-s"><span class="pl-pds">"</span>oncall<span class="pl-pds">"</span></span>]
 <span class="pl-smi">repeat</span> = <span class="pl-s"><span class="pl-pds">"</span>1h<span class="pl-pds">"</span></span></pre></div>
 <p dir="auto">Acknowledge the problem to stop the reminders. Details:
-<a href="docs--objects--notify.md.html#repeat">repeat</a>.</p>
+<a href="../watcher-source/docs--objects--notify.md.html#repeat" data-repo-path="docs/objects/notify.md">repeat</a>.</p>
 <h2 class="heading-element" dir="auto" id="escalations">Escalations</h2>
 <p dir="auto">A rule with <code>after</code> steps in only when a problem lasts. Here the team lead
 hears about problems that nobody acknowledged within 30 minutes:</p>
@@ -489,9 +489,9 @@ hears about problems that nobody acknowledged within 30 minutes:</p>
 <span class="pl-smi">contacts</span> = [<span class="pl-s"><span class="pl-pds">"</span>teamlead<span class="pl-pds">"</span></span>]
 <span class="pl-smi">after</span> = <span class="pl-s"><span class="pl-pds">"</span>30m<span class="pl-pds">"</span></span></pre></div>
 <p dir="auto">Acknowledging the problem in time stops the escalation. Details:
-<a href="docs--objects--notify.md.html#after">after</a>.</p>
+<a href="../watcher-source/docs--objects--notify.md.html#after" data-repo-path="docs/objects/notify.md">after</a>.</p>
 <h2 class="heading-element" dir="auto" id="business-hours-and-on-call">Business hours and on-call</h2>
-<p dir="auto">A rule with <code>period</code> only notifies inside a <a href="docs--objects--timeperiod.md.html">time period</a>.
+<p dir="auto">A rule with <code>period</code> only notifies inside a <a href="../watcher-source/docs--objects--timeperiod.md.html" data-repo-path="docs/objects/timeperiod.md">time period</a>.
 Problems that are still open when it begins are sent then:</p>
 <div class="highlight highlight-source-toml notranslate position-relative overflow-auto" dir="auto"><pre>[<span class="pl-en">timeperiod</span>.<span class="pl-en">workhours</span>]
 <span class="pl-smi">schedule</span> = [{ <span class="pl-smi">days</span> = [<span class="pl-s"><span class="pl-pds">"</span>mon<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>tue<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>wed<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>thu<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>fri<span class="pl-pds">"</span></span>], <span class="pl-smi">from</span> = <span class="pl-s"><span class="pl-pds">"</span>08:00<span class="pl-pds">"</span></span>, <span class="pl-smi">to</span> = <span class="pl-s"><span class="pl-pds">"</span>18:00<span class="pl-pds">"</span></span> }]
@@ -499,19 +499,19 @@ Problems that are still open when it begins are sent then:</p>
 [[<span class="pl-en">notify</span>]]
 <span class="pl-smi">contact_groups</span> = [<span class="pl-s"><span class="pl-pds">"</span>team<span class="pl-pds">"</span></span>]
 <span class="pl-smi">period</span> = <span class="pl-s"><span class="pl-pds">"</span>workhours<span class="pl-pds">"</span></span></pre></div>
-<p dir="auto">Details: <a href="docs--objects--notify.md.html#period">period</a>.</p>
+<p dir="auto">Details: <a href="../watcher-source/docs--objects--notify.md.html#period" data-repo-path="docs/objects/notify.md">period</a>.</p>
 <h2 class="heading-element" dir="auto" id="dependencies">Dependencies</h2>
-<p dir="auto">A <a href="docs--objects--dependency.md.html">dependency</a> keeps dependents quiet while
+<p dir="auto">A <a href="../watcher-source/docs--objects--dependency.md.html" data-repo-path="docs/objects/dependency.md">dependency</a> keeps dependents quiet while
 what they need is down. One notification about the router, none about
 the twenty hosts behind it:</p>
 <div class="highlight highlight-source-toml notranslate position-relative overflow-auto" dir="auto"><pre>[[<span class="pl-en">dependency</span>]]
 <span class="pl-smi">on</span> = <span class="pl-s"><span class="pl-pds">"</span>gw<span class="pl-pds">"</span></span>
 <span class="pl-smi">hosts</span> = { <span class="pl-smi">groups</span> = [<span class="pl-s"><span class="pl-pds">"</span>branch-office<span class="pl-pds">"</span></span>] }</pre></div>
 <p dir="auto">Checks keep running and the web UI keeps showing the real states; only
-the notifications wait. Details: <a href="docs--objects--dependency.md.html">dependency</a>.</p>
+the notifications wait. Details: <a href="../watcher-source/docs--objects--dependency.md.html" data-repo-path="docs/objects/dependency.md">dependency</a>.</p>
 <p dir="auto">For complete setups (quiet start, escalation ladders, on-call at night,
 one team per service, maintenance windows), see
-<a href="docs--guides--alerting-recipes.md.html">Alerting recipes</a>.</p>
+<a href="../watcher-source/docs--guides--alerting-recipes.md.html" data-repo-path="docs/guides/alerting-recipes.md">Alerting recipes</a>.</p>
 
         </div>
       </section>

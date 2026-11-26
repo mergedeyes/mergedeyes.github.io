@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>docs/guides/alerting-recipes.md — Watcher — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=62ac401d" />
+  <link rel="stylesheet" href="../../styles.css?v=2d91b490" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -77,9 +77,9 @@
 recipe has the goal, the configuration, what happens over time, and what
 to know about acknowledgements, problems that fix themselves, and
 restarts.</p>
-<p dir="auto">The fields used here are explained in <a href="docs--objects--notify.md.html">notify</a>. The
+<p dir="auto">The fields used here are explained in <a href="../watcher-source/docs--objects--notify.md.html" data-repo-path="docs/objects/notify.md">notify</a>. The
 contacts in the examples (<code>team</code>, <code>lead</code>, ...) need to exist as
-<a href="docs--objects--contact.md.html">contacts</a> or <a href="docs--objects--contactgroup.md.html">contact groups</a>.</p>
+<a href="../watcher-source/docs--objects--contact.md.html" data-repo-path="docs/objects/contact.md">contacts</a> or <a href="../watcher-source/docs--objects--contactgroup.md.html" data-repo-path="docs/objects/contactgroup.md">contact groups</a>.</p>
 <p dir="auto">Three things are true for every recipe:</p>
 <ul dir="auto">
 <li><strong>Only confirmed problems notify.</strong> A problem counts once it is HARD,
@@ -236,7 +236,7 @@ it.</li>
 get the RECOVERY too, even after hours. On-call gets the problem at
 18:00, when their time period begins, and the RECOVERY at 19:00.</li>
 <li>The time zone is <code>timezone</code> in
-<a href="docs--reference--watcher-toml.md.html">watcher.toml</a>, or the system's.</li>
+<a href="../watcher-source/docs--reference--watcher-toml.md.html" data-repo-path="docs/reference/watcher-toml.md">watcher.toml</a>, or the system's.</li>
 </ul>
 <h2 class="heading-element" dir="auto" id="managers-critical-problems-only-no-recoveries">Managers: critical problems only, no recoveries</h2>
 <p dir="auto"><em>Managers want to know about real outages, not about every WARNING, and
@@ -264,11 +264,11 @@ so the inbox stays quiet.</em></p>
 <span class="pl-smi">contacts</span> = [<span class="pl-s"><span class="pl-pds">"</span>ops-mail<span class="pl-pds">"</span></span>]
 <span class="pl-smi">states</span> = [<span class="pl-s"><span class="pl-pds">"</span>critical<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>down<span class="pl-pds">"</span></span>]
 <span class="pl-smi">on</span> = [<span class="pl-s"><span class="pl-pds">"</span>problem<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>recovery<span class="pl-pds">"</span></span>]</pre></div>
-<p dir="auto"><code>teams</code>, <code>telegram</code> or any other <a href="docs--guides--notifications.md.html#chat-push-and-paging-services">channel</a>
+<p dir="auto"><code>teams</code>, <code>telegram</code> or any other <a href="../watcher-source/docs--guides--notifications.md.html#chat-push-and-paging-services" data-repo-path="docs/guides/notifications.md">channel</a>
 works the same way. For paging, a contact with <code>pagerduty</code> in place of
 <code>email</code> opens an incident for each critical problem and resolves it on
 recovery; a contact with <code>jira</code> opens a ticket instead (see
-<a href="docs--guides--notifications.md.html#jira">Jira</a>).</p>
+<a href="../watcher-source/docs--guides--notifications.md.html#jira" data-repo-path="docs/guides/notifications.md">Jira</a>).</p>
 <h2 class="heading-element" dir="auto" id="each-team-gets-its-own-services">Each team gets its own services</h2>
 <p dir="auto"><em>The DBAs get database problems, the web team gets web problems, and the
 NOC sees everything.</em></p>
@@ -295,7 +295,7 @@ rule with <code>hosts = { groups = ["db-servers"] }</code> and without <code>ser
 [[<span class="pl-en">notify</span>]]
 <span class="pl-smi">contacts</span> = [<span class="pl-s"><span class="pl-pds">"</span>globex-it<span class="pl-pds">"</span></span>]
 <span class="pl-smi">hosts</span> = { <span class="pl-smi">name</span> = <span class="pl-s"><span class="pl-pds">"</span>globex-*<span class="pl-pds">"</span></span> }</pre></div>
-<p dir="auto">See <a href="docs--examples.md.html#customers-msp">Customers (MSP)</a> for a complete setup.</p>
+<p dir="auto">See <a href="../watcher-source/docs--examples.md.html#customers-msp" data-repo-path="docs/examples.md">Customers (MSP)</a> for a complete setup.</p>
 <h2 class="heading-element" dir="auto" id="maintenance-windows-without-noise">Maintenance windows without noise</h2>
 <p dir="auto"><em>No alerts during the Sunday night patch window, but problems that are
 still there afterwards must not get lost.</em></p>
@@ -331,7 +331,7 @@ Checks keep running, so the web UI still shows what is really broken.</p>
 router that is <em>still</em> broken after the router recovered had its PROBLEM
 held back, and nothing new happens when the router comes back. With
 <code>repeat = "1h"</code>, it is sent once it has been open for an hour. Details:
-<a href="docs--objects--dependency.md.html">dependency</a>.</p>
+<a href="../watcher-source/docs--objects--dependency.md.html" data-repo-path="docs/objects/dependency.md">dependency</a>.</p>
 <h2 class="heading-element" dir="auto" id="flapping-services">Flapping services</h2>
 <p dir="auto"><em>A service that keeps changing between OK and CRITICAL should not send a
 message every few minutes.</em></p>
@@ -352,7 +352,7 @@ flapping messages.</p>
 <p dir="auto">Whether a contact's channels work:</p>
 <div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto"><pre>watcher notify <span class="pl-c1">test</span> lead</pre></div>
 <p dir="auto">What was actually sent: the <strong>Notifications</strong> panel on each host and
-service page, or the <a href="docs--guides--notifications.md.html#notification-log">notification log</a>.</p>
+service page, or the <a href="../watcher-source/docs--guides--notifications.md.html#notification-log" data-repo-path="docs/guides/notifications.md">notification log</a>.</p>
 <h2 class="heading-element" dir="auto" id="restarts">Restarts</h2>
 <p dir="auto">With a database, restarting Watcher changes nothing in these recipes.
 Watcher reads from the notification log who already got which problem:</p>

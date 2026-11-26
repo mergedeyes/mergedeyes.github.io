@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>docs/README.md — Watcher — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=62ac401d" />
+  <link rel="stylesheet" href="../../styles.css?v=2d91b490" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -79,10 +79,10 @@ and stay connected. Features that are planned but not available yet are
 marked <em>not yet</em>.</p>
 <h2 class="heading-element" dir="auto" id="getting-started">Getting started</h2>
 <ul dir="auto">
-<li><a href="docs--introduction.md.html">Introduction</a>: what Watcher is, its goals, what works today</li>
-<li><a href="docs--install.md.html">Installation</a>: build, database, setup, running as a service</li>
-<li><a href="docs--guides--first-steps.md.html">First steps</a>: from an empty directory to the first alert</li>
-<li><a href="docs--guides--configuration.md.html">How the configuration works</a>: files, how objects fit together, which value wins</li>
+<li><a href="../watcher-source/docs--introduction.md.html" data-repo-path="docs/introduction.md">Introduction</a>: what Watcher is, its goals, what works today</li>
+<li><a href="../watcher-source/docs--install.md.html" data-repo-path="docs/install.md">Installation</a>: build, database, setup, running as a service</li>
+<li><a href="../watcher-source/docs--guides--first-steps.md.html" data-repo-path="docs/guides/first-steps.md">First steps</a>: from an empty directory to the first alert</li>
+<li><a href="../watcher-source/docs--guides--configuration.md.html" data-repo-path="docs/guides/configuration.md">How the configuration works</a>: files, how objects fit together, which value wins</li>
 </ul>
 <h2 class="heading-element" dir="auto" id="objects">Objects</h2>
 <p dir="auto">One page per object, each with a simple example, every field, and examples
@@ -96,75 +96,75 @@ for common cases.</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="docs--objects--check.md.html">check</a></td>
+<td><a href="../watcher-source/docs--objects--check.md.html" data-repo-path="docs/objects/check.md">check</a></td>
 <td>What to run and how to judge the result: commands, built-in checks, macros, output formats, thresholds, passive checks</td>
 </tr>
 <tr>
-<td><a href="docs--objects--service.md.html">service</a></td>
+<td><a href="../watcher-source/docs--objects--service.md.html" data-repo-path="docs/objects/service.md">service</a></td>
 <td>A check with its settings, put on hosts; <code>for_each</code></td>
 </tr>
 <tr>
-<td><a href="docs--objects--host.md.html">host</a></td>
+<td><a href="../watcher-source/docs--objects--host.md.html" data-repo-path="docs/objects/host.md">host</a></td>
 <td>A machine to monitor; host services, host state, SSH login</td>
 </tr>
 <tr>
-<td><a href="docs--objects--hostgroup.md.html">hostgroup</a></td>
+<td><a href="../watcher-source/docs--objects--hostgroup.md.html" data-repo-path="docs/objects/hostgroup.md">hostgroup</a></td>
 <td>Hosts that get the same services and settings</td>
 </tr>
 <tr>
-<td><a href="docs--objects--servicegroup.md.html">servicegroup</a></td>
+<td><a href="../watcher-source/docs--objects--servicegroup.md.html" data-repo-path="docs/objects/servicegroup.md">servicegroup</a></td>
 <td>Services that are assigned or viewed together</td>
 </tr>
 <tr>
-<td><a href="docs--objects--contact.md.html">contact</a></td>
+<td><a href="../watcher-source/docs--objects--contact.md.html" data-repo-path="docs/objects/contact.md">contact</a></td>
 <td>Someone who receives notifications</td>
 </tr>
 <tr>
-<td><a href="docs--objects--contactgroup.md.html">contactgroup</a></td>
+<td><a href="../watcher-source/docs--objects--contactgroup.md.html" data-repo-path="docs/objects/contactgroup.md">contactgroup</a></td>
 <td>A set of contacts</td>
 </tr>
 <tr>
-<td><a href="docs--objects--notify.md.html">notify</a></td>
+<td><a href="../watcher-source/docs--objects--notify.md.html" data-repo-path="docs/objects/notify.md">notify</a></td>
 <td>Who gets which notifications; host and service selectors</td>
 </tr>
 <tr>
-<td><a href="docs--objects--dependency.md.html">dependency</a></td>
+<td><a href="../watcher-source/docs--objects--dependency.md.html" data-repo-path="docs/objects/dependency.md">dependency</a></td>
 <td>Quiet dependents while their master is down, for example hosts behind a router</td>
 </tr>
 <tr>
-<td><a href="docs--objects--downtimegroup.md.html">downtimegroup</a></td>
+<td><a href="../watcher-source/docs--objects--downtimegroup.md.html" data-repo-path="docs/objects/downtimegroup.md">downtimegroup</a></td>
 <td>Hosts with recurring downtime windows</td>
 </tr>
 <tr>
-<td><a href="docs--objects--timeperiod.md.html">timeperiod</a></td>
+<td><a href="../watcher-source/docs--objects--timeperiod.md.html" data-repo-path="docs/objects/timeperiod.md">timeperiod</a></td>
 <td>When notify rules apply, for example business hours</td>
 </tr>
 <tr>
-<td><a href="docs--objects--sink.md.html">sink</a></td>
+<td><a href="../watcher-source/docs--objects--sink.md.html" data-repo-path="docs/objects/sink.md">sink</a></td>
 <td>A second database that receives a copy of all results</td>
 </tr>
 </tbody>
 </table></markdown-accessiblity-table>
 <h2 class="heading-element" dir="auto" id="guides">Guides</h2>
 <ul dir="auto">
-<li><a href="docs--guides--notifications.md.html">Notifications</a>: SMTP, email format, webhooks, Slack, Teams, Telegram, ntfy, Gotify, PagerDuty, Jira, scripts, notification log</li>
-<li><a href="docs--guides--alerting-recipes.md.html">Alerting recipes</a>: ready-made setups for reminders, escalations, teams, customers and maintenance windows</li>
-<li><a href="docs--guides--ssh.md.html">Checks over SSH</a>: running checks on the hosts, secrets, host keys</li>
-<li><a href="docs--guides--proxmox.md.html">Monitoring Proxmox VE</a>: cluster, nodes, storages, VMs and containers, backups and updates through the API; discovering VMs and containers</li>
-<li><a href="docs--guides--nodes.md.html">Nodes</a>: a hub and Watchers at other sites that connect to it</li>
-<li><a href="docs--guides--operations.md.html">Operations</a>: acknowledgements, downtimes, muting, turning checks off</li>
-<li><a href="docs--guides--web-ui.md.html">Web UI</a>: pages, logins, two-factor authentication, editing the configuration</li>
-<li><a href="docs--guides--data.md.html">Data</a>: database, SQL views, Grafana</li>
+<li><a href="../watcher-source/docs--guides--notifications.md.html" data-repo-path="docs/guides/notifications.md">Notifications</a>: SMTP, email format, webhooks, Slack, Teams, Telegram, ntfy, Gotify, PagerDuty, Jira, scripts, notification log</li>
+<li><a href="../watcher-source/docs--guides--alerting-recipes.md.html" data-repo-path="docs/guides/alerting-recipes.md">Alerting recipes</a>: ready-made setups for reminders, escalations, teams, customers and maintenance windows</li>
+<li><a href="../watcher-source/docs--guides--ssh.md.html" data-repo-path="docs/guides/ssh.md">Checks over SSH</a>: running checks on the hosts, secrets, host keys</li>
+<li><a href="../watcher-source/docs--guides--proxmox.md.html" data-repo-path="docs/guides/proxmox.md">Monitoring Proxmox VE</a>: cluster, nodes, storages, VMs and containers, backups and updates through the API; discovering VMs and containers</li>
+<li><a href="../watcher-source/docs--guides--nodes.md.html" data-repo-path="docs/guides/nodes.md">Nodes</a>: a hub and Watchers at other sites that connect to it</li>
+<li><a href="../watcher-source/docs--guides--operations.md.html" data-repo-path="docs/guides/operations.md">Operations</a>: acknowledgements, downtimes, muting, turning checks off</li>
+<li><a href="../watcher-source/docs--guides--web-ui.md.html" data-repo-path="docs/guides/web-ui.md">Web UI</a>: pages, logins, two-factor authentication, editing the configuration</li>
+<li><a href="../watcher-source/docs--guides--data.md.html" data-repo-path="docs/guides/data.md">Data</a>: database, SQL views, Grafana</li>
 </ul>
 <h2 class="heading-element" dir="auto" id="reference">Reference</h2>
 <ul dir="auto">
-<li><a href="docs--reference--watcher-toml.md.html">watcher.toml</a>: listen address, database, hub and node, TLS, SMTP</li>
-<li><a href="docs--reference--cli.md.html">Command line</a></li>
-<li><a href="docs--reference--api.md.html">HTTP API</a></li>
+<li><a href="../watcher-source/docs--reference--watcher-toml.md.html" data-repo-path="docs/reference/watcher-toml.md">watcher.toml</a>: listen address, database, hub and node, TLS, SMTP</li>
+<li><a href="../watcher-source/docs--reference--cli.md.html" data-repo-path="docs/reference/cli.md">Command line</a></li>
+<li><a href="../watcher-source/docs--reference--api.md.html" data-repo-path="docs/reference/api.md">HTTP API</a></li>
 </ul>
 <h2 class="heading-element" dir="auto" id="examples">Examples</h2>
 <ul dir="auto">
-<li><a href="docs--examples.md.html">Examples</a>: complete configurations for common setups</li>
+<li><a href="../watcher-source/docs--examples.md.html" data-repo-path="docs/examples.md">Examples</a>: complete configurations for common setups</li>
 </ul>
 
         </div>

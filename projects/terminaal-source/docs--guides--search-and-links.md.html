@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>docs/guides/search-and-links.md — Terminaal — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=62ac401d" />
+  <link rel="stylesheet" href="../../styles.css?v=2d91b490" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -288,7 +288,7 @@ Escape characters and Ctrl+C in the clipboard are always removed, so pasted text
 can't smuggle in terminal sequences. Before a paste that would run several lines
 at once, or contains <code>sudo</code>, <code>curl … | sh</code>, <code>rm -rf</code> and the like, Terminaal shows
 it and asks (<strong>Settings → Terminal → Pasting</strong>, see
-<a href="docs--explanations--security-and-your-files.md.html#pasting">Security</a>).</p>
+<a href="../terminaal-source/docs--explanations--security-and-your-files.md.html#pasting" data-repo-path="docs/explanations/security-and-your-files.md">Security</a>).</p>
 <h3 class="heading-element" dir="auto" id="programs-and-the-clipboard-osc-52">Programs and the clipboard (OSC 52)</h3>
 <p dir="auto">Programs can copy into the clipboard themselves with the OSC 52 escape
 sequence – vim, Neovim, tmux, and that works over SSH too: copy in vim on the
@@ -324,7 +324,7 @@ URL handler.</li>
 <li><strong>URLs</strong> in the text, with those schemes. A trailing full stop, comma or an
 unmatched closing bracket isn't part of the link.</li>
 <li><strong>Files and folders that exist</strong>: absolute paths, <code>~/…</code>, or names relative to
-the shell's working directory (needs <a href="docs--guides--shell-integration.md.html">shell integration</a>).
+the shell's working directory (needs <a href="../terminaal-source/docs--guides--shell-integration.md.html" data-repo-path="docs/guides/shell-integration.md">shell integration</a>).
 <code>src/main.rs:42:7</code> opens <code>src/main.rs</code>. Only in local tabs – over SSH the files
 would be on the server.</li>
 </ol>

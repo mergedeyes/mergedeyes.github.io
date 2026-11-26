@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>docs/objects/downtimegroup.md — Watcher — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=62ac401d" />
+  <link rel="stylesheet" href="../../styles.css?v=2d91b490" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -84,7 +84,7 @@ services send no notifications.</p>
 all their services are in a downtime.</p>
 <p dir="auto">One-off downtimes, for example for maintenance tonight, are not written
 in the configuration. Schedule them in the web UI or over the API, see
-<a href="docs--guides--operations.md.html#downtimes">Downtimes</a>.</p>
+<a href="../watcher-source/docs--guides--operations.md.html#downtimes" data-repo-path="docs/guides/operations.md">Downtimes</a>.</p>
 <h2 class="heading-element" dir="auto" id="fields">Fields</h2>
 <markdown-accessiblity-table><table>
 <thead>
@@ -119,7 +119,7 @@ in the configuration. Schedule them in the web UI or over the API, see
 </table></markdown-accessiblity-table>
 <h3 class="heading-element" dir="auto" id="windows">Windows</h3>
 <p dir="auto">Each window is a table <code>{ days, from, to }</code>. Times are local time; the time
-zone is <code>timezone</code> in <a href="docs--reference--watcher-toml.md.html">watcher.toml</a>, or the
+zone is <code>timezone</code> in <a href="../watcher-source/docs--reference--watcher-toml.md.html" data-repo-path="docs/reference/watcher-toml.md">watcher.toml</a>, or the
 system's.</p>
 <markdown-accessiblity-table><table>
 <thead>
@@ -185,14 +185,14 @@ click.</p>
 <h2 class="heading-element" dir="auto" id="behaviour">Behaviour</h2>
 <ul dir="auto">
 <li>A downtime start and end can notify (DOWNTIMESTART, DOWNTIMEEND); see
-<a href="docs--objects--notify.md.html#on">notify</a>.</li>
+<a href="../watcher-source/docs--objects--notify.md.html#on" data-repo-path="docs/objects/notify.md">notify</a>.</li>
 <li>A host in a downtime counts once, not once per service.</li>
 <li>System → Downtimes in the web UI shows the current or next window of
 each downtime group.</li>
 </ul>
 <h2 class="heading-element" dir="auto" id="see-also">See also</h2>
 <ul dir="auto">
-<li><a href="docs--guides--operations.md.html">Operations</a>: one-off downtimes, acknowledgements, muting</li>
+<li><a href="../watcher-source/docs--guides--operations.md.html" data-repo-path="docs/guides/operations.md">Operations</a>: one-off downtimes, acknowledgements, muting</li>
 </ul>
 
         </div>

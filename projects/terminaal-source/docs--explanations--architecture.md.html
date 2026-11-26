@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>docs/explanations/architecture.md — Terminaal — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=62ac401d" />
+  <link rel="stylesheet" href="../../styles.css?v=2d91b490" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -184,7 +184,7 @@ the blur are made again with it; the terminals and egui stay.</li>
 <p dir="auto">A local tab runs its shell in a PTY. Output is read by alacritty's event loop –
 but first it passes Terminaal's <strong>shell integration filter</strong>, on a thread of its
 own, which picks out working-directory and prompt sequences. See
-<a href="docs--explanations--prompt-marks.md.html">How prompt marks work</a>.</p>
+<a href="../terminaal-source/docs--explanations--prompt-marks.md.html" data-repo-path="docs/explanations/prompt-marks.md">How prompt marks work</a>.</p>
 <h2 class="heading-element" dir="auto" id="ssh-tabs">SSH tabs</h2>
 <p dir="auto">Each SSH tab has a worker thread that owns its libssh2 session:</p>
 <ul dir="auto">
