@@ -15,7 +15,9 @@ index.html that has a "Repository" link pointing at GitHub. Each page gets:
     comma-separated list; each entry is either a literal file path, a
     "dir/*" wildcard that expands recursively to every file under that
     directory, or a glob like "*.toml" (shell-style: * stays within one
-    directory level, so that's the root's .toml files only). One file -> a single wide source page, same as before.
+    directory level, so that's the root's .toml files only). The page
+    opens on the first literal entry, or on data-source-primary="path"
+    if the card sets one. One file -> a single wide source page, same as before.
     Two or more files -> a file-tree sidebar plus one page per file.
   - the site's own navbar (extracted from index.html, not hand-copied,
     so it can never drift out of sync with the real one)
@@ -264,6 +266,21 @@ def extract_projects(html: str):
 
         raw_source = card.get("data-source-file")
         source_entries = [e.strip() for e in raw_source.split(",") if e.strip()] if raw_source else []
+        # data-source-primary="path": the file the source browser opens on
+        # (the top-level <slug>-source.html). Without it that's simply the
+        # first literal data-source-file entry, which is often not the file
+        # worth landing on (a lockfile, a .desktop file) - and the entry
+        # order is otherwise free to be whatever reads best. Implemented
+        # by putting it in front as one more literal entry: the first
+        # literal entry always comes first after expansion (see
+        # expand_source_entries), duplicates are dropped, and it becomes
+        # part of the cached source_entries, so changing it is noticed
+        # like any other entry change. Only applied when the card has a
+        # data-source-file at all - it picks among the source files, it
+        # doesn't create a source browser of its own.
+        primary = (card.get("data-source-primary") or "").strip()
+        if primary and source_entries:
+            source_entries = [primary] + source_entries
 
         projects.append({
             "title": title,
