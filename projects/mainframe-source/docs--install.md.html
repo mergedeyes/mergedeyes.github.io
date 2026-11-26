@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>docs/install.md — Mainframe — Jan</title>
+  <link rel="stylesheet" href="../../styles.css?v=41ca8b66" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="layout">
+    <header class="rail" id="rail">
+<div class="rail__top">
+<a class="brand" href="../../index.html#top">
+<span class="brand__name">Jan</span>
+<span class="brand__meta">systems &amp; infrastructure<br/>Code, Code &amp; Code</span>
+</a>
+<button aria-controls="nav" aria-expanded="false" aria-label="Toggle menu" class="menu-toggle" id="menuToggle">
+<span></span><span></span><span></span>
+</button>
+</div>
+<nav aria-label="Sections" class="nav" id="nav">
+<a data-path="~/projects" href="../../index.html#projects">Projects</a>
+<a data-path="~/work" href="../../index.html#work">Work</a>
+<a data-path="~/education" href="../../index.html#education">Education</a>
+<a data-path="~/skills" href="../../index.html#skills">Skills</a>
+<a data-path="~/about" href="../../index.html#about">About Me</a>
+<a data-path="~/contact" href="../../index.html#contact">Contact</a>
+</nav>
+<div class="rail__status">
+<span aria-hidden="true" class="dot"></span>
+<span>open to work</span>
+</div>
+</header>
+    <nav class="file-tree" data-tree-key="mainframe"><p class="file-tree__title">Files</p><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">docs/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">guides/</span><ul class="tree"><li class="tree-file"><a href="docs--guides--cleanup.md.html">cleanup.md</a></li><li class="tree-file"><a href="docs--guides--files.md.html">files.md</a></li><li class="tree-file"><a href="docs--guides--first-steps.md.html">first-steps.md</a></li><li class="tree-file"><a href="docs--guides--git.md.html">git.md</a></li><li class="tree-file"><a href="docs--guides--install-and-deploy.md.html">install-and-deploy.md</a></li><li class="tree-file"><a href="docs--guides--projects.md.html">projects.md</a></li><li class="tree-file"><a href="docs--guides--running.md.html">running.md</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">reference/</span><ul class="tree"><li class="tree-file"><a href="docs--reference--config.md.html">config.md</a></li><li class="tree-file"><a href="docs--reference--keys.md.html">keys.md</a></li></ul></li><li class="tree-file"><a href="docs--README.md.html">README.md</a></li><li class="tree-file tree-file--active"><a href="docs--install.md.html">install.md</a></li><li class="tree-file"><a href="docs--introduction.md.html">introduction.md</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">src/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">app/</span><ul class="tree"><li class="tree-file"><a href="src--app--actions.rs.html">actions.rs</a></li><li class="tree-file"><a href="src--app--branch_picker.rs.html">branch_picker.rs</a></li><li class="tree-file"><a href="src--app--cleanup.rs.html">cleanup.rs</a></li><li class="tree-file"><a href="src--app--deploy.rs.html">deploy.rs</a></li><li class="tree-file"><a href="src--app--file_finder.rs.html">file_finder.rs</a></li><li class="tree-file"><a href="src--app--files.rs.html">files.rs</a></li><li class="tree-file"><a href="src--app--git_menu.rs.html">git_menu.rs</a></li><li class="tree-file"><a href="src--app--installer.rs.html">installer.rs</a></li><li class="tree-file"><a href="src--app--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="src--app--notes_view.rs.html">notes_view.rs</a></li><li class="tree-file"><a href="src--app--project_picker.rs.html">project_picker.rs</a></li><li class="tree-file"><a href="src--app--prompt.rs.html">prompt.rs</a></li><li class="tree-file"><a href="src--app--task_picker.rs.html">task_picker.rs</a></li><li class="tree-file"><a href="src--app--tasks.rs.html">tasks.rs</a></li><li class="tree-file"><a href="src--app--workspaces.rs.html">workspaces.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">ui/</span><ul class="tree"><li class="tree-file"><a href="src--ui--browser.rs.html">browser.rs</a></li><li class="tree-file"><a href="src--ui--cleanup.rs.html">cleanup.rs</a></li><li class="tree-file"><a href="src--ui--deploy.rs.html">deploy.rs</a></li><li class="tree-file"><a href="src--ui--footer.rs.html">footer.rs</a></li><li class="tree-file"><a href="src--ui--form.rs.html">form.rs</a></li><li class="tree-file"><a href="src--ui--header.rs.html">header.rs</a></li><li class="tree-file"><a href="src--ui--help.rs.html">help.rs</a></li><li class="tree-file"><a href="src--ui--installer.rs.html">installer.rs</a></li><li class="tree-file"><a href="src--ui--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="src--ui--notes_view.rs.html">notes_view.rs</a></li><li class="tree-file"><a href="src--ui--output.rs.html">output.rs</a></li><li class="tree-file"><a href="src--ui--pickers.rs.html">pickers.rs</a></li></ul></li><li class="tree-file"><a href="src--ansi.rs.html">ansi.rs</a></li><li class="tree-file"><a href="src--browser.rs.html">browser.rs</a></li><li class="tree-file"><a href="src--cleanup.rs.html">cleanup.rs</a></li><li class="tree-file"><a href="src--complete.rs.html">complete.rs</a></li><li class="tree-file"><a href="src--config.rs.html">config.rs</a></li><li class="tree-file"><a href="src--deploy.rs.html">deploy.rs</a></li><li class="tree-file"><a href="src--desktop.rs.html">desktop.rs</a></li><li class="tree-file"><a href="src--filter_list.rs.html">filter_list.rs</a></li><li class="tree-file"><a href="src--form.rs.html">form.rs</a></li><li class="tree-file"><a href="src--fuzzy.rs.html">fuzzy.rs</a></li><li class="tree-file"><a href="src--git.rs.html">git.rs</a></li><li class="tree-file"><a href="src--history.rs.html">history.rs</a></li><li class="tree-file"><a href="src--install.rs.html">install.rs</a></li><li class="tree-file"><a href="src--line.rs.html">line.rs</a></li><li class="tree-file"><a href="src--locate.rs.html">locate.rs</a></li><li class="tree-file"><a href="src--main.rs.html">main.rs</a></li><li class="tree-file"><a href="src--notes.rs.html">notes.rs</a></li><li class="tree-file"><a href="src--proc.rs.html">proc.rs</a></li><li class="tree-file"><a href="src--project.rs.html">project.rs</a></li><li class="tree-file"><a href="src--projects.rs.html">projects.rs</a></li><li class="tree-file"><a href="src--release.rs.html">release.rs</a></li><li class="tree-file"><a href="src--scaffold.rs.html">scaffold.rs</a></li><li class="tree-file"><a href="src--settings.rs.html">settings.rs</a></li><li class="tree-file"><a href="src--targets.rs.html">targets.rs</a></li><li class="tree-file"><a href="src--task.rs.html">task.rs</a></li><li class="tree-file"><a href="src--testutil.rs.html">testutil.rs</a></li><li class="tree-file"><a href="src--watch.rs.html">watch.rs</a></li></ul></li><li class="tree-file"><a href="Cargo.lock.html">Cargo.lock</a></li><li class="tree-file"><a href="Cargo.toml.html">Cargo.toml</a></li><li class="tree-file"><a href="LICENSE.html">LICENSE</a></li><li class="tree-file"><a href="rustfmt.toml.html">rustfmt.toml</a></li></ul></nav><script>
+(function () {
+  var tree = document.currentScript.previousElementSibling;
+  var key = "file-tree-scroll:" + tree.dataset.treeKey;
+  var saved = null;
+  try {
+    saved = sessionStorage.getItem(key);
+    sessionStorage.removeItem(key);
+  } catch (e) {}
+
+  if (saved !== null) {
+    tree.scrollTop = +saved;
+  } else {
+    var active = tree.querySelector(".tree-file--active");
+    if (active) {
+      var a = active.getBoundingClientRect();
+      var t = tree.getBoundingClientRect();
+      if (a.bottom > t.bottom) {
+        tree.scrollTop += a.top - t.top - (tree.clientHeight - a.height) / 2;
+      }
+    }
+  }
+
+  tree.addEventListener("click", function (e) {
+    if (!e.target.closest("a")) return;
+    try { sessionStorage.setItem(key, String(tree.scrollTop)); } catch (err) {}
+  });
+})();
+</script>
+    <main class="main" id="main">
+      <section class="section source-page">
+        <p class="section__path">
+          <a href="../../index.html#projects" class="link">~/projects</a> /
+          <a href="../mainframe.html" class="link">mainframe</a> / source
+        </p>
+        <div class="source-page__head">
+          <h1 class="section__title">docs/install.md</h1>
+          <a href="../mainframe.html" class="link">← Back to Mainframe</a>
+        </div>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span></pre></div></td><td class="code"><div><pre><span></span><span class="gh"># Installation</span>
+
+Mainframe runs on Linux. There are no prebuilt releases yet, so you build it
+from source.
+
+<span class="gu">## Build and install</span>
+
+You need Rust 1.88 or newer ([rustup.rs](https://rustup.rs)) and git.
+
+<span class="sb">```sh</span>
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/mergedeyes/Mainframe<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>Mainframe
+cargo<span class="w"> </span>install<span class="w"> </span>--path<span class="w"> </span>.<span class="w"> </span>--root<span class="w"> </span>~/.local
+<span class="sb">```</span>
+
+This puts <span class="sb">`mainframe`</span> into <span class="sb">`~/.local/bin`</span>. Make sure that folder is on your
+<span class="sb">`PATH`</span>. Then start it in any folder:
+
+<span class="sb">```sh</span>
+mainframe<span class="w">            </span><span class="c1"># the current folder</span>
+mainframe<span class="w"> </span>~/Projekte<span class="w"> </span><span class="c1"># or any other</span>
+<span class="sb">```</span>
+
+Press <span class="sb">`?`</span> for the keys and <span class="sb">`q`</span> to quit.
+
+<span class="gs">**Updating:**</span> pull the new version, then either run the <span class="sb">`cargo install`</span> line
+again, or start Mainframe in its own folder, press <span class="sb">`i`</span> and pick the release
+build. See [<span class="nt">Installing and deploying</span>](<span class="na">guides/install-and-deploy.md</span>).
+
+<span class="gu">## Optional tools</span>
+
+Mainframe works without these. Each one switches on a feature:
+
+| Tool | What it adds |
+|---|---|
+| <span class="sb">`nano`</span> or any editor | <span class="sb">`e`</span> and <span class="sb">`Enter`</span> edit files. nano is the default; set <span class="sb">`editor`</span> in the [<span class="nt">configuration</span>](<span class="na">reference/config.md</span>). |
+| VS Code (<span class="sb">`code`</span>) | <span class="sb">`o`</span> and <span class="sb">`O`</span> open a file or the whole project. |
+| [<span class="nt">zoxide</span>](<span class="na">https://github.com/ajeetdsouza/zoxide</span>) | <span class="sb">`c`</span> accepts keywords like <span class="sb">`c watch`</span>, <span class="sb">`Z`</span> opens zoxide's picker. |
+| <span class="sb">`gio`</span> (GLib) or <span class="sb">`trash-put`</span> | <span class="sb">`d`</span> moves files to the trash instead of deleting them. |
+| <span class="sb">`notify-send`</span> | A desktop notification when a long task finishes. |
+| [<span class="nt">GitHub CLI</span>](<span class="na">https://cli.github.com</span>) (<span class="sb">`gh`</span>) | Creating GitHub repos, pull requests in releases, release workflows. |
+| lazygit, gitui or tig | <span class="sb">`g g`</span> opens the first one installed. |
+| [<span class="nt">cross</span>](<span class="na">https://github.com/cross-rs/cross</span>) | Deploy builds for a Raspberry Pi; suggested automatically when installed. |
+
+<span class="gu">## `cd` on exit</span>
+
+When you quit, your shell stays in the folder you started in. To end up in
+the folder you were browsing instead, start Mainframe through a small shell
+function. Mainframe writes its last folder to the file named in
+<span class="sb">`MAINFRAME_CWD_FILE`</span>.
+
+<span class="gs">**fish**</span> (<span class="sb">`~/.config/fish/functions/mf.fish`</span>):
+
+<span class="sb">```fish</span>
+<span class="k">function</span> mf
+    <span class="k">set</span> -l f <span class="o">(</span>mktemp<span class="o">)</span>
+    <span class="nv">MAINFRAME_CWD_FILE</span><span class="o">=</span><span class="nv">$f</span> mainframe <span class="nv">$argv</span>
+    <span class="k">and</span> <span class="k">cd</span> <span class="o">(</span>cat <span class="nv">$f</span><span class="o">)</span>
+    rm -f <span class="nv">$f</span>
+<span class="k">end</span>
+<span class="sb">```</span>
+
+<span class="gs">**bash or zsh**</span> (<span class="sb">`~/.bashrc`</span> or <span class="sb">`~/.zshrc`</span>):
+
+<span class="sb">```sh</span>
+mf<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="nb">local</span><span class="w"> </span>f
+<span class="w">    </span><span class="nv">f</span><span class="o">=</span><span class="k">$(</span>mktemp<span class="k">)</span>
+<span class="w">    </span><span class="nv">MAINFRAME_CWD_FILE</span><span class="o">=</span><span class="nv">$f</span><span class="w"> </span>mainframe<span class="w"> </span><span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span><span class="s2">"</span><span class="k">$(</span>cat<span class="w"> </span><span class="s2">"</span><span class="nv">$f</span><span class="s2">"</span><span class="k">)</span><span class="s2">"</span>
+<span class="w">    </span>rm<span class="w"> </span>-f<span class="w"> </span><span class="s2">"</span><span class="nv">$f</span><span class="s2">"</span>
+<span class="o">}</span>
+<span class="sb">```</span>
+
+Then start it with <span class="sb">`mf`</span>.
+
+<span class="gu">## Configuration</span>
+
+Press <span class="sb">`,`</span> inside Mainframe. It creates <span class="sb">`~/.config/mainframe/config.toml`</span> with
+every option explained and opens it in your editor. See
+[<span class="nt">Configuration</span>](<span class="na">reference/config.md</span>).
+</pre></div></td></tr></table></div>
+
+      </section>
+    </main>
+  </div>
+</body>
+</html>

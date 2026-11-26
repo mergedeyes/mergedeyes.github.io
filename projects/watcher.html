@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Watcher — Jan</title>
+  <link rel="stylesheet" href="../styles.css?v=41ca8b66" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="layout">
+    <header class="rail" id="rail">
+<div class="rail__top">
+<a class="brand" href="../index.html#top">
+<span class="brand__name">Jan</span>
+<span class="brand__meta">systems &amp; infrastructure<br/>Code, Code &amp; Code</span>
+</a>
+<button aria-controls="nav" aria-expanded="false" aria-label="Toggle menu" class="menu-toggle" id="menuToggle">
+<span></span><span></span><span></span>
+</button>
+</div>
+<nav aria-label="Sections" class="nav" id="nav">
+<a data-path="~/projects" href="../index.html#projects">Projects</a>
+<a data-path="~/work" href="../index.html#work">Work</a>
+<a data-path="~/education" href="../index.html#education">Education</a>
+<a data-path="~/skills" href="../index.html#skills">Skills</a>
+<a data-path="~/about" href="../index.html#about">About Me</a>
+<a data-path="~/contact" href="../index.html#contact">Contact</a>
+</nav>
+<div class="rail__status">
+<span aria-hidden="true" class="dot"></span>
+<span>open to work</span>
+</div>
+</header>
+    <main class="main" id="main">
+      <section class="section project-page">
+        <p class="section__path"><a href="../index.html#projects" class="link">~/projects</a> / watcher</p>
+        <div class="card__head project-page__head">
+          <h1 class="section__title">Watcher</h1>
+          <span class="tag">Rust</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag">Svelte</span>
+          <span class="tag">YAML</span>
+          <span class="tag">JSON</span>
+        </div>
+        <div class="card__foot project-page__foot">
+          <div class="card__links">
+            <a href="https://github.com/mergedeyes/watcher" class="link">Repository</a>
+            <a href="watcher-source.html" class="link">Browse source (55 files)</a>
+            <a href="watcher-commits.html" class="link">Commit history (234)</a>
+          </div>
+          <span class="license-badge">AGPL-3.0</span>
+        </div>
+        <div class="readme-content">
+<h1 align="center" class="heading-element" dir="auto" id="watcher">Watcher</h1>
+<p align="center" dir="auto">
+<b>Infrastructure monitoring that is as easy to set up as it should be,<br/>
+  and always tells you why it does what it does.</b>
+</p>
+<p align="center" dir="auto">
+<a href="https://github.com/mergedeyes/watcher/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/mergedeyes/watcher/actions/workflows/ci.yml/badge.svg" style="max-width: 100%;"/></a>
+<a href="https://github.com/mergedeyes/watcher/blob/main/LICENSE"><img alt="License: AGPL-3.0" data-canonical-src="https://img.shields.io/badge/license-AGPL--3.0-blue" src="https://camo.githubusercontent.com/071c943c3a0087a0f18e3b3064187a35464fb47ed23da2c72f424b83c11dfba0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6c6963656e73652d4147504c2d2d332e302d626c7565" style="max-width: 100%;"/></a>
+<a href="https://camo.githubusercontent.com/58d96c2b57cc9e007110e07f54626aff95abe6b1dca885e493bc6705c0cba9c3/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f7374617475732d6561726c79253230646576656c6f706d656e742d6f72616e6765" rel="noopener noreferrer nofollow" target="_blank"><img alt="Status: early development" data-canonical-src="https://img.shields.io/badge/status-early%20development-orange" src="https://camo.githubusercontent.com/58d96c2b57cc9e007110e07f54626aff95abe6b1dca885e493bc6705c0cba9c3/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f7374617475732d6561726c79253230646576656c6f706d656e742d6f72616e6765" style="max-width: 100%;"/></a>
+</p>
+<p align="center" dir="auto">
+<a href="#getting-started">Getting started</a> ·
+  <a href="https://github.com/mergedeyes/watcher/blob/main/docs/README.md">Documentation</a> ·
+  <a href="https://github.com/mergedeyes/watcher/blob/main/docs/introduction.md#what-works-today">What works today</a> ·
+  <a href="https://github.com/mergedeyes/watcher/issues">Issues</a>
+</p>
+<p align="center" dir="auto">
+<themed-picture data-catalyst-inline="true"><picture>
+<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/mergedeyes/watcher/main/docs/images/overview-dark.png"/>
+<img alt="The Tactical Overview: host and service totals, hosts that are DOWN and service problems" src="https://raw.githubusercontent.com/mergedeyes/watcher/main/docs/images/overview.png"/>
+</picture></themed-picture>
+<br/>
+<sub>A simulated network: 9,500 hosts and 206,000 services in four datacenters.</sub>
+</p>
+<p dir="auto">Watcher checks your servers, network devices and applications, keeps
+their metrics, and alerts you when something breaks. It is a single
+program with a web UI built in: no agents to roll out and no add-ons to
+assemble. The check plugins you already run with Nagios work as they
+are.</p>
+<p dir="auto">If you have ever asked "why is this host checked every minute?", "where
+does this threshold come from?" or "why did nobody get paged?", Watcher
+was built for you. Every setting can be traced to the file and line that
+set it, and every alert to the rule that sent it.</p>
+<h2 class="heading-element" dir="auto" id="why-watcher">Why Watcher</h2>
+<ul dir="auto">
+<li><strong>Nothing is a mystery.</strong> The Config Tree shows every value of a host
+or service and where it comes from: which file, which line, which
+group. In the web UI and on the command line.</li>
+<li><strong>Describe your network once.</strong> Put hosts into groups by name pattern
+and give each group its services. A new web server gets its checks
+the moment it is added, and one service can cover every disk, website
+or queue on a host.</li>
+<li><strong>Edit in the browser or in your editor, both at once.</strong> The web UI
+changes the same text files you keep in Git, keeps your comments, and
+shows exactly what will change before it applies. Edits in your
+editor are live within a second.</li>
+<li><strong>Alerts without surprises.</strong> Problems are confirmed before anyone is
+woken up, flapping services are held back, and notification rules
+don't depend on their order: every matching rule notifies, and nobody
+gets the same message twice. Open problems come back as reminders
+and escalate to the next person until someone acknowledges them, and
+every notification is logged, so you can see who was told and when.
+When a router dies, dependencies keep the alerts about everything
+behind it quiet.</li>
+<li><strong>No agents.</strong> Watcher runs checks on remote machines over SSH, copies
+its scripts there by itself, keeps passwords and keys encrypted, and
+pins host keys.</li>
+<li><strong>Your data stays yours.</strong> Metrics and history go into PostgreSQL
+(with TimescaleDB if you like), with plain SQL views for Grafana, BI
+tools or your own queries.</li>
+<li><strong>Up in minutes.</strong> One binary and a setup wizard in the browser or the
+terminal. A database is optional to start with.</li>
+<li><strong>Ready for large networks.</strong> Lists are filtered, sorted and paged on
+the server and update live, so the web UI stays fast with hundreds of
+thousands of services.</li>
+</ul>
+<p align="center" dir="auto">
+<themed-picture data-catalyst-inline="true"><picture>
+<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/mergedeyes/watcher/main/docs/images/config-tree-dark.png"/>
+<img alt="The Config Tree of a host: every setting with the file and line it comes from" src="https://raw.githubusercontent.com/mergedeyes/watcher/main/docs/images/config-tree.png"/>
+</picture></themed-picture>
+</p>
+<h2 class="heading-element" dir="auto" id="features">Features</h2>
+<ul dir="auto">
+<li><strong>Checks:</strong> Nagios plugins, your own scripts (Nagios output,
+<code>key=value</code> or JSON), results pushed over the API, thresholds with
+units, built-in ping, TCP, HTTP, DNS and TLS certificate checks.</li>
+<li><strong>Proxmox VE</strong> through its API: cluster quorum, nodes, storages, VMs and
+containers, backups and pending updates. Watcher finds your VMs and
+containers and adds them as hosts with one click.</li>
+<li><strong>Remote checks over SSH</strong> with encrypted secrets, pinned host keys and
+automatic script copies.</li>
+<li><strong>Alerting:</strong> SOFT and HARD states with retries, host UP/DOWN, flap
+detection; email, webhooks, Slack, Microsoft Teams, Telegram, ntfy,
+Gotify, PagerDuty, Jira and scripts; reminders, escalations,
+dependencies and time periods (business hours, on-call at night).</li>
+<li><strong>Operations:</strong> acknowledgements, one-off and recurring downtimes,
+muting and re-checks, from a right-click menu or on many selected hosts
+and services at once.</li>
+<li><strong>Web UI:</strong> tactical overview, problems, host and service groups, alert
+history, graphs, configuration forms and a file editor that checks as
+you type.</li>
+<li><strong>Data:</strong> PostgreSQL or TimescaleDB, SQL views, read-only database
+logins, copies to a central database.</li>
+<li><strong>Access:</strong> user accounts with admin rights, two-factor
+authentication (TOTP), HTTPS with certificates from Let's Encrypt.</li>
+<li><strong>API:</strong> everything the web UI does, with tokens for your scripts.</li>
+</ul>
+<p align="center" dir="auto">
+<themed-picture data-catalyst-inline="true"><picture>
+<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/mergedeyes/watcher/main/docs/images/host-groups-dark.png"/>
+<img alt="Host groups by datacenter and role, with the number of hosts and services in each state" src="https://raw.githubusercontent.com/mergedeyes/watcher/main/docs/images/host-groups.png"/>
+</picture></themed-picture>
+</p>
+<h2 class="heading-element" dir="auto" id="status">Status</h2>
+<p dir="auto">Watcher is in early development. A single instance monitors your
+network today; see <a href="https://github.com/mergedeyes/watcher/blob/main/docs/introduction.md#what-works-today">what works today</a>.</p>
+<p dir="auto">Coming next: checks on remote nodes that report to a central hub (nodes
+can already join a hub and stay connected), repairing data in graphs, and
+native checks for IBM i, AIX, HMC and MQ.</p>
+<h2 class="heading-element" dir="auto" id="getting-started">Getting started</h2>
+<p dir="auto">There are no prebuilt releases yet. Build Watcher from source (Rust and
+Node.js), then start the setup wizard:</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="git clone https://github.com/mergedeyes/watcher &amp;&amp; cd watcher
+npm --prefix web ci &amp;&amp; npm --prefix web run build
+cargo build --release
+mkdir ~/watcher &amp;&amp; cd ~/watcher
+/path/to/watcher/target/release/watcher setup    # open the URL it prints" dir="auto"><pre>git clone https://github.com/mergedeyes/watcher <span class="pl-k">&amp;&amp;</span> <span class="pl-c1">cd</span> watcher
+npm --prefix web ci <span class="pl-k">&amp;&amp;</span> npm --prefix web run build
+cargo build --release
+mkdir <span class="pl-k">~</span>/watcher <span class="pl-k">&amp;&amp;</span> <span class="pl-c1">cd</span> <span class="pl-k">~</span>/watcher
+/path/to/watcher/target/release/watcher setup    <span class="pl-c"><span class="pl-c">#</span> open the URL it prints</span></pre></div>
+<p dir="auto"><a href="https://github.com/mergedeyes/watcher/blob/main/docs/install.md">Installation</a> covers PostgreSQL, HTTPS and running
+Watcher as a service. <a href="https://github.com/mergedeyes/watcher/blob/main/docs/guides/first-steps.md">First steps</a> takes you
+from an empty setup to your first monitored host.</p>
+<h2 class="heading-element" dir="auto" id="documentation">Documentation</h2>
+<ul dir="auto">
+<li><a href="https://github.com/mergedeyes/watcher/blob/main/docs/introduction.md">Introduction</a>: what Watcher is and how it works</li>
+<li><a href="https://github.com/mergedeyes/watcher/blob/main/docs/install.md">Installation</a></li>
+<li><a href="https://github.com/mergedeyes/watcher/blob/main/docs/guides/first-steps.md">First steps</a></li>
+<li><a href="https://github.com/mergedeyes/watcher/blob/main/docs/guides/configuration.md">How the configuration works</a></li>
+<li><a href="https://github.com/mergedeyes/watcher/blob/main/docs/README.md">All guides and references</a></li>
+</ul>
+<h2 class="heading-element" dir="auto" id="contributing">Contributing</h2>
+<p dir="auto">Bug reports, ideas and pull requests are welcome. Please
+<a href="https://github.com/mergedeyes/watcher/issues">open an issue</a> first for
+larger changes, so we can talk about the approach.</p>
+<h2 class="heading-element" dir="auto" id="license">License</h2>
+<p dir="auto">Watcher is free software under the <a href="https://github.com/mergedeyes/watcher/blob/main/LICENSE">GNU AGPL-3.0</a>. Check
+plugins and scripts run as separate programs, so they can have any
+license.</p>
+
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

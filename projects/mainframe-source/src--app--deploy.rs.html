@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>src/app/deploy.rs — Mainframe — Jan</title>
+  <link rel="stylesheet" href="../../styles.css?v=41ca8b66" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="layout">
+    <header class="rail" id="rail">
+<div class="rail__top">
+<a class="brand" href="../../index.html#top">
+<span class="brand__name">Jan</span>
+<span class="brand__meta">systems &amp; infrastructure<br/>Code, Code &amp; Code</span>
+</a>
+<button aria-controls="nav" aria-expanded="false" aria-label="Toggle menu" class="menu-toggle" id="menuToggle">
+<span></span><span></span><span></span>
+</button>
+</div>
+<nav aria-label="Sections" class="nav" id="nav">
+<a data-path="~/projects" href="../../index.html#projects">Projects</a>
+<a data-path="~/work" href="../../index.html#work">Work</a>
+<a data-path="~/education" href="../../index.html#education">Education</a>
+<a data-path="~/skills" href="../../index.html#skills">Skills</a>
+<a data-path="~/about" href="../../index.html#about">About Me</a>
+<a data-path="~/contact" href="../../index.html#contact">Contact</a>
+</nav>
+<div class="rail__status">
+<span aria-hidden="true" class="dot"></span>
+<span>open to work</span>
+</div>
+</header>
+    <nav class="file-tree" data-tree-key="mainframe"><p class="file-tree__title">Files</p><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">docs/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">guides/</span><ul class="tree"><li class="tree-file"><a href="docs--guides--cleanup.md.html">cleanup.md</a></li><li class="tree-file"><a href="docs--guides--files.md.html">files.md</a></li><li class="tree-file"><a href="docs--guides--first-steps.md.html">first-steps.md</a></li><li class="tree-file"><a href="docs--guides--git.md.html">git.md</a></li><li class="tree-file"><a href="docs--guides--install-and-deploy.md.html">install-and-deploy.md</a></li><li class="tree-file"><a href="docs--guides--projects.md.html">projects.md</a></li><li class="tree-file"><a href="docs--guides--running.md.html">running.md</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">reference/</span><ul class="tree"><li class="tree-file"><a href="docs--reference--config.md.html">config.md</a></li><li class="tree-file"><a href="docs--reference--keys.md.html">keys.md</a></li></ul></li><li class="tree-file"><a href="docs--README.md.html">README.md</a></li><li class="tree-file"><a href="docs--install.md.html">install.md</a></li><li class="tree-file"><a href="docs--introduction.md.html">introduction.md</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">src/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">app/</span><ul class="tree"><li class="tree-file"><a href="src--app--actions.rs.html">actions.rs</a></li><li class="tree-file"><a href="src--app--branch_picker.rs.html">branch_picker.rs</a></li><li class="tree-file"><a href="src--app--cleanup.rs.html">cleanup.rs</a></li><li class="tree-file tree-file--active"><a href="src--app--deploy.rs.html">deploy.rs</a></li><li class="tree-file"><a href="src--app--file_finder.rs.html">file_finder.rs</a></li><li class="tree-file"><a href="src--app--files.rs.html">files.rs</a></li><li class="tree-file"><a href="src--app--git_menu.rs.html">git_menu.rs</a></li><li class="tree-file"><a href="src--app--installer.rs.html">installer.rs</a></li><li class="tree-file"><a href="src--app--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="src--app--notes_view.rs.html">notes_view.rs</a></li><li class="tree-file"><a href="src--app--project_picker.rs.html">project_picker.rs</a></li><li class="tree-file"><a href="src--app--prompt.rs.html">prompt.rs</a></li><li class="tree-file"><a href="src--app--task_picker.rs.html">task_picker.rs</a></li><li class="tree-file"><a href="src--app--tasks.rs.html">tasks.rs</a></li><li class="tree-file"><a href="src--app--workspaces.rs.html">workspaces.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">ui/</span><ul class="tree"><li class="tree-file"><a href="src--ui--browser.rs.html">browser.rs</a></li><li class="tree-file"><a href="src--ui--cleanup.rs.html">cleanup.rs</a></li><li class="tree-file"><a href="src--ui--deploy.rs.html">deploy.rs</a></li><li class="tree-file"><a href="src--ui--footer.rs.html">footer.rs</a></li><li class="tree-file"><a href="src--ui--form.rs.html">form.rs</a></li><li class="tree-file"><a href="src--ui--header.rs.html">header.rs</a></li><li class="tree-file"><a href="src--ui--help.rs.html">help.rs</a></li><li class="tree-file"><a href="src--ui--installer.rs.html">installer.rs</a></li><li class="tree-file"><a href="src--ui--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="src--ui--notes_view.rs.html">notes_view.rs</a></li><li class="tree-file"><a href="src--ui--output.rs.html">output.rs</a></li><li class="tree-file"><a href="src--ui--pickers.rs.html">pickers.rs</a></li></ul></li><li class="tree-file"><a href="src--ansi.rs.html">ansi.rs</a></li><li class="tree-file"><a href="src--browser.rs.html">browser.rs</a></li><li class="tree-file"><a href="src--cleanup.rs.html">cleanup.rs</a></li><li class="tree-file"><a href="src--complete.rs.html">complete.rs</a></li><li class="tree-file"><a href="src--config.rs.html">config.rs</a></li><li class="tree-file"><a href="src--deploy.rs.html">deploy.rs</a></li><li class="tree-file"><a href="src--desktop.rs.html">desktop.rs</a></li><li class="tree-file"><a href="src--filter_list.rs.html">filter_list.rs</a></li><li class="tree-file"><a href="src--form.rs.html">form.rs</a></li><li class="tree-file"><a href="src--fuzzy.rs.html">fuzzy.rs</a></li><li class="tree-file"><a href="src--git.rs.html">git.rs</a></li><li class="tree-file"><a href="src--history.rs.html">history.rs</a></li><li class="tree-file"><a href="src--install.rs.html">install.rs</a></li><li class="tree-file"><a href="src--line.rs.html">line.rs</a></li><li class="tree-file"><a href="src--locate.rs.html">locate.rs</a></li><li class="tree-file"><a href="src--main.rs.html">main.rs</a></li><li class="tree-file"><a href="src--notes.rs.html">notes.rs</a></li><li class="tree-file"><a href="src--proc.rs.html">proc.rs</a></li><li class="tree-file"><a href="src--project.rs.html">project.rs</a></li><li class="tree-file"><a href="src--projects.rs.html">projects.rs</a></li><li class="tree-file"><a href="src--release.rs.html">release.rs</a></li><li class="tree-file"><a href="src--scaffold.rs.html">scaffold.rs</a></li><li class="tree-file"><a href="src--settings.rs.html">settings.rs</a></li><li class="tree-file"><a href="src--targets.rs.html">targets.rs</a></li><li class="tree-file"><a href="src--task.rs.html">task.rs</a></li><li class="tree-file"><a href="src--testutil.rs.html">testutil.rs</a></li><li class="tree-file"><a href="src--watch.rs.html">watch.rs</a></li></ul></li><li class="tree-file"><a href="Cargo.lock.html">Cargo.lock</a></li><li class="tree-file"><a href="Cargo.toml.html">Cargo.toml</a></li><li class="tree-file"><a href="LICENSE.html">LICENSE</a></li><li class="tree-file"><a href="rustfmt.toml.html">rustfmt.toml</a></li></ul></nav><script>
+(function () {
+  var tree = document.currentScript.previousElementSibling;
+  var key = "file-tree-scroll:" + tree.dataset.treeKey;
+  var saved = null;
+  try {
+    saved = sessionStorage.getItem(key);
+    sessionStorage.removeItem(key);
+  } catch (e) {}
+
+  if (saved !== null) {
+    tree.scrollTop = +saved;
+  } else {
+    var active = tree.querySelector(".tree-file--active");
+    if (active) {
+      var a = active.getBoundingClientRect();
+      var t = tree.getBoundingClientRect();
+      if (a.bottom > t.bottom) {
+        tree.scrollTop += a.top - t.top - (tree.clientHeight - a.height) / 2;
+      }
+    }
+  }
+
+  tree.addEventListener("click", function (e) {
+    if (!e.target.closest("a")) return;
+    try { sessionStorage.setItem(key, String(tree.scrollTop)); } catch (err) {}
+  });
+})();
+</script>
+    <main class="main" id="main">
+      <section class="section source-page">
+        <p class="section__path">
+          <a href="../../index.html#projects" class="link">~/projects</a> /
+          <a href="../mainframe.html" class="link">mainframe</a> / source
+        </p>
+        <div class="source-page__head">
+          <h1 class="section__title">src/app/deploy.rs</h1>
+          <a href="../mainframe.html" class="link">← Back to Mainframe</a>
+        </div>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">  1</span>
+<span class="normal">  2</span>
+<span class="normal">  3</span>
+<span class="normal">  4</span>
+<span class="normal">  5</span>
+<span class="normal">  6</span>
+<span class="normal">  7</span>
+<span class="normal">  8</span>
+<span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span>
+<span class="normal">245</span>
+<span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span>
+<span class="normal">250</span>
+<span class="normal">251</span>
+<span class="normal">252</span>
+<span class="normal">253</span>
+<span class="normal">254</span>
+<span class="normal">255</span>
+<span class="normal">256</span>
+<span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span>
+<span class="normal">262</span>
+<span class="normal">263</span>
+<span class="normal">264</span>
+<span class="normal">265</span>
+<span class="normal">266</span>
+<span class="normal">267</span>
+<span class="normal">268</span>
+<span class="normal">269</span>
+<span class="normal">270</span>
+<span class="normal">271</span>
+<span class="normal">272</span>
+<span class="normal">273</span>
+<span class="normal">274</span>
+<span class="normal">275</span>
+<span class="normal">276</span>
+<span class="normal">277</span>
+<span class="normal">278</span>
+<span class="normal">279</span>
+<span class="normal">280</span>
+<span class="normal">281</span>
+<span class="normal">282</span>
+<span class="normal">283</span>
+<span class="normal">284</span>
+<span class="normal">285</span>
+<span class="normal">286</span>
+<span class="normal">287</span>
+<span class="normal">288</span>
+<span class="normal">289</span>
+<span class="normal">290</span>
+<span class="normal">291</span>
+<span class="normal">292</span>
+<span class="normal">293</span>
+<span class="normal">294</span>
+<span class="normal">295</span>
+<span class="normal">296</span>
+<span class="normal">297</span>
+<span class="normal">298</span>
+<span class="normal">299</span>
+<span class="normal">300</span>
+<span class="normal">301</span>
+<span class="normal">302</span>
+<span class="normal">303</span>
+<span class="normal">304</span>
+<span class="normal">305</span>
+<span class="normal">306</span>
+<span class="normal">307</span>
+<span class="normal">308</span>
+<span class="normal">309</span>
+<span class="normal">310</span>
+<span class="normal">311</span>
+<span class="normal">312</span>
+<span class="normal">313</span>
+<span class="normal">314</span>
+<span class="normal">315</span>
+<span class="normal">316</span>
+<span class="normal">317</span>
+<span class="normal">318</span>
+<span class="normal">319</span>
+<span class="normal">320</span>
+<span class="normal">321</span>
+<span class="normal">322</span>
+<span class="normal">323</span>
+<span class="normal">324</span>
+<span class="normal">325</span>
+<span class="normal">326</span>
+<span class="normal">327</span>
+<span class="normal">328</span>
+<span class="normal">329</span>
+<span class="normal">330</span>
+<span class="normal">331</span>
+<span class="normal">332</span>
+<span class="normal">333</span>
+<span class="normal">334</span>
+<span class="normal">335</span>
+<span class="normal">336</span>
+<span class="normal">337</span>
+<span class="normal">338</span>
+<span class="normal">339</span>
+<span class="normal">340</span>
+<span class="normal">341</span>
+<span class="normal">342</span>
+<span class="normal">343</span>
+<span class="normal">344</span>
+<span class="normal">345</span>
+<span class="normal">346</span>
+<span class="normal">347</span>
+<span class="normal">348</span>
+<span class="normal">349</span>
+<span class="normal">350</span>
+<span class="normal">351</span>
+<span class="normal">352</span>
+<span class="normal">353</span>
+<span class="normal">354</span>
+<span class="normal">355</span>
+<span class="normal">356</span>
+<span class="normal">357</span>
+<span class="normal">358</span>
+<span class="normal">359</span>
+<span class="normal">360</span>
+<span class="normal">361</span>
+<span class="normal">362</span>
+<span class="normal">363</span>
+<span class="normal">364</span>
+<span class="normal">365</span>
+<span class="normal">366</span>
+<span class="normal">367</span>
+<span class="normal">368</span>
+<span class="normal">369</span>
+<span class="normal">370</span>
+<span class="normal">371</span>
+<span class="normal">372</span>
+<span class="normal">373</span>
+<span class="normal">374</span>
+<span class="normal">375</span>
+<span class="normal">376</span>
+<span class="normal">377</span>
+<span class="normal">378</span>
+<span class="normal">379</span>
+<span class="normal">380</span>
+<span class="normal">381</span>
+<span class="normal">382</span>
+<span class="normal">383</span>
+<span class="normal">384</span>
+<span class="normal">385</span>
+<span class="normal">386</span>
+<span class="normal">387</span>
+<span class="normal">388</span>
+<span class="normal">389</span>
+<span class="normal">390</span></pre></div></td><td class="code"><div><pre><span></span><span class="sd">//! `D`: the current project's deploy targets. Builds, copies the result to another machine</span>
+<span class="sd">//! over ssh and swaps it in for the binary there, keeping the old one as a backup.</span>
+
+<span class="k">use</span><span class="w"> </span><span class="n">std</span><span class="p">::{</span>
+<span class="w">    </span><span class="n">fs</span><span class="p">,</span>
+<span class="w">    </span><span class="n">path</span><span class="p">::{</span><span class="n">Path</span><span class="p">,</span><span class="w"> </span><span class="n">PathBuf</span><span class="p">},</span>
+<span class="p">};</span>
+
+<span class="k">use</span><span class="w"> </span><span class="n">ratatui</span><span class="p">::{</span>
+<span class="w">    </span><span class="n">crossterm</span><span class="p">::</span><span class="n">event</span><span class="p">::{</span><span class="n">KeyCode</span><span class="p">,</span><span class="w"> </span><span class="n">KeyEvent</span><span class="p">},</span>
+<span class="w">    </span><span class="n">widgets</span><span class="p">::</span><span class="n">ListState</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="k">use</span><span class="w"> </span><span class="k">super</span><span class="p">::{</span><span class="n">App</span><span class="p">,</span><span class="w"> </span><span class="n">Confirmed</span><span class="p">,</span><span class="w"> </span><span class="n">Level</span><span class="p">,</span><span class="w"> </span><span class="n">Mode</span><span class="p">};</span>
+<span class="k">use</span><span class="w"> </span><span class="k">crate</span><span class="p">::{</span>
+<span class="w">    </span><span class="n">config</span><span class="p">,</span>
+<span class="w">    </span><span class="n">deploy</span><span class="p">::{</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">Deploy</span><span class="p">},</span>
+<span class="w">    </span><span class="n">filter_list</span><span class="p">,</span>
+<span class="w">    </span><span class="n">form</span><span class="p">::{</span><span class="n">Field</span><span class="p">,</span><span class="w"> </span><span class="n">Form</span><span class="p">,</span><span class="w"> </span><span class="n">FormKind</span><span class="p">},</span>
+<span class="w">    </span><span class="n">install</span><span class="p">,</span>
+<span class="w">    </span><span class="n">line</span><span class="p">::</span><span class="n">LineEdit</span><span class="p">,</span>
+<span class="w">    </span><span class="n">project</span><span class="p">::{</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">Kind</span><span class="p">,</span><span class="w"> </span><span class="n">Op</span><span class="p">,</span><span class="w"> </span><span class="n">Plan</span><span class="p">,</span><span class="w"> </span><span class="n">quote</span><span class="p">},</span>
+<span class="w">    </span><span class="n">settings</span><span class="p">::{</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">ProjectSettings</span><span class="p">},</span>
+<span class="p">};</span>
+
+<span class="k">pub</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">DeployPicker</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">root</span><span class="p">:</span><span class="w"> </span><span class="nc">PathBuf</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">title</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">targets</span><span class="p">:</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="n">Deploy</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">state</span><span class="p">:</span><span class="w"> </span><span class="nc">ListState</span><span class="p">,</span>
+<span class="w">    </span><span class="sd">/// keep_deploy_builds from the config, for the summary.</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">keep_build</span><span class="p">:</span><span class="w"> </span><span class="kt">bool</span><span class="p">,</span>
+<span class="w">    </span><span class="sd">/// The settings file doesn't parse, so no targets show.</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">broken</span><span class="p">:</span><span class="w"> </span><span class="kt">bool</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="k">impl</span><span class="w"> </span><span class="n">DeployPicker</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">selected</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;&amp;</span><span class="n">Deploy</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="bp">self</span><span class="p">.</span><span class="n">targets</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">state</span><span class="p">.</span><span class="n">selected</span><span class="p">()</span><span class="o">?</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cp">#[derive(Clone, Copy, PartialEq, Eq)]</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">enum</span><span class="w"> </span><span class="nc">Run</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Deploy</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Rollback</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Backups</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="k">impl</span><span class="w"> </span><span class="n">App</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="sd">/// Reads the project's settings again when the project changed (or `force`).</span>
+<span class="w">    </span><span class="k">pub</span><span class="p">(</span><span class="k">super</span><span class="p">)</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">load_settings</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">force</span><span class="p">:</span><span class="w"> </span><span class="kt">bool</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="o">!</span><span class="n">force</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">settings_root</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">notes_root</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="bp">self</span><span class="p">.</span><span class="n">settings_root</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">notes_root</span><span class="p">.</span><span class="n">clone</span><span class="p">();</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="p">(</span><span class="n">settings</span><span class="p">,</span><span class="w"> </span><span class="n">err</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ProjectSettings</span><span class="p">::</span><span class="n">load</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">.</span><span class="n">settings_root</span><span class="p">);</span>
+<span class="w">        </span><span class="bp">self</span><span class="p">.</span><span class="n">settings</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">settings</span><span class="p">;</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">err</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="bp">self</span><span class="p">.</span><span class="n">set_status</span><span class="p">(</span><span class="n">e</span><span class="p">,</span><span class="w"> </span><span class="n">Level</span><span class="p">::</span><span class="nb">Err</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">project_title</span><span class="p">(</span><span class="n">root</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">Path</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">String</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">root</span><span class="p">.</span><span class="n">file_name</span><span class="p">().</span><span class="n">map_or_else</span><span class="p">(</span><span class="o">||</span><span class="w"> </span><span class="n">config</span><span class="p">::</span><span class="n">pretty_path</span><span class="p">(</span><span class="n">root</span><span class="p">),</span><span class="w"> </span><span class="o">|</span><span class="n">n</span><span class="o">|</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="n">to_string_lossy</span><span class="p">().</span><span class="n">into_owned</span><span class="p">())</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="sd">/// The picker, or the form for a first target when there's none yet.</span>
+<span class="w">    </span><span class="k">pub</span><span class="p">(</span><span class="k">super</span><span class="p">)</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">open_deploy</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">select</span><span class="p">:</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;&amp;</span><span class="kt">str</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="bp">self</span><span class="p">.</span><span class="n">load_settings</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">root</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">settings_root</span><span class="p">.</span><span class="n">clone</span><span class="p">();</span>
+<span class="w">        </span><span class="c1">// A file that doesn't parse reads as no targets; the picker (with E) beats a form</span>
+<span class="w">        </span><span class="c1">// for a new one then, and the status line says what's wrong.</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">broken</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">settings</span><span class="p">.</span><span class="n">deploy</span><span class="p">.</span><span class="n">is_empty</span><span class="p">()</span>
+<span class="w">            </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">fs</span><span class="p">::</span><span class="n">read_to_string</span><span class="p">(</span><span class="n">settings</span><span class="p">::</span><span class="n">file_for</span><span class="p">(</span><span class="o">&amp;</span><span class="n">root</span><span class="p">))</span>
+<span class="w">                </span><span class="p">.</span><span class="n">is_ok_and</span><span class="p">(</span><span class="o">|</span><span class="n">t</span><span class="o">|</span><span class="w"> </span><span class="n">toml</span><span class="p">::</span><span class="n">from_str</span><span class="p">::</span><span class="o">&lt;</span><span class="n">ProjectSettings</span><span class="o">&gt;</span><span class="p">(</span><span class="o">&amp;</span><span class="n">t</span><span class="p">).</span><span class="n">is_err</span><span class="p">());</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">settings</span><span class="p">.</span><span class="n">deploy</span><span class="p">.</span><span class="n">is_empty</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="n">broken</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">new_deploy_form</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">targets</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">settings</span><span class="p">.</span><span class="n">deploy</span><span class="p">.</span><span class="n">clone</span><span class="p">();</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">pos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">select</span><span class="p">.</span><span class="n">and_then</span><span class="p">(</span><span class="o">|</span><span class="n">n</span><span class="o">|</span><span class="w"> </span><span class="n">targets</span><span class="p">.</span><span class="n">iter</span><span class="p">().</span><span class="n">position</span><span class="p">(</span><span class="o">|</span><span class="n">d</span><span class="o">|</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">n</span><span class="p">)).</span><span class="n">unwrap_or</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="w">        </span><span class="bp">self</span><span class="p">.</span><span class="n">mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Mode</span><span class="p">::</span><span class="n">Deploy</span><span class="p">(</span><span class="n">DeployPicker</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">title</span><span class="p">:</span><span class="w"> </span><span class="nc">Self</span><span class="p">::</span><span class="n">project_title</span><span class="p">(</span><span class="o">&amp;</span><span class="n">root</span><span class="p">),</span>
+<span class="w">            </span><span class="n">root</span><span class="p">,</span>
+<span class="w">            </span><span class="n">targets</span><span class="p">,</span>
+<span class="w">            </span><span class="n">state</span><span class="p">:</span><span class="w"> </span><span class="nc">ListState</span><span class="p">::</span><span class="n">default</span><span class="p">().</span><span class="n">with_selected</span><span class="p">(</span><span class="nb">Some</span><span class="p">(</span><span class="n">pos</span><span class="p">)),</span>
+<span class="w">            </span><span class="n">keep_build</span><span class="p">:</span><span class="w"> </span><span class="nc">self</span><span class="p">.</span><span class="n">config</span><span class="p">.</span><span class="n">keep_deploy_builds</span><span class="p">,</span>
+<span class="w">            </span><span class="n">broken</span><span class="p">,</span>
+<span class="w">        </span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">pub</span><span class="p">(</span><span class="k">super</span><span class="p">)</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">key_deploy</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="p">:</span><span class="w"> </span><span class="nc">KeyEvent</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">Mode</span><span class="p">::</span><span class="n">Deploy</span><span class="p">(</span><span class="n">picker</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">mode</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="p">};</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">picker</span><span class="p">.</span><span class="n">targets</span><span class="p">.</span><span class="n">len</span><span class="p">();</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">cur</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">picker</span><span class="p">.</span><span class="n">state</span><span class="p">.</span><span class="n">selected</span><span class="p">().</span><span class="n">unwrap_or</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">root</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">picker</span><span class="p">.</span><span class="n">root</span><span class="p">.</span><span class="n">clone</span><span class="p">();</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">picker</span><span class="p">.</span><span class="n">selected</span><span class="p">().</span><span class="n">cloned</span><span class="p">();</span>
+<span class="w">        </span><span class="k">match</span><span class="w"> </span><span class="n">key</span><span class="p">.</span><span class="n">code</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">KeyCode</span><span class="p">::</span><span class="n">Esc</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">KeyCode</span><span class="p">::</span><span class="n">Char</span><span class="p">(</span><span class="sc">'q'</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Mode</span><span class="p">::</span><span class="n">Normal</span><span class="p">,</span>
+<span class="w">            </span><span class="n">KeyCode</span><span class="p">::</span><span class="n">Char</span><span class="p">(</span><span class="sc">'j'</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">KeyCode</span><span class="p">::</span><span class="n">Down</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">filter_list</span><span class="p">::</span><span class="n">step</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="n">picker</span><span class="p">.</span><span class="n">state</span><span class="p">,</span><span class="w"> </span><span class="n">len</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span>
+<span class="w">            </span><span class="n">KeyCode</span><span class="p">::</span><span class="n">Char</span><span class="p">(</span><span class="sc">'k'</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">KeyCode</span><span class="p">::</span><span class="n">Up</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">filter_list</span><span class="p">::</span><span class="n">step</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="n">picker</span><span class="p">.</span><span class="n">state</span><span class="p">,</span><span class="w"> </span><span class="n">len</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">            </span><span class="n">KeyCode</span><span class="p">::</span><span class="n">Char</span><span class="p">(</span><span class="sc">'a'</span><span class="p">)</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">picker</span><span class="p">.</span><span class="n">broken</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="bp">self</span><span class="p">.</span><span class="n">set_status</span><span class="p">(</span><span class="s">"the settings file doesn't parse — E opens it"</span><span class="p">,</span><span class="w"> </span><span class="n">Level</span><span class="p">::</span><span class="nb">Err</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="n">KeyCode</span><span class="p">::</span><span class="n">Char</span><span class="p">(</span><span class="sc">'a'</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">new_deploy_form</span><span class="p">(),</span>
+<span class="w">            </span><span class="n">KeyCode</span><span class="p">::</span><span class="n">Char</span><span class="p">(</span><span class="sc">'e'</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">d</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">target</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="bp">self</span><span class="p">.</span><span class="n">edit_deploy_form</span><span class="p">(</span><span class="n">cur</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">d</span><span class="p">);</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="n">KeyCode</span><span class="p">::</span><span class="n">Char</span><span class="p">(</span><span class="sc">'E'</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">edit_settings</span><span class="p">(</span><span class="o">&amp;</span><span class="n">root</span><span class="p">),</span>
+<span class="w">            </span><span class="n">KeyCode</span><span class="p">::</span><span class="n">Char</span><span class="p">(</span><span class="sc">'x'</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">KeyCode</span><span class="p">::</span><span class="n">Delete</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">d</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">target</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="bp">self</span><span class="p">.</span><span class="n">mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Mode</span><span class="p">::</span><span class="n">Confirm</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="n">msg</span><span class="p">:</span><span class="w"> </span><span class="nc">format</span><span class="o">!</span><span class="p">(</span><span class="s">"Delete the deploy target {}? Nothing on {} is touched. [y/N]"</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">host</span><span class="p">),</span>
+<span class="w">                        </span><span class="n">action</span><span class="p">:</span><span class="w"> </span><span class="nc">Confirmed</span><span class="p">::</span><span class="n">RemoveDeploy</span><span class="p">(</span><span class="n">d</span><span class="p">.</span><span class="n">name</span><span class="p">.</span><span class="n">clone</span><span class="p">(),</span><span class="w"> </span><span class="n">cur</span><span class="p">,</span><span class="w"> </span><span class="n">root</span><span class="p">),</span>
+<span class="w">                    </span><span class="p">};</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="n">KeyCode</span><span class="p">::</span><span class="n">Enter</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">KeyCode</span><span class="p">::</span><span class="n">Char</span><span class="p">(</span><span class="sc">'D'</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">d</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">target</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="bp">self</span><span class="p">.</span><span class="n">mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Mode</span><span class="p">::</span><span class="n">Normal</span><span class="p">;</span>
+<span class="w">                    </span><span class="bp">self</span><span class="p">.</span><span class="n">run_deploy</span><span class="p">(</span><span class="o">&amp;</span><span class="n">d</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">root</span><span class="p">,</span><span class="w"> </span><span class="n">Run</span><span class="p">::</span><span class="n">Deploy</span><span class="p">);</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="n">KeyCode</span><span class="p">::</span><span class="n">Char</span><span class="p">(</span><span class="sc">'l'</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">d</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">target</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="bp">self</span><span class="p">.</span><span class="n">mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Mode</span><span class="p">::</span><span class="n">Normal</span><span class="p">;</span>
+<span class="w">                    </span><span class="bp">self</span><span class="p">.</span><span class="n">run_deploy</span><span class="p">(</span><span class="o">&amp;</span><span class="n">d</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">root</span><span class="p">,</span><span class="w"> </span><span class="n">Run</span><span class="p">::</span><span class="n">Backups</span><span class="p">);</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="n">KeyCode</span><span class="p">::</span><span class="n">Char</span><span class="p">(</span><span class="sc">'u'</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">d</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">target</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="bp">self</span><span class="p">.</span><span class="n">mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Mode</span><span class="p">::</span><span class="n">Confirm</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="n">msg</span><span class="p">:</span><span class="w"> </span><span class="nc">format</span><span class="o">!</span><span class="p">(</span><span class="s">"Put the newest backup of {} back on {}? [y/N]"</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">remote_path</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">host</span><span class="p">),</span>
+<span class="w">                        </span><span class="n">action</span><span class="p">:</span><span class="w"> </span><span class="nc">Confirmed</span><span class="p">::</span><span class="n">Rollback</span><span class="p">(</span><span class="nb">Box</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="n">d</span><span class="p">),</span><span class="w"> </span><span class="n">root</span><span class="p">),</span>
+<span class="w">                    </span><span class="p">};</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="n">_</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="sd">/// Opens the project's settings file in the editor, with the template if it's new,</span>
+<span class="w">    </span><span class="sd">/// and comes back to the picker afterwards.</span>
+<span class="w">    </span><span class="k">pub</span><span class="p">(</span><span class="k">super</span><span class="p">)</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">edit_settings</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">root</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">Path</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">match</span><span class="w"> </span><span class="n">settings</span><span class="p">::</span><span class="n">ensure_file</span><span class="p">(</span><span class="n">root</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nb">Ok</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="bp">self</span><span class="p">.</span><span class="n">mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Mode</span><span class="p">::</span><span class="n">Normal</span><span class="p">;</span>
+<span class="w">                </span><span class="bp">self</span><span class="p">.</span><span class="n">reopen_deploy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">                </span><span class="bp">self</span><span class="p">.</span><span class="n">edit_path</span><span class="p">(</span><span class="o">&amp;</span><span class="n">path</span><span class="p">,</span><span class="w"> </span><span class="s">""</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="nb">Err</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="bp">self</span><span class="p">.</span><span class="n">set_status</span><span class="p">(</span><span class="fm">format!</span><span class="p">(</span><span class="s">"can't create {}: {e}"</span><span class="p">,</span><span class="w"> </span><span class="n">config</span><span class="p">::</span><span class="n">pretty_path</span><span class="p">(</span><span class="o">&amp;</span><span class="n">settings</span><span class="p">::</span><span class="n">dir</span><span class="p">())),</span><span class="w"> </span><span class="n">Level</span><span class="p">::</span><span class="nb">Err</span><span class="p">)</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="sd">/// Writes the script and runs it: in the output pane, or in the real terminal when the</span>
+<span class="w">    </span><span class="sd">/// target asks for passwords.</span>
+<span class="w">    </span><span class="k">pub</span><span class="p">(</span><span class="k">super</span><span class="p">)</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">run_deploy</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">Deploy</span><span class="p">,</span><span class="w"> </span><span class="n">root</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">Path</span><span class="p">,</span><span class="w"> </span><span class="n">what</span><span class="p">:</span><span class="w"> </span><span class="nc">Run</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">problem</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">set_status</span><span class="p">(</span><span class="fm">format!</span><span class="p">(</span><span class="s">"deploy {}: {p} — D then e fixes it"</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">name</span><span class="p">),</span><span class="w"> </span><span class="n">Level</span><span class="p">::</span><span class="nb">Err</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="p">(</span><span class="n">script</span><span class="p">,</span><span class="w"> </span><span class="n">tag</span><span class="p">,</span><span class="w"> </span><span class="n">label</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">match</span><span class="w"> </span><span class="n">what</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">Run</span><span class="p">::</span><span class="n">Deploy</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">d</span><span class="p">.</span><span class="n">script</span><span class="p">(</span><span class="n">root</span><span class="p">,</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">config</span><span class="p">.</span><span class="n">keep_deploy_builds</span><span class="p">),</span><span class="w"> </span><span class="s">"deploy"</span><span class="p">,</span><span class="w"> </span><span class="fm">format!</span><span class="p">(</span><span class="s">"deploy {}"</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">name</span><span class="p">)),</span>
+<span class="w">            </span><span class="n">Run</span><span class="p">::</span><span class="n">Rollback</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">d</span><span class="p">.</span><span class="n">rollback_script</span><span class="p">(),</span><span class="w"> </span><span class="s">"rollback"</span><span class="p">,</span><span class="w"> </span><span class="fm">format!</span><span class="p">(</span><span class="s">"roll back {}"</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">name</span><span class="p">)),</span>
+<span class="w">            </span><span class="n">Run</span><span class="p">::</span><span class="n">Backups</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">d</span><span class="p">.</span><span class="n">backups_script</span><span class="p">(),</span><span class="w"> </span><span class="s">"backups"</span><span class="p">,</span><span class="w"> </span><span class="fm">format!</span><span class="p">(</span><span class="s">"backups on {}"</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">name</span><span class="p">)),</span>
+<span class="w">        </span><span class="p">};</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">deploy</span><span class="p">::</span><span class="n">script_file</span><span class="p">(</span><span class="n">root</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">d</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">tag</span><span class="p">);</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">written</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">file</span><span class="p">.</span><span class="n">parent</span><span class="p">().</span><span class="n">map_or</span><span class="p">(</span><span class="nb">Ok</span><span class="p">(()),</span><span class="w"> </span><span class="n">fs</span><span class="p">::</span><span class="n">create_dir_all</span><span class="p">).</span><span class="n">and_then</span><span class="p">(</span><span class="o">|</span><span class="n">_</span><span class="o">|</span><span class="w"> </span><span class="n">fs</span><span class="p">::</span><span class="n">write</span><span class="p">(</span><span class="o">&amp;</span><span class="n">file</span><span class="p">,</span><span class="w"> </span><span class="n">script</span><span class="p">));</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nb">Err</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">written</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">set_status</span><span class="p">(</span><span class="fm">format!</span><span class="p">(</span><span class="s">"can't write {}: {e}"</span><span class="p">,</span><span class="w"> </span><span class="n">config</span><span class="p">::</span><span class="n">pretty_path</span><span class="p">(</span><span class="o">&amp;</span><span class="n">file</span><span class="p">)),</span><span class="w"> </span><span class="n">Level</span><span class="p">::</span><span class="nb">Err</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">plan</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Plan</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">cmd</span><span class="p">:</span><span class="w"> </span><span class="nc">format</span><span class="o">!</span><span class="p">(</span><span class="s">"sh {}"</span><span class="p">,</span><span class="w"> </span><span class="n">quote</span><span class="p">(</span><span class="o">&amp;</span><span class="n">file</span><span class="p">)),</span><span class="w"> </span><span class="n">cwd</span><span class="p">:</span><span class="w"> </span><span class="nc">root</span><span class="p">.</span><span class="n">to_path_buf</span><span class="p">()</span><span class="w"> </span><span class="p">};</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">interactive</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="bp">self</span><span class="p">.</span><span class="n">foreground</span><span class="p">(</span><span class="n">plan</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="bp">self</span><span class="p">.</span><span class="n">start_task</span><span class="p">(</span><span class="n">label</span><span class="p">,</span><span class="w"> </span><span class="n">plan</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">pub</span><span class="p">(</span><span class="k">super</span><span class="p">)</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">new_deploy_form</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="bp">self</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">root</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">settings_root</span><span class="p">.</span><span class="n">clone</span><span class="p">();</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">project</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">project</span><span class="p">.</span><span class="n">clone</span><span class="p">().</span><span class="n">filter</span><span class="p">(</span><span class="o">|</span><span class="n">p</span><span class="o">|</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">root</span><span class="p">.</span><span class="n">starts_with</span><span class="p">(</span><span class="o">&amp;</span><span class="n">root</span><span class="p">)).</span><span class="n">or_else</span><span class="p">(</span><span class="o">||</span><span class="w"> </span><span class="n">project</span><span class="p">::</span><span class="n">detect</span><span class="p">(</span><span class="o">&amp;</span><span class="n">root</span><span class="p">));</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">guess</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">guess</span><span class="p">(</span><span class="o">&amp;</span><span class="n">root</span><span class="p">,</span><span class="w"> </span><span class="n">project</span><span class="p">.</span><span class="n">as_ref</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="bp">self</span><span class="p">.</span><span class="n">config</span><span class="p">.</span><span class="n">install_dir</span><span class="p">());</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">taken</span><span class="p">:</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">settings</span><span class="p">.</span><span class="n">deploy</span><span class="p">.</span><span class="n">iter</span><span class="p">().</span><span class="n">map</span><span class="p">(</span><span class="o">|</span><span class="n">d</span><span class="o">|</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">name</span><span class="p">.</span><span class="n">clone</span><span class="p">()).</span><span class="n">collect</span><span class="p">();</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="p">::</span><span class="n">iter</span><span class="p">::</span><span class="n">once</span><span class="p">(</span><span class="s">"pi"</span><span class="p">.</span><span class="n">to_string</span><span class="p">())</span>
+<span class="w">            </span><span class="p">.</span><span class="n">chain</span><span class="p">((</span><span class="mi">2</span><span class="o">..</span><span class="p">).</span><span class="n">map</span><span class="p">(</span><span class="o">|</span><span class="n">i</span><span class="o">|</span><span class="w"> </span><span class="fm">format!</span><span class="p">(</span><span class="s">"pi{i}"</span><span class="p">)))</span>
+<span class="w">            </span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="o">|</span><span class="n">n</span><span class="o">|</span><span class="w"> </span><span class="o">!</span><span class="n">taken</span><span class="p">.</span><span class="n">contains</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+<span class="w">            </span><span class="p">.</span><span class="n">unwrap_or_default</span><span class="p">();</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">has_key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="p">::</span><span class="n">env</span><span class="p">::</span><span class="n">var_os</span><span class="p">(</span><span class="s">"SSH_AUTH_SOCK"</span><span class="p">).</span><span class="n">is_some</span><span class="p">()</span>
+<span class="w">            </span><span class="o">||</span><span class="w"> </span><span class="n">fs</span><span class="p">::</span><span class="n">read_dir</span><span class="p">(</span><span class="n">config</span><span class="p">::</span><span class="n">home</span><span class="p">().</span><span class="n">join</span><span class="p">(</span><span class="s">".ssh"</span><span class="p">))</span>
+<span class="w">                </span><span class="p">.</span><span class="n">is_ok_and</span><span class="p">(</span><span class="o">|</span><span class="n">d</span><span class="o">|</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">flatten</span><span class="p">().</span><span class="n">any</span><span class="p">(</span><span class="o">|</span><span class="n">e</span><span class="o">|</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">file_name</span><span class="p">().</span><span class="n">to_string_lossy</span><span class="p">().</span><span class="n">starts_with</span><span class="p">(</span><span class="s">"id_"</span><span class="p">)));</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">note</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">has_key</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="n">then</span><span class="p">(</span><span class="o">||</span><span class="w"> </span><span class="s">"no ssh key found — ssh-keygen + ssh-copy-id &lt;host&gt;, or run it in the terminal"</span><span class="p">.</span><span class="n">to_string</span><span class="p">());</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">defaults</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Deploy</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">name</span><span class="p">,</span>
+<span class="w">            </span><span class="n">host</span><span class="p">:</span><span class="w"> </span><span class="s">"pi@raspberrypi.local"</span><span class="p">.</span><span class="n">into</span><span class="p">(),</span>
+<span class="w">            </span><span class="n">remote_path</span><span class="p">:</span><span class="w"> </span><span class="nc">format</span><span class="o">!</span><span class="p">(</span><span class="s">"/usr/local/bin/{}"</span><span class="p">,</span><span class="w"> </span><span class="n">guess</span><span class="p">.</span><span class="n">bin</span><span class="p">),</span>
+<span class="w">            </span><span class="n">build</span><span class="p">:</span><span class="w"> </span><span class="nc">guess</span><span class="p">.</span><span class="n">build</span><span class="p">,</span>
+<span class="w">            </span><span class="n">artifact</span><span class="p">:</span><span class="w"> </span><span class="nc">guess</span><span class="p">.</span><span class="n">artifact</span><span class="p">,</span>
+<span class="w">            </span><span class="n">sudo</span><span class="p">:</span><span class="w"> </span><span class="nc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="o">..</span><span class="n">Deploy</span><span class="p">::</span><span class="n">default</span><span class="p">()</span>
+<span class="w">        </span><span class="p">};</span>
+<span class="w">        </span><span class="bp">self</span><span class="p">.</span><span class="n">mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Mode</span><span class="p">::</span><span class="n">Form</span><span class="p">(</span><span class="n">Form</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">kind</span><span class="p">:</span><span class="w"> </span><span class="nc">FormKind</span><span class="p">::</span><span class="n">Deploy</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">root</span><span class="p">:</span><span class="w"> </span><span class="nc">root</span><span class="p">.</span><span class="n">clone</span><span class="p">(),</span>
+<span class="w">                </span><span class="n">taken</span><span class="p">,</span>
+<span class="w">                </span><span class="n">keep_build</span><span class="p">:</span><span class="w"> </span><span class="nc">self</span><span class="p">.</span><span class="n">config</span><span class="p">.</span><span class="n">keep_deploy_builds</span><span class="p">,</span>
+<span class="w">                </span><span class="n">editing</span><span class="p">:</span><span class="w"> </span><span class="nb">None</span><span class="p">,</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="n">title</span><span class="p">:</span><span class="w"> </span><span class="nc">format</span><span class="o">!</span><span class="p">(</span><span class="s">" new deploy target · {} "</span><span class="p">,</span><span class="w"> </span><span class="bp">Self</span><span class="p">::</span><span class="n">project_title</span><span class="p">(</span><span class="o">&amp;</span><span class="n">root</span><span class="p">)),</span>
+<span class="w">            </span><span class="n">fields</span><span class="p">:</span><span class="w"> </span><span class="nc">deploy_fields</span><span class="p">(</span><span class="o">&amp;</span><span class="n">defaults</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">),</span>
+<span class="w">            </span><span class="n">step</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">            </span><span class="n">note</span><span class="p">,</span>
+<span class="w">            </span><span class="n">completer</span><span class="p">:</span><span class="w"> </span><span class="nb">None</span><span class="p">,</span>
+<span class="w">        </span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="sd">/// The form again, filled with target `idx` as it is; saving replaces it in the file.</span>
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">edit_deploy_form</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">idx</span><span class="p">:</span><span class="w"> </span><span class="kt">usize</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">Deploy</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">root</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">settings_root</span><span class="p">.</span><span class="n">clone</span><span class="p">();</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">taken</span><span class="p">:</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">settings</span><span class="p">.</span><span class="n">deploy</span><span class="p">.</span><span class="n">iter</span><span class="p">().</span><span class="n">map</span><span class="p">(</span><span class="o">|</span><span class="n">t</span><span class="o">|</span><span class="w"> </span><span class="n">t</span><span class="p">.</span><span class="n">name</span><span class="p">.</span><span class="n">clone</span><span class="p">()).</span><span class="n">filter</span><span class="p">(</span><span class="o">|</span><span class="n">n</span><span class="o">|</span><span class="w"> </span><span class="o">*</span><span class="n">n</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">name</span><span class="p">).</span><span class="n">collect</span><span class="p">();</span>
+<span class="w">        </span><span class="bp">self</span><span class="p">.</span><span class="n">mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Mode</span><span class="p">::</span><span class="n">Form</span><span class="p">(</span><span class="n">Form</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">kind</span><span class="p">:</span><span class="w"> </span><span class="nc">FormKind</span><span class="p">::</span><span class="n">Deploy</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">root</span><span class="p">:</span><span class="w"> </span><span class="nc">root</span><span class="p">.</span><span class="n">clone</span><span class="p">(),</span>
+<span class="w">                </span><span class="n">taken</span><span class="p">,</span>
+<span class="w">                </span><span class="n">keep_build</span><span class="p">:</span><span class="w"> </span><span class="nc">self</span><span class="p">.</span><span class="n">config</span><span class="p">.</span><span class="n">keep_deploy_builds</span><span class="p">,</span>
+<span class="w">                </span><span class="n">editing</span><span class="p">:</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">idx</span><span class="p">),</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="n">title</span><span class="p">:</span><span class="w"> </span><span class="nc">format</span><span class="o">!</span><span class="p">(</span><span class="s">" edit deploy target {} · {} "</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="bp">Self</span><span class="p">::</span><span class="n">project_title</span><span class="p">(</span><span class="o">&amp;</span><span class="n">root</span><span class="p">)),</span>
+<span class="w">            </span><span class="n">fields</span><span class="p">:</span><span class="w"> </span><span class="nc">deploy_fields</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">),</span>
+<span class="w">            </span><span class="n">step</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">            </span><span class="n">note</span><span class="p">:</span><span class="w"> </span><span class="nb">None</span><span class="p">,</span>
+<span class="w">            </span><span class="n">completer</span><span class="p">:</span><span class="w"> </span><span class="nb">None</span><span class="p">,</span>
+<span class="w">        </span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="sd">/// `x` in the picker, after the y/N.</span>
+<span class="w">    </span><span class="k">pub</span><span class="p">(</span><span class="k">super</span><span class="p">)</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">remove_deploy</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">,</span><span class="w"> </span><span class="n">idx</span><span class="p">:</span><span class="w"> </span><span class="kt">usize</span><span class="p">,</span><span class="w"> </span><span class="n">root</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">Path</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">match</span><span class="w"> </span><span class="n">settings</span><span class="p">::</span><span class="n">remove_deploy</span><span class="p">(</span><span class="n">root</span><span class="p">,</span><span class="w"> </span><span class="n">idx</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nb">Ok</span><span class="p">(</span><span class="n">_</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="bp">self</span><span class="p">.</span><span class="n">load_settings</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">settings</span><span class="p">.</span><span class="n">deploy</span><span class="p">.</span><span class="n">is_empty</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="bp">self</span><span class="p">.</span><span class="n">mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Mode</span><span class="p">::</span><span class="n">Normal</span><span class="p">;</span>
+<span class="w">                </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="bp">self</span><span class="p">.</span><span class="n">open_deploy</span><span class="p">(</span>
+<span class="w">                        </span><span class="bp">self</span><span class="p">.</span><span class="n">settings</span><span class="p">.</span><span class="n">deploy</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">idx</span><span class="p">.</span><span class="n">saturating_sub</span><span class="p">(</span><span class="mi">1</span><span class="p">)).</span><span class="n">map</span><span class="p">(</span><span class="o">|</span><span class="n">d</span><span class="o">|</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">name</span><span class="p">.</span><span class="n">clone</span><span class="p">()).</span><span class="n">as_deref</span><span class="p">(),</span>
+<span class="w">                    </span><span class="p">);</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">                </span><span class="bp">self</span><span class="p">.</span><span class="n">set_status</span><span class="p">(</span><span class="fm">format!</span><span class="p">(</span><span class="s">"deleted deploy target {name}"</span><span class="p">),</span><span class="w"> </span><span class="n">Level</span><span class="p">::</span><span class="nb">Ok</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="nb">Err</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">set_status</span><span class="p">(</span><span class="fm">format!</span><span class="p">(</span><span class="s">"can't delete {name}: {e}"</span><span class="p">),</span><span class="w"> </span><span class="n">Level</span><span class="p">::</span><span class="nb">Err</span><span class="p">),</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="sd">/// Saves the form's target and shows it in the picker. False keeps the form open.</span>
+<span class="w">    </span><span class="k">pub</span><span class="p">(</span><span class="k">super</span><span class="p">)</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">submit_deploy_form</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">form</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">Form</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">FormKind</span><span class="p">::</span><span class="n">Deploy</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">root</span><span class="p">,</span><span class="w"> </span><span class="n">taken</span><span class="p">,</span><span class="w"> </span><span class="n">editing</span><span class="p">,</span><span class="w"> </span><span class="o">..</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">form</span><span class="p">.</span><span class="n">kind</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">};</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">deploy_from_form</span><span class="p">(</span><span class="n">form</span><span class="p">);</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">problem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d</span>
+<span class="w">            </span><span class="p">.</span><span class="n">problem</span><span class="p">()</span>
+<span class="w">            </span><span class="p">.</span><span class="n">or_else</span><span class="p">(</span><span class="o">||</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">form</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"keep"</span><span class="p">)</span>
+<span class="w">                    </span><span class="p">.</span><span class="n">trim</span><span class="p">()</span>
+<span class="w">                    </span><span class="p">.</span><span class="n">parse</span><span class="p">::</span><span class="o">&lt;</span><span class="kt">usize</span><span class="o">&gt;</span><span class="p">()</span>
+<span class="w">                    </span><span class="p">.</span><span class="n">is_err</span><span class="p">()</span>
+<span class="w">                    </span><span class="p">.</span><span class="n">then</span><span class="p">(</span><span class="o">||</span><span class="w"> </span><span class="s">"keep must be a number; 0 keeps all backups"</span><span class="p">.</span><span class="n">into</span><span class="p">())</span>
+<span class="w">            </span><span class="p">})</span>
+<span class="w">            </span><span class="p">.</span><span class="n">or_else</span><span class="p">(</span><span class="o">||</span><span class="w"> </span><span class="n">taken</span><span class="p">.</span><span class="n">contains</span><span class="p">(</span><span class="o">&amp;</span><span class="n">d</span><span class="p">.</span><span class="n">name</span><span class="p">).</span><span class="n">then</span><span class="p">(</span><span class="o">||</span><span class="w"> </span><span class="fm">format!</span><span class="p">(</span><span class="s">"there's a target named {} already"</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">name</span><span class="p">)));</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">problem</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="bp">self</span><span class="p">.</span><span class="n">set_status</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">Level</span><span class="p">::</span><span class="nb">Err</span><span class="p">);</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">saved</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">match</span><span class="w"> </span><span class="n">editing</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nb">Some</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">settings</span><span class="p">::</span><span class="n">replace_deploy</span><span class="p">(</span><span class="n">root</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">idx</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">d</span><span class="p">),</span>
+<span class="w">            </span><span class="nb">None</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">settings</span><span class="p">::</span><span class="n">append_deploy</span><span class="p">(</span><span class="n">root</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">d</span><span class="p">),</span>
+<span class="w">        </span><span class="p">};</span>
+<span class="w">        </span><span class="k">match</span><span class="w"> </span><span class="n">saved</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nb">Ok</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="bp">self</span><span class="p">.</span><span class="n">open_deploy</span><span class="p">(</span><span class="nb">Some</span><span class="p">(</span><span class="o">&amp;</span><span class="n">d</span><span class="p">.</span><span class="n">name</span><span class="p">));</span>
+<span class="w">                </span><span class="bp">self</span><span class="p">.</span><span class="n">set_status</span><span class="p">(</span><span class="fm">format!</span><span class="p">(</span><span class="s">"saved to {} — Enter deploys, e edits"</span><span class="p">,</span><span class="w"> </span><span class="n">config</span><span class="p">::</span><span class="n">pretty_path</span><span class="p">(</span><span class="o">&amp;</span><span class="n">path</span><span class="p">)),</span><span class="w"> </span><span class="n">Level</span><span class="p">::</span><span class="nb">Ok</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="nb">Err</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">set_status</span><span class="p">(</span><span class="fm">format!</span><span class="p">(</span><span class="s">"can't save: {e}"</span><span class="p">),</span><span class="w"> </span><span class="n">Level</span><span class="p">::</span><span class="nb">Err</span><span class="p">),</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="kc">true</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="sd">/// The target the deploy form currently describes.</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">deploy_from_form</span><span class="p">(</span><span class="n">form</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">Form</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">Deploy</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">build</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">form</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"build"</span><span class="p">).</span><span class="n">trim</span><span class="p">();</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">form</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"from"</span><span class="p">).</span><span class="n">trim</span><span class="p">();</span>
+<span class="w">    </span><span class="n">Deploy</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="nc">form</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"name"</span><span class="p">).</span><span class="n">trim</span><span class="p">().</span><span class="n">to_string</span><span class="p">(),</span>
+<span class="w">        </span><span class="n">host</span><span class="p">:</span><span class="w"> </span><span class="nc">form</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"host"</span><span class="p">).</span><span class="n">trim</span><span class="p">().</span><span class="n">to_string</span><span class="p">(),</span>
+<span class="w">        </span><span class="n">remote_path</span><span class="p">:</span><span class="w"> </span><span class="nc">form</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"remote path"</span><span class="p">).</span><span class="n">trim</span><span class="p">().</span><span class="n">to_string</span><span class="p">(),</span>
+<span class="w">        </span><span class="n">build</span><span class="p">:</span><span class="w"> </span><span class="nc">if</span><span class="w"> </span><span class="n">build</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">"-"</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">String</span><span class="p">::</span><span class="n">new</span><span class="p">()</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">build</span><span class="p">.</span><span class="n">to_string</span><span class="p">()</span><span class="w"> </span><span class="p">},</span>
+<span class="w">        </span><span class="n">from</span><span class="p">:</span><span class="w"> </span><span class="nc">from</span><span class="p">.</span><span class="n">to_string</span><span class="p">(),</span>
+<span class="w">        </span><span class="n">artifact</span><span class="p">:</span><span class="w"> </span><span class="nc">form</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"artifact"</span><span class="p">).</span><span class="n">trim</span><span class="p">().</span><span class="n">to_string</span><span class="p">(),</span>
+<span class="w">        </span><span class="n">sudo</span><span class="p">:</span><span class="w"> </span><span class="nc">form</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"sudo"</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">"yes"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">service</span><span class="p">:</span><span class="w"> </span><span class="nc">form</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"service"</span><span class="p">).</span><span class="n">trim</span><span class="p">().</span><span class="n">trim_end_matches</span><span class="p">(</span><span class="s">".service"</span><span class="p">).</span><span class="n">to_string</span><span class="p">(),</span>
+<span class="w">        </span><span class="n">restart</span><span class="p">:</span><span class="w"> </span><span class="nc">form</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"restart"</span><span class="p">).</span><span class="n">trim</span><span class="p">().</span><span class="n">to_string</span><span class="p">(),</span>
+<span class="w">        </span><span class="n">keep</span><span class="p">:</span><span class="w"> </span><span class="nc">form</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"keep"</span><span class="p">).</span><span class="n">trim</span><span class="p">().</span><span class="n">parse</span><span class="p">().</span><span class="n">unwrap_or</span><span class="p">(</span><span class="n">Deploy</span><span class="p">::</span><span class="n">default</span><span class="p">().</span><span class="n">keep</span><span class="p">),</span>
+<span class="w">        </span><span class="n">ssh</span><span class="p">:</span><span class="w"> </span><span class="nc">form</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"ssh"</span><span class="p">).</span><span class="n">trim</span><span class="p">().</span><span class="n">to_string</span><span class="p">(),</span>
+<span class="w">        </span><span class="n">interactive</span><span class="p">:</span><span class="w"> </span><span class="nc">form</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"run"</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">"terminal"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">key</span><span class="p">:</span><span class="w"> </span><span class="nc">form</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"key"</span><span class="p">).</span><span class="n">trim</span><span class="p">().</span><span class="n">to_string</span><span class="p">(),</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="sd">/// The form's fields for `d`. A new target shows its values as defaults that Enter takes;</span>
+<span class="sd">/// an edited one has them typed in already, so they can be changed or cleared.</span>
+<span class="k">fn</span><span class="w"> </span><span class="nf">deploy_fields</span><span class="p">(</span><span class="n">d</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">Deploy</span><span class="p">,</span><span class="w"> </span><span class="n">edit</span><span class="p">:</span><span class="w"> </span><span class="kt">bool</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="n">Field</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">|</span><span class="n">label</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">,</span><span class="w"> </span><span class="n">hint</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="o">|</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">edit</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Field</span><span class="p">::</span><span class="n">text</span><span class="p">(</span><span class="n">label</span><span class="p">,</span><span class="w"> </span><span class="s">""</span><span class="p">,</span><span class="w"> </span><span class="n">hint</span><span class="p">);</span>
+<span class="w">            </span><span class="n">f</span><span class="p">.</span><span class="n">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LineEdit</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="n">value</span><span class="p">);</span>
+<span class="w">            </span><span class="n">f</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">Field</span><span class="p">::</span><span class="n">text</span><span class="p">(</span><span class="n">label</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="n">hint</span><span class="p">)</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">build_hint</span><span class="w"> </span><span class="o">=</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">edit</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">"runs in the project root · empty: none"</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">"runs in the project root · - for none"</span><span class="w"> </span><span class="p">};</span>
+<span class="w">    </span><span class="fm">vec!</span><span class="p">[</span>
+<span class="w">        </span><span class="n">text</span><span class="p">(</span><span class="s">"name"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">d</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="s">"what the picker calls it"</span><span class="p">),</span>
+<span class="w">        </span><span class="n">text</span><span class="p">(</span><span class="s">"host"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">d</span><span class="p">.</span><span class="n">host</span><span class="p">,</span><span class="w"> </span><span class="s">"user@host or an alias from ~/.ssh/config"</span><span class="p">),</span>
+<span class="w">        </span><span class="n">text</span><span class="p">(</span><span class="s">"remote path"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">d</span><span class="p">.</span><span class="n">remote_path</span><span class="p">,</span><span class="w"> </span><span class="s">"the file there that gets replaced"</span><span class="p">),</span>
+<span class="w">        </span><span class="n">text</span><span class="p">(</span><span class="s">"build"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">d</span><span class="p">.</span><span class="n">build</span><span class="p">,</span><span class="w"> </span><span class="n">build_hint</span><span class="p">),</span>
+<span class="w">        </span><span class="n">text</span><span class="p">(</span><span class="s">"from"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">d</span><span class="p">.</span><span class="n">from</span><span class="p">,</span><span class="w"> </span><span class="s">"a branch to build, e.g. main, in a separate checkout · empty: this folder as it is"</span><span class="p">),</span>
+<span class="w">        </span><span class="n">text</span><span class="p">(</span><span class="s">"artifact"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">d</span><span class="p">.</span><span class="n">artifact</span><span class="p">,</span><span class="w"> </span><span class="s">"the built file, relative to the project root"</span><span class="p">),</span>
+<span class="w">        </span><span class="n">Field</span><span class="p">::</span><span class="n">choice</span><span class="p">(</span><span class="s">"sudo"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="p">[</span><span class="s">"yes"</span><span class="p">,</span><span class="w"> </span><span class="s">"no"</span><span class="p">],</span><span class="w"> </span><span class="kt">usize</span><span class="p">::</span><span class="n">from</span><span class="p">(</span><span class="o">!</span><span class="n">d</span><span class="p">.</span><span class="n">sudo</span><span class="p">),</span><span class="w"> </span><span class="s">"replace it as root (needed for /usr/…)"</span><span class="p">),</span>
+<span class="w">        </span><span class="n">text</span><span class="p">(</span><span class="s">"service"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">d</span><span class="p">.</span><span class="n">service</span><span class="p">,</span><span class="w"> </span><span class="s">"systemd service: restarted and checked, created if missing · empty: none"</span><span class="p">),</span>
+<span class="w">        </span><span class="n">text</span><span class="p">(</span><span class="s">"restart"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">d</span><span class="p">.</span><span class="n">restart</span><span class="p">,</span><span class="w"> </span><span class="s">"optional, any command run there afterwards"</span><span class="p">),</span>
+<span class="w">        </span><span class="n">text</span><span class="p">(</span><span class="s">"keep"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">d</span><span class="p">.</span><span class="n">keep</span><span class="p">.</span><span class="n">to_string</span><span class="p">(),</span><span class="w"> </span><span class="s">"backups to keep there · 0 keeps all"</span><span class="p">),</span>
+<span class="w">        </span><span class="n">text</span><span class="p">(</span><span class="s">"ssh"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">d</span><span class="p">.</span><span class="n">ssh</span><span class="p">,</span><span class="w"> </span><span class="s">"extra ssh options, e.g. -p 2222 -i ~/.ssh/pi"</span><span class="p">),</span>
+<span class="w">        </span><span class="n">text</span><span class="p">(</span><span class="s">"key"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">d</span><span class="p">.</span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="s">"optional key that deploys without the picker, e.g. F9"</span><span class="p">),</span>
+<span class="w">        </span><span class="n">Field</span><span class="p">::</span><span class="n">choice</span><span class="p">(</span>
+<span class="w">            </span><span class="s">"run"</span><span class="p">,</span>
+<span class="w">            </span><span class="o">&amp;</span><span class="p">[</span><span class="s">"background"</span><span class="p">,</span><span class="w"> </span><span class="s">"terminal"</span><span class="p">],</span>
+<span class="w">            </span><span class="kt">usize</span><span class="p">::</span><span class="n">from</span><span class="p">(</span><span class="n">d</span><span class="p">.</span><span class="n">interactive</span><span class="p">),</span>
+<span class="w">            </span><span class="s">"terminal: when ssh or sudo ask for a password"</span><span class="p">,</span>
+<span class="w">        </span><span class="p">),</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">Guess</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">build</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span>
+<span class="w">    </span><span class="n">artifact</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span>
+<span class="w">    </span><span class="n">bin</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="sd">/// A Pi runs 64-bit ARM these days; an ARM build that's already there wins.</span>
+<span class="k">const</span><span class="w"> </span><span class="n">PI_TRIPLE</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"aarch64-unknown-linux-gnu"</span><span class="p">;</span>
+
+<span class="k">fn</span><span class="w"> </span><span class="nf">guess</span><span class="p">(</span><span class="n">root</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">Path</span><span class="p">,</span><span class="w"> </span><span class="n">project</span><span class="p">:</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;&amp;</span><span class="n">project</span><span class="p">::</span><span class="n">Project</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">install_dir</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">Path</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">Guess</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">dir_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">root</span><span class="p">.</span><span class="n">file_name</span><span class="p">().</span><span class="n">map</span><span class="p">(</span><span class="o">|</span><span class="n">n</span><span class="o">|</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="n">to_string_lossy</span><span class="p">().</span><span class="n">into_owned</span><span class="p">()).</span><span class="n">unwrap_or_else</span><span class="p">(</span><span class="o">||</span><span class="w"> </span><span class="s">"app"</span><span class="p">.</span><span class="n">into</span><span class="p">());</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">cargo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">project</span><span class="p">::</span><span class="n">which</span><span class="p">(</span><span class="s">"cross"</span><span class="p">).</span><span class="n">is_some</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">"cross"</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">"cargo"</span><span class="w"> </span><span class="p">};</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">project</span><span class="p">.</span><span class="n">map</span><span class="p">(</span><span class="o">|</span><span class="n">p</span><span class="o">|</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">kind</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">project</span><span class="p">.</span><span class="n">map_or</span><span class="p">(</span><span class="n">dir_name</span><span class="p">.</span><span class="n">clone</span><span class="p">(),</span><span class="w"> </span><span class="o">|</span><span class="n">p</span><span class="o">|</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">name</span><span class="p">.</span><span class="n">clone</span><span class="p">());</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">kind</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">Kind</span><span class="p">::</span><span class="n">Cargo</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">arm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">install</span><span class="p">::</span><span class="n">scan</span><span class="p">(</span><span class="n">root</span><span class="p">,</span><span class="w"> </span><span class="n">install_dir</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="n">into_iter</span><span class="p">()</span>
+<span class="w">            </span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="o">|</span><span class="n">c</span><span class="o">|</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">triple</span><span class="p">.</span><span class="n">as_deref</span><span class="p">().</span><span class="n">is_some_and</span><span class="p">(</span><span class="o">|</span><span class="n">t</span><span class="o">|</span><span class="w"> </span><span class="n">t</span><span class="p">.</span><span class="n">starts_with</span><span class="p">(</span><span class="s">"aarch64"</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">t</span><span class="p">.</span><span class="n">starts_with</span><span class="p">(</span><span class="s">"arm"</span><span class="p">)));</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">arm</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="n">triple</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">triple</span><span class="p">.</span><span class="n">clone</span><span class="p">().</span><span class="n">unwrap_or_default</span><span class="p">();</span>
+<span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="n">release</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">kind</span><span class="p">.</span><span class="n">starts_with</span><span class="p">(</span><span class="s">"release"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">" --release"</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">""</span><span class="w"> </span><span class="p">};</span>
+<span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="n">example</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">kind</span><span class="p">.</span><span class="n">contains</span><span class="p">(</span><span class="s">"example"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="fm">format!</span><span class="p">(</span><span class="s">" --example {}"</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">String</span><span class="p">::</span><span class="n">new</span><span class="p">()</span><span class="w"> </span><span class="p">};</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">Guess</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">build</span><span class="p">:</span><span class="w"> </span><span class="nc">format</span><span class="o">!</span><span class="p">(</span><span class="s">"{cargo} build{release} --target {triple}{example}"</span><span class="p">),</span>
+<span class="w">                </span><span class="n">artifact</span><span class="p">:</span><span class="w"> </span><span class="nc">c</span><span class="p">.</span><span class="n">rel</span><span class="p">,</span>
+<span class="w">                </span><span class="n">bin</span><span class="p">:</span><span class="w"> </span><span class="nc">c</span><span class="p">.</span><span class="n">name</span><span class="p">,</span>
+<span class="w">            </span><span class="p">};</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Guess</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">build</span><span class="p">:</span><span class="w"> </span><span class="nc">format</span><span class="o">!</span><span class="p">(</span><span class="s">"{cargo} build --release --target {PI_TRIPLE}"</span><span class="p">),</span>
+<span class="w">            </span><span class="n">artifact</span><span class="p">:</span><span class="w"> </span><span class="nc">format</span><span class="o">!</span><span class="p">(</span><span class="s">"target/{PI_TRIPLE}/release/{name}"</span><span class="p">),</span>
+<span class="w">            </span><span class="n">bin</span><span class="p">:</span><span class="w"> </span><span class="nc">name</span><span class="p">,</span>
+<span class="w">        </span><span class="p">};</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">kind</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">Kind</span><span class="p">::</span><span class="n">Go</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="fm">format!</span><span class="p">(</span><span class="s">"build/{dir_name}-linux-arm64"</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Guess</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">build</span><span class="p">:</span><span class="w"> </span><span class="nc">format</span><span class="o">!</span><span class="p">(</span><span class="s">"GOOS=linux GOARCH=arm64 go build -o {out} ."</span><span class="p">),</span><span class="w"> </span><span class="n">artifact</span><span class="p">:</span><span class="w"> </span><span class="nc">out</span><span class="p">,</span><span class="w"> </span><span class="n">bin</span><span class="p">:</span><span class="w"> </span><span class="nc">dir_name</span><span class="w"> </span><span class="p">};</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">build</span><span class="w"> </span><span class="o">=</span>
+<span class="w">        </span><span class="n">project</span><span class="p">.</span><span class="n">and_then</span><span class="p">(</span><span class="o">|</span><span class="n">p</span><span class="o">|</span><span class="w"> </span><span class="n">project</span><span class="p">::</span><span class="n">plan</span><span class="p">(</span><span class="n">Op</span><span class="p">::</span><span class="n">Release</span><span class="p">,</span><span class="w"> </span><span class="nb">None</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">p</span><span class="p">.</span><span class="n">root</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="nb">Default</span><span class="p">::</span><span class="n">default</span><span class="p">()).</span><span class="n">ok</span><span class="p">()).</span><span class="n">map</span><span class="p">(</span><span class="o">|</span><span class="n">p</span><span class="o">|</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">cmd</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Guess</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">build</span><span class="p">:</span><span class="w"> </span><span class="nc">build</span><span class="p">.</span><span class="n">unwrap_or_default</span><span class="p">(),</span><span class="w"> </span><span class="n">artifact</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">::</span><span class="n">new</span><span class="p">(),</span><span class="w"> </span><span class="n">bin</span><span class="p">:</span><span class="w"> </span><span class="nc">dir_name</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div></td></tr></table></div>
+
+      </section>
+    </main>
+  </div>
+</body>
+</html>

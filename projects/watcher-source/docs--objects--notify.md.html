@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>docs/objects/notify.md — Watcher — Jan</title>
+  <link rel="stylesheet" href="../../styles.css?v=41ca8b66" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="layout">
+    <header class="rail" id="rail">
+<div class="rail__top">
+<a class="brand" href="../../index.html#top">
+<span class="brand__name">Jan</span>
+<span class="brand__meta">systems &amp; infrastructure<br/>Code, Code &amp; Code</span>
+</a>
+<button aria-controls="nav" aria-expanded="false" aria-label="Toggle menu" class="menu-toggle" id="menuToggle">
+<span></span><span></span><span></span>
+</button>
+</div>
+<nav aria-label="Sections" class="nav" id="nav">
+<a data-path="~/projects" href="../../index.html#projects">Projects</a>
+<a data-path="~/work" href="../../index.html#work">Work</a>
+<a data-path="~/education" href="../../index.html#education">Education</a>
+<a data-path="~/skills" href="../../index.html#skills">Skills</a>
+<a data-path="~/about" href="../../index.html#about">About Me</a>
+<a data-path="~/contact" href="../../index.html#contact">Contact</a>
+</nav>
+<div class="rail__status">
+<span aria-hidden="true" class="dot"></span>
+<span>open to work</span>
+</div>
+</header>
+    <nav class="file-tree" data-tree-key="watcher"><p class="file-tree__title">Files</p><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">docs/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">guides/</span><ul class="tree"><li class="tree-file"><a href="docs--guides--alerting-recipes.md.html">alerting-recipes.md</a></li><li class="tree-file"><a href="docs--guides--configuration.md.html">configuration.md</a></li><li class="tree-file"><a href="docs--guides--data.md.html">data.md</a></li><li class="tree-file"><a href="docs--guides--first-steps.md.html">first-steps.md</a></li><li class="tree-file"><a href="docs--guides--nodes.md.html">nodes.md</a></li><li class="tree-file"><a href="docs--guides--notifications.md.html">notifications.md</a></li><li class="tree-file"><a href="docs--guides--operations.md.html">operations.md</a></li><li class="tree-file"><a href="docs--guides--proxmox.md.html">proxmox.md</a></li><li class="tree-file"><a href="docs--guides--ssh.md.html">ssh.md</a></li><li class="tree-file"><a href="docs--guides--web-ui.md.html">web-ui.md</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">images/</span><ul class="tree"><li class="tree-file"><a href="docs--images--config-tree-dark.png.html">config-tree-dark.png</a></li><li class="tree-file"><a href="docs--images--config-tree.png.html">config-tree.png</a></li><li class="tree-file"><a href="docs--images--host-groups-dark.png.html">host-groups-dark.png</a></li><li class="tree-file"><a href="docs--images--host-groups.png.html">host-groups.png</a></li><li class="tree-file"><a href="docs--images--nodes-dark.png.html">nodes-dark.png</a></li><li class="tree-file"><a href="docs--images--nodes.png.html">nodes.png</a></li><li class="tree-file"><a href="docs--images--overview-dark.png.html">overview-dark.png</a></li><li class="tree-file"><a href="docs--images--overview.png.html">overview.png</a></li><li class="tree-file"><a href="docs--images--two-factor-dark.png.html">two-factor-dark.png</a></li><li class="tree-file"><a href="docs--images--two-factor.png.html">two-factor.png</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">objects/</span><ul class="tree"><li class="tree-file"><a href="docs--objects--check.md.html">check.md</a></li><li class="tree-file"><a href="docs--objects--contact.md.html">contact.md</a></li><li class="tree-file"><a href="docs--objects--contactgroup.md.html">contactgroup.md</a></li><li class="tree-file"><a href="docs--objects--dependency.md.html">dependency.md</a></li><li class="tree-file"><a href="docs--objects--downtimegroup.md.html">downtimegroup.md</a></li><li class="tree-file"><a href="docs--objects--host.md.html">host.md</a></li><li class="tree-file"><a href="docs--objects--hostgroup.md.html">hostgroup.md</a></li><li class="tree-file tree-file--active"><a href="docs--objects--notify.md.html">notify.md</a></li><li class="tree-file"><a href="docs--objects--service.md.html">service.md</a></li><li class="tree-file"><a href="docs--objects--servicegroup.md.html">servicegroup.md</a></li><li class="tree-file"><a href="docs--objects--sink.md.html">sink.md</a></li><li class="tree-file"><a href="docs--objects--timeperiod.md.html">timeperiod.md</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">reference/</span><ul class="tree"><li class="tree-file"><a href="docs--reference--api.md.html">api.md</a></li><li class="tree-file"><a href="docs--reference--cli.md.html">cli.md</a></li><li class="tree-file"><a href="docs--reference--watcher-toml.md.html">watcher-toml.md</a></li></ul></li><li class="tree-file"><a href="docs--README.md.html">README.md</a></li><li class="tree-file"><a href="docs--examples.md.html">examples.md</a></li><li class="tree-file"><a href="docs--install.md.html">install.md</a></li><li class="tree-file"><a href="docs--introduction.md.html">introduction.md</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">examples/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">demo/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">conf.d/</span><ul class="tree"><li class="tree-file"><a href="examples--demo--conf.d--checks.toml.html">checks.toml</a></li><li class="tree-file"><a href="examples--demo--conf.d--groups.toml.html">groups.toml</a></li><li class="tree-file"><a href="examples--demo--conf.d--hosts.toml.html">hosts.toml</a></li><li class="tree-file"><a href="examples--demo--conf.d--services.toml.html">services.toml</a></li></ul></li><li class="tree-file"><a href="examples--demo--watcher.toml.html">watcher.toml</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">local/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">conf.d/</span><ul class="tree"><li class="tree-file"><a href="examples--local--conf.d--checks.toml.html">checks.toml</a></li><li class="tree-file"><a href="examples--local--conf.d--contacts.toml.html">contacts.toml</a></li><li class="tree-file"><a href="examples--local--conf.d--hosts.toml.html">hosts.toml</a></li><li class="tree-file"><a href="examples--local--conf.d--services.toml.html">services.toml</a></li></ul></li><li class="tree-file"><a href="examples--local--watcher.toml.html">watcher.toml</a></li></ul></li><li class="tree-file"><a href="examples--init-answers.toml.html">init-answers.toml</a></li><li class="tree-file"><a href="examples--sinks.toml.html">sinks.toml</a></li></ul></li><li class="tree-file"><a href="*.toml.html">*.toml</a></li><li class="tree-file"><a href="*.yaml.html">*.yaml</a></li><li class="tree-file"><a href="Cargo.lock.html">Cargo.lock</a></li><li class="tree-file"><a href="LICENSE.html">LICENSE</a></li></ul></nav><script>
+(function () {
+  var tree = document.currentScript.previousElementSibling;
+  var key = "file-tree-scroll:" + tree.dataset.treeKey;
+  var saved = null;
+  try {
+    saved = sessionStorage.getItem(key);
+    sessionStorage.removeItem(key);
+  } catch (e) {}
+
+  if (saved !== null) {
+    tree.scrollTop = +saved;
+  } else {
+    var active = tree.querySelector(".tree-file--active");
+    if (active) {
+      var a = active.getBoundingClientRect();
+      var t = tree.getBoundingClientRect();
+      if (a.bottom > t.bottom) {
+        tree.scrollTop += a.top - t.top - (tree.clientHeight - a.height) / 2;
+      }
+    }
+  }
+
+  tree.addEventListener("click", function (e) {
+    if (!e.target.closest("a")) return;
+    try { sessionStorage.setItem(key, String(tree.scrollTop)); } catch (err) {}
+  });
+})();
+</script>
+    <main class="main" id="main">
+      <section class="section source-page">
+        <p class="section__path">
+          <a href="../../index.html#projects" class="link">~/projects</a> /
+          <a href="../watcher.html" class="link">watcher</a> / source
+        </p>
+        <div class="source-page__head">
+          <h1 class="section__title">docs/objects/notify.md</h1>
+          <a href="../watcher.html" class="link">← Back to Watcher</a>
+        </div>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">  1</span>
+<span class="normal">  2</span>
+<span class="normal">  3</span>
+<span class="normal">  4</span>
+<span class="normal">  5</span>
+<span class="normal">  6</span>
+<span class="normal">  7</span>
+<span class="normal">  8</span>
+<span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span>
+<span class="normal">245</span>
+<span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span>
+<span class="normal">250</span>
+<span class="normal">251</span>
+<span class="normal">252</span>
+<span class="normal">253</span>
+<span class="normal">254</span>
+<span class="normal">255</span>
+<span class="normal">256</span>
+<span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span>
+<span class="normal">262</span>
+<span class="normal">263</span>
+<span class="normal">264</span>
+<span class="normal">265</span>
+<span class="normal">266</span>
+<span class="normal">267</span>
+<span class="normal">268</span>
+<span class="normal">269</span>
+<span class="normal">270</span>
+<span class="normal">271</span>
+<span class="normal">272</span>
+<span class="normal">273</span>
+<span class="normal">274</span>
+<span class="normal">275</span>
+<span class="normal">276</span>
+<span class="normal">277</span>
+<span class="normal">278</span>
+<span class="normal">279</span>
+<span class="normal">280</span>
+<span class="normal">281</span>
+<span class="normal">282</span>
+<span class="normal">283</span>
+<span class="normal">284</span>
+<span class="normal">285</span>
+<span class="normal">286</span>
+<span class="normal">287</span>
+<span class="normal">288</span>
+<span class="normal">289</span>
+<span class="normal">290</span>
+<span class="normal">291</span>
+<span class="normal">292</span>
+<span class="normal">293</span>
+<span class="normal">294</span>
+<span class="normal">295</span>
+<span class="normal">296</span>
+<span class="normal">297</span>
+<span class="normal">298</span>
+<span class="normal">299</span>
+<span class="normal">300</span>
+<span class="normal">301</span>
+<span class="normal">302</span>
+<span class="normal">303</span>
+<span class="normal">304</span>
+<span class="normal">305</span>
+<span class="normal">306</span>
+<span class="normal">307</span>
+<span class="normal">308</span>
+<span class="normal">309</span>
+<span class="normal">310</span>
+<span class="normal">311</span>
+<span class="normal">312</span>
+<span class="normal">313</span>
+<span class="normal">314</span>
+<span class="normal">315</span>
+<span class="normal">316</span>
+<span class="normal">317</span>
+<span class="normal">318</span>
+<span class="normal">319</span>
+<span class="normal">320</span>
+<span class="normal">321</span>
+<span class="normal">322</span>
+<span class="normal">323</span>
+<span class="normal">324</span>
+<span class="normal">325</span>
+<span class="normal">326</span>
+<span class="normal">327</span>
+<span class="normal">328</span>
+<span class="normal">329</span>
+<span class="normal">330</span>
+<span class="normal">331</span>
+<span class="normal">332</span>
+<span class="normal">333</span>
+<span class="normal">334</span>
+<span class="normal">335</span>
+<span class="normal">336</span>
+<span class="normal">337</span>
+<span class="normal">338</span>
+<span class="normal">339</span>
+<span class="normal">340</span>
+<span class="normal">341</span>
+<span class="normal">342</span>
+<span class="normal">343</span>
+<span class="normal">344</span>
+<span class="normal">345</span>
+<span class="normal">346</span>
+<span class="normal">347</span>
+<span class="normal">348</span>
+<span class="normal">349</span>
+<span class="normal">350</span>
+<span class="normal">351</span>
+<span class="normal">352</span>
+<span class="normal">353</span>
+<span class="normal">354</span>
+<span class="normal">355</span>
+<span class="normal">356</span>
+<span class="normal">357</span>
+<span class="normal">358</span>
+<span class="normal">359</span>
+<span class="normal">360</span>
+<span class="normal">361</span>
+<span class="normal">362</span>
+<span class="normal">363</span>
+<span class="normal">364</span>
+<span class="normal">365</span>
+<span class="normal">366</span>
+<span class="normal">367</span>
+<span class="normal">368</span>
+<span class="normal">369</span>
+<span class="normal">370</span>
+<span class="normal">371</span>
+<span class="normal">372</span>
+<span class="normal">373</span>
+<span class="normal">374</span>
+<span class="normal">375</span>
+<span class="normal">376</span>
+<span class="normal">377</span>
+<span class="normal">378</span>
+<span class="normal">379</span>
+<span class="normal">380</span>
+<span class="normal">381</span>
+<span class="normal">382</span>
+<span class="normal">383</span>
+<span class="normal">384</span>
+<span class="normal">385</span>
+<span class="normal">386</span>
+<span class="normal">387</span>
+<span class="normal">388</span>
+<span class="normal">389</span>
+<span class="normal">390</span>
+<span class="normal">391</span>
+<span class="normal">392</span>
+<span class="normal">393</span>
+<span class="normal">394</span>
+<span class="normal">395</span>
+<span class="normal">396</span>
+<span class="normal">397</span>
+<span class="normal">398</span>
+<span class="normal">399</span>
+<span class="normal">400</span>
+<span class="normal">401</span>
+<span class="normal">402</span>
+<span class="normal">403</span>
+<span class="normal">404</span>
+<span class="normal">405</span>
+<span class="normal">406</span>
+<span class="normal">407</span>
+<span class="normal">408</span>
+<span class="normal">409</span>
+<span class="normal">410</span>
+<span class="normal">411</span>
+<span class="normal">412</span>
+<span class="normal">413</span>
+<span class="normal">414</span>
+<span class="normal">415</span>
+<span class="normal">416</span>
+<span class="normal">417</span>
+<span class="normal">418</span>
+<span class="normal">419</span>
+<span class="normal">420</span>
+<span class="normal">421</span>
+<span class="normal">422</span>
+<span class="normal">423</span>
+<span class="normal">424</span>
+<span class="normal">425</span>
+<span class="normal">426</span>
+<span class="normal">427</span>
+<span class="normal">428</span>
+<span class="normal">429</span>
+<span class="normal">430</span>
+<span class="normal">431</span>
+<span class="normal">432</span>
+<span class="normal">433</span>
+<span class="normal">434</span>
+<span class="normal">435</span>
+<span class="normal">436</span>
+<span class="normal">437</span>
+<span class="normal">438</span>
+<span class="normal">439</span>
+<span class="normal">440</span>
+<span class="normal">441</span>
+<span class="normal">442</span>
+<span class="normal">443</span>
+<span class="normal">444</span>
+<span class="normal">445</span>
+<span class="normal">446</span>
+<span class="normal">447</span>
+<span class="normal">448</span>
+<span class="normal">449</span>
+<span class="normal">450</span>
+<span class="normal">451</span>
+<span class="normal">452</span>
+<span class="normal">453</span>
+<span class="normal">454</span>
+<span class="normal">455</span>
+<span class="normal">456</span>
+<span class="normal">457</span>
+<span class="normal">458</span>
+<span class="normal">459</span>
+<span class="normal">460</span>
+<span class="normal">461</span>
+<span class="normal">462</span>
+<span class="normal">463</span>
+<span class="normal">464</span>
+<span class="normal">465</span>
+<span class="normal">466</span>
+<span class="normal">467</span>
+<span class="normal">468</span>
+<span class="normal">469</span>
+<span class="normal">470</span>
+<span class="normal">471</span>
+<span class="normal">472</span>
+<span class="normal">473</span>
+<span class="normal">474</span>
+<span class="normal">475</span>
+<span class="normal">476</span>
+<span class="normal">477</span>
+<span class="normal">478</span>
+<span class="normal">479</span>
+<span class="normal">480</span>
+<span class="normal">481</span>
+<span class="normal">482</span>
+<span class="normal">483</span>
+<span class="normal">484</span>
+<span class="normal">485</span>
+<span class="normal">486</span>
+<span class="normal">487</span>
+<span class="normal">488</span>
+<span class="normal">489</span>
+<span class="normal">490</span>
+<span class="normal">491</span>
+<span class="normal">492</span>
+<span class="normal">493</span>
+<span class="normal">494</span>
+<span class="normal">495</span>
+<span class="normal">496</span>
+<span class="normal">497</span>
+<span class="normal">498</span>
+<span class="normal">499</span>
+<span class="normal">500</span>
+<span class="normal">501</span>
+<span class="normal">502</span>
+<span class="normal">503</span>
+<span class="normal">504</span>
+<span class="normal">505</span>
+<span class="normal">506</span>
+<span class="normal">507</span>
+<span class="normal">508</span>
+<span class="normal">509</span>
+<span class="normal">510</span>
+<span class="normal">511</span>
+<span class="normal">512</span>
+<span class="normal">513</span>
+<span class="normal">514</span>
+<span class="normal">515</span>
+<span class="normal">516</span>
+<span class="normal">517</span>
+<span class="normal">518</span>
+<span class="normal">519</span>
+<span class="normal">520</span>
+<span class="normal">521</span>
+<span class="normal">522</span>
+<span class="normal">523</span>
+<span class="normal">524</span>
+<span class="normal">525</span>
+<span class="normal">526</span>
+<span class="normal">527</span>
+<span class="normal">528</span>
+<span class="normal">529</span>
+<span class="normal">530</span>
+<span class="normal">531</span>
+<span class="normal">532</span>
+<span class="normal">533</span>
+<span class="normal">534</span>
+<span class="normal">535</span>
+<span class="normal">536</span>
+<span class="normal">537</span>
+<span class="normal">538</span>
+<span class="normal">539</span>
+<span class="normal">540</span>
+<span class="normal">541</span>
+<span class="normal">542</span>
+<span class="normal">543</span>
+<span class="normal">544</span>
+<span class="normal">545</span>
+<span class="normal">546</span>
+<span class="normal">547</span>
+<span class="normal">548</span>
+<span class="normal">549</span>
+<span class="normal">550</span>
+<span class="normal">551</span>
+<span class="normal">552</span>
+<span class="normal">553</span>
+<span class="normal">554</span>
+<span class="normal">555</span>
+<span class="normal">556</span>
+<span class="normal">557</span>
+<span class="normal">558</span>
+<span class="normal">559</span>
+<span class="normal">560</span>
+<span class="normal">561</span></pre></div></td><td class="code"><div><pre><span></span><span class="gh"># notify</span>
+
+A notify rule decides which [<span class="nt">contacts</span>](<span class="na">contact.md</span>) get which
+notifications. Each rule says who (<span class="sb">`contacts`</span>, <span class="sb">`contact_groups`</span>), about
+what (<span class="sb">`hosts`</span>, <span class="sb">`services`</span>), for which events (<span class="sb">`states`</span>, <span class="sb">`on`</span>), whether
+open problems are sent again (<span class="sb">`repeat`</span>), whether the rule only steps in
+when a problem lasts (<span class="sb">`after`</span>), and when it applies (<span class="sb">`period`</span>).
+
+<span class="sb">```toml</span>
+<span class="k">[[notify]]</span>
+<span class="n">contacts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"oncall"</span><span class="p">]</span>
+<span class="sb">```</span>
+
+The simplest rule: <span class="sb">`oncall`</span> gets every notification about every host and
+service.
+
+How the rules work together:
+
+<span class="k">-</span><span class="w"> </span><span class="gs">**Every rule that matches notifies.**</span> There is no order and no "stop"
+  rule.
+<span class="k">-</span><span class="w"> </span><span class="gs">**Each contact gets one message**</span>, even if several rules match it.
+<span class="k">-</span><span class="w"> </span>A rule needs at least one contact or contact group.
+
+Notify rules are written with double brackets, <span class="sb">`[[notify]]`</span>, because each
+one is an entry in a list.
+
+For complete setups (quiet start, reminders, escalation ladders, one
+team per service, maintenance windows), see
+[<span class="nt">Alerting recipes</span>](<span class="na">../guides/alerting-recipes.md</span>).
+
+<span class="gu">## Fields</span>
+
+| Field | Default | Description |
+|---|---|---|
+| <span class="sb">`name`</span> | | Name of the rule, shown in logs and the Config Tree, and used by <span class="sb">`watcher config explain notify &lt;name&gt;`</span>. Without a name, the rule shows as <span class="sb">`rule at file:line`</span>; it can still be edited in the web UI. |
+| <span class="sb">`contacts`</span> | | Contacts that get the notifications. |
+| <span class="sb">`contact_groups`</span> | | Contact groups that get the notifications. |
+| <span class="sb">`hosts`</span> | all hosts | Which hosts the rule is about. See [<span class="nt">Host selector</span>](<span class="na">#host-selector</span>). |
+| <span class="sb">`services`</span> | all services | Which services the rule is about. See [<span class="nt">Service selector</span>](<span class="na">#service-selector</span>). A rule with <span class="sb">`services`</span> gets no host notifications. |
+| <span class="sb">`states`</span> | all problem states | Only problems in these states, and recoveries from them: <span class="sb">`warning`</span>, <span class="sb">`critical`</span>, <span class="sb">`unknown`</span>, <span class="sb">`down`</span>. |
+| <span class="sb">`on`</span> | all events | Only these events: <span class="sb">`problem`</span>, <span class="sb">`recovery`</span>, <span class="sb">`flapping`</span>, <span class="sb">`downtime`</span>. |
+| <span class="sb">`repeat`</span> | off | Send an open problem again this often, for example <span class="sb">`"1h"`</span>. At least <span class="sb">`1m`</span>; <span class="sb">`"0"`</span> turns it off. See [<span class="nt">repeat</span>](<span class="na">#repeat</span>). |
+| <span class="sb">`after`</span> | at once | Makes the rule an escalation: its contacts get a problem only once it has been open this long and nobody acknowledged it, for example <span class="sb">`"30m"`</span>. <span class="sb">`"0"`</span> turns it off. See [<span class="nt">after</span>](<span class="na">#after</span>). |
+| <span class="sb">`period`</span> | always | Name of a [<span class="nt">time period</span>](<span class="na">timeperiod.md</span>). The rule only notifies inside it; open problems are sent when it begins. See [<span class="nt">period</span>](<span class="na">#period</span>). |
+| <span class="sb">`enabled`</span> | <span class="sb">`true`</span> | <span class="sb">`false`</span>: the rule is ignored. |
+
+<span class="gu">### states</span>
+
+| Value | Matches |
+|---|---|
+| <span class="sb">`warning`</span> | a service in WARNING |
+| <span class="sb">`critical`</span> | a service in CRITICAL |
+| <span class="sb">`unknown`</span> | a service in UNKNOWN |
+| <span class="sb">`down`</span> | a host that is DOWN |
+
+<span class="sb">`states`</span> filters problems and recoveries only. A recovery passes the
+filter if the state it recovers from is in the list: a rule with
+<span class="sb">`states = ["critical"]`</span> gets CRITICAL → OK, but not WARNING → OK.
+
+Flapping and downtime notifications don't depend on <span class="sb">`states`</span>.
+
+<span class="gu">### on</span>
+
+| Value | Events |
+|---|---|
+| <span class="sb">`problem`</span> | PROBLEM: a host or service has a confirmed (HARD) problem, or the problem got worse, for example WARNING → CRITICAL |
+| <span class="sb">`recovery`</span> | RECOVERY: back to OK or UP |
+| <span class="sb">`flapping`</span> | FLAPPINGSTART, FLAPPINGSTOP: a service starts or stops flapping |
+| <span class="sb">`downtime`</span> | DOWNTIMESTART, DOWNTIMEEND: a downtime starts or ends |
+
+<span class="gu">### repeat</span>
+
+With <span class="sb">`repeat`</span>, the rule's contacts get a problem again and again while it
+is still open, until it is OK (or UP) again:
+
+<span class="sb">```toml</span>
+<span class="k">[[notify]]</span>
+<span class="n">contacts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"oncall"</span><span class="p">]</span>
+<span class="n">repeat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"1h"</span>
+<span class="sb">```</span>
+
+<span class="sb">`oncall`</span> gets the PROBLEM when it happens, then "still CRITICAL" every
+hour. The subject says <span class="sb">`is still`</span>:
+
+<span class="sb">```</span>
+<span class="sb">[Watcher] PROBLEM: web01/http is still CRITICAL</span>
+<span class="sb">```</span>
+
+How the time is counted:
+
+<span class="k">-</span><span class="w"> </span>The hour counts from the last notification about the problem that the
+  contact got. A change, for example WARNING → CRITICAL, is a new PROBLEM
+  and starts the hour again.
+<span class="k">-</span><span class="w"> </span>A contact that never got the problem, for example because it started
+  during a downtime, gets it once <span class="sb">`repeat`</span> has passed since the problem
+  started. So problems hidden by a downtime are sent when the downtime is
+  over, if they have been open long enough.
+<span class="k">-</span><span class="w"> </span>If several rules with <span class="sb">`repeat`</span> give a contact the same problem, the
+  shortest time applies.
+<span class="k">-</span><span class="w"> </span>With a database, a restart changes nothing: Watcher reads from the
+  [<span class="nt">notification log</span>](<span class="na">../guides/notifications.md#notification-log</span>) who got
+  which problem when, and goes on from there. A repeat that fell due while
+  Watcher was stopped goes out right after the start, once.
+<span class="k">-</span><span class="w"> </span>Without a database, the time starts again for problems that are already
+  open. A restart never sends a wave of repeated notifications.
+
+No repeats are sent while the problem is acknowledged, in a downtime,
+muted, or flapping, while its host is DOWN, while a
+[<span class="nt">dependency</span>](<span class="na">dependency.md</span>) holds it back, or while notifications are
+turned off. The time keeps running: when the acknowledgement is removed
+and the hour is over, the next repeat goes out within a minute.
+
+<span class="sb">`repeat`</span> works together with <span class="sb">`states`</span> and <span class="sb">`on`</span>: a rule with
+<span class="sb">`states = ["critical"]`</span> repeats only CRITICAL problems, and <span class="sb">`on`</span> must
+include <span class="sb">`problem`</span>.
+
+<span class="gu">### after</span>
+
+With <span class="sb">`after`</span>, a rule is an <span class="ge">*escalation*</span>. Its contacts don't get a problem
+when it happens. They get it only if it is still open after that time and
+nobody took care of it:
+
+<span class="sb">```toml</span>
+<span class="k">[[notify]]</span>
+<span class="n">contacts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"oncall"</span><span class="p">]</span>
+
+<span class="k">[[notify]]</span>
+<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"escalate-to-lead"</span>
+<span class="n">contacts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"teamlead"</span><span class="p">]</span>
+<span class="n">after</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"30m"</span>
+<span class="sb">```</span>
+
+<span class="sb">`oncall`</span> gets the PROBLEM at once. If the problem is still open 30
+minutes later, and not acknowledged, <span class="sb">`teamlead`</span> gets it too:
+
+<span class="sb">```</span>
+<span class="sb">[Watcher] PROBLEM: web01/http is still CRITICAL</span>
+<span class="sb">```</span>
+
+How it works:
+
+<span class="k">-</span><span class="w"> </span>The time counts from when the problem reached its current state. A
+  change, for example WARNING → CRITICAL, starts it again, and the
+  escalation contacts get the new state once it has lasted <span class="sb">`after`</span>.
+<span class="k">-</span><span class="w"> </span>A problem that is acknowledged, in a downtime, muted or flapping, whose
+  host is DOWN, held back by a [<span class="nt">dependency</span>](<span class="na">dependency.md</span>), or while
+  notifications are turned off, is not escalated.
+  The time keeps running: if the acknowledgement is removed after the 30
+  minutes, the escalation goes out within a minute.
+<span class="k">-</span><span class="w"> </span>With <span class="sb">`repeat`</span> on the same rule, the escalation contacts get the problem
+  again every <span class="sb">`repeat`</span> after that.
+<span class="k">-</span><span class="w"> </span>The escalation contacts get the RECOVERY only if they got the problem.
+  Use <span class="sb">`on = ["problem"]`</span> if they shouldn't get recoveries at all.
+<span class="k">-</span><span class="w"> </span>Contacts who already got the problem from another rule are not sent it
+  again by the escalation.
+<span class="k">-</span><span class="w"> </span>With a database, a restart changes nothing, as with <span class="sb">`repeat`</span>: an
+  escalation that fell due while Watcher was stopped goes out right after
+  the start, and contacts who got the problem before the restart still get
+  the RECOVERY.
+<span class="k">-</span><span class="w"> </span>Without a database, the time starts again after a restart for problems
+  that are already open, and escalations sent before the restart get no
+  RECOVERY.
+
+Several rules with different <span class="sb">`after`</span> times make escalation levels, for
+example the team lead after 30 minutes and the manager after 2 hours.
+
+Escalation rules only take problems and recoveries. <span class="sb">`on`</span> must include
+<span class="sb">`problem`</span>, and can't include <span class="sb">`flapping`</span> or <span class="sb">`downtime`</span>.
+
+<span class="gu">### period</span>
+
+With <span class="sb">`period`</span>, a rule only notifies inside a [<span class="nt">time period</span>](<span class="na">timeperiod.md</span>),
+for example business hours:
+
+<span class="sb">```toml</span>
+<span class="k">[timeperiod.workhours]</span>
+<span class="n">schedule</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="n">days</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"mon"</span><span class="p">,</span><span class="w"> </span><span class="s2">"tue"</span><span class="p">,</span><span class="w"> </span><span class="s2">"wed"</span><span class="p">,</span><span class="w"> </span><span class="s2">"thu"</span><span class="p">,</span><span class="w"> </span><span class="s2">"fri"</span><span class="p">],</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"08:00"</span><span class="p">,</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"18:00"</span><span class="w"> </span><span class="p">}]</span>
+
+<span class="k">[[notify]]</span>
+<span class="n">contact_groups</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"team"</span><span class="p">]</span>
+<span class="n">period</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"workhours"</span>
+<span class="sb">```</span>
+
+How it works:
+
+<span class="k">-</span><span class="w"> </span>Outside the time period, the rule's contacts get nothing.
+<span class="k">-</span><span class="w"> </span>When it begins, they get the problems that are still open and that they
+  didn't get yet: a server that broke at 03:00 and is still broken is
+  sent at 08:00. Problems that recovered or were acknowledged in the
+  meantime are not sent.
+<span class="k">-</span><span class="w"> </span>They get the RECOVERY only if they got the problem, at any time.
+<span class="k">-</span><span class="w"> </span><span class="sb">`repeat`</span> and <span class="sb">`after`</span> of the rule only send inside the time period.
+<span class="k">-</span><span class="w"> </span>Flapping and downtime messages are sent only inside the time period.
+
+Two rules with opposite time periods route notifications by time of day,
+see [<span class="nt">Alerting recipes</span>](<span class="na">../guides/alerting-recipes.md#on-call-at-night-the-team-during-business-hours</span>).
+
+<span class="gu">## Examples</span>
+
+<span class="gu">### Everything to one contact</span>
+
+<span class="sb">```toml</span>
+<span class="k">[[notify]]</span>
+<span class="n">contacts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"oncall"</span><span class="p">]</span>
+<span class="sb">```</span>
+
+<span class="gu">### Only some hosts</span>
+
+<span class="sb">```toml</span>
+<span class="k">[[notify]]</span>
+<span class="n">contacts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"oncall"</span><span class="p">]</span>
+<span class="n">hosts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">groups</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"prod"</span><span class="p">]</span><span class="w"> </span><span class="p">}</span>
+<span class="sb">```</span>
+
+<span class="gu">### Only some services</span>
+
+<span class="sb">```toml</span>
+<span class="k">[[notify]]</span>
+<span class="n">contact_groups</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"dba"</span><span class="p">]</span>
+<span class="n">services</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">checks</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"pgsql"</span><span class="p">]</span><span class="w"> </span><span class="p">}</span>
+<span class="sb">```</span>
+
+<span class="gu">### Only critical problems</span>
+
+<span class="sb">```toml</span>
+<span class="k">[[notify]]</span>
+<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"critical-only"</span>
+<span class="n">contacts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"manager"</span><span class="p">]</span>
+<span class="n">states</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"critical"</span><span class="p">,</span><span class="w"> </span><span class="s2">"down"</span><span class="p">]</span>
+<span class="sb">```</span>
+
+Include <span class="sb">`down`</span> if the rule should also get hosts that are DOWN.
+
+<span class="gu">### Remind until someone acknowledges</span>
+
+<span class="sb">```toml</span>
+<span class="k">[[notify]]</span>
+<span class="n">contacts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"oncall"</span><span class="p">]</span>
+<span class="n">repeat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"30m"</span>
+<span class="sb">```</span>
+
+<span class="gu">### Remind the manager only about critical problems</span>
+
+<span class="sb">```toml</span>
+<span class="k">[[notify]]</span>
+<span class="n">contacts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"oncall"</span><span class="p">]</span>
+
+<span class="k">[[notify]]</span>
+<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"manager-reminder"</span>
+<span class="n">contacts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"manager"</span><span class="p">]</span>
+<span class="n">states</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"critical"</span><span class="p">,</span><span class="w"> </span><span class="s2">"down"</span><span class="p">]</span>
+<span class="n">on</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"problem"</span><span class="p">]</span>
+<span class="n">repeat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"4h"</span>
+<span class="sb">```</span>
+
+<span class="sb">`oncall`</span> gets every notification once. <span class="sb">`manager`</span> gets critical problems
+and hosts that are DOWN, and again every 4 hours while they last.
+
+<span class="gu">### Escalate when nobody reacts</span>
+
+<span class="sb">```toml</span>
+<span class="k">[[notify]]</span>
+<span class="n">contacts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"oncall"</span><span class="p">]</span>
+<span class="n">repeat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"30m"</span>
+
+<span class="k">[[notify]]</span>
+<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"teamlead"</span>
+<span class="n">contacts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"teamlead"</span><span class="p">]</span>
+<span class="n">after</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"1h"</span>
+
+<span class="k">[[notify]]</span>
+<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"manager"</span>
+<span class="n">contacts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"manager"</span><span class="p">]</span>
+<span class="n">states</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"critical"</span><span class="p">,</span><span class="w"> </span><span class="s2">"down"</span><span class="p">]</span>
+<span class="n">after</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"4h"</span>
+<span class="n">repeat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"4h"</span>
+<span class="sb">```</span>
+
+<span class="sb">`oncall`</span> gets problems at once and every 30 minutes. If a problem is still
+open and not acknowledged after an hour, <span class="sb">`teamlead`</span> gets it. Critical
+problems still open after 4 hours also reach <span class="sb">`manager`</span>, then every 4
+hours. Acknowledging the problem stops all of it.
+
+<span class="gu">### No recoveries</span>
+
+<span class="sb">```toml</span>
+<span class="k">[[notify]]</span>
+<span class="n">contacts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"chatops"</span><span class="p">]</span>
+<span class="n">on</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"problem"</span><span class="p">]</span>
+<span class="sb">```</span>
+
+<span class="gu">### Problems and recoveries, no flapping or downtime messages</span>
+
+<span class="sb">```toml</span>
+<span class="k">[[notify]]</span>
+<span class="n">contacts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"oncall"</span><span class="p">]</span>
+<span class="n">on</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"problem"</span><span class="p">,</span><span class="w"> </span><span class="s2">"recovery"</span><span class="p">]</span>
+<span class="sb">```</span>
+
+<span class="gu">### All hosts except some</span>
+
+<span class="sb">```toml</span>
+<span class="k">[[notify]]</span>
+<span class="n">contacts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"oncall"</span><span class="p">]</span>
+<span class="n">hosts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">groups</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"prod"</span><span class="p">],</span><span class="w"> </span><span class="n">exclude</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"lab*"</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+<span class="sb">```</span>
+
+<span class="gu">### All services except some</span>
+
+<span class="sb">```toml</span>
+<span class="k">[[notify]]</span>
+<span class="n">contacts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"oncall"</span><span class="p">]</span>
+<span class="n">services</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">exclude</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">checks</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"disk"</span><span class="p">]</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+<span class="sb">```</span>
+
+<span class="gu">### A customer gets only their own hosts</span>
+
+<span class="sb">```toml</span>
+<span class="k">[[notify]]</span>
+<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"acme"</span>
+<span class="n">contacts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"acme-it"</span><span class="p">]</span>
+<span class="n">hosts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">groups</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"acme"</span><span class="p">]</span><span class="w"> </span><span class="p">}</span>
+<span class="n">states</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"critical"</span><span class="p">,</span><span class="w"> </span><span class="s2">"down"</span><span class="p">]</span>
+<span class="n">on</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"problem"</span><span class="p">,</span><span class="w"> </span><span class="s2">"recovery"</span><span class="p">]</span>
+<span class="sb">```</span>
+
+<span class="gu">### Turned off</span>
+
+<span class="sb">```toml</span>
+<span class="k">[[notify]]</span>
+<span class="n">contacts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"oncall"</span><span class="p">]</span>
+<span class="n">enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<span class="sb">```</span>
+
+<span class="gu">## Host selector</span>
+
+<span class="sb">`hosts`</span> chooses which hosts a rule is about. Without <span class="sb">`hosts`</span>, the rule is
+about all hosts.
+
+| Field | Matches hosts |
+|---|---|
+| <span class="sb">`name`</span> | whose name matches. One pattern or a list. |
+| <span class="sb">`address`</span> | whose address matches. One pattern or a list. |
+| <span class="sb">`groups`</span> | in any of these host groups |
+| <span class="sb">`vars.&lt;name&gt;`</span> | whose var has this value, or any value of a list |
+| <span class="sb">`node`</span> | on this [<span class="nt">node</span>](<span class="na">../guides/nodes.md</span>), or any of a list. <span class="sb">`local`</span>: hosts without a node, checked by this Watcher itself. |
+| <span class="sb">`exclude`</span> | Another host selector. Hosts it matches are removed. |
+| <span class="sb">`expr`</span> | for which the [<span class="nt">expression</span>](<span class="na">#expressions</span>) is true |
+
+How the fields combine:
+
+<span class="k">-</span><span class="w"> </span>All fields you set must match (AND).
+<span class="k">-</span><span class="w"> </span>A list matches if any of its values matches (OR).
+<span class="k">-</span><span class="w"> </span>In names and addresses, <span class="sb">`*`</span> matches any text and <span class="sb">`?`</span> one character.
+<span class="k">-</span><span class="w"> </span><span class="sb">`{}`</span> matches all hosts.
+
+By name:
+
+<span class="sb">```toml</span>
+<span class="n">hosts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"web*"</span><span class="w"> </span><span class="p">}</span>
+<span class="sb">```</span>
+
+A list of names, short form:
+
+<span class="sb">```toml</span>
+<span class="n">hosts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"web01"</span><span class="p">,</span><span class="w"> </span><span class="s2">"db*"</span><span class="p">]</span>
+<span class="sb">```</span>
+
+By address:
+
+<span class="sb">```toml</span>
+<span class="n">hosts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">address</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"10.0.1.*"</span><span class="w"> </span><span class="p">}</span>
+<span class="sb">```</span>
+
+By host group:
+
+<span class="sb">```toml</span>
+<span class="n">hosts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">groups</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"prod"</span><span class="p">]</span><span class="w"> </span><span class="p">}</span>
+<span class="sb">```</span>
+
+Host group and name, both must match:
+
+<span class="sb">```toml</span>
+<span class="n">hosts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">groups</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"prod"</span><span class="p">],</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"db*"</span><span class="w"> </span><span class="p">}</span>
+<span class="sb">```</span>
+
+By var:
+
+<span class="sb">```toml</span>
+<span class="n">hosts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">vars</span><span class="p">.</span><span class="n">os</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"debian"</span><span class="p">,</span><span class="w"> </span><span class="s2">"ubuntu"</span><span class="p">]</span><span class="w"> </span><span class="p">}</span>
+<span class="sb">```</span>
+
+All of a group except some:
+
+<span class="sb">```toml</span>
+<span class="n">hosts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">groups</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"prod"</span><span class="p">],</span><span class="w"> </span><span class="n">exclude</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"lab*"</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+<span class="sb">```</span>
+
+<span class="gu">## Service selector</span>
+
+<span class="sb">`services`</span> chooses which services a rule is about. Without <span class="sb">`services`</span>, the
+rule is about all services and all hosts.
+
+A rule with <span class="sb">`services`</span> is only about services: it never gets host
+notifications (host DOWN and UP). To get those, add a second rule without
+<span class="sb">`services`</span>.
+
+| Field | Matches services |
+|---|---|
+| <span class="sb">`name`</span> | whose name matches. One pattern or a list. |
+| <span class="sb">`checks`</span> | that use any of these checks |
+| <span class="sb">`groups`</span> | in any of these service groups |
+| <span class="sb">`hosts`</span> | on hosts that match this [<span class="nt">host selector</span>](<span class="na">#host-selector</span>) |
+| <span class="sb">`exclude`</span> | Another service selector. Services it matches are removed. |
+| <span class="sb">`expr`</span> | for which the [<span class="nt">expression</span>](<span class="na">#expressions</span>) is true |
+
+The same rules apply as for hosts: all fields must match, a list matches
+any of its values, <span class="sb">`*`</span> and <span class="sb">`?`</span> work in names.
+
+A list of services, short form. Each entry is a service name or a
+<span class="sb">`host/service`</span> ID, and patterns work:
+
+<span class="sb">```toml</span>
+<span class="n">services</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"web01/http"</span><span class="p">,</span><span class="w"> </span><span class="s2">"db*/pgsql"</span><span class="p">,</span><span class="w"> </span><span class="s2">"backup"</span><span class="p">]</span>
+<span class="sb">```</span>
+
+By check:
+
+<span class="sb">```toml</span>
+<span class="n">services</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">checks</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"disk"</span><span class="p">]</span><span class="w"> </span><span class="p">}</span>
+<span class="sb">```</span>
+
+By name:
+
+<span class="sb">```toml</span>
+<span class="n">services</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"disk_*"</span><span class="w"> </span><span class="p">}</span>
+<span class="sb">```</span>
+
+By service group:
+
+<span class="sb">```toml</span>
+<span class="n">services</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">groups</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"webshop"</span><span class="p">]</span><span class="w"> </span><span class="p">}</span>
+<span class="sb">```</span>
+
+Only on some hosts:
+
+<span class="sb">```toml</span>
+<span class="n">services</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">checks</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"http"</span><span class="p">],</span><span class="w"> </span><span class="n">hosts</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">groups</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"prod"</span><span class="p">]</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+<span class="sb">```</span>
+
+If both <span class="sb">`hosts`</span> and <span class="sb">`services`</span> are set on the rule, both must match.
+
+<span class="gu">## Expressions</span>
+
+For conditions the fields can't express, for example an OR across two
+different fields, use <span class="sb">`expr`</span>:
+
+<span class="sb">```toml</span>
+<span class="n">hosts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">expr</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s1">'host.groups contains "db" or host.name ~ "^pg"'</span><span class="w"> </span><span class="p">}</span>
+<span class="sb">```</span>
+
+| Value | Type |
+|---|---|
+| <span class="sb">`host.name`</span>, <span class="sb">`host.address`</span>, <span class="sb">`host.node`</span> | text. <span class="sb">`host.node`</span> is <span class="sb">`local`</span> for hosts without a node. |
+| <span class="sb">`host.groups`</span> | list |
+| <span class="sb">`host.vars.x`</span>, <span class="sb">`host.vars.x.y`</span> | var, nested var |
+| <span class="sb">`service.name`</span>, <span class="sb">`service.check`</span>, <span class="sb">`service.groups`</span> | text, text, list. Only in service selectors. |
+
+| Operator | Meaning |
+|---|---|
+| <span class="sb">`==`</span>, <span class="sb">`!=`</span> | equal, not equal |
+| <span class="sb">`~`</span>, <span class="sb">`!~`</span> | matches a regular expression, doesn't match |
+| <span class="sb">`contains`</span> | list contains a value |
+| <span class="sb">`in`</span> | value is in a list <span class="sb">`[...]`</span> |
+| <span class="sb">`and`</span> or <span class="sb">`&amp;&amp;`</span> | both |
+| <span class="sb">`or`</span> or <span class="sb">`\|\|`</span> | either |
+| <span class="sb">`not`</span> or <span class="sb">`!`</span> | negation |
+| <span class="sb">`( )`</span> | grouping |
+
+Text goes in <span class="sb">`"..."`</span> or <span class="sb">`'...'`</span>. A var that isn't set never matches, so
+<span class="sb">`!=`</span> on an unset var is true.
+
+<span class="sb">```toml</span>
+<span class="n">hosts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">expr</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s1">'host.vars.os == "debian" &amp;&amp; host.address ~ "^10\.0\."'</span><span class="w"> </span><span class="p">}</span>
+<span class="sb">```</span>
+
+<span class="sb">```toml</span>
+<span class="n">hosts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">expr</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s1">'host.name in ["db01", "web01"]'</span><span class="w"> </span><span class="p">}</span>
+<span class="sb">```</span>
+
+<span class="sb">```toml</span>
+<span class="n">services</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">expr</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s1">'service.check == "disk" and not host.groups contains "test"'</span><span class="w"> </span><span class="p">}</span>
+<span class="sb">```</span>
+
+<span class="gu">## When notifications are sent</span>
+
+A notification is sent when:
+
+<span class="k">-</span><span class="w"> </span>a host or service changes to a confirmed (HARD) problem, including a
+  change from WARNING to CRITICAL (PROBLEM)
+<span class="k">-</span><span class="w"> </span>a confirmed problem goes back to OK or UP (RECOVERY)
+<span class="k">-</span><span class="w"> </span>a service starts or stops flapping (FLAPPINGSTART, FLAPPINGSTOP)
+<span class="k">-</span><span class="w"> </span>a downtime starts or ends (DOWNTIMESTART, DOWNTIMEEND)
+<span class="k">-</span><span class="w"> </span>a problem is still open after <span class="sb">`repeat`</span>, if the rule has one (PROBLEM,
+  "is still"; see [<span class="nt">repeat</span>](<span class="na">#repeat</span>))
+<span class="k">-</span><span class="w"> </span>a problem is still open after <span class="sb">`after`</span>, for escalation rules (PROBLEM,
+  "is still"; see [<span class="nt">after</span>](<span class="na">#after</span>))
+<span class="k">-</span><span class="w"> </span>a time period begins while a problem is open that the rule's contacts
+  didn't get yet (PROBLEM, "is still"; see [<span class="nt">period</span>](<span class="na">#period</span>))
+
+No notification is sent for:
+
+<span class="k">-</span><span class="w"> </span>problems that are not yet confirmed (SOFT states)
+<span class="k">-</span><span class="w"> </span>the first OK result of a new service, and states restored after a
+  restart
+<span class="k">-</span><span class="w"> </span>the other services of a host that is DOWN (HARD): you get the host
+  notification instead
+<span class="k">-</span><span class="w"> </span>hosts and services whose master in a [<span class="nt">dependency</span>](<span class="na">dependency.md</span>) has a
+  confirmed problem: you get the notification about the master instead
+<span class="k">-</span><span class="w"> </span>problems and recoveries while a service flaps
+<span class="k">-</span><span class="w"> </span>a host check in WARNING (the host is still UP), and a host check changing
+  between CRITICAL and UNKNOWN (the host stays DOWN)
+<span class="k">-</span><span class="w"> </span>hosts and services that are muted, in a downtime or acknowledged, and
+  everything while notifications are turned off globally (see
+  [<span class="nt">Operations</span>](<span class="na">../guides/operations.md</span>))
+
+The host check notifies as the host: "web01 is DOWN".
+
+<span class="gu">## Checking a rule</span>
+
+What a rule matches:
+
+<span class="sb">```sh</span>
+watcher<span class="w"> </span>config<span class="w"> </span>explain<span class="w"> </span>notify<span class="w"> </span>dba-critical
+<span class="sb">```</span>
+
+Who gets notified about a service:
+
+<span class="sb">```sh</span>
+watcher<span class="w"> </span>config<span class="w"> </span>explain<span class="w"> </span>web01/http
+<span class="sb">```</span>
+
+<span class="sb">```</span>
+<span class="sb">└─ notifications</span>
+<span class="sb">   └─ notify rule at conf.d/notify.toml:1: matched: host: group prod  notify.toml:1</span>
+<span class="sb">      └─ contact oncall                                             contacts.toml:1</span>
+<span class="sb">```</span>
+
+A rule with <span class="sb">`after`</span>, <span class="sb">`repeat`</span> or <span class="sb">`period`</span> adds it to the line, for example
+<span class="sb">`matched: host: group prod; escalates after 30m; repeats every 1h; only in workhours`</span>.
+
+Unknown hosts, groups, checks or nodes in a selector give a warning, since
+they are usually typos.
+
+<span class="gu">## See also</span>
+
+<span class="k">-</span><span class="w"> </span>[<span class="nt">contact</span>](<span class="na">contact.md</span>), [<span class="nt">contactgroup</span>](<span class="na">contactgroup.md</span>)
+<span class="k">-</span><span class="w"> </span>[<span class="nt">timeperiod</span>](<span class="na">timeperiod.md</span>): when rules with <span class="sb">`period`</span> apply
+<span class="k">-</span><span class="w"> </span>[<span class="nt">dependency</span>](<span class="na">dependency.md</span>): quiet dependents while their master is down
+<span class="k">-</span><span class="w"> </span>[<span class="nt">Notifications</span>](<span class="na">../guides/notifications.md</span>): SMTP, message format, webhooks
+<span class="k">-</span><span class="w"> </span>[<span class="nt">Alerting recipes</span>](<span class="na">../guides/alerting-recipes.md</span>): complete setups for common cases
+</pre></div></td></tr></table></div>
+
+      </section>
+    </main>
+  </div>
+</body>
+</html>

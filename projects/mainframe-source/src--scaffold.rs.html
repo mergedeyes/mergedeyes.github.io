@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>src/scaffold.rs — Mainframe — Jan</title>
+  <link rel="stylesheet" href="../../styles.css?v=41ca8b66" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="layout">
+    <header class="rail" id="rail">
+<div class="rail__top">
+<a class="brand" href="../../index.html#top">
+<span class="brand__name">Jan</span>
+<span class="brand__meta">systems &amp; infrastructure<br/>Code, Code &amp; Code</span>
+</a>
+<button aria-controls="nav" aria-expanded="false" aria-label="Toggle menu" class="menu-toggle" id="menuToggle">
+<span></span><span></span><span></span>
+</button>
+</div>
+<nav aria-label="Sections" class="nav" id="nav">
+<a data-path="~/projects" href="../../index.html#projects">Projects</a>
+<a data-path="~/work" href="../../index.html#work">Work</a>
+<a data-path="~/education" href="../../index.html#education">Education</a>
+<a data-path="~/skills" href="../../index.html#skills">Skills</a>
+<a data-path="~/about" href="../../index.html#about">About Me</a>
+<a data-path="~/contact" href="../../index.html#contact">Contact</a>
+</nav>
+<div class="rail__status">
+<span aria-hidden="true" class="dot"></span>
+<span>open to work</span>
+</div>
+</header>
+    <nav class="file-tree" data-tree-key="mainframe"><p class="file-tree__title">Files</p><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">docs/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">guides/</span><ul class="tree"><li class="tree-file"><a href="docs--guides--cleanup.md.html">cleanup.md</a></li><li class="tree-file"><a href="docs--guides--files.md.html">files.md</a></li><li class="tree-file"><a href="docs--guides--first-steps.md.html">first-steps.md</a></li><li class="tree-file"><a href="docs--guides--git.md.html">git.md</a></li><li class="tree-file"><a href="docs--guides--install-and-deploy.md.html">install-and-deploy.md</a></li><li class="tree-file"><a href="docs--guides--projects.md.html">projects.md</a></li><li class="tree-file"><a href="docs--guides--running.md.html">running.md</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">reference/</span><ul class="tree"><li class="tree-file"><a href="docs--reference--config.md.html">config.md</a></li><li class="tree-file"><a href="docs--reference--keys.md.html">keys.md</a></li></ul></li><li class="tree-file"><a href="docs--README.md.html">README.md</a></li><li class="tree-file"><a href="docs--install.md.html">install.md</a></li><li class="tree-file"><a href="docs--introduction.md.html">introduction.md</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">src/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">app/</span><ul class="tree"><li class="tree-file"><a href="src--app--actions.rs.html">actions.rs</a></li><li class="tree-file"><a href="src--app--branch_picker.rs.html">branch_picker.rs</a></li><li class="tree-file"><a href="src--app--cleanup.rs.html">cleanup.rs</a></li><li class="tree-file"><a href="src--app--deploy.rs.html">deploy.rs</a></li><li class="tree-file"><a href="src--app--file_finder.rs.html">file_finder.rs</a></li><li class="tree-file"><a href="src--app--files.rs.html">files.rs</a></li><li class="tree-file"><a href="src--app--git_menu.rs.html">git_menu.rs</a></li><li class="tree-file"><a href="src--app--installer.rs.html">installer.rs</a></li><li class="tree-file"><a href="src--app--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="src--app--notes_view.rs.html">notes_view.rs</a></li><li class="tree-file"><a href="src--app--project_picker.rs.html">project_picker.rs</a></li><li class="tree-file"><a href="src--app--prompt.rs.html">prompt.rs</a></li><li class="tree-file"><a href="src--app--task_picker.rs.html">task_picker.rs</a></li><li class="tree-file"><a href="src--app--tasks.rs.html">tasks.rs</a></li><li class="tree-file"><a href="src--app--workspaces.rs.html">workspaces.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">ui/</span><ul class="tree"><li class="tree-file"><a href="src--ui--browser.rs.html">browser.rs</a></li><li class="tree-file"><a href="src--ui--cleanup.rs.html">cleanup.rs</a></li><li class="tree-file"><a href="src--ui--deploy.rs.html">deploy.rs</a></li><li class="tree-file"><a href="src--ui--footer.rs.html">footer.rs</a></li><li class="tree-file"><a href="src--ui--form.rs.html">form.rs</a></li><li class="tree-file"><a href="src--ui--header.rs.html">header.rs</a></li><li class="tree-file"><a href="src--ui--help.rs.html">help.rs</a></li><li class="tree-file"><a href="src--ui--installer.rs.html">installer.rs</a></li><li class="tree-file"><a href="src--ui--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="src--ui--notes_view.rs.html">notes_view.rs</a></li><li class="tree-file"><a href="src--ui--output.rs.html">output.rs</a></li><li class="tree-file"><a href="src--ui--pickers.rs.html">pickers.rs</a></li></ul></li><li class="tree-file"><a href="src--ansi.rs.html">ansi.rs</a></li><li class="tree-file"><a href="src--browser.rs.html">browser.rs</a></li><li class="tree-file"><a href="src--cleanup.rs.html">cleanup.rs</a></li><li class="tree-file"><a href="src--complete.rs.html">complete.rs</a></li><li class="tree-file"><a href="src--config.rs.html">config.rs</a></li><li class="tree-file"><a href="src--deploy.rs.html">deploy.rs</a></li><li class="tree-file"><a href="src--desktop.rs.html">desktop.rs</a></li><li class="tree-file"><a href="src--filter_list.rs.html">filter_list.rs</a></li><li class="tree-file"><a href="src--form.rs.html">form.rs</a></li><li class="tree-file"><a href="src--fuzzy.rs.html">fuzzy.rs</a></li><li class="tree-file"><a href="src--git.rs.html">git.rs</a></li><li class="tree-file"><a href="src--history.rs.html">history.rs</a></li><li class="tree-file"><a href="src--install.rs.html">install.rs</a></li><li class="tree-file"><a href="src--line.rs.html">line.rs</a></li><li class="tree-file"><a href="src--locate.rs.html">locate.rs</a></li><li class="tree-file"><a href="src--main.rs.html">main.rs</a></li><li class="tree-file"><a href="src--notes.rs.html">notes.rs</a></li><li class="tree-file"><a href="src--proc.rs.html">proc.rs</a></li><li class="tree-file"><a href="src--project.rs.html">project.rs</a></li><li class="tree-file"><a href="src--projects.rs.html">projects.rs</a></li><li class="tree-file"><a href="src--release.rs.html">release.rs</a></li><li class="tree-file tree-file--active"><a href="src--scaffold.rs.html">scaffold.rs</a></li><li class="tree-file"><a href="src--settings.rs.html">settings.rs</a></li><li class="tree-file"><a href="src--targets.rs.html">targets.rs</a></li><li class="tree-file"><a href="src--task.rs.html">task.rs</a></li><li class="tree-file"><a href="src--testutil.rs.html">testutil.rs</a></li><li class="tree-file"><a href="src--watch.rs.html">watch.rs</a></li></ul></li><li class="tree-file"><a href="Cargo.lock.html">Cargo.lock</a></li><li class="tree-file"><a href="Cargo.toml.html">Cargo.toml</a></li><li class="tree-file"><a href="LICENSE.html">LICENSE</a></li><li class="tree-file"><a href="rustfmt.toml.html">rustfmt.toml</a></li></ul></nav><script>
+(function () {
+  var tree = document.currentScript.previousElementSibling;
+  var key = "file-tree-scroll:" + tree.dataset.treeKey;
+  var saved = null;
+  try {
+    saved = sessionStorage.getItem(key);
+    sessionStorage.removeItem(key);
+  } catch (e) {}
+
+  if (saved !== null) {
+    tree.scrollTop = +saved;
+  } else {
+    var active = tree.querySelector(".tree-file--active");
+    if (active) {
+      var a = active.getBoundingClientRect();
+      var t = tree.getBoundingClientRect();
+      if (a.bottom > t.bottom) {
+        tree.scrollTop += a.top - t.top - (tree.clientHeight - a.height) / 2;
+      }
+    }
+  }
+
+  tree.addEventListener("click", function (e) {
+    if (!e.target.closest("a")) return;
+    try { sessionStorage.setItem(key, String(tree.scrollTop)); } catch (err) {}
+  });
+})();
+</script>
+    <main class="main" id="main">
+      <section class="section source-page">
+        <p class="section__path">
+          <a href="../../index.html#projects" class="link">~/projects</a> /
+          <a href="../mainframe.html" class="link">mainframe</a> / source
+        </p>
+        <div class="source-page__head">
+          <h1 class="section__title">src/scaffold.rs</h1>
+          <a href="../mainframe.html" class="link">← Back to Mainframe</a>
+        </div>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">  1</span>
+<span class="normal">  2</span>
+<span class="normal">  3</span>
+<span class="normal">  4</span>
+<span class="normal">  5</span>
+<span class="normal">  6</span>
+<span class="normal">  7</span>
+<span class="normal">  8</span>
+<span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span>
+<span class="normal">245</span>
+<span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span>
+<span class="normal">250</span>
+<span class="normal">251</span>
+<span class="normal">252</span>
+<span class="normal">253</span>
+<span class="normal">254</span>
+<span class="normal">255</span>
+<span class="normal">256</span>
+<span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span>
+<span class="normal">262</span>
+<span class="normal">263</span>
+<span class="normal">264</span>
+<span class="normal">265</span>
+<span class="normal">266</span>
+<span class="normal">267</span>
+<span class="normal">268</span>
+<span class="normal">269</span>
+<span class="normal">270</span>
+<span class="normal">271</span>
+<span class="normal">272</span>
+<span class="normal">273</span>
+<span class="normal">274</span>
+<span class="normal">275</span>
+<span class="normal">276</span>
+<span class="normal">277</span>
+<span class="normal">278</span>
+<span class="normal">279</span>
+<span class="normal">280</span>
+<span class="normal">281</span>
+<span class="normal">282</span>
+<span class="normal">283</span>
+<span class="normal">284</span>
+<span class="normal">285</span>
+<span class="normal">286</span>
+<span class="normal">287</span>
+<span class="normal">288</span>
+<span class="normal">289</span>
+<span class="normal">290</span>
+<span class="normal">291</span>
+<span class="normal">292</span>
+<span class="normal">293</span>
+<span class="normal">294</span>
+<span class="normal">295</span>
+<span class="normal">296</span>
+<span class="normal">297</span>
+<span class="normal">298</span>
+<span class="normal">299</span>
+<span class="normal">300</span>
+<span class="normal">301</span>
+<span class="normal">302</span>
+<span class="normal">303</span>
+<span class="normal">304</span>
+<span class="normal">305</span>
+<span class="normal">306</span>
+<span class="normal">307</span>
+<span class="normal">308</span>
+<span class="normal">309</span>
+<span class="normal">310</span>
+<span class="normal">311</span>
+<span class="normal">312</span>
+<span class="normal">313</span>
+<span class="normal">314</span>
+<span class="normal">315</span>
+<span class="normal">316</span>
+<span class="normal">317</span>
+<span class="normal">318</span>
+<span class="normal">319</span>
+<span class="normal">320</span>
+<span class="normal">321</span>
+<span class="normal">322</span>
+<span class="normal">323</span>
+<span class="normal">324</span>
+<span class="normal">325</span>
+<span class="normal">326</span>
+<span class="normal">327</span>
+<span class="normal">328</span>
+<span class="normal">329</span>
+<span class="normal">330</span>
+<span class="normal">331</span>
+<span class="normal">332</span>
+<span class="normal">333</span>
+<span class="normal">334</span>
+<span class="normal">335</span>
+<span class="normal">336</span>
+<span class="normal">337</span>
+<span class="normal">338</span>
+<span class="normal">339</span>
+<span class="normal">340</span>
+<span class="normal">341</span>
+<span class="normal">342</span>
+<span class="normal">343</span>
+<span class="normal">344</span>
+<span class="normal">345</span>
+<span class="normal">346</span>
+<span class="normal">347</span>
+<span class="normal">348</span>
+<span class="normal">349</span>
+<span class="normal">350</span>
+<span class="normal">351</span>
+<span class="normal">352</span>
+<span class="normal">353</span>
+<span class="normal">354</span>
+<span class="normal">355</span>
+<span class="normal">356</span>
+<span class="normal">357</span>
+<span class="normal">358</span>
+<span class="normal">359</span>
+<span class="normal">360</span>
+<span class="normal">361</span>
+<span class="normal">362</span>
+<span class="normal">363</span>
+<span class="normal">364</span>
+<span class="normal">365</span>
+<span class="normal">366</span>
+<span class="normal">367</span>
+<span class="normal">368</span>
+<span class="normal">369</span>
+<span class="normal">370</span>
+<span class="normal">371</span>
+<span class="normal">372</span>
+<span class="normal">373</span>
+<span class="normal">374</span>
+<span class="normal">375</span>
+<span class="normal">376</span>
+<span class="normal">377</span>
+<span class="normal">378</span>
+<span class="normal">379</span>
+<span class="normal">380</span>
+<span class="normal">381</span>
+<span class="normal">382</span>
+<span class="normal">383</span>
+<span class="normal">384</span>
+<span class="normal">385</span>
+<span class="normal">386</span>
+<span class="normal">387</span>
+<span class="normal">388</span>
+<span class="normal">389</span>
+<span class="normal">390</span>
+<span class="normal">391</span>
+<span class="normal">392</span>
+<span class="normal">393</span>
+<span class="normal">394</span>
+<span class="normal">395</span>
+<span class="normal">396</span>
+<span class="normal">397</span>
+<span class="normal">398</span>
+<span class="normal">399</span>
+<span class="normal">400</span>
+<span class="normal">401</span>
+<span class="normal">402</span>
+<span class="normal">403</span>
+<span class="normal">404</span>
+<span class="normal">405</span>
+<span class="normal">406</span>
+<span class="normal">407</span>
+<span class="normal">408</span>
+<span class="normal">409</span>
+<span class="normal">410</span>
+<span class="normal">411</span>
+<span class="normal">412</span>
+<span class="normal">413</span>
+<span class="normal">414</span>
+<span class="normal">415</span>
+<span class="normal">416</span>
+<span class="normal">417</span>
+<span class="normal">418</span>
+<span class="normal">419</span>
+<span class="normal">420</span>
+<span class="normal">421</span>
+<span class="normal">422</span>
+<span class="normal">423</span>
+<span class="normal">424</span>
+<span class="normal">425</span>
+<span class="normal">426</span>
+<span class="normal">427</span>
+<span class="normal">428</span></pre></div></td><td class="code"><div><pre><span></span><span class="sd">//! New projects (`J`, then `^G`): the folder, `git init`, and a CLAUDE.md from a template.</span>
+<span class="sd">//!</span>
+<span class="sd">//! The template is built in; `~/.config/mainframe/CLAUDE.md` replaces it when it exists.</span>
+<span class="sd">//! Lines between `&lt;!-- if rust --&gt;` and `&lt;!-- end --&gt;` only stay for that stack, so one</span>
+<span class="sd">//! file can carry the checks of every stack.</span>
+
+<span class="k">use</span><span class="w"> </span><span class="n">std</span><span class="p">::{</span>
+<span class="w">    </span><span class="n">fs</span><span class="p">,</span>
+<span class="w">    </span><span class="n">io</span><span class="p">::</span><span class="n">Write</span><span class="p">,</span>
+<span class="w">    </span><span class="n">path</span><span class="p">::{</span><span class="n">Path</span><span class="p">,</span><span class="w"> </span><span class="n">PathBuf</span><span class="p">},</span>
+<span class="w">    </span><span class="n">process</span><span class="p">::{</span><span class="n">Command</span><span class="p">,</span><span class="w"> </span><span class="n">Stdio</span><span class="p">},</span>
+<span class="p">};</span>
+
+<span class="k">use</span><span class="w"> </span><span class="k">crate</span><span class="p">::{</span>
+<span class="w">    </span><span class="n">config</span><span class="p">::{</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">Config</span><span class="p">},</span>
+<span class="w">    </span><span class="n">form</span><span class="p">::</span><span class="n">Form</span><span class="p">,</span>
+<span class="w">    </span><span class="n">project</span><span class="p">::</span><span class="n">Kind</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="sd">/// The stacks the form offers, as written in the template's `&lt;!-- if … --&gt;` markers.</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">STACKS</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="p">[</span><span class="o">&amp;</span><span class="kt">str</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="p">[</span><span class="s">"none"</span><span class="p">,</span><span class="w"> </span><span class="s">"rust"</span><span class="p">,</span><span class="w"> </span><span class="s">"node"</span><span class="p">,</span><span class="w"> </span><span class="s">"python"</span><span class="p">];</span>
+
+<span class="k">pub</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">CLAUDE_MD</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">r#"# {name}</span>
+
+<span class="s">&lt;!-- One sentence: what this project is and who it's for. --&gt;</span>
+
+<span class="s">## Layout</span>
+
+<span class="s">&lt;!-- What lives where: main directories, entry points. --&gt;</span>
+
+<span class="s">## Checks</span>
+
+<span class="s">After a change, run the checks below and report what they say. If one fails, fix the</span>
+<span class="s">cause instead of loosening a limit or silencing a lint; if a limit really has to move, say so.</span>
+
+<span class="s">&lt;!-- if rust --&gt;</span>
+<span class="s">- `cargo fmt --all`</span>
+<span class="s">- `cargo clippy --all-targets -- -D warnings`</span>
+<span class="s">- `cargo test`</span>
+<span class="s">&lt;!-- end --&gt;</span>
+<span class="s">&lt;!-- if node --&gt;</span>
+<span class="s">- `npx tsc --noEmit`</span>
+<span class="s">- `npx eslint .`</span>
+<span class="s">- `npm test` (once a test script exists)</span>
+<span class="s">&lt;!-- end --&gt;</span>
+<span class="s">&lt;!-- if python --&gt;</span>
+<span class="s">- `PYTHONDONTWRITEBYTECODE=1 python3 -m pytest`</span>
+<span class="s">- `ruff check .` (if configured)</span>
+<span class="s">&lt;!-- end --&gt;</span>
+<span class="s">&lt;!-- if none --&gt;</span>
+<span class="s">&lt;!-- The commands to run after a change: lint, tests, build. --&gt;</span>
+<span class="s">&lt;!-- end --&gt;</span>
+
+<span class="s">Tests can't show everything: where possible, try UI and behaviour changes in the real</span>
+<span class="s">program, and say plainly what wasn't verified.</span>
+
+<span class="s">## Conventions</span>
+
+<span class="s">&lt;!-- Project-specific rules: error handling, naming, patterns to follow. --&gt;</span>
+
+<span class="s">- Comments explain *why* in full sentences; match the comment density of the surrounding code.</span>
+<span class="s">- Make the smallest correct change, in the layer where the problem actually lives. No speculative refactors.</span>
+<span class="s">- Correct behaviour and functionality first, UX polish second, visual polish last.</span>
+<span class="s">- Don't invent a visual design direction: before significant UI work, ask what's wanted and for reference UIs.</span>
+<span class="s">- A bug found while working on something else gets fixed right away, as its own commit, and mentioned.</span>
+
+<span class="s">## README and docs</span>
+
+<span class="s">- The root README is a product page: what the project is and who it's for, why it's worth using</span>
+<span class="s">  (a few points, each with a bold lead), a short feature list, getting started in a few commands,</span>
+<span class="s">  and links into `docs/`. No config dumps or complete key and option lists there.</span>
+<span class="s">- Details live in `docs/`: an index (`docs/README.md`), an introduction, installation, guides</span>
+<span class="s">  (one task each, numbered steps where the order matters) and a reference that lists every</span>
+<span class="s">  option, key or command completely.</span>
+<span class="s">- Write for someone new to the project: plain, short sentences; explain a term the first time it</span>
+<span class="s">  comes up; tables for keys, options and fields; examples that really work. Mark planned features</span>
+<span class="s">  as *not yet* instead of describing them as done.</span>
+<span class="s">- When there's a UI, show it: screenshots in `docs/images/`, light and dark (a `&lt;picture&gt;` with</span>
+<span class="s">  `prefers-color-scheme`), each with a short caption.</span>
+<span class="s">- Update the README and docs in the same change as the feature or fix, not afterwards.</span>
+<span class="s">- After editing the README or docs, read back what you changed for the current feature or fix once,</span>
+<span class="s">  and fix any mistakes: wrong or outdated statements, keys or commands that don't match the code,</span>
+<span class="s">  broken links, typos. Only your own edits from this branch, and only one pass.</span>
+
+<span class="s">## Git</span>
+
+<span class="s">- Every feature and fix gets its own branch. Before starting: `git fetch --prune`, fast-forward</span>
+<span class="s">  `main`, then branch from `main`. One PR per independent change. Never edit files on `main`.</span>
+<span class="s">- Check the branch in the same command as the commit (`git branch --show-current &amp;&amp; git commit …`):</span>
+<span class="s">  the user switches branches in their own terminal while you work.</span>
+<span class="s">- Commit, push and open PRs only when asked. Never merge a PR unless the user explicitly allows it for that PR.</span>
+<span class="s">- No destructive git commands (reset --hard, force-push, …) unless asked; never revert unrelated work.</span>
+<span class="s">- Commit messages: `type(scope): Capitalised summary`, e.g. `fix(parser): Handle empty input`.</span>
+
+<span class="s">## Files and secrets</span>
+
+<span class="s">- Never commit secrets, and never put vulnerability details in tracked files. Local notes go in ignored files.</span>
+<span class="s">- This CLAUDE.md is local only (listed in `.git/info/exclude`).</span>
+<span class="s">- Run Python with `PYTHONDONTWRITEBYTECODE=1`, and delete any `__pycache__` folders before finishing.</span>
+
+<span class="s">## Environment</span>
+
+<span class="s">- The Bash tool runs zsh, not the user's fish: quote globs (`'*.rs'`), or zsh fails with "no matches found".</span>
+<span class="s">- git and other tools print their messages in German.</span>
+<span class="s">"#</span><span class="p">;</span>
+
+<span class="sd">/// `~/.config/mainframe/CLAUDE.md`, next to the config.</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">template_path</span><span class="p">()</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">PathBuf</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Config</span><span class="p">::</span><span class="n">path</span><span class="p">().</span><span class="n">with_file_name</span><span class="p">(</span><span class="s">"CLAUDE.md"</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="sd">/// The user's template if there is one, else the built-in one.</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">template</span><span class="p">()</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">String</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">fs</span><span class="p">::</span><span class="n">read_to_string</span><span class="p">(</span><span class="n">template_path</span><span class="p">()).</span><span class="n">unwrap_or_else</span><span class="p">(</span><span class="o">|</span><span class="n">_</span><span class="o">|</span><span class="w"> </span><span class="n">CLAUDE_MD</span><span class="p">.</span><span class="n">to_string</span><span class="p">())</span>
+<span class="p">}</span>
+
+<span class="sd">/// The template for one project: `{name}` filled in, other stacks' blocks dropped.</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">render</span><span class="p">(</span><span class="n">template</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">,</span><span class="w"> </span><span class="n">stack</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">String</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">render_stacks</span><span class="p">(</span><span class="n">template</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="p">[</span><span class="n">stack</span><span class="p">])</span>
+<span class="p">}</span>
+
+<span class="sd">/// `render` for a project with several stacks (a Tauri app is rust and node).</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">render_stacks</span><span class="p">(</span><span class="n">template</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">,</span><span class="w"> </span><span class="n">stacks</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="p">[</span><span class="o">&amp;</span><span class="kt">str</span><span class="p">])</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">String</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">String</span><span class="p">::</span><span class="n">new</span><span class="p">();</span>
+<span class="w">    </span><span class="c1">// The stack of the block we're in; outside any block every line stays.</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">block</span><span class="p">:</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;&amp;</span><span class="kt">str</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">None</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">template</span><span class="p">.</span><span class="n">lines</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">marker</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">line</span><span class="p">.</span><span class="n">trim</span><span class="p">().</span><span class="n">strip_prefix</span><span class="p">(</span><span class="s">"&lt;!--"</span><span class="p">).</span><span class="n">and_then</span><span class="p">(</span><span class="o">|</span><span class="n">l</span><span class="o">|</span><span class="w"> </span><span class="n">l</span><span class="p">.</span><span class="n">strip_suffix</span><span class="p">(</span><span class="s">"--&gt;"</span><span class="p">)).</span><span class="n">map</span><span class="p">(</span><span class="kt">str</span><span class="p">::</span><span class="n">trim</span><span class="p">);</span>
+<span class="w">        </span><span class="k">match</span><span class="w"> </span><span class="n">marker</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nb">Some</span><span class="p">(</span><span class="n">m</span><span class="p">)</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">starts_with</span><span class="p">(</span><span class="s">"if "</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">block</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="mi">3</span><span class="o">..</span><span class="p">].</span><span class="n">trim</span><span class="p">()),</span>
+<span class="w">            </span><span class="nb">Some</span><span class="p">(</span><span class="s">"end"</span><span class="p">)</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">block</span><span class="p">.</span><span class="n">is_some</span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">block</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">None</span><span class="p">,</span>
+<span class="w">            </span><span class="n">_</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">block</span><span class="p">.</span><span class="n">is_none_or</span><span class="p">(</span><span class="o">|</span><span class="n">b</span><span class="o">|</span><span class="w"> </span><span class="n">stacks</span><span class="p">.</span><span class="n">contains</span><span class="p">(</span><span class="o">&amp;</span><span class="n">b</span><span class="p">))</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">out</span><span class="p">.</span><span class="n">push_str</span><span class="p">(</span><span class="n">line</span><span class="p">);</span>
+<span class="w">                </span><span class="n">out</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="sc">'\n'</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="n">_</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">out</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="s">"{name}"</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="sd">/// Where a preset waits for Claude to merge it: every `.md` in `.claude/rules/` is loaded</span>
+<span class="sd">/// when Claude Code starts in the project.</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">PENDING</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">".claude/rules/mainframe-preset.md"</span><span class="p">;</span>
+
+<span class="sd">/// The files Claude Code reads a project's instructions from, those `dir` has.</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">instruction_files</span><span class="p">(</span><span class="n">dir</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">Path</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;&amp;'</span><span class="nb">static</span><span class="w"> </span><span class="kt">str</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">[</span><span class="s">"CLAUDE.md"</span><span class="p">,</span><span class="w"> </span><span class="s">".claude/CLAUDE.md"</span><span class="p">,</span><span class="w"> </span><span class="s">"CLAUDE.local.md"</span><span class="p">,</span><span class="w"> </span><span class="s">"AGENTS.md"</span><span class="p">]</span>
+<span class="w">        </span><span class="p">.</span><span class="n">into_iter</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="n">filter</span><span class="p">(</span><span class="o">|</span><span class="n">f</span><span class="o">|</span><span class="w"> </span><span class="n">dir</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">f</span><span class="p">).</span><span class="n">is_file</span><span class="p">())</span>
+<span class="w">        </span><span class="p">.</span><span class="n">collect</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="sd">/// The template's stacks for the build tools at `dir`; "none" when it has none of them.</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">stacks</span><span class="p">(</span><span class="n">dir</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">Path</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;&amp;'</span><span class="nb">static</span><span class="w"> </span><span class="kt">str</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">out</span><span class="p">:</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;&amp;</span><span class="kt">str</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">crate</span><span class="p">::</span><span class="n">project</span><span class="p">::</span><span class="n">kinds_at</span><span class="p">(</span><span class="n">dir</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="n">into_iter</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="n">filter_map</span><span class="p">(</span><span class="o">|</span><span class="n">k</span><span class="o">|</span><span class="w"> </span><span class="k">match</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">Kind</span><span class="p">::</span><span class="n">Cargo</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="s">"rust"</span><span class="p">),</span>
+<span class="w">            </span><span class="n">Kind</span><span class="p">::</span><span class="n">Npm</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="s">"node"</span><span class="p">),</span>
+<span class="w">            </span><span class="n">Kind</span><span class="p">::</span><span class="n">Python</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="s">"python"</span><span class="p">),</span>
+<span class="w">            </span><span class="n">_</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nb">None</span><span class="p">,</span>
+<span class="w">        </span><span class="p">})</span>
+<span class="w">        </span><span class="p">.</span><span class="n">collect</span><span class="p">();</span>
+<span class="w">    </span><span class="n">out</span><span class="p">.</span><span class="n">dedup</span><span class="p">();</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">out</span><span class="p">.</span><span class="n">is_empty</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">out</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="s">"none"</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">out</span>
+<span class="p">}</span>
+
+<span class="k">pub</span><span class="w"> </span><span class="k">enum</span><span class="w"> </span><span class="nc">Preset</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="sd">/// There were no instructions yet: the preset is the project's CLAUDE.md now.</span>
+<span class="w">    </span><span class="n">Written</span><span class="p">,</span>
+<span class="w">    </span><span class="sd">/// Claude merges it at its next start (true: an earlier one was still waiting).</span>
+<span class="w">    </span><span class="n">Pending</span><span class="p">(</span><span class="kt">bool</span><span class="p">),</span>
+<span class="p">}</span>
+
+<span class="sd">/// Brings the preset into an existing project: as its CLAUDE.md when it has no</span>
+<span class="sd">/// instructions, else as a note Claude reads at its next start and merges into them.</span>
+<span class="sd">/// Either way git ignores what's written.</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">apply_preset</span><span class="p">(</span><span class="n">dir</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">Path</span><span class="p">,</span><span class="w"> </span><span class="n">preset</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="n">Preset</span><span class="p">,</span><span class="w"> </span><span class="nb">String</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">existing</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">instruction_files</span><span class="p">(</span><span class="n">dir</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">existing</span><span class="p">.</span><span class="n">is_empty</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">fs</span><span class="p">::</span><span class="n">write</span><span class="p">(</span><span class="n">dir</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="s">"CLAUDE.md"</span><span class="p">),</span><span class="w"> </span><span class="n">preset</span><span class="p">).</span><span class="n">map_err</span><span class="p">(</span><span class="o">|</span><span class="n">e</span><span class="o">|</span><span class="w"> </span><span class="fm">format!</span><span class="p">(</span><span class="s">"can't write CLAUDE.md: {e}"</span><span class="p">))</span><span class="o">?</span><span class="p">;</span>
+<span class="w">        </span><span class="n">exclude_here</span><span class="p">(</span><span class="n">dir</span><span class="p">,</span><span class="w"> </span><span class="s">"CLAUDE.md"</span><span class="p">).</span><span class="n">map_err</span><span class="p">(</span><span class="o">|</span><span class="n">e</span><span class="o">|</span><span class="w"> </span><span class="fm">format!</span><span class="p">(</span><span class="s">"wrote CLAUDE.md, but can't exclude it from git: {e}"</span><span class="p">))</span><span class="o">?</span><span class="p">;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">Ok</span><span class="p">(</span><span class="n">Preset</span><span class="p">::</span><span class="n">Written</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dir</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">PENDING</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">again</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">path</span><span class="p">.</span><span class="n">exists</span><span class="p">();</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">written</span><span class="w"> </span><span class="o">=</span>
+<span class="w">        </span><span class="n">path</span><span class="p">.</span><span class="n">parent</span><span class="p">().</span><span class="n">map_or</span><span class="p">(</span><span class="nb">Ok</span><span class="p">(()),</span><span class="w"> </span><span class="n">fs</span><span class="p">::</span><span class="n">create_dir_all</span><span class="p">).</span><span class="n">and_then</span><span class="p">(</span><span class="o">|</span><span class="n">_</span><span class="o">|</span><span class="w"> </span><span class="n">fs</span><span class="p">::</span><span class="n">write</span><span class="p">(</span><span class="o">&amp;</span><span class="n">path</span><span class="p">,</span><span class="w"> </span><span class="n">merge_note</span><span class="p">(</span><span class="n">preset</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">existing</span><span class="p">)));</span>
+<span class="w">    </span><span class="n">written</span><span class="p">.</span><span class="n">map_err</span><span class="p">(</span><span class="o">|</span><span class="n">e</span><span class="o">|</span><span class="w"> </span><span class="fm">format!</span><span class="p">(</span><span class="s">"can't write {PENDING}: {e}"</span><span class="p">))</span><span class="o">?</span><span class="p">;</span>
+<span class="w">    </span><span class="n">exclude_here</span><span class="p">(</span><span class="n">dir</span><span class="p">,</span><span class="w"> </span><span class="n">PENDING</span><span class="p">).</span><span class="n">map_err</span><span class="p">(</span><span class="o">|</span><span class="n">e</span><span class="o">|</span><span class="w"> </span><span class="fm">format!</span><span class="p">(</span><span class="s">"wrote {PENDING}, but can't exclude it from git: {e}"</span><span class="p">))</span><span class="o">?</span><span class="p">;</span>
+<span class="w">    </span><span class="nb">Ok</span><span class="p">(</span><span class="n">Preset</span><span class="p">::</span><span class="n">Pending</span><span class="p">(</span><span class="n">again</span><span class="p">))</span>
+<span class="p">}</span>
+
+<span class="sd">/// The note in `.claude/rules/`: what Claude should do with the preset, then the preset.</span>
+<span class="k">fn</span><span class="w"> </span><span class="nf">merge_note</span><span class="p">(</span><span class="n">preset</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">,</span><span class="w"> </span><span class="n">existing</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="p">[</span><span class="o">&amp;</span><span class="kt">str</span><span class="p">])</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">String</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">files</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">existing</span><span class="p">.</span><span class="n">iter</span><span class="p">().</span><span class="n">map</span><span class="p">(</span><span class="o">|</span><span class="n">f</span><span class="o">|</span><span class="w"> </span><span class="fm">format!</span><span class="p">(</span><span class="s">"`{f}`"</span><span class="p">)).</span><span class="n">collect</span><span class="p">::</span><span class="o">&lt;</span><span class="nb">Vec</span><span class="o">&lt;</span><span class="n">_</span><span class="o">&gt;&gt;</span><span class="p">().</span><span class="n">join</span><span class="p">(</span><span class="s">", "</span><span class="p">);</span>
+<span class="w">    </span><span class="fm">format!</span><span class="p">(</span>
+<span class="w">        </span><span class="s">r#"# Pending: merge the Mainframe CLAUDE.md preset</span>
+
+<span class="s">Mainframe (the user's terminal file manager) put this here so you'd see it at the start of</span>
+<span class="s">the session. Do this once, before other work, or right after the user's first request if</span>
+<span class="s">that's urgent:</span>
+
+<span class="s">1. Merge the preset below into this project's instructions ({files}). If there are</span>
+<span class="s">   several, use the one that holds the project's main instructions, usually `CLAUDE.md`.</span>
+<span class="s">   - What's already there is project-specific and wins where the two disagree; mention</span>
+<span class="s">     each such conflict to the user instead of silently dropping either side.</span>
+<span class="s">   - Add the preset's rules that are missing. Don't repeat ones that are already there</span>
+<span class="s">     in other words; where the preset says something more precisely, you may tighten</span>
+<span class="s">     the existing wording.</span>
+<span class="s">   - Fill the preset's `&lt;!-- … --&gt;` placeholders from what you know of the project, or</span>
+<span class="s">     leave them out. Drop `&lt;!-- if … --&gt;` / `&lt;!-- end --&gt;` markers if any remain.</span>
+<span class="s">   - Keep the file's structure; put new rules under its matching headings.</span>
+<span class="s">2. Delete this file (`{PENDING}`).</span>
+<span class="s">3. Tell the user in a few lines what you added, changed and left out, and why.</span>
+
+<span class="s">Don't commit anything for this unless the user asks.</span>
+
+<span class="s">## The preset</span>
+
+<span class="s">~~~~markdown</span>
+<span class="s">{preset}~~~~</span>
+<span class="s">"#</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="sd">/// Adds `rel` (relative to `dir`) to the repo's `info/exclude`, so it never shows up in</span>
+<span class="sd">/// `git status`. Works from a subfolder of the repo and in linked worktrees; outside a</span>
+<span class="sd">/// repo there's nothing to do.</span>
+<span class="k">fn</span><span class="w"> </span><span class="nf">exclude_here</span><span class="p">(</span><span class="n">dir</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">Path</span><span class="p">,</span><span class="w"> </span><span class="n">rel</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">std</span><span class="p">::</span><span class="n">io</span><span class="p">::</span><span class="nb">Result</span><span class="o">&lt;</span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">git</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">|</span><span class="n">args</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="p">[</span><span class="o">&amp;</span><span class="kt">str</span><span class="p">]</span><span class="o">|</span><span class="w"> </span><span class="k">crate</span><span class="p">::</span><span class="n">git</span><span class="p">::</span><span class="n">git_text</span><span class="p">(</span><span class="n">dir</span><span class="p">,</span><span class="w"> </span><span class="n">args</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="p">(</span><span class="nb">Some</span><span class="p">(</span><span class="n">file</span><span class="p">),</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">prefix</span><span class="p">))</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span>
+<span class="w">        </span><span class="n">git</span><span class="p">(</span><span class="o">&amp;</span><span class="p">[</span><span class="s">"rev-parse"</span><span class="p">,</span><span class="w"> </span><span class="s">"--path-format=absolute"</span><span class="p">,</span><span class="w"> </span><span class="s">"--git-path"</span><span class="p">,</span><span class="w"> </span><span class="s">"info/exclude"</span><span class="p">]),</span>
+<span class="w">        </span><span class="n">git</span><span class="p">(</span><span class="o">&amp;</span><span class="p">[</span><span class="s">"rev-parse"</span><span class="p">,</span><span class="w"> </span><span class="s">"--show-prefix"</span><span class="p">]),</span>
+<span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">Ok</span><span class="p">(());</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="w">    </span><span class="n">append_line</span><span class="p">(</span><span class="n">Path</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="o">&amp;</span><span class="n">file</span><span class="p">),</span><span class="w"> </span><span class="o">&amp;</span><span class="fm">format!</span><span class="p">(</span><span class="s">"/{prefix}{rel}"</span><span class="p">))</span>
+<span class="p">}</span>
+
+<span class="sd">/// The folder for a new project named `name` in `location`, or why there can't be one.</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">target</span><span class="p">(</span><span class="n">location</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">Path</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="n">PathBuf</span><span class="p">,</span><span class="w"> </span><span class="nb">String</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">name</span><span class="p">.</span><span class="n">is_empty</span><span class="p">()</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">"."</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">".."</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">name</span><span class="p">.</span><span class="n">contains</span><span class="p">(</span><span class="sc">'/'</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">Err</span><span class="p">(</span><span class="s">"give the project a folder name (no /)"</span><span class="p">.</span><span class="n">into</span><span class="p">());</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">!</span><span class="n">location</span><span class="p">.</span><span class="n">is_dir</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">Err</span><span class="p">(</span><span class="fm">format!</span><span class="p">(</span><span class="s">"{} is not a directory"</span><span class="p">,</span><span class="w"> </span><span class="n">location</span><span class="p">.</span><span class="n">display</span><span class="p">()));</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">dir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">location</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">name</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">dir</span><span class="p">.</span><span class="n">exists</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">Err</span><span class="p">(</span><span class="fm">format!</span><span class="p">(</span><span class="s">"{} exists already"</span><span class="p">,</span><span class="w"> </span><span class="n">dir</span><span class="p">.</span><span class="n">display</span><span class="p">()));</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="nb">Ok</span><span class="p">(</span><span class="n">dir</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="sd">/// What submitting the new-project form will do, one line per step.</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">steps</span><span class="p">(</span><span class="n">form</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">Form</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">form</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"name"</span><span class="p">).</span><span class="n">trim</span><span class="p">();</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">config</span><span class="p">::</span><span class="n">expand_tilde</span><span class="p">(</span><span class="n">form</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"location"</span><span class="p">).</span><span class="n">trim</span><span class="p">());</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">shown</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">name</span><span class="p">.</span><span class="n">is_empty</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">"…"</span><span class="p">.</span><span class="n">into</span><span class="p">()</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">config</span><span class="p">::</span><span class="n">pretty_path</span><span class="p">(</span><span class="o">&amp;</span><span class="n">location</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">name</span><span class="p">))</span><span class="w"> </span><span class="p">};</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">steps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="fm">vec!</span><span class="p">[</span><span class="fm">format!</span><span class="p">(</span><span class="s">"mkdir {shown}"</span><span class="p">),</span><span class="w"> </span><span class="s">"git init -b main"</span><span class="p">.</span><span class="n">into</span><span class="p">()];</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">form</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"CLAUDE.md"</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">"yes"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">steps</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="fm">format!</span><span class="p">(</span><span class="s">"write CLAUDE.md ({} checks), excluded in .git/info/exclude"</span><span class="p">,</span><span class="w"> </span><span class="n">form</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"stack"</span><span class="p">)));</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">steps</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="s">"go there"</span><span class="p">.</span><span class="n">into</span><span class="p">());</span>
+<span class="w">    </span><span class="n">steps</span>
+<span class="p">}</span>
+
+<span class="sd">/// Makes `dir`, runs `git init` there on `main`, and writes `claude_md` (if any) as a</span>
+<span class="sd">/// CLAUDE.md that git ignores through `.git/info/exclude`, so it never gets committed.</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">create</span><span class="p">(</span><span class="n">dir</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">Path</span><span class="p">,</span><span class="w"> </span><span class="n">claude_md</span><span class="p">:</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;&amp;</span><span class="kt">str</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="p">(),</span><span class="w"> </span><span class="nb">String</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">fs</span><span class="p">::</span><span class="n">create_dir</span><span class="p">(</span><span class="n">dir</span><span class="p">).</span><span class="n">map_err</span><span class="p">(</span><span class="o">|</span><span class="n">e</span><span class="o">|</span><span class="w"> </span><span class="fm">format!</span><span class="p">(</span><span class="s">"can't create {}: {e}"</span><span class="p">,</span><span class="w"> </span><span class="n">dir</span><span class="p">.</span><span class="n">display</span><span class="p">()))</span><span class="o">?</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// `-b main`: without init.defaultBranch git would pick `master`, and the template's</span>
+<span class="w">    </span><span class="c1">// git rules talk about `main`.</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Command</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="s">"git"</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="n">args</span><span class="p">([</span><span class="s">"init"</span><span class="p">,</span><span class="w"> </span><span class="s">"--quiet"</span><span class="p">,</span><span class="w"> </span><span class="s">"-b"</span><span class="p">,</span><span class="w"> </span><span class="s">"main"</span><span class="p">])</span>
+<span class="w">        </span><span class="p">.</span><span class="n">current_dir</span><span class="p">(</span><span class="n">dir</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="n">stdin</span><span class="p">(</span><span class="n">Stdio</span><span class="p">::</span><span class="n">null</span><span class="p">())</span>
+<span class="w">        </span><span class="p">.</span><span class="n">output</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="n">map_err</span><span class="p">(</span><span class="o">|</span><span class="n">e</span><span class="o">|</span><span class="w"> </span><span class="fm">format!</span><span class="p">(</span><span class="s">"created the folder, but can't run git: {e}"</span><span class="p">))</span><span class="o">?</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">!</span><span class="n">out</span><span class="p">.</span><span class="n">status</span><span class="p">.</span><span class="n">success</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">String</span><span class="p">::</span><span class="n">from_utf8_lossy</span><span class="p">(</span><span class="o">&amp;</span><span class="n">out</span><span class="p">.</span><span class="n">stderr</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">Err</span><span class="p">(</span><span class="fm">format!</span><span class="p">(</span><span class="s">"created the folder, but git init failed: {}"</span><span class="p">,</span><span class="w"> </span><span class="n">err</span><span class="p">.</span><span class="n">trim</span><span class="p">()));</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">text</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">claude_md</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">Ok</span><span class="p">(())</span><span class="w"> </span><span class="p">};</span>
+<span class="w">    </span><span class="n">fs</span><span class="p">::</span><span class="n">write</span><span class="p">(</span><span class="n">dir</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="s">"CLAUDE.md"</span><span class="p">),</span><span class="w"> </span><span class="n">text</span><span class="p">).</span><span class="n">map_err</span><span class="p">(</span><span class="o">|</span><span class="n">e</span><span class="o">|</span><span class="w"> </span><span class="fm">format!</span><span class="p">(</span><span class="s">"can't write CLAUDE.md: {e}"</span><span class="p">))</span><span class="o">?</span><span class="p">;</span>
+<span class="w">    </span><span class="n">exclude</span><span class="p">(</span><span class="n">dir</span><span class="p">,</span><span class="w"> </span><span class="s">"/CLAUDE.md"</span><span class="p">).</span><span class="n">map_err</span><span class="p">(</span><span class="o">|</span><span class="n">e</span><span class="o">|</span><span class="w"> </span><span class="fm">format!</span><span class="p">(</span><span class="s">"wrote CLAUDE.md, but can't add it to .git/info/exclude: {e}"</span><span class="p">))</span>
+<span class="p">}</span>
+
+<span class="sd">/// Adds `pattern` to the repo's `.git/info/exclude` unless a line says it already.</span>
+<span class="k">fn</span><span class="w"> </span><span class="nf">exclude</span><span class="p">(</span><span class="n">repo</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">Path</span><span class="p">,</span><span class="w"> </span><span class="n">pattern</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">std</span><span class="p">::</span><span class="n">io</span><span class="p">::</span><span class="nb">Result</span><span class="o">&lt;</span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">append_line</span><span class="p">(</span><span class="o">&amp;</span><span class="n">repo</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="s">".git/info/exclude"</span><span class="p">),</span><span class="w"> </span><span class="n">pattern</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="k">fn</span><span class="w"> </span><span class="nf">append_line</span><span class="p">(</span><span class="n">path</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">Path</span><span class="p">,</span><span class="w"> </span><span class="n">pattern</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">std</span><span class="p">::</span><span class="n">io</span><span class="p">::</span><span class="nb">Result</span><span class="o">&lt;</span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">path</span><span class="p">.</span><span class="n">to_path_buf</span><span class="p">();</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fs</span><span class="p">::</span><span class="n">read_to_string</span><span class="p">(</span><span class="o">&amp;</span><span class="n">path</span><span class="p">).</span><span class="n">unwrap_or_default</span><span class="p">();</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">current</span><span class="p">.</span><span class="n">lines</span><span class="p">().</span><span class="n">any</span><span class="p">(</span><span class="o">|</span><span class="n">l</span><span class="o">|</span><span class="w"> </span><span class="n">l</span><span class="p">.</span><span class="n">trim</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">pattern</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">Ok</span><span class="p">(());</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">path</span><span class="p">.</span><span class="n">parent</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">fs</span><span class="p">::</span><span class="n">create_dir_all</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fs</span><span class="p">::</span><span class="n">OpenOptions</span><span class="p">::</span><span class="n">new</span><span class="p">().</span><span class="n">create</span><span class="p">(</span><span class="kc">true</span><span class="p">).</span><span class="n">append</span><span class="p">(</span><span class="kc">true</span><span class="p">).</span><span class="n">open</span><span class="p">(</span><span class="o">&amp;</span><span class="n">path</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">sep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">current</span><span class="p">.</span><span class="n">is_empty</span><span class="p">()</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">current</span><span class="p">.</span><span class="n">ends_with</span><span class="p">(</span><span class="sc">'\n'</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">""</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="w"> </span><span class="p">};</span>
+<span class="w">    </span><span class="fm">writeln!</span><span class="p">(</span><span class="n">file</span><span class="p">,</span><span class="w"> </span><span class="s">"{sep}{pattern}"</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="cp">#[cfg(test)]</span>
+<span class="k">mod</span><span class="w"> </span><span class="nn">tests</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">use</span><span class="w"> </span><span class="k">super</span><span class="p">::</span><span class="o">*</span><span class="p">;</span>
+<span class="w">    </span><span class="k">use</span><span class="w"> </span><span class="k">crate</span><span class="p">::</span><span class="n">testutil</span><span class="p">::{</span><span class="n">git</span><span class="p">,</span><span class="w"> </span><span class="n">temp_dir</span><span class="p">};</span>
+
+<span class="w">    </span><span class="cp">#[test]</span>
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">keeps_only_the_chosen_stacks_checks</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">rust</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">render</span><span class="p">(</span><span class="n">CLAUDE_MD</span><span class="p">,</span><span class="w"> </span><span class="s">"demo"</span><span class="p">,</span><span class="w"> </span><span class="s">"rust"</span><span class="p">);</span>
+<span class="w">        </span><span class="fm">assert!</span><span class="p">(</span><span class="n">rust</span><span class="p">.</span><span class="n">starts_with</span><span class="p">(</span><span class="s">"# demo</span><span class="se">\n</span><span class="s">"</span><span class="p">));</span>
+<span class="w">        </span><span class="fm">assert!</span><span class="p">(</span><span class="n">rust</span><span class="p">.</span><span class="n">contains</span><span class="p">(</span><span class="s">"cargo clippy --all-targets -- -D warnings"</span><span class="p">));</span>
+<span class="w">        </span><span class="fm">assert!</span><span class="p">(</span><span class="o">!</span><span class="n">rust</span><span class="p">.</span><span class="n">contains</span><span class="p">(</span><span class="s">"npx tsc"</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="n">rust</span><span class="p">.</span><span class="n">contains</span><span class="p">(</span><span class="s">"pytest"</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="n">rust</span><span class="p">.</span><span class="n">contains</span><span class="p">(</span><span class="s">"lint, tests, build"</span><span class="p">));</span>
+<span class="w">        </span><span class="fm">assert!</span><span class="p">(</span><span class="o">!</span><span class="n">rust</span><span class="p">.</span><span class="n">contains</span><span class="p">(</span><span class="s">"&lt;!-- if"</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="n">rust</span><span class="p">.</span><span class="n">contains</span><span class="p">(</span><span class="s">"&lt;!-- end"</span><span class="p">));</span>
+
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">none</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">render</span><span class="p">(</span><span class="n">CLAUDE_MD</span><span class="p">,</span><span class="w"> </span><span class="s">"demo"</span><span class="p">,</span><span class="w"> </span><span class="s">"none"</span><span class="p">);</span>
+<span class="w">        </span><span class="fm">assert!</span><span class="p">(</span><span class="n">none</span><span class="p">.</span><span class="n">contains</span><span class="p">(</span><span class="s">"&lt;!-- The commands to run after a change: lint, tests, build. --&gt;"</span><span class="p">));</span>
+<span class="w">        </span><span class="fm">assert!</span><span class="p">(</span><span class="o">!</span><span class="n">none</span><span class="p">.</span><span class="n">contains</span><span class="p">(</span><span class="s">"cargo"</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="n">none</span><span class="p">.</span><span class="n">contains</span><span class="p">(</span><span class="s">"npx"</span><span class="p">));</span>
+
+<span class="w">        </span><span class="c1">// Every stack the form offers has a block in the built-in template.</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">stack</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">STACKS</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="fm">assert!</span><span class="p">(</span><span class="n">CLAUDE_MD</span><span class="p">.</span><span class="n">contains</span><span class="p">(</span><span class="o">&amp;</span><span class="fm">format!</span><span class="p">(</span><span class="s">"&lt;!-- if {stack} --&gt;"</span><span class="p">)),</span><span class="w"> </span><span class="s">"{stack}"</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cp">#[test]</span>
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">a_lone_end_marker_is_just_text</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">render</span><span class="p">(</span><span class="s">"a</span><span class="se">\n</span><span class="s">&lt;!-- end --&gt;</span><span class="se">\n</span><span class="s">b"</span><span class="p">,</span><span class="w"> </span><span class="s">"x"</span><span class="p">,</span><span class="w"> </span><span class="s">"rust"</span><span class="p">),</span><span class="w"> </span><span class="s">"a</span><span class="se">\n</span><span class="s">&lt;!-- end --&gt;</span><span class="se">\n</span><span class="s">b</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cp">#[test]</span>
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">creates_a_repo_with_an_ignored_claude_md</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">root</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">temp_dir</span><span class="p">(</span><span class="s">"scaffold"</span><span class="p">);</span>
+
+<span class="w">        </span><span class="fm">assert!</span><span class="p">(</span><span class="n">target</span><span class="p">(</span><span class="o">&amp;</span><span class="n">root</span><span class="p">,</span><span class="w"> </span><span class="s">""</span><span class="p">).</span><span class="n">is_err</span><span class="p">());</span>
+<span class="w">        </span><span class="fm">assert!</span><span class="p">(</span><span class="n">target</span><span class="p">(</span><span class="o">&amp;</span><span class="n">root</span><span class="p">,</span><span class="w"> </span><span class="s">"a/b"</span><span class="p">).</span><span class="n">is_err</span><span class="p">());</span>
+<span class="w">        </span><span class="fm">assert!</span><span class="p">(</span><span class="n">target</span><span class="p">(</span><span class="o">&amp;</span><span class="n">root</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="s">"missing"</span><span class="p">),</span><span class="w"> </span><span class="s">"x"</span><span class="p">).</span><span class="n">is_err</span><span class="p">());</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">dir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">target</span><span class="p">(</span><span class="o">&amp;</span><span class="n">root</span><span class="p">,</span><span class="w"> </span><span class="s">"demo"</span><span class="p">).</span><span class="n">unwrap</span><span class="p">();</span>
+
+<span class="w">        </span><span class="n">create</span><span class="p">(</span><span class="o">&amp;</span><span class="n">dir</span><span class="p">,</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="s">"# demo</span><span class="se">\n</span><span class="s">"</span><span class="p">)).</span><span class="n">unwrap</span><span class="p">();</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">fs</span><span class="p">::</span><span class="n">read_to_string</span><span class="p">(</span><span class="n">dir</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="s">"CLAUDE.md"</span><span class="p">)).</span><span class="n">unwrap</span><span class="p">(),</span><span class="w"> </span><span class="s">"# demo</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">git</span><span class="p">(</span><span class="o">&amp;</span><span class="n">dir</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="p">[</span><span class="s">"symbolic-ref"</span><span class="p">,</span><span class="w"> </span><span class="s">"--short"</span><span class="p">,</span><span class="w"> </span><span class="s">"HEAD"</span><span class="p">]).</span><span class="n">trim</span><span class="p">(),</span><span class="w"> </span><span class="s">"main"</span><span class="p">);</span>
+<span class="w">        </span><span class="c1">// Ignored, so it never shows up for `git add -A`.</span>
+<span class="w">        </span><span class="fm">assert!</span><span class="p">(</span><span class="k">crate</span><span class="p">::</span><span class="n">git</span><span class="p">::</span><span class="n">git</span><span class="p">(</span><span class="o">&amp;</span><span class="n">dir</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="p">[</span><span class="s">"check-ignore"</span><span class="p">,</span><span class="w"> </span><span class="s">"-q"</span><span class="p">,</span><span class="w"> </span><span class="s">"CLAUDE.md"</span><span class="p">]).</span><span class="n">is_some</span><span class="p">());</span>
+
+<span class="w">        </span><span class="c1">// A second exclude of the same pattern doesn't add a duplicate line.</span>
+<span class="w">        </span><span class="n">exclude</span><span class="p">(</span><span class="o">&amp;</span><span class="n">dir</span><span class="p">,</span><span class="w"> </span><span class="s">"/CLAUDE.md"</span><span class="p">).</span><span class="n">unwrap</span><span class="p">();</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">excludes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fs</span><span class="p">::</span><span class="n">read_to_string</span><span class="p">(</span><span class="n">dir</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="s">".git/info/exclude"</span><span class="p">)).</span><span class="n">unwrap</span><span class="p">();</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">excludes</span><span class="p">.</span><span class="n">lines</span><span class="p">().</span><span class="n">filter</span><span class="p">(</span><span class="o">|</span><span class="n">l</span><span class="o">|</span><span class="w"> </span><span class="o">*</span><span class="n">l</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">"/CLAUDE.md"</span><span class="p">).</span><span class="n">count</span><span class="p">(),</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+
+<span class="w">        </span><span class="fm">assert!</span><span class="p">(</span><span class="n">target</span><span class="p">(</span><span class="o">&amp;</span><span class="n">root</span><span class="p">,</span><span class="w"> </span><span class="s">"demo"</span><span class="p">).</span><span class="n">is_err</span><span class="p">(),</span><span class="w"> </span><span class="s">"exists now"</span><span class="p">);</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">bare</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">root</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="s">"bare"</span><span class="p">);</span>
+<span class="w">        </span><span class="n">create</span><span class="p">(</span><span class="o">&amp;</span><span class="n">bare</span><span class="p">,</span><span class="w"> </span><span class="nb">None</span><span class="p">).</span><span class="n">unwrap</span><span class="p">();</span>
+<span class="w">        </span><span class="fm">assert!</span><span class="p">(</span><span class="n">bare</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="s">".git"</span><span class="p">).</span><span class="n">is_dir</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="n">bare</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="s">"CLAUDE.md"</span><span class="p">).</span><span class="n">exists</span><span class="p">());</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fs</span><span class="p">::</span><span class="n">remove_dir_all</span><span class="p">(</span><span class="o">&amp;</span><span class="n">root</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">repo</span><span class="p">(</span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">PathBuf</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">dir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">temp_dir</span><span class="p">(</span><span class="o">&amp;</span><span class="fm">format!</span><span class="p">(</span><span class="s">"preset-{name}"</span><span class="p">));</span>
+<span class="w">        </span><span class="n">git</span><span class="p">(</span><span class="o">&amp;</span><span class="n">dir</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="p">[</span><span class="s">"init"</span><span class="p">,</span><span class="w"> </span><span class="s">"-q"</span><span class="p">,</span><span class="w"> </span><span class="s">"-b"</span><span class="p">,</span><span class="w"> </span><span class="s">"main"</span><span class="p">]);</span>
+<span class="w">        </span><span class="n">dir</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">status</span><span class="p">(</span><span class="n">dir</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">Path</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">String</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">git</span><span class="p">(</span><span class="n">dir</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="p">[</span><span class="s">"status"</span><span class="p">,</span><span class="w"> </span><span class="s">"--porcelain"</span><span class="p">,</span><span class="w"> </span><span class="s">"--untracked-files=all"</span><span class="p">])</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cp">#[test]</span>
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">preset_becomes_the_claude_md_when_there_is_none</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">dir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">repo</span><span class="p">(</span><span class="s">"none"</span><span class="p">);</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">apply_preset</span><span class="p">(</span><span class="o">&amp;</span><span class="n">dir</span><span class="p">,</span><span class="w"> </span><span class="s">"# preset</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fs</span><span class="p">::</span><span class="n">read_to_string</span><span class="p">(</span><span class="n">dir</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="s">"CLAUDE.md"</span><span class="p">)).</span><span class="n">unwrap_or_default</span><span class="p">();</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">st</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">status</span><span class="p">(</span><span class="o">&amp;</span><span class="n">dir</span><span class="p">);</span>
+<span class="w">        </span><span class="n">fs</span><span class="p">::</span><span class="n">remove_dir_all</span><span class="p">(</span><span class="o">&amp;</span><span class="n">dir</span><span class="p">).</span><span class="n">unwrap</span><span class="p">();</span>
+<span class="w">        </span><span class="fm">assert!</span><span class="p">(</span><span class="fm">matches!</span><span class="p">(</span><span class="n">res</span><span class="p">,</span><span class="w"> </span><span class="nb">Ok</span><span class="p">(</span><span class="n">Preset</span><span class="p">::</span><span class="n">Written</span><span class="p">)));</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="w"> </span><span class="s">"# preset</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">st</span><span class="p">,</span><span class="w"> </span><span class="s">""</span><span class="p">,</span><span class="w"> </span><span class="s">"git should ignore it"</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="sd">/// A project in a subfolder of its repo, with its own CLAUDE.md: the preset waits in</span>
+<span class="w">    </span><span class="sd">/// .claude/rules/ for Claude, the CLAUDE.md stays as it is, git sees neither change.</span>
+<span class="w">    </span><span class="cp">#[test]</span>
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">preset_waits_for_claude_when_there_are_instructions</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">top</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">repo</span><span class="p">(</span><span class="s">"merge"</span><span class="p">);</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">dir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">top</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="s">"app"</span><span class="p">);</span>
+<span class="w">        </span><span class="n">fs</span><span class="p">::</span><span class="n">create_dir_all</span><span class="p">(</span><span class="o">&amp;</span><span class="n">dir</span><span class="p">).</span><span class="n">unwrap</span><span class="p">();</span>
+<span class="w">        </span><span class="n">fs</span><span class="p">::</span><span class="n">write</span><span class="p">(</span><span class="n">dir</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="s">"CLAUDE.md"</span><span class="p">),</span><span class="w"> </span><span class="s">"# app</span><span class="se">\n</span><span class="s">mine</span><span class="se">\n</span><span class="s">"</span><span class="p">).</span><span class="n">unwrap</span><span class="p">();</span>
+<span class="w">        </span><span class="n">git</span><span class="p">(</span><span class="o">&amp;</span><span class="n">top</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="p">[</span><span class="s">"add"</span><span class="p">,</span><span class="w"> </span><span class="s">"."</span><span class="p">]);</span>
+<span class="w">        </span><span class="n">git</span><span class="p">(</span><span class="o">&amp;</span><span class="n">top</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="p">[</span><span class="s">"commit"</span><span class="p">,</span><span class="w"> </span><span class="s">"-q"</span><span class="p">,</span><span class="w"> </span><span class="s">"-m"</span><span class="p">,</span><span class="w"> </span><span class="s">"x"</span><span class="p">]);</span>
+
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">first</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">apply_preset</span><span class="p">(</span><span class="o">&amp;</span><span class="n">dir</span><span class="p">,</span><span class="w"> </span><span class="s">"# preset</span><span class="se">\n</span><span class="s">- a rule</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">second</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">apply_preset</span><span class="p">(</span><span class="o">&amp;</span><span class="n">dir</span><span class="p">,</span><span class="w"> </span><span class="s">"# preset</span><span class="se">\n</span><span class="s">- a rule</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">note</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fs</span><span class="p">::</span><span class="n">read_to_string</span><span class="p">(</span><span class="n">dir</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">PENDING</span><span class="p">)).</span><span class="n">unwrap_or_default</span><span class="p">();</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">mine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fs</span><span class="p">::</span><span class="n">read_to_string</span><span class="p">(</span><span class="n">dir</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="s">"CLAUDE.md"</span><span class="p">)).</span><span class="n">unwrap</span><span class="p">();</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">st</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">status</span><span class="p">(</span><span class="o">&amp;</span><span class="n">top</span><span class="p">);</span>
+<span class="w">        </span><span class="n">fs</span><span class="p">::</span><span class="n">remove_dir_all</span><span class="p">(</span><span class="o">&amp;</span><span class="n">top</span><span class="p">).</span><span class="n">unwrap</span><span class="p">();</span>
+
+<span class="w">        </span><span class="fm">assert!</span><span class="p">(</span><span class="fm">matches!</span><span class="p">(</span><span class="n">first</span><span class="p">,</span><span class="w"> </span><span class="nb">Ok</span><span class="p">(</span><span class="n">Preset</span><span class="p">::</span><span class="n">Pending</span><span class="p">(</span><span class="kc">false</span><span class="p">))));</span>
+<span class="w">        </span><span class="fm">assert!</span><span class="p">(</span><span class="fm">matches!</span><span class="p">(</span><span class="n">second</span><span class="p">,</span><span class="w"> </span><span class="nb">Ok</span><span class="p">(</span><span class="n">Preset</span><span class="p">::</span><span class="n">Pending</span><span class="p">(</span><span class="kc">true</span><span class="p">))));</span>
+<span class="w">        </span><span class="fm">assert!</span><span class="p">(</span><span class="n">note</span><span class="p">.</span><span class="n">contains</span><span class="p">(</span><span class="s">"`CLAUDE.md`"</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">note</span><span class="p">.</span><span class="n">contains</span><span class="p">(</span><span class="s">"- a rule"</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">note</span><span class="p">.</span><span class="n">contains</span><span class="p">(</span><span class="n">PENDING</span><span class="p">),</span><span class="w"> </span><span class="s">"{note}"</span><span class="p">);</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">mine</span><span class="p">,</span><span class="w"> </span><span class="s">"# app</span><span class="se">\n</span><span class="s">mine</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">st</span><span class="p">,</span><span class="w"> </span><span class="s">""</span><span class="p">,</span><span class="w"> </span><span class="s">"git should ignore the note"</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cp">#[test]</span>
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">stacks_follow_the_build_tools</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">dir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">temp_dir</span><span class="p">(</span><span class="s">"preset-stacks"</span><span class="p">);</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">none</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">stacks</span><span class="p">(</span><span class="o">&amp;</span><span class="n">dir</span><span class="p">);</span>
+<span class="w">        </span><span class="n">fs</span><span class="p">::</span><span class="n">write</span><span class="p">(</span><span class="n">dir</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="s">"Cargo.toml"</span><span class="p">),</span><span class="w"> </span><span class="s">"[package]</span><span class="se">\n</span><span class="s">name = </span><span class="se">\"</span><span class="s">x</span><span class="se">\"\n</span><span class="s">"</span><span class="p">).</span><span class="n">unwrap</span><span class="p">();</span>
+<span class="w">        </span><span class="n">fs</span><span class="p">::</span><span class="n">write</span><span class="p">(</span><span class="n">dir</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="s">"package.json"</span><span class="p">),</span><span class="w"> </span><span class="s">"{}"</span><span class="p">).</span><span class="n">unwrap</span><span class="p">();</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">both</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">stacks</span><span class="p">(</span><span class="o">&amp;</span><span class="n">dir</span><span class="p">);</span>
+<span class="w">        </span><span class="n">fs</span><span class="p">::</span><span class="n">remove_dir_all</span><span class="p">(</span><span class="o">&amp;</span><span class="n">dir</span><span class="p">).</span><span class="n">unwrap</span><span class="p">();</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">none</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s">"none"</span><span class="p">]);</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">both</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s">"rust"</span><span class="p">,</span><span class="w"> </span><span class="s">"node"</span><span class="p">]);</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">render_stacks</span><span class="p">(</span><span class="n">CLAUDE_MD</span><span class="p">,</span><span class="w"> </span><span class="s">"x"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">both</span><span class="p">);</span>
+<span class="w">        </span><span class="fm">assert!</span><span class="p">(</span><span class="n">text</span><span class="p">.</span><span class="n">contains</span><span class="p">(</span><span class="s">"cargo clippy"</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">text</span><span class="p">.</span><span class="n">contains</span><span class="p">(</span><span class="s">"npx tsc"</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="n">text</span><span class="p">.</span><span class="n">contains</span><span class="p">(</span><span class="s">"pytest"</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div></td></tr></table></div>
+
+      </section>
+    </main>
+  </div>
+</body>
+</html>

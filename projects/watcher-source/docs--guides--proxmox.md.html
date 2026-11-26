@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>docs/guides/proxmox.md — Watcher — Jan</title>
+  <link rel="stylesheet" href="../../styles.css?v=41ca8b66" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="layout">
+    <header class="rail" id="rail">
+<div class="rail__top">
+<a class="brand" href="../../index.html#top">
+<span class="brand__name">Jan</span>
+<span class="brand__meta">systems &amp; infrastructure<br/>Code, Code &amp; Code</span>
+</a>
+<button aria-controls="nav" aria-expanded="false" aria-label="Toggle menu" class="menu-toggle" id="menuToggle">
+<span></span><span></span><span></span>
+</button>
+</div>
+<nav aria-label="Sections" class="nav" id="nav">
+<a data-path="~/projects" href="../../index.html#projects">Projects</a>
+<a data-path="~/work" href="../../index.html#work">Work</a>
+<a data-path="~/education" href="../../index.html#education">Education</a>
+<a data-path="~/skills" href="../../index.html#skills">Skills</a>
+<a data-path="~/about" href="../../index.html#about">About Me</a>
+<a data-path="~/contact" href="../../index.html#contact">Contact</a>
+</nav>
+<div class="rail__status">
+<span aria-hidden="true" class="dot"></span>
+<span>open to work</span>
+</div>
+</header>
+    <nav class="file-tree" data-tree-key="watcher"><p class="file-tree__title">Files</p><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">docs/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">guides/</span><ul class="tree"><li class="tree-file"><a href="docs--guides--alerting-recipes.md.html">alerting-recipes.md</a></li><li class="tree-file"><a href="docs--guides--configuration.md.html">configuration.md</a></li><li class="tree-file"><a href="docs--guides--data.md.html">data.md</a></li><li class="tree-file"><a href="docs--guides--first-steps.md.html">first-steps.md</a></li><li class="tree-file"><a href="docs--guides--nodes.md.html">nodes.md</a></li><li class="tree-file"><a href="docs--guides--notifications.md.html">notifications.md</a></li><li class="tree-file"><a href="docs--guides--operations.md.html">operations.md</a></li><li class="tree-file tree-file--active"><a href="docs--guides--proxmox.md.html">proxmox.md</a></li><li class="tree-file"><a href="docs--guides--ssh.md.html">ssh.md</a></li><li class="tree-file"><a href="docs--guides--web-ui.md.html">web-ui.md</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">images/</span><ul class="tree"><li class="tree-file"><a href="docs--images--config-tree-dark.png.html">config-tree-dark.png</a></li><li class="tree-file"><a href="docs--images--config-tree.png.html">config-tree.png</a></li><li class="tree-file"><a href="docs--images--host-groups-dark.png.html">host-groups-dark.png</a></li><li class="tree-file"><a href="docs--images--host-groups.png.html">host-groups.png</a></li><li class="tree-file"><a href="docs--images--nodes-dark.png.html">nodes-dark.png</a></li><li class="tree-file"><a href="docs--images--nodes.png.html">nodes.png</a></li><li class="tree-file"><a href="docs--images--overview-dark.png.html">overview-dark.png</a></li><li class="tree-file"><a href="docs--images--overview.png.html">overview.png</a></li><li class="tree-file"><a href="docs--images--two-factor-dark.png.html">two-factor-dark.png</a></li><li class="tree-file"><a href="docs--images--two-factor.png.html">two-factor.png</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">objects/</span><ul class="tree"><li class="tree-file"><a href="docs--objects--check.md.html">check.md</a></li><li class="tree-file"><a href="docs--objects--contact.md.html">contact.md</a></li><li class="tree-file"><a href="docs--objects--contactgroup.md.html">contactgroup.md</a></li><li class="tree-file"><a href="docs--objects--dependency.md.html">dependency.md</a></li><li class="tree-file"><a href="docs--objects--downtimegroup.md.html">downtimegroup.md</a></li><li class="tree-file"><a href="docs--objects--host.md.html">host.md</a></li><li class="tree-file"><a href="docs--objects--hostgroup.md.html">hostgroup.md</a></li><li class="tree-file"><a href="docs--objects--notify.md.html">notify.md</a></li><li class="tree-file"><a href="docs--objects--service.md.html">service.md</a></li><li class="tree-file"><a href="docs--objects--servicegroup.md.html">servicegroup.md</a></li><li class="tree-file"><a href="docs--objects--sink.md.html">sink.md</a></li><li class="tree-file"><a href="docs--objects--timeperiod.md.html">timeperiod.md</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">reference/</span><ul class="tree"><li class="tree-file"><a href="docs--reference--api.md.html">api.md</a></li><li class="tree-file"><a href="docs--reference--cli.md.html">cli.md</a></li><li class="tree-file"><a href="docs--reference--watcher-toml.md.html">watcher-toml.md</a></li></ul></li><li class="tree-file"><a href="docs--README.md.html">README.md</a></li><li class="tree-file"><a href="docs--examples.md.html">examples.md</a></li><li class="tree-file"><a href="docs--install.md.html">install.md</a></li><li class="tree-file"><a href="docs--introduction.md.html">introduction.md</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">examples/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">demo/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">conf.d/</span><ul class="tree"><li class="tree-file"><a href="examples--demo--conf.d--checks.toml.html">checks.toml</a></li><li class="tree-file"><a href="examples--demo--conf.d--groups.toml.html">groups.toml</a></li><li class="tree-file"><a href="examples--demo--conf.d--hosts.toml.html">hosts.toml</a></li><li class="tree-file"><a href="examples--demo--conf.d--services.toml.html">services.toml</a></li></ul></li><li class="tree-file"><a href="examples--demo--watcher.toml.html">watcher.toml</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">local/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">conf.d/</span><ul class="tree"><li class="tree-file"><a href="examples--local--conf.d--checks.toml.html">checks.toml</a></li><li class="tree-file"><a href="examples--local--conf.d--contacts.toml.html">contacts.toml</a></li><li class="tree-file"><a href="examples--local--conf.d--hosts.toml.html">hosts.toml</a></li><li class="tree-file"><a href="examples--local--conf.d--services.toml.html">services.toml</a></li></ul></li><li class="tree-file"><a href="examples--local--watcher.toml.html">watcher.toml</a></li></ul></li><li class="tree-file"><a href="examples--init-answers.toml.html">init-answers.toml</a></li><li class="tree-file"><a href="examples--sinks.toml.html">sinks.toml</a></li></ul></li><li class="tree-file"><a href="*.toml.html">*.toml</a></li><li class="tree-file"><a href="*.yaml.html">*.yaml</a></li><li class="tree-file"><a href="Cargo.lock.html">Cargo.lock</a></li><li class="tree-file"><a href="LICENSE.html">LICENSE</a></li></ul></nav><script>
+(function () {
+  var tree = document.currentScript.previousElementSibling;
+  var key = "file-tree-scroll:" + tree.dataset.treeKey;
+  var saved = null;
+  try {
+    saved = sessionStorage.getItem(key);
+    sessionStorage.removeItem(key);
+  } catch (e) {}
+
+  if (saved !== null) {
+    tree.scrollTop = +saved;
+  } else {
+    var active = tree.querySelector(".tree-file--active");
+    if (active) {
+      var a = active.getBoundingClientRect();
+      var t = tree.getBoundingClientRect();
+      if (a.bottom > t.bottom) {
+        tree.scrollTop += a.top - t.top - (tree.clientHeight - a.height) / 2;
+      }
+    }
+  }
+
+  tree.addEventListener("click", function (e) {
+    if (!e.target.closest("a")) return;
+    try { sessionStorage.setItem(key, String(tree.scrollTop)); } catch (err) {}
+  });
+})();
+</script>
+    <main class="main" id="main">
+      <section class="section source-page">
+        <p class="section__path">
+          <a href="../../index.html#projects" class="link">~/projects</a> /
+          <a href="../watcher.html" class="link">watcher</a> / source
+        </p>
+        <div class="source-page__head">
+          <h1 class="section__title">docs/guides/proxmox.md</h1>
+          <a href="../watcher.html" class="link">← Back to Watcher</a>
+        </div>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">  1</span>
+<span class="normal">  2</span>
+<span class="normal">  3</span>
+<span class="normal">  4</span>
+<span class="normal">  5</span>
+<span class="normal">  6</span>
+<span class="normal">  7</span>
+<span class="normal">  8</span>
+<span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span>
+<span class="normal">245</span>
+<span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span>
+<span class="normal">250</span>
+<span class="normal">251</span>
+<span class="normal">252</span>
+<span class="normal">253</span>
+<span class="normal">254</span>
+<span class="normal">255</span>
+<span class="normal">256</span>
+<span class="normal">257</span>
+<span class="normal">258</span></pre></div></td><td class="code"><div><pre><span></span><span class="gh"># Monitoring Proxmox VE</span>
+
+Watcher checks Proxmox VE through its API, without anything installed on
+the Proxmox servers. Six built-in checks report on:
+
+| Check | What it checks |
+|---|---|
+| <span class="sb">`proxmox-cluster`</span> | Quorum, and which nodes are online |
+| <span class="sb">`proxmox-node`</span> | CPU, memory, swap, load and root file system of a node |
+| <span class="sb">`proxmox-storage`</span> | How full each storage is |
+| <span class="sb">`proxmox-guest`</span> | One VM or container: whether it runs, CPU and memory |
+| <span class="sb">`proxmox-backup`</span> | Failed or missing backups, and guests without a backup job |
+| <span class="sb">`proxmox-updates`</span> | Pending package updates on a node |
+
+The login is set once, on the host that stands for the Proxmox VE server:
+an <span class="gs">**API token**</span> (a login for programs that you create in Proxmox VE),
+which Watcher stores encrypted like the [<span class="nt">secrets for SSH</span>](<span class="na">ssh.md#secrets</span>).
+Watcher can also find your VMs and containers (<span class="gs">**discovery**</span>) and add
+them as hosts with one click.
+
+All options are listed under
+[<span class="nt">Proxmox VE checks</span>](<span class="na">../objects/check.md#proxmox-ve-checks</span>) and
+[<span class="nt">proxmox</span>](<span class="na">../objects/host.md#proxmox</span>) on the host page.
+
+<span class="gu">## 1. Create a user and an API token in Proxmox VE</span>
+
+Run this on a Proxmox VE node, as root:
+
+<span class="sb">```sh</span>
+pveum<span class="w"> </span>user<span class="w"> </span>add<span class="w"> </span>watcher@pve<span class="w"> </span>--comment<span class="w"> </span><span class="s2">"Watcher monitoring"</span>
+pveum<span class="w"> </span>acl<span class="w"> </span>modify<span class="w"> </span>/<span class="w"> </span>--users<span class="w"> </span>watcher@pve<span class="w"> </span>--roles<span class="w"> </span>PVEAuditor
+pveum<span class="w"> </span>user<span class="w"> </span>token<span class="w"> </span>add<span class="w"> </span>watcher@pve<span class="w"> </span>monitor<span class="w"> </span>--privsep<span class="w"> </span><span class="m">0</span>
+<span class="sb">```</span>
+
+<span class="k">-</span><span class="w"> </span>The first line creates the user <span class="sb">`watcher`</span> in the Proxmox VE realm <span class="sb">`pve`</span>.
+  It needs no password, since it only logs in with the token.
+<span class="k">-</span><span class="w"> </span><span class="sb">`PVEAuditor`</span> is a built-in role that can read everything but change
+  nothing. This is enough for every check except <span class="sb">`proxmox-updates`</span>, see
+  [<span class="nt">Permissions</span>](<span class="na">#permissions</span>).
+<span class="k">-</span><span class="w"> </span>The last line creates the token <span class="sb">`monitor`</span>. <span class="sb">`--privsep 0`</span> gives it the
+  same rights as its user.
+
+The last command prints the token. Keep the window open for step 3:
+
+<span class="sb">```</span>
+<span class="sb">┌──────────────┬──────────────────────────────────────┐</span>
+<span class="sb">│ key          │ value                                │</span>
+<span class="sb">╞══════════════╪══════════════════════════════════════╡</span>
+<span class="sb">│ full-tokenid │ watcher@pve!monitor                  │</span>
+<span class="sb">│ value        │ 5f3c2a9e-0d4b-4c41-9a0e-7f1d2b3c4d5e │</span>
+<span class="sb">└──────────────┴──────────────────────────────────────┘</span>
+<span class="sb">```</span>
+
+<span class="sb">`full-tokenid`</span> is the token ID, <span class="sb">`value`</span> is its secret. Proxmox VE shows the
+secret only this once.
+
+You can do the same in the Proxmox VE web interface under Datacenter →
+Permissions: add the user under Users, give it the role on <span class="sb">`/`</span> under
+Permissions, and add the token under API Tokens (uncheck "Privilege
+Separation").
+
+<span class="gu">## 2. Find the certificate fingerprint</span>
+
+A new Proxmox VE server uses a self-signed certificate, which Watcher
+doesn't trust on its own. Tell Watcher which certificate to expect by its
+fingerprint. On the node:
+
+<span class="sb">```sh</span>
+openssl<span class="w"> </span>x509<span class="w"> </span>-in<span class="w"> </span>/etc/pve/local/pve-ssl.pem<span class="w"> </span>-noout<span class="w"> </span>-fingerprint<span class="w"> </span>-sha256
+<span class="sb">```</span>
+
+<span class="sb">```</span>
+<span class="sb">sha256 Fingerprint=18:B4:0D:EC:C4:69:B9:5C:8B:30:C2:82:ED:4A:0C:B9:49:01:0A:3B:04:0F:55:86:68:A8:85:40:6F:22:F3:A2</span>
+<span class="sb">```</span>
+
+The web interface shows the same value under the node → System →
+Certificates → <span class="sb">`pve-ssl.pem`</span> → View Certificate.
+
+If you replaced the certificate (your own one in <span class="sb">`pveproxy-ssl.pem`</span>, or one
+from Let's Encrypt through ACME), use that file instead. A certificate from
+Let's Encrypt is trusted anyway: then leave out <span class="sb">`fingerprint`</span>.
+
+<span class="gu">## 3. Store the token in Watcher</span>
+
+In the web UI: Configuration → Secrets, choose <span class="gs">**API Token**</span>, and enter a
+name (for example <span class="sb">`pve`</span>), the token ID and the secret.
+
+Or on the Watcher server, next to <span class="sb">`watcher.toml`</span>:
+
+<span class="sb">```sh</span>
+watcher<span class="w"> </span>secret<span class="w"> </span>token<span class="w"> </span>pve<span class="w"> </span>--id<span class="w"> </span><span class="s1">'watcher@pve!monitor'</span>
+<span class="sb">```</span>
+
+It asks for the token's secret (the <span class="sb">`value`</span> from step 1). Put the token ID
+in single quotes, or the shell reads the <span class="sb">`!`</span>.
+
+<span class="gu">## 4. Add the Proxmox VE server</span>
+
+Add a host for the server, with the login and the checks you want. In the
+web UI: Configuration → Hosts → Add Host → <span class="gs">**Proxmox VE**</span>, which opens the
+host form with its Proxmox VE section. As a file, for example
+<span class="sb">`conf.d/proxmox.toml`</span>:
+
+<span class="sb">```toml</span>
+<span class="k">[[host]]</span>
+<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"pve1"</span>
+<span class="n">address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"192.0.2.10"</span>
+<span class="n">proxmox</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">secret</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"pve"</span><span class="p">,</span><span class="w"> </span><span class="n">fingerprint</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"18:B4:0D:EC:C4:69:B9:5C:8B:30:C2:82:ED:4A:0C:B9:49:01:0A:3B:04:0F:55:86:68:A8:85:40:6F:22:F3:A2"</span><span class="p">,</span><span class="w"> </span><span class="n">discover</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span>
+<span class="n">services</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"proxmox-cluster"</span><span class="p">,</span><span class="w"> </span><span class="s2">"proxmox-node"</span><span class="p">,</span><span class="w"> </span><span class="s2">"proxmox-storage"</span><span class="p">,</span><span class="w"> </span><span class="s2">"proxmox-backup"</span><span class="p">]</span>
+<span class="sb">```</span>
+
+<span class="k">-</span><span class="w"> </span><span class="sb">`secret`</span> is the name from step 3, <span class="sb">`fingerprint`</span> the one from step 2.
+<span class="k">-</span><span class="w"> </span><span class="sb">`discover = true`</span> looks for its VMs and containers, see the next step.
+<span class="k">-</span><span class="w"> </span>The checks ask the API at the host's <span class="sb">`address`</span> (port 8006). They need no
+  <span class="sb">`[service.…]`</span>: built-in checks can be listed as they are.
+
+<span class="sb">`proxmox-node`</span> only reports values; set [<span class="nt">thresholds</span>](<span class="na">../objects/check.md#thresholds</span>)
+to be warned, on the host's service:
+
+<span class="sb">```toml</span>
+<span class="w">  </span><span class="k">[host.service.proxmox-node]</span>
+<span class="w">  </span><span class="n">thresholds</span><span class="p">.</span><span class="n">cpu</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">warn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"&gt; 80%"</span><span class="p">,</span><span class="w"> </span><span class="n">crit</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"&gt; 95%"</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="n">thresholds</span><span class="p">.</span><span class="n">memory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">warn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"&gt; 85%"</span><span class="p">,</span><span class="w"> </span><span class="n">crit</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"&gt; 95%"</span><span class="w"> </span><span class="p">}</span>
+<span class="sb">```</span>
+
+Then check the file with <span class="sb">`watcher config check`</span>. Watcher reloads changed
+files on its own; forms in the web UI check before they save.
+
+<span class="gu">## 5. Accept VMs and containers</span>
+
+With <span class="sb">`discover = true`</span>, Watcher asks the API every 10 minutes for the VMs
+and containers (not templates). They are listed under Configuration →
+<span class="gs">**Discovery**</span>, one list per Proxmox VE host:
+
+| Column | What it shows |
+|---|---|
+| Name, Type, VM ID, Node | As in Proxmox VE. Type is VM or CT (container). |
+| Address | From the QEMU guest agent (VMs) or the container's network, while it runs. The first IPv4 address, else IPv6. VMs without the guest agent have none. |
+| Host | The host it was added as, <span class="sb">`NEW`</span>, or <span class="sb">`ignored`</span>. |
+
+<span class="gs">**Accept**</span> adds a guest as a host (<span class="gs">**Accept All New**</span> adds all new ones).
+<span class="gs">**Ignore**</span> stops offering it; <span class="gs">**Restore**</span> offers it again. <span class="gs">**Remove**</span>
+deletes the host again; its history stays in the database.
+
+Accepted guests are written to <span class="sb">`conf.d/discovered/&lt;Proxmox VE host&gt;.toml`</span>:
+
+<span class="sb">```toml</span>
+<span class="k">[[host]]</span>
+<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"jellyfin"</span>
+<span class="n">address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"192.0.2.71"</span>
+<span class="n">services</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"proxmox-guest"</span><span class="p">]</span>
+<span class="n">proxmox</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">host</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"pve1"</span><span class="p">,</span><span class="w"> </span><span class="n">vmid</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="p">}</span>
+<span class="sb">```</span>
+
+<span class="k">-</span><span class="w"> </span>The host is named after the guest. If that name is taken, the VM ID is
+  added: <span class="sb">`jellyfin-100`</span>.
+<span class="k">-</span><span class="w"> </span><span class="sb">`proxmox-guest`</span> checks whether it runs, and its CPU and memory. It asks
+  the API of <span class="sb">`pve1`</span>, with the login from there.
+<span class="k">-</span><span class="w"> </span>A guest without an address gets <span class="sb">`host_check = "proxmox-guest"`</span>: the API
+  says whether it is UP, since there is nothing to ping.
+<span class="k">-</span><span class="w"> </span>You can edit these hosts like any other, for example add services or
+  host groups. Discovery only keeps <span class="sb">`address`</span> and <span class="sb">`proxmox`</span> up to date.
+<span class="k">-</span><span class="w"> </span>A guest deleted in Proxmox VE is removed from the file on the next run.
+  A stopped guest stays, and its <span class="sb">`proxmox-guest`</span> check is CRITICAL.
+
+<span class="gs">**Run Now**</span> on the Discovery page asks the API right away.
+
+<span class="gu">## 6. See that it works</span>
+
+Open the host <span class="sb">`pve1`</span> in the web UI. After the first run (within one
+interval), each service shows a line like:
+
+<span class="sb">```</span>
+<span class="sb">PROXMOX OK - pve1: CPU 5.2%, memory 23.7% (7.4 GiB of 31.2 GiB), load 0.05, up 3 days</span>
+<span class="sb">```</span>
+
+To try a service right away, open it and click <span class="gs">**Run Check**</span>.
+
+<span class="gu">## Clusters</span>
+
+Every node's API answers for the whole cluster. So <span class="sb">`proxmox-cluster`</span>,
+<span class="sb">`proxmox-storage`</span>, <span class="sb">`proxmox-backup`</span> and discovery need only one node:
+put them on one host, and set <span class="sb">`discover = true`</span> only there, or every
+node offers the same guests.
+
+<span class="sb">`proxmox-node`</span> and <span class="sb">`proxmox-updates`</span> check one node: give every node its
+own host. Each node has its own certificate, so the fingerprint goes on
+each host, and the token on a host group:
+
+<span class="sb">```toml</span>
+<span class="k">[hostgroup.pve]</span>
+<span class="n">members</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"pve*"</span><span class="p">]</span>
+<span class="n">proxmox</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">secret</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"pve"</span><span class="w"> </span><span class="p">}</span>
+<span class="n">services</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"proxmox-node"</span><span class="p">]</span>
+
+<span class="k">[[host]]</span>
+<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"pve1"</span>
+<span class="n">address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"192.0.2.10"</span>
+<span class="n">proxmox</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">fingerprint</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"18:B4:0D:EC:C4:69:B9:5C:8B:30:C2:82:ED:4A:0C:B9:49:01:0A:3B:04:0F:55:86:68:A8:85:40:6F:22:F3:A2"</span><span class="p">,</span><span class="w"> </span><span class="n">discover</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span>
+<span class="n">services</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"proxmox-cluster"</span><span class="p">,</span><span class="w"> </span><span class="s2">"proxmox-storage"</span><span class="p">,</span><span class="w"> </span><span class="s2">"proxmox-backup"</span><span class="p">]</span>
+
+<span class="k">[[host]]</span>
+<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"pve2"</span>
+<span class="n">address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"192.0.2.11"</span>
+<span class="n">proxmox</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">fingerprint</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"5A:0C:11:22:33:44:55:66:77:88:99:AA:BB:CC:DD:EE:FF:00:11:22:33:44:55:66:77:88:99:AA:BB:CC:DD:EE"</span><span class="w"> </span><span class="p">}</span>
+<span class="sb">```</span>
+
+Each node's <span class="sb">`proxmox-node`</span> asks its own address. In a cluster with more
+than one node, it also needs to know which node it is about: if the host
+names are the node names, add <span class="sb">`vars.node = "$host.name$"`</span> to the host
+group's service:
+
+<span class="sb">```toml</span>
+<span class="k">[service.proxmox-node]</span>
+<span class="n">vars</span><span class="p">.</span><span class="n">node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"$host.name$"</span>
+<span class="sb">```</span>
+
+<span class="gu">## Permissions</span>
+
+<span class="sb">`PVEAuditor`</span> reads everything the checks and discovery need, except
+<span class="sb">`proxmox-updates`</span> (tested with Proxmox VE 9.2).
+
+<span class="sb">`proxmox-updates`</span> needs the permission <span class="sb">`Sys.Modify`</span> on the node. Proxmox
+VE asks for it to list updates, although listing changes nothing. Without
+it, the service is UNKNOWN:
+
+<span class="sb">```</span>
+<span class="sb">PROXMOX UNKNOWN - the token lacks a permission: Permission check failed (/nodes/pve1, Sys.Modify)</span>
+<span class="sb">```</span>
+
+<span class="sb">`Sys.Modify`</span> also allows changing the node's network, DNS and time
+settings. If you want <span class="sb">`proxmox-updates`</span> anyway, give it only this one
+permission, on the nodes:
+
+<span class="sb">```sh</span>
+pveum<span class="w"> </span>role<span class="w"> </span>add<span class="w"> </span>WatcherUpdates<span class="w"> </span>--privs<span class="w"> </span>Sys.Modify
+pveum<span class="w"> </span>acl<span class="w"> </span>modify<span class="w"> </span>/nodes<span class="w"> </span>--users<span class="w"> </span>watcher@pve<span class="w"> </span>--roles<span class="w"> </span>WatcherUpdates
+<span class="sb">```</span>
+
+Proxmox VE looks for updates once a day on its own (<span class="sb">`pve-daily-update`</span>),
+so the count can be up to a day old.
+
+<span class="gu">## When something is wrong</span>
+
+Problems with the API make the service UNKNOWN, with one of these
+messages. Discovery shows the same ones on the Discovery page.
+
+| Message | What to do |
+|---|---|
+| <span class="sb">`proxmox-node needs proxmox = { secret = "..." } on the host or a host group`</span> | Set <span class="sb">`proxmox`</span> on the host (step 4), or on one of its host groups. |
+| <span class="sb">`secret "pve": no such secret`</span> | Store the token (step 3), with the name used in <span class="sb">`proxmox.secret`</span>. |
+| <span class="sb">`secret "pve" is a password, not an API token: ...`</span> | The secret was stored as a password. Store it again as an API token, with <span class="gs">**Replace**</span> checked (Configuration → Secrets → API Token), or with <span class="sb">`watcher secret token pve --id ... --replace`</span>. |
+| <span class="sb">`the API refused the token (401 ...)`</span> | The token ID or secret is wrong, or the token was deleted or has expired. |
+| <span class="sb">`the token lacks a permission: ...`</span> | Give the user the role from step 1, or see [<span class="nt">Permissions</span>](<span class="na">#permissions</span>). |
+| <span class="sb">`certificate fingerprint is ..., not the one in proxmox.fingerprint`</span> | The certificate changed (renewed, or replaced). Read the new fingerprint on the node (step 2) and put it into <span class="sb">`proxmox.fingerprint`</span>. The message shows the fingerprint the server sent; check it on the node before you use it, or you'd trust whoever answered. |
+| <span class="sb">`invalid peer certificate: UnknownIssuer; for a self-signed certificate, set proxmox.fingerprint on the host`</span> | The certificate is self-signed and <span class="sb">`fingerprint`</span> isn't set. Add it (step 2). |
+| <span class="sb">`2 nodes (pve1, pve2): set vars.node`</span> | In a cluster, <span class="sb">`proxmox-node`</span> and <span class="sb">`proxmox-updates`</span> need <span class="sb">`vars.node`</span>. |
+| <span class="sb">`no complete answer within ...`</span> | The API didn't answer in time. Is the address right, and is port 8006 open from Watcher? |
+</pre></div></td></tr></table></div>
+
+      </section>
+    </main>
+  </div>
+</body>
+</html>

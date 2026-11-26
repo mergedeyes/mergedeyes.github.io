@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>docs/objects/timeperiod.md — Watcher — Jan</title>
+  <link rel="stylesheet" href="../../styles.css?v=41ca8b66" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="layout">
+    <header class="rail" id="rail">
+<div class="rail__top">
+<a class="brand" href="../../index.html#top">
+<span class="brand__name">Jan</span>
+<span class="brand__meta">systems &amp; infrastructure<br/>Code, Code &amp; Code</span>
+</a>
+<button aria-controls="nav" aria-expanded="false" aria-label="Toggle menu" class="menu-toggle" id="menuToggle">
+<span></span><span></span><span></span>
+</button>
+</div>
+<nav aria-label="Sections" class="nav" id="nav">
+<a data-path="~/projects" href="../../index.html#projects">Projects</a>
+<a data-path="~/work" href="../../index.html#work">Work</a>
+<a data-path="~/education" href="../../index.html#education">Education</a>
+<a data-path="~/skills" href="../../index.html#skills">Skills</a>
+<a data-path="~/about" href="../../index.html#about">About Me</a>
+<a data-path="~/contact" href="../../index.html#contact">Contact</a>
+</nav>
+<div class="rail__status">
+<span aria-hidden="true" class="dot"></span>
+<span>open to work</span>
+</div>
+</header>
+    <nav class="file-tree" data-tree-key="watcher"><p class="file-tree__title">Files</p><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">docs/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">guides/</span><ul class="tree"><li class="tree-file"><a href="docs--guides--alerting-recipes.md.html">alerting-recipes.md</a></li><li class="tree-file"><a href="docs--guides--configuration.md.html">configuration.md</a></li><li class="tree-file"><a href="docs--guides--data.md.html">data.md</a></li><li class="tree-file"><a href="docs--guides--first-steps.md.html">first-steps.md</a></li><li class="tree-file"><a href="docs--guides--nodes.md.html">nodes.md</a></li><li class="tree-file"><a href="docs--guides--notifications.md.html">notifications.md</a></li><li class="tree-file"><a href="docs--guides--operations.md.html">operations.md</a></li><li class="tree-file"><a href="docs--guides--proxmox.md.html">proxmox.md</a></li><li class="tree-file"><a href="docs--guides--ssh.md.html">ssh.md</a></li><li class="tree-file"><a href="docs--guides--web-ui.md.html">web-ui.md</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">images/</span><ul class="tree"><li class="tree-file"><a href="docs--images--config-tree-dark.png.html">config-tree-dark.png</a></li><li class="tree-file"><a href="docs--images--config-tree.png.html">config-tree.png</a></li><li class="tree-file"><a href="docs--images--host-groups-dark.png.html">host-groups-dark.png</a></li><li class="tree-file"><a href="docs--images--host-groups.png.html">host-groups.png</a></li><li class="tree-file"><a href="docs--images--nodes-dark.png.html">nodes-dark.png</a></li><li class="tree-file"><a href="docs--images--nodes.png.html">nodes.png</a></li><li class="tree-file"><a href="docs--images--overview-dark.png.html">overview-dark.png</a></li><li class="tree-file"><a href="docs--images--overview.png.html">overview.png</a></li><li class="tree-file"><a href="docs--images--two-factor-dark.png.html">two-factor-dark.png</a></li><li class="tree-file"><a href="docs--images--two-factor.png.html">two-factor.png</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">objects/</span><ul class="tree"><li class="tree-file"><a href="docs--objects--check.md.html">check.md</a></li><li class="tree-file"><a href="docs--objects--contact.md.html">contact.md</a></li><li class="tree-file"><a href="docs--objects--contactgroup.md.html">contactgroup.md</a></li><li class="tree-file"><a href="docs--objects--dependency.md.html">dependency.md</a></li><li class="tree-file"><a href="docs--objects--downtimegroup.md.html">downtimegroup.md</a></li><li class="tree-file"><a href="docs--objects--host.md.html">host.md</a></li><li class="tree-file"><a href="docs--objects--hostgroup.md.html">hostgroup.md</a></li><li class="tree-file"><a href="docs--objects--notify.md.html">notify.md</a></li><li class="tree-file"><a href="docs--objects--service.md.html">service.md</a></li><li class="tree-file"><a href="docs--objects--servicegroup.md.html">servicegroup.md</a></li><li class="tree-file"><a href="docs--objects--sink.md.html">sink.md</a></li><li class="tree-file tree-file--active"><a href="docs--objects--timeperiod.md.html">timeperiod.md</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">reference/</span><ul class="tree"><li class="tree-file"><a href="docs--reference--api.md.html">api.md</a></li><li class="tree-file"><a href="docs--reference--cli.md.html">cli.md</a></li><li class="tree-file"><a href="docs--reference--watcher-toml.md.html">watcher-toml.md</a></li></ul></li><li class="tree-file"><a href="docs--README.md.html">README.md</a></li><li class="tree-file"><a href="docs--examples.md.html">examples.md</a></li><li class="tree-file"><a href="docs--install.md.html">install.md</a></li><li class="tree-file"><a href="docs--introduction.md.html">introduction.md</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">examples/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">demo/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">conf.d/</span><ul class="tree"><li class="tree-file"><a href="examples--demo--conf.d--checks.toml.html">checks.toml</a></li><li class="tree-file"><a href="examples--demo--conf.d--groups.toml.html">groups.toml</a></li><li class="tree-file"><a href="examples--demo--conf.d--hosts.toml.html">hosts.toml</a></li><li class="tree-file"><a href="examples--demo--conf.d--services.toml.html">services.toml</a></li></ul></li><li class="tree-file"><a href="examples--demo--watcher.toml.html">watcher.toml</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">local/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">conf.d/</span><ul class="tree"><li class="tree-file"><a href="examples--local--conf.d--checks.toml.html">checks.toml</a></li><li class="tree-file"><a href="examples--local--conf.d--contacts.toml.html">contacts.toml</a></li><li class="tree-file"><a href="examples--local--conf.d--hosts.toml.html">hosts.toml</a></li><li class="tree-file"><a href="examples--local--conf.d--services.toml.html">services.toml</a></li></ul></li><li class="tree-file"><a href="examples--local--watcher.toml.html">watcher.toml</a></li></ul></li><li class="tree-file"><a href="examples--init-answers.toml.html">init-answers.toml</a></li><li class="tree-file"><a href="examples--sinks.toml.html">sinks.toml</a></li></ul></li><li class="tree-file"><a href="*.toml.html">*.toml</a></li><li class="tree-file"><a href="*.yaml.html">*.yaml</a></li><li class="tree-file"><a href="Cargo.lock.html">Cargo.lock</a></li><li class="tree-file"><a href="LICENSE.html">LICENSE</a></li></ul></nav><script>
+(function () {
+  var tree = document.currentScript.previousElementSibling;
+  var key = "file-tree-scroll:" + tree.dataset.treeKey;
+  var saved = null;
+  try {
+    saved = sessionStorage.getItem(key);
+    sessionStorage.removeItem(key);
+  } catch (e) {}
+
+  if (saved !== null) {
+    tree.scrollTop = +saved;
+  } else {
+    var active = tree.querySelector(".tree-file--active");
+    if (active) {
+      var a = active.getBoundingClientRect();
+      var t = tree.getBoundingClientRect();
+      if (a.bottom > t.bottom) {
+        tree.scrollTop += a.top - t.top - (tree.clientHeight - a.height) / 2;
+      }
+    }
+  }
+
+  tree.addEventListener("click", function (e) {
+    if (!e.target.closest("a")) return;
+    try { sessionStorage.setItem(key, String(tree.scrollTop)); } catch (err) {}
+  });
+})();
+</script>
+    <main class="main" id="main">
+      <section class="section source-page">
+        <p class="section__path">
+          <a href="../../index.html#projects" class="link">~/projects</a> /
+          <a href="../watcher.html" class="link">watcher</a> / source
+        </p>
+        <div class="source-page__head">
+          <h1 class="section__title">docs/objects/timeperiod.md</h1>
+          <a href="../watcher.html" class="link">← Back to Watcher</a>
+        </div>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">  1</span>
+<span class="normal">  2</span>
+<span class="normal">  3</span>
+<span class="normal">  4</span>
+<span class="normal">  5</span>
+<span class="normal">  6</span>
+<span class="normal">  7</span>
+<span class="normal">  8</span>
+<span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span></pre></div></td><td class="code"><div><pre><span></span><span class="gh"># timeperiod</span>
+
+A time period says when something applies, for example business hours.
+A [<span class="nt">notify rule</span>](<span class="na">notify.md</span>) with <span class="sb">`period`</span> only notifies inside its time
+period.
+
+<span class="sb">```toml</span>
+<span class="k">[timeperiod.workhours]</span>
+<span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Business hours"</span>
+<span class="n">schedule</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="n">days</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"mon"</span><span class="p">,</span><span class="w"> </span><span class="s2">"tue"</span><span class="p">,</span><span class="w"> </span><span class="s2">"wed"</span><span class="p">,</span><span class="w"> </span><span class="s2">"thu"</span><span class="p">,</span><span class="w"> </span><span class="s2">"fri"</span><span class="p">],</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"08:00"</span><span class="p">,</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"18:00"</span><span class="w"> </span><span class="p">}]</span>
+
+<span class="k">[[notify]]</span>
+<span class="n">contact_groups</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"team"</span><span class="p">]</span>
+<span class="n">period</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"workhours"</span>
+<span class="sb">```</span>
+
+The team gets notifications on weekdays from 08:00 to 18:00. A problem
+that starts at night and is still open at 08:00 is sent to them at 08:00.
+
+<span class="gu">## Fields</span>
+
+| Field | Default | Description |
+|---|---|---|
+| <span class="sb">`title`</span> | | Name shown in the web UI. |
+| <span class="sb">`schedule`</span> | | Required. List of windows, see [<span class="nt">Windows</span>](<span class="na">#windows</span>). The time period is active while any of them is. |
+
+<span class="gu">### Windows</span>
+
+Each window is a table <span class="sb">`{ days, from, to }`</span>. Times are local time; the time
+zone is <span class="sb">`timezone`</span> in [<span class="nt">watcher.toml</span>](<span class="na">../reference/watcher-toml.md</span>), or the
+system's.
+
+| Field | Default | Description |
+|---|---|---|
+| <span class="sb">`days`</span> | every day | Weekdays the window starts on: <span class="sb">`mon`</span>, <span class="sb">`tue`</span>, <span class="sb">`wed`</span>, <span class="sb">`thu`</span>, <span class="sb">`fri`</span>, <span class="sb">`sat`</span>, <span class="sb">`sun`</span>. |
+| <span class="sb">`from`</span> | | Required. Start time, <span class="sb">`HH:MM`</span>. Or a date and time, <span class="sb">`YYYY-MM-DD HH:MM`</span>, for a window that happens once. |
+| <span class="sb">`to`</span> | | Required. End time, <span class="sb">`HH:MM`</span>. If it is not after <span class="sb">`from`</span>, the window ends on the next day. With a date in <span class="sb">`from`</span>, <span class="sb">`to`</span> needs a date too. |
+
+The windows are the same as in [<span class="nt">downtime groups</span>](<span class="na">downtimegroup.md#windows</span>).
+
+<span class="gu">## Examples</span>
+
+<span class="gu">### Business hours</span>
+
+<span class="sb">```toml</span>
+<span class="k">[timeperiod.workhours]</span>
+<span class="n">schedule</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="n">days</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"mon"</span><span class="p">,</span><span class="w"> </span><span class="s2">"tue"</span><span class="p">,</span><span class="w"> </span><span class="s2">"wed"</span><span class="p">,</span><span class="w"> </span><span class="s2">"thu"</span><span class="p">,</span><span class="w"> </span><span class="s2">"fri"</span><span class="p">],</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"08:00"</span><span class="p">,</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"18:00"</span><span class="w"> </span><span class="p">}]</span>
+<span class="sb">```</span>
+
+<span class="gu">### Different times on different days</span>
+
+A time period can have several windows, each with its own days and
+times. It is active while any of them is.
+
+<span class="sb">```toml</span>
+<span class="k">[timeperiod.workhours]</span>
+<span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Business hours"</span>
+<span class="n">schedule</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="n">days</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"mon"</span><span class="p">,</span><span class="w"> </span><span class="s2">"tue"</span><span class="p">,</span><span class="w"> </span><span class="s2">"wed"</span><span class="p">,</span><span class="w"> </span><span class="s2">"thu"</span><span class="p">],</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"08:00"</span><span class="p">,</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"17:00"</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="n">days</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"fri"</span><span class="p">],</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"08:00"</span><span class="p">,</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"14:00"</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="n">days</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"sat"</span><span class="p">],</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"10:00"</span><span class="p">,</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"12:00"</span><span class="w"> </span><span class="p">},</span>
+<span class="p">]</span>
+<span class="sb">```</span>
+
+Monday to Thursday from 08:00 to 17:00, Friday until 14:00, Saturday from
+10:00 to 12:00, and never on Sunday.
+
+<span class="gu">### Outside business hours</span>
+
+Weekday mornings and evenings, and the whole weekend. A <span class="sb">`to`</span> of
+<span class="sb">`"00:00"`</span> means midnight at the end of the day, so <span class="sb">`from = "00:00"`</span> with
+<span class="sb">`to = "00:00"`</span> is a full day.
+
+Weekday windows from 18:00 to 08:00 together with full weekend days would
+miss Monday 00:00 to 08:00: the Sunday window ends at midnight, and the
+Monday night window only starts at 18:00. That is why the example splits
+weekdays into a morning and an evening window.
+
+<span class="sb">```toml</span>
+<span class="k">[timeperiod.offhours]</span>
+<span class="n">schedule</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="n">days</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"mon"</span><span class="p">,</span><span class="w"> </span><span class="s2">"tue"</span><span class="p">,</span><span class="w"> </span><span class="s2">"wed"</span><span class="p">,</span><span class="w"> </span><span class="s2">"thu"</span><span class="p">,</span><span class="w"> </span><span class="s2">"fri"</span><span class="p">],</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"00:00"</span><span class="p">,</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"08:00"</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="n">days</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"mon"</span><span class="p">,</span><span class="w"> </span><span class="s2">"tue"</span><span class="p">,</span><span class="w"> </span><span class="s2">"wed"</span><span class="p">,</span><span class="w"> </span><span class="s2">"thu"</span><span class="p">,</span><span class="w"> </span><span class="s2">"fri"</span><span class="p">],</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"18:00"</span><span class="p">,</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"00:00"</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="n">days</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"sat"</span><span class="p">,</span><span class="w"> </span><span class="s2">"sun"</span><span class="p">],</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"00:00"</span><span class="p">,</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"00:00"</span><span class="w"> </span><span class="p">},</span>
+<span class="p">]</span>
+<span class="sb">```</span>
+
+<span class="gu">### Weekends</span>
+
+From Saturday 00:00 to Monday 00:00.
+
+<span class="sb">```toml</span>
+<span class="k">[timeperiod.weekend]</span>
+<span class="n">schedule</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="n">days</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"sat"</span><span class="p">,</span><span class="w"> </span><span class="s2">"sun"</span><span class="p">],</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"00:00"</span><span class="p">,</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"00:00"</span><span class="w"> </span><span class="p">}]</span>
+<span class="sb">```</span>
+
+<span class="gu">### A holiday on-call shift</span>
+
+<span class="sb">```toml</span>
+<span class="k">[timeperiod.holiday-oncall]</span>
+<span class="n">schedule</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"2026-12-24 00:00"</span><span class="p">,</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"2026-12-27 00:00"</span><span class="w"> </span><span class="p">}]</span>
+<span class="sb">```</span>
+
+<span class="gu">## Behaviour</span>
+
+How a notify rule with <span class="sb">`period`</span> behaves:
+
+<span class="k">-</span><span class="w"> </span><span class="gs">**Inside the time period**</span>, it works like any other rule.
+<span class="k">-</span><span class="w"> </span><span class="gs">**Outside it**</span>, its contacts get nothing.
+<span class="k">-</span><span class="w"> </span><span class="gs">**When the time period begins**</span>, its contacts get the problems that are
+  still open and that they didn't get yet. Problems that recovered or
+  were acknowledged in the meantime are not sent. A problem in a downtime
+  is sent once the downtime is over, if the time period is still active.
+<span class="k">-</span><span class="w"> </span><span class="gs">**After a restart without a database**</span>, problems that were already open
+  are not sent when the time period begins, only through <span class="sb">`repeat`</span>. With a
+  database, Watcher knows from the
+  [<span class="nt">notification log</span>](<span class="na">../guides/notifications.md#notification-log</span>) who got
+  them, and nothing changes.
+<span class="k">-</span><span class="w"> </span><span class="gs">**Recoveries**</span> go to the rule's contacts only if they got the problem,
+  at any time. So someone who got a problem at 17:55 also gets its
+  recovery at 19:00.
+<span class="k">-</span><span class="w"> </span><span class="gs">**Repeats**</span> (<span class="sb">`repeat`</span>) and <span class="gs">**escalations**</span> (<span class="sb">`after`</span>) of the rule happen
+  only inside the time period. A repeat that falls due outside it is sent
+  when the time period begins again.
+<span class="k">-</span><span class="w"> </span>Flapping and downtime messages are sent only inside the time period.
+
+A time period that no rule uses gives a warning.
+
+<span class="gu">## See also</span>
+
+<span class="k">-</span><span class="w"> </span>[<span class="nt">notify</span>](<span class="na">notify.md</span>): the <span class="sb">`period`</span> field
+<span class="k">-</span><span class="w"> </span>[<span class="nt">Alerting recipes</span>](<span class="na">../guides/alerting-recipes.md</span>): on-call at night, the
+  team during business hours
+</pre></div></td></tr></table></div>
+
+      </section>
+    </main>
+  </div>
+</body>
+</html>

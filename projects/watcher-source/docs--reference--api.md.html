@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>docs/reference/api.md — Watcher — Jan</title>
+  <link rel="stylesheet" href="../../styles.css?v=41ca8b66" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="layout">
+    <header class="rail" id="rail">
+<div class="rail__top">
+<a class="brand" href="../../index.html#top">
+<span class="brand__name">Jan</span>
+<span class="brand__meta">systems &amp; infrastructure<br/>Code, Code &amp; Code</span>
+</a>
+<button aria-controls="nav" aria-expanded="false" aria-label="Toggle menu" class="menu-toggle" id="menuToggle">
+<span></span><span></span><span></span>
+</button>
+</div>
+<nav aria-label="Sections" class="nav" id="nav">
+<a data-path="~/projects" href="../../index.html#projects">Projects</a>
+<a data-path="~/work" href="../../index.html#work">Work</a>
+<a data-path="~/education" href="../../index.html#education">Education</a>
+<a data-path="~/skills" href="../../index.html#skills">Skills</a>
+<a data-path="~/about" href="../../index.html#about">About Me</a>
+<a data-path="~/contact" href="../../index.html#contact">Contact</a>
+</nav>
+<div class="rail__status">
+<span aria-hidden="true" class="dot"></span>
+<span>open to work</span>
+</div>
+</header>
+    <nav class="file-tree" data-tree-key="watcher"><p class="file-tree__title">Files</p><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">docs/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">guides/</span><ul class="tree"><li class="tree-file"><a href="docs--guides--alerting-recipes.md.html">alerting-recipes.md</a></li><li class="tree-file"><a href="docs--guides--configuration.md.html">configuration.md</a></li><li class="tree-file"><a href="docs--guides--data.md.html">data.md</a></li><li class="tree-file"><a href="docs--guides--first-steps.md.html">first-steps.md</a></li><li class="tree-file"><a href="docs--guides--nodes.md.html">nodes.md</a></li><li class="tree-file"><a href="docs--guides--notifications.md.html">notifications.md</a></li><li class="tree-file"><a href="docs--guides--operations.md.html">operations.md</a></li><li class="tree-file"><a href="docs--guides--proxmox.md.html">proxmox.md</a></li><li class="tree-file"><a href="docs--guides--ssh.md.html">ssh.md</a></li><li class="tree-file"><a href="docs--guides--web-ui.md.html">web-ui.md</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">images/</span><ul class="tree"><li class="tree-file"><a href="docs--images--config-tree-dark.png.html">config-tree-dark.png</a></li><li class="tree-file"><a href="docs--images--config-tree.png.html">config-tree.png</a></li><li class="tree-file"><a href="docs--images--host-groups-dark.png.html">host-groups-dark.png</a></li><li class="tree-file"><a href="docs--images--host-groups.png.html">host-groups.png</a></li><li class="tree-file"><a href="docs--images--nodes-dark.png.html">nodes-dark.png</a></li><li class="tree-file"><a href="docs--images--nodes.png.html">nodes.png</a></li><li class="tree-file"><a href="docs--images--overview-dark.png.html">overview-dark.png</a></li><li class="tree-file"><a href="docs--images--overview.png.html">overview.png</a></li><li class="tree-file"><a href="docs--images--two-factor-dark.png.html">two-factor-dark.png</a></li><li class="tree-file"><a href="docs--images--two-factor.png.html">two-factor.png</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">objects/</span><ul class="tree"><li class="tree-file"><a href="docs--objects--check.md.html">check.md</a></li><li class="tree-file"><a href="docs--objects--contact.md.html">contact.md</a></li><li class="tree-file"><a href="docs--objects--contactgroup.md.html">contactgroup.md</a></li><li class="tree-file"><a href="docs--objects--dependency.md.html">dependency.md</a></li><li class="tree-file"><a href="docs--objects--downtimegroup.md.html">downtimegroup.md</a></li><li class="tree-file"><a href="docs--objects--host.md.html">host.md</a></li><li class="tree-file"><a href="docs--objects--hostgroup.md.html">hostgroup.md</a></li><li class="tree-file"><a href="docs--objects--notify.md.html">notify.md</a></li><li class="tree-file"><a href="docs--objects--service.md.html">service.md</a></li><li class="tree-file"><a href="docs--objects--servicegroup.md.html">servicegroup.md</a></li><li class="tree-file"><a href="docs--objects--sink.md.html">sink.md</a></li><li class="tree-file"><a href="docs--objects--timeperiod.md.html">timeperiod.md</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">reference/</span><ul class="tree"><li class="tree-file tree-file--active"><a href="docs--reference--api.md.html">api.md</a></li><li class="tree-file"><a href="docs--reference--cli.md.html">cli.md</a></li><li class="tree-file"><a href="docs--reference--watcher-toml.md.html">watcher-toml.md</a></li></ul></li><li class="tree-file"><a href="docs--README.md.html">README.md</a></li><li class="tree-file"><a href="docs--examples.md.html">examples.md</a></li><li class="tree-file"><a href="docs--install.md.html">install.md</a></li><li class="tree-file"><a href="docs--introduction.md.html">introduction.md</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">examples/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">demo/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">conf.d/</span><ul class="tree"><li class="tree-file"><a href="examples--demo--conf.d--checks.toml.html">checks.toml</a></li><li class="tree-file"><a href="examples--demo--conf.d--groups.toml.html">groups.toml</a></li><li class="tree-file"><a href="examples--demo--conf.d--hosts.toml.html">hosts.toml</a></li><li class="tree-file"><a href="examples--demo--conf.d--services.toml.html">services.toml</a></li></ul></li><li class="tree-file"><a href="examples--demo--watcher.toml.html">watcher.toml</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">local/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">conf.d/</span><ul class="tree"><li class="tree-file"><a href="examples--local--conf.d--checks.toml.html">checks.toml</a></li><li class="tree-file"><a href="examples--local--conf.d--contacts.toml.html">contacts.toml</a></li><li class="tree-file"><a href="examples--local--conf.d--hosts.toml.html">hosts.toml</a></li><li class="tree-file"><a href="examples--local--conf.d--services.toml.html">services.toml</a></li></ul></li><li class="tree-file"><a href="examples--local--watcher.toml.html">watcher.toml</a></li></ul></li><li class="tree-file"><a href="examples--init-answers.toml.html">init-answers.toml</a></li><li class="tree-file"><a href="examples--sinks.toml.html">sinks.toml</a></li></ul></li><li class="tree-file"><a href="*.toml.html">*.toml</a></li><li class="tree-file"><a href="*.yaml.html">*.yaml</a></li><li class="tree-file"><a href="Cargo.lock.html">Cargo.lock</a></li><li class="tree-file"><a href="LICENSE.html">LICENSE</a></li></ul></nav><script>
+(function () {
+  var tree = document.currentScript.previousElementSibling;
+  var key = "file-tree-scroll:" + tree.dataset.treeKey;
+  var saved = null;
+  try {
+    saved = sessionStorage.getItem(key);
+    sessionStorage.removeItem(key);
+  } catch (e) {}
+
+  if (saved !== null) {
+    tree.scrollTop = +saved;
+  } else {
+    var active = tree.querySelector(".tree-file--active");
+    if (active) {
+      var a = active.getBoundingClientRect();
+      var t = tree.getBoundingClientRect();
+      if (a.bottom > t.bottom) {
+        tree.scrollTop += a.top - t.top - (tree.clientHeight - a.height) / 2;
+      }
+    }
+  }
+
+  tree.addEventListener("click", function (e) {
+    if (!e.target.closest("a")) return;
+    try { sessionStorage.setItem(key, String(tree.scrollTop)); } catch (err) {}
+  });
+})();
+</script>
+    <main class="main" id="main">
+      <section class="section source-page">
+        <p class="section__path">
+          <a href="../../index.html#projects" class="link">~/projects</a> /
+          <a href="../watcher.html" class="link">watcher</a> / source
+        </p>
+        <div class="source-page__head">
+          <h1 class="section__title">docs/reference/api.md</h1>
+          <a href="../watcher.html" class="link">← Back to Watcher</a>
+        </div>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">  1</span>
+<span class="normal">  2</span>
+<span class="normal">  3</span>
+<span class="normal">  4</span>
+<span class="normal">  5</span>
+<span class="normal">  6</span>
+<span class="normal">  7</span>
+<span class="normal">  8</span>
+<span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span>
+<span class="normal">245</span>
+<span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span>
+<span class="normal">250</span>
+<span class="normal">251</span>
+<span class="normal">252</span>
+<span class="normal">253</span>
+<span class="normal">254</span>
+<span class="normal">255</span>
+<span class="normal">256</span>
+<span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span>
+<span class="normal">262</span>
+<span class="normal">263</span>
+<span class="normal">264</span>
+<span class="normal">265</span>
+<span class="normal">266</span>
+<span class="normal">267</span>
+<span class="normal">268</span>
+<span class="normal">269</span>
+<span class="normal">270</span>
+<span class="normal">271</span>
+<span class="normal">272</span>
+<span class="normal">273</span>
+<span class="normal">274</span>
+<span class="normal">275</span>
+<span class="normal">276</span>
+<span class="normal">277</span>
+<span class="normal">278</span>
+<span class="normal">279</span>
+<span class="normal">280</span>
+<span class="normal">281</span>
+<span class="normal">282</span>
+<span class="normal">283</span>
+<span class="normal">284</span>
+<span class="normal">285</span>
+<span class="normal">286</span>
+<span class="normal">287</span>
+<span class="normal">288</span>
+<span class="normal">289</span>
+<span class="normal">290</span>
+<span class="normal">291</span>
+<span class="normal">292</span>
+<span class="normal">293</span>
+<span class="normal">294</span>
+<span class="normal">295</span>
+<span class="normal">296</span>
+<span class="normal">297</span>
+<span class="normal">298</span>
+<span class="normal">299</span>
+<span class="normal">300</span>
+<span class="normal">301</span>
+<span class="normal">302</span>
+<span class="normal">303</span>
+<span class="normal">304</span>
+<span class="normal">305</span>
+<span class="normal">306</span>
+<span class="normal">307</span>
+<span class="normal">308</span>
+<span class="normal">309</span>
+<span class="normal">310</span>
+<span class="normal">311</span>
+<span class="normal">312</span>
+<span class="normal">313</span>
+<span class="normal">314</span>
+<span class="normal">315</span>
+<span class="normal">316</span>
+<span class="normal">317</span>
+<span class="normal">318</span>
+<span class="normal">319</span>
+<span class="normal">320</span>
+<span class="normal">321</span>
+<span class="normal">322</span>
+<span class="normal">323</span>
+<span class="normal">324</span>
+<span class="normal">325</span>
+<span class="normal">326</span>
+<span class="normal">327</span>
+<span class="normal">328</span>
+<span class="normal">329</span>
+<span class="normal">330</span>
+<span class="normal">331</span>
+<span class="normal">332</span>
+<span class="normal">333</span>
+<span class="normal">334</span>
+<span class="normal">335</span>
+<span class="normal">336</span>
+<span class="normal">337</span>
+<span class="normal">338</span>
+<span class="normal">339</span>
+<span class="normal">340</span>
+<span class="normal">341</span>
+<span class="normal">342</span>
+<span class="normal">343</span>
+<span class="normal">344</span>
+<span class="normal">345</span>
+<span class="normal">346</span>
+<span class="normal">347</span>
+<span class="normal">348</span>
+<span class="normal">349</span>
+<span class="normal">350</span>
+<span class="normal">351</span>
+<span class="normal">352</span>
+<span class="normal">353</span>
+<span class="normal">354</span>
+<span class="normal">355</span>
+<span class="normal">356</span>
+<span class="normal">357</span>
+<span class="normal">358</span>
+<span class="normal">359</span>
+<span class="normal">360</span>
+<span class="normal">361</span>
+<span class="normal">362</span>
+<span class="normal">363</span>
+<span class="normal">364</span>
+<span class="normal">365</span>
+<span class="normal">366</span>
+<span class="normal">367</span>
+<span class="normal">368</span>
+<span class="normal">369</span>
+<span class="normal">370</span>
+<span class="normal">371</span>
+<span class="normal">372</span>
+<span class="normal">373</span>
+<span class="normal">374</span>
+<span class="normal">375</span>
+<span class="normal">376</span>
+<span class="normal">377</span>
+<span class="normal">378</span>
+<span class="normal">379</span>
+<span class="normal">380</span>
+<span class="normal">381</span>
+<span class="normal">382</span>
+<span class="normal">383</span>
+<span class="normal">384</span>
+<span class="normal">385</span>
+<span class="normal">386</span>
+<span class="normal">387</span>
+<span class="normal">388</span>
+<span class="normal">389</span>
+<span class="normal">390</span>
+<span class="normal">391</span>
+<span class="normal">392</span>
+<span class="normal">393</span>
+<span class="normal">394</span>
+<span class="normal">395</span>
+<span class="normal">396</span>
+<span class="normal">397</span>
+<span class="normal">398</span>
+<span class="normal">399</span>
+<span class="normal">400</span>
+<span class="normal">401</span>
+<span class="normal">402</span>
+<span class="normal">403</span>
+<span class="normal">404</span>
+<span class="normal">405</span>
+<span class="normal">406</span>
+<span class="normal">407</span>
+<span class="normal">408</span>
+<span class="normal">409</span>
+<span class="normal">410</span>
+<span class="normal">411</span>
+<span class="normal">412</span>
+<span class="normal">413</span>
+<span class="normal">414</span>
+<span class="normal">415</span>
+<span class="normal">416</span>
+<span class="normal">417</span>
+<span class="normal">418</span>
+<span class="normal">419</span>
+<span class="normal">420</span>
+<span class="normal">421</span>
+<span class="normal">422</span>
+<span class="normal">423</span>
+<span class="normal">424</span>
+<span class="normal">425</span>
+<span class="normal">426</span>
+<span class="normal">427</span>
+<span class="normal">428</span>
+<span class="normal">429</span>
+<span class="normal">430</span>
+<span class="normal">431</span>
+<span class="normal">432</span>
+<span class="normal">433</span>
+<span class="normal">434</span>
+<span class="normal">435</span>
+<span class="normal">436</span>
+<span class="normal">437</span>
+<span class="normal">438</span>
+<span class="normal">439</span>
+<span class="normal">440</span>
+<span class="normal">441</span>
+<span class="normal">442</span>
+<span class="normal">443</span>
+<span class="normal">444</span></pre></div></td><td class="code"><div><pre><span></span><span class="gh"># HTTP API</span>
+
+The API speaks JSON under <span class="sb">`/api/v1`</span>. The web UI uses nothing but this API,
+so everything the web UI can do, a script can do too. The full
+specification is OpenAPI 3.1 at <span class="sb">`/api/v1/openapi.yaml`</span>
+([crates/hub/openapi.yaml](../../crates/hub/openapi.yaml)).
+
+Paths below are relative to <span class="sb">`/api/v1`</span>.
+
+<span class="gu">## Authentication</span>
+
+| Client | How it logs in |
+|---|---|
+| Scripts | <span class="sb">`Authorization: Bearer wt_...`</span> header with an API token (see [<span class="nt">token</span>](<span class="na">cli.md#token</span>), or the Account page). |
+| Browser | Session cookie from <span class="sb">`POST auth/login`</span>. |
+| No login | Without a database, or with <span class="sb">`--no-auth`</span>. Only on loopback. |
+
+A token has the same rights as its user.
+
+| Access | Endpoints |
+|---|---|
+| Public | UI files, <span class="sb">`health`</span>, <span class="sb">`openapi.yaml`</span>, <span class="sb">`auth/status`</span>, <span class="sb">`auth/login`</span> |
+| Admins only | <span class="sb">`config/*`</span>, <span class="sb">`ssh/*`</span>, <span class="sb">`users`</span> (except changing your own password), <span class="sb">`PUT process`</span>, <span class="sb">`run-check`</span> |
+| Any logged-in user | everything else |
+
+<span class="sb">```sh</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">T</span><span class="o">=</span>wt_...
+curl<span class="w"> </span>-H<span class="w"> </span><span class="s2">"Authorization: Bearer </span><span class="nv">$T</span><span class="s2">"</span><span class="w"> </span>http://127.0.0.1:8080/api/v1/services?problems<span class="o">=</span><span class="nb">true</span>
+<span class="sb">```</span>
+
+Errors come as <span class="sb">`{"error": "..."}`</span> with status 400, 401, 403, 404, 409, 422,
+423, or 503 (the endpoint needs a database).
+
+Requests with a session cookie that change something need a matching
+<span class="sb">`Origin`</span> header.
+
+<span class="gu">## Status</span>
+
+| Method and path | Description |
+|---|---|
+| <span class="sb">`GET health`</span> | Status and version. |
+| <span class="sb">`GET hosts`</span> | Hosts with their state; filters below. |
+| <span class="sb">`GET hosts/{host}`</span> | One host with its services, and its host check apart as <span class="sb">`check`</span>. Lists and totals of services (<span class="sb">`services`</span>, <span class="sb">`summary`</span>, <span class="sb">`groups`</span>, <span class="sb">`names`</span>) leave host checks out; they count as their hosts. |
+| <span class="sb">`GET services`</span> | Services; filters below. |
+| <span class="sb">`GET services/{host}/{service}`</span> | One service with its last result. |
+| <span class="sb">`POST services/{host}/{service}/result`</span> | Submit a result for a passive service. |
+| <span class="sb">`POST services/{host}/{service}/run`</span> | Run the service's command once. The result is shown, not recorded. |
+| <span class="sb">`GET groups`</span> | Host groups, service groups and downtime groups, with the number of hosts and services in each state. |
+| <span class="sb">`GET summary`</span> | The number of hosts and services in each state, and how many problems are unhandled. |
+| <span class="sb">`GET names`</span> | All host names and the service names, for suggestions. <span class="sb">`host=`</span>, <span class="sb">`hostgroup=`</span>: only the services on that host or the hosts of that group. <span class="sb">`graphs=true`</span>: only services with graphs on. |
+| <span class="sb">`GET stream`</span> | Live updates as Server-Sent Events. |
+
+Filters for <span class="sb">`GET services`</span>:
+
+| Parameter | Description |
+|---|---|
+| <span class="sb">`host`</span> | Only services of this host. |
+| <span class="sb">`hostgroup`</span> | Only services of hosts in this host group. |
+| <span class="sb">`group`</span> | Only services in this service group. |
+| <span class="sb">`state`</span> | Comma-separated list: <span class="sb">`ok,warning,critical,unknown,pending`</span>. |
+| <span class="sb">`problems=true`</span> | Only services that are not OK and not PENDING. |
+| <span class="sb">`hard=true`</span> | Only HARD states. |
+| <span class="sb">`unhandled=true`</span> | Only problems that are not acknowledged and not in a downtime. |
+| <span class="sb">`q`</span> | Only services with this text in the host name, service name, title or output. Upper and lower case don't matter. |
+
+Filters for <span class="sb">`GET hosts`</span>:
+
+| Parameter | Description |
+|---|---|
+| <span class="sb">`state`</span> | Comma-separated list: <span class="sb">`up,down,pending`</span>. |
+| <span class="sb">`group`</span> | Only hosts in this host group. |
+| <span class="sb">`unhandled=true`</span> | Only DOWN hosts that are not acknowledged and not in a downtime. |
+| <span class="sb">`q`</span> | Only hosts with this text in the name, address or host groups. |
+
+Both lists can be sorted and split into pages:
+
+| Parameter | Description |
+|---|---|
+| <span class="sb">`sort`</span> | Services: <span class="sb">`host`</span>, <span class="sb">`service`</span>, <span class="sb">`status`</span>, <span class="sb">`last_check`</span>, <span class="sb">`duration`</span> or <span class="sb">`attempt`</span>. Hosts: <span class="sb">`host`</span>, <span class="sb">`status`</span>, <span class="sb">`address`</span>, <span class="sb">`last_check`</span> or <span class="sb">`duration`</span>. Without it, the list is in config order. Names sort by their numbers: <span class="sb">`web2`</span> comes before <span class="sb">`web10`</span>. |
+| <span class="sb">`desc=true`</span> | Reverse the order. |
+| <span class="sb">`offset`</span> | Skip this many entries. |
+| <span class="sb">`limit`</span> | Return at most this many entries. Without it, you get all of them. |
+
+The answer has the page in <span class="sb">`services`</span> (or <span class="sb">`hosts`</span>), the number of
+entries that match the filters in <span class="sb">`total`</span>, and <span class="sb">`counts`</span>: how many are in
+each state. <span class="sb">`counts`</span> ignores the <span class="sb">`state`</span> filter, so it shows the other
+states too.
+
+<span class="sb">```sh</span>
+curl<span class="w"> </span>-H<span class="w"> </span><span class="s2">"Authorization: Bearer </span><span class="nv">$T</span><span class="s2">"</span><span class="w"> </span><span class="s1">'.../api/v1/services?state=critical,unknown&amp;hard=true'</span>
+curl<span class="w"> </span>-H<span class="w"> </span><span class="s2">"Authorization: Bearer </span><span class="nv">$T</span><span class="s2">"</span><span class="w"> </span><span class="s1">'.../api/v1/services?problems=true&amp;sort=status&amp;desc=true&amp;limit=50'</span>
+<span class="c1"># → {"counts": {"ok": 0, "warning": 3, …}, "total": 12, "services": [ …50 at most… ]}</span>
+<span class="sb">```</span>
+
+Host and service objects include <span class="sb">`acknowledged`</span>, <span class="sb">`muted`</span>,
+<span class="sb">`checks_enabled`</span> and <span class="sb">`downtime`</span>.
+
+<span class="gu">### Passive results</span>
+
+<span class="sb">```sh</span>
+curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>-H<span class="w"> </span><span class="s2">"Authorization: Bearer </span><span class="nv">$T</span><span class="s2">"</span><span class="w"> </span>-H<span class="w"> </span><span class="s1">'content-type: application/json'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">'{"exit_code": 1, "output": "BACKUP WARNING - 2 files skipped | skipped=2"}'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>.../api/v1/services/backup01/backup/result
+<span class="sb">```</span>
+
+The body contains <span class="sb">`exit_code`</span> (0 to 3) or <span class="sb">`state`</span> (<span class="sb">`ok`</span>, <span class="sb">`warning`</span>,
+<span class="sb">`critical`</span>, <span class="sb">`unknown`</span>), and <span class="sb">`output`</span>, which is read like the output of a
+command. See [<span class="nt">Passive checks</span>](<span class="na">../objects/check.md#passive-checks</span>).
+
+<span class="gu">### Live updates</span>
+
+<span class="sb">```sh</span>
+curl<span class="w"> </span>-N<span class="w"> </span>-H<span class="w"> </span><span class="s2">"Authorization: Bearer </span><span class="nv">$T</span><span class="s2">"</span><span class="w"> </span>.../api/v1/stream
+<span class="sb">```</span>
+
+| Event | Meaning |
+|---|---|
+| <span class="sb">`result`</span> | A service after each check. |
+| <span class="sb">`summary`</span> | The same as <span class="sb">`GET summary`</span>. Sent when the stream opens and after states change, at most once a second. Its <span class="sb">`generation`</span> number changes whenever a state, an acknowledgement, a downtime or the configuration changes. |
+| <span class="sb">`reload`</span> | The configuration was reloaded, or a command changed something; fetch the lists again. |
+| <span class="sb">`lagged`</span> | Updates were dropped because the client was too slow; fetch again. |
+
+With many services, a client usually only wants results for what it
+shows. Open the stream with <span class="sb">`?watch=true`</span>. The first event is <span class="sb">`hello`</span>
+with the stream's <span class="sb">`id`</span>. Then tell the hub which services and hosts you
+want results for; each call replaces the previous list:
+
+<span class="sb">```sh</span>
+curl<span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span>-H<span class="w"> </span><span class="s2">"Authorization: Bearer </span><span class="nv">$T</span><span class="s2">"</span><span class="w"> </span>-H<span class="w"> </span><span class="s1">'content-type: application/json'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">'{"services": ["web01/http"], "hosts": ["db01"]}'</span><span class="w"> </span>.../api/v1/stream/&lt;id&gt;
+<span class="sb">```</span>
+
+<span class="sb">`hosts`</span> means all services of those hosts. <span class="sb">`summary`</span>, <span class="sb">`reload`</span> and
+<span class="sb">`lagged`</span> still come for everything. When <span class="sb">`generation`</span> changes, fetch your
+list again: services may have moved into or out of it.
+
+<span class="gu">## Commands</span>
+
+<span class="sb">`POST actions/{action}`</span> runs a command on hosts or services:
+
+| Action | Description |
+|---|---|
+| <span class="sb">`recheck`</span> | Run the check now, even while checks are turned off. |
+| <span class="sb">`ack`</span>, <span class="sb">`unack`</span> | Acknowledge a problem, or remove the acknowledgement. An acknowledgement ends when the service is OK again. |
+| <span class="sb">`mute`</span>, <span class="sb">`unmute`</span> | Turn notifications off or on. |
+| <span class="sb">`disable-checks`</span>, <span class="sb">`enable-checks`</span> | Turn active checks off or on. |
+| <span class="sb">`downtime`</span> | No notifications from <span class="sb">`start`</span> until <span class="sb">`end`</span>, or for <span class="sb">`duration`</span>. |
+
+| Body field | Description |
+|---|---|
+| <span class="sb">`hosts`</span> | Host names. A host covers all its services; <span class="sb">`ack`</span> on a host acknowledges its host check. |
+| <span class="sb">`services`</span> | Service IDs, <span class="sb">`host/service`</span>. |
+| <span class="sb">`hostgroups`</span>, <span class="sb">`servicegroups`</span>, <span class="sb">`downtimegroups`</span> | Groups. Expanded to their members, except for downtimes: a downtime keeps the group, so hosts that join later are covered too. |
+| <span class="sb">`comment`</span> | Text shown with the acknowledgement or downtime. |
+| <span class="sb">`start`</span> | <span class="sb">`downtime`</span> only. Start time; default now. |
+| <span class="sb">`end`</span>, <span class="sb">`duration`</span> | <span class="sb">`downtime`</span> only. End time, or a duration like <span class="sb">`2h`</span>. |
+
+The response lists what was <span class="sb">`done`</span>, what was <span class="sb">`skipped`</span> (with the reason),
+and the <span class="sb">`downtimes`</span> created.
+
+<span class="sb">```sh</span>
+curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>-H<span class="w"> </span><span class="s2">"Authorization: Bearer </span><span class="nv">$T</span><span class="s2">"</span><span class="w"> </span>-H<span class="w"> </span><span class="s1">'content-type: application/json'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">'{"hosts": ["web01"], "duration": "2h", "comment": "patching"}'</span><span class="w"> </span>.../api/v1/actions/downtime
+curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>-H<span class="w"> </span><span class="s2">"Authorization: Bearer </span><span class="nv">$T</span><span class="s2">"</span><span class="w"> </span>-H<span class="w"> </span><span class="s1">'content-type: application/json'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">'{"services": ["db01/replication"], "comment": "on it"}'</span><span class="w"> </span>.../api/v1/actions/ack
+curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>-H<span class="w"> </span><span class="s2">"Authorization: Bearer </span><span class="nv">$T</span><span class="s2">"</span><span class="w"> </span>-H<span class="w"> </span><span class="s1">'content-type: application/json'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">'{"hostgroups": ["linux"]}'</span><span class="w"> </span>.../api/v1/actions/recheck
+<span class="sb">```</span>
+
+| Method and path | Description |
+|---|---|
+| <span class="sb">`GET flags`</span> | Acknowledgements, muted services, services with checks off. |
+| <span class="sb">`GET downtimes`</span> | Downtimes that haven't ended, and the windows of downtime groups. |
+| <span class="sb">`DELETE downtimes/{id}`</span> | End or cancel a downtime. |
+| <span class="sb">`GET process`</span> | Process info: version, running time, global switches, scheduler, results per minute. |
+| <span class="sb">`PUT process`</span> | <span class="sb">`{"notifications": bool, "checks": bool}`</span>: the global switches. Admins only. |
+| <span class="sb">`GET scheduler`</span> | The scheduling queue, soonest first. <span class="sb">`limit`</span> limits the number of entries. |
+| <span class="sb">`POST run-check`</span> | <span class="sb">`{"command", "shell", "format", "timeout"}`</span>: run a command like <span class="sb">`watcher run-check`</span>. Admins only. |
+
+<span class="sb">```sh</span>
+curl<span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span>-H<span class="w"> </span><span class="s2">"Authorization: Bearer </span><span class="nv">$T</span><span class="s2">"</span><span class="w"> </span>-H<span class="w"> </span><span class="s1">'content-type: application/json'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">'{"notifications": false}'</span><span class="w"> </span>.../api/v1/process
+curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>-H<span class="w"> </span><span class="s2">"Authorization: Bearer </span><span class="nv">$T</span><span class="s2">"</span><span class="w"> </span>-H<span class="w"> </span><span class="s1">'content-type: application/json'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">'{"command": "check_ping -H 10.0.0.5 -w 100,20% -c 500,60%"}'</span><span class="w"> </span>.../api/v1/run-check
+<span class="sb">```</span>
+
+<span class="gu">## History and metrics</span>
+
+These endpoints need a database.
+
+| Method and path | Description |
+|---|---|
+| <span class="sb">`GET events`</span> | Alert history, newest first. |
+| <span class="sb">`GET notifications`</span> | The notification log, newest first: one entry per contact and channel, with <span class="sb">`error`</span> if delivery failed. |
+| <span class="sb">`GET services/{host}/{service}/series`</span> | The metric series of a service, with <span class="sb">`warn`</span> and <span class="sb">`crit`</span>: the threshold bounds of the latest result. |
+| <span class="sb">`GET series/{id}/points`</span> | The points of a series, grouped into buckets. |
+
+Parameters for <span class="sb">`GET events`</span>:
+
+| Parameter | Description |
+|---|---|
+| <span class="sb">`host`</span>, <span class="sb">`service`</span> | Only events of this host or service. |
+| <span class="sb">`type`</span> | Comma-separated list: <span class="sb">`service,host,flapping,ack,downtime`</span>. |
+| <span class="sb">`state`</span> | Comma-separated list: <span class="sb">`ok,warning,critical,unknown,up,down`</span>. |
+| <span class="sb">`state_type`</span> | <span class="sb">`soft`</span> or <span class="sb">`hard`</span>. |
+| <span class="sb">`hard=true`</span> | Only confirmed problems and their recoveries. |
+| <span class="sb">`since`</span>, <span class="sb">`before`</span> | Time range. |
+| <span class="sb">`limit`</span> | Maximum number of events. |
+
+Parameters for <span class="sb">`GET notifications`</span>:
+
+| Parameter | Description |
+|---|---|
+| <span class="sb">`host`</span>, <span class="sb">`service`</span> | Only notifications about this host or service. For host notifications, <span class="sb">`service`</span> is the host check. |
+| <span class="sb">`contact`</span> | Only notifications to this contact. |
+| <span class="sb">`host_check`</span> | <span class="sb">`true`</span>: only host notifications. <span class="sb">`false`</span>: only service notifications. |
+| <span class="sb">`failed=true`</span> | Only failed deliveries. |
+| <span class="sb">`since`</span>, <span class="sb">`before`</span> | Time range. |
+| <span class="sb">`limit`</span> | Maximum number of entries (default 100). |
+
+Parameters for <span class="sb">`GET series/{id}/points`</span>:
+
+| Parameter | Default | Description |
+|---|---|---|
+| <span class="sb">`from`</span> | <span class="sb">`1h`</span> | Start time. |
+| <span class="sb">`to`</span> | now | End time. |
+| <span class="sb">`points`</span> | <span class="sb">`600`</span> | Maximum number of buckets, 1 to 10000. |
+
+Times can be RFC 3339, unix seconds, or a duration back from now (<span class="sb">`6h`</span>,
+<span class="sb">`7d`</span>).
+
+<span class="sb">```sh</span>
+curl<span class="w"> </span>-H<span class="w"> </span><span class="s2">"Authorization: Bearer </span><span class="nv">$T</span><span class="s2">"</span><span class="w"> </span><span class="s1">'.../api/v1/events?host=web01&amp;hard=true&amp;since=7d'</span>
+curl<span class="w"> </span>-H<span class="w"> </span><span class="s2">"Authorization: Bearer </span><span class="nv">$T</span><span class="s2">"</span><span class="w"> </span><span class="s1">'.../api/v1/series/42/points?from=2026-10-01T00:00:00Z&amp;to=2026-10-02T00:00:00Z'</span>
+<span class="sb">```</span>
+
+<span class="gu">## Users and tokens</span>
+
+| Method and path | Description |
+|---|---|
+| <span class="sb">`GET auth/status`</span> | Whether a login is needed, and the current user. |
+| <span class="sb">`POST auth/login`</span> | <span class="sb">`{"username", "password", "code"}`</span>. Sets the session cookie. <span class="sb">`code`</span> is only for users with two-factor authentication: a code from their app or a recovery code. Without it, or with a wrong one, the answer is 401 with <span class="sb">`"totp_required": true`</span>. 429 when the username is locked. |
+| <span class="sb">`POST auth/logout`</span> | Log out. |
+| <span class="sb">`GET auth/totp`</span> | <span class="sb">`{"enabled", "recovery_codes"}`</span>: whether your two-factor authentication is on, and how many recovery codes are left. |
+| <span class="sb">`POST auth/totp/setup`</span> | A new secret for the authenticator app: <span class="sb">`{"secret", "uri", "qr"}`</span>. <span class="sb">`uri`</span> is the <span class="sb">`otpauth://`</span> link, <span class="sb">`qr`</span> the same as an SVG image. Nothing is stored yet. |
+| <span class="sb">`PUT auth/totp`</span> | <span class="sb">`{"secret", "code"}`</span> turns two-factor authentication on, once the code shows that the app is set up right. Answers <span class="sb">`{"recovery_codes": [...]}`</span>, shown only this once. |
+| <span class="sb">`DELETE auth/totp`</span> | <span class="sb">`{"code"}`</span> turns it off. The code is from the app or a recovery code. |
+| <span class="sb">`POST auth/totp/recovery`</span> | <span class="sb">`{"code"}`</span> → <span class="sb">`{"recovery_codes": [...]}`</span>: ten new recovery codes. The old ones stop working. |
+| <span class="sb">`GET tokens`</span> | Your API tokens. |
+| <span class="sb">`POST tokens`</span> | <span class="sb">`{"name"}`</span> → <span class="sb">`{"token": "wt_...", "info"}`</span>. The token is shown only once. |
+| <span class="sb">`DELETE tokens/{id}`</span> | Revoke a token. |
+| <span class="sb">`GET users`</span> | All accounts. Admins only. |
+| <span class="sb">`POST users`</span> | <span class="sb">`{"username", "password", "admin"}`</span>. Admins only. |
+| <span class="sb">`PUT users/{name}`</span> | <span class="sb">`{"password", "admin", "disabled", "totp"}`</span>. Everyone may change their own password. <span class="sb">`"totp": false`</span> turns a user's two-factor authentication off (admins). |
+| <span class="sb">`DELETE users/{name}`</span> | Delete an account with its sessions and tokens. Admins only, not yourself. |
+
+Passwords need at least 10 characters. A new password, or disabling an
+account, logs the user out everywhere.
+
+Each two-factor code works once. Wrong codes count like wrong passwords:
+after five, the username is locked for a minute. See
+[<span class="nt">Two-factor authentication</span>](<span class="na">../guides/web-ui.md#two-factor-authentication</span>).
+
+<span class="gu">## Nodes</span>
+
+On a hub (<span class="sb">`role = "hub"`</span>); otherwise 503. Listing is for everyone,
+changes are for admins. See [<span class="nt">Nodes</span>](<span class="na">../guides/nodes.md</span>).
+
+| Method and path | Description |
+|---|---|
+| <span class="sb">`GET nodes`</span> | Nodes that have joined or have a join token, and node names that hosts use: <span class="sb">`name`</span>, <span class="sb">`state`</span> (<span class="sb">`connected`</span>, <span class="sb">`offline`</span>, <span class="sb">`new`</span>), <span class="sb">`connected_since`</span>, <span class="sb">`joined`</span>, <span class="sb">`token_expires`</span>, <span class="sb">`last_seen`</span>, <span class="sb">`version`</span>, <span class="sb">`hostname`</span>, <span class="sb">`address`</span>, <span class="sb">`hosts`</span>. |
+| <span class="sb">`POST nodes`</span> | <span class="sb">`{"name"}`</span> → <span class="sb">`{"name", "token", "expires", "command"}`</span>: adds the node and makes a join token. 409 if the node has joined already. |
+| <span class="sb">`POST nodes/{name}/token`</span> | A new join token, also for a node that has joined already. Its current certificate works until it joins again. |
+| <span class="sb">`DELETE nodes/{name}`</span> | Remove a node: its certificate and join token stop working, and its connection ends. |
+
+<span class="sb">```sh</span>
+curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>-H<span class="w"> </span><span class="s2">"Authorization: Bearer </span><span class="nv">$T</span><span class="s2">"</span><span class="w"> </span>-H<span class="w"> </span><span class="s1">'content-type: application/json'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">'{"name": "branch-office"}'</span><span class="w"> </span>.../api/v1/nodes
+<span class="c1"># → {"name": "branch-office", "token": "wj_…", "expires": "…",</span>
+<span class="c1">#    "command": "watcher node join https://hub.example.com:7443 --token wj_…"}</span>
+<span class="sb">```</span>
+
+<span class="gu">## SSH</span>
+
+Admins only. The values of secrets never leave the server.
+
+| Method and path | Description |
+|---|---|
+| <span class="sb">`GET ssh/secrets`</span> | Name, kind (<span class="sb">`key`</span>, <span class="sb">`password`</span> or <span class="sb">`token`</span>), public key, fingerprint, token ID, and the hosts using each secret (over SSH, or as <span class="sb">`proxmox.secret`</span>). |
+| <span class="sb">`POST ssh/secrets`</span> | Create a secret, see below. <span class="sb">`"replace": true`</span> overwrites one of the same name. |
+| <span class="sb">`DELETE ssh/secrets/{name}`</span> | Delete a secret. |
+| <span class="sb">`GET ssh/hostkeys`</span> | Stored host keys, and keys that changed (<span class="sb">`offered`</span>). |
+| <span class="sb">`POST ssh/hostkeys/{address}/{port}/accept`</span> | Accept a changed host key. |
+| <span class="sb">`DELETE ssh/hostkeys/{address}/{port}`</span> | Forget a host key; the next key seen is stored. |
+
+Bodies for <span class="sb">`POST ssh/secrets`</span>:
+
+| Body | Creates |
+|---|---|
+| <span class="sb">`{"name", "kind": "generate"}`</span> | A new ed25519 key. |
+| <span class="sb">`{"name", "kind": "key", "private_key", "passphrase"}`</span> | An imported key. |
+| <span class="sb">`{"name", "kind": "password", "password"}`</span> | A password. |
+| <span class="sb">`{"name", "kind": "token", "token_id", "token"}`</span> | An API token, for example for the [<span class="nt">Proxmox VE checks</span>](<span class="na">../guides/proxmox.md</span>). <span class="sb">`token_id`</span> is its ID (<span class="sb">`watcher@pve!monitor`</span>), <span class="sb">`token`</span> its secret. |
+
+<span class="sb">```sh</span>
+curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>-H<span class="w"> </span><span class="s2">"Authorization: Bearer </span><span class="nv">$T</span><span class="s2">"</span><span class="w"> </span>-H<span class="w"> </span><span class="s1">'content-type: application/json'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">'{"name": "monitor", "kind": "generate"}'</span><span class="w"> </span>.../api/v1/ssh/secrets
+<span class="c1"># → {"name": "monitor", "kind": "key", "public_key": "ssh-ed25519 AAAA... watcher-monitor", ...}</span>
+<span class="sb">```</span>
+
+<span class="gu">## Discovery</span>
+
+Admins only. Proxmox VE hosts with <span class="sb">`proxmox = { discover = true }`</span> and the
+VMs and containers they found; see
+[<span class="nt">Accept VMs and containers</span>](<span class="na">../guides/proxmox.md#5-accept-vms-and-containers</span>).
+<span class="sb">`{name}`</span> is the Proxmox VE host.
+
+| Method and path | Description |
+|---|---|
+| <span class="sb">`GET discovery`</span> | Each Proxmox VE host with discovery: <span class="sb">`name`</span>, <span class="sb">`url`</span>, <span class="sb">`file`</span> (where accepted hosts go), <span class="sb">`last_run`</span>, <span class="sb">`error`</span>, <span class="sb">`running`</span>, and <span class="sb">`guests`</span>: <span class="sb">`vmid`</span>, <span class="sb">`kind`</span> (<span class="sb">`qemu`</span> or <span class="sb">`lxc`</span>), <span class="sb">`name`</span>, <span class="sb">`node`</span>, <span class="sb">`running`</span>, <span class="sb">`address`</span>, <span class="sb">`ignored`</span>, <span class="sb">`host`</span> (the host it was added as). |
+| <span class="sb">`POST discovery/{name}/run`</span> | Ask the API now. |
+| <span class="sb">`POST discovery/{name}/accept`</span> | Add guests as hosts, like <span class="sb">`config/apply`</span>: <span class="sb">`{"vmids": [100, 101]}`</span>. |
+| <span class="sb">`POST discovery/{name}/remove`</span> | Remove the hosts of guests; they are offered again. Same body. |
+| <span class="sb">`POST discovery/{name}/ignore`</span> | Stop offering guests. Same body. |
+| <span class="sb">`POST discovery/{name}/unignore`</span> | Offer ignored guests again. Same body. |
+
+<span class="gu">## Configuration</span>
+
+Admins only.
+
+| Method and path | Description |
+|---|---|
+| <span class="sb">`GET config`</span> | Config mode, files with their hashes, who is editing them, problems on disk. |
+| <span class="sb">`GET config/files/{path}`</span> | One file. |
+| <span class="sb">`GET config/objects`</span> | All objects as written, with file and line. <span class="sb">`kind`</span> filters by kind. |
+| <span class="sb">`GET config/objects/{kind}/{name}`</span> | One object. |
+| <span class="sb">`PUT config/objects/{kind}/{name}`</span> | Create or replace an object, and apply. |
+| <span class="sb">`DELETE config/objects/{kind}/{name}`</span> | Delete an object, and apply. |
+| <span class="sb">`POST config/reload`</span> | Read the files again. |
+| <span class="sb">`POST config/match`</span> | <span class="sb">`{"kind": "host"\|"service", "selectors": [...]}`</span>: what the selectors match now, and why. |
+| <span class="sb">`GET config/scripts`</span> | The check directories and the executables in them. |
+| <span class="sb">`GET config/builtins`</span> | The built-in checks: name, title, summary, and each var with its help text, default, whether it is required, its type (<span class="sb">`text`</span>, <span class="sb">`number`</span>, <span class="sb">`duration`</span>, <span class="sb">`bool`</span>, <span class="sb">`choice`</span>, <span class="sb">`table`</span>) and choices. |
+| <span class="sb">`GET config/tree/{kind}/{name}`</span> | The Config Tree. For a service on a host, the name is <span class="sb">`host/service`</span>. |
+| <span class="sb">`POST config/edit`</span> | Turn an object change into a file change. Writes nothing. |
+| <span class="sb">`POST config/edit-many`</span> | The same for several objects, for example clones. |
+| <span class="sb">`POST config/preview`</span> | Validate file changes and show their effect. |
+| <span class="sb">`POST config/apply`</span> | Write file changes and reload. |
+| <span class="sb">`GET config/locks`</span> | Who is editing which file. |
+| <span class="sb">`PUT config/locks/{path}`</span> | Take or renew the edit lease on a file. |
+| <span class="sb">`DELETE config/locks/{path}?lease=…`</span> | Give the lease up. |
+
+Kinds: <span class="sb">`check`</span>, <span class="sb">`service`</span>, <span class="sb">`host`</span>, <span class="sb">`hostgroup`</span>, <span class="sb">`servicegroup`</span>, <span class="sb">`contact`</span>,
+<span class="sb">`contactgroup`</span>, <span class="sb">`downtimegroup`</span>, <span class="sb">`timeperiod`</span>, <span class="sb">`notify`</span>, <span class="sb">`dependency`</span>,
+<span class="sb">`sink`</span>.
+
+A notify rule or dependency without a <span class="sb">`name`</span> is addressed as <span class="sb">`@path:line`</span>, for example
+<span class="sb">`@ui/notify.toml:4`</span> (URL-encoded in paths), the way <span class="sb">`GET config/objects`</span>
+lists it.
+
+<span class="gu">### Changing one object</span>
+
+<span class="sb">`PUT`</span> takes the object's fields as they would be written in the file,
+without <span class="sb">`name`</span>. <span class="sb">`?path=hosts/web.toml`</span> puts a new object into that file.
+
+<span class="sb">```sh</span>
+curl<span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span>-H<span class="w"> </span><span class="s2">"Authorization: Bearer </span><span class="nv">$T</span><span class="s2">"</span><span class="w"> </span>-H<span class="w"> </span><span class="s1">'content-type: application/json'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">'{"address": "10.0.0.7", "groups": ["linux"]}'</span><span class="w"> </span>.../api/v1/config/objects/host/web03
+curl<span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span>-H<span class="w"> </span><span class="s2">"Authorization: Bearer </span><span class="nv">$T</span><span class="s2">"</span><span class="w"> </span>-H<span class="w"> </span><span class="s1">'content-type: application/json'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">'{"check": "disk", "vars": {"path": "/srv"}}'</span><span class="w"> </span>.../api/v1/config/objects/service/disk_srv
+curl<span class="w"> </span>-X<span class="w"> </span>DELETE<span class="w"> </span>-H<span class="w"> </span><span class="s2">"Authorization: Bearer </span><span class="nv">$T</span><span class="s2">"</span><span class="w"> </span>.../api/v1/config/objects/host/web03
+<span class="sb">```</span>
+
+<span class="gu">### With a preview first</span>
+
+<span class="sb">`edit`</span> → <span class="sb">`preview`</span> → <span class="sb">`apply`</span>, the way the web UI does it:
+
+<span class="sb">```sh</span>
+<span class="c1"># 1. Get the file change for a new host</span>
+curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>-H<span class="w"> </span><span class="s2">"Authorization: Bearer </span><span class="nv">$T</span><span class="s2">"</span><span class="w"> </span>-H<span class="w"> </span><span class="s1">'content-type: application/json'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">'{"kind": "host", "fields": {"name": "web03", "address": "10.0.0.7", "groups": ["linux"]}}'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>.../api/v1/config/edit
+<span class="c1"># → {"path": "ui/hosts.toml", "base": "…", "text": "…"}</span>
+
+<span class="c1"># 2. Apply it</span>
+curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>-H<span class="w"> </span><span class="s2">"Authorization: Bearer </span><span class="nv">$T</span><span class="s2">"</span><span class="w"> </span>-H<span class="w"> </span><span class="s1">'content-type: application/json'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">'{"changes": [{"path": "ui/hosts.toml", "base": "…", "text": "…"}]}'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>.../api/v1/config/apply
+<span class="sb">```</span>
+
+| Edit body field | Description |
+|---|---|
+| <span class="sb">`kind`</span> | Object kind. |
+| <span class="sb">`name`</span> | Current name; <span class="sb">`null`</span> creates a new object. |
+| <span class="sb">`fields`</span> | The object's fields; <span class="sb">`null`</span> deletes it. |
+| <span class="sb">`path`</span> | File for new objects. Default: <span class="sb">`ui/hosts.toml`</span>, <span class="sb">`ui/services.toml`</span>, <span class="sb">`ui/checks.toml`</span>, <span class="sb">`ui/groups.toml`</span>, <span class="sb">`ui/contacts.toml`</span>, <span class="sb">`ui/notify.toml`</span>, <span class="sb">`ui/dependencies.toml`</span> or <span class="sb">`ui/sinks.toml`</span>, by kind. |
+
+| Change field | Description |
+|---|---|
+| <span class="sb">`path`</span> | Relative path ending in <span class="sb">`.toml`</span>, with no hidden or <span class="sb">`..`</span> parts. |
+| <span class="sb">`base`</span> | Hash of the file you started from; <span class="sb">`null`</span> for a new file. |
+| <span class="sb">`text`</span> | New content; <span class="sb">`null`</span> deletes the file. |
+
+| Status | Meaning |
+|---|---|
+| 409 | The file changed since <span class="sb">`base`</span>. The body contains the current file. |
+| 422 | The configuration would have errors. The body lists them with file and line; nothing was written. |
+| 403 | <span class="sb">`config_mode = "files"`</span>: the configuration is read-only. |
+| 423 | Someone else is editing the file. See [<span class="nt">Edit locks</span>](<span class="na">#edit-locks</span>). |
+
+<span class="gu">### Edit locks</span>
+
+While a file is open in the web UI, the page holds an <span class="gs">**edit lease**</span> on it.
+Writes to that file from anyone else (<span class="sb">`apply`</span> and <span class="sb">`PUT`</span>/<span class="sb">`DELETE`</span> on
+objects) get status 423 with who is editing it:
+
+<span class="sb">```json</span>
+<span class="p">{</span><span class="nt">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"anna is editing hosts.toml in the web UI"</span><span class="p">,</span>
+<span class="w"> </span><span class="nt">"holder"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hosts.toml"</span><span class="p">,</span><span class="w"> </span><span class="nt">"by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"anna"</span><span class="p">,</span><span class="w"> </span><span class="nt">"via"</span><span class="p">:</span><span class="w"> </span><span class="s2">"web"</span><span class="p">,</span><span class="w"> </span><span class="nt">"since"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-11-09T09:42:00Z"</span><span class="p">,</span><span class="w"> </span><span class="nt">"pid"</span><span class="p">:</span><span class="w"> </span><span class="mi">4711</span><span class="p">,</span><span class="w"> </span><span class="nt">"host"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mon01"</span><span class="p">}}</span>
+<span class="sb">```</span>
+
+<span class="sb">`via`</span> is <span class="sb">`web`</span>, <span class="sb">`cli`</span> (<span class="sb">`watcher config edit`</span>), <span class="sb">`vim`</span>, <span class="sb">`nano`</span>, <span class="sb">`emacs`</span> or
+<span class="sb">`kate`</span>. Files open in one of these editors on the server are locked the
+same way.
+
+A script can hold a lease too, so that nobody changes a file while it
+works on it:
+
+<span class="sb">```sh</span>
+<span class="c1"># Take the lease (renew it within 2 minutes with {"lease": "…"}, or it lapses)</span>
+curl<span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span>-H<span class="w"> </span><span class="s2">"Authorization: Bearer </span><span class="nv">$T</span><span class="s2">"</span><span class="w"> </span>-H<span class="w"> </span><span class="s1">'content-type: application/json'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">'{}'</span><span class="w"> </span>.../api/v1/config/locks/hosts.toml
+<span class="c1"># → {"lease": "6f26…", "path": "hosts.toml", "others": []}</span>
+
+<span class="c1"># Write with the lease</span>
+curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>-H<span class="w"> </span><span class="s2">"Authorization: Bearer </span><span class="nv">$T</span><span class="s2">"</span><span class="w"> </span>-H<span class="w"> </span><span class="s1">'content-type: application/json'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s1">'X-Watcher-Lease: 6f26…'</span><span class="w"> </span>-d<span class="w"> </span><span class="s1">'{"changes": [...]}'</span><span class="w"> </span>.../api/v1/config/apply
+
+<span class="c1"># Give it up</span>
+curl<span class="w"> </span>-X<span class="w"> </span>DELETE<span class="w"> </span>-H<span class="w"> </span><span class="s2">"Authorization: Bearer </span><span class="nv">$T</span><span class="s2">"</span><span class="w"> </span><span class="s1">'.../api/v1/config/locks/hosts.toml?lease=6f26…'</span>
+<span class="sb">```</span>
+
+<span class="sb">`{"force": true}`</span> takes the file over from whoever has it. A file open in
+an editor can only be written with a lease taken this way; <span class="sb">`others`</span> then
+lists the editors that still have it open.
+</pre></div></td></tr></table></div>
+
+      </section>
+    </main>
+  </div>
+</body>
+</html>

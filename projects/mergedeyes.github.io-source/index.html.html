@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>index.html — Personal Website — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=49e3c283" />
+  <link rel="stylesheet" href="../../styles.css?v=41ca8b66" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -507,7 +507,43 @@
 <span class="normal">434</span>
 <span class="normal">435</span>
 <span class="normal">436</span>
-<span class="normal">437</span></pre></div></td><td class="code"><div><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="normal">437</span>
+<span class="normal">438</span>
+<span class="normal">439</span>
+<span class="normal">440</span>
+<span class="normal">441</span>
+<span class="normal">442</span>
+<span class="normal">443</span>
+<span class="normal">444</span>
+<span class="normal">445</span>
+<span class="normal">446</span>
+<span class="normal">447</span>
+<span class="normal">448</span>
+<span class="normal">449</span>
+<span class="normal">450</span>
+<span class="normal">451</span>
+<span class="normal">452</span>
+<span class="normal">453</span>
+<span class="normal">454</span>
+<span class="normal">455</span>
+<span class="normal">456</span>
+<span class="normal">457</span>
+<span class="normal">458</span>
+<span class="normal">459</span>
+<span class="normal">460</span>
+<span class="normal">461</span>
+<span class="normal">462</span>
+<span class="normal">463</span>
+<span class="normal">464</span>
+<span class="normal">465</span>
+<span class="normal">466</span>
+<span class="normal">467</span>
+<span class="normal">468</span>
+<span class="normal">469</span>
+<span class="normal">470</span>
+<span class="normal">471</span>
+<span class="normal">472</span>
+<span class="normal">473</span></pre></div></td><td class="code"><div><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">"en"</span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">"UTF-8"</span> <span class="p">/&gt;</span>
@@ -615,13 +651,6 @@
           <span class="p">&lt;</span><span class="nt">h2</span> <span class="na">class</span><span class="o">=</span><span class="s">"section__title"</span><span class="p">&gt;</span>Projects<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
         <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 
-        <span class="cm">&lt;!-- EDIT: duplicate a &lt;article class="card"&gt; block for each project.</span>
-<span class="cm">             data-href points each whole card at its generated /projects</span>
-<span class="cm">             page (see script.js); the Repository/Live-demo links and the</span>
-<span class="cm">             title link are real &lt;a&gt; tags and take priority over that.</span>
-<span class="cm">             data-source-file="path/in/repo" is optional and opt-in per</span>
-<span class="cm">             project - adding it gives that project's page a collapsible,</span>
-<span class="cm">             syntax-highlighted view of that one file. --&gt;</span>
         <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"cards"</span><span class="p">&gt;</span>
           <span class="p">&lt;</span><span class="nt">article</span> <span class="na">class</span><span class="o">=</span><span class="s">"card reveal"</span> <span class="na">data-href</span><span class="o">=</span><span class="s">"projects/klar-stack.html"</span> <span class="na">data-source-file</span><span class="o">=</span><span class="s">"Klar/src/main.rs, Klar/migrations/*, Klar/src/*, klar-web/src/*"</span><span class="p">&gt;</span>
             <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"card__head"</span><span class="p">&gt;</span>
@@ -649,6 +678,30 @@
             <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
           <span class="p">&lt;/</span><span class="nt">article</span><span class="p">&gt;</span>
 
+          <span class="p">&lt;</span><span class="nt">article</span> <span class="na">class</span><span class="o">=</span><span class="s">"card reveal"</span> <span class="na">data-href</span><span class="o">=</span><span class="s">"projects/watcher.html"</span> <span class="na">data-source-file</span><span class="o">=</span><span class="s">"src/*, docs/*, examples/*, tools/*, *.toml, Cargo.lock, *.yaml, LICENSE"</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"card__head"</span><span class="p">&gt;</span>
+              <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"card__tags"</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">"tag"</span><span class="p">&gt;</span>Rust<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">"tag"</span><span class="p">&gt;</span>TypeScript<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">"tag"</span><span class="p">&gt;</span>Svelte<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">"tag"</span><span class="p">&gt;</span>YAML<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">"tag"</span><span class="p">&gt;</span>JSON<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+              <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+              <span class="p">&lt;</span><span class="nt">h3</span> <span class="na">class</span><span class="o">=</span><span class="s">"card__title"</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"projects/watcher.html"</span><span class="p">&gt;</span>Watcher<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">"card__body"</span><span class="p">&gt;</span>
+              Infrastructure monitoring with full API, altering and a WEB UI. Written in Rust with a Svelte frontend. Configured via YAML or JSON.
+              For up to (at least) 10k hosts and 250k services. Designed for small to large-sized businesses and organizations.
+              Pattern matching, templating, foreach, hub, nodes and more to come. 
+            <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"card__foot"</span><span class="p">&gt;</span>
+              <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"card__links"</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"https://github.com/mergedeyes/watcher"</span> <span class="na">class</span><span class="o">=</span><span class="s">"link"</span><span class="p">&gt;</span>Repository<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+              <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+              <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">"license-badge"</span><span class="p">&gt;</span>AGPL-3.0<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+          <span class="p">&lt;/</span><span class="nt">article</span><span class="p">&gt;</span>
+
           <span class="p">&lt;</span><span class="nt">article</span> <span class="na">class</span><span class="o">=</span><span class="s">"card reveal"</span> <span class="na">data-href</span><span class="o">=</span><span class="s">"projects/terminaal.html"</span> <span class="na">data-source-file</span><span class="o">=</span><span class="s">"src/*, assets/terminaal.desktop, locales/*, docs/*, Cargo.toml, Cargo.lock, install.sh, LICENSE"</span><span class="p">&gt;</span>
             <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"card__head"</span><span class="p">&gt;</span>
               <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"card__tags"</span><span class="p">&gt;</span>
@@ -664,6 +717,25 @@
             <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"card__foot"</span><span class="p">&gt;</span>
               <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"card__links"</span><span class="p">&gt;</span>
                 <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"https://github.com/mergedeyes/terminaal"</span> <span class="na">class</span><span class="o">=</span><span class="s">"link"</span><span class="p">&gt;</span>Repository<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+              <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+              <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">"license-badge"</span><span class="p">&gt;</span>GPL-3.0<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+          <span class="p">&lt;/</span><span class="nt">article</span><span class="p">&gt;</span>
+
+          <span class="p">&lt;</span><span class="nt">article</span> <span class="na">class</span><span class="o">=</span><span class="s">"card reveal"</span> <span class="na">data-href</span><span class="o">=</span><span class="s">"projects/mainframe.html"</span> <span class="na">data-source-file</span><span class="o">=</span><span class="s">"src/*, docs/*, Cargo.toml, Cargo.lock, rustfmt.toml, LICENSE"</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"card__head"</span><span class="p">&gt;</span>
+              <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"card__tags"</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">"tag"</span><span class="p">&gt;</span>Rust<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">"tag"</span><span class="p">&gt;</span>TOML<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+              <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+              <span class="p">&lt;</span><span class="nt">h3</span> <span class="na">class</span><span class="o">=</span><span class="s">"card__title"</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"projects/mainframe.html"</span><span class="p">&gt;</span>Mainframe<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">"card__body"</span><span class="p">&gt;</span>
+              A project management interface for the terminal. Git integration, ToDos, Notes, and more.
+            <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"card__foot"</span><span class="p">&gt;</span>
+              <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"card__links"</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"https://github.com/mergedeyes/mainframe"</span> <span class="na">class</span><span class="o">=</span><span class="s">"link"</span><span class="p">&gt;</span>Repository<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
               <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
               <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">"license-badge"</span><span class="p">&gt;</span>GPL-3.0<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
             <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>docs/introduction.md — Watcher — Jan</title>
+  <link rel="stylesheet" href="../../styles.css?v=41ca8b66" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="layout">
+    <header class="rail" id="rail">
+<div class="rail__top">
+<a class="brand" href="../../index.html#top">
+<span class="brand__name">Jan</span>
+<span class="brand__meta">systems &amp; infrastructure<br/>Code, Code &amp; Code</span>
+</a>
+<button aria-controls="nav" aria-expanded="false" aria-label="Toggle menu" class="menu-toggle" id="menuToggle">
+<span></span><span></span><span></span>
+</button>
+</div>
+<nav aria-label="Sections" class="nav" id="nav">
+<a data-path="~/projects" href="../../index.html#projects">Projects</a>
+<a data-path="~/work" href="../../index.html#work">Work</a>
+<a data-path="~/education" href="../../index.html#education">Education</a>
+<a data-path="~/skills" href="../../index.html#skills">Skills</a>
+<a data-path="~/about" href="../../index.html#about">About Me</a>
+<a data-path="~/contact" href="../../index.html#contact">Contact</a>
+</nav>
+<div class="rail__status">
+<span aria-hidden="true" class="dot"></span>
+<span>open to work</span>
+</div>
+</header>
+    <nav class="file-tree" data-tree-key="watcher"><p class="file-tree__title">Files</p><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">docs/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">guides/</span><ul class="tree"><li class="tree-file"><a href="docs--guides--alerting-recipes.md.html">alerting-recipes.md</a></li><li class="tree-file"><a href="docs--guides--configuration.md.html">configuration.md</a></li><li class="tree-file"><a href="docs--guides--data.md.html">data.md</a></li><li class="tree-file"><a href="docs--guides--first-steps.md.html">first-steps.md</a></li><li class="tree-file"><a href="docs--guides--nodes.md.html">nodes.md</a></li><li class="tree-file"><a href="docs--guides--notifications.md.html">notifications.md</a></li><li class="tree-file"><a href="docs--guides--operations.md.html">operations.md</a></li><li class="tree-file"><a href="docs--guides--proxmox.md.html">proxmox.md</a></li><li class="tree-file"><a href="docs--guides--ssh.md.html">ssh.md</a></li><li class="tree-file"><a href="docs--guides--web-ui.md.html">web-ui.md</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">images/</span><ul class="tree"><li class="tree-file"><a href="docs--images--config-tree-dark.png.html">config-tree-dark.png</a></li><li class="tree-file"><a href="docs--images--config-tree.png.html">config-tree.png</a></li><li class="tree-file"><a href="docs--images--host-groups-dark.png.html">host-groups-dark.png</a></li><li class="tree-file"><a href="docs--images--host-groups.png.html">host-groups.png</a></li><li class="tree-file"><a href="docs--images--nodes-dark.png.html">nodes-dark.png</a></li><li class="tree-file"><a href="docs--images--nodes.png.html">nodes.png</a></li><li class="tree-file"><a href="docs--images--overview-dark.png.html">overview-dark.png</a></li><li class="tree-file"><a href="docs--images--overview.png.html">overview.png</a></li><li class="tree-file"><a href="docs--images--two-factor-dark.png.html">two-factor-dark.png</a></li><li class="tree-file"><a href="docs--images--two-factor.png.html">two-factor.png</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">objects/</span><ul class="tree"><li class="tree-file"><a href="docs--objects--check.md.html">check.md</a></li><li class="tree-file"><a href="docs--objects--contact.md.html">contact.md</a></li><li class="tree-file"><a href="docs--objects--contactgroup.md.html">contactgroup.md</a></li><li class="tree-file"><a href="docs--objects--dependency.md.html">dependency.md</a></li><li class="tree-file"><a href="docs--objects--downtimegroup.md.html">downtimegroup.md</a></li><li class="tree-file"><a href="docs--objects--host.md.html">host.md</a></li><li class="tree-file"><a href="docs--objects--hostgroup.md.html">hostgroup.md</a></li><li class="tree-file"><a href="docs--objects--notify.md.html">notify.md</a></li><li class="tree-file"><a href="docs--objects--service.md.html">service.md</a></li><li class="tree-file"><a href="docs--objects--servicegroup.md.html">servicegroup.md</a></li><li class="tree-file"><a href="docs--objects--sink.md.html">sink.md</a></li><li class="tree-file"><a href="docs--objects--timeperiod.md.html">timeperiod.md</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">reference/</span><ul class="tree"><li class="tree-file"><a href="docs--reference--api.md.html">api.md</a></li><li class="tree-file"><a href="docs--reference--cli.md.html">cli.md</a></li><li class="tree-file"><a href="docs--reference--watcher-toml.md.html">watcher-toml.md</a></li></ul></li><li class="tree-file"><a href="docs--README.md.html">README.md</a></li><li class="tree-file"><a href="docs--examples.md.html">examples.md</a></li><li class="tree-file"><a href="docs--install.md.html">install.md</a></li><li class="tree-file tree-file--active"><a href="docs--introduction.md.html">introduction.md</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">examples/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">demo/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">conf.d/</span><ul class="tree"><li class="tree-file"><a href="examples--demo--conf.d--checks.toml.html">checks.toml</a></li><li class="tree-file"><a href="examples--demo--conf.d--groups.toml.html">groups.toml</a></li><li class="tree-file"><a href="examples--demo--conf.d--hosts.toml.html">hosts.toml</a></li><li class="tree-file"><a href="examples--demo--conf.d--services.toml.html">services.toml</a></li></ul></li><li class="tree-file"><a href="examples--demo--watcher.toml.html">watcher.toml</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">local/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">conf.d/</span><ul class="tree"><li class="tree-file"><a href="examples--local--conf.d--checks.toml.html">checks.toml</a></li><li class="tree-file"><a href="examples--local--conf.d--contacts.toml.html">contacts.toml</a></li><li class="tree-file"><a href="examples--local--conf.d--hosts.toml.html">hosts.toml</a></li><li class="tree-file"><a href="examples--local--conf.d--services.toml.html">services.toml</a></li></ul></li><li class="tree-file"><a href="examples--local--watcher.toml.html">watcher.toml</a></li></ul></li><li class="tree-file"><a href="examples--init-answers.toml.html">init-answers.toml</a></li><li class="tree-file"><a href="examples--sinks.toml.html">sinks.toml</a></li></ul></li><li class="tree-file"><a href="*.toml.html">*.toml</a></li><li class="tree-file"><a href="*.yaml.html">*.yaml</a></li><li class="tree-file"><a href="Cargo.lock.html">Cargo.lock</a></li><li class="tree-file"><a href="LICENSE.html">LICENSE</a></li></ul></nav><script>
+(function () {
+  var tree = document.currentScript.previousElementSibling;
+  var key = "file-tree-scroll:" + tree.dataset.treeKey;
+  var saved = null;
+  try {
+    saved = sessionStorage.getItem(key);
+    sessionStorage.removeItem(key);
+  } catch (e) {}
+
+  if (saved !== null) {
+    tree.scrollTop = +saved;
+  } else {
+    var active = tree.querySelector(".tree-file--active");
+    if (active) {
+      var a = active.getBoundingClientRect();
+      var t = tree.getBoundingClientRect();
+      if (a.bottom > t.bottom) {
+        tree.scrollTop += a.top - t.top - (tree.clientHeight - a.height) / 2;
+      }
+    }
+  }
+
+  tree.addEventListener("click", function (e) {
+    if (!e.target.closest("a")) return;
+    try { sessionStorage.setItem(key, String(tree.scrollTop)); } catch (err) {}
+  });
+})();
+</script>
+    <main class="main" id="main">
+      <section class="section source-page">
+        <p class="section__path">
+          <a href="../../index.html#projects" class="link">~/projects</a> /
+          <a href="../watcher.html" class="link">watcher</a> / source
+        </p>
+        <div class="source-page__head">
+          <h1 class="section__title">docs/introduction.md</h1>
+          <a href="../watcher.html" class="link">← Back to Watcher</a>
+        </div>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span>
+<span class="normal">84</span>
+<span class="normal">85</span>
+<span class="normal">86</span></pre></div></td><td class="code"><div><pre><span></span><span class="gh"># Introduction</span>
+
+Watcher monitors infrastructure: hosts, services, metrics and alerts. It is
+one binary with a built-in web UI. You configure it with TOML files or in
+the web UI, and it stores results in PostgreSQL. Nagios plugins and any
+script that prints a result work as checks.
+
+<span class="gu">## Concepts</span>
+
+| Term | Meaning |
+|---|---|
+| [<span class="nt">check</span>](<span class="na">objects/check.md</span>) | What to run: a command, its default values, thresholds. |
+| [<span class="nt">service</span>](<span class="na">objects/service.md</span>) | A check with its settings, put on hosts. On a host, a service has the ID <span class="sb">`host/service`</span>. |
+| [<span class="nt">host</span>](<span class="na">objects/host.md</span>) | A machine or device to monitor. |
+| [<span class="nt">host group</span>](<span class="na">objects/hostgroup.md</span>) | Hosts that get the same services and settings. |
+| [<span class="nt">service group</span>](<span class="na">objects/servicegroup.md</span>) | Services that are assigned or viewed together. |
+| host check | The service or check that decides whether a host is UP or DOWN. It runs for the host itself and shows on the host's page, not among its services. |
+| [<span class="nt">contact</span>](<span class="na">objects/contact.md</span>) | Someone who receives notifications: by email, webhook, Slack, Teams, Telegram, ntfy, Gotify, PagerDuty, Jira or a script. |
+| [<span class="nt">contact group</span>](<span class="na">objects/contactgroup.md</span>) | A set of contacts. |
+| [<span class="nt">notify rule</span>](<span class="na">objects/notify.md</span>) | Which contacts get which notifications. |
+| [<span class="nt">dependency</span>](<span class="na">objects/dependency.md</span>) | Holds notifications back while another host or service has a problem, like the router in front of them. |
+| [<span class="nt">downtime group</span>](<span class="na">objects/downtimegroup.md</span>) | Hosts with recurring downtime windows. |
+| [<span class="nt">time period</span>](<span class="na">objects/timeperiod.md</span>) | When notify rules apply, for example business hours. |
+| [<span class="nt">sink</span>](<span class="na">objects/sink.md</span>) | A second database that receives a copy of all results. |
+| [<span class="nt">hub</span>](<span class="na">guides/nodes.md</span>) | A Watcher that nodes at other sites connect to (<span class="sb">`role = "hub"`</span>). |
+| [<span class="nt">node</span>](<span class="na">guides/nodes.md</span>) | A Watcher at another site, for example a customer's network, that connects to a hub. |
+
+<span class="gu">## States</span>
+
+| Services | Hosts |
+|---|---|
+| OK, WARNING, CRITICAL, UNKNOWN, and PENDING before the first result | UP, DOWN |
+
+A new problem is first SOFT. It becomes HARD once it was seen
+<span class="sb">`max_attempts`</span> times in a row. Only HARD changes send notifications, so a
+single bad result doesn't wake anyone up. See
+[<span class="nt">SOFT and HARD states</span>](<span class="na">objects/check.md#soft-and-hard-states</span>).
+
+<span class="gu">## What works today</span>
+
+Single server:
+
+<span class="k">-</span><span class="w"> </span><span class="gs">**Checks:**</span> Nagios plugins; scripts with Nagios, <span class="sb">`key=value`</span> or JSON
+  output; passive results over the API; thresholds with units; built-in
+  ping, TCP, HTTP, DNS and TLS certificate checks.
+<span class="k">-</span><span class="w"> </span><span class="gs">**Proxmox VE:**</span> built-in checks for the cluster, nodes, storages, VMs
+  and containers, backups and updates, through the API with a token
+  stored encrypted; VMs and containers found on their own and added as
+  hosts with one click.
+<span class="k">-</span><span class="w"> </span><span class="gs">**Checks over SSH:**</span> run on the hosts without an agent; keys or passwords
+  stored encrypted; pinned host keys; scripts copied to the hosts.
+<span class="k">-</span><span class="w"> </span><span class="gs">**State handling:**</span> SOFT/HARD, retries, host UP/DOWN, flap detection,
+  freshness of passive results.
+<span class="k">-</span><span class="w"> </span><span class="gs">**Configuration:**</span> files and web UI, services, groups, <span class="sb">`for_each`</span>, Config
+  Tree, validation with file and line, reload on save, edit locks between
+  the web UI, <span class="sb">`watcher config edit`</span> and editors on the server.
+<span class="k">-</span><span class="w"> </span><span class="gs">**Web UI:**</span> Tactical Overview, hosts, services, problems, groups, alert
+  history, graphs, configuration forms and file editor.
+<span class="k">-</span><span class="w"> </span><span class="gs">**Operations:**</span> acknowledgements, one-off and recurring downtimes, muted
+  notifications, disabled checks, re-check, process info, scheduling queue.
+<span class="k">-</span><span class="w"> </span><span class="gs">**Notifications:**</span> email, webhooks, Slack, Microsoft Teams, Telegram,
+  ntfy, Gotify, PagerDuty, Jira tickets and scripts; reminders for open problems,
+  escalations, time periods (business hours, on-call at night),
+  dependencies (one alert about the router, not fifty about the hosts
+  behind it), a log of every notification sent.
+<span class="k">-</span><span class="w"> </span><span class="gs">**Storage:**</span> PostgreSQL or TimescaleDB, SQL views, read-only database
+  login, copies to another PostgreSQL (sinks).
+<span class="k">-</span><span class="w"> </span><span class="gs">**Access:**</span> users, sessions, two-factor authentication (TOTP), API
+  tokens, HTTPS (also with certificates from Let's Encrypt or another
+  ACME CA); the full API, everything the web UI does.
+
+Nodes, first part:
+
+<span class="k">-</span><span class="w"> </span><span class="gs">**Hub and nodes:**</span> nodes join a hub with a one-time token and stay
+  connected over mutual TLS, dialing out from their site; the Nodes page
+  shows which are connected. Nodes don't run checks yet.
+
+<span class="ge">*Not yet:*</span>
+
+| Feature | Phase |
+|---|---|
+| Checks on nodes, results kept while the link is down, UNREACHABLE state | 2 |
+| Data repair in graphs, rollups, retention | 3 |
+| IBM i, AIX, HMC, MQ checks | 3b |
+| Tenants, roles and permissions | 4 |
+| SNMP, Prometheus, WinRM, network discovery, Nagios config import | 5 |
+</pre></div></td></tr></table></div>
+
+      </section>
+    </main>
+  </div>
+</body>
+</html>

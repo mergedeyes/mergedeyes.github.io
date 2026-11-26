@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>docs/guides/web-ui.md — Watcher — Jan</title>
+  <link rel="stylesheet" href="../../styles.css?v=41ca8b66" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="layout">
+    <header class="rail" id="rail">
+<div class="rail__top">
+<a class="brand" href="../../index.html#top">
+<span class="brand__name">Jan</span>
+<span class="brand__meta">systems &amp; infrastructure<br/>Code, Code &amp; Code</span>
+</a>
+<button aria-controls="nav" aria-expanded="false" aria-label="Toggle menu" class="menu-toggle" id="menuToggle">
+<span></span><span></span><span></span>
+</button>
+</div>
+<nav aria-label="Sections" class="nav" id="nav">
+<a data-path="~/projects" href="../../index.html#projects">Projects</a>
+<a data-path="~/work" href="../../index.html#work">Work</a>
+<a data-path="~/education" href="../../index.html#education">Education</a>
+<a data-path="~/skills" href="../../index.html#skills">Skills</a>
+<a data-path="~/about" href="../../index.html#about">About Me</a>
+<a data-path="~/contact" href="../../index.html#contact">Contact</a>
+</nav>
+<div class="rail__status">
+<span aria-hidden="true" class="dot"></span>
+<span>open to work</span>
+</div>
+</header>
+    <nav class="file-tree" data-tree-key="watcher"><p class="file-tree__title">Files</p><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">docs/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">guides/</span><ul class="tree"><li class="tree-file"><a href="docs--guides--alerting-recipes.md.html">alerting-recipes.md</a></li><li class="tree-file"><a href="docs--guides--configuration.md.html">configuration.md</a></li><li class="tree-file"><a href="docs--guides--data.md.html">data.md</a></li><li class="tree-file"><a href="docs--guides--first-steps.md.html">first-steps.md</a></li><li class="tree-file"><a href="docs--guides--nodes.md.html">nodes.md</a></li><li class="tree-file"><a href="docs--guides--notifications.md.html">notifications.md</a></li><li class="tree-file"><a href="docs--guides--operations.md.html">operations.md</a></li><li class="tree-file"><a href="docs--guides--proxmox.md.html">proxmox.md</a></li><li class="tree-file"><a href="docs--guides--ssh.md.html">ssh.md</a></li><li class="tree-file tree-file--active"><a href="docs--guides--web-ui.md.html">web-ui.md</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">images/</span><ul class="tree"><li class="tree-file"><a href="docs--images--config-tree-dark.png.html">config-tree-dark.png</a></li><li class="tree-file"><a href="docs--images--config-tree.png.html">config-tree.png</a></li><li class="tree-file"><a href="docs--images--host-groups-dark.png.html">host-groups-dark.png</a></li><li class="tree-file"><a href="docs--images--host-groups.png.html">host-groups.png</a></li><li class="tree-file"><a href="docs--images--nodes-dark.png.html">nodes-dark.png</a></li><li class="tree-file"><a href="docs--images--nodes.png.html">nodes.png</a></li><li class="tree-file"><a href="docs--images--overview-dark.png.html">overview-dark.png</a></li><li class="tree-file"><a href="docs--images--overview.png.html">overview.png</a></li><li class="tree-file"><a href="docs--images--two-factor-dark.png.html">two-factor-dark.png</a></li><li class="tree-file"><a href="docs--images--two-factor.png.html">two-factor.png</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">objects/</span><ul class="tree"><li class="tree-file"><a href="docs--objects--check.md.html">check.md</a></li><li class="tree-file"><a href="docs--objects--contact.md.html">contact.md</a></li><li class="tree-file"><a href="docs--objects--contactgroup.md.html">contactgroup.md</a></li><li class="tree-file"><a href="docs--objects--dependency.md.html">dependency.md</a></li><li class="tree-file"><a href="docs--objects--downtimegroup.md.html">downtimegroup.md</a></li><li class="tree-file"><a href="docs--objects--host.md.html">host.md</a></li><li class="tree-file"><a href="docs--objects--hostgroup.md.html">hostgroup.md</a></li><li class="tree-file"><a href="docs--objects--notify.md.html">notify.md</a></li><li class="tree-file"><a href="docs--objects--service.md.html">service.md</a></li><li class="tree-file"><a href="docs--objects--servicegroup.md.html">servicegroup.md</a></li><li class="tree-file"><a href="docs--objects--sink.md.html">sink.md</a></li><li class="tree-file"><a href="docs--objects--timeperiod.md.html">timeperiod.md</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">reference/</span><ul class="tree"><li class="tree-file"><a href="docs--reference--api.md.html">api.md</a></li><li class="tree-file"><a href="docs--reference--cli.md.html">cli.md</a></li><li class="tree-file"><a href="docs--reference--watcher-toml.md.html">watcher-toml.md</a></li></ul></li><li class="tree-file"><a href="docs--README.md.html">README.md</a></li><li class="tree-file"><a href="docs--examples.md.html">examples.md</a></li><li class="tree-file"><a href="docs--install.md.html">install.md</a></li><li class="tree-file"><a href="docs--introduction.md.html">introduction.md</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">examples/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">demo/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">conf.d/</span><ul class="tree"><li class="tree-file"><a href="examples--demo--conf.d--checks.toml.html">checks.toml</a></li><li class="tree-file"><a href="examples--demo--conf.d--groups.toml.html">groups.toml</a></li><li class="tree-file"><a href="examples--demo--conf.d--hosts.toml.html">hosts.toml</a></li><li class="tree-file"><a href="examples--demo--conf.d--services.toml.html">services.toml</a></li></ul></li><li class="tree-file"><a href="examples--demo--watcher.toml.html">watcher.toml</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">local/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">conf.d/</span><ul class="tree"><li class="tree-file"><a href="examples--local--conf.d--checks.toml.html">checks.toml</a></li><li class="tree-file"><a href="examples--local--conf.d--contacts.toml.html">contacts.toml</a></li><li class="tree-file"><a href="examples--local--conf.d--hosts.toml.html">hosts.toml</a></li><li class="tree-file"><a href="examples--local--conf.d--services.toml.html">services.toml</a></li></ul></li><li class="tree-file"><a href="examples--local--watcher.toml.html">watcher.toml</a></li></ul></li><li class="tree-file"><a href="examples--init-answers.toml.html">init-answers.toml</a></li><li class="tree-file"><a href="examples--sinks.toml.html">sinks.toml</a></li></ul></li><li class="tree-file"><a href="*.toml.html">*.toml</a></li><li class="tree-file"><a href="*.yaml.html">*.yaml</a></li><li class="tree-file"><a href="Cargo.lock.html">Cargo.lock</a></li><li class="tree-file"><a href="LICENSE.html">LICENSE</a></li></ul></nav><script>
+(function () {
+  var tree = document.currentScript.previousElementSibling;
+  var key = "file-tree-scroll:" + tree.dataset.treeKey;
+  var saved = null;
+  try {
+    saved = sessionStorage.getItem(key);
+    sessionStorage.removeItem(key);
+  } catch (e) {}
+
+  if (saved !== null) {
+    tree.scrollTop = +saved;
+  } else {
+    var active = tree.querySelector(".tree-file--active");
+    if (active) {
+      var a = active.getBoundingClientRect();
+      var t = tree.getBoundingClientRect();
+      if (a.bottom > t.bottom) {
+        tree.scrollTop += a.top - t.top - (tree.clientHeight - a.height) / 2;
+      }
+    }
+  }
+
+  tree.addEventListener("click", function (e) {
+    if (!e.target.closest("a")) return;
+    try { sessionStorage.setItem(key, String(tree.scrollTop)); } catch (err) {}
+  });
+})();
+</script>
+    <main class="main" id="main">
+      <section class="section source-page">
+        <p class="section__path">
+          <a href="../../index.html#projects" class="link">~/projects</a> /
+          <a href="../watcher.html" class="link">watcher</a> / source
+        </p>
+        <div class="source-page__head">
+          <h1 class="section__title">docs/guides/web-ui.md</h1>
+          <a href="../watcher.html" class="link">← Back to Watcher</a>
+        </div>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">  1</span>
+<span class="normal">  2</span>
+<span class="normal">  3</span>
+<span class="normal">  4</span>
+<span class="normal">  5</span>
+<span class="normal">  6</span>
+<span class="normal">  7</span>
+<span class="normal">  8</span>
+<span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span>
+<span class="normal">245</span>
+<span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span>
+<span class="normal">250</span>
+<span class="normal">251</span>
+<span class="normal">252</span>
+<span class="normal">253</span>
+<span class="normal">254</span>
+<span class="normal">255</span>
+<span class="normal">256</span>
+<span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span>
+<span class="normal">262</span>
+<span class="normal">263</span>
+<span class="normal">264</span>
+<span class="normal">265</span>
+<span class="normal">266</span></pre></div></td><td class="code"><div><pre><span></span><span class="gh"># Web UI</span>
+
+The web UI is built into the <span class="sb">`watcher`</span> binary; there is nothing extra to
+install. By default it listens on http://127.0.0.1:8080. Change this with
+<span class="sb">`listen`</span> in [<span class="nt">watcher.toml</span>](<span class="na">../reference/watcher-toml.md</span>).
+
+<span class="gu">## Login</span>
+
+With a database, everyone has to log in. Create accounts on the command
+line:
+
+<span class="sb">```sh</span>
+watcher<span class="w"> </span>user<span class="w"> </span>add<span class="w"> </span>alice<span class="w">              </span><span class="c1"># asks for the password</span>
+watcher<span class="w"> </span>user<span class="w"> </span>add<span class="w"> </span>admin<span class="w"> </span>--admin<span class="w">      </span><span class="c1"># admins may edit the configuration</span>
+watcher<span class="w"> </span>user<span class="w"> </span>passwd<span class="w"> </span>alice<span class="w">           </span><span class="c1"># set a new password</span>
+<span class="sb">```</span>
+
+Admins can also manage accounts in the web UI under Settings → Users.
+Everyone can change their own password under Account, and turn on
+[<span class="nt">two-factor authentication</span>](<span class="na">#two-factor-authentication</span>) there.
+
+After five failed logins, the username is locked for a minute. A session
+lasts 14 days after it was last used.
+
+Without a database there are no accounts and no login. The web UI then only
+listens on the local machine (loopback). <span class="sb">`watcher run --no-auth`</span> turns the
+login off even with a database, also only on loopback.
+
+<span class="gu">## Two-factor authentication</span>
+
+With two-factor authentication, the login asks for a code after the
+password. The code comes from an authenticator app on your phone, such as
+Google Authenticator, Microsoft Authenticator, Aegis or 1Password. It has
+six digits and changes every 30 seconds; this kind of code is called TOTP
+(time-based one-time password). Someone who learns your password still
+can't log in without your phone.
+
+Each user turns it on for their own account. The setup wizard (in the
+browser, or <span class="sb">`watcher init`</span>) offers it for the first admin as well.
+
+<span class="k">1.</span> Open Settings → Account and click <span class="gs">**Set Up**</span> under Two-Factor
+   Authentication.
+<span class="k">2.</span> Scan the QR code with the app. If you can't scan it, type the key next
+   to it into the app instead.
+<span class="k">3.</span> Enter the code the app shows, and click <span class="gs">**Enable**</span>.
+<span class="k">4.</span> Save the ten recovery codes that appear. They are shown only once.
+
+&lt;p align="center"&gt;
+  &lt;picture&gt;
+    &lt;source media="(prefers-color-scheme: dark)" srcset="../images/two-factor-dark.png"&gt;
+    &lt;img src="../images/two-factor.png" alt="The Two-Factor Authentication panel on the Account page: a QR code, the key, and a field for the code from the app" width="860"&gt;
+  &lt;/picture&gt;
+  &lt;br&gt;
+  &lt;sub&gt;Setting up two-factor authentication on the Account page.&lt;/sub&gt;
+&lt;/p&gt;
+
+From then on, you log in with your password first and then with the
+current code from the app. Each code works only once: to log in again
+right away, for example in a second browser, wait for the next code.
+
+<span class="gs">**Recovery codes**</span> stand in for the app when you don't have your phone.
+Type one into the code field at the login. Each recovery code works once.
+Under Account, <span class="gs">**New Recovery Codes**</span> replaces all of them, and **Turn
+Off** switches two-factor authentication off again. Both need a code from
+the app or a recovery code, so that someone who finds your browser logged
+in can't turn it off.
+
+<span class="gs">**Lost your phone and your recovery codes?**</span> An admin turns two-factor
+authentication off for you under Settings → Users → <span class="gs">**Reset 2FA**</span>, or on
+the server:
+
+<span class="sb">```sh</span>
+watcher<span class="w"> </span>user<span class="w"> </span>totp-off<span class="w"> </span>alice
+<span class="sb">```</span>
+
+Then log in with your password alone, and set it up again.
+
+Good to know:
+
+<span class="k">-</span><span class="w"> </span>It needs a <span class="sb">`watcher.toml`</span>. The app secrets are stored encrypted in the
+  database, with the key file <span class="sb">`data_dir/secret.key`</span> (the same file that
+  encrypts [<span class="nt">SSH secrets</span>](<span class="na">ssh.md#secrets</span>)). **Back it up together with the
+  database**: without it, users with two-factor authentication can't log
+  in until an admin turns it off with <span class="sb">`watcher user totp-off`</span>.
+<span class="k">-</span><span class="w"> </span>The clock of the server must be right (use NTP). Codes from 30 seconds
+  before or after are accepted too, for phones whose clock is a little
+  off.
+<span class="k">-</span><span class="w"> </span>Wrong codes count like wrong passwords: after five failed attempts, the
+  username is locked for a minute.
+<span class="k">-</span><span class="w"> </span>[<span class="nt">API tokens</span>](<span class="na">#api-tokens</span>) don't need a code: scripts keep working with
+  their token alone.
+
+<span class="gu">## Pages</span>
+
+| Page | Shows |
+|---|---|
+| Tactical Overview | Hosts that are DOWN, service problems, totals. |
+| Hosts | All hosts with their state and their services per state, with totals. Search by name, address or host group. |
+| Host | One host: its services, commands, graphs, alert history and notifications. |
+| Services | All services, with totals. Filter by state, or search by host, service or output. |
+| Service | One service: state, output, commands, metrics with thresholds, graphs, alert history and notifications. |
+| Problems | Hosts that are DOWN and all services that are not OK. |
+| Host Groups, Service Groups | Status totals per group. |
+| Alerts | The alert history, filtered by host, type, state, SOFT/HARD and time range. |
+| Downtimes | Schedule and end downtimes; acknowledged, muted and disabled services. |
+| Nodes | On a hub: which [<span class="nt">nodes</span>](<span class="na">nodes.md</span>) are connected; add, join again and remove nodes (admins). |
+| Process Info | Running time and results per minute; switches for notifications and active checks. |
+| Scheduling Queue | When each service is checked next. |
+| Configuration | Forms and a file editor for the configuration, secrets, and the VMs and containers that [<span class="nt">discovery</span>](<span class="na">proxmox.md#5-accept-vms-and-containers</span>) found (admins). |
+| Account | Your user, password, two-factor authentication and API tokens. |
+| Users | Add, disable and delete accounts, set passwords and admin rights, reset two-factor authentication (admins). |
+
+Status totals are links to the filtered lists. On a group's list
+(<span class="sb">`/hosts?group=linux`</span>), the totals count only that group. Click a column
+header to sort. Names sort by their numbers, so <span class="sb">`web2`</span> comes before
+<span class="sb">`web10`</span>.
+
+Long lists are split into pages. The bar under a list shows which rows
+you see, and has buttons for the first, previous, next and last page.
+Choose how many rows a page has (50 to 500); your browser remembers it.
+Searching, filtering or sorting goes back to the first page.
+
+The number on Problems counts unhandled problems: those not
+acknowledged and not in a downtime.
+
+<span class="gs">**Commands:**</span> right-click a host or service row, or use the Commands panel
+on its page: Re-Check Now, Acknowledge Problem, Schedule Downtime, Mute
+Notifications, Disable Active Checks, Submit Result (passive services
+only), and the matching undo commands. Hosts and services show badges
+for them: ACK, DOWNTIME, MUTED, CHECKS OFF. To run a command on several
+rows at once, tick their checkboxes (Shift-click selects a range); the
+list's title bar then shows the commands. See [<span class="nt">Operations</span>](<span class="na">operations.md</span>)
+and its section on
+[<span class="nt">commands on several hosts or services</span>](<span class="na">operations.md#commands-on-several-hosts-or-services</span>).
+
+<span class="gs">**Live / Paused**</span> in the top bar: pages update live. New results change
+the rows you see right away. When a state changes, the list is loaded
+again, so services move into or out of it. Paused keeps the page still;
+Refresh loads it once.
+
+The host page shows the host check with the host's state, under Host
+State Information. It isn't in the host's list of services, and service
+totals don't count it.
+
+<span class="gs">**Graphs**</span> show the last 15 minutes by default, with ranges down to 30
+seconds. Drag to zoom in, double-click to reset. The host page shows the
+host's <span class="sb">`graph`</span> service, or the host check, and you can pick another one.
+In the host and host group forms, the Graph field suggests only services
+the host (or a host of the group) has, with graphs on. A service you just
+added shows up there once you have saved it.
+<span class="sb">`graphs = false`</span> on a check or service turns its graphs off.
+
+<span class="gu">## Configuration</span>
+
+Admins can edit the configuration in the web UI. The menu has Checks,
+Services, Hosts, Host Groups, Service Groups, Contacts, Contact Groups,
+Downtime Groups, Time Periods, Notifications, Dependencies and Files.
+
+The web UI edits the same TOML files you edit by hand:
+
+<span class="k">-</span><span class="w"> </span>New objects are written to <span class="sb">`conf.d/ui/`</span> (<span class="sb">`checks.toml`</span>, <span class="sb">`services.toml`</span>,
+  <span class="sb">`hosts.toml`</span>, <span class="sb">`groups.toml`</span>, <span class="sb">`contacts.toml`</span>, <span class="sb">`notify.toml`</span>,
+  <span class="sb">`dependencies.toml`</span>).
+<span class="k">-</span><span class="w"> </span>Changes to existing objects are written to the file where the object is,
+  and comments and formatting are kept.
+<span class="k">-</span><span class="w"> </span>Objects written as inline arrays in a file can't be edited in the forms;
+  use the file editor for them.
+
+How the forms work:
+
+<span class="k">-</span><span class="w"> </span>Lists show the file and line of every object.
+<span class="k">-</span><span class="w"> </span>Forms show the known fields. Other keys in the file are kept as they
+  are. Clearing a field removes the key from the file.
+<span class="k">-</span><span class="w"> </span>Text fields suggest values (objects, scripts, vars, metrics, durations),
+  but you can type anything.
+<span class="k">-</span><span class="w"> </span>The host form has one section for its services, **Services on This
+  Host**. You add services and service groups there. Below them, a table
+  lists every service the host gets and where it comes from: the host
+  itself, a service group, a host group, or the host check. Open a row to
+  change the service on this host only: Enabled, Check Interval,
+  Variables and Thresholds. Other settings written by hand for that
+  service, like <span class="sb">`check`</span>, are kept and named in the row. A service that is
+  on the host only through such a hand-written entry shows as "this host
+  only" and can be removed with ×.
+<span class="k">-</span><span class="w"> </span>Settings that only some hosts have, like Proxmox VE, show only on the
+  hosts that have them. <span class="gs">**Add Host**</span> opens a menu: <span class="gs">**Host**</span>, or
+  <span class="gs">**Proxmox VE**</span> for a Proxmox VE server or a VM or container on one,
+  which opens the form with its Proxmox VE section. On another host or a
+  host group, <span class="gs">**Add Proxmox VE settings**</span> below the form adds the
+  section, and <span class="gs">**Remove**</span> in the section takes the settings out again.
+<span class="k">-</span><span class="w"> </span>A service runs either a check or a command of its own: while one is
+  set, the other field is greyed out. A check runs either a command or a
+  built-in check, in the same way.
+<span class="k">-</span><span class="w"> </span>Configuration → Checks also lists the [<span class="nt">built-in checks</span>](<span class="na">../objects/check.md#built-in-checks</span>).
+  When a form's check is a built-in one, an <span class="gs">**Options**</span> section shows each
+  of its options with what it does, its default and whether it is
+  required (<span class="sb">`*`</span>). Values a check already sets show as <span class="sb">`(from check …)`</span>.
+  Settings that only commands have (Shell, Run On, Copy, Passive) are
+  greyed out then.
+<span class="k">-</span><span class="w"> </span>Group membership shows on both sides. The host form lists the host
+  groups that list the host (<span class="sb">`Also: dc1 · pattern web*`</span>), and the host
+  group form lists the hosts that list the group. The same goes for service
+  and contact groups. Removing one with × takes effect when you save.
+  Deleting an object also removes it from those lists.
+<span class="k">-</span><span class="w"> </span>Selectors, host group members and downtime groups show what they match
+  right now: <span class="sb">`3 hosts: web01 (name web*), …`</span>. Errors, for example in an
+  <span class="sb">`expr`</span>, show as you type.
+<span class="k">-</span><span class="w"> </span>The <span class="gs">**Config Tree**</span> shows where the object and each of its values come
+  from, and where the object is used. Each entry links to its form or file
+  line.
+
+<span class="gs">**Saving:**</span> Save shows a preview of what will change (+ added, ~ changed,
+− removed) and any problems. Nothing is written until you click Apply.
+
+<span class="gs">**Clone**</span> opens a new form filled from an object. You can create several at
+once: <span class="sb">`web03, web[04-10]`</span> creates 8 clones in the original's file. Cloned
+hosts get their address from their name.
+
+<span class="gs">**Edit Config**</span> on the status pages opens the right form: for a host the
+host form or its host groups, for a service the service, the host's change
+of it, or the check, for a group the group form.
+
+<span class="gs">**Files**</span> lists the config files and has an editor that validates as you
+type. It marks errors at the line and summarizes what would change.
+
+<span class="gs">**Conflicts:**</span> if a file changed on disk after you opened it, the editor
+shows the differences. You can revert single chunks, use the version on
+disk, or keep yours.
+
+<span class="gs">**Someone else is editing:**</span> a form or file that someone else has open is
+read-only, with a note saying who is editing it, where (web UI, `watcher
+config edit`, vim, ...) and since when. When they are done, the page
+reloads the file and you can edit. <span class="gs">**Edit Anyway**</span> takes the file over
+right away; the other person's page turns read-only within half a minute.
+The Files list shows who is editing each file. See
+[<span class="nt">Editing at the same time</span>](<span class="na">configuration.md#editing-at-the-same-time</span>).
+
+<span class="gu">## Config mode</span>
+
+<span class="sb">`config_mode`</span> in <span class="sb">`watcher.toml`</span> decides whether the web UI or the files are
+in charge:
+
+| Mode | Web UI | Files |
+|---|---|---|
+| <span class="sb">`hybrid`</span> (default) | can edit | watched; changes load within a second |
+| <span class="sb">`files`</span> | read-only | watched |
+| <span class="sb">`ui`</span> | can edit | not watched; reload with <span class="sb">`SIGHUP`</span> |
+
+A configuration with errors is never applied. The running configuration
+stays, and the log and the web UI show why.
+
+<span class="gu">## API tokens</span>
+
+Scripts and passive checks log in with an API token. Create one under
+Account → API Tokens → Create token, or with
+<span class="sb">`watcher token create &lt;user&gt; &lt;name&gt;`</span>. The token is shown only once. Send it
+as <span class="sb">`Authorization: Bearer wt_...`</span>. A token has the same rights as its user.
+
+<span class="gu">## Development</span>
+
+<span class="sb">```sh</span>
+npm<span class="w"> </span>--prefix<span class="w"> </span>web<span class="w"> </span>run<span class="w"> </span>dev<span class="w">       </span><span class="c1"># forwards /api to 127.0.0.1:8080</span>
+<span class="sb">```</span>
+
+Debug builds read the UI from <span class="sb">`web/build`</span> on disk; release builds have it
+built in.
+</pre></div></td></tr></table></div>
+
+      </section>
+    </main>
+  </div>
+</body>
+</html>

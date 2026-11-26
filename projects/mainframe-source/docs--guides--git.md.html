@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>docs/guides/git.md — Mainframe — Jan</title>
+  <link rel="stylesheet" href="../../styles.css?v=41ca8b66" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="layout">
+    <header class="rail" id="rail">
+<div class="rail__top">
+<a class="brand" href="../../index.html#top">
+<span class="brand__name">Jan</span>
+<span class="brand__meta">systems &amp; infrastructure<br/>Code, Code &amp; Code</span>
+</a>
+<button aria-controls="nav" aria-expanded="false" aria-label="Toggle menu" class="menu-toggle" id="menuToggle">
+<span></span><span></span><span></span>
+</button>
+</div>
+<nav aria-label="Sections" class="nav" id="nav">
+<a data-path="~/projects" href="../../index.html#projects">Projects</a>
+<a data-path="~/work" href="../../index.html#work">Work</a>
+<a data-path="~/education" href="../../index.html#education">Education</a>
+<a data-path="~/skills" href="../../index.html#skills">Skills</a>
+<a data-path="~/about" href="../../index.html#about">About Me</a>
+<a data-path="~/contact" href="../../index.html#contact">Contact</a>
+</nav>
+<div class="rail__status">
+<span aria-hidden="true" class="dot"></span>
+<span>open to work</span>
+</div>
+</header>
+    <nav class="file-tree" data-tree-key="mainframe"><p class="file-tree__title">Files</p><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">docs/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">guides/</span><ul class="tree"><li class="tree-file"><a href="docs--guides--cleanup.md.html">cleanup.md</a></li><li class="tree-file"><a href="docs--guides--files.md.html">files.md</a></li><li class="tree-file"><a href="docs--guides--first-steps.md.html">first-steps.md</a></li><li class="tree-file tree-file--active"><a href="docs--guides--git.md.html">git.md</a></li><li class="tree-file"><a href="docs--guides--install-and-deploy.md.html">install-and-deploy.md</a></li><li class="tree-file"><a href="docs--guides--projects.md.html">projects.md</a></li><li class="tree-file"><a href="docs--guides--running.md.html">running.md</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">reference/</span><ul class="tree"><li class="tree-file"><a href="docs--reference--config.md.html">config.md</a></li><li class="tree-file"><a href="docs--reference--keys.md.html">keys.md</a></li></ul></li><li class="tree-file"><a href="docs--README.md.html">README.md</a></li><li class="tree-file"><a href="docs--install.md.html">install.md</a></li><li class="tree-file"><a href="docs--introduction.md.html">introduction.md</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">src/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">app/</span><ul class="tree"><li class="tree-file"><a href="src--app--actions.rs.html">actions.rs</a></li><li class="tree-file"><a href="src--app--branch_picker.rs.html">branch_picker.rs</a></li><li class="tree-file"><a href="src--app--cleanup.rs.html">cleanup.rs</a></li><li class="tree-file"><a href="src--app--deploy.rs.html">deploy.rs</a></li><li class="tree-file"><a href="src--app--file_finder.rs.html">file_finder.rs</a></li><li class="tree-file"><a href="src--app--files.rs.html">files.rs</a></li><li class="tree-file"><a href="src--app--git_menu.rs.html">git_menu.rs</a></li><li class="tree-file"><a href="src--app--installer.rs.html">installer.rs</a></li><li class="tree-file"><a href="src--app--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="src--app--notes_view.rs.html">notes_view.rs</a></li><li class="tree-file"><a href="src--app--project_picker.rs.html">project_picker.rs</a></li><li class="tree-file"><a href="src--app--prompt.rs.html">prompt.rs</a></li><li class="tree-file"><a href="src--app--task_picker.rs.html">task_picker.rs</a></li><li class="tree-file"><a href="src--app--tasks.rs.html">tasks.rs</a></li><li class="tree-file"><a href="src--app--workspaces.rs.html">workspaces.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">ui/</span><ul class="tree"><li class="tree-file"><a href="src--ui--browser.rs.html">browser.rs</a></li><li class="tree-file"><a href="src--ui--cleanup.rs.html">cleanup.rs</a></li><li class="tree-file"><a href="src--ui--deploy.rs.html">deploy.rs</a></li><li class="tree-file"><a href="src--ui--footer.rs.html">footer.rs</a></li><li class="tree-file"><a href="src--ui--form.rs.html">form.rs</a></li><li class="tree-file"><a href="src--ui--header.rs.html">header.rs</a></li><li class="tree-file"><a href="src--ui--help.rs.html">help.rs</a></li><li class="tree-file"><a href="src--ui--installer.rs.html">installer.rs</a></li><li class="tree-file"><a href="src--ui--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="src--ui--notes_view.rs.html">notes_view.rs</a></li><li class="tree-file"><a href="src--ui--output.rs.html">output.rs</a></li><li class="tree-file"><a href="src--ui--pickers.rs.html">pickers.rs</a></li></ul></li><li class="tree-file"><a href="src--ansi.rs.html">ansi.rs</a></li><li class="tree-file"><a href="src--browser.rs.html">browser.rs</a></li><li class="tree-file"><a href="src--cleanup.rs.html">cleanup.rs</a></li><li class="tree-file"><a href="src--complete.rs.html">complete.rs</a></li><li class="tree-file"><a href="src--config.rs.html">config.rs</a></li><li class="tree-file"><a href="src--deploy.rs.html">deploy.rs</a></li><li class="tree-file"><a href="src--desktop.rs.html">desktop.rs</a></li><li class="tree-file"><a href="src--filter_list.rs.html">filter_list.rs</a></li><li class="tree-file"><a href="src--form.rs.html">form.rs</a></li><li class="tree-file"><a href="src--fuzzy.rs.html">fuzzy.rs</a></li><li class="tree-file"><a href="src--git.rs.html">git.rs</a></li><li class="tree-file"><a href="src--history.rs.html">history.rs</a></li><li class="tree-file"><a href="src--install.rs.html">install.rs</a></li><li class="tree-file"><a href="src--line.rs.html">line.rs</a></li><li class="tree-file"><a href="src--locate.rs.html">locate.rs</a></li><li class="tree-file"><a href="src--main.rs.html">main.rs</a></li><li class="tree-file"><a href="src--notes.rs.html">notes.rs</a></li><li class="tree-file"><a href="src--proc.rs.html">proc.rs</a></li><li class="tree-file"><a href="src--project.rs.html">project.rs</a></li><li class="tree-file"><a href="src--projects.rs.html">projects.rs</a></li><li class="tree-file"><a href="src--release.rs.html">release.rs</a></li><li class="tree-file"><a href="src--scaffold.rs.html">scaffold.rs</a></li><li class="tree-file"><a href="src--settings.rs.html">settings.rs</a></li><li class="tree-file"><a href="src--targets.rs.html">targets.rs</a></li><li class="tree-file"><a href="src--task.rs.html">task.rs</a></li><li class="tree-file"><a href="src--testutil.rs.html">testutil.rs</a></li><li class="tree-file"><a href="src--watch.rs.html">watch.rs</a></li></ul></li><li class="tree-file"><a href="Cargo.lock.html">Cargo.lock</a></li><li class="tree-file"><a href="Cargo.toml.html">Cargo.toml</a></li><li class="tree-file"><a href="LICENSE.html">LICENSE</a></li><li class="tree-file"><a href="rustfmt.toml.html">rustfmt.toml</a></li></ul></nav><script>
+(function () {
+  var tree = document.currentScript.previousElementSibling;
+  var key = "file-tree-scroll:" + tree.dataset.treeKey;
+  var saved = null;
+  try {
+    saved = sessionStorage.getItem(key);
+    sessionStorage.removeItem(key);
+  } catch (e) {}
+
+  if (saved !== null) {
+    tree.scrollTop = +saved;
+  } else {
+    var active = tree.querySelector(".tree-file--active");
+    if (active) {
+      var a = active.getBoundingClientRect();
+      var t = tree.getBoundingClientRect();
+      if (a.bottom > t.bottom) {
+        tree.scrollTop += a.top - t.top - (tree.clientHeight - a.height) / 2;
+      }
+    }
+  }
+
+  tree.addEventListener("click", function (e) {
+    if (!e.target.closest("a")) return;
+    try { sessionStorage.setItem(key, String(tree.scrollTop)); } catch (err) {}
+  });
+})();
+</script>
+    <main class="main" id="main">
+      <section class="section source-page">
+        <p class="section__path">
+          <a href="../../index.html#projects" class="link">~/projects</a> /
+          <a href="../mainframe.html" class="link">mainframe</a> / source
+        </p>
+        <div class="source-page__head">
+          <h1 class="section__title">docs/guides/git.md</h1>
+          <a href="../mainframe.html" class="link">← Back to Mainframe</a>
+        </div>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">  1</span>
+<span class="normal">  2</span>
+<span class="normal">  3</span>
+<span class="normal">  4</span>
+<span class="normal">  5</span>
+<span class="normal">  6</span>
+<span class="normal">  7</span>
+<span class="normal">  8</span>
+<span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span></pre></div></td><td class="code"><div><pre><span></span><span class="gh"># Git</span>
+
+The header always shows the branch, commits to push (↑) and to pull (↓),
+and a dot (●) when there are uncommitted changes. The file list marks each
+changed file. <span class="sb">`g`</span> opens the git menu; the commands run in the output pane.
+
+<span class="gu">## The git menu</span>
+
+Press <span class="sb">`g`</span>, then one key:
+
+| | Key | What it does |
+|---|---|---|
+| <span class="gs">**Look**</span> | <span class="sb">`s`</span> | <span class="sb">`git status`</span> |
+| | <span class="sb">`d`</span> / <span class="sb">`D`</span> | diff of unstaged / staged changes |
+| | <span class="sb">`l`</span> | log of all branches as a graph |
+| | <span class="sb">`L`</span> | history of the selected file |
+| | <span class="sb">`w`</span> | blame of the selected file |
+| <span class="gs">**Stage and commit**</span> | <span class="sb">`a`</span> / <span class="sb">`A`</span> | stage the selected (or marked) files / everything |
+| | <span class="sb">`u`</span> | unstage the selected files |
+| | <span class="sb">`c`</span> | commit what is staged; asks for the message |
+| | <span class="sb">`C`</span> | stage everything and commit |
+| | <span class="sb">`e`</span> | amend the last commit in your editor |
+| | <span class="sb">`x`</span> | throw away the changes to the selected files, after asking |
+| <span class="gs">**Sync**</span> | <span class="sb">`f`</span> | fetch from all remotes; can also delete merged branches, see below |
+| | <span class="sb">`p`</span> | pull |
+| | <span class="sb">`P`</span> | push; the first push of a branch sets its upstream |
+| | <span class="sb">`B`</span> | push another local branch, without switching to it |
+| <span class="gs">**Branches**</span> | <span class="sb">`b`</span> | list branches |
+| | <span class="sb">`o`</span> | switch to a branch, numbered in the order to merge them, see below |
+| | <span class="sb">`n`</span> | new branch from here |
+| | <span class="sb">`W`</span> | remove another worktree |
+| | <span class="sb">`z`</span> / <span class="sb">`Z`</span> | stash / pop the stash |
+| <span class="gs">**Releases**</span> | <span class="sb">`r`</span> | make a release, see below |
+| | <span class="sb">`R`</span> | list releases and CI runs |
+| <span class="gs">**Other**</span> | <span class="sb">`i`</span> | <span class="sb">`git init`</span> here |
+| | <span class="sb">`h`</span> | create a GitHub repository for this folder |
+| | <span class="sb">`g`</span> | open lazygit, gitui or tig, whichever is installed |
+
+Outside the git menu, <span class="sb">`s`</span> and <span class="sb">`u`</span> stage and unstage right in the file list.
+
+<span class="gu">## Switching branches, in merge order</span>
+
+<span class="sb">`g o`</span> lists every branch, local and on the remote, with two dates: when
+the work on it started (its oldest commit that isn't in <span class="sb">`origin/main`</span> yet)
+and its last commit. Branches with work still to merge are numbered 1, 2,
+3 … by when their work started, so merging or opening pull requests in
+that order brings them in the way they were written. A branch stacked on
+another comes right after it.
+
+Below the numbered ones come the base (<span class="sb">`origin/main`</span>, or <span class="sb">`main`</span> in a repo
+without a remote) and the branches that have nothing it doesn't, such as
+merged ones. The last column says how each stands with its remote: not
+pushed, pushed, commits to push or pull, only on the remote, or deleted on
+the remote. Type to filter, <span class="sb">`Enter`</span> switches. When nothing matches,
+<span class="sb">`Enter`</span> switches to the name you typed.
+
+<span class="gu">## Branches deleted on the remote</span>
+
+When a pull request is merged, GitHub usually deletes its branch. <span class="sb">`g f`</span>
+then drops <span class="sb">`origin/&lt;branch&gt;`</span> on the next fetch, but your local branch
+stays; <span class="sb">`g o`</span> shows it as deleted on the remote. To have <span class="sb">`g f`</span> delete those
+too, set this in the [<span class="nt">configuration</span>](<span class="na">../reference/config.md</span>):
+
+<span class="sb">```toml</span>
+<span class="n">prune_gone_branches</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="sb">```</span>
+
+It only deletes a local branch when everything on it is in <span class="sb">`origin/main`</span>,
+so no work is lost. That includes branches GitHub rebased or squashed when
+merging: their commits have new ids in <span class="sb">`main`</span>, but merging the branch again
+wouldn't change a file. One whose work isn't in <span class="sb">`main`</span>, for example when
+its pull request was closed, stays, and the output says so; so does one
+that would conflict with <span class="sb">`main`</span>. The branch you have checked out stays too.
+
+<span class="gu">## Pushing another branch</span>
+
+<span class="sb">`g B`</span> pushes a branch you don't have checked out: pick it from the list
+(most recently changed first), and Mainframe pushes it to the remote it
+tracks, or to <span class="sb">`origin`</span> with the upstream set. Your current branch and your
+uncommitted changes stay as they are.
+
+<span class="gu">## Worktrees</span>
+
+A worktree is a second checkout of the same repository in another folder,
+for example to work on two branches at once. Inside a worktree's folder,
+everything in Mainframe works on that checkout and its branch. The
+[<span class="nt">cleanup</span>](<span class="na">cleanup.md</span>) also finds the build output in your other worktrees.
+
+<span class="sb">`g W`</span> removes one. Pick it by its folder name; Mainframe asks first and
+says which branch it has checked out. The branch itself stays. When the
+worktree has uncommitted changes, the question says how many would be lost.
+If you're inside the worktree you remove, Mainframe takes you to the main
+checkout first.
+
+You can also delete a worktree's folder by hand. Git then still thinks the
+branch is checked out there; <span class="sb">`g W`</span> on it, or <span class="sb">`git worktree prune`</span>, cleans
+that up.
+
+<span class="gu">## A GitHub repository for a folder</span>
+
+<span class="sb">`g h`</span> creates a repository on GitHub with the [<span class="nt">GitHub CLI</span>](<span class="na">https://cli.github.com</span>)
+and links the folder to it. A form asks for the owner (you or an
+organization), the name, a description, the visibility, the remote name and
+whether to push. Each field has a default; <span class="sb">`Enter`</span> accepts it.
+
+<span class="gu">## Releases</span>
+
+<span class="sb">`g r`</span> makes a release in one go, for projects with a version in
+<span class="sb">`Cargo.toml`</span>, <span class="sb">`package.json`</span> or <span class="sb">`pyproject.toml`</span>. A form asks for:
+
+<span class="k">1.</span> <span class="gs">**version:**</span> the next version; it suggests one.
+<span class="k">2.</span> <span class="gs">**bump:**</span> how the version change gets into <span class="sb">`main`</span>:
+<span class="w">   </span><span class="k">-</span><span class="w"> </span><span class="ge">*merge PR*</span>: a pull request that is merged right away
+<span class="w">   </span><span class="k">-</span><span class="w"> </span><span class="ge">*open PR*</span>: a pull request you merge yourself, for example when <span class="sb">`main`</span>
+     requires reviews or CI runs on pull requests; the next <span class="sb">`g r`</span> then
+     continues with the tag
+<span class="w">   </span><span class="k">-</span><span class="w"> </span><span class="ge">*commit*</span>: a commit straight on <span class="sb">`main`</span>
+<span class="w">   </span><span class="k">-</span><span class="w"> </span><span class="ge">*already done*</span>: the version is already bumped
+<span class="k">3.</span> <span class="gs">**checks:**</span> commands that must pass before tagging, like
+   <span class="sb">`cargo build &amp;&amp; cargo test &amp;&amp; cargo clippy --all-targets`</span>. Empty skips
+   them.
+<span class="k">4.</span> <span class="gs">**remote:**</span> where the commit and the tag go.
+<span class="k">5.</span> <span class="gs">**then:**</span> when a workflow runs on tags, Mainframe follows it until it's
+   done (<span class="ge">*watch CI*</span>). Without one, it publishes the release with
+   <span class="sb">`gh release create --generate-notes`</span>.
+
+The version is bumped in the manifest and its lock file, the tag is
+<span class="sb">`vX.Y.Z`</span>. <span class="sb">`g R`</span> lists the releases and the latest CI runs.
+</pre></div></td></tr></table></div>
+
+      </section>
+    </main>
+  </div>
+</body>
+</html>

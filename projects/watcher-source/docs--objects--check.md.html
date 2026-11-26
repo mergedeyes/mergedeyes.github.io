@@ -1,0 +1,1539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>docs/objects/check.md — Watcher — Jan</title>
+  <link rel="stylesheet" href="../../styles.css?v=41ca8b66" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="layout">
+    <header class="rail" id="rail">
+<div class="rail__top">
+<a class="brand" href="../../index.html#top">
+<span class="brand__name">Jan</span>
+<span class="brand__meta">systems &amp; infrastructure<br/>Code, Code &amp; Code</span>
+</a>
+<button aria-controls="nav" aria-expanded="false" aria-label="Toggle menu" class="menu-toggle" id="menuToggle">
+<span></span><span></span><span></span>
+</button>
+</div>
+<nav aria-label="Sections" class="nav" id="nav">
+<a data-path="~/projects" href="../../index.html#projects">Projects</a>
+<a data-path="~/work" href="../../index.html#work">Work</a>
+<a data-path="~/education" href="../../index.html#education">Education</a>
+<a data-path="~/skills" href="../../index.html#skills">Skills</a>
+<a data-path="~/about" href="../../index.html#about">About Me</a>
+<a data-path="~/contact" href="../../index.html#contact">Contact</a>
+</nav>
+<div class="rail__status">
+<span aria-hidden="true" class="dot"></span>
+<span>open to work</span>
+</div>
+</header>
+    <nav class="file-tree" data-tree-key="watcher"><p class="file-tree__title">Files</p><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">docs/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">guides/</span><ul class="tree"><li class="tree-file"><a href="docs--guides--alerting-recipes.md.html">alerting-recipes.md</a></li><li class="tree-file"><a href="docs--guides--configuration.md.html">configuration.md</a></li><li class="tree-file"><a href="docs--guides--data.md.html">data.md</a></li><li class="tree-file"><a href="docs--guides--first-steps.md.html">first-steps.md</a></li><li class="tree-file"><a href="docs--guides--nodes.md.html">nodes.md</a></li><li class="tree-file"><a href="docs--guides--notifications.md.html">notifications.md</a></li><li class="tree-file"><a href="docs--guides--operations.md.html">operations.md</a></li><li class="tree-file"><a href="docs--guides--proxmox.md.html">proxmox.md</a></li><li class="tree-file"><a href="docs--guides--ssh.md.html">ssh.md</a></li><li class="tree-file"><a href="docs--guides--web-ui.md.html">web-ui.md</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">images/</span><ul class="tree"><li class="tree-file"><a href="docs--images--config-tree-dark.png.html">config-tree-dark.png</a></li><li class="tree-file"><a href="docs--images--config-tree.png.html">config-tree.png</a></li><li class="tree-file"><a href="docs--images--host-groups-dark.png.html">host-groups-dark.png</a></li><li class="tree-file"><a href="docs--images--host-groups.png.html">host-groups.png</a></li><li class="tree-file"><a href="docs--images--nodes-dark.png.html">nodes-dark.png</a></li><li class="tree-file"><a href="docs--images--nodes.png.html">nodes.png</a></li><li class="tree-file"><a href="docs--images--overview-dark.png.html">overview-dark.png</a></li><li class="tree-file"><a href="docs--images--overview.png.html">overview.png</a></li><li class="tree-file"><a href="docs--images--two-factor-dark.png.html">two-factor-dark.png</a></li><li class="tree-file"><a href="docs--images--two-factor.png.html">two-factor.png</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">objects/</span><ul class="tree"><li class="tree-file tree-file--active"><a href="docs--objects--check.md.html">check.md</a></li><li class="tree-file"><a href="docs--objects--contact.md.html">contact.md</a></li><li class="tree-file"><a href="docs--objects--contactgroup.md.html">contactgroup.md</a></li><li class="tree-file"><a href="docs--objects--dependency.md.html">dependency.md</a></li><li class="tree-file"><a href="docs--objects--downtimegroup.md.html">downtimegroup.md</a></li><li class="tree-file"><a href="docs--objects--host.md.html">host.md</a></li><li class="tree-file"><a href="docs--objects--hostgroup.md.html">hostgroup.md</a></li><li class="tree-file"><a href="docs--objects--notify.md.html">notify.md</a></li><li class="tree-file"><a href="docs--objects--service.md.html">service.md</a></li><li class="tree-file"><a href="docs--objects--servicegroup.md.html">servicegroup.md</a></li><li class="tree-file"><a href="docs--objects--sink.md.html">sink.md</a></li><li class="tree-file"><a href="docs--objects--timeperiod.md.html">timeperiod.md</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">reference/</span><ul class="tree"><li class="tree-file"><a href="docs--reference--api.md.html">api.md</a></li><li class="tree-file"><a href="docs--reference--cli.md.html">cli.md</a></li><li class="tree-file"><a href="docs--reference--watcher-toml.md.html">watcher-toml.md</a></li></ul></li><li class="tree-file"><a href="docs--README.md.html">README.md</a></li><li class="tree-file"><a href="docs--examples.md.html">examples.md</a></li><li class="tree-file"><a href="docs--install.md.html">install.md</a></li><li class="tree-file"><a href="docs--introduction.md.html">introduction.md</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">examples/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">demo/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">conf.d/</span><ul class="tree"><li class="tree-file"><a href="examples--demo--conf.d--checks.toml.html">checks.toml</a></li><li class="tree-file"><a href="examples--demo--conf.d--groups.toml.html">groups.toml</a></li><li class="tree-file"><a href="examples--demo--conf.d--hosts.toml.html">hosts.toml</a></li><li class="tree-file"><a href="examples--demo--conf.d--services.toml.html">services.toml</a></li></ul></li><li class="tree-file"><a href="examples--demo--watcher.toml.html">watcher.toml</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">local/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">conf.d/</span><ul class="tree"><li class="tree-file"><a href="examples--local--conf.d--checks.toml.html">checks.toml</a></li><li class="tree-file"><a href="examples--local--conf.d--contacts.toml.html">contacts.toml</a></li><li class="tree-file"><a href="examples--local--conf.d--hosts.toml.html">hosts.toml</a></li><li class="tree-file"><a href="examples--local--conf.d--services.toml.html">services.toml</a></li></ul></li><li class="tree-file"><a href="examples--local--watcher.toml.html">watcher.toml</a></li></ul></li><li class="tree-file"><a href="examples--init-answers.toml.html">init-answers.toml</a></li><li class="tree-file"><a href="examples--sinks.toml.html">sinks.toml</a></li></ul></li><li class="tree-file"><a href="*.toml.html">*.toml</a></li><li class="tree-file"><a href="*.yaml.html">*.yaml</a></li><li class="tree-file"><a href="Cargo.lock.html">Cargo.lock</a></li><li class="tree-file"><a href="LICENSE.html">LICENSE</a></li></ul></nav><script>
+(function () {
+  var tree = document.currentScript.previousElementSibling;
+  var key = "file-tree-scroll:" + tree.dataset.treeKey;
+  var saved = null;
+  try {
+    saved = sessionStorage.getItem(key);
+    sessionStorage.removeItem(key);
+  } catch (e) {}
+
+  if (saved !== null) {
+    tree.scrollTop = +saved;
+  } else {
+    var active = tree.querySelector(".tree-file--active");
+    if (active) {
+      var a = active.getBoundingClientRect();
+      var t = tree.getBoundingClientRect();
+      if (a.bottom > t.bottom) {
+        tree.scrollTop += a.top - t.top - (tree.clientHeight - a.height) / 2;
+      }
+    }
+  }
+
+  tree.addEventListener("click", function (e) {
+    if (!e.target.closest("a")) return;
+    try { sessionStorage.setItem(key, String(tree.scrollTop)); } catch (err) {}
+  });
+})();
+</script>
+    <main class="main" id="main">
+      <section class="section source-page">
+        <p class="section__path">
+          <a href="../../index.html#projects" class="link">~/projects</a> /
+          <a href="../watcher.html" class="link">watcher</a> / source
+        </p>
+        <div class="source-page__head">
+          <h1 class="section__title">docs/objects/check.md</h1>
+          <a href="../watcher.html" class="link">← Back to Watcher</a>
+        </div>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">  1</span>
+<span class="normal">  2</span>
+<span class="normal">  3</span>
+<span class="normal">  4</span>
+<span class="normal">  5</span>
+<span class="normal">  6</span>
+<span class="normal">  7</span>
+<span class="normal">  8</span>
+<span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span>
+<span class="normal">245</span>
+<span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span>
+<span class="normal">250</span>
+<span class="normal">251</span>
+<span class="normal">252</span>
+<span class="normal">253</span>
+<span class="normal">254</span>
+<span class="normal">255</span>
+<span class="normal">256</span>
+<span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span>
+<span class="normal">262</span>
+<span class="normal">263</span>
+<span class="normal">264</span>
+<span class="normal">265</span>
+<span class="normal">266</span>
+<span class="normal">267</span>
+<span class="normal">268</span>
+<span class="normal">269</span>
+<span class="normal">270</span>
+<span class="normal">271</span>
+<span class="normal">272</span>
+<span class="normal">273</span>
+<span class="normal">274</span>
+<span class="normal">275</span>
+<span class="normal">276</span>
+<span class="normal">277</span>
+<span class="normal">278</span>
+<span class="normal">279</span>
+<span class="normal">280</span>
+<span class="normal">281</span>
+<span class="normal">282</span>
+<span class="normal">283</span>
+<span class="normal">284</span>
+<span class="normal">285</span>
+<span class="normal">286</span>
+<span class="normal">287</span>
+<span class="normal">288</span>
+<span class="normal">289</span>
+<span class="normal">290</span>
+<span class="normal">291</span>
+<span class="normal">292</span>
+<span class="normal">293</span>
+<span class="normal">294</span>
+<span class="normal">295</span>
+<span class="normal">296</span>
+<span class="normal">297</span>
+<span class="normal">298</span>
+<span class="normal">299</span>
+<span class="normal">300</span>
+<span class="normal">301</span>
+<span class="normal">302</span>
+<span class="normal">303</span>
+<span class="normal">304</span>
+<span class="normal">305</span>
+<span class="normal">306</span>
+<span class="normal">307</span>
+<span class="normal">308</span>
+<span class="normal">309</span>
+<span class="normal">310</span>
+<span class="normal">311</span>
+<span class="normal">312</span>
+<span class="normal">313</span>
+<span class="normal">314</span>
+<span class="normal">315</span>
+<span class="normal">316</span>
+<span class="normal">317</span>
+<span class="normal">318</span>
+<span class="normal">319</span>
+<span class="normal">320</span>
+<span class="normal">321</span>
+<span class="normal">322</span>
+<span class="normal">323</span>
+<span class="normal">324</span>
+<span class="normal">325</span>
+<span class="normal">326</span>
+<span class="normal">327</span>
+<span class="normal">328</span>
+<span class="normal">329</span>
+<span class="normal">330</span>
+<span class="normal">331</span>
+<span class="normal">332</span>
+<span class="normal">333</span>
+<span class="normal">334</span>
+<span class="normal">335</span>
+<span class="normal">336</span>
+<span class="normal">337</span>
+<span class="normal">338</span>
+<span class="normal">339</span>
+<span class="normal">340</span>
+<span class="normal">341</span>
+<span class="normal">342</span>
+<span class="normal">343</span>
+<span class="normal">344</span>
+<span class="normal">345</span>
+<span class="normal">346</span>
+<span class="normal">347</span>
+<span class="normal">348</span>
+<span class="normal">349</span>
+<span class="normal">350</span>
+<span class="normal">351</span>
+<span class="normal">352</span>
+<span class="normal">353</span>
+<span class="normal">354</span>
+<span class="normal">355</span>
+<span class="normal">356</span>
+<span class="normal">357</span>
+<span class="normal">358</span>
+<span class="normal">359</span>
+<span class="normal">360</span>
+<span class="normal">361</span>
+<span class="normal">362</span>
+<span class="normal">363</span>
+<span class="normal">364</span>
+<span class="normal">365</span>
+<span class="normal">366</span>
+<span class="normal">367</span>
+<span class="normal">368</span>
+<span class="normal">369</span>
+<span class="normal">370</span>
+<span class="normal">371</span>
+<span class="normal">372</span>
+<span class="normal">373</span>
+<span class="normal">374</span>
+<span class="normal">375</span>
+<span class="normal">376</span>
+<span class="normal">377</span>
+<span class="normal">378</span>
+<span class="normal">379</span>
+<span class="normal">380</span>
+<span class="normal">381</span>
+<span class="normal">382</span>
+<span class="normal">383</span>
+<span class="normal">384</span>
+<span class="normal">385</span>
+<span class="normal">386</span>
+<span class="normal">387</span>
+<span class="normal">388</span>
+<span class="normal">389</span>
+<span class="normal">390</span>
+<span class="normal">391</span>
+<span class="normal">392</span>
+<span class="normal">393</span>
+<span class="normal">394</span>
+<span class="normal">395</span>
+<span class="normal">396</span>
+<span class="normal">397</span>
+<span class="normal">398</span>
+<span class="normal">399</span>
+<span class="normal">400</span>
+<span class="normal">401</span>
+<span class="normal">402</span>
+<span class="normal">403</span>
+<span class="normal">404</span>
+<span class="normal">405</span>
+<span class="normal">406</span>
+<span class="normal">407</span>
+<span class="normal">408</span>
+<span class="normal">409</span>
+<span class="normal">410</span>
+<span class="normal">411</span>
+<span class="normal">412</span>
+<span class="normal">413</span>
+<span class="normal">414</span>
+<span class="normal">415</span>
+<span class="normal">416</span>
+<span class="normal">417</span>
+<span class="normal">418</span>
+<span class="normal">419</span>
+<span class="normal">420</span>
+<span class="normal">421</span>
+<span class="normal">422</span>
+<span class="normal">423</span>
+<span class="normal">424</span>
+<span class="normal">425</span>
+<span class="normal">426</span>
+<span class="normal">427</span>
+<span class="normal">428</span>
+<span class="normal">429</span>
+<span class="normal">430</span>
+<span class="normal">431</span>
+<span class="normal">432</span>
+<span class="normal">433</span>
+<span class="normal">434</span>
+<span class="normal">435</span>
+<span class="normal">436</span>
+<span class="normal">437</span>
+<span class="normal">438</span>
+<span class="normal">439</span>
+<span class="normal">440</span>
+<span class="normal">441</span>
+<span class="normal">442</span>
+<span class="normal">443</span>
+<span class="normal">444</span>
+<span class="normal">445</span>
+<span class="normal">446</span>
+<span class="normal">447</span>
+<span class="normal">448</span>
+<span class="normal">449</span>
+<span class="normal">450</span>
+<span class="normal">451</span>
+<span class="normal">452</span>
+<span class="normal">453</span>
+<span class="normal">454</span>
+<span class="normal">455</span>
+<span class="normal">456</span>
+<span class="normal">457</span>
+<span class="normal">458</span>
+<span class="normal">459</span>
+<span class="normal">460</span>
+<span class="normal">461</span>
+<span class="normal">462</span>
+<span class="normal">463</span>
+<span class="normal">464</span>
+<span class="normal">465</span>
+<span class="normal">466</span>
+<span class="normal">467</span>
+<span class="normal">468</span>
+<span class="normal">469</span>
+<span class="normal">470</span>
+<span class="normal">471</span>
+<span class="normal">472</span>
+<span class="normal">473</span>
+<span class="normal">474</span>
+<span class="normal">475</span>
+<span class="normal">476</span>
+<span class="normal">477</span>
+<span class="normal">478</span>
+<span class="normal">479</span>
+<span class="normal">480</span>
+<span class="normal">481</span>
+<span class="normal">482</span>
+<span class="normal">483</span>
+<span class="normal">484</span>
+<span class="normal">485</span>
+<span class="normal">486</span>
+<span class="normal">487</span>
+<span class="normal">488</span>
+<span class="normal">489</span>
+<span class="normal">490</span>
+<span class="normal">491</span>
+<span class="normal">492</span>
+<span class="normal">493</span>
+<span class="normal">494</span>
+<span class="normal">495</span>
+<span class="normal">496</span>
+<span class="normal">497</span>
+<span class="normal">498</span>
+<span class="normal">499</span>
+<span class="normal">500</span>
+<span class="normal">501</span>
+<span class="normal">502</span>
+<span class="normal">503</span>
+<span class="normal">504</span>
+<span class="normal">505</span>
+<span class="normal">506</span>
+<span class="normal">507</span>
+<span class="normal">508</span>
+<span class="normal">509</span>
+<span class="normal">510</span>
+<span class="normal">511</span>
+<span class="normal">512</span>
+<span class="normal">513</span>
+<span class="normal">514</span>
+<span class="normal">515</span>
+<span class="normal">516</span>
+<span class="normal">517</span>
+<span class="normal">518</span>
+<span class="normal">519</span>
+<span class="normal">520</span>
+<span class="normal">521</span>
+<span class="normal">522</span>
+<span class="normal">523</span>
+<span class="normal">524</span>
+<span class="normal">525</span>
+<span class="normal">526</span>
+<span class="normal">527</span>
+<span class="normal">528</span>
+<span class="normal">529</span>
+<span class="normal">530</span>
+<span class="normal">531</span>
+<span class="normal">532</span>
+<span class="normal">533</span>
+<span class="normal">534</span>
+<span class="normal">535</span>
+<span class="normal">536</span>
+<span class="normal">537</span>
+<span class="normal">538</span>
+<span class="normal">539</span>
+<span class="normal">540</span>
+<span class="normal">541</span>
+<span class="normal">542</span>
+<span class="normal">543</span>
+<span class="normal">544</span>
+<span class="normal">545</span>
+<span class="normal">546</span>
+<span class="normal">547</span>
+<span class="normal">548</span>
+<span class="normal">549</span>
+<span class="normal">550</span>
+<span class="normal">551</span>
+<span class="normal">552</span>
+<span class="normal">553</span>
+<span class="normal">554</span>
+<span class="normal">555</span>
+<span class="normal">556</span>
+<span class="normal">557</span>
+<span class="normal">558</span>
+<span class="normal">559</span>
+<span class="normal">560</span>
+<span class="normal">561</span>
+<span class="normal">562</span>
+<span class="normal">563</span>
+<span class="normal">564</span>
+<span class="normal">565</span>
+<span class="normal">566</span>
+<span class="normal">567</span>
+<span class="normal">568</span>
+<span class="normal">569</span>
+<span class="normal">570</span>
+<span class="normal">571</span>
+<span class="normal">572</span>
+<span class="normal">573</span>
+<span class="normal">574</span>
+<span class="normal">575</span>
+<span class="normal">576</span>
+<span class="normal">577</span>
+<span class="normal">578</span>
+<span class="normal">579</span>
+<span class="normal">580</span>
+<span class="normal">581</span>
+<span class="normal">582</span>
+<span class="normal">583</span>
+<span class="normal">584</span>
+<span class="normal">585</span>
+<span class="normal">586</span>
+<span class="normal">587</span>
+<span class="normal">588</span>
+<span class="normal">589</span>
+<span class="normal">590</span>
+<span class="normal">591</span>
+<span class="normal">592</span>
+<span class="normal">593</span>
+<span class="normal">594</span>
+<span class="normal">595</span>
+<span class="normal">596</span>
+<span class="normal">597</span>
+<span class="normal">598</span>
+<span class="normal">599</span>
+<span class="normal">600</span>
+<span class="normal">601</span>
+<span class="normal">602</span>
+<span class="normal">603</span>
+<span class="normal">604</span>
+<span class="normal">605</span>
+<span class="normal">606</span>
+<span class="normal">607</span>
+<span class="normal">608</span>
+<span class="normal">609</span>
+<span class="normal">610</span>
+<span class="normal">611</span>
+<span class="normal">612</span>
+<span class="normal">613</span>
+<span class="normal">614</span>
+<span class="normal">615</span>
+<span class="normal">616</span>
+<span class="normal">617</span>
+<span class="normal">618</span>
+<span class="normal">619</span>
+<span class="normal">620</span>
+<span class="normal">621</span>
+<span class="normal">622</span>
+<span class="normal">623</span>
+<span class="normal">624</span>
+<span class="normal">625</span>
+<span class="normal">626</span>
+<span class="normal">627</span>
+<span class="normal">628</span>
+<span class="normal">629</span>
+<span class="normal">630</span>
+<span class="normal">631</span>
+<span class="normal">632</span>
+<span class="normal">633</span>
+<span class="normal">634</span>
+<span class="normal">635</span>
+<span class="normal">636</span>
+<span class="normal">637</span>
+<span class="normal">638</span>
+<span class="normal">639</span>
+<span class="normal">640</span>
+<span class="normal">641</span>
+<span class="normal">642</span>
+<span class="normal">643</span>
+<span class="normal">644</span>
+<span class="normal">645</span>
+<span class="normal">646</span>
+<span class="normal">647</span>
+<span class="normal">648</span>
+<span class="normal">649</span>
+<span class="normal">650</span>
+<span class="normal">651</span>
+<span class="normal">652</span>
+<span class="normal">653</span>
+<span class="normal">654</span>
+<span class="normal">655</span>
+<span class="normal">656</span>
+<span class="normal">657</span>
+<span class="normal">658</span>
+<span class="normal">659</span>
+<span class="normal">660</span>
+<span class="normal">661</span>
+<span class="normal">662</span>
+<span class="normal">663</span>
+<span class="normal">664</span>
+<span class="normal">665</span>
+<span class="normal">666</span>
+<span class="normal">667</span>
+<span class="normal">668</span>
+<span class="normal">669</span>
+<span class="normal">670</span>
+<span class="normal">671</span>
+<span class="normal">672</span>
+<span class="normal">673</span>
+<span class="normal">674</span>
+<span class="normal">675</span>
+<span class="normal">676</span>
+<span class="normal">677</span>
+<span class="normal">678</span>
+<span class="normal">679</span>
+<span class="normal">680</span>
+<span class="normal">681</span>
+<span class="normal">682</span>
+<span class="normal">683</span>
+<span class="normal">684</span>
+<span class="normal">685</span>
+<span class="normal">686</span>
+<span class="normal">687</span>
+<span class="normal">688</span>
+<span class="normal">689</span>
+<span class="normal">690</span>
+<span class="normal">691</span>
+<span class="normal">692</span>
+<span class="normal">693</span>
+<span class="normal">694</span>
+<span class="normal">695</span>
+<span class="normal">696</span>
+<span class="normal">697</span>
+<span class="normal">698</span>
+<span class="normal">699</span>
+<span class="normal">700</span>
+<span class="normal">701</span>
+<span class="normal">702</span>
+<span class="normal">703</span>
+<span class="normal">704</span>
+<span class="normal">705</span>
+<span class="normal">706</span>
+<span class="normal">707</span>
+<span class="normal">708</span>
+<span class="normal">709</span>
+<span class="normal">710</span>
+<span class="normal">711</span>
+<span class="normal">712</span>
+<span class="normal">713</span>
+<span class="normal">714</span>
+<span class="normal">715</span>
+<span class="normal">716</span>
+<span class="normal">717</span>
+<span class="normal">718</span>
+<span class="normal">719</span>
+<span class="normal">720</span>
+<span class="normal">721</span>
+<span class="normal">722</span>
+<span class="normal">723</span>
+<span class="normal">724</span>
+<span class="normal">725</span>
+<span class="normal">726</span>
+<span class="normal">727</span>
+<span class="normal">728</span>
+<span class="normal">729</span>
+<span class="normal">730</span></pre></div></td><td class="code"><div><pre><span></span><span class="gh"># check</span>
+
+A check describes what to run and how to judge the result: a command,
+values for its placeholders, thresholds and timing. A check does nothing
+by itself. It runs once it is on a [<span class="nt">host</span>](<span class="na">host.md</span>): listed in the host's
+<span class="sb">`services = [...]`</span> as it is, or used by a [<span class="nt">service</span>](<span class="na">service.md</span>) on the
+host.
+
+<span class="sb">```toml</span>
+<span class="k">[check.http]</span>
+<span class="n">command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"check_http -H $host.address$ -u $url$"</span>
+<span class="n">vars</span><span class="p">.</span><span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"/"</span>
+<span class="sb">```</span>
+
+This check runs the <span class="sb">`check_http`</span> plugin. <span class="sb">`$host.address$`</span> is replaced with
+the address of the host it runs for, and <span class="sb">`$url$`</span> with the var <span class="sb">`url`</span>, which
+defaults to <span class="sb">`/`</span>. The plugin's exit code gives the state: 0 is OK, 1 WARNING,
+2 CRITICAL, 3 UNKNOWN.
+
+A check that no service uses gives a warning.
+
+<span class="gu">## Fields</span>
+
+| Field | Default | Description |
+|---|---|---|
+| <span class="sb">`title`</span> | | Name shown in the web UI. Can contain [<span class="nt">macros</span>](<span class="na">#macros</span>). |
+| <span class="sb">`command`</span> | | The command to run. Required, unless <span class="sb">`builtin`</span> or <span class="sb">`passive`</span> is set. Can contain [<span class="nt">macros</span>](<span class="na">#macros</span>). |
+| <span class="sb">`builtin`</span> | | Use a check built into Watcher instead of a command: <span class="sb">`ping`</span>, <span class="sb">`tcp`</span>, <span class="sb">`http`</span>, <span class="sb">`dns`</span>, <span class="sb">`tls`</span>, or one of the [<span class="nt">Proxmox VE checks</span>](<span class="na">#proxmox-ve-checks</span>). See [<span class="nt">Built-in checks</span>](<span class="na">#built-in-checks</span>). |
+| <span class="sb">`shell`</span> | <span class="sb">`false`</span> | <span class="sb">`true`</span> runs the command with <span class="sb">`/bin/sh -c`</span>, needed for pipes, <span class="sb">`$(...)`</span> or <span class="sb">`&amp;&amp;`</span>. See [<span class="nt">Shell</span>](<span class="na">#shell</span>). |
+| <span class="sb">`run_on`</span> | <span class="sb">`local`</span> | Where the command runs. <span class="sb">`local`</span>: on the Watcher machine. <span class="sb">`host`</span>: on the monitored host over SSH, see [<span class="nt">Checks over SSH</span>](<span class="na">../guides/ssh.md</span>). |
+| <span class="sb">`copy`</span> | <span class="sb">`false`</span> | With <span class="sb">`run_on = "host"`</span>: upload the script to the host before running it. See [<span class="nt">Copying scripts</span>](<span class="na">../guides/ssh.md#copying-scripts</span>). |
+| <span class="sb">`passive`</span> | <span class="sb">`false`</span> | <span class="sb">`true`</span>: Watcher runs nothing and waits for results sent over the API. See [<span class="nt">Passive checks</span>](<span class="na">#passive-checks</span>). |
+| <span class="sb">`format`</span> | <span class="sb">`auto`</span> | How the output is read: <span class="sb">`auto`</span>, <span class="sb">`nagios`</span>, <span class="sb">`key_value`</span> or <span class="sb">`json`</span>. See [<span class="nt">Output formats</span>](<span class="na">#output-formats</span>). |
+| <span class="sb">`vars`</span> | | Values for the <span class="sb">`$name$`</span> macros in the command, or the settings of a [<span class="nt">built-in check</span>](<span class="na">#built-in-checks</span>). Text, numbers, or tables. |
+| <span class="sb">`thresholds.&lt;metric&gt;`</span> | | Limits for a metric: <span class="sb">`{ warn = "...", crit = "..." }`</span>. See [<span class="nt">Thresholds</span>](<span class="na">#thresholds</span>). |
+| <span class="sb">`interval`</span> | <span class="sb">`1m`</span> | Time between two checks. |
+| <span class="sb">`retry_interval`</span> | <span class="sb">`interval`</span>, at most <span class="sb">`1m`</span> | Time between checks while a problem is not yet confirmed (SOFT). |
+| <span class="sb">`max_attempts`</span> | <span class="sb">`3`</span>, passive <span class="sb">`1`</span> | How many problem results in a row confirm a problem (HARD). Only HARD problems notify. |
+| <span class="sb">`timeout`</span> | <span class="sb">`60s`</span> | After this time the command is killed and the result is UNKNOWN. |
+| <span class="sb">`freshness`</span> | | Passive checks only: the state becomes UNKNOWN when no result arrived for this long. |
+| <span class="sb">`flap_detection`</span> | <span class="sb">`true`</span> | Detect services that change state too often. See [<span class="nt">Flap detection</span>](<span class="na">#flap-detection</span>). |
+| <span class="sb">`flap_low`</span> | <span class="sb">`5`</span> | Flapping ends when the state change rate drops below this percentage. |
+| <span class="sb">`flap_high`</span> | <span class="sb">`20`</span> | Flapping starts when the state change rate reaches this percentage. |
+| <span class="sb">`graphs`</span> | <span class="sb">`true`</span> | <span class="sb">`false`</span>: no graphs for this check's metrics. |
+
+A [<span class="nt">service</span>](<span class="na">service.md</span>) or a [<span class="nt">host service</span>](<span class="na">host.md#host-services</span>) can set
+every one of these fields again, and its value wins over the check's.
+
+<span class="sb">`check`</span>, <span class="sb">`for_each`</span>, <span class="sb">`groups`</span> and <span class="sb">`enabled`</span> are not allowed on a check;
+they belong on a service.
+
+<span class="gu">## Examples</span>
+
+<span class="gu">### A plugin with fixed arguments</span>
+
+<span class="sb">```toml</span>
+<span class="k">[check.load]</span>
+<span class="n">command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"check_load -w 5,4,3 -c 10,8,6"</span>
+<span class="sb">```</span>
+
+<span class="gu">### A plugin with vars</span>
+
+The vars give default values. Services and hosts can set other values.
+
+<span class="sb">```toml</span>
+<span class="k">[check.disk]</span>
+<span class="n">command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"check_disk -w $warn$ -c $crit$ -p $path$"</span>
+<span class="n">vars</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">warn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"20%"</span><span class="p">,</span><span class="w"> </span><span class="n">crit</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"10%"</span><span class="p">,</span><span class="w"> </span><span class="n">path</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"/"</span><span class="w"> </span><span class="p">}</span>
+<span class="sb">```</span>
+
+<span class="gu">### A script with a full path</span>
+
+<span class="sb">```toml</span>
+<span class="k">[check.backup_age]</span>
+<span class="n">command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"/opt/scripts/backup_age.sh /srv/backup"</span>
+<span class="sb">```</span>
+
+<span class="gu">### A metric threshold</span>
+
+The check fails when the response time of <span class="sb">`check_http`</span> is too high.
+
+<span class="sb">```toml</span>
+<span class="k">[check.http]</span>
+<span class="n">command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"check_http -H $host.address$"</span>
+<span class="n">thresholds</span><span class="p">.</span><span class="n">time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">warn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"&gt; 500ms"</span><span class="p">,</span><span class="w"> </span><span class="n">crit</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"&gt; 2s"</span><span class="w"> </span><span class="p">}</span>
+<span class="sb">```</span>
+
+<span class="gu">### Checking less often</span>
+
+<span class="sb">```toml</span>
+<span class="k">[check.dns]</span>
+<span class="n">command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"check_dns -H example.com -s $host.address$"</span>
+<span class="n">interval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"5m"</span>
+<span class="n">retry_interval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"30s"</span>
+<span class="n">max_attempts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span>
+<span class="sb">```</span>
+
+<span class="gu">### A pipe in the command</span>
+
+<span class="sb">```toml</span>
+<span class="k">[check.uptime]</span>
+<span class="n">shell</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="n">command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'echo "uptime=$(cut -d" " -f1 /proc/uptime)s"'</span>
+<span class="sb">```</span>
+
+<span class="gu">### Running on the host over SSH</span>
+
+<span class="sb">```toml</span>
+<span class="k">[check.load]</span>
+<span class="n">command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"check_load -w 5,4,3 -c 10,8,6"</span>
+<span class="n">run_on</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"host"</span>
+<span class="sb">```</span>
+
+The host needs an <span class="sb">`ssh`</span> login, see [<span class="nt">Checks over SSH</span>](<span class="na">../guides/ssh.md</span>).
+
+<span class="gu">### No graphs</span>
+
+<span class="sb">```toml</span>
+<span class="k">[check.backup]</span>
+<span class="n">command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"/opt/scripts/backup.sh"</span>
+<span class="n">graphs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<span class="sb">```</span>
+
+<span class="gu">## Commands</span>
+
+A command without a path, like <span class="sb">`check_load`</span>, is looked up in these
+directories, in this order:
+
+<span class="k">1.</span> <span class="sb">`checks/`</span> next to <span class="sb">`watcher.toml`</span>
+<span class="k">2.</span> the monitoring plugin directories that exist:
+   <span class="sb">`/usr/lib/monitoring-plugins`</span>, <span class="sb">`/usr/lib/nagios/plugins`</span>,
+   <span class="sb">`/usr/lib64/nagios/plugins`</span>, <span class="sb">`/usr/local/libexec/monitoring-plugins`</span>,
+   <span class="sb">`/usr/local/nagios/libexec`</span>
+<span class="k">3.</span> <span class="sb">`PATH`</span>
+
+<span class="sb">`check_dirs`</span> in [<span class="nt">watcher.toml</span>](<span class="na">../reference/watcher-toml.md</span>) replaces the
+first two with your own list. New scripts in these directories work
+without a reload. <span class="sb">`watcher config check`</span> warns about commands it can't
+find.
+
+The command is split into arguments the way a shell would do it, but
+without a shell: quotes group words, and nothing else is interpreted.
+
+<span class="gu">## Shell</span>
+
+By default there is no shell, so pipes (<span class="sb">`|`</span>), command substitution
+(<span class="sb">`$(...)`</span>), <span class="sb">`&amp;&amp;`</span> and redirections don't work. With <span class="sb">`shell = true`</span> the
+command runs with <span class="sb">`/bin/sh -c`</span> and all of these work.
+
+<span class="sb">```toml</span>
+<span class="k">[check.mailq]</span>
+<span class="n">shell</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="n">command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'echo "depth=$(mailq | grep -c "^[A-F0-9]")"'</span>
+<span class="sb">```</span>
+
+<span class="gu">## Macros</span>
+
+Macros are placeholders in <span class="sb">`command`</span> and <span class="sb">`title`</span>. They are replaced before
+the command runs.
+
+| Macro | Replaced with |
+|---|---|
+| <span class="sb">`$name$`</span> | the var <span class="sb">`name`</span>, see [<span class="nt">Vars</span>](<span class="na">#vars</span>) |
+| <span class="sb">`$host.name$`</span> or <span class="sb">`$HOSTNAME$`</span> | the host name |
+| <span class="sb">`$host.address$`</span> or <span class="sb">`$HOSTADDRESS$`</span> | the host address; the host name if no address is set |
+| <span class="sb">`$host.node$`</span> | the host's <span class="sb">`node`</span>; <span class="sb">`local`</span> for hosts without one |
+| <span class="sb">`$host.vars.x$`</span> | the host var <span class="sb">`x`</span>; nested: <span class="sb">`$host.vars.x.y$`</span> |
+| <span class="sb">`$service.name$`</span> | the service name |
+| <span class="sb">`$service.key$`</span> | the key of the <span class="sb">`for_each`</span> entry, see [<span class="nt">for_each</span>](<span class="na">service.md#one-service-per-item-for_each</span>) |
+| <span class="sb">`$check.name$`</span> | the check name |
+
+<span class="sb">```toml</span>
+<span class="k">[check.tcp]</span>
+<span class="n">command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"check_tcp -H $host.address$ -p $port$"</span>
+<span class="n">vars</span><span class="p">.</span><span class="n">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"22"</span>
+<span class="sb">```</span>
+
+Things to know:
+
+<span class="k">-</span><span class="w"> </span>A value with spaces stays a single argument.
+<span class="k">-</span><span class="w"> </span>With <span class="sb">`shell = true`</span>, values are quoted for the shell automatically. Don't
+  put quotes around macros yourself.
+<span class="k">-</span><span class="w"> </span>Any other <span class="sb">`$`</span> text, such as <span class="sb">`$HOME`</span>, <span class="sb">`$1`</span> or <span class="sb">`$(cmd)`</span>, is left alone.
+<span class="k">-</span><span class="w"> </span>If a <span class="sb">`$name$`</span> var is not set anywhere for a host, that service is an
+  error on that host.
+
+<span class="gu">## Vars</span>
+
+Vars give values to the <span class="sb">`$name$`</span> macros. The check sets defaults, and
+services, host groups, hosts and host services can set other values:
+
+<span class="sb">```toml</span>
+<span class="k">[check.http]</span>
+<span class="n">command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"check_http -H $host.address$ -u $url$"</span>
+<span class="n">vars</span><span class="p">.</span><span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"/"</span>
+
+<span class="k">[[host]]</span>
+<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"shop"</span>
+<span class="n">services</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"http"</span><span class="p">]</span>
+<span class="n">vars</span><span class="p">.</span><span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"/health"</span><span class="w">          </span><span class="c1"># this host runs: check_http -H shop -u /health</span>
+<span class="sb">```</span>
+
+Which value wins is explained in
+[<span class="nt">Which value wins</span>](<span class="na">../guides/configuration.md#which-value-wins</span>).
+
+Built-in checks read their settings from vars too, but not from host and
+host group vars. See [<span class="nt">Built-in checks</span>](<span class="na">#built-in-checks</span>).
+
+<span class="gu">## Exit codes</span>
+
+| Exit code | State |
+|---|---|
+| 0 | OK |
+| 1 | WARNING |
+| 2 | CRITICAL |
+| 3 | UNKNOWN |
+| any other code, or a timeout | UNKNOWN |
+
+When the timeout is reached, the whole process group is killed. Output is
+cut off after 64 KiB on stdout and on stderr.
+
+<span class="gu">## Output formats</span>
+
+Watcher reads the output of the command and takes metrics from it. The
+format is detected automatically; set <span class="sb">`format`</span> to force one.
+
+<span class="gs">**Nagios plugin**</span> (<span class="sb">`nagios`</span>): one line of text, metrics (performance data)
+after <span class="sb">`|`</span>.
+
+<span class="sb">```</span>
+<span class="sb">DISK OK - free space: / 3326 MB (56%) | /=2643MB;5948;5958;0;5968</span>
+<span class="sb">```</span>
+
+<span class="gs">**key=value**</span> (<span class="sb">`key_value`</span>): every line contains only <span class="sb">`key=value`</span> pairs,
+optionally with a unit. Labels can be added in Prometheus style.
+
+<span class="sb">```</span>
+<span class="sb">depth=42</span>
+<span class="sb">latency=12ms errors=0</span>
+<span class="sb">temp{sensor="cpu0"}=41</span>
+<span class="sb">```</span>
+
+<span class="gs">**JSON**</span> (<span class="sb">`json`</span>): an object with a state, a message and metrics.
+
+<span class="sb">```json</span>
+<span class="p">{</span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"warning"</span><span class="p">,</span><span class="w"> </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"queue filling"</span><span class="p">,</span>
+<span class="w"> </span><span class="nt">"metrics"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"depth"</span><span class="p">,</span><span class="w"> </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w"> </span><span class="nt">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"queue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mail"</span><span class="p">},</span>
+<span class="w">              </span><span class="nt">"warn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&gt; 100"</span><span class="p">,</span><span class="w"> </span><span class="nt">"crit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&gt; 500"</span><span class="p">}]}</span>
+<span class="sb">```</span>
+
+Metrics can also be a simple object:
+
+<span class="sb">```json</span>
+<span class="p">{</span><span class="nt">"metrics"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w"> </span><span class="nt">"consumers"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">}}</span>
+<span class="sb">```</span>
+
+| JSON field | Description |
+|---|---|
+| <span class="sb">`state`</span> | <span class="sb">`ok`</span>, <span class="sb">`warning`</span>, <span class="sb">`critical`</span> or <span class="sb">`unknown`</span>. Without it, the exit code decides. |
+| <span class="sb">`message`</span> | The text shown as the output. |
+| <span class="sb">`long_output`</span> | More text, shown on the service page. |
+| <span class="sb">`metrics`</span> | A list of metric objects, or an object of <span class="sb">`name: value`</span>. |
+
+| Metric field | Description |
+|---|---|
+| <span class="sb">`name`</span> | Metric name. |
+| <span class="sb">`value`</span> | Number. |
+| <span class="sb">`unit`</span> | Unit, see [<span class="nt">Units</span>](<span class="na">#units</span>). |
+| <span class="sb">`labels`</span> | Object of label names and values. |
+| <span class="sb">`warn`</span>, <span class="sb">`crit`</span> | Thresholds, same syntax as [<span class="nt">Thresholds</span>](<span class="na">#thresholds</span>). |
+| <span class="sb">`min`</span>, <span class="sb">`max`</span> | Range, used for graphs. |
+
+Output that can't be read in the chosen format gives UNKNOWN and no
+metrics.
+
+<span class="gu">## Thresholds</span>
+
+Thresholds compare a metric against limits and raise the state to WARNING
+or CRITICAL. They work with every output format.
+
+<span class="sb">```toml</span>
+<span class="k">[check.http]</span>
+<span class="n">command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"check_http -H $host.address$"</span>
+<span class="n">thresholds</span><span class="p">.</span><span class="n">time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">warn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"&gt; 500ms"</span><span class="p">,</span><span class="w"> </span><span class="n">crit</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"&gt; 2s"</span><span class="w"> </span><span class="p">}</span>
+<span class="sb">```</span>
+
+| Syntax | Alert when the value is |
+|---|---|
+| <span class="sb">`&gt; 100`</span>, <span class="sb">`&gt;= 100`</span> | above 100 (or equal) |
+| <span class="sb">`&lt; 5`</span>, <span class="sb">`&lt;= 5`</span> | below 5 (or equal) |
+| <span class="sb">`== 0`</span>, <span class="sb">`!= 0`</span> | equal to 0 / not equal to 0 |
+| <span class="sb">`10`</span> | outside 0 to 10 (Nagios range) |
+| <span class="sb">`10:`</span> | below 10 |
+| <span class="sb">`~:10`</span> | above 10 |
+| <span class="sb">`10:20`</span> | outside 10 to 20 |
+| <span class="sb">`@10:20`</span> | inside 10 to 20 |
+
+Things to know:
+
+<span class="k">-</span><span class="w"> </span>Limits can have units: <span class="sb">`&gt; 500ms`</span>, <span class="sb">`&gt;= 10GB`</span>, <span class="sb">`&lt; 5%`</span>.
+<span class="k">-</span><span class="w"> </span>Without a unit, time metrics are compared in milliseconds, and all other
+  metrics in their stored unit (bytes, percent).
+<span class="k">-</span><span class="w"> </span><span class="sb">`_`</span> can group digits: <span class="sb">`&gt; 10_000`</span>.
+<span class="k">-</span><span class="w"> </span>Metric names with special characters need quotes:
+  <span class="sb">`thresholds."/" = { crit = "&gt; 50GB" }`</span>.
+<span class="k">-</span><span class="w"> </span>A threshold applies to every label set of the metric.
+
+The final state is the worst of the exit code and all thresholds. The order
+from best to worst is OK, WARNING, UNKNOWN, CRITICAL.
+
+Thresholds that a Nagios plugin prints in its performance data
+(<span class="sb">`;5948;5958`</span>) are shown in the web UI, but not evaluated again, because
+the plugin already used them for its exit code. Thresholds in JSON metrics
+are evaluated. A <span class="sb">`warn`</span> or <span class="sb">`crit`</span> you configure replaces the one in the
+output.
+
+<span class="gu">## Units</span>
+
+Watcher stores values in base units, so different plugins can be compared
+and graphed together.
+
+| Unit in the output | Stored as |
+|---|---|
+| <span class="sb">`s`</span>, <span class="sb">`ms`</span>, <span class="sb">`us`</span>, <span class="sb">`µs`</span>, <span class="sb">`ns`</span> | seconds |
+| <span class="sb">`B`</span>, <span class="sb">`KB`</span>, <span class="sb">`MB`</span>, <span class="sb">`GB`</span>, <span class="sb">`TB`</span>, <span class="sb">`PB`</span> (factor 1024), <span class="sb">`KiB`</span> … <span class="sb">`PiB`</span> | bytes |
+| <span class="sb">`kB`</span> (factor 1000) | bytes |
+| <span class="sb">`%`</span> | percent |
+| <span class="sb">`c`</span> | counter |
+| anything else (<span class="sb">`°C`</span>, <span class="sb">`rpm`</span>) | kept as it is |
+
+<span class="gu">## SOFT and HARD states</span>
+
+A new problem is not reported at once. Watcher first checks again, every
+<span class="sb">`retry_interval`</span>, until it has seen the problem <span class="sb">`max_attempts`</span> times in a
+row. Until then the state is SOFT (shown as <span class="sb">`SOFT 1/3`</span>, <span class="sb">`SOFT 2/3`</span>); after
+that it is HARD (<span class="sb">`HARD 3/3`</span>). Only HARD changes send notifications.
+
+A single bad result, like a short network hiccup, therefore doesn't wake
+anyone up. Set <span class="sb">`max_attempts = 1`</span> to report every problem at once.
+
+<span class="gu">## Flap detection</span>
+
+A service flaps when it keeps changing between OK and a problem. Watcher
+looks at the last 21 results and computes how often the state changed, as a
+percentage. Flapping starts when the rate reaches <span class="sb">`flap_high`</span> (default 20 %)
+and ends when it drops below <span class="sb">`flap_low`</span> (default 5 %).
+
+While a service flaps, its problems and recoveries are not notified. Only
+the start and end of flapping are (FLAPPINGSTART, FLAPPINGSTOP).
+
+Less sensitive:
+
+<span class="sb">```toml</span>
+<span class="k">[check.vpn]</span>
+<span class="n">command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"check_ping -H $host.address$ -w 200,20% -c 500,60%"</span>
+<span class="n">flap_low</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span>
+<span class="n">flap_high</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">30</span>
+<span class="sb">```</span>
+
+Off:
+
+<span class="sb">```toml</span>
+<span class="k">[check.batch_job]</span>
+<span class="n">command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"/opt/scripts/job_status.sh"</span>
+<span class="n">flap_detection</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<span class="sb">```</span>
+
+<span class="gu">## Built-in checks</span>
+
+Built-in checks run inside Watcher and need no plugin. The checks <span class="sb">`ping`</span>,
+<span class="sb">`tcp`</span>, <span class="sb">`http`</span>, <span class="sb">`dns`</span>, <span class="sb">`tls`</span> and the six [<span class="nt">Proxmox VE checks</span>](<span class="na">#proxmox-ve-checks</span>)
+always exist, even without any configuration. If you write your own
+check with one of these names (for example <span class="sb">`[check.http]`</span> with a
+<span class="sb">`check_http`</span> command), it replaces the built-in one.
+
+You set them up with vars, on the service or on the host's service:
+
+<span class="sb">```toml</span>
+<span class="k">[service.ping]</span><span class="w">                 </span><span class="c1"># uses the built-in check "ping"</span>
+<span class="n">vars</span><span class="p">.</span><span class="n">crit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"500,60%"</span>
+
+<span class="k">[service.ssh]</span>
+<span class="n">check</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"tcp"</span>
+<span class="n">vars</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">port</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"22"</span><span class="p">,</span><span class="w"> </span><span class="n">expect</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"SSH-"</span><span class="w"> </span><span class="p">}</span>
+
+<span class="k">[service.web]</span>
+<span class="n">check</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"http"</span>
+<span class="n">vars</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">url</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"/health"</span><span class="p">,</span><span class="w"> </span><span class="n">content</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w"> </span><span class="n">crit</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"2s"</span><span class="w"> </span><span class="p">}</span>
+
+<span class="k">[service.cert]</span>
+<span class="n">check</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"tls"</span>
+<span class="n">vars</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"www.example.com"</span><span class="w"> </span><span class="p">}</span>
+
+<span class="k">[service.dns]</span><span class="w">                  </span><span class="c1"># on a DNS server: does it answer for our domain?</span>
+<span class="n">vars</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"example.com"</span><span class="p">,</span><span class="w"> </span><span class="n">expect</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"10.0.0.5"</span><span class="w"> </span><span class="p">}</span>
+<span class="sb">```</span>
+
+Like any check, a built-in check can also be listed in <span class="sb">`services = [...]`</span>
+of a host, a host group or a service group as it is, without a
+<span class="sb">`[service.&lt;name&gt;]`</span>. Its vars then come from the host's service, if you
+need any:
+
+<span class="sb">```toml</span>
+<span class="k">[[host]]</span>
+<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"www"</span>
+<span class="n">address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"10.0.0.5"</span>
+<span class="n">services</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"http"</span><span class="p">,</span><span class="w"> </span><span class="s2">"tls"</span><span class="p">,</span><span class="w"> </span><span class="s2">"tcp"</span><span class="p">]</span>
+<span class="w">  </span><span class="k">[host.service.tcp]</span>
+<span class="w">  </span><span class="n">vars</span><span class="p">.</span><span class="n">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"22"</span>
+<span class="sb">```</span>
+
+In the web UI, Configuration → Checks lists the built-in checks below your
+own, each with <span class="gs">**New Service**</span>. When a service's check is a built-in one
+(or a check that uses one), the form shows the built-in check's options
+in their own section, each with what it does, its default and whether it
+is required. The same section appears in the check form when you choose
+a built-in check.
+
+Built-in checks read the vars of the check, the service and the host
+service (<span class="sb">`[host.service.&lt;name&gt;]`</span>). Host and host group vars don't apply, so
+a host var like <span class="sb">`port`</span> that you set for something else can't change them.
+To use a host var, write it as a macro: <span class="sb">`port = "$host.vars.ssh_port$"`</span>.
+Macros work in all of these vars, for example <span class="sb">`name = "$host.name$"`</span>.
+
+Every built-in check also takes <span class="sb">`address`</span>: it then connects there instead
+of the host's address (for <span class="sb">`dns`</span>, that is the server it asks). This is
+useful for hosts that stand for several sites, see
+[<span class="nt">Many websites</span>](<span class="na">../examples.md#many-websites</span>).
+
+<span class="sb">`warn`</span> and <span class="sb">`crit`</span> of <span class="sb">`tcp`</span>, <span class="sb">`http`</span> and <span class="sb">`dns`</span> are response times: seconds
+(<span class="sb">`0.5`</span>) or a duration (<span class="sb">`500ms`</span>, <span class="sb">`2s`</span>). Without them, the response time
+doesn't change the state. A check also ends shortly before its <span class="sb">`timeout`</span>
+and reports CRITICAL ("no answer within ...") instead of being stopped.
+
+The metrics of built-in checks work like a plugin's: you can set
+[<span class="nt">thresholds</span>](<span class="na">#thresholds</span>) on them (<span class="sb">`thresholds.time = { crit = "&gt; 2s" }`</span>)
+and see them in graphs.
+
+<span class="gu">### ping</span>
+
+ICMP echo, like <span class="sb">`check_ping`</span>.
+
+| Var | Default | Description |
+|---|---|---|
+| <span class="sb">`packets`</span> | <span class="sb">`5`</span> | Number of ICMP echo requests, sent 200 ms apart. |
+| <span class="sb">`warn`</span> | <span class="sb">`3000,80%`</span> | WARNING at this average round trip time (ms) or packet loss. |
+| <span class="sb">`crit`</span> | <span class="sb">`5000,100%`</span> | CRITICAL at this average round trip time (ms) or packet loss. |
+
+The result looks like the one of <span class="sb">`check_ping`</span>, with the metrics <span class="sb">`rta`</span>
+(round trip average, ms) and <span class="sb">`pl`</span> (packet loss, %). DNS names are resolved
+on every run; a name that can't be resolved gives CRITICAL.
+
+Sending ICMP needs permission. Without it, the result is UNKNOWN. Most
+distributions allow it by default; otherwise allow it with
+<span class="sb">`sysctl net.ipv4.ping_group_range="0 2147483647"`</span> or give Watcher
+<span class="sb">`CAP_NET_RAW`</span>.
+
+<span class="gu">### tcp</span>
+
+Connects to a port of the host, like <span class="sb">`check_tcp`</span>. Optionally sends
+something and checks the answer.
+
+| Var | Default | Description |
+|---|---|---|
+| <span class="sb">`port`</span> | | The port. Required. |
+| <span class="sb">`send`</span> | | Text to send after connecting. <span class="sb">`\r`</span>, <span class="sb">`\n`</span>, <span class="sb">`\t`</span> and <span class="sb">`\\`</span> are written as such. |
+| <span class="sb">`expect`</span> | | Text the answer must contain, for example <span class="sb">`SSH-`</span> or <span class="sb">`220`</span>. Without it, nothing is read. |
+| <span class="sb">`warn`</span> | | WARNING at this response time. |
+| <span class="sb">`crit`</span> | | CRITICAL at this response time. |
+
+A refused connection or a missing <span class="sb">`expect`</span> text gives CRITICAL. Watcher
+reads the answer until <span class="sb">`expect`</span> shows up, the server closes the
+connection, or nothing more comes for a second. Metric: <span class="sb">`time`</span> (s).
+
+<span class="sb">```</span>
+<span class="sb">TCP OK - 10.0.0.5:22 answered in 1.3 ms: SSH-2.0-OpenSSH_9.6</span>
+<span class="sb">```</span>
+
+<span class="gu">### http</span>
+
+Requests a URL, like <span class="sb">`check_http`</span>.
+
+| Var | Default | Description |
+|---|---|---|
+| <span class="sb">`url`</span> | <span class="sb">`/`</span> | A full URL (<span class="sb">`https://www.example.com/login`</span>), or a path on the host's address (<span class="sb">`/health`</span>). |
+| <span class="sb">`method`</span> | <span class="sb">`GET`</span> | <span class="sb">`GET`</span>, <span class="sb">`HEAD`</span>, <span class="sb">`POST`</span>, <span class="sb">`PUT`</span>, ... |
+| <span class="sb">`headers`</span> | | Request headers, as a table: <span class="sb">`headers = { Accept = "application/json" }`</span>. A <span class="sb">`Host`</span> header asks for a different site on the same address; <span class="sb">`User-Agent`</span> replaces Watcher's. |
+| <span class="sb">`body`</span> | | Text to send as the request body, for example JSON for a <span class="sb">`POST`</span>. Set the matching <span class="sb">`Content-Type`</span> in <span class="sb">`headers`</span>. |
+| <span class="sb">`user`</span> | | Log in with HTTP basic auth as this user. |
+| <span class="sb">`password`</span> | | The password for <span class="sb">`user`</span>. |
+| <span class="sb">`status`</span> | | Status codes that are OK, for example <span class="sb">`200`</span> or <span class="sb">`200,301-302`</span>. Others give CRITICAL. Without it: 2xx and 3xx are OK, 4xx WARNING, 5xx CRITICAL. |
+| <span class="sb">`content`</span> | | Text the body must contain. Only the first MiB of the body is searched. |
+| <span class="sb">`follow`</span> | <span class="sb">`false`</span> | Follow redirects (up to 10). Without it, a redirect is the answer. |
+| <span class="sb">`verify`</span> | <span class="sb">`true`</span> | Check the server's certificate. <span class="sb">`false`</span> accepts any certificate. |
+| <span class="sb">`warn`</span> | | WARNING at this response time. |
+| <span class="sb">`crit`</span> | | CRITICAL at this response time. |
+
+Certificates are checked against the system's trust store, so internal
+CAs that the system trusts work. Proxy settings from the environment
+(<span class="sb">`HTTP_PROXY`</span>) are not used. Metrics: <span class="sb">`time`</span> (s) and <span class="sb">`size`</span> (bytes).
+
+An API that needs a token and a JSON request:
+
+<span class="sb">```toml</span>
+<span class="k">[service.api]</span>
+<span class="n">check</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"http"</span>
+<span class="n">vars</span><span class="p">.</span><span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"https://api.example.com/v1/status"</span>
+<span class="n">vars</span><span class="p">.</span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"POST"</span>
+<span class="n">vars</span><span class="p">.</span><span class="n">body</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'{"probe": true}'</span>
+<span class="n">vars</span><span class="p">.</span><span class="n">headers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Content-Type</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"application/json"</span><span class="p">,</span><span class="w"> </span><span class="n">Authorization</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"Bearer $api_token$"</span><span class="w"> </span><span class="p">}</span>
+<span class="n">vars</span><span class="p">.</span><span class="n">api_token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"abc123"</span>
+<span class="n">vars</span><span class="p">.</span><span class="n">content</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'"ok":true'</span>
+<span class="sb">```</span>
+
+Headers from the check, the service and the host service are merged by
+name, so a check can set <span class="sb">`Accept`</span> and a service add its own token. The
+command shown in the web UI leaves out the password and the values of
+headers that look like credentials (names with <span class="sb">`auth`</span>, <span class="sb">`token`</span>, <span class="sb">`key`</span>,
+<span class="sb">`cookie`</span>, ...). They are still readable in the config files and the
+Config Tree.
+
+<span class="sb">```</span>
+<span class="sb">HTTP OK - HTTP/2.0 200 OK, 577 bytes in 87 ms</span>
+<span class="sb">```</span>
+
+<span class="gu">### dns</span>
+
+Looks up a name at a DNS server, like <span class="sb">`check_dns`</span>. By default the
+server is the host itself.
+
+| Var | Default | Description |
+|---|---|---|
+| <span class="sb">`name`</span> | | The name to look up. Required. |
+| <span class="sb">`type`</span> | <span class="sb">`A`</span> | <span class="sb">`A`</span>, <span class="sb">`AAAA`</span>, <span class="sb">`CNAME`</span>, <span class="sb">`MX`</span>, <span class="sb">`NS`</span>, <span class="sb">`PTR`</span>, <span class="sb">`SOA`</span> or <span class="sb">`TXT`</span>. |
+| <span class="sb">`server`</span> | the host's address | The server to ask. <span class="sb">`system`</span> uses the servers in <span class="sb">`/etc/resolv.conf`</span>. |
+| <span class="sb">`port`</span> | <span class="sb">`53`</span> | The server's port. |
+| <span class="sb">`expect`</span> | | Values that must all be in the answer, comma-separated: <span class="sb">`10.0.0.5, 10.0.0.6`</span>. For MX answers, the mail server's name is enough. |
+| <span class="sb">`warn`</span> | | WARNING at this response time. |
+| <span class="sb">`crit`</span> | | CRITICAL at this response time. |
+
+A name that doesn't exist, an empty answer, or a missing <span class="sb">`expect`</span> value
+gives CRITICAL. The answer is never cached. Metric: <span class="sb">`time`</span> (s).
+
+<span class="sb">```</span>
+<span class="sb">DNS OK - example.com A 10.0.0.5 in 2.1 ms (10.0.0.53)</span>
+<span class="sb">```</span>
+
+<span class="gu">### tls</span>
+
+Connects with TLS and checks the server's certificate: whether it is
+trusted, whether it is valid for the name, and how many days are left
+until it expires. Like <span class="sb">`check_ssl_cert`</span>.
+
+| Var | Default | Description |
+|---|---|---|
+| <span class="sb">`port`</span> | <span class="sb">`443`</span> | The port. |
+| <span class="sb">`name`</span> | the host's address | The name the certificate must be valid for. It is also sent to the server (SNI), so servers with several certificates show the right one. |
+| <span class="sb">`warn`</span> | <span class="sb">`30`</span> | WARNING at this many days before expiry. |
+| <span class="sb">`crit`</span> | <span class="sb">`14`</span> | CRITICAL at this many days before expiry. |
+| <span class="sb">`verify`</span> | <span class="sb">`true`</span> | An untrusted certificate, or one not valid for <span class="sb">`name`</span>, gives CRITICAL. <span class="sb">`false`</span> only checks the dates. |
+
+Most certificates are issued for names, not addresses. If the host's
+address is an IP address, set <span class="sb">`name`</span>. An expired certificate gives
+CRITICAL. Certificates are checked against the system's trust store.
+Metric: <span class="sb">`days`</span>. Only TLS from the start is supported; STARTTLS (SMTP,
+IMAP) isn't yet.
+
+<span class="sb">```</span>
+<span class="sb">TLS OK - www.example.com: valid until 2027-02-02 (85 days), issued by R11</span>
+<span class="sb">```</span>
+
+<span class="gu">### Proxmox VE checks</span>
+
+Six checks ask Proxmox VE through its API. They log in with the
+[<span class="sb">`proxmox`</span> settings](host.md#proxmox) of their host: an API token stored
+in Watcher, and the certificate's fingerprint. On a VM or container with
+<span class="sb">`proxmox = { host = "pve1", vmid = 100 }`</span>, they ask the API of that
+Proxmox VE host, with its login. The [<span class="nt">Proxmox VE guide</span>](<span class="na">../guides/proxmox.md</span>)
+shows every step, from creating the token to discovering VMs and
+containers.
+
+| Check | What it checks | State | Metrics |
+|---|---|---|---|
+| <span class="sb">`proxmox-cluster`</span> | Quorum, and which nodes are online. | CRITICAL without quorum. WARNING if a node is offline. A single node without a cluster is OK. | <span class="sb">`nodes_online`</span>, <span class="sb">`nodes_offline`</span> |
+| <span class="sb">`proxmox-node`</span> | CPU, memory, swap, load, I/O wait, root file system and uptime of a node. | CRITICAL if the node is offline. Set [<span class="nt">thresholds</span>](<span class="na">#thresholds</span>) for the rest. | <span class="sb">`cpu`</span>, <span class="sb">`memory`</span>, <span class="sb">`swap`</span> (only with swap), <span class="sb">`iowait`</span>, <span class="sb">`rootfs`</span> (all %), <span class="sb">`memory_used`</span>, <span class="sb">`load1`</span>, <span class="sb">`load5`</span>, <span class="sb">`load15`</span>, <span class="sb">`uptime`</span> |
+| <span class="sb">`proxmox-storage`</span> | How full each storage is. | WARNING or CRITICAL by <span class="sb">`warn`</span> and <span class="sb">`crit`</span>. CRITICAL if a storage isn't available. | per storage: its name (%) and <span class="sb">`&lt;name&gt;_used`</span> (bytes) |
+| <span class="sb">`proxmox-guest`</span> | One VM or container: whether it runs, and its load. | CRITICAL if it doesn't run. Templates are OK. | <span class="sb">`cpu`</span>, <span class="sb">`memory`</span> (%), <span class="sb">`memory_used`</span>, <span class="sb">`disk`</span> (% of containers), <span class="sb">`uptime`</span>, and the totals since start <span class="sb">`netin`</span>, <span class="sb">`netout`</span>, <span class="sb">`diskread`</span>, <span class="sb">`diskwrite`</span> |
+| <span class="sb">`proxmox-backup`</span> | Backup tasks of the last <span class="sb">`hours`</span>, and guests that no backup job includes. | CRITICAL if a backup failed. WARNING if one had warnings, none ran at all, or a guest is in no backup job. | <span class="sb">`backups_ok`</span>, <span class="sb">`backups_warning`</span>, <span class="sb">`backups_failed`</span>, <span class="sb">`guests_without_backup`</span> |
+| <span class="sb">`proxmox-updates`</span> | Pending package updates on a node. | WARNING or CRITICAL by <span class="sb">`warn`</span> and <span class="sb">`crit`</span>. | <span class="sb">`updates`</span> |
+
+Their vars:
+
+| Var | Checks | Default | Description |
+|---|---|---|---|
+| <span class="sb">`address`</span> | all | the host's address | The API's address. For a VM or container: the address of its Proxmox VE host. |
+| <span class="sb">`node`</span> | <span class="sb">`proxmox-node`</span>, <span class="sb">`proxmox-updates`</span> | the only node | The node to check. You need it in a cluster with more than one node. |
+| <span class="sb">`node`</span> | <span class="sb">`proxmox-storage`</span>, <span class="sb">`proxmox-backup`</span> | all nodes | Only look at this node. |
+| <span class="sb">`storage`</span> | <span class="sb">`proxmox-storage`</span> | all storages | Only this storage, for example <span class="sb">`local-zfs`</span>. |
+| <span class="sb">`warn`</span> | <span class="sb">`proxmox-storage`</span> | <span class="sb">`80`</span> | WARNING at this percentage used. |
+| <span class="sb">`crit`</span> | <span class="sb">`proxmox-storage`</span> | <span class="sb">`90`</span> | CRITICAL at this percentage used. |
+| <span class="sb">`vmid`</span> | <span class="sb">`proxmox-guest`</span> | the host's <span class="sb">`proxmox.vmid`</span> | The ID of the VM or container. |
+| <span class="sb">`hours`</span> | <span class="sb">`proxmox-backup`</span> | <span class="sb">`24`</span> | How many hours back to look for backups. |
+| <span class="sb">`warn`</span> | <span class="sb">`proxmox-updates`</span> | <span class="sb">`1`</span> | WARNING at this many pending updates; <span class="sb">`0`</span> never warns. |
+| <span class="sb">`crit`</span> | <span class="sb">`proxmox-updates`</span> | | CRITICAL at this many pending updates. |
+
+Storage metrics are named <span class="sb">`&lt;node&gt;/&lt;storage&gt;`</span>, for example <span class="sb">`pve/local-zfs`</span>.
+Shared storages, and all storages when <span class="sb">`node`</span> is set, use only the storage
+name. The <span class="sb">`cpu`</span> of a guest is in percent of its own cores.
+
+Problems with the API itself give UNKNOWN: a wrong token, a missing
+permission, a certificate that doesn't match, or no answer before the
+timeout. <span class="sb">`proxmox-updates`</span> needs more than read access, see
+[<span class="nt">Permissions</span>](<span class="na">../guides/proxmox.md#permissions</span>).
+
+<span class="sb">```</span>
+<span class="sb">PROXMOX OK - pve: CPU 5.2%, memory 23.7% (7.4 GiB of 31.2 GiB), load 0.05, up 2 h</span>
+<span class="sb">PROXMOX WARNING - pve/local-zfs 85% (363.2 GiB of 427.5 GiB)</span>
+<span class="sb">PROXMOX CRITICAL - VM 101 opnsense on pve is stopped</span>
+<span class="sb">```</span>
+
+<span class="gu">### Under another name</span>
+
+A built-in check under another name, with other defaults:
+
+<span class="sb">```toml</span>
+<span class="k">[check.ping_fast]</span>
+<span class="n">builtin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"ping"</span>
+<span class="n">vars</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">packets</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w"> </span><span class="n">warn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"100,20%"</span><span class="p">,</span><span class="w"> </span><span class="n">crit</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"500,60%"</span><span class="w"> </span><span class="p">}</span>
+
+<span class="k">[check.https]</span>
+<span class="n">builtin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"http"</span>
+<span class="n">vars</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">url</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"https://$host.name$/"</span><span class="p">,</span><span class="w"> </span><span class="n">status</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"200"</span><span class="w"> </span><span class="p">}</span>
+<span class="sb">```</span>
+
+Built-in checks always run on the Watcher machine, never over SSH.
+
+<span class="gu">## Passive checks</span>
+
+A passive check runs nothing. Results are sent to Watcher over the API, for
+example by a cron job at the end of a backup.
+
+<span class="sb">```toml</span>
+<span class="k">[check.backup]</span>
+<span class="n">passive</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="n">freshness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"26h"</span><span class="w">     </span><span class="c1"># UNKNOWN if no result arrived for 26 hours</span>
+<span class="sb">```</span>
+
+Passive checks confirm a problem with the first result (<span class="sb">`max_attempts`</span>
+defaults to 1), because the next result may be a day away.
+
+Send a result with an API token (from the Account page, or
+<span class="sb">`watcher token create &lt;user&gt; &lt;name&gt;`</span>):
+
+<span class="sb">```sh</span>
+curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>https://watcher.example.com/api/v1/services/backup01/backup/result<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">"Authorization: Bearer </span><span class="nv">$WATCHER_TOKEN</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s1">'content-type: application/json'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">'{"exit_code": 0, "output": "BACKUP OK | size=12GB duration=840s"}'</span>
+<span class="sb">```</span>
+
+The body contains <span class="sb">`exit_code`</span> (0 to 3) or <span class="sb">`state`</span> (<span class="sb">`ok`</span>, <span class="sb">`warning`</span>,
+<span class="sb">`critical`</span>, <span class="sb">`unknown`</span>), and <span class="sb">`output`</span>. The output is read like the output of
+a command, so metrics and thresholds work.
+
+From a cron job:
+
+<span class="sb">```sh</span>
+<span class="ch">#!/bin/sh</span>
+<span class="c1"># /etc/cron.daily/backup</span>
+<span class="k">if</span><span class="w"> </span>/usr/local/bin/backup.sh<span class="p">;</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="nv">code</span><span class="o">=</span><span class="m">0</span><span class="p">;</span><span class="w"> </span><span class="nv">msg</span><span class="o">=</span><span class="s2">"BACKUP OK"</span><span class="p">;</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="nv">code</span><span class="o">=</span><span class="m">2</span><span class="p">;</span><span class="w"> </span><span class="nv">msg</span><span class="o">=</span><span class="s2">"BACKUP CRITICAL"</span><span class="p">;</span><span class="w"> </span><span class="k">fi</span>
+curl<span class="w"> </span>-fsS<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="s2">"https://watcher.example.com/api/v1/services/</span><span class="k">$(</span>hostname<span class="k">)</span><span class="s2">/backup/result"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">"Authorization: Bearer </span><span class="k">$(</span>cat<span class="w"> </span>/etc/watcher-token<span class="k">)</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s1">'content-type: application/json'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s2">"{\"exit_code\": </span><span class="nv">$code</span><span class="s2">, \"output\": \"</span><span class="nv">$msg</span><span class="s2">\"}"</span>
+<span class="sb">```</span>
+
+<span class="gu">## Testing a command</span>
+
+<span class="sb">`watcher run-check`</span> runs a command once and shows how Watcher reads the
+result, without any configuration:
+
+<span class="sb">```sh</span>
+watcher<span class="w"> </span>run-check<span class="w"> </span>--<span class="w"> </span>check_disk<span class="w"> </span>-w<span class="w"> </span><span class="m">20</span>%<span class="w"> </span>-c<span class="w"> </span><span class="m">10</span>%<span class="w"> </span>-p<span class="w"> </span>/
+watcher<span class="w"> </span>run-check<span class="w"> </span>--shell<span class="w"> </span><span class="s1">'echo "depth=$(mailq | grep -c ^[A-F0-9])"'</span>
+watcher<span class="w"> </span>run-check<span class="w"> </span>--warn<span class="w"> </span><span class="s1">'depth=&gt; 100'</span><span class="w"> </span>--crit<span class="w"> </span><span class="s1">'depth=&gt; 500'</span><span class="w"> </span>--<span class="w"> </span>/opt/scripts/queue.sh
+<span class="sb">```</span>
+
+<span class="sb">```</span>
+<span class="sb">WARNING - load1=0.5 load5=0.7</span>
+
+<span class="sb">  METRIC  VALUE  WARN   CRIT  STATE</span>
+<span class="sb">  load1   0.5    &gt; 0.1        WARNING</span>
+<span class="sb">  load5   0.7</span>
+
+<span class="sb">exit code 0 · format key_value · took 766.706 µs</span>
+<span class="sb">```</span>
+
+The exit code of <span class="sb">`run-check`</span> is the final state (0 to 3). All options:
+[<span class="nt">run-check</span>](<span class="na">../reference/cli.md#run-check</span>).
+
+In the web UI, <span class="gs">**Run Check**</span> on a service page runs that service's command
+once, the same way the scheduler would.
+
+<span class="gu">## Writing your own script</span>
+
+<span class="k">-</span><span class="w"> </span>Print one result: a Nagios line, <span class="sb">`key=value`</span> lines, or JSON.
+<span class="k">-</span><span class="w"> </span>Exit with 0 to 3, or exit with 0 and let thresholds decide.
+<span class="k">-</span><span class="w"> </span>Keep it fast; it runs every <span class="sb">`interval`</span>.
+<span class="k">-</span><span class="w"> </span>Put it into <span class="sb">`checks/`</span> next to <span class="sb">`watcher.toml`</span> and make it executable.
+  Then you can use it by name, without a path.
+
+<span class="sb">`checks/queue_depth`</span>:
+
+<span class="sb">```sh</span>
+<span class="ch">#!/bin/sh</span>
+<span class="nv">depth</span><span class="o">=</span><span class="k">$(</span>find<span class="w"> </span>/var/spool/app/queue<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l<span class="k">)</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"depth=</span><span class="nv">$depth</span><span class="s2">"</span>
+<span class="sb">```</span>
+
+<span class="sb">```toml</span>
+<span class="k">[check.queue_depth]</span>
+<span class="n">command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"queue_depth"</span>
+<span class="n">thresholds</span><span class="p">.</span><span class="n">depth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">warn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"&gt; 100"</span><span class="p">,</span><span class="w"> </span><span class="n">crit</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"&gt; 500"</span><span class="w"> </span><span class="p">}</span>
+<span class="sb">```</span>
+
+<span class="gu">## See also</span>
+
+<span class="k">-</span><span class="w"> </span>[<span class="nt">service</span>](<span class="na">service.md</span>): put a check on hosts
+<span class="k">-</span><span class="w"> </span>[<span class="nt">Checks over SSH</span>](<span class="na">../guides/ssh.md</span>)
+<span class="k">-</span><span class="w"> </span>[<span class="nt">Which value wins</span>](<span class="na">../guides/configuration.md#which-value-wins</span>)
+</pre></div></td></tr></table></div>
+
+      </section>
+    </main>
+  </div>
+</body>
+</html>

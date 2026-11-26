@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>idea — Jan</title>
-  <link rel="stylesheet" href="../styles.css?v=49e3c283" />
+  <link rel="stylesheet" href="../styles.css?v=41ca8b66" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -43,7 +43,7 @@
           <div class="card__links">
             <a href="https://github.com/mergedeyes/idea" class="link">Repository</a>
             <a href="idea-source.html" class="link">Browse source (2 files)</a>
-            <a href="idea-commits.html" class="link">Commit history (13)</a>
+            <a href="idea-commits.html" class="link">Commit history (15)</a>
           </div>
           <span class="license-badge">GPL-3.0</span>
         </div>
@@ -102,11 +102,13 @@ idea search <span class="pl-s"><span class="pl-pds">"</span>rust<span class="pl-
 <p dir="auto">Unlike <code>edit</code>/<code>delete</code>, a numeric search selector is a single id, not a chain - so it matches that id wherever it occurs in the tree. Since ids are only unique among their own siblings, that can match more than one topic if two of them (under different parents) happen to share the same local id; each match is printed with its own full id chain so they're easy to tell apart.</p>
 <h3 class="heading-element" dir="auto" id="edit">Edit</h3>
 <div class="highlight highlight-source-shell notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="idea edit 1        # rename top-level topic id 1
-idea edit 1 2       # edit idea id 2 in topic 1, or (if no such idea) rename its direct sub-topic id 2
+idea edit 1 2       # edit idea id 2 in topic 1, or rename its direct sub-topic id 2 (asks if both exist)
+idea edit -t 1 2    # always the sub-topic 1 2 (-i: always the idea)
 idea edit 1 2 3     # one level deeper: id 3 inside topic 2, inside topic 1" dir="auto"><pre>idea edit 1        <span class="pl-c"><span class="pl-c">#</span> rename top-level topic id 1</span>
-idea edit 1 2       <span class="pl-c"><span class="pl-c">#</span> edit idea id 2 in topic 1, or (if no such idea) rename its direct sub-topic id 2</span>
+idea edit 1 2       <span class="pl-c"><span class="pl-c">#</span> edit idea id 2 in topic 1, or rename its direct sub-topic id 2 (asks if both exist)</span>
+idea edit -t 1 2    <span class="pl-c"><span class="pl-c">#</span> always the sub-topic 1 2 (-i: always the idea)</span>
 idea edit 1 2 3     <span class="pl-c"><span class="pl-c">#</span> one level deeper: id 3 inside topic 2, inside topic 1</span></pre></div>
-<p dir="auto">One id renames a top-level topic. Two or more ids walk a chain of topic ids one level at a time down to the second-to-last one, then try the very last id as an idea living directly in it; if there's no such idea, it's tried as a direct sub-topic instead and renamed (see Ids below for how the chain works). Either way, the current name/text opens pre-filled on the line, ready to edit: change what you want and press Enter to save, or clear the line (or press Ctrl-C/Ctrl-D) to abort without changing anything.</p>
+<p dir="auto">One id renames a top-level topic. Two or more ids walk a chain of topic ids one level at a time down to the second-to-last one, and the very last id means an idea living directly in it (its text gets edited) or a direct sub-topic of it (it gets renamed) - see Ids below for how the chain works and what happens when both exist. Either way, the current name/text opens pre-filled on the line, ready to edit: change what you want and press Enter to save, or clear the line (or press Ctrl-C/Ctrl-D) to abort without changing anything.</p>
 <h3 class="heading-element" dir="auto" id="sub-topics">Sub-topics</h3>
 <p dir="auto">Topics can nest inside other topics:</p>
 <div class="highlight highlight-source-shell notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="idea add-topic Programming Rust WebDev" dir="auto"><pre>idea add-topic Programming Rust WebDev</pre></div>
@@ -130,14 +132,16 @@ chain just like <code>add-topic</code>, then the idea is filed under the last to
 idea edit 2 4 6     # one level deeper: id 6, directly inside topic 4, which is inside topic 2" dir="auto"><pre>idea edit 2 4       <span class="pl-c"><span class="pl-c">#</span> the topic (or idea) numbered 4, directly inside top-level topic 2</span>
 idea edit 2 4 6     <span class="pl-c"><span class="pl-c">#</span> one level deeper: id 6, directly inside topic 4, which is inside topic 2</span></pre></div>
 <p dir="auto">A single id on its own always means a top-level topic. <code>idea list</code> prints every topic's full id chain (e.g. <code>TOPIC 2 4: WebDev</code>), so you never have to count levels by hand - just read the chain straight off the listing and pass it to <code>edit</code>/<code>delete</code>.</p>
-<p dir="auto">The <em>last</em> id in a chain is tried as an idea living directly in the topic reached by the ids before it; if there's no such idea, it's tried as a direct sub-topic instead. That's how <code>idea edit 2 4</code> can mean either "idea 4 in topic 2" or "rename sub-topic 4 of topic 2", and how <code>idea delete ...</code> picks between deleting an idea or an entire sub-topic. If a topic happens to have <em>both</em> an idea and a direct sub-topic with the same id, the idea wins - address the sub-topic afterward (or after <code>defrag</code>) once that collision is gone.</p>
+<p dir="auto">The <em>last</em> id in a chain means either an idea living directly in the topic reached by the ids before it, or a direct sub-topic of it. That's how <code>idea edit 2 4</code> can mean either "idea 4 in topic 2" or "rename sub-topic 4 of topic 2", and how <code>idea delete ...</code> picks between deleting an idea or an entire sub-topic. If only one of the two exists, that one is used. If a topic has <em>both</em> an idea and a direct sub-topic with the same id, <code>edit</code>/<code>delete</code> show both and ask which one you mean (default: abort). Pass <code>-i</code>/<code>--idea</code> or <code>-t</code>/<code>--topic</code> to decide up front and skip the question, e.g. <code>idea delete -t 2 4</code>.</p>
 <p dir="auto"><code>idea search</code>'s numeric selector doesn't take a chain (see Search above) - it's the one place a bare id can match more than one topic.</p>
 <h3 class="heading-element" dir="auto" id="delete">Delete</h3>
 <div class="highlight highlight-source-shell notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="idea delete 2 1        # delete idea id 1 inside topic id 2
 idea delete 2 4        # topic 2 has no idea id 4, so this deletes its direct sub-topic id 4 instead
+idea delete -t 2 1     # delete sub-topic 2 1 even though idea 1 also exists in topic 2 (-i: the idea)
 idea delete 2          # delete topic id 2 entirely, including its ideas and any sub-topics
 idea delete 2 4 6      # one level deeper: delete idea/sub-topic 6 inside topic 4, inside topic 2" dir="auto"><pre>idea delete 2 1        <span class="pl-c"><span class="pl-c">#</span> delete idea id 1 inside topic id 2</span>
 idea delete 2 4        <span class="pl-c"><span class="pl-c">#</span> topic 2 has no idea id 4, so this deletes its direct sub-topic id 4 instead</span>
+idea delete -t 2 1     <span class="pl-c"><span class="pl-c">#</span> delete sub-topic 2 1 even though idea 1 also exists in topic 2 (-i: the idea)</span>
 idea delete 2          <span class="pl-c"><span class="pl-c">#</span> delete topic id 2 entirely, including its ideas and any sub-topics</span>
 idea delete 2 4 6      <span class="pl-c"><span class="pl-c">#</span> one level deeper: delete idea/sub-topic 6 inside topic 4, inside topic 2</span></pre></div>
 <p dir="auto">Same chain rules as <code>edit</code> (see Ids above). Either way, deleting a topic (directly, or found this way) that still contains ideas or sub-topics asks for confirmation first (default: no):</p>

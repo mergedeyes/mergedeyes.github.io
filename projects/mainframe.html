@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mainframe — Jan</title>
+  <link rel="stylesheet" href="../styles.css?v=41ca8b66" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="layout">
+    <header class="rail" id="rail">
+<div class="rail__top">
+<a class="brand" href="../index.html#top">
+<span class="brand__name">Jan</span>
+<span class="brand__meta">systems &amp; infrastructure<br/>Code, Code &amp; Code</span>
+</a>
+<button aria-controls="nav" aria-expanded="false" aria-label="Toggle menu" class="menu-toggle" id="menuToggle">
+<span></span><span></span><span></span>
+</button>
+</div>
+<nav aria-label="Sections" class="nav" id="nav">
+<a data-path="~/projects" href="../index.html#projects">Projects</a>
+<a data-path="~/work" href="../index.html#work">Work</a>
+<a data-path="~/education" href="../index.html#education">Education</a>
+<a data-path="~/skills" href="../index.html#skills">Skills</a>
+<a data-path="~/about" href="../index.html#about">About Me</a>
+<a data-path="~/contact" href="../index.html#contact">Contact</a>
+</nav>
+<div class="rail__status">
+<span aria-hidden="true" class="dot"></span>
+<span>open to work</span>
+</div>
+</header>
+    <main class="main" id="main">
+      <section class="section project-page">
+        <p class="section__path"><a href="../index.html#projects" class="link">~/projects</a> / mainframe</p>
+        <div class="card__head project-page__head">
+          <h1 class="section__title">Mainframe</h1>
+          <span class="tag">Rust</span>
+          <span class="tag">TOML</span>
+        </div>
+        <div class="card__foot project-page__foot">
+          <div class="card__links">
+            <a href="https://github.com/mergedeyes/mainframe" class="link">Repository</a>
+            <a href="mainframe-source.html" class="link">Browse source (70 files)</a>
+            <a href="mainframe-commits.html" class="link">Commit history (85)</a>
+          </div>
+          <span class="license-badge">GPL-3.0</span>
+        </div>
+        <div class="readme-content">
+<h1 align="center" class="heading-element" dir="auto" id="mainframe">Mainframe</h1>
+<p align="center" dir="auto">
+<b>A terminal control room for your projects:<br/>
+  browse, edit, build, run, test, install, deploy and commit, one key each.</b>
+</p>
+<p align="center" dir="auto">
+<a href="https://camo.githubusercontent.com/9c31b0972c525b3c7f906021bd044815ffd2df3e10b57533e12bf7f7c1e0bcf8/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f706c6174666f726d2d4c696e75782d626c7565" rel="noopener noreferrer nofollow" target="_blank"><img alt="Platform: Linux" data-canonical-src="https://img.shields.io/badge/platform-Linux-blue" src="https://camo.githubusercontent.com/9c31b0972c525b3c7f906021bd044815ffd2df3e10b57533e12bf7f7c1e0bcf8/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f706c6174666f726d2d4c696e75782d626c7565" style="max-width: 100%;"/></a>
+<a href="https://camo.githubusercontent.com/58d96c2b57cc9e007110e07f54626aff95abe6b1dca885e493bc6705c0cba9c3/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f7374617475732d6561726c79253230646576656c6f706d656e742d6f72616e6765" rel="noopener noreferrer nofollow" target="_blank"><img alt="Status: early development" data-canonical-src="https://img.shields.io/badge/status-early%20development-orange" src="https://camo.githubusercontent.com/58d96c2b57cc9e007110e07f54626aff95abe6b1dca885e493bc6705c0cba9c3/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f7374617475732d6561726c79253230646576656c6f706d656e742d6f72616e6765" style="max-width: 100%;"/></a>
+</p>
+<p align="center" dir="auto">
+<a href="#getting-started">Getting started</a> ·
+  <a href="https://github.com/mergedeyes/mainframe/blob/main/docs/README.md">Documentation</a> ·
+  <a href="https://github.com/mergedeyes/mainframe/blob/main/docs/reference/keys.md">Keys</a> ·
+  <a href="https://github.com/mergedeyes/Mainframe/issues">Issues</a>
+</p>
+<p dir="auto">Mainframe is a file browser for the terminal that knows what your projects
+are. Open a Rust, Go, Node, Python, Zig, CMake, Meson, Make or just project,
+and <code>b</code> builds it, <code>t</code> tests it, <code>r</code> runs it. Errors are one key away from
+your editor, every project keeps its own output, and your work goes to your
+PATH, a Raspberry Pi or a GitHub release without leaving the window.</p>
+<p dir="auto">Everything it runs shows up in an output pane with the exact command first.
+Nothing happens behind your back, and nothing is written into your projects
+unless you ask for it.</p>
+<h2 class="heading-element" dir="auto" id="why-mainframe">Why Mainframe</h2>
+<ul dir="auto">
+<li><strong>One key per job, in every project.</strong> The same keys build, test and run a
+Cargo crate, an npm app or a Python package. <code>T</code> lists everything else a
+project can run: scripts, make targets, binaries, examples.</li>
+<li><strong>Output that stays with its project.</strong> Each project keeps its own output
+tabs. Move on to another one and its builds keep running; come back and
+everything is where you left it, even after a restart. A long task
+notifies you when it's done.</li>
+<li><strong>From error to fix in two keys.</strong> <code>n</code> jumps to the next <code>file:line</code> in
+the output, <code>Enter</code> opens your editor right there. Watch mode reruns the
+tests whenever you save.</li>
+<li><strong>Ship it without switching tools.</strong> <code>i</code> installs a build on your PATH
+and updates its desktop entry; <code>p</code> in it pulls first, so what you just
+merged is what gets installed. <code>D</code> builds, copies it to a Pi or a server
+over ssh and swaps it in, keeping the old one as a backup. It can build
+a clean <code>main</code> while you're in the middle of a feature.</li>
+<li><strong>Releases in one go.</strong> <code>g r</code> bumps the version, commits it (or opens a
+pull request), tags it, pushes and follows the release workflow.</li>
+<li><strong>Your disk back.</strong> <code>C</code> finds debug builds, <code>node_modules</code>, virtualenvs and
+caches in all your projects and worktrees, with their real size on disk,
+and clears what you pick.</li>
+<li><strong>Your projects at a glance.</strong> <code>J</code> lists every project, most recently used
+first, with running tasks and open todos. Notes and todos per project stay
+outside the repo, so they never end up in a commit.</li>
+</ul>
+<h2 class="heading-element" dir="auto" id="features">Features</h2>
+<ul dir="auto">
+<li><strong>Files:</strong> fuzzy file finder, filter, zoxide jumps, marks across folders,
+copy, move, trash, git status on every entry, preview with diffs.</li>
+<li><strong>Running:</strong> build, release build, test, run single files, task picker,
+output tabs, watch mode, search and save output, jump to <code>file:line</code>.</li>
+<li><strong>Git:</strong> stage from the list, commit, amend, push another branch, branches
+numbered in merge order with their dates, cleanup of merged branches,
+worktrees, stash, a GitHub repo for any folder, releases with CI.</li>
+<li><strong>Install and deploy:</strong> install picker with build info, PATH checks, and
+pull-then-install for the newest version,
+desktop entries, deploy targets with backups, rollback and systemd
+services, set up and edited in the TUI.</li>
+<li><strong>Projects:</strong> project picker, notes and todos, new projects with
+<code>git init</code>, a CLAUDE.md template for Claude Code that <code>Ctrl-L</code> brings
+into any existing project.</li>
+<li><strong>Cleanup:</strong> build output, dependencies and caches, across projects and
+worktrees, measured as on disk on compressed btrfs.</li>
+</ul>
+<h2 class="heading-element" dir="auto" id="getting-started">Getting started</h2>
+<p dir="auto">There are no prebuilt releases yet. Build Mainframe with Rust 1.88 or newer:</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="git clone https://github.com/mergedeyes/Mainframe &amp;&amp; cd Mainframe
+cargo install --path . --root ~/.local
+mainframe ~/Projekte" dir="auto"><pre>git clone https://github.com/mergedeyes/Mainframe <span class="pl-k">&amp;&amp;</span> <span class="pl-c1">cd</span> Mainframe
+cargo install --path <span class="pl-c1">.</span> --root <span class="pl-k">~</span>/.local
+mainframe <span class="pl-k">~</span>/Projekte</pre></div>
+<p dir="auto">Press <code>J</code> to pick a project, <code>b</code> to build it and <code>?</code> for the keys.
+<a href="https://github.com/mergedeyes/mainframe/blob/main/docs/install.md">Installation</a> lists the optional tools and how to land in
+the last folder when you quit. <a href="https://github.com/mergedeyes/mainframe/blob/main/docs/guides/first-steps.md">First steps</a> is
+a ten-minute tour.</p>
+<h2 class="heading-element" dir="auto" id="documentation">Documentation</h2>
+<ul dir="auto">
+<li><a href="https://github.com/mergedeyes/mainframe/blob/main/docs/introduction.md">Introduction</a>: the screen, which projects it understands, where it keeps things</li>
+<li><a href="https://github.com/mergedeyes/mainframe/blob/main/docs/install.md">Installation</a></li>
+<li><a href="https://github.com/mergedeyes/mainframe/blob/main/docs/guides/first-steps.md">First steps</a></li>
+<li><a href="https://github.com/mergedeyes/mainframe/blob/main/docs/reference/keys.md">Keys</a> and <a href="https://github.com/mergedeyes/mainframe/blob/main/docs/reference/config.md">Configuration</a></li>
+<li><a href="https://github.com/mergedeyes/mainframe/blob/main/docs/README.md">All guides</a></li>
+</ul>
+<h2 class="heading-element" dir="auto" id="status">Status</h2>
+<p dir="auto">Mainframe is in early development and runs on Linux. It's used daily, but
+keys and settings may still change.</p>
+<h2 class="heading-element" dir="auto" id="contributing">Contributing</h2>
+<p dir="auto">Bug reports and ideas are welcome. Please
+<a href="https://github.com/mergedeyes/Mainframe/issues">open an issue</a> first for
+larger changes.</p>
+
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

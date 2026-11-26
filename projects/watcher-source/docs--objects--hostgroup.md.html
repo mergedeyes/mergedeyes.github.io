@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>docs/objects/hostgroup.md — Watcher — Jan</title>
+  <link rel="stylesheet" href="../../styles.css?v=41ca8b66" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="layout">
+    <header class="rail" id="rail">
+<div class="rail__top">
+<a class="brand" href="../../index.html#top">
+<span class="brand__name">Jan</span>
+<span class="brand__meta">systems &amp; infrastructure<br/>Code, Code &amp; Code</span>
+</a>
+<button aria-controls="nav" aria-expanded="false" aria-label="Toggle menu" class="menu-toggle" id="menuToggle">
+<span></span><span></span><span></span>
+</button>
+</div>
+<nav aria-label="Sections" class="nav" id="nav">
+<a data-path="~/projects" href="../../index.html#projects">Projects</a>
+<a data-path="~/work" href="../../index.html#work">Work</a>
+<a data-path="~/education" href="../../index.html#education">Education</a>
+<a data-path="~/skills" href="../../index.html#skills">Skills</a>
+<a data-path="~/about" href="../../index.html#about">About Me</a>
+<a data-path="~/contact" href="../../index.html#contact">Contact</a>
+</nav>
+<div class="rail__status">
+<span aria-hidden="true" class="dot"></span>
+<span>open to work</span>
+</div>
+</header>
+    <nav class="file-tree" data-tree-key="watcher"><p class="file-tree__title">Files</p><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">docs/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">guides/</span><ul class="tree"><li class="tree-file"><a href="docs--guides--alerting-recipes.md.html">alerting-recipes.md</a></li><li class="tree-file"><a href="docs--guides--configuration.md.html">configuration.md</a></li><li class="tree-file"><a href="docs--guides--data.md.html">data.md</a></li><li class="tree-file"><a href="docs--guides--first-steps.md.html">first-steps.md</a></li><li class="tree-file"><a href="docs--guides--nodes.md.html">nodes.md</a></li><li class="tree-file"><a href="docs--guides--notifications.md.html">notifications.md</a></li><li class="tree-file"><a href="docs--guides--operations.md.html">operations.md</a></li><li class="tree-file"><a href="docs--guides--proxmox.md.html">proxmox.md</a></li><li class="tree-file"><a href="docs--guides--ssh.md.html">ssh.md</a></li><li class="tree-file"><a href="docs--guides--web-ui.md.html">web-ui.md</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">images/</span><ul class="tree"><li class="tree-file"><a href="docs--images--config-tree-dark.png.html">config-tree-dark.png</a></li><li class="tree-file"><a href="docs--images--config-tree.png.html">config-tree.png</a></li><li class="tree-file"><a href="docs--images--host-groups-dark.png.html">host-groups-dark.png</a></li><li class="tree-file"><a href="docs--images--host-groups.png.html">host-groups.png</a></li><li class="tree-file"><a href="docs--images--nodes-dark.png.html">nodes-dark.png</a></li><li class="tree-file"><a href="docs--images--nodes.png.html">nodes.png</a></li><li class="tree-file"><a href="docs--images--overview-dark.png.html">overview-dark.png</a></li><li class="tree-file"><a href="docs--images--overview.png.html">overview.png</a></li><li class="tree-file"><a href="docs--images--two-factor-dark.png.html">two-factor-dark.png</a></li><li class="tree-file"><a href="docs--images--two-factor.png.html">two-factor.png</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">objects/</span><ul class="tree"><li class="tree-file"><a href="docs--objects--check.md.html">check.md</a></li><li class="tree-file"><a href="docs--objects--contact.md.html">contact.md</a></li><li class="tree-file"><a href="docs--objects--contactgroup.md.html">contactgroup.md</a></li><li class="tree-file"><a href="docs--objects--dependency.md.html">dependency.md</a></li><li class="tree-file"><a href="docs--objects--downtimegroup.md.html">downtimegroup.md</a></li><li class="tree-file"><a href="docs--objects--host.md.html">host.md</a></li><li class="tree-file tree-file--active"><a href="docs--objects--hostgroup.md.html">hostgroup.md</a></li><li class="tree-file"><a href="docs--objects--notify.md.html">notify.md</a></li><li class="tree-file"><a href="docs--objects--service.md.html">service.md</a></li><li class="tree-file"><a href="docs--objects--servicegroup.md.html">servicegroup.md</a></li><li class="tree-file"><a href="docs--objects--sink.md.html">sink.md</a></li><li class="tree-file"><a href="docs--objects--timeperiod.md.html">timeperiod.md</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">reference/</span><ul class="tree"><li class="tree-file"><a href="docs--reference--api.md.html">api.md</a></li><li class="tree-file"><a href="docs--reference--cli.md.html">cli.md</a></li><li class="tree-file"><a href="docs--reference--watcher-toml.md.html">watcher-toml.md</a></li></ul></li><li class="tree-file"><a href="docs--README.md.html">README.md</a></li><li class="tree-file"><a href="docs--examples.md.html">examples.md</a></li><li class="tree-file"><a href="docs--install.md.html">install.md</a></li><li class="tree-file"><a href="docs--introduction.md.html">introduction.md</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">examples/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">demo/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">conf.d/</span><ul class="tree"><li class="tree-file"><a href="examples--demo--conf.d--checks.toml.html">checks.toml</a></li><li class="tree-file"><a href="examples--demo--conf.d--groups.toml.html">groups.toml</a></li><li class="tree-file"><a href="examples--demo--conf.d--hosts.toml.html">hosts.toml</a></li><li class="tree-file"><a href="examples--demo--conf.d--services.toml.html">services.toml</a></li></ul></li><li class="tree-file"><a href="examples--demo--watcher.toml.html">watcher.toml</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">local/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">conf.d/</span><ul class="tree"><li class="tree-file"><a href="examples--local--conf.d--checks.toml.html">checks.toml</a></li><li class="tree-file"><a href="examples--local--conf.d--contacts.toml.html">contacts.toml</a></li><li class="tree-file"><a href="examples--local--conf.d--hosts.toml.html">hosts.toml</a></li><li class="tree-file"><a href="examples--local--conf.d--services.toml.html">services.toml</a></li></ul></li><li class="tree-file"><a href="examples--local--watcher.toml.html">watcher.toml</a></li></ul></li><li class="tree-file"><a href="examples--init-answers.toml.html">init-answers.toml</a></li><li class="tree-file"><a href="examples--sinks.toml.html">sinks.toml</a></li></ul></li><li class="tree-file"><a href="*.toml.html">*.toml</a></li><li class="tree-file"><a href="*.yaml.html">*.yaml</a></li><li class="tree-file"><a href="Cargo.lock.html">Cargo.lock</a></li><li class="tree-file"><a href="LICENSE.html">LICENSE</a></li></ul></nav><script>
+(function () {
+  var tree = document.currentScript.previousElementSibling;
+  var key = "file-tree-scroll:" + tree.dataset.treeKey;
+  var saved = null;
+  try {
+    saved = sessionStorage.getItem(key);
+    sessionStorage.removeItem(key);
+  } catch (e) {}
+
+  if (saved !== null) {
+    tree.scrollTop = +saved;
+  } else {
+    var active = tree.querySelector(".tree-file--active");
+    if (active) {
+      var a = active.getBoundingClientRect();
+      var t = tree.getBoundingClientRect();
+      if (a.bottom > t.bottom) {
+        tree.scrollTop += a.top - t.top - (tree.clientHeight - a.height) / 2;
+      }
+    }
+  }
+
+  tree.addEventListener("click", function (e) {
+    if (!e.target.closest("a")) return;
+    try { sessionStorage.setItem(key, String(tree.scrollTop)); } catch (err) {}
+  });
+})();
+</script>
+    <main class="main" id="main">
+      <section class="section source-page">
+        <p class="section__path">
+          <a href="../../index.html#projects" class="link">~/projects</a> /
+          <a href="../watcher.html" class="link">watcher</a> / source
+        </p>
+        <div class="source-page__head">
+          <h1 class="section__title">docs/objects/hostgroup.md</h1>
+          <a href="../watcher.html" class="link">← Back to Watcher</a>
+        </div>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">  1</span>
+<span class="normal">  2</span>
+<span class="normal">  3</span>
+<span class="normal">  4</span>
+<span class="normal">  5</span>
+<span class="normal">  6</span>
+<span class="normal">  7</span>
+<span class="normal">  8</span>
+<span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span></pre></div></td><td class="code"><div><pre><span></span><span class="gh"># hostgroup</span>
+
+A host group is a set of hosts that get the same services and settings.
+Instead of listing <span class="sb">`http`</span> on every web server, you list it once on the
+group. Host groups also group hosts on the status pages, in filters and in
+[<span class="nt">notify rules</span>](<span class="na">notify.md</span>).
+
+<span class="sb">```toml</span>
+<span class="k">[hostgroup.web-servers]</span>
+<span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Web Servers"</span>
+<span class="n">members</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"web*"</span><span class="p">]</span>
+<span class="n">services</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"http"</span><span class="p">,</span><span class="w"> </span><span class="s2">"https_cert"</span><span class="p">]</span>
+<span class="sb">```</span>
+
+Every host whose name starts with <span class="sb">`web`</span> is in the group and gets the
+services <span class="sb">`http`</span> and <span class="sb">`https_cert`</span>.
+
+<span class="gu">## Fields</span>
+
+| Field | Default | Description |
+|---|---|---|
+| <span class="sb">`title`</span> | | Name shown in the web UI. |
+| <span class="sb">`members`</span> | | Host names. <span class="sb">`*`</span> matches any text, <span class="sb">`?`</span> one character. |
+| <span class="sb">`services`</span> | | Services every member gets. A [<span class="nt">check</span>](<span class="na">check.md</span>) can be listed as it is, without a <span class="sb">`[service.&lt;name&gt;]`</span>: a [<span class="nt">built-in</span>](<span class="na">check.md#built-in-checks</span>) one like <span class="sb">`http`</span> or <span class="sb">`tls`</span>, or one of yours. |
+| <span class="sb">`servicegroups`</span> | | Service groups every member gets, with all their services. |
+| <span class="sb">`host_check`</span> | | The service or check that decides whether its hosts are UP or DOWN. It runs for each host itself and isn't one of its services. <span class="sb">`false`</span>: no host check. See [<span class="nt">Host state</span>](<span class="na">host.md#host-state</span>). |
+| <span class="sb">`graph`</span> | | The service whose graph is shown on the host pages. A host without that service, or with its graphs off, shows its host check's graph. |
+| <span class="sb">`ssh`</span> | | Login for [<span class="nt">checks over SSH</span>](<span class="na">../guides/ssh.md</span>): <span class="sb">`{ user, secret, port }`</span>. See [<span class="nt">ssh</span>](<span class="na">#ssh</span>). |
+| <span class="sb">`proxmox`</span> | | The Proxmox VE API login for its hosts: <span class="sb">`{ secret, fingerprint, port, verify, discover }`</span>. See [<span class="nt">proxmox</span>](<span class="na">#proxmox</span>). |
+| <span class="sb">`vars`</span> | | Default vars for its hosts, used by <span class="sb">`$name$`</span> macros and <span class="sb">`for_each`</span>. [<span class="nt">Built-in checks</span>](<span class="na">check.md#built-in-checks</span>) don't read them, except through macros like <span class="sb">`$host.vars.port$`</span>. |
+
+A host's own <span class="sb">`host_check`</span>, <span class="sb">`graph`</span>, <span class="sb">`ssh`</span>, <span class="sb">`proxmox`</span> and <span class="sb">`vars`</span> win over its host
+groups'. If two host groups of the same host set one of them to different
+values, that is an error; see
+[<span class="nt">Host groups that disagree</span>](<span class="na">../guides/configuration.md#host-groups-that-disagree</span>).
+
+<span class="gu">## Members</span>
+
+A host joins a host group in either of two ways, and both can be mixed:
+
+<span class="sb">```toml</span>
+<span class="c1"># On the group, by name or pattern</span>
+<span class="k">[hostgroup.databases]</span>
+<span class="n">members</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"db*"</span><span class="p">,</span><span class="w"> </span><span class="s2">"pg-main"</span><span class="p">]</span>
+
+<span class="c1"># On the host</span>
+<span class="k">[[host]]</span>
+<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"reporting01"</span>
+<span class="n">groups</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"databases"</span><span class="p">]</span>
+<span class="sb">```</span>
+
+The web UI shows the full membership on both the host and the group,
+including where each membership is written.
+
+<span class="gu">## Examples</span>
+
+<span class="gu">### Every host</span>
+
+<span class="sb">```toml</span>
+<span class="k">[hostgroup.all]</span>
+<span class="n">members</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"*"</span><span class="p">]</span>
+<span class="n">services</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"load"</span><span class="p">]</span>
+<span class="sb">```</span>
+
+<span class="gu">### A group that only groups</span>
+
+A host group without services is still useful for status pages and notify
+rules:
+
+<span class="sb">```toml</span>
+<span class="k">[hostgroup.prod]</span>
+<span class="n">members</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"web01"</span><span class="p">,</span><span class="w"> </span><span class="s2">"web02"</span><span class="p">,</span><span class="w"> </span><span class="s2">"db01"</span><span class="p">]</span>
+<span class="sb">```</span>
+
+<span class="gu">### Services and service groups for the members</span>
+
+<span class="sb">```toml</span>
+<span class="k">[hostgroup.linux]</span>
+<span class="n">members</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"*"</span><span class="p">]</span>
+<span class="n">services</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"ssh"</span><span class="p">]</span>
+<span class="n">servicegroups</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"linux-basics"</span><span class="p">]</span>
+<span class="sb">```</span>
+
+<span class="gu">### Host check for the members</span>
+
+<span class="sb">```toml</span>
+<span class="k">[hostgroup.switches]</span>
+<span class="n">members</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"sw-*"</span><span class="p">]</span>
+<span class="n">host_check</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"snmp_uptime"</span>
+<span class="sb">```</span>
+
+<span class="gu">### Default vars</span>
+
+Every member checks <span class="sb">`/`</span> with <span class="sb">`for_each = "disks"`</span>. Members can add more
+disks with their own <span class="sb">`vars.disks`</span>.
+
+<span class="sb">```toml</span>
+<span class="k">[hostgroup.linux]</span>
+<span class="n">members</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"*"</span><span class="p">]</span>
+<span class="n">services</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"disk"</span><span class="p">]</span>
+<span class="n">vars</span><span class="p">.</span><span class="n">disks</span><span class="p">.</span><span class="n">root</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">path</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"/"</span><span class="w"> </span><span class="p">}</span>
+<span class="sb">```</span>
+
+<span class="gu">### SSH login for the members</span>
+
+<span class="sb">```toml</span>
+<span class="k">[hostgroup.linux]</span>
+<span class="n">members</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"web*"</span><span class="p">,</span><span class="w"> </span><span class="s2">"db*"</span><span class="p">]</span>
+<span class="n">ssh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">user</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"monitor"</span><span class="p">,</span><span class="w"> </span><span class="n">secret</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"monitor"</span><span class="w"> </span><span class="p">}</span>
+<span class="sb">```</span>
+
+<span class="gu">## ssh</span>
+
+| Field | Default | Description |
+|---|---|---|
+| <span class="sb">`user`</span> | | User to log in as. A host needs it from itself or a host group. |
+| <span class="sb">`secret`</span> | | Name of a key or password stored in Watcher. A host needs it from itself or a host group. See [<span class="nt">Secrets</span>](<span class="na">../guides/ssh.md#secrets</span>). |
+| <span class="sb">`port`</span> | <span class="sb">`22`</span> | SSH port. |
+
+A host can set some of these itself, for example only <span class="sb">`port`</span>, and take the
+others from the group.
+
+<span class="gu">## proxmox</span>
+
+The login of the [<span class="nt">Proxmox VE checks</span>](<span class="na">check.md#proxmox-ve-checks</span>), for
+hosts that are Proxmox VE servers.
+
+| Field | Default | Description |
+|---|---|---|
+| <span class="sb">`secret`</span> | | Name of the API token stored in Watcher. A Proxmox VE server needs it from itself or a host group. See [<span class="nt">Store the token</span>](<span class="na">../guides/proxmox.md#3-store-the-token-in-watcher</span>). |
+| <span class="sb">`fingerprint`</span> | | The SHA-256 fingerprint of the API's certificate. Each node has its own certificate, so it usually goes on the host. |
+| <span class="sb">`port`</span> | <span class="sb">`8006`</span> | The API's port. |
+| <span class="sb">`verify`</span> | <span class="sb">`true`</span> | Without <span class="sb">`fingerprint`</span>: the certificate must be trusted by the system. <span class="sb">`false`</span> accepts any certificate. |
+| <span class="sb">`discover`</span> | <span class="sb">`false`</span> | Offer the VMs and containers as hosts. In a cluster, set it on one node only: every node lists all guests. |
+
+A host can set some of these itself, for example only <span class="sb">`fingerprint`</span>, and
+take the others from the group. VMs and containers (<span class="sb">`host`</span>, <span class="sb">`vmid`</span>) are
+set on the host, see [<span class="nt">proxmox on hosts</span>](<span class="na">host.md#proxmox</span>).
+
+<span class="gu">## Checking members</span>
+
+<span class="sb">```sh</span>
+watcher<span class="w"> </span>config<span class="w"> </span>explain<span class="w"> </span>hostgroup<span class="w"> </span>linux
+<span class="sb">```</span>
+
+The output lists the members and why each one is a member (listed on the
+host, or matched by a pattern).
+
+In the web UI, Current Status → Host Groups shows the status totals of each
+group, linked to the filtered host and service lists.
+
+<span class="gu">## See also</span>
+
+<span class="k">-</span><span class="w"> </span>[<span class="nt">host</span>](<span class="na">host.md</span>)
+<span class="k">-</span><span class="w"> </span>[<span class="nt">servicegroup</span>](<span class="na">servicegroup.md</span>)
+<span class="k">-</span><span class="w"> </span>[<span class="nt">How a host gets its services</span>](<span class="na">../guides/configuration.md#how-a-host-gets-its-services</span>)
+</pre></div></td></tr></table></div>
+
+      </section>
+    </main>
+  </div>
+</body>
+</html>
