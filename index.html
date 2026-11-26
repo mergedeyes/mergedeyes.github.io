@@ -106,13 +106,6 @@
           <h2 class="section__title">Projects</h2>
         </div>
 
-        <!-- EDIT: duplicate a <article class="card"> block for each project.
-             data-href points each whole card at its generated /projects
-             page (see script.js); the Repository/Live-demo links and the
-             title link are real <a> tags and take priority over that.
-             data-source-file="path/in/repo" is optional and opt-in per
-             project - adding it gives that project's page a collapsible,
-             syntax-highlighted view of that one file. -->
         <div class="cards">
           <article class="card reveal" data-href="projects/klar-stack.html" data-source-file="Klar/src/main.rs, Klar/migrations/*, Klar/src/*, klar-web/src/*">
             <div class="card__head">
@@ -140,6 +133,30 @@
             </div>
           </article>
 
+          <article class="card reveal" data-href="projects/watcher.html" data-source-file="src/*, docs/*, examples/*, tools/*, *.toml, Cargo.lock, *.yaml, LICENSE">
+            <div class="card__head">
+              <div class="card__tags">
+                <span class="tag">Rust</span>
+                <span class="tag">TypeScript</span>
+                <span class="tag">Svelte</span>
+                <span class="tag">YAML</span>
+                <span class="tag">JSON</span>
+              </div>
+              <h3 class="card__title"><a href="projects/watcher.html">Watcher</a></h3>
+            </div>
+            <p class="card__body">
+              Infrastructure monitoring with full API, altering and a WEB UI. Written in Rust with a Svelte frontend. Configured via YAML or JSON.
+              For up to (at least) 10k hosts and 250k services. Designed for small to large-sized businesses and organizations.
+              Pattern matching, templating, foreach, hub, nodes and more to come. 
+            </p>
+            <div class="card__foot">
+              <div class="card__links">
+                <a href="https://github.com/mergedeyes/watcher" class="link">Repository</a>
+              </div>
+              <span class="license-badge">AGPL-3.0</span>
+            </div>
+          </article>
+
           <article class="card reveal" data-href="projects/terminaal.html" data-source-file="src/*, assets/terminaal.desktop, locales/*, docs/*, Cargo.toml, Cargo.lock, install.sh, LICENSE">
             <div class="card__head">
               <div class="card__tags">
@@ -155,6 +172,25 @@
             <div class="card__foot">
               <div class="card__links">
                 <a href="https://github.com/mergedeyes/terminaal" class="link">Repository</a>
+              </div>
+              <span class="license-badge">GPL-3.0</span>
+            </div>
+          </article>
+
+          <article class="card reveal" data-href="projects/mainframe.html" data-source-file="src/*, docs/*, Cargo.toml, Cargo.lock, rustfmt.toml, LICENSE">
+            <div class="card__head">
+              <div class="card__tags">
+                <span class="tag">Rust</span>
+                <span class="tag">TOML</span>
+              </div>
+              <h3 class="card__title"><a href="projects/mainframe.html">Mainframe</a></h3>
+            </div>
+            <p class="card__body">
+              A project management interface for the terminal. Git integration, ToDos, Notes, and more.
+            </p>
+            <div class="card__foot">
+              <div class="card__links">
+                <a href="https://github.com/mergedeyes/mainframe" class="link">Repository</a>
               </div>
               <span class="license-badge">GPL-3.0</span>
             </div>
