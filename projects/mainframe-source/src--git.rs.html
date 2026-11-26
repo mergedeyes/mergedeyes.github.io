@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>src/git.rs — Mainframe — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=2d91b490" />
+  <link rel="stylesheet" href="../../styles.css?v=4746139e" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -827,7 +827,71 @@
 <span class="normal">754</span>
 <span class="normal">755</span>
 <span class="normal">756</span>
-<span class="normal">757</span></pre></div></td><td class="code"><div><pre><span></span><span class="sd">//! Git status for the header and per-file markers, plus the git menu's commands.</span>
+<span class="normal">757</span>
+<span class="normal">758</span>
+<span class="normal">759</span>
+<span class="normal">760</span>
+<span class="normal">761</span>
+<span class="normal">762</span>
+<span class="normal">763</span>
+<span class="normal">764</span>
+<span class="normal">765</span>
+<span class="normal">766</span>
+<span class="normal">767</span>
+<span class="normal">768</span>
+<span class="normal">769</span>
+<span class="normal">770</span>
+<span class="normal">771</span>
+<span class="normal">772</span>
+<span class="normal">773</span>
+<span class="normal">774</span>
+<span class="normal">775</span>
+<span class="normal">776</span>
+<span class="normal">777</span>
+<span class="normal">778</span>
+<span class="normal">779</span>
+<span class="normal">780</span>
+<span class="normal">781</span>
+<span class="normal">782</span>
+<span class="normal">783</span>
+<span class="normal">784</span>
+<span class="normal">785</span>
+<span class="normal">786</span>
+<span class="normal">787</span>
+<span class="normal">788</span>
+<span class="normal">789</span>
+<span class="normal">790</span>
+<span class="normal">791</span>
+<span class="normal">792</span>
+<span class="normal">793</span>
+<span class="normal">794</span>
+<span class="normal">795</span>
+<span class="normal">796</span>
+<span class="normal">797</span>
+<span class="normal">798</span>
+<span class="normal">799</span>
+<span class="normal">800</span>
+<span class="normal">801</span>
+<span class="normal">802</span>
+<span class="normal">803</span>
+<span class="normal">804</span>
+<span class="normal">805</span>
+<span class="normal">806</span>
+<span class="normal">807</span>
+<span class="normal">808</span>
+<span class="normal">809</span>
+<span class="normal">810</span>
+<span class="normal">811</span>
+<span class="normal">812</span>
+<span class="normal">813</span>
+<span class="normal">814</span>
+<span class="normal">815</span>
+<span class="normal">816</span>
+<span class="normal">817</span>
+<span class="normal">818</span>
+<span class="normal">819</span>
+<span class="normal">820</span>
+<span class="normal">821</span></pre></div></td><td class="code"><div><pre><span></span><span class="sd">//! Git status for the header and per-file markers, plus the git menu's commands.</span>
 
 <span class="k">use</span><span class="w"> </span><span class="n">std</span><span class="p">::{</span>
 <span class="w">    </span><span class="n">collections</span><span class="p">::{</span><span class="n">HashMap</span><span class="p">,</span><span class="w"> </span><span class="n">HashSet</span><span class="p">},</span>
@@ -1038,6 +1102,40 @@
 <span class="sd">/// Local branches, most recently committed to first.</span>
 <span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">local_branches</span><span class="p">(</span><span class="n">cwd</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">Path</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">git_lines</span><span class="p">(</span><span class="n">cwd</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="p">[</span><span class="s">"for-each-ref"</span><span class="p">,</span><span class="w"> </span><span class="s">"--sort=-committerdate"</span><span class="p">,</span><span class="w"> </span><span class="s">"--format=%(refname:short)"</span><span class="p">,</span><span class="w"> </span><span class="s">"refs/heads"</span><span class="p">])</span>
+<span class="p">}</span>
+
+<span class="sd">/// Turns whatever was typed into a branch name git and GitHub take: lowercase, words</span>
+<span class="sd">/// joined by `-`, `/` (or a `:` as in `feat: thing`) kept as the folder separator.</span>
+<span class="sd">/// Characters git refuses (space, `~^:?*[\`, `..`, `@{`, a leading `-` or `.`, a</span>
+<span class="sd">/// trailing `.lock`) never come out. Empty when nothing usable was typed.</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">branch_name</span><span class="p">(</span><span class="n">input</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">String</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">mapped</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input</span>
+<span class="w">        </span><span class="p">.</span><span class="n">to_lowercase</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="n">chars</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="n">map</span><span class="p">(</span><span class="o">|</span><span class="n">c</span><span class="o">|</span><span class="w"> </span><span class="k">match</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="sc">':'</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="sc">'/'</span><span class="p">,</span>
+<span class="w">            </span><span class="n">c</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">is_alphanumeric</span><span class="p">()</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="fm">matches!</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="sc">'/'</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="sc">'.'</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="sc">'_'</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">c</span><span class="p">,</span>
+<span class="w">            </span><span class="n">_</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="sc">'-'</span><span class="p">,</span>
+<span class="w">        </span><span class="p">})</span>
+<span class="w">        </span><span class="p">.</span><span class="n">collect</span><span class="p">();</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">parts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Vec</span><span class="p">::</span><span class="n">new</span><span class="p">();</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">part</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">mapped</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="sc">'/'</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">String</span><span class="p">::</span><span class="n">new</span><span class="p">();</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">part</span><span class="p">.</span><span class="n">chars</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// Runs of `-` or `.` become one, so no `--` or `..`.</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="o">!</span><span class="p">(</span><span class="fm">matches!</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="sc">'-'</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="sc">'.'</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">ends_with</span><span class="p">(</span><span class="n">c</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">s</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">trim_matches</span><span class="p">([</span><span class="sc">'-'</span><span class="p">,</span><span class="w"> </span><span class="sc">'.'</span><span class="p">]);</span>
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">rest</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">strip_suffix</span><span class="p">(</span><span class="s">".lock"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rest</span><span class="p">.</span><span class="n">trim_end_matches</span><span class="p">([</span><span class="sc">'-'</span><span class="p">,</span><span class="w"> </span><span class="sc">'.'</span><span class="p">]);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="o">!</span><span class="n">s</span><span class="p">.</span><span class="n">is_empty</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">parts</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">to_string</span><span class="p">());</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">parts</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="s">"/"</span><span class="p">)</span>
 <span class="p">}</span>
 
 <span class="sd">/// `git push` for a local branch other than (or the same as) the checked-out one, without</span>
@@ -1279,7 +1377,7 @@
 <span class="w">        </span><span class="o">&amp;</span><span class="p">[</span>
 <span class="w">            </span><span class="n">item</span><span class="p">(</span><span class="sc">'b'</span><span class="p">,</span><span class="w"> </span><span class="s">"list branches"</span><span class="p">),</span>
 <span class="w">            </span><span class="n">item</span><span class="p">(</span><span class="sc">'o'</span><span class="p">,</span><span class="w"> </span><span class="s">"switch branch, merge order…"</span><span class="p">),</span>
-<span class="w">            </span><span class="n">item</span><span class="p">(</span><span class="sc">'n'</span><span class="p">,</span><span class="w"> </span><span class="s">"new branch…"</span><span class="p">),</span>
+<span class="w">            </span><span class="n">item</span><span class="p">(</span><span class="sc">'n'</span><span class="p">,</span><span class="w"> </span><span class="s">"new branch… (name tidied)"</span><span class="p">),</span>
 <span class="w">            </span><span class="n">item</span><span class="p">(</span><span class="sc">'W'</span><span class="p">,</span><span class="w"> </span><span class="s">"remove a worktree…"</span><span class="p">),</span>
 <span class="w">            </span><span class="n">item</span><span class="p">(</span><span class="sc">'z'</span><span class="p">,</span><span class="w"> </span><span class="s">"stash"</span><span class="p">),</span>
 <span class="w">            </span><span class="n">item</span><span class="p">(</span><span class="sc">'Z'</span><span class="p">,</span><span class="w"> </span><span class="s">"stash pop"</span><span class="p">),</span>
@@ -1367,6 +1465,36 @@
 <span class="w">        </span><span class="n">cmd</span><span class="p">.</span><span class="n">push_str</span><span class="p">(</span><span class="s">" --push"</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="n">cmd</span>
+<span class="p">}</span>
+
+<span class="cp">#[cfg(test)]</span>
+<span class="k">mod</span><span class="w"> </span><span class="nn">branch_name_tests</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">use</span><span class="w"> </span><span class="k">super</span><span class="p">::</span><span class="o">*</span><span class="p">;</span>
+<span class="w">    </span><span class="k">use</span><span class="w"> </span><span class="k">crate</span><span class="p">::</span><span class="n">testutil</span><span class="p">::{</span><span class="n">git</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">test_git</span><span class="p">,</span><span class="w"> </span><span class="n">temp_dir</span><span class="p">};</span>
+
+<span class="w">    </span><span class="cp">#[test]</span>
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">formats_typed_text</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">branch_name</span><span class="p">(</span><span class="s">"Fix login bug"</span><span class="p">),</span><span class="w"> </span><span class="s">"fix-login-bug"</span><span class="p">);</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">branch_name</span><span class="p">(</span><span class="s">"feat: Add dark mode (WIP)"</span><span class="p">),</span><span class="w"> </span><span class="s">"feat/add-dark-mode-wip"</span><span class="p">);</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">branch_name</span><span class="p">(</span><span class="s">"fix/ crash on  empty   list "</span><span class="p">),</span><span class="w"> </span><span class="s">"fix/crash-on-empty-list"</span><span class="p">);</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">branch_name</span><span class="p">(</span><span class="s">"--hotfix--"</span><span class="p">),</span><span class="w"> </span><span class="s">"hotfix"</span><span class="p">);</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">branch_name</span><span class="p">(</span><span class="s">"a..b ~^?*[</span><span class="se">\\</span><span class="s"> c"</span><span class="p">),</span><span class="w"> </span><span class="s">"a.b-c"</span><span class="p">);</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">branch_name</span><span class="p">(</span><span class="s">"feat//.hidden/x.lock"</span><span class="p">),</span><span class="w"> </span><span class="s">"feat/hidden/x"</span><span class="p">);</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">branch_name</span><span class="p">(</span><span class="s">"@{u}"</span><span class="p">),</span><span class="w"> </span><span class="s">"u"</span><span class="p">);</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">branch_name</span><span class="p">(</span><span class="s">"Übersetzung für v1.2_beta"</span><span class="p">),</span><span class="w"> </span><span class="s">"übersetzung-für-v1.2_beta"</span><span class="p">);</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">branch_name</span><span class="p">(</span><span class="s">"  / :: ?? "</span><span class="p">),</span><span class="w"> </span><span class="s">""</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="sd">/// Whatever comes out, git itself agrees it's a valid branch name.</span>
+<span class="w">    </span><span class="cp">#[test]</span>
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">git_accepts_the_result</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">dir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">temp_dir</span><span class="p">(</span><span class="s">"branchname"</span><span class="p">);</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">inputs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s">"feat: Add X"</span><span class="p">,</span><span class="w"> </span><span class="s">"..a/b.lock.lock/"</span><span class="p">,</span><span class="w"> </span><span class="s">"-x -"</span><span class="p">,</span><span class="w"> </span><span class="s">"a@{b}"</span><span class="p">,</span><span class="w"> </span><span class="s">"x/./y"</span><span class="p">,</span><span class="w"> </span><span class="s">"tab</span><span class="se">\t</span><span class="s">here"</span><span class="p">,</span><span class="w"> </span><span class="s">"dots...end."</span><span class="p">];</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">inputs</span><span class="p">.</span><span class="n">map</span><span class="p">(</span><span class="n">branch_name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">test_git</span><span class="p">(</span><span class="o">&amp;</span><span class="n">dir</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="p">[</span><span class="s">"check-ref-format"</span><span class="p">,</span><span class="w"> </span><span class="s">"--branch"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">name</span><span class="p">]);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">std</span><span class="p">::</span><span class="n">fs</span><span class="p">::</span><span class="n">remove_dir_all</span><span class="p">(</span><span class="o">&amp;</span><span class="n">dir</span><span class="p">).</span><span class="n">unwrap</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 
 <span class="cp">#[cfg(test)]</span>

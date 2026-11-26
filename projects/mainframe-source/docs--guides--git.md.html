@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>docs/guides/git.md — Mainframe — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=2d91b490" />
+  <link rel="stylesheet" href="../../styles.css?v=4746139e" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -175,7 +175,7 @@ changed file. <code>g</code> opens the git menu; the commands run in the output 
 <tr>
 <td></td>
 <td><code>n</code></td>
-<td>new branch from here</td>
+<td>new branch from here; the name is tidied up for git and GitHub, see below</td>
 </tr>
 <tr>
 <td></td>
@@ -228,6 +228,12 @@ merged ones. The last column says how each stands with its remote: not
 pushed, pushed, commits to push or pull, only on the remote, or deleted on
 the remote. Type to filter, <code>Enter</code> switches. When nothing matches,
 <code>Enter</code> switches to the name you typed.</p>
+<h2 class="heading-element" dir="auto" id="new-branches">New branches</h2>
+<p dir="auto"><code>g n</code> asks for a name and makes it one git and GitHub accept, so you can
+type it the way you'd say it: <code>feat: Add dark mode (WIP)</code> becomes
+<code>feat/add-dark-mode-wip</code>. Letters are lowercased, spaces and characters
+git refuses turn into <code>-</code>, and a <code>:</code> or <code>/</code> separates folders. While you
+type, the prompt shows <code>→</code> with the name the branch will get.</p>
 <h2 class="heading-element" dir="auto" id="branches-deleted-on-the-remote">Branches deleted on the remote</h2>
 <p dir="auto">When a pull request is merged, GitHub usually deletes its branch. <code>g f</code>
 then drops <code>origin/&lt;branch&gt;</code> on the next fetch, but your local branch

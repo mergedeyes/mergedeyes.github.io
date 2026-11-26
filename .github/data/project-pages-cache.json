@@ -301,7 +301,7 @@
     "source_entries_format": 2
   },
   "mergedeyes/mainframe": {
-    "commit_count": 85,
+    "commit_count": 87,
     "files": {
       "Cargo.lock": "71a0db9d581a5aa325986dcaaa1a6f610cd51def",
       "Cargo.toml": "fff74be9e8505413fc4a5c8ef18bcc6ea6b2de3e",
@@ -310,7 +310,7 @@
       "docs/guides/cleanup.md": "a1b747cd691a1f311638085313d5f0e8107c772b",
       "docs/guides/files.md": "4e0380f94c2d87ce5ad5c07ccdb122b9796eebb8",
       "docs/guides/first-steps.md": "2bb9bcc478ebc88a5fb8f6bc0ed6f74a640bbdf4",
-      "docs/guides/git.md": "ace6b071ef82a07107e633cf044748afdd2415f5",
+      "docs/guides/git.md": "fa1c63524724c6a40888ba795c8aaa66430bce73",
       "docs/guides/install-and-deploy.md": "bafeff3faf9a094ad7786ae05eecfa807d5fc2ca",
       "docs/guides/projects.md": "37ca21c6de1eab09e9d7f2299e977018ca2af9e9",
       "docs/guides/running.md": "ec91b88f05b062f9b44552ea14dfe26fd79b8c53",
@@ -331,7 +331,7 @@
       "src/app/mod.rs": "a3f8936d59dd0d1799244e8e842773b2afba00a8",
       "src/app/notes_view.rs": "ea7c4a181e2c771b9cf24ca9a6191cbabfbed9f4",
       "src/app/project_picker.rs": "5f351d556081200fcab2465f01f1daa7bd09a4d8",
-      "src/app/prompt.rs": "6257b60c3878ec85c83c3e80d729358dc0398b42",
+      "src/app/prompt.rs": "dd6995e35c2363022af72414d2cc0d978b9ae99c",
       "src/app/task_picker.rs": "4bf241339839dc6893c15874b03ee274eedbaf81",
       "src/app/tasks.rs": "468adef4f2a033e821413ff25c2ea3ec3f48c719",
       "src/app/workspaces.rs": "342b377943ab59ed253844721792dadc85a46b28",
@@ -344,7 +344,7 @@
       "src/filter_list.rs": "7a9bf980addeebc00155b96159f477d38aace0d1",
       "src/form.rs": "75a5b2c4495fdc42d28e53a4dfb21f9efd3e8c4e",
       "src/fuzzy.rs": "c3a394c7dcb341bbd65a71ac3518de65290cac91",
-      "src/git.rs": "e54c117ef52ebcfcc1df49caec6ac154642d0903",
+      "src/git.rs": "ef48ede467af2ec7b645b0cc218e976eec20fc3d",
       "src/history.rs": "3c2fad1ab9e0f77cedf863575830ed33a2e1423f",
       "src/install.rs": "eaf6241a1fdcf40c42b19b4bc48d492ca885496b",
       "src/line.rs": "d35ea4b8d82152b03e96a35f084a2418bf35224e",
@@ -363,7 +363,7 @@
       "src/ui/browser.rs": "40afb65a891585e42ddacc6abc6cddd7e0fa2d55",
       "src/ui/cleanup.rs": "e0fdd412fb8b86c0483d746e89ced805d328dba1",
       "src/ui/deploy.rs": "c458d7b6ff00a3d6b8b0fcca6d2826a24e0dad7e",
-      "src/ui/footer.rs": "db719d31c07bcd09208c1fd958766a93f16c2d21",
+      "src/ui/footer.rs": "790f76593b8163196cc472c6350279b5b8b31181",
       "src/ui/form.rs": "e49a2e7085e73d5520cde0be074442b11c4657b9",
       "src/ui/header.rs": "e6c79c28b2cb17596ed5ba1ab54901f6a735bcb0",
       "src/ui/help.rs": "158efb5923fa6cdf14522dabcf5d441e6ee48492",
@@ -375,8 +375,8 @@
       "src/watch.rs": "b2a24d593f14051791ad0da36cb29ba005d6d1f6"
     },
     "markdown_format": 2,
-    "newest_commit_sha": "306e02703fd6d1e1511d01060ede6f107d7cbde3",
-    "pushed_at": "2026-11-26T21:17:27Z",
+    "newest_commit_sha": "c935a001966f2a85e17c39cc7572bea233bae6e7",
+    "pushed_at": "2026-11-26T23:37:01Z",
     "readme_format": 3,
     "source_entries": [
       "src/main.rs",
@@ -390,7 +390,7 @@
     "source_entries_format": 2
   },
   "mergedeyes/mergedeyes.github.io": {
-    "commit_count": 791,
+    "commit_count": 794,
     "files": {
       ".github/scripts/commit_and_push.sh": "05af7677fdd6c874d6f237ae682003f09d18349b",
       ".github/scripts/generate_project_pages.py": "50b645756b518d506d040b6b52bc663ca3326326",
@@ -399,7 +399,7 @@
       ".github/workflows/jekyll-gh-pages.yml": "e5d903dc63d17f68658e3d4b9726c19f748ce746",
       ".github/workflows/update-visitor-count.yml": "329cdcedd0e188eb9fca6a4ab7ce1755d546c324",
       "404.html": "cacf9aed64339b7d314de8914fbb917252c8fb6f",
-      "index.html": "a0999649b4434d36cc6302df304391af6f87ae7c",
+      "index.html": "5843a644681f2933f1e5e8e8c6b9c1de5f92709b",
       "llms.txt": "440c37d26e72bd8ceacecd028b0196d0018ab65c",
       "robots.txt": "24e94cbe9371b8c9d1dbf6a17bebea38cb49a552",
       "script.js": "33ef7fe1d0edc6c40d9d7e4658544c1845ec1a52",
@@ -414,8 +414,8 @@
       "styles.css": "05f7b0f26ba80e1f73228fc2d4092971a8ce67f0"
     },
     "markdown_format": 2,
-    "newest_commit_sha": "2d91b49074433fdf4b9db0ee2c54553506ba046c",
-    "pushed_at": "2026-11-26T23:21:21Z",
+    "newest_commit_sha": "4746139ed7b16098d06b2efb4907fb208d73cbf2",
+    "pushed_at": "2026-11-26T23:40:36Z",
     "readme_format": 3,
     "source_entries": [
       "index.html",

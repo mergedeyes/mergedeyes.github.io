@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>src/app/prompt.rs — Mainframe — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=2d91b490" />
+  <link rel="stylesheet" href="../../styles.css?v=4746139e" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -267,7 +267,11 @@
 <span class="normal">194</span>
 <span class="normal">195</span>
 <span class="normal">196</span>
-<span class="normal">197</span></pre></div></td><td class="code"><div><pre><span></span><span class="sd">//! Footer prompts: completion while typing, and what each one does on Enter.</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span></pre></div></td><td class="code"><div><pre><span></span><span class="sd">//! Footer prompts: completion while typing, and what each one does on Enter.</span>
 
 <span class="k">use</span><span class="w"> </span><span class="n">std</span><span class="p">::{</span>
 <span class="w">    </span><span class="n">fs</span><span class="p">,</span>
@@ -403,8 +407,12 @@
 <span class="w">                </span><span class="bp">self</span><span class="p">.</span><span class="n">start_task</span><span class="p">(</span><span class="s">"git commit"</span><span class="p">.</span><span class="n">into</span><span class="p">(),</span><span class="w"> </span><span class="n">Plan</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">cmd</span><span class="p">,</span><span class="w"> </span><span class="n">cwd</span><span class="w"> </span><span class="p">});</span>
 <span class="w">            </span><span class="p">}</span>
 <span class="w">            </span><span class="n">PromptKind</span><span class="p">::</span><span class="n">NewBranch</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="kd">let</span><span class="w"> </span><span class="n">cmd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="fm">format!</span><span class="p">(</span><span class="s">"{GIT} switch -c {}"</span><span class="p">,</span><span class="w"> </span><span class="n">quote_str</span><span class="p">(</span><span class="o">&amp;</span><span class="n">input</span><span class="p">));</span>
-<span class="w">                </span><span class="bp">self</span><span class="p">.</span><span class="n">start_task</span><span class="p">(</span><span class="s">"git switch -c"</span><span class="p">.</span><span class="n">into</span><span class="p">(),</span><span class="w"> </span><span class="n">Plan</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">cmd</span><span class="p">,</span><span class="w"> </span><span class="n">cwd</span><span class="w"> </span><span class="p">});</span>
+<span class="w">                </span><span class="kd">let</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">git</span><span class="p">::</span><span class="n">branch_name</span><span class="p">(</span><span class="o">&amp;</span><span class="n">input</span><span class="p">);</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="n">name</span><span class="p">.</span><span class="n">is_empty</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="k">return</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">set_status</span><span class="p">(</span><span class="fm">format!</span><span class="p">(</span><span class="s">"no usable branch name in {input:?}"</span><span class="p">),</span><span class="w"> </span><span class="n">Level</span><span class="p">::</span><span class="nb">Err</span><span class="p">);</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">                </span><span class="kd">let</span><span class="w"> </span><span class="n">cmd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="fm">format!</span><span class="p">(</span><span class="s">"{GIT} switch -c {}"</span><span class="p">,</span><span class="w"> </span><span class="n">quote_str</span><span class="p">(</span><span class="o">&amp;</span><span class="n">name</span><span class="p">));</span>
+<span class="w">                </span><span class="bp">self</span><span class="p">.</span><span class="n">start_task</span><span class="p">(</span><span class="fm">format!</span><span class="p">(</span><span class="s">"git switch -c {name}"</span><span class="p">),</span><span class="w"> </span><span class="n">Plan</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">cmd</span><span class="p">,</span><span class="w"> </span><span class="n">cwd</span><span class="w"> </span><span class="p">});</span>
 <span class="w">            </span><span class="p">}</span>
 <span class="w">            </span><span class="n">PromptKind</span><span class="p">::</span><span class="n">RemoveWorktree</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">confirm_remove_worktree</span><span class="p">(</span><span class="n">input</span><span class="p">.</span><span class="n">trim</span><span class="p">()),</span>
 <span class="w">            </span><span class="n">PromptKind</span><span class="p">::</span><span class="n">PushBranch</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="k">match</span><span class="w"> </span><span class="n">git</span><span class="p">::</span><span class="n">push_branch_cmd</span><span class="p">(</span><span class="o">&amp;</span><span class="n">cwd</span><span class="p">,</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="n">trim</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
