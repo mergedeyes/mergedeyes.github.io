@@ -18,7 +18,7 @@ concurrency:
   cancel-in-progress: false
 
 permissions:
-  contents: write  # git-auto-commit-action needs push rights
+  contents: write  # commit_and_push.sh needs push rights
 
 jobs:
   update-count:
@@ -38,8 +38,9 @@ jobs:
           GITHUB_REPOSITORY: ${{ github.repository }}
         run: python .github/scripts/update_visitor_count.py
 
+      # Rebases onto main before pushing (see commit_and_push.sh's header)
+      # - the concurrency group above only keeps the bot workflows apart,
+      # a human push can still land while this one runs.
       - name: Commit updated count
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "chore: update visitor count"
-          file_pattern: ".github/data/visitor-count.json index.html visitors.html"
+        run: |
+          .github/scripts/commit_and_push.sh "chore: update visitor count" .github/data/visitor-count.json index.html visitors.html

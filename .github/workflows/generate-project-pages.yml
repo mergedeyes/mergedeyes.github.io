@@ -26,7 +26,7 @@ concurrency:
   cancel-in-progress: false
 
 permissions:
-  contents: write  # git-auto-commit-action needs push rights
+  contents: write  # commit_and_push.sh needs push rights
 
 jobs:
   generate:
@@ -49,13 +49,13 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python .github/scripts/generate_project_pages.py
 
+      # .github/data/project-pages-cache.json is the change-skip build
+      # cache (see generate_project_pages.py's module docstring) - it has
+      # to be committed back too, or every run starts from an empty cache
+      # and re-fetches everything from GitHub again, defeating the whole
+      # point of it. commit_and_push.sh rebases onto main before pushing
+      # (see its header for why), so a push landing mid-run doesn't fail
+      # this one.
       - name: Commit generated pages
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "chore: regenerate project pages"
-          # .github/data/project-pages-cache.json is the change-skip
-          # build cache (see generate_project_pages.py's module
-          # docstring) - it has to be committed back too, or every run
-          # starts from an empty cache and re-fetches everything from
-          # GitHub again, defeating the whole point of it.
-          file_pattern: "projects/*.html .github/data/project-pages-cache.json"
+        run: |
+          .github/scripts/commit_and_push.sh "chore: regenerate project pages" 'projects/*.html' .github/data/project-pages-cache.json
