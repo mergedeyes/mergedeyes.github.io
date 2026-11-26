@@ -12,9 +12,10 @@ index.html that has a "Repository" link pointing at GitHub. Each page gets:
     source browser below which is opt-in
   - for opted-in projects (data-source-file="..." on the card), one or more
     syntax-highlighted source files with line numbers. The attribute is a
-    comma-separated list; each entry is either a literal file path or a
+    comma-separated list; each entry is either a literal file path, a
     "dir/*" wildcard that expands recursively to every file under that
-    directory. One file -> a single wide source page, same as before.
+    directory, or a glob like "*.toml" (shell-style: * stays within one
+    directory level, so that's the root's .toml files only). One file -> a single wide source page, same as before.
     Two or more files -> a file-tree sidebar plus one page per file.
   - the site's own navbar (extracted from index.html, not hand-copied,
     so it can never drift out of sync with the real one)
@@ -49,6 +50,7 @@ Reads GITHUB_TOKEN from the environment to authenticate API calls (raises
 the rate limit well past what these repos need, and would be required for
 private repos - not the case here, but no reason not to use it).
 """
+import fnmatch
 import json
 import os
 import re
@@ -339,6 +341,30 @@ def fetch_repo_file_tree(owner: str, repo: str, branch: str) -> dict:
     return {item["path"]: item.get("sha", "") for item in data.get("tree", []) if item.get("type") == "blob"}
 
 
+# Bump whenever the rules for resolving data-source-file entries change
+# (see expand_source_entries): an unchanged repo reuses last run's resolved
+# file list without fetching the tree, so without this a rule change only
+# reaches each repo on its next push - e.g. a "*.toml" entry that used to
+# be taken as a literal file name would stay one. Costs one tree fetch per
+# project, once.
+# 2: shell-style globs ("*.toml") besides dir/*
+SOURCE_ENTRIES_FORMAT = 2
+
+
+def is_glob(entry: str) -> bool:
+    return any(c in entry for c in "*?[")
+
+
+def unmatched_source_entries(entries: list, file_tree: dict) -> list:
+    """The data-source-file entries that resolve to nothing in file_tree -
+    a literal path that isn't there (file renamed/moved) or a pattern
+    matching zero files. Neither breaks the run, so without a warning a
+    stale entry just sits there unnoticed (a literal one even publishes a
+    "Could not fetch ... (HTTP 404)" page and re-fetches it every run)."""
+    return [e for e in entries if not expand_source_entries([e], file_tree)
+            or (not e.endswith("/*") and not is_glob(e) and e not in file_tree)]
+
+
 def expand_source_entries(entries: list, file_tree: dict) -> list:
     """Resolves data-source-file entries into concrete file paths against
     an already-fetched {path: blob_sha} tree (see fetch_repo_file_tree) -
@@ -347,19 +373,35 @@ def expand_source_entries(entries: list, file_tree: dict) -> list:
     an unchanged repo with the same data-source-file entries as last
     time skips the tree fetch entirely and reuses the cached file list).
     An entry ending in "/*" expands to every file under that directory,
-    recursively; anything else is a literal file path (kept even if it's
-    not in file_tree, so a typo'd path still gets attempted and fails
-    gracefully at fetch time rather than silently vanishing). The first
+    recursively; any other entry with glob characters (*, ?, [) is
+    matched shell-style - "*" never crosses a "/", so "*.toml" means the
+    root's .toml files, not every Cargo.toml in every crate (fnmatch on
+    its own would match across directories, hence the extra slash-count
+    check); anything else is a literal file path (kept even if it's not
+    in file_tree, so a typo'd path still gets attempted and fails
+    gracefully at fetch time rather than silently vanishing - main()
+    also warns about it, see unmatched_source_entries). The first
     literal entry (if any) is left first in the result, so it becomes
     the "primary" file shown on the top-level <slug>-source.html page;
-    wildcard-resolved files are appended after. De-duplicates so a file
-    matched by both a literal entry and a wildcard only appears once."""
-    literal_files = [e for e in entries if not e.endswith("/*")]
-    wildcard_prefixes = [e[:-1] for e in entries if e.endswith("/*")]  # "src/*" -> "src/"
+    pattern-resolved files are appended after. De-duplicates so a file
+    matched by both a literal entry and a pattern only appears once.
+
+    file_tree may also be last run's cached {path: blob_sha} - same
+    shape, same result - which is how main() rebuilds the file list for
+    an unchanged repo without a tree fetch: the cache file is written
+    with sorted keys, so its own order can't be used as-is (it would put
+    e.g. ".github/..." before a literal "index.html" and silently change
+    which file is the primary one)."""
+    literal_files = [e for e in entries if not e.endswith("/*") and not is_glob(e)]
 
     resolved = list(literal_files)
-    for prefix in wildcard_prefixes:
-        resolved.extend(f for f in file_tree if f.startswith(prefix))
+    for entry in entries:
+        if entry.endswith("/*"):
+            prefix = entry[:-1]  # "src/*" -> "src/"
+            resolved.extend(f for f in file_tree if f.startswith(prefix))
+        elif is_glob(entry):
+            depth = entry.count("/")
+            resolved.extend(f for f in file_tree if f.count("/") == depth and fnmatch.fnmatchcase(f, entry))
 
     seen = set()
     ordered = []
@@ -1076,13 +1118,18 @@ def main():
         cached_files = cache_entry.get("files", {})
         if project["source_entries"]:
             same_entries = cache_entry.get("source_entries") == project["source_entries"]
-            reuse_file_list = repo_unchanged and same_entries and cached_files
+            same_rules = cache_entry.get("source_entries_format") == SOURCE_ENTRIES_FORMAT
+            reuse_file_list = repo_unchanged and same_entries and same_rules and cached_files
             if reuse_file_list:
                 # Nothing was pushed and the same entries were requested
                 # last time, so the resolved file list can't have
-                # changed either - skip the tree fetch entirely.
+                # changed either - skip the tree fetch entirely. Still
+                # re-expanded (against the cached paths instead of a
+                # fresh tree) rather than taken in cache order, so the
+                # primary file stays the same one (see
+                # expand_source_entries).
                 blob_shas = dict(cached_files)
-                files = list(blob_shas.keys())
+                files = expand_source_entries(project["source_entries"], cached_files)
             elif not default_branch and same_entries and cached_files:
                 # The repo-meta call failed outright (no branch to query
                 # the tree with, and no reliable pushed_at to compare
@@ -1096,11 +1143,14 @@ def main():
                 # yesterday.
                 print(f"  ! '{project['title']}': could not reach the GitHub API for repo info - reusing last known file list instead of resolving dir/* wildcards against nothing")
                 blob_shas = dict(cached_files)
-                files = list(blob_shas.keys())
+                files = expand_source_entries(project["source_entries"], cached_files)
             else:
                 file_tree = fetch_repo_file_tree(owner, repo, default_branch)
                 files = expand_source_entries(project["source_entries"], file_tree)
                 blob_shas = {f: file_tree.get(f, "") for f in files}
+                unmatched = unmatched_source_entries(project["source_entries"], file_tree) if file_tree else []
+                if unmatched:
+                    print(f"  ! '{project['title']}': data-source-file entries matching nothing in the repo: {', '.join(unmatched)}")
                 if not files:
                     print(f"  ! '{project['title']}': data-source-file entries resolved to zero files, skipping source page(s)")
         project["_resolved_files"] = files
@@ -1168,6 +1218,7 @@ def main():
                 "readme_format": README_FORMAT,
                 "source_entries": project["source_entries"],
                 "files": blob_shas,
+                "source_entries_format": SOURCE_ENTRIES_FORMAT,
                 "newest_commit_sha": newest_commit_sha,
                 "commit_count": commit_count,
             }
