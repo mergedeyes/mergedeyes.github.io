@@ -576,6 +576,14 @@ a:focus-visible, button:focus-visible {
    just don't fit well at 720px.
    ============================================================ */
 .main > .source-page { max-width: none; }
+/* Markdown files in the source browser are rendered like the README
+   (see fetch_rendered_markdown in generate_project_pages.py) - prose, so
+   back to the same reading column width as the README on a project page,
+   instead of the full width the code view gets. */
+.source-page > .readme-content { max-width: var(--maxw); margin-bottom: 3rem; }
+/* File paths have no spaces to break at - a long one (docs/guides/...)
+   would run off the side of a phone screen instead of wrapping. */
+.source-page__head .section__title { overflow-wrap: anywhere; }
 .source-page__head {
   display: flex;
   align-items: baseline;
@@ -595,8 +603,12 @@ a:focus-visible, button:focus-visible {
    td.code below (2 element-type selectors vs 1, with class counts tied),
    so it would silently win the cascade and null out their padding/border
    regardless of source order. Each cell rule sets everything it needs
-   directly instead. */
-.source-page .highlight {
+   directly instead.
+   Scoped with ">" to the code box that sits directly in the section, so
+   it doesn't also restyle GitHub's own <div class="highlight"> code
+   blocks inside a rendered markdown file (.readme-content below) - those
+   keep the README's plain <pre> look instead of a box inside a box. */
+.source-page > .highlight {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 8px;
@@ -607,9 +619,9 @@ a:focus-visible, button:focus-visible {
   line-height: 1.6;
   margin-bottom: 3rem;
 }
-.source-page .highlight pre { margin: 0; background: none; border: 0; padding: 0; }
-.source-page .highlight table.highlighttable { border-collapse: collapse; width: 100%; }
-.source-page .highlight td.linenos {
+.source-page > .highlight pre { margin: 0; background: none; border: 0; padding: 0; }
+.source-page > .highlight table.highlighttable { border-collapse: collapse; width: 100%; }
+.source-page > .highlight td.linenos {
   vertical-align: top;
   color: var(--muted);
   padding: 0 1.5rem 0 .5rem;
@@ -618,7 +630,7 @@ a:focus-visible, button:focus-visible {
   white-space: nowrap;
   user-select: none;  /* selecting/copying code shouldn't grab line numbers too */
 }
-.source-page .highlight td.code {
+.source-page > .highlight td.code {
   vertical-align: top;
   width: 100%;
   padding-left: 1.5rem;
