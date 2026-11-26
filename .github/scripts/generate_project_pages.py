@@ -61,9 +61,9 @@ import os
 import posixpath
 import re
 from datetime import datetime
-from html import escape as html_escape
+from html import escape as html_escape, unescape as html_unescape
 from pathlib import Path
-from urllib.parse import unquote, urljoin, urlparse
+from urllib.parse import quote, unquote, urljoin, urlparse
 
 import requests
 from bs4 import BeautifulSoup
@@ -95,7 +95,8 @@ README_FORMAT = 3
 # are invalidated by it - the (far more numerous) highlighted code files
 # keep being reused, so a bump doesn't re-fetch whole source trees.
 # 1: rendered like the README (before that: highlighted as plain source)
-MARKDOWN_FORMAT = 1
+# 2: links to repo files kept as blob URLs, made local by link_repo_files
+MARKDOWN_FORMAT = 2
 MARKDOWN_EXTENSIONS = (".md", ".markdown")
 
 GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN", "")
@@ -447,29 +448,25 @@ def is_markdown(path: str) -> bool:
     return path.lower().endswith(MARKDOWN_EXTENSIONS)
 
 
-def fetch_source_html(owner: str, repo: str, path: str, branch, slug: str, files: list) -> str:
+def fetch_source_html(owner: str, repo: str, path: str, branch) -> str:
     """Returns the HTML shown for one file in the source browser: markdown
     files rendered like the README (a docs/ folder full of .md files is
     meant to be read, not to be looked at as markup), everything else
     syntax-highlighted (fetch_highlighted_source)."""
     if is_markdown(path):
-        return fetch_rendered_markdown(owner, repo, path, branch, slug, files)
+        return fetch_rendered_markdown(owner, repo, path, branch)
     return fetch_highlighted_source(owner, repo, path)
 
 
-def fetch_rendered_markdown(owner: str, repo: str, path: str, branch, slug: str, files: list) -> str:
+def fetch_rendered_markdown(owner: str, repo: str, path: str, branch) -> str:
     """Fetches one markdown file already rendered to HTML by GitHub - the
     contents endpoint takes the same html+json Accept header as the readme
     endpoint (see fetch_readme_html), so it's the exact same renderer and
     the same clean_readme_html pass, just with relative links resolved
-    against the file's own directory instead of the repo root.
-
-    Links to other files that have a page of their own in this source
-    browser are pointed at that page instead of at github.com (docs that
-    link to each other stay browsable on this site), and links to the
-    root README go to the project page, which is where that's shown. The
-    hrefs are written relative to a per-file page under <slug>-source/;
-    relocate_source_links fixes them up for <slug>-source.html.
+    against the file's own directory instead of the repo root. Links to
+    other repo files come out as github.com blob URLs here, same as in the
+    README; link_repo_files points them at this site's pages when the page
+    is rendered.
 
     Wrapped in .readme-content so it gets the README's styling as-is."""
     url = f"https://api.github.com/repos/{owner}/{repo}/contents/{path}"
@@ -480,50 +477,76 @@ def fetch_rendered_markdown(owner: str, repo: str, path: str, branch, slug: str,
     if resp.status_code != 200:
         return f"<p><em>Could not fetch {path} (HTTP {resp.status_code}).</em></p>"
 
-    branch = branch or "HEAD"
-    blob_base = f"https://github.com/{owner}/{repo}/blob/{branch}/"
-    file_set = set(files)
-
-    def local_link(href: str):
-        # fix_readme_url has already turned every repo-relative link into
-        # an absolute blob URL, so only those can point at a local page.
-        if not href.startswith(blob_base):
-            return None
-        target, _, fragment = href[len(blob_base):].partition("#")
-        target = unquote(target)
-        fragment = f"#{fragment}" if fragment else ""
-        if target == path and fragment:
-            return fragment
-        if target in file_set:
-            return f"{safe_filename(target)}.html{fragment}"
-        if target.lower() == "readme.md":
-            return f"../{slug}.html{fragment}"
-        return None
-
-    content = clean_readme_html(resp.text, owner, repo, branch, path=path, local_link=local_link)
+    content = clean_readme_html(resp.text, owner, repo, branch or "HEAD", path=path)
     return f'<div class="readme-content">\n{content}\n        </div>'
 
 
-def relocate_source_links(html: str, files: list, slug: str) -> str:
-    """Markdown pages are rendered with links relative to a per-file page
-    under <slug>-source/ (see fetch_rendered_markdown) - this rewrites them
-    for <slug>-source.html, which sits one directory up and shows the same
-    content. With a single file there are no per-file pages at all, so a
-    link to that file goes to <slug>-source.html itself. Safe to run on
-    already-relocated HTML (nothing matches a second time), which is what
-    happens when a single-file page is reused from the previous build."""
-    pages = {f"{safe_filename(f)}.html" for f in files}
+def link_repo_files(html: str, project: dict, nested: bool) -> str:
+    """Points links to repo files at this site's own page for that file
+    instead of at github.com, wherever one exists: a file in the source
+    browser -> its source page, the root README -> the project page (where
+    it's shown). Everything else (issues, actions, files without a page,
+    other repos) stays on GitHub. Used on the README (project page) and on
+    rendered markdown files (source browser), so the docs and the README
+    that links into them can be read without leaving the site.
+
+    Done at render time on every run, not baked in when the content is
+    fetched: the content is reused across runs for as long as the repo
+    doesn't change (see the module docstring), but the file list can change
+    without a push (a data-source-file edit), so links must always follow
+    the current one - a file dropped from the source browser has to go
+    back to its github.com link instead of pointing at a deleted page.
+
+    So a rewritten link keeps the repo path it stands for, as
+    data-repo-path="docs/install.md" next to its href. That makes this
+    idempotent on its own output (reused content comes back through here
+    every run) and lets the href be recomputed from scratch each time -
+    including for a different page depth: the same reused markdown is
+    rendered both into <slug>-source.html (nested=False, in projects/)
+    and into <slug>-source/<file>.html (nested=True, one level down).
+    Plain string regex instead of a BeautifulSoup round trip, so reused
+    content keeps its exact bytes (see extract_readme_html for why that
+    matters).
+
+    Blob URLs are matched for any branch and case-insensitively on the
+    owner/repo part, so absolute links a README spells out by hand
+    (github.com/Owner/Repo/blob/main/docs/x.md) are caught too, not just
+    the relative ones clean_readme_html resolved. A link with a query
+    string (?plain=1 - the raw-markdown view) is left on GitHub, since
+    that's not what the page on this site shows."""
+    slug = project["repo"].lower()
+    files = set(project.get("_resolved_files") or [])
+    single = len(files) == 1
+    up = "../" if nested else ""
+    blob_re = re.compile(
+        rf'href="https://github\.com/{re.escape(project["owner"])}/{re.escape(project["repo"])}/blob/[^/"#?]+/([^"#?]+)(#[^"]*)?"'
+        r'|href="([^"]*)" data-repo-path="([^"]*)"',
+        re.IGNORECASE,
+    )
+    blob_base = f'https://github.com/{project["owner"]}/{project["repo"]}/blob/HEAD/'
 
     def repl(match):
-        target, fragment = match.group(1), match.group(2) or ""
-        if target == f"../{slug}.html":
-            return f'href="{slug}.html{fragment}"'
-        if target in pages:
-            new_target = f"{slug}-source.html" if len(files) == 1 else f"{slug}-source/{target}"
-            return f'href="{new_target}{fragment}"'
-        return match.group(0)
+        if match.group(1) is not None:
+            raw_path, fragment = match.group(1), match.group(2) or ""
+        else:
+            raw_path = match.group(4)
+            fragment = "#" + match.group(3).partition("#")[2] if "#" in match.group(3) else ""
+        path = unquote(html_unescape(raw_path))
+        if path in files:
+            page = f"{slug}-source.html" if single else f"{slug}-source/{safe_filename(path)}.html"
+        elif path.lower() == "readme.md":
+            page = f"{slug}.html"
+        else:
+            # Only reachable for a link rewritten on an earlier run whose
+            # file has since left the source browser - back to GitHub.
+            # HEAD instead of the original branch name (which isn't kept):
+            # github.com resolves it to the default branch.
+            if match.group(1) is not None:
+                return match.group(0)
+            return f'href="{blob_base}{raw_path}{fragment}"'
+        return f'href="{quote(up + page)}{fragment}" data-repo-path="{raw_path}"'
 
-    return re.sub(r'href="([^"#]*)(#[^"]*)?"', repl, html)
+    return blob_re.sub(repl, html)
 
 
 def fetch_highlighted_source(owner: str, repo: str, path: str) -> str:
@@ -701,7 +724,7 @@ def fix_readme_url(url: str, root_base: str, file_dir: str = "") -> str:
     return root_base + resolved.removeprefix("http://repo/")
 
 
-def clean_readme_html(raw_html: str, owner: str, repo: str, branch: str, path: str = "README.md", local_link=None) -> str:
+def clean_readme_html(raw_html: str, owner: str, repo: str, branch: str, path: str = "README.md") -> str:
     """Strips GitHub-page-only chrome (heading permalink icons, the
     outer #readme/article wrapper) so the markup drops cleanly into our
     own page template and styling instead of expecting GitHub's own CSS,
@@ -709,8 +732,6 @@ def clean_readme_html(raw_html: str, owner: str, repo: str, branch: str, path: s
     fix_readme_url). Relative paths are resolved against the directory of
     `path` - the repo root for the README (where it almost always lives),
     the file's own folder for markdown files in the source browser.
-    local_link (optional) gets every link after that fix-up and can return
-    a replacement href (e.g. a page on this site) or None to keep it.
     """
     soup = BeautifulSoup(raw_html, "html.parser")
 
@@ -729,8 +750,6 @@ def clean_readme_html(raw_html: str, owner: str, repo: str, branch: str, path: s
         el["srcset"] = ", ".join(candidates)
     for a in soup.find_all("a", href=True):
         a["href"] = fix_readme_url(a["href"], blob_base, file_dir)
-        if local_link is not None:
-            a["href"] = local_link(a["href"]) or a["href"]
 
     # Unwrap heading-permalink wrappers: <div class="markdown-heading">
     # <h2>Text</h2><a class="anchor" id="user-content-text" href="#text">
@@ -1048,7 +1067,7 @@ def render_page(project: dict, rail_html: str, has_source: bool, readme_html: st
         tags_html=tags_html,
         repo_url=project["repo_url"],
         license_html=license_html,
-        readme_html=readme_html,
+        readme_html=link_repo_files(readme_html, project, nested=False),
         rail_html=rail_html,
         source_link_html=source_link_html,
         commits_link_html=commits_link_html,
@@ -1078,8 +1097,8 @@ def render_source_file_page(project: dict, rail_html_for: dict, file_path: str, 
     generate_source_pages), not fetched here."""
     slug = project["repo"].lower()
     tree_base = "" if up == "../../" else f"{slug}-source/"
-    if up == "../" and is_markdown(file_path):
-        highlighted = relocate_source_links(highlighted, project["_resolved_files"], slug)
+    if is_markdown(file_path):
+        highlighted = link_repo_files(highlighted, project, nested=(up == "../../"))
     tree_html = ""
     if tree is not None:
         rendered = render_tree_html(tree, "", file_path, base=tree_base)
@@ -1135,7 +1154,7 @@ def generate_source_pages(project: dict, files: list, rail_html_top: str, rail_h
                 stats["reused"] += 1
                 return cached
         stats["fetched"] += 1
-        return fetch_source_html(owner, repo, file_path, branch, slug, files)
+        return fetch_source_html(owner, repo, file_path, branch)
 
     if len(files) == 1:
         out_path = out_dir / f"{slug}-source.html"
