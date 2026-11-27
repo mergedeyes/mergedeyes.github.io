@@ -18,6 +18,13 @@
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
 
+  <!-- IndieWeb: rel="me" proves this site and the GitHub profile belong to the same
+       person (GitHub links back here), which is what IndieAuth/webmention.io sign-in
+       uses. Webmentions for this domain and blog.mergedcloud.de go to webmention.io. -->
+  <link rel="me" href="https://github.com/mergedeyes" />
+  <link rel="webmention" href="https://webmention.io/mergedcloud.de/webmention" />
+  <link rel="alternate" type="application/atom+xml" title="~/log" href="https://blog.mergedcloud.de/feed.xml" />
+
   <link rel="stylesheet" href="styles.css?v=20261126" />
 
   <!-- Structured data for search engines / AI crawlers - see llms.txt,
@@ -54,12 +61,14 @@
   <div class="layout">
 
     <!-- ─────────────────────────  SIDE RAIL / NAV  ───────────────────────── -->
-    <header class="rail" id="rail">
+    <header class="rail h-card" id="rail">
       <div class="rail__top">
         <a class="brand" href="#top">
-          <span class="brand__name">Jan</span>
-          <span class="brand__meta">systems &amp; infrastructure<br>Code, Code &amp; Code</span>
+          <span class="brand__name p-name">Jan</span>
+          <span class="brand__meta p-note">systems &amp; infrastructure<br>Code, Code &amp; Code</span>
         </a>
+        <!-- h-card: canonical URL of this identity (microformats, not shown) -->
+        <a class="u-url u-uid" href="https://mergedcloud.de/" hidden aria-hidden="true" tabindex="-1"></a>
         <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="nav" aria-label="Toggle menu">
           <span></span><span></span><span></span>
         </button>
@@ -71,6 +80,7 @@
         <a href="#education"  data-path="~/education">Education</a>
         <a href="#skills"     data-path="~/skills">Skills</a>
         <a href="#about"      data-path="~/about">About&nbsp;Me</a>
+        <a href="https://blog.mergedcloud.de/" data-path="~/log">Blog</a>
         <a href="#contact"    data-path="~/contact">Contact</a>
       </nav>
 
@@ -447,11 +457,11 @@
           <ul class="contact__list">
             <li>
               <span class="contact__key">email</span>
-              <a class="link" href="mailto:jan-motulla@mergedcloud.de">jan-motulla@mergedcloud.de</a>
+              <a class="link u-email" href="mailto:jan-motulla@mergedcloud.de">jan-motulla@mergedcloud.de</a>
             </li>
             <li>
               <span class="contact__key">github</span>
-              <a class="link" href="https://github.com/mergedeyes" target="_blank" rel="noopener">github.com/mergedeyes</a>
+              <a class="link" href="https://github.com/mergedeyes" target="_blank" rel="me noopener">github.com/mergedeyes</a>
             </li>
           </ul>
         </div>
