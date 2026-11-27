@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>docs/reference/keys.md — Mainframe — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=b2765642" />
+  <link rel="stylesheet" href="../../styles.css?v=da0acc1d" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -578,12 +578,16 @@ nothing. See <a href="../mainframe-source/docs--guides--blog.md.html" data-repo-
 <td>new post: title, description, draft or post now; then the post editor</td>
 </tr>
 <tr>
+<td><code>n</code></td>
+<td>the /now page in the post editor; writes <code>now.md</code> first when there's none</td>
+</tr>
+<tr>
 <td><code>p</code></td>
 <td>publish a draft: move it to <code>_posts/</code> with today's date, commit and push (asks first)</td>
 </tr>
 <tr>
 <td><code>P</code></td>
-<td>commit and push your changes to a post</td>
+<td>commit and push your changes to a post; on the /now page, set <code>updated:</code> to today first</td>
 </tr>
 <tr>
 <td><code>u</code></td>
@@ -669,7 +673,7 @@ after you stop typing, and when you close it.</p>
 </tr>
 <tr>
 <td><code>Ctrl-G</code></td>
-<td>a draft: publish it (asks first); a post: commit and push your changes</td>
+<td>a draft: publish it (asks first); a post: commit and push your changes; the /now page: set <code>updated:</code> to today, commit and push</td>
 </tr>
 <tr>
 <td><code>Esc</code>, <code>Ctrl-Q</code></td>

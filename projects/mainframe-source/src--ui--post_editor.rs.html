@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>src/ui/post_editor.rs — Mainframe — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=b2765642" />
+  <link rel="stylesheet" href="../../styles.css?v=da0acc1d" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -268,7 +268,8 @@
 <span class="normal">192</span>
 <span class="normal">193</span>
 <span class="normal">194</span>
-<span class="normal">195</span></pre></div></td><td class="code"><div><pre><span></span><span class="sd">//! The blog post editor: fields on top, the Markdown body, and the preview beside it.</span>
+<span class="normal">195</span>
+<span class="normal">196</span></pre></div></td><td class="code"><div><pre><span></span><span class="sd">//! The blog post editor: fields on top, the Markdown body, and the preview beside it.</span>
 
 <span class="k">use</span><span class="w"> </span><span class="n">ratatui</span><span class="p">::{</span>
 <span class="w">    </span><span class="n">Frame</span><span class="p">,</span>
@@ -297,6 +298,7 @@
 <span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="p">(</span><span class="n">state</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">match</span><span class="w"> </span><span class="n">ed</span><span class="p">.</span><span class="n">state</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">State</span><span class="p">::</span><span class="n">Draft</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">(</span><span class="s">"draft"</span><span class="p">,</span><span class="w"> </span><span class="n">Color</span><span class="p">::</span><span class="n">Yellow</span><span class="p">),</span>
 <span class="w">        </span><span class="n">State</span><span class="p">::</span><span class="n">Post</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">(</span><span class="s">"post"</span><span class="p">,</span><span class="w"> </span><span class="n">Color</span><span class="p">::</span><span class="n">Green</span><span class="p">),</span>
+<span class="w">        </span><span class="n">State</span><span class="p">::</span><span class="n">Now</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">(</span><span class="s">"now"</span><span class="p">,</span><span class="w"> </span><span class="n">Color</span><span class="p">::</span><span class="n">Cyan</span><span class="p">),</span>
 <span class="w">    </span><span class="p">};</span>
 <span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Line</span><span class="p">::</span><span class="n">from</span><span class="p">(</span><span class="fm">vec!</span><span class="p">[</span>
 <span class="w">        </span><span class="n">Span</span><span class="p">::</span><span class="n">styled</span><span class="p">(</span><span class="fm">format!</span><span class="p">(</span><span class="s">" {state} "</span><span class="p">),</span><span class="w"> </span><span class="n">Style</span><span class="p">::</span><span class="n">new</span><span class="p">().</span><span class="n">fg</span><span class="p">(</span><span class="n">color</span><span class="p">).</span><span class="n">bold</span><span class="p">()),</span>

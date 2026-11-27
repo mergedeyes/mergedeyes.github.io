@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>src/blog.rs — Mainframe — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=b2765642" />
+  <link rel="stylesheet" href="../../styles.css?v=da0acc1d" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -803,8 +803,171 @@
 <span class="normal">727</span>
 <span class="normal">728</span>
 <span class="normal">729</span>
-<span class="normal">730</span></pre></div></td><td class="code"><div><pre><span></span><span class="sd">//! A Jekyll blog in the repo `blog_repo` names: its drafts and posts, new posts, and moving</span>
-<span class="sd">//! them between `_drafts/` and `_posts/`. Only the files; the `L` picker is in `app::blog_picker`.</span>
+<span class="normal">730</span>
+<span class="normal">731</span>
+<span class="normal">732</span>
+<span class="normal">733</span>
+<span class="normal">734</span>
+<span class="normal">735</span>
+<span class="normal">736</span>
+<span class="normal">737</span>
+<span class="normal">738</span>
+<span class="normal">739</span>
+<span class="normal">740</span>
+<span class="normal">741</span>
+<span class="normal">742</span>
+<span class="normal">743</span>
+<span class="normal">744</span>
+<span class="normal">745</span>
+<span class="normal">746</span>
+<span class="normal">747</span>
+<span class="normal">748</span>
+<span class="normal">749</span>
+<span class="normal">750</span>
+<span class="normal">751</span>
+<span class="normal">752</span>
+<span class="normal">753</span>
+<span class="normal">754</span>
+<span class="normal">755</span>
+<span class="normal">756</span>
+<span class="normal">757</span>
+<span class="normal">758</span>
+<span class="normal">759</span>
+<span class="normal">760</span>
+<span class="normal">761</span>
+<span class="normal">762</span>
+<span class="normal">763</span>
+<span class="normal">764</span>
+<span class="normal">765</span>
+<span class="normal">766</span>
+<span class="normal">767</span>
+<span class="normal">768</span>
+<span class="normal">769</span>
+<span class="normal">770</span>
+<span class="normal">771</span>
+<span class="normal">772</span>
+<span class="normal">773</span>
+<span class="normal">774</span>
+<span class="normal">775</span>
+<span class="normal">776</span>
+<span class="normal">777</span>
+<span class="normal">778</span>
+<span class="normal">779</span>
+<span class="normal">780</span>
+<span class="normal">781</span>
+<span class="normal">782</span>
+<span class="normal">783</span>
+<span class="normal">784</span>
+<span class="normal">785</span>
+<span class="normal">786</span>
+<span class="normal">787</span>
+<span class="normal">788</span>
+<span class="normal">789</span>
+<span class="normal">790</span>
+<span class="normal">791</span>
+<span class="normal">792</span>
+<span class="normal">793</span>
+<span class="normal">794</span>
+<span class="normal">795</span>
+<span class="normal">796</span>
+<span class="normal">797</span>
+<span class="normal">798</span>
+<span class="normal">799</span>
+<span class="normal">800</span>
+<span class="normal">801</span>
+<span class="normal">802</span>
+<span class="normal">803</span>
+<span class="normal">804</span>
+<span class="normal">805</span>
+<span class="normal">806</span>
+<span class="normal">807</span>
+<span class="normal">808</span>
+<span class="normal">809</span>
+<span class="normal">810</span>
+<span class="normal">811</span>
+<span class="normal">812</span>
+<span class="normal">813</span>
+<span class="normal">814</span>
+<span class="normal">815</span>
+<span class="normal">816</span>
+<span class="normal">817</span>
+<span class="normal">818</span>
+<span class="normal">819</span>
+<span class="normal">820</span>
+<span class="normal">821</span>
+<span class="normal">822</span>
+<span class="normal">823</span>
+<span class="normal">824</span>
+<span class="normal">825</span>
+<span class="normal">826</span>
+<span class="normal">827</span>
+<span class="normal">828</span>
+<span class="normal">829</span>
+<span class="normal">830</span>
+<span class="normal">831</span>
+<span class="normal">832</span>
+<span class="normal">833</span>
+<span class="normal">834</span>
+<span class="normal">835</span>
+<span class="normal">836</span>
+<span class="normal">837</span>
+<span class="normal">838</span>
+<span class="normal">839</span>
+<span class="normal">840</span>
+<span class="normal">841</span>
+<span class="normal">842</span>
+<span class="normal">843</span>
+<span class="normal">844</span>
+<span class="normal">845</span>
+<span class="normal">846</span>
+<span class="normal">847</span>
+<span class="normal">848</span>
+<span class="normal">849</span>
+<span class="normal">850</span>
+<span class="normal">851</span>
+<span class="normal">852</span>
+<span class="normal">853</span>
+<span class="normal">854</span>
+<span class="normal">855</span>
+<span class="normal">856</span>
+<span class="normal">857</span>
+<span class="normal">858</span>
+<span class="normal">859</span>
+<span class="normal">860</span>
+<span class="normal">861</span>
+<span class="normal">862</span>
+<span class="normal">863</span>
+<span class="normal">864</span>
+<span class="normal">865</span>
+<span class="normal">866</span>
+<span class="normal">867</span>
+<span class="normal">868</span>
+<span class="normal">869</span>
+<span class="normal">870</span>
+<span class="normal">871</span>
+<span class="normal">872</span>
+<span class="normal">873</span>
+<span class="normal">874</span>
+<span class="normal">875</span>
+<span class="normal">876</span>
+<span class="normal">877</span>
+<span class="normal">878</span>
+<span class="normal">879</span>
+<span class="normal">880</span>
+<span class="normal">881</span>
+<span class="normal">882</span>
+<span class="normal">883</span>
+<span class="normal">884</span>
+<span class="normal">885</span>
+<span class="normal">886</span>
+<span class="normal">887</span>
+<span class="normal">888</span>
+<span class="normal">889</span>
+<span class="normal">890</span>
+<span class="normal">891</span>
+<span class="normal">892</span></pre></div></td><td class="code"><div><pre><span></span><span class="sd">//! A Jekyll blog in the repo `blog_repo` names: its drafts and posts, new posts, moving them</span>
+<span class="sd">//! between `_drafts/` and `_posts/`, and the /now page. Only the files; the `L` picker is in</span>
+<span class="sd">//! `app::blog_picker`.</span>
 
 <span class="k">use</span><span class="w"> </span><span class="n">std</span><span class="p">::{</span>
 <span class="w">    </span><span class="n">fs</span><span class="p">,</span><span class="w"> </span><span class="n">io</span><span class="p">,</span>
@@ -820,18 +983,23 @@
 
 <span class="k">pub</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">DRAFTS</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"_drafts"</span><span class="p">;</span>
 <span class="k">pub</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">POSTS</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"_posts"</span><span class="p">;</span>
+<span class="sd">/// The /now page (https://nownownow.com/about), at the top of the blog: one page rewritten in</span>
+<span class="sd">/// place whenever what you're up to changes, with the day of the last change in `updated:`.</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">NOW</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"now.md"</span><span class="p">;</span>
 
 <span class="cp">#[derive(Debug, Clone, Copy, PartialEq, Eq)]</span>
 <span class="k">pub</span><span class="w"> </span><span class="k">enum</span><span class="w"> </span><span class="nc">State</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">Draft</span><span class="p">,</span>
 <span class="w">    </span><span class="n">Post</span><span class="p">,</span>
+<span class="w">    </span><span class="sd">/// The /now page, `now.md`.</span>
+<span class="w">    </span><span class="n">Now</span><span class="p">,</span>
 <span class="p">}</span>
 
 <span class="cp">#[derive(Debug, Clone)]</span>
 <span class="k">pub</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">Post</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">path</span><span class="p">:</span><span class="w"> </span><span class="nc">PathBuf</span><span class="p">,</span>
 <span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">state</span><span class="p">:</span><span class="w"> </span><span class="nc">State</span><span class="p">,</span>
-<span class="w">    </span><span class="sd">/// `YYYY-MM-DD` from the file name; posts only.</span>
+<span class="w">    </span><span class="sd">/// `YYYY-MM-DD`: a post's from the file name, the /now page's from `updated:`.</span>
 <span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">date</span><span class="p">:</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="p">,</span>
 <span class="w">    </span><span class="sd">/// The file name without date and `.md`: Jekyll's `:title`.</span>
 <span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">slug</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span>
@@ -845,6 +1013,7 @@
 <span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">dir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">match</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">state</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="n">State</span><span class="p">::</span><span class="n">Draft</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">DRAFTS</span><span class="p">,</span>
 <span class="w">            </span><span class="n">State</span><span class="p">::</span><span class="n">Post</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">POSTS</span><span class="p">,</span>
+<span class="w">            </span><span class="n">State</span><span class="p">::</span><span class="n">Now</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">NOW</span><span class="p">.</span><span class="n">into</span><span class="p">(),</span>
 <span class="w">        </span><span class="p">};</span>
 <span class="w">        </span><span class="fm">format!</span><span class="p">(</span><span class="s">"{dir}/{}"</span><span class="p">,</span><span class="w"> </span><span class="n">config</span><span class="p">::</span><span class="n">dir_name</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">.</span><span class="n">path</span><span class="p">))</span>
 <span class="w">    </span><span class="p">}</span>
@@ -872,8 +1041,10 @@
 <span class="w">    </span><span class="p">(</span><span class="n">top</span><span class="p">(</span><span class="o">&amp;</span><span class="n">blog</span><span class="p">)</span><span class="o">?</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">blog</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">common</span><span class="p">(</span><span class="o">&amp;</span><span class="n">cwd</span><span class="p">)</span><span class="o">?</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">common</span><span class="p">(</span><span class="o">&amp;</span><span class="n">blog</span><span class="p">)</span><span class="o">?</span><span class="p">).</span><span class="n">then_some</span><span class="p">(</span><span class="n">here</span><span class="p">)</span>
 <span class="p">}</span>
 
-<span class="sd">/// Drafts first, most recently changed first; then posts, newest first.</span>
+<span class="sd">/// The /now page when there is one, then drafts, most recently changed first, then posts,</span>
+<span class="sd">/// newest first.</span>
 <span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">root</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">Path</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="n">Post</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">root</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">NOW</span><span class="p">)).</span><span class="n">filter</span><span class="p">(</span><span class="o">|</span><span class="n">p</span><span class="o">|</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">is_file</span><span class="p">()).</span><span class="n">and_then</span><span class="p">(</span><span class="o">|</span><span class="n">p</span><span class="o">|</span><span class="w"> </span><span class="n">post</span><span class="p">(</span><span class="o">&amp;</span><span class="n">p</span><span class="p">));</span>
 <span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">drafts</span><span class="p">:</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="p">(</span><span class="n">SystemTime</span><span class="p">,</span><span class="w"> </span><span class="n">Post</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">md_files</span><span class="p">(</span><span class="o">&amp;</span><span class="n">root</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">DRAFTS</span><span class="p">))</span>
 <span class="w">        </span><span class="p">.</span><span class="n">iter</span><span class="p">()</span>
 <span class="w">        </span><span class="p">.</span><span class="n">filter_map</span><span class="p">(</span><span class="o">|</span><span class="n">path</span><span class="o">|</span><span class="w"> </span><span class="p">{</span>
@@ -884,10 +1055,10 @@
 <span class="w">    </span><span class="n">drafts</span><span class="p">.</span><span class="n">sort_by</span><span class="p">(</span><span class="o">|</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="o">|</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="mf">0.</span><span class="n">cmp</span><span class="p">(</span><span class="o">&amp;</span><span class="n">a</span><span class="p">.</span><span class="mi">0</span><span class="p">).</span><span class="n">then_with</span><span class="p">(</span><span class="o">||</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="mf">1.</span><span class="n">slug</span><span class="p">.</span><span class="n">cmp</span><span class="p">(</span><span class="o">&amp;</span><span class="n">b</span><span class="p">.</span><span class="mf">1.</span><span class="n">slug</span><span class="p">)));</span>
 <span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">posts</span><span class="p">:</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="n">Post</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">md_files</span><span class="p">(</span><span class="o">&amp;</span><span class="n">root</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">POSTS</span><span class="p">)).</span><span class="n">iter</span><span class="p">().</span><span class="n">filter_map</span><span class="p">(</span><span class="o">|</span><span class="n">p</span><span class="o">|</span><span class="w"> </span><span class="n">post</span><span class="p">(</span><span class="n">p</span><span class="p">)).</span><span class="n">collect</span><span class="p">();</span>
 <span class="w">    </span><span class="n">posts</span><span class="p">.</span><span class="n">sort_by</span><span class="p">(</span><span class="o">|</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="o">|</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">date</span><span class="p">.</span><span class="n">cmp</span><span class="p">(</span><span class="o">&amp;</span><span class="n">a</span><span class="p">.</span><span class="n">date</span><span class="p">).</span><span class="n">then_with</span><span class="p">(</span><span class="o">||</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">slug</span><span class="p">.</span><span class="n">cmp</span><span class="p">(</span><span class="o">&amp;</span><span class="n">a</span><span class="p">.</span><span class="n">slug</span><span class="p">)));</span>
-<span class="w">    </span><span class="n">drafts</span><span class="p">.</span><span class="n">into_iter</span><span class="p">().</span><span class="n">map</span><span class="p">(</span><span class="o">|</span><span class="p">(</span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">)</span><span class="o">|</span><span class="w"> </span><span class="n">p</span><span class="p">).</span><span class="n">chain</span><span class="p">(</span><span class="n">posts</span><span class="p">).</span><span class="n">collect</span><span class="p">()</span>
+<span class="w">    </span><span class="n">now</span><span class="p">.</span><span class="n">into_iter</span><span class="p">().</span><span class="n">chain</span><span class="p">(</span><span class="n">drafts</span><span class="p">.</span><span class="n">into_iter</span><span class="p">().</span><span class="n">map</span><span class="p">(</span><span class="o">|</span><span class="p">(</span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">)</span><span class="o">|</span><span class="w"> </span><span class="n">p</span><span class="p">)).</span><span class="n">chain</span><span class="p">(</span><span class="n">posts</span><span class="p">).</span><span class="n">collect</span><span class="p">()</span>
 <span class="p">}</span>
 
-<span class="sd">/// The post or draft at `path`, as `list` would show it.</span>
+<span class="sd">/// The post, draft or /now page at `path`, as `list` would show it.</span>
 <span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">post</span><span class="p">(</span><span class="n">path</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">Path</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="n">Post</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">stem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">path</span><span class="p">.</span><span class="n">file_stem</span><span class="p">()</span><span class="o">?</span><span class="p">.</span><span class="n">to_str</span><span class="p">()</span><span class="o">?</span><span class="p">.</span><span class="n">to_string</span><span class="p">();</span>
 <span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">dir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">path</span><span class="p">.</span><span class="n">parent</span><span class="p">()</span><span class="o">?</span><span class="p">.</span><span class="n">file_name</span><span class="p">()</span><span class="o">?</span><span class="p">;</span>
@@ -898,6 +1069,9 @@
 <span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="p">(</span><span class="n">date</span><span class="p">,</span><span class="w"> </span><span class="n">slug</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">split_date</span><span class="p">(</span><span class="o">&amp;</span><span class="n">stem</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
 <span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="p">(</span><span class="n">date</span><span class="p">,</span><span class="w"> </span><span class="n">slug</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">date</span><span class="p">.</span><span class="n">to_string</span><span class="p">(),</span><span class="w"> </span><span class="n">slug</span><span class="p">.</span><span class="n">to_string</span><span class="p">());</span>
 <span class="w">        </span><span class="nb">Some</span><span class="p">(</span><span class="n">Post</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">path</span><span class="p">:</span><span class="w"> </span><span class="nc">path</span><span class="p">.</span><span class="n">to_path_buf</span><span class="p">(),</span><span class="w"> </span><span class="n">state</span><span class="p">:</span><span class="w"> </span><span class="nc">State</span><span class="p">::</span><span class="n">Post</span><span class="p">,</span><span class="w"> </span><span class="n">date</span><span class="p">:</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">date</span><span class="p">),</span><span class="w"> </span><span class="n">title</span><span class="p">:</span><span class="w"> </span><span class="nc">title</span><span class="p">(</span><span class="o">&amp;</span><span class="n">slug</span><span class="p">),</span><span class="w"> </span><span class="n">slug</span><span class="w"> </span><span class="p">})</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">path</span><span class="p">.</span><span class="n">file_name</span><span class="p">()</span><span class="o">?</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">NOW</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">date</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fs</span><span class="p">::</span><span class="n">read_to_string</span><span class="p">(</span><span class="n">path</span><span class="p">).</span><span class="n">ok</span><span class="p">().</span><span class="n">and_then</span><span class="p">(</span><span class="o">|</span><span class="n">t</span><span class="o">|</span><span class="w"> </span><span class="n">front_value</span><span class="p">(</span><span class="o">&amp;</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="s">"updated"</span><span class="p">));</span>
+<span class="w">        </span><span class="nb">Some</span><span class="p">(</span><span class="n">Post</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">path</span><span class="p">:</span><span class="w"> </span><span class="nc">path</span><span class="p">.</span><span class="n">to_path_buf</span><span class="p">(),</span><span class="w"> </span><span class="n">state</span><span class="p">:</span><span class="w"> </span><span class="nc">State</span><span class="p">::</span><span class="n">Now</span><span class="p">,</span><span class="w"> </span><span class="n">date</span><span class="p">,</span><span class="w"> </span><span class="n">title</span><span class="p">:</span><span class="w"> </span><span class="nc">title</span><span class="p">(</span><span class="s">"Now"</span><span class="p">),</span><span class="w"> </span><span class="n">slug</span><span class="p">:</span><span class="w"> </span><span class="nc">stem</span><span class="w"> </span><span class="p">})</span>
 <span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nb">None</span>
 <span class="w">    </span><span class="p">}</span>
@@ -924,6 +1098,12 @@
 
 <span class="sd">/// `title` from the YAML front matter at the top of a post.</span>
 <span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">title_of</span><span class="p">(</span><span class="n">text</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">front_value</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="w"> </span><span class="s">"title"</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="sd">/// A one-line `key:` from the YAML front matter at the top of a file; None when it's</span>
+<span class="sd">/// missing or empty.</span>
+<span class="k">fn</span><span class="w"> </span><span class="nf">front_value</span><span class="p">(</span><span class="n">text</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">lines</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">text</span><span class="p">.</span><span class="n">lines</span><span class="p">();</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">lines</span><span class="p">.</span><span class="n">next</span><span class="p">()</span><span class="o">?</span><span class="p">.</span><span class="n">trim_end</span><span class="p">()</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s">"---"</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">None</span><span class="p">;</span>
@@ -932,9 +1112,9 @@
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">line</span><span class="p">.</span><span class="n">trim_end</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">"---"</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="k">break</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">line</span><span class="p">.</span><span class="n">strip_prefix</span><span class="p">(</span><span class="s">"title:"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">unquote</span><span class="p">(</span><span class="n">value</span><span class="p">.</span><span class="n">trim</span><span class="p">());</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">title</span><span class="p">.</span><span class="n">is_empty</span><span class="p">()).</span><span class="n">then_some</span><span class="p">(</span><span class="n">title</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">line</span><span class="p">.</span><span class="n">strip_prefix</span><span class="p">(</span><span class="n">key</span><span class="p">).</span><span class="n">and_then</span><span class="p">(</span><span class="o">|</span><span class="n">rest</span><span class="o">|</span><span class="w"> </span><span class="n">rest</span><span class="p">.</span><span class="n">strip_prefix</span><span class="p">(</span><span class="sc">':'</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">unquote</span><span class="p">(</span><span class="n">value</span><span class="p">.</span><span class="n">trim</span><span class="p">());</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">value</span><span class="p">.</span><span class="n">is_empty</span><span class="p">()).</span><span class="n">then_some</span><span class="p">(</span><span class="n">value</span><span class="p">);</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="nb">None</span>
@@ -1184,6 +1364,50 @@
 <span class="w">    </span><span class="nb">Ok</span><span class="p">(</span><span class="n">to</span><span class="p">)</span>
 <span class="p">}</span>
 
+<span class="sd">/// Writes `now.md` from a starting template when the blog has none; never over an existing</span>
+<span class="sd">/// file. Its layout is the blog's own `now` layout, else `page`, which Jekyll themes have.</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">create_now</span><span class="p">(</span><span class="n">root</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">Path</span><span class="p">,</span><span class="w"> </span><span class="n">today</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="n">PathBuf</span><span class="p">,</span><span class="w"> </span><span class="nb">String</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">root</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">NOW</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">layout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">root</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="s">"_layouts/now.html"</span><span class="p">).</span><span class="n">is_file</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">"now"</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">"page"</span><span class="w"> </span><span class="p">};</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="fm">format!</span><span class="p">(</span>
+<span class="w">        </span><span class="s">"---</span><span class="se">\n</span><span class="s">layout: {layout}</span><span class="se">\n</span><span class="s">title: </span><span class="se">\"</span><span class="s">Now</span><span class="se">\"\n</span><span class="s">description: </span><span class="se">\"</span><span class="s">What I'm focused on at the moment.</span><span class="se">\"\n</span><span class="s">\</span>
+<span class="s">         permalink: /now/</span><span class="se">\n</span><span class="s">updated: {today}</span><span class="se">\n</span><span class="s">---</span><span class="se">\n\n</span><span class="s">- </span><span class="se">\n</span><span class="s">"</span>
+<span class="w">    </span><span class="p">);</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">write</span><span class="w"> </span><span class="o">=</span>
+<span class="w">        </span><span class="o">||</span><span class="w"> </span><span class="n">io</span><span class="p">::</span><span class="n">Write</span><span class="p">::</span><span class="n">write_all</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="n">fs</span><span class="p">::</span><span class="n">OpenOptions</span><span class="p">::</span><span class="n">new</span><span class="p">().</span><span class="n">write</span><span class="p">(</span><span class="kc">true</span><span class="p">).</span><span class="n">create_new</span><span class="p">(</span><span class="kc">true</span><span class="p">).</span><span class="n">open</span><span class="p">(</span><span class="o">&amp;</span><span class="n">path</span><span class="p">)</span><span class="o">?</span><span class="p">,</span><span class="w"> </span><span class="n">text</span><span class="p">.</span><span class="n">as_bytes</span><span class="p">());</span>
+<span class="w">    </span><span class="k">match</span><span class="w"> </span><span class="n">write</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nb">Ok</span><span class="p">(())</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nb">Ok</span><span class="p">(</span><span class="n">path</span><span class="p">),</span>
+<span class="w">        </span><span class="nb">Err</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">kind</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">io</span><span class="p">::</span><span class="n">ErrorKind</span><span class="p">::</span><span class="n">AlreadyExists</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nb">Err</span><span class="p">(</span><span class="fm">format!</span><span class="p">(</span><span class="s">"{NOW} already exists"</span><span class="p">)),</span>
+<span class="w">        </span><span class="nb">Err</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nb">Err</span><span class="p">(</span><span class="fm">format!</span><span class="p">(</span><span class="s">"can't write {NOW}: {e}"</span><span class="p">)),</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="sd">/// Sets `updated:` in the front matter of the file at `path` to `today`, or adds it at the</span>
+<span class="sd">/// end of the front matter. The /now page shows it as the day it last changed.</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">stamp_updated</span><span class="p">(</span><span class="n">path</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">Path</span><span class="p">,</span><span class="w"> </span><span class="n">today</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="p">(),</span><span class="w"> </span><span class="nb">String</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">config</span><span class="p">::</span><span class="n">dir_name</span><span class="p">(</span><span class="n">path</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fs</span><span class="p">::</span><span class="n">read_to_string</span><span class="p">(</span><span class="n">path</span><span class="p">).</span><span class="n">map_err</span><span class="p">(</span><span class="o">|</span><span class="n">e</span><span class="o">|</span><span class="w"> </span><span class="fm">format!</span><span class="p">(</span><span class="s">"can't read {name}: {e}"</span><span class="p">))</span><span class="o">?</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">stamped</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">with_updated</span><span class="p">(</span><span class="o">&amp;</span><span class="n">text</span><span class="p">,</span><span class="w"> </span><span class="n">today</span><span class="p">).</span><span class="n">ok_or_else</span><span class="p">(</span><span class="o">||</span><span class="w"> </span><span class="fm">format!</span><span class="p">(</span><span class="s">"{name} has no front matter"</span><span class="p">))</span><span class="o">?</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">stamped</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">text</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">fs</span><span class="p">::</span><span class="n">write</span><span class="p">(</span><span class="n">path</span><span class="p">,</span><span class="w"> </span><span class="n">stamped</span><span class="p">).</span><span class="n">map_err</span><span class="p">(</span><span class="o">|</span><span class="n">e</span><span class="o">|</span><span class="w"> </span><span class="fm">format!</span><span class="p">(</span><span class="s">"can't write {name}: {e}"</span><span class="p">))</span><span class="o">?</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="nb">Ok</span><span class="p">(())</span>
+<span class="p">}</span>
+
+<span class="k">fn</span><span class="w"> </span><span class="nf">with_updated</span><span class="p">(</span><span class="n">text</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">,</span><span class="w"> </span><span class="n">today</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">lines</span><span class="p">:</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">text</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="sc">'\n'</span><span class="p">).</span><span class="n">map</span><span class="p">(</span><span class="kt">str</span><span class="p">::</span><span class="n">to_string</span><span class="p">).</span><span class="n">collect</span><span class="p">();</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">lines</span><span class="p">.</span><span class="n">first</span><span class="p">()</span><span class="o">?</span><span class="p">.</span><span class="n">trim_end</span><span class="p">()</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s">"---"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">None</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">close</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lines</span><span class="p">.</span><span class="n">iter</span><span class="p">().</span><span class="n">skip</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="n">position</span><span class="p">(</span><span class="o">|</span><span class="n">l</span><span class="o">|</span><span class="w"> </span><span class="n">l</span><span class="p">.</span><span class="n">trim_end</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">"---"</span><span class="p">)</span><span class="o">?</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="fm">format!</span><span class="p">(</span><span class="s">"updated: {today}"</span><span class="p">);</span>
+<span class="w">    </span><span class="k">match</span><span class="w"> </span><span class="n">lines</span><span class="p">[</span><span class="mi">1</span><span class="o">..</span><span class="n">close</span><span class="p">].</span><span class="n">iter</span><span class="p">().</span><span class="n">position</span><span class="p">(</span><span class="o">|</span><span class="n">l</span><span class="o">|</span><span class="w"> </span><span class="n">l</span><span class="p">.</span><span class="n">starts_with</span><span class="p">(</span><span class="s">"updated:"</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nb">Some</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">lines</span><span class="p">[</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">line</span><span class="p">,</span>
+<span class="w">        </span><span class="nb">None</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">lines</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">close</span><span class="p">,</span><span class="w"> </span><span class="n">line</span><span class="p">),</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="nb">Some</span><span class="p">(</span><span class="n">lines</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">))</span>
+<span class="p">}</span>
+
 <span class="k">fn</span><span class="w"> </span><span class="nf">move_to</span><span class="p">(</span><span class="n">root</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">Path</span><span class="p">,</span><span class="w"> </span><span class="n">from</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">Path</span><span class="p">,</span><span class="w"> </span><span class="n">to</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">Path</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="p">(),</span><span class="w"> </span><span class="nb">String</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">to</span><span class="p">.</span><span class="n">exists</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">Err</span><span class="p">(</span><span class="fm">format!</span><span class="p">(</span><span class="s">"{} already exists"</span><span class="p">,</span><span class="w"> </span><span class="n">rel</span><span class="p">(</span><span class="n">root</span><span class="p">,</span><span class="w"> </span><span class="n">to</span><span class="p">)));</span>
@@ -1221,20 +1445,28 @@
 <span class="w">    </span><span class="fm">format!</span><span class="p">(</span><span class="s">"git add -A {} &amp;&amp; git commit -m {} &amp;&amp; git push"</span><span class="p">,</span><span class="w"> </span><span class="n">dirs</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="s">" "</span><span class="p">),</span><span class="w"> </span><span class="n">quote_str</span><span class="p">(</span><span class="n">message</span><span class="p">))</span>
 <span class="p">}</span>
 
+<span class="sd">/// Commits only the /now page with `message` and pushes.</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">commit_now_cmd</span><span class="p">(</span><span class="n">message</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">String</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="fm">format!</span><span class="p">(</span><span class="s">"git add -A -- {NOW} &amp;&amp; git commit -m {} &amp;&amp; git push"</span><span class="p">,</span><span class="w"> </span><span class="n">quote_str</span><span class="p">(</span><span class="n">message</span><span class="p">))</span>
+<span class="p">}</span>
+
 <span class="sd">/// Shell steps that follow the GitHub Pages build of the pushed commit, then print and</span>
-<span class="sd">/// notify "post live: &lt;url&gt;" or what went wrong. None without `gh` or a GitHub origin.</span>
+<span class="sd">/// notify "post live: &lt;url&gt;" (or "now page live: …") or what went wrong. None without `gh`</span>
+<span class="sd">/// or a GitHub origin.</span>
 <span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">follow_pages_cmd</span><span class="p">(</span><span class="n">root</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">Path</span><span class="p">,</span><span class="w"> </span><span class="n">post_path</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">Path</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">which</span><span class="p">(</span><span class="s">"gh"</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
 <span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">origin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">git_text</span><span class="p">(</span><span class="n">root</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="p">[</span><span class="s">"remote"</span><span class="p">,</span><span class="w"> </span><span class="s">"get-url"</span><span class="p">,</span><span class="w"> </span><span class="s">"origin"</span><span class="p">])</span><span class="o">?</span><span class="p">;</span>
 <span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">repo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">crate</span><span class="p">::</span><span class="n">release</span><span class="p">::</span><span class="n">github_repo</span><span class="p">(</span><span class="o">&amp;</span><span class="n">origin</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
-<span class="w">    </span><span class="nb">Some</span><span class="p">(</span><span class="n">follow_pages_script</span><span class="p">(</span><span class="o">&amp;</span><span class="n">repo</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">post_url</span><span class="p">(</span><span class="n">root</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">repo</span><span class="p">,</span><span class="w"> </span><span class="n">post_path</span><span class="p">)</span><span class="o">?</span><span class="p">))</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">what</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">post</span><span class="p">(</span><span class="n">post_path</span><span class="p">)</span><span class="o">?</span><span class="p">.</span><span class="n">state</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">State</span><span class="p">::</span><span class="n">Now</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">"now page"</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">"post"</span><span class="w"> </span><span class="p">};</span>
+<span class="w">    </span><span class="nb">Some</span><span class="p">(</span><span class="n">follow_pages_script</span><span class="p">(</span><span class="o">&amp;</span><span class="n">repo</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="fm">format!</span><span class="p">(</span><span class="s">"{what} live: {}"</span><span class="p">,</span><span class="w"> </span><span class="n">post_url</span><span class="p">(</span><span class="n">root</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">repo</span><span class="p">,</span><span class="w"> </span><span class="n">post_path</span><span class="p">)</span><span class="o">?</span><span class="p">)))</span>
 <span class="p">}</span>
 
 <span class="sd">/// The polling loop behind [`follow_pages_cmd`], in braces so it joins a `&amp;&amp;` chain as one</span>
 <span class="sd">/// step. About three minutes, every five seconds: the build for a push shows up after a while.</span>
-<span class="k">fn</span><span class="w"> </span><span class="nf">follow_pages_script</span><span class="p">(</span><span class="n">repo</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">,</span><span class="w"> </span><span class="n">url</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">String</span><span class="w"> </span><span class="p">{</span>
+<span class="sd">/// `live` is the message once it's built.</span>
+<span class="k">fn</span><span class="w"> </span><span class="nf">follow_pages_script</span><span class="p">(</span><span class="n">repo</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">,</span><span class="w"> </span><span class="n">live</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">String</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">api</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="fm">format!</span><span class="p">(</span><span class="s">"gh api repos/{repo}/pages/builds/latest"</span><span class="p">);</span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">live</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">quote_str</span><span class="p">(</span><span class="o">&amp;</span><span class="fm">format!</span><span class="p">(</span><span class="s">"post live: {url}"</span><span class="p">));</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">live</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">quote_str</span><span class="p">(</span><span class="n">live</span><span class="p">);</span>
 <span class="w">    </span><span class="fm">format!</span><span class="p">(</span>
 <span class="w">        </span><span class="s">"{{ echo 'waiting for the GitHub Pages build …'; head=$(git rev-parse HEAD); s=; \</span>
 <span class="s">         for i in $(seq 36); do sleep 5; r=$({api} -q '.commit + </span><span class="se">\"</span><span class="s"> </span><span class="se">\"</span><span class="s"> + .status' 2&gt;/dev/null); \</span>
@@ -1246,11 +1478,18 @@
 <span class="w">    </span><span class="p">)</span>
 <span class="p">}</span>
 
-<span class="sd">/// The address of a post, by Jekyll's default permalink `/:year/:month/:day/:title/`, on the</span>
-<span class="sd">/// domain in `CNAME` or else the repo's github.io address.</span>
+<span class="sd">/// The address of a post, by Jekyll's default permalink `/:year/:month/:day/:title/`, or of</span>
+<span class="sd">/// the /now page, by its `permalink:` (else `/now/`), on the domain in `CNAME` or else the</span>
+<span class="sd">/// repo's github.io address.</span>
 <span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">post_url</span><span class="p">(</span><span class="n">root</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">Path</span><span class="p">,</span><span class="w"> </span><span class="n">repo</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">,</span><span class="w"> </span><span class="n">post_path</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">Path</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">stem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">post_path</span><span class="p">.</span><span class="n">file_stem</span><span class="p">()</span><span class="o">?</span><span class="p">.</span><span class="n">to_str</span><span class="p">()</span><span class="o">?</span><span class="p">;</span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="p">(</span><span class="n">date</span><span class="p">,</span><span class="w"> </span><span class="n">slug</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">split_date</span><span class="p">(</span><span class="n">stem</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">post</span><span class="p">(</span><span class="n">post_path</span><span class="p">)</span><span class="o">?</span><span class="p">.</span><span class="n">state</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">State</span><span class="p">::</span><span class="n">Now</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">permalink</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fs</span><span class="p">::</span><span class="n">read_to_string</span><span class="p">(</span><span class="n">post_path</span><span class="p">).</span><span class="n">ok</span><span class="p">().</span><span class="n">and_then</span><span class="p">(</span><span class="o">|</span><span class="n">t</span><span class="o">|</span><span class="w"> </span><span class="n">front_value</span><span class="p">(</span><span class="o">&amp;</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="s">"permalink"</span><span class="p">));</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">permalink</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">permalink</span><span class="p">.</span><span class="n">unwrap_or_else</span><span class="p">(</span><span class="o">||</span><span class="w"> </span><span class="s">"/now/"</span><span class="p">.</span><span class="n">into</span><span class="p">());</span>
+<span class="w">        </span><span class="fm">format!</span><span class="p">(</span><span class="s">"/{}"</span><span class="p">,</span><span class="w"> </span><span class="n">permalink</span><span class="p">.</span><span class="n">trim_start_matches</span><span class="p">(</span><span class="sc">'/'</span><span class="p">))</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="p">(</span><span class="n">date</span><span class="p">,</span><span class="w"> </span><span class="n">slug</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">split_date</span><span class="p">(</span><span class="n">post_path</span><span class="p">.</span><span class="n">file_stem</span><span class="p">()</span><span class="o">?</span><span class="p">.</span><span class="n">to_str</span><span class="p">()</span><span class="o">?</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+<span class="w">        </span><span class="fm">format!</span><span class="p">(</span><span class="s">"/{}/{slug}/"</span><span class="p">,</span><span class="w"> </span><span class="n">date</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="sc">'-'</span><span class="p">,</span><span class="w"> </span><span class="s">"/"</span><span class="p">))</span>
+<span class="w">    </span><span class="p">};</span>
 <span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">base</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">match</span><span class="w"> </span><span class="n">fs</span><span class="p">::</span><span class="n">read_to_string</span><span class="p">(</span><span class="n">root</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="s">"CNAME"</span><span class="p">)).</span><span class="n">ok</span><span class="p">().</span><span class="n">map</span><span class="p">(</span><span class="o">|</span><span class="n">c</span><span class="o">|</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">trim</span><span class="p">().</span><span class="n">to_string</span><span class="p">()).</span><span class="n">filter</span><span class="p">(</span><span class="o">|</span><span class="n">c</span><span class="o">|</span><span class="w"> </span><span class="o">!</span><span class="n">c</span><span class="p">.</span><span class="n">is_empty</span><span class="p">())</span>
 <span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="nb">Some</span><span class="p">(</span><span class="n">domain</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="fm">format!</span><span class="p">(</span><span class="s">"https://{}"</span><span class="p">,</span><span class="w"> </span><span class="n">domain</span><span class="p">.</span><span class="n">trim_end_matches</span><span class="p">(</span><span class="sc">'/'</span><span class="p">)),</span>
@@ -1263,7 +1502,7 @@
 <span class="w">            </span><span class="p">}</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">};</span>
-<span class="w">    </span><span class="nb">Some</span><span class="p">(</span><span class="fm">format!</span><span class="p">(</span><span class="s">"{base}/{}/{slug}/"</span><span class="p">,</span><span class="w"> </span><span class="n">date</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="sc">'-'</span><span class="p">,</span><span class="w"> </span><span class="s">"/"</span><span class="p">)))</span>
+<span class="w">    </span><span class="nb">Some</span><span class="p">(</span><span class="fm">format!</span><span class="p">(</span><span class="s">"{base}{path}"</span><span class="p">))</span>
 <span class="p">}</span>
 
 <span class="cp">#[cfg(test)]</span>
@@ -1470,7 +1709,8 @@
 <span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="fm">format!</span><span class="p">(</span><span class="s">"{}:{}"</span><span class="p">,</span><span class="w"> </span><span class="n">bin</span><span class="p">.</span><span class="n">display</span><span class="p">(),</span><span class="w"> </span><span class="n">std</span><span class="p">::</span><span class="n">env</span><span class="p">::</span><span class="n">var</span><span class="p">(</span><span class="s">"PATH"</span><span class="p">).</span><span class="n">unwrap</span><span class="p">());</span>
 <span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">|</span><span class="n">gh</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">,</span><span class="w"> </span><span class="n">before</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="o">|</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="k">crate</span><span class="p">::</span><span class="n">testutil</span><span class="p">::</span><span class="n">stub</span><span class="p">(</span><span class="o">&amp;</span><span class="n">bin</span><span class="p">,</span><span class="w"> </span><span class="s">"gh"</span><span class="p">,</span><span class="w"> </span><span class="n">gh</span><span class="p">);</span>
-<span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="n">script</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="fm">format!</span><span class="p">(</span><span class="s">"{before}{}"</span><span class="p">,</span><span class="w"> </span><span class="n">follow_pages_script</span><span class="p">(</span><span class="s">"me/blog"</span><span class="p">,</span><span class="w"> </span><span class="s">"https://me.github.io/blog/x/"</span><span class="p">));</span>
+<span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="n">script</span><span class="w"> </span><span class="o">=</span>
+<span class="w">                </span><span class="fm">format!</span><span class="p">(</span><span class="s">"{before}{}"</span><span class="p">,</span><span class="w"> </span><span class="n">follow_pages_script</span><span class="p">(</span><span class="s">"me/blog"</span><span class="p">,</span><span class="w"> </span><span class="s">"post live: https://me.github.io/blog/x/"</span><span class="p">));</span>
 <span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="n">out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="p">::</span><span class="n">process</span><span class="p">::</span><span class="n">Command</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="s">"sh"</span><span class="p">)</span>
 <span class="w">                </span><span class="p">.</span><span class="n">args</span><span class="p">([</span><span class="s">"-c"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">script</span><span class="p">])</span>
 <span class="w">                </span><span class="p">.</span><span class="n">current_dir</span><span class="p">(</span><span class="o">&amp;</span><span class="n">dir</span><span class="p">)</span>
@@ -1525,6 +1765,90 @@
 <span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">bare</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Doc</span><span class="p">::</span><span class="n">parse</span><span class="p">(</span><span class="s">"just text"</span><span class="p">);</span>
 <span class="w">        </span><span class="n">bare</span><span class="p">.</span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Titel"</span><span class="p">.</span><span class="n">into</span><span class="p">();</span>
 <span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">bare</span><span class="p">.</span><span class="n">render</span><span class="p">(),</span><span class="w"> </span><span class="s">"---</span><span class="se">\n</span><span class="s">layout: post</span><span class="se">\n</span><span class="s">title: </span><span class="se">\"</span><span class="s">Titel</span><span class="se">\"\n</span><span class="s">---</span><span class="se">\n\n</span><span class="s">just text"</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cp">#[test]</span>
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">the_now_page_comes_first_with_its_updated_date</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">root</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">temp_dir</span><span class="p">(</span><span class="s">"blog-now"</span><span class="p">);</span>
+<span class="w">        </span><span class="n">write</span><span class="p">(</span><span class="o">&amp;</span><span class="n">root</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="s">"_posts/2026-03-01-third.md"</span><span class="p">),</span><span class="w"> </span><span class="s">"---</span><span class="se">\n</span><span class="s">title: Third</span><span class="se">\n</span><span class="s">---</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">        </span><span class="n">write</span><span class="p">(</span><span class="o">&amp;</span><span class="n">root</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="s">"_drafts/now.md"</span><span class="p">),</span><span class="w"> </span><span class="s">"a draft that happens to be called now"</span><span class="p">);</span>
+<span class="w">        </span><span class="fm">assert!</span><span class="p">(</span><span class="n">list</span><span class="p">(</span><span class="o">&amp;</span><span class="n">root</span><span class="p">).</span><span class="n">iter</span><span class="p">().</span><span class="n">all</span><span class="p">(</span><span class="o">|</span><span class="n">p</span><span class="o">|</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">state</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">State</span><span class="p">::</span><span class="n">Now</span><span class="p">));</span>
+
+<span class="w">        </span><span class="n">write</span><span class="p">(</span><span class="o">&amp;</span><span class="n">root</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="s">"now.md"</span><span class="p">),</span><span class="w"> </span><span class="s">"---</span><span class="se">\n</span><span class="s">layout: now</span><span class="se">\n</span><span class="s">title: </span><span class="se">\"</span><span class="s">Jetzt</span><span class="se">\"\n</span><span class="s">updated: 2026-11-20</span><span class="se">\n</span><span class="s">---</span><span class="se">\n\n</span><span class="s">- x</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">posts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">list</span><span class="p">(</span><span class="o">&amp;</span><span class="n">root</span><span class="p">);</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">shown</span><span class="p">:</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="p">(</span><span class="n">State</span><span class="p">,</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;&amp;</span><span class="kt">str</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span>
+<span class="w">            </span><span class="n">posts</span><span class="p">.</span><span class="n">iter</span><span class="p">().</span><span class="n">map</span><span class="p">(</span><span class="o">|</span><span class="n">p</span><span class="o">|</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">state</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">date</span><span class="p">.</span><span class="n">as_deref</span><span class="p">(),</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">title</span><span class="p">.</span><span class="n">as_str</span><span class="p">())).</span><span class="n">collect</span><span class="p">();</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span>
+<span class="w">            </span><span class="n">shown</span><span class="p">,</span>
+<span class="w">            </span><span class="fm">vec!</span><span class="p">[</span>
+<span class="w">                </span><span class="p">(</span><span class="n">State</span><span class="p">::</span><span class="n">Now</span><span class="p">,</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="s">"2026-11-20"</span><span class="p">),</span><span class="w"> </span><span class="s">"Jetzt"</span><span class="p">),</span>
+<span class="w">                </span><span class="p">(</span><span class="n">State</span><span class="p">::</span><span class="n">Draft</span><span class="p">,</span><span class="w"> </span><span class="nb">None</span><span class="p">,</span><span class="w"> </span><span class="s">"now"</span><span class="p">),</span>
+<span class="w">                </span><span class="p">(</span><span class="n">State</span><span class="p">::</span><span class="n">Post</span><span class="p">,</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="s">"2026-03-01"</span><span class="p">),</span><span class="w"> </span><span class="s">"Third"</span><span class="p">),</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">posts</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">rel</span><span class="p">(),</span><span class="w"> </span><span class="s">"now.md"</span><span class="p">);</span>
+<span class="w">        </span><span class="fm">assert!</span><span class="p">(</span><span class="n">publish</span><span class="p">(</span><span class="o">&amp;</span><span class="n">root</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">posts</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="s">"2026-11-27"</span><span class="p">).</span><span class="n">is_err</span><span class="p">());</span>
+<span class="w">        </span><span class="fm">assert!</span><span class="p">(</span><span class="n">unpublish</span><span class="p">(</span><span class="o">&amp;</span><span class="n">root</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">posts</span><span class="p">[</span><span class="mi">0</span><span class="p">]).</span><span class="n">is_err</span><span class="p">());</span>
+
+<span class="w">        </span><span class="c1">// Without front matter: titled "Now", no date.</span>
+<span class="w">        </span><span class="n">write</span><span class="p">(</span><span class="o">&amp;</span><span class="n">root</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="s">"now.md"</span><span class="p">),</span><span class="w"> </span><span class="s">"just text"</span><span class="p">);</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">post</span><span class="p">(</span><span class="o">&amp;</span><span class="n">root</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="s">"now.md"</span><span class="p">)).</span><span class="n">unwrap</span><span class="p">();</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">((</span><span class="n">now</span><span class="p">.</span><span class="n">state</span><span class="p">,</span><span class="w"> </span><span class="n">now</span><span class="p">.</span><span class="n">date</span><span class="p">,</span><span class="w"> </span><span class="n">now</span><span class="p">.</span><span class="n">title</span><span class="p">.</span><span class="n">as_str</span><span class="p">()),</span><span class="w"> </span><span class="p">(</span><span class="n">State</span><span class="p">::</span><span class="n">Now</span><span class="p">,</span><span class="w"> </span><span class="nb">None</span><span class="p">,</span><span class="w"> </span><span class="s">"Now"</span><span class="p">));</span>
+<span class="w">        </span><span class="n">fs</span><span class="p">::</span><span class="n">remove_dir_all</span><span class="p">(</span><span class="o">&amp;</span><span class="n">root</span><span class="p">).</span><span class="n">unwrap</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cp">#[test]</span>
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">creates_the_now_page_once</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">root</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">temp_dir</span><span class="p">(</span><span class="s">"blog-now-create"</span><span class="p">);</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">create_now</span><span class="p">(</span><span class="o">&amp;</span><span class="n">root</span><span class="p">,</span><span class="w"> </span><span class="s">"2026-11-27"</span><span class="p">).</span><span class="n">unwrap</span><span class="p">();</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fs</span><span class="p">::</span><span class="n">read_to_string</span><span class="p">(</span><span class="o">&amp;</span><span class="n">path</span><span class="p">).</span><span class="n">unwrap</span><span class="p">();</span>
+<span class="w">        </span><span class="fm">assert!</span><span class="p">(</span><span class="n">text</span><span class="p">.</span><span class="n">starts_with</span><span class="p">(</span><span class="s">"---</span><span class="se">\n</span><span class="s">layout: page</span><span class="se">\n</span><span class="s">title: </span><span class="se">\"</span><span class="s">Now</span><span class="se">\"\n</span><span class="s">"</span><span class="p">),</span><span class="w"> </span><span class="s">"{text}"</span><span class="p">);</span>
+<span class="w">        </span><span class="fm">assert!</span><span class="p">(</span><span class="n">text</span><span class="p">.</span><span class="n">contains</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">permalink: /now/</span><span class="se">\n</span><span class="s">updated: 2026-11-27</span><span class="se">\n</span><span class="s">---</span><span class="se">\n</span><span class="s">"</span><span class="p">));</span>
+<span class="w">        </span><span class="n">fs</span><span class="p">::</span><span class="n">write</span><span class="p">(</span><span class="o">&amp;</span><span class="n">path</span><span class="p">,</span><span class="w"> </span><span class="s">"mine"</span><span class="p">).</span><span class="n">unwrap</span><span class="p">();</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">create_now</span><span class="p">(</span><span class="o">&amp;</span><span class="n">root</span><span class="p">,</span><span class="w"> </span><span class="s">"2026-11-28"</span><span class="p">).</span><span class="n">unwrap_err</span><span class="p">(),</span><span class="w"> </span><span class="s">"now.md already exists"</span><span class="p">);</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">fs</span><span class="p">::</span><span class="n">read_to_string</span><span class="p">(</span><span class="o">&amp;</span><span class="n">path</span><span class="p">).</span><span class="n">unwrap</span><span class="p">(),</span><span class="w"> </span><span class="s">"mine"</span><span class="p">);</span>
+
+<span class="w">        </span><span class="c1">// The blog's own layout when it has one.</span>
+<span class="w">        </span><span class="n">fs</span><span class="p">::</span><span class="n">remove_file</span><span class="p">(</span><span class="o">&amp;</span><span class="n">path</span><span class="p">).</span><span class="n">unwrap</span><span class="p">();</span>
+<span class="w">        </span><span class="n">write</span><span class="p">(</span><span class="o">&amp;</span><span class="n">root</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="s">"_layouts/now.html"</span><span class="p">),</span><span class="w"> </span><span class="s">""</span><span class="p">);</span>
+<span class="w">        </span><span class="fm">assert!</span><span class="p">(</span><span class="n">fs</span><span class="p">::</span><span class="n">read_to_string</span><span class="p">(</span><span class="n">create_now</span><span class="p">(</span><span class="o">&amp;</span><span class="n">root</span><span class="p">,</span><span class="w"> </span><span class="s">"2026-11-27"</span><span class="p">).</span><span class="n">unwrap</span><span class="p">()).</span><span class="n">unwrap</span><span class="p">().</span><span class="n">contains</span><span class="p">(</span><span class="s">"layout: now</span><span class="se">\n</span><span class="s">"</span><span class="p">));</span>
+<span class="w">        </span><span class="n">fs</span><span class="p">::</span><span class="n">remove_dir_all</span><span class="p">(</span><span class="o">&amp;</span><span class="n">root</span><span class="p">).</span><span class="n">unwrap</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cp">#[test]</span>
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">stamps_the_updated_date</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span>
+<span class="w">            </span><span class="n">with_updated</span><span class="p">(</span><span class="s">"---</span><span class="se">\n</span><span class="s">title: Now</span><span class="se">\n</span><span class="s">updated: 2026-01-01</span><span class="se">\n</span><span class="s">tags: [x]</span><span class="se">\n</span><span class="s">---</span><span class="se">\n\n</span><span class="s">updated: body</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="s">"2026-11-27"</span><span class="p">)</span>
+<span class="w">                </span><span class="p">.</span><span class="n">unwrap</span><span class="p">(),</span>
+<span class="w">            </span><span class="s">"---</span><span class="se">\n</span><span class="s">title: Now</span><span class="se">\n</span><span class="s">updated: 2026-11-27</span><span class="se">\n</span><span class="s">tags: [x]</span><span class="se">\n</span><span class="s">---</span><span class="se">\n\n</span><span class="s">updated: body</span><span class="se">\n</span><span class="s">"</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span>
+<span class="w">            </span><span class="n">with_updated</span><span class="p">(</span><span class="s">"---</span><span class="se">\n</span><span class="s">title: Now</span><span class="se">\n</span><span class="s">---</span><span class="se">\n\n</span><span class="s">text"</span><span class="p">,</span><span class="w"> </span><span class="s">"2026-11-27"</span><span class="p">).</span><span class="n">unwrap</span><span class="p">(),</span>
+<span class="w">            </span><span class="s">"---</span><span class="se">\n</span><span class="s">title: Now</span><span class="se">\n</span><span class="s">updated: 2026-11-27</span><span class="se">\n</span><span class="s">---</span><span class="se">\n\n</span><span class="s">text"</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">with_updated</span><span class="p">(</span><span class="s">"no front matter"</span><span class="p">,</span><span class="w"> </span><span class="s">"2026-11-27"</span><span class="p">),</span><span class="w"> </span><span class="nb">None</span><span class="p">);</span>
+
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">root</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">temp_dir</span><span class="p">(</span><span class="s">"blog-now-stamp"</span><span class="p">);</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">root</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="s">"now.md"</span><span class="p">);</span>
+<span class="w">        </span><span class="n">write</span><span class="p">(</span><span class="o">&amp;</span><span class="n">path</span><span class="p">,</span><span class="w"> </span><span class="s">"---</span><span class="se">\n</span><span class="s">updated: 2026-01-01</span><span class="se">\n</span><span class="s">---</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">        </span><span class="n">stamp_updated</span><span class="p">(</span><span class="o">&amp;</span><span class="n">path</span><span class="p">,</span><span class="w"> </span><span class="s">"2026-11-27"</span><span class="p">).</span><span class="n">unwrap</span><span class="p">();</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">post</span><span class="p">(</span><span class="o">&amp;</span><span class="n">path</span><span class="p">).</span><span class="n">unwrap</span><span class="p">().</span><span class="n">date</span><span class="p">.</span><span class="n">as_deref</span><span class="p">(),</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="s">"2026-11-27"</span><span class="p">));</span>
+<span class="w">        </span><span class="n">write</span><span class="p">(</span><span class="o">&amp;</span><span class="n">path</span><span class="p">,</span><span class="w"> </span><span class="s">"nothing"</span><span class="p">);</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">stamp_updated</span><span class="p">(</span><span class="o">&amp;</span><span class="n">path</span><span class="p">,</span><span class="w"> </span><span class="s">"2026-11-27"</span><span class="p">).</span><span class="n">unwrap_err</span><span class="p">(),</span><span class="w"> </span><span class="s">"now.md has no front matter"</span><span class="p">);</span>
+<span class="w">        </span><span class="n">fs</span><span class="p">::</span><span class="n">remove_dir_all</span><span class="p">(</span><span class="o">&amp;</span><span class="n">root</span><span class="p">).</span><span class="n">unwrap</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cp">#[test]</span>
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">now_page_url_and_commit</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">root</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">temp_dir</span><span class="p">(</span><span class="s">"blog-now-url"</span><span class="p">);</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">root</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="s">"now.md"</span><span class="p">);</span>
+<span class="w">        </span><span class="n">write</span><span class="p">(</span><span class="o">&amp;</span><span class="n">now</span><span class="p">,</span><span class="w"> </span><span class="s">"---</span><span class="se">\n</span><span class="s">title: Now</span><span class="se">\n</span><span class="s">---</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">post_url</span><span class="p">(</span><span class="o">&amp;</span><span class="n">root</span><span class="p">,</span><span class="w"> </span><span class="s">"jan/blog"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">now</span><span class="p">).</span><span class="n">as_deref</span><span class="p">(),</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="s">"https://jan.github.io/blog/now/"</span><span class="p">));</span>
+<span class="w">        </span><span class="n">write</span><span class="p">(</span><span class="o">&amp;</span><span class="n">now</span><span class="p">,</span><span class="w"> </span><span class="s">"---</span><span class="se">\n</span><span class="s">permalink: </span><span class="se">\"</span><span class="s">jetzt/</span><span class="se">\"\n</span><span class="s">---</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">        </span><span class="n">fs</span><span class="p">::</span><span class="n">write</span><span class="p">(</span><span class="n">root</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="s">"CNAME"</span><span class="p">),</span><span class="w"> </span><span class="s">"blog.example.org"</span><span class="p">).</span><span class="n">unwrap</span><span class="p">();</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">post_url</span><span class="p">(</span><span class="o">&amp;</span><span class="n">root</span><span class="p">,</span><span class="w"> </span><span class="s">"jan/blog"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">now</span><span class="p">).</span><span class="n">as_deref</span><span class="p">(),</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="s">"https://blog.example.org/jetzt/"</span><span class="p">));</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">commit_now_cmd</span><span class="p">(</span><span class="s">"now: update"</span><span class="p">),</span><span class="w"> </span><span class="s">"git add -A -- now.md &amp;&amp; git commit -m 'now: update' &amp;&amp; git push"</span><span class="p">);</span>
+<span class="w">        </span><span class="n">fs</span><span class="p">::</span><span class="n">remove_dir_all</span><span class="p">(</span><span class="o">&amp;</span><span class="n">root</span><span class="p">).</span><span class="n">unwrap</span><span class="p">();</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="cp">#[test]</span>

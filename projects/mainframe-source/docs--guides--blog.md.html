@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>docs/guides/blog.md — Mainframe — Jan</title>
-  <link rel="stylesheet" href="../../styles.css?v=b2765642" />
+  <link rel="stylesheet" href="../../styles.css?v=da0acc1d" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -87,10 +87,12 @@ this in the blog's own repo, so nothing changes anywhere else.</p>
 same repo, <code>L</code> opens the blog picker and the footer shows <code>L blog</code>. In every
 other folder <code>L</code> does nothing.</p>
 <h2 class="heading-element" dir="auto" id="the-picker">The picker</h2>
-<p dir="auto"><code>L</code> lists the drafts in <code>_drafts/</code> first, the ones you changed last on top,
-then the posts in <code>_posts/</code>, newest first. Each row shows whether it's a
-draft or a post, the post's date, and the title from its front matter (the
-file name when there is none).</p>
+<p dir="auto"><code>L</code> lists the blog's <a href="#the-now-page">/now page</a> on top when it has one,
+then the drafts in <code>_drafts/</code>, the ones you changed last on top, then the
+posts in <code>_posts/</code>, newest first. Each row shows whether it's the /now page,
+a draft or a post, the post's date (for the /now page, the day it was last
+updated), and the title from its front matter (the file name when there is
+none).</p>
 <p dir="auto">Letters are commands here, so <code>/</code> starts the filter: type, then <code>Enter</code>
 keeps it, <code>Esc</code> clears it.</p>
 <p dir="auto"><code>Enter</code> or <code>e</code> opens the selected post in the post editor (below). <code>E</code>
@@ -164,13 +166,35 @@ output pane, like everything else.</p>
 <p dir="auto"><code>u</code> moves a post back to <code>_drafts/</code>, without the date, and doesn't commit:
 <code>p</code> publishes it again later with that day's date.</p>
 <p dir="auto"><code>d</code> moves a draft or a post to the trash, after asking.</p>
+<h2 class="heading-element" dir="auto" id="the-now-page">The /now page</h2>
+<p dir="auto">A <a href="https://nownownow.com/about" rel="nofollow">/now page</a> says what you're up to at the
+moment. It isn't a post: it's one page, <code>now.md</code> at the top of the blog,
+that you rewrite whenever that changes, with the day of the last change in
+its front matter as <code>updated:</code>.</p>
+<p dir="auto"><code>n</code> opens it in the post editor. When the blog has none yet, <code>n</code> writes one
+first:</p>
+<div class="highlight highlight-source-yaml notranslate position-relative overflow-auto" dir="auto"><pre>---
+<span class="pl-ent">layout</span>: <span class="pl-s">now</span>
+<span class="pl-ent">title</span>: <span class="pl-s"><span class="pl-pds">"</span>Now<span class="pl-pds">"</span></span>
+<span class="pl-ent">description</span>: <span class="pl-s"><span class="pl-pds">"</span>What I'm focused on at the moment.<span class="pl-pds">"</span></span>
+<span class="pl-ent">permalink</span>: <span class="pl-s">/now/</span>
+<span class="pl-ent">updated</span>: <span class="pl-c1">2026-11-27</span>
+---</pre></div>
+<p dir="auto">The layout is <code>now</code> when the blog has <code>_layouts/now.html</code>, and <code>page</code>
+otherwise, which Jekyll themes have. Show <code>page.updated</code> in your layout to
+tell readers how current the page is.</p>
+<p dir="auto"><code>P</code> in the picker, or <code>Ctrl-G</code> in the editor, pushes it: when <code>now.md</code> has
+changes, Mainframe sets <code>updated:</code> to today, commits only <code>now.md</code> with
+<code>now: update</code> (<code>now: add the /now page</code> the first time), and pushes. <code>p</code> and
+<code>u</code> don't apply to it, since it has no draft; <code>d</code> trashes it like a post.</p>
 <h2 class="heading-element" dir="auto" id="following-the-github-pages-build">Following the GitHub Pages build</h2>
 <p dir="auto">With the <a href="https://cli.github.com">GitHub CLI</a> (<code>gh</code>) installed and <code>origin</code>
 on GitHub, <code>p</code> and <code>P</code> wait for the Pages build of the commit they pushed,
 checking every five seconds for up to three minutes. Then they print and
 send a desktop notification: <code>post live:</code> with the post's address, or the
-build error.</p>
-<p dir="auto">The address follows Jekyll's default permalink <code>/:year/:month/:day/:title/</code>,
+build error. For the /now page, that's <code>now page live:</code>.</p>
+<p dir="auto">The address follows Jekyll's default permalink <code>/:year/:month/:day/:title/</code>
+(for the /now page, its <code>permalink:</code>, else <code>/now/</code>),
 on the domain in the <code>CNAME</code> file, or else <code>&lt;owner&gt;.github.io/&lt;repo&gt;</code>.
 Pages only builds the branch it's set up for, so pushing another branch
 ends with "no finished Pages build".</p>
