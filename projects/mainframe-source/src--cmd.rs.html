@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>src/cmd.rs — Mainframe — Jan</title>
+  <link rel="stylesheet" href="../../styles.css?v=e5616a95" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="layout">
+    <header class="rail h-card" id="rail">
+<div class="rail__top">
+<a class="brand" href="../../index.html#top">
+<span class="brand__name p-name">Jan</span>
+<span class="brand__meta p-note">systems &amp; infrastructure<br/>Code, Code &amp; Code</span>
+</a>
+<!-- h-card: canonical URL of this identity (microformats, not shown) -->
+<a aria-hidden="true" class="u-url u-uid" hidden="" href="https://mergedcloud.de/" tabindex="-1"></a>
+<button aria-controls="nav" aria-expanded="false" aria-label="Toggle menu" class="menu-toggle" id="menuToggle">
+<span></span><span></span><span></span>
+</button>
+</div>
+<nav aria-label="Sections" class="nav" id="nav">
+<a data-path="~/projects" href="../../index.html#projects">Projects</a>
+<a data-path="~/work" href="../../index.html#work">Work</a>
+<a data-path="~/education" href="../../index.html#education">Education</a>
+<a data-path="~/skills" href="../../index.html#skills">Skills</a>
+<a data-path="~/about" href="../../index.html#about">About Me</a>
+<a data-path="~/log" href="https://blog.mergedcloud.de/">Blog</a>
+<a data-path="~/contact" href="../../index.html#contact">Contact</a>
+</nav>
+<div class="rail__status">
+<span aria-hidden="true" class="dot"></span>
+<span>open to work</span>
+</div>
+</header>
+    <nav class="file-tree" data-tree-key="mainframe"><p class="file-tree__title">Files</p><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">docs/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">guides/</span><ul class="tree"><li class="tree-file"><a href="docs--guides--blog.md.html">blog.md</a></li><li class="tree-file"><a href="docs--guides--cleanup.md.html">cleanup.md</a></li><li class="tree-file"><a href="docs--guides--files.md.html">files.md</a></li><li class="tree-file"><a href="docs--guides--first-steps.md.html">first-steps.md</a></li><li class="tree-file"><a href="docs--guides--git.md.html">git.md</a></li><li class="tree-file"><a href="docs--guides--install-and-deploy.md.html">install-and-deploy.md</a></li><li class="tree-file"><a href="docs--guides--projects.md.html">projects.md</a></li><li class="tree-file"><a href="docs--guides--running.md.html">running.md</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">reference/</span><ul class="tree"><li class="tree-file"><a href="docs--reference--config.md.html">config.md</a></li><li class="tree-file"><a href="docs--reference--keys.md.html">keys.md</a></li></ul></li><li class="tree-file"><a href="docs--README.md.html">README.md</a></li><li class="tree-file"><a href="docs--install.md.html">install.md</a></li><li class="tree-file"><a href="docs--introduction.md.html">introduction.md</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">src/</span><ul class="tree"><li class="tree-dir"><span class="tree-dir__name">app/</span><ul class="tree"><li class="tree-file"><a href="src--app--actions.rs.html">actions.rs</a></li><li class="tree-file"><a href="src--app--blog_picker.rs.html">blog_picker.rs</a></li><li class="tree-file"><a href="src--app--branch_picker.rs.html">branch_picker.rs</a></li><li class="tree-file"><a href="src--app--cleanup.rs.html">cleanup.rs</a></li><li class="tree-file"><a href="src--app--deploy.rs.html">deploy.rs</a></li><li class="tree-file"><a href="src--app--file_finder.rs.html">file_finder.rs</a></li><li class="tree-file"><a href="src--app--files.rs.html">files.rs</a></li><li class="tree-file"><a href="src--app--git_menu.rs.html">git_menu.rs</a></li><li class="tree-file"><a href="src--app--installer.rs.html">installer.rs</a></li><li class="tree-file"><a href="src--app--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="src--app--notes_view.rs.html">notes_view.rs</a></li><li class="tree-file"><a href="src--app--post_editor.rs.html">post_editor.rs</a></li><li class="tree-file"><a href="src--app--project_picker.rs.html">project_picker.rs</a></li><li class="tree-file"><a href="src--app--prompt.rs.html">prompt.rs</a></li><li class="tree-file"><a href="src--app--task_picker.rs.html">task_picker.rs</a></li><li class="tree-file"><a href="src--app--tasks.rs.html">tasks.rs</a></li><li class="tree-file"><a href="src--app--workspaces.rs.html">workspaces.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">platform/</span><ul class="tree"><li class="tree-file"><a href="src--platform--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="src--platform--unix.rs.html">unix.rs</a></li><li class="tree-file"><a href="src--platform--windows.rs.html">windows.rs</a></li></ul></li><li class="tree-dir"><span class="tree-dir__name">ui/</span><ul class="tree"><li class="tree-file"><a href="src--ui--browser.rs.html">browser.rs</a></li><li class="tree-file"><a href="src--ui--cleanup.rs.html">cleanup.rs</a></li><li class="tree-file"><a href="src--ui--deploy.rs.html">deploy.rs</a></li><li class="tree-file"><a href="src--ui--footer.rs.html">footer.rs</a></li><li class="tree-file"><a href="src--ui--form.rs.html">form.rs</a></li><li class="tree-file"><a href="src--ui--header.rs.html">header.rs</a></li><li class="tree-file"><a href="src--ui--help.rs.html">help.rs</a></li><li class="tree-file"><a href="src--ui--installer.rs.html">installer.rs</a></li><li class="tree-file"><a href="src--ui--mod.rs.html">mod.rs</a></li><li class="tree-file"><a href="src--ui--notes_view.rs.html">notes_view.rs</a></li><li class="tree-file"><a href="src--ui--output.rs.html">output.rs</a></li><li class="tree-file"><a href="src--ui--pickers.rs.html">pickers.rs</a></li><li class="tree-file"><a href="src--ui--post_editor.rs.html">post_editor.rs</a></li></ul></li><li class="tree-file"><a href="src--ansi.rs.html">ansi.rs</a></li><li class="tree-file"><a href="src--blog.rs.html">blog.rs</a></li><li class="tree-file"><a href="src--browser.rs.html">browser.rs</a></li><li class="tree-file"><a href="src--cleanup.rs.html">cleanup.rs</a></li><li class="tree-file tree-file--active"><a href="src--cmd.rs.html">cmd.rs</a></li><li class="tree-file"><a href="src--complete.rs.html">complete.rs</a></li><li class="tree-file"><a href="src--config.rs.html">config.rs</a></li><li class="tree-file"><a href="src--deploy.rs.html">deploy.rs</a></li><li class="tree-file"><a href="src--desktop.rs.html">desktop.rs</a></li><li class="tree-file"><a href="src--filter_list.rs.html">filter_list.rs</a></li><li class="tree-file"><a href="src--form.rs.html">form.rs</a></li><li class="tree-file"><a href="src--fuzzy.rs.html">fuzzy.rs</a></li><li class="tree-file"><a href="src--git.rs.html">git.rs</a></li><li class="tree-file"><a href="src--history.rs.html">history.rs</a></li><li class="tree-file"><a href="src--install.rs.html">install.rs</a></li><li class="tree-file"><a href="src--line.rs.html">line.rs</a></li><li class="tree-file"><a href="src--locate.rs.html">locate.rs</a></li><li class="tree-file"><a href="src--main.rs.html">main.rs</a></li><li class="tree-file"><a href="src--markdown.rs.html">markdown.rs</a></li><li class="tree-file"><a href="src--notes.rs.html">notes.rs</a></li><li class="tree-file"><a href="src--proc.rs.html">proc.rs</a></li><li class="tree-file"><a href="src--project.rs.html">project.rs</a></li><li class="tree-file"><a href="src--projects.rs.html">projects.rs</a></li><li class="tree-file"><a href="src--release.rs.html">release.rs</a></li><li class="tree-file"><a href="src--run.rs.html">run.rs</a></li><li class="tree-file"><a href="src--scaffold.rs.html">scaffold.rs</a></li><li class="tree-file"><a href="src--settings.rs.html">settings.rs</a></li><li class="tree-file"><a href="src--shell.rs.html">shell.rs</a></li><li class="tree-file"><a href="src--targets.rs.html">targets.rs</a></li><li class="tree-file"><a href="src--task.rs.html">task.rs</a></li><li class="tree-file"><a href="src--testutil.rs.html">testutil.rs</a></li><li class="tree-file"><a href="src--textarea.rs.html">textarea.rs</a></li><li class="tree-file"><a href="src--watch.rs.html">watch.rs</a></li></ul></li><li class="tree-file"><a href="Cargo.lock.html">Cargo.lock</a></li><li class="tree-file"><a href="Cargo.toml.html">Cargo.toml</a></li><li class="tree-file"><a href="LICENSE.html">LICENSE</a></li><li class="tree-file"><a href="rustfmt.toml.html">rustfmt.toml</a></li></ul></nav><script>
+(function () {
+  var tree = document.currentScript.previousElementSibling;
+  var key = "file-tree-scroll:" + tree.dataset.treeKey;
+  var saved = null;
+  try {
+    saved = sessionStorage.getItem(key);
+    sessionStorage.removeItem(key);
+  } catch (e) {}
+
+  if (saved !== null) {
+    tree.scrollTop = +saved;
+  } else {
+    var active = tree.querySelector(".tree-file--active");
+    if (active) {
+      var a = active.getBoundingClientRect();
+      var t = tree.getBoundingClientRect();
+      if (a.bottom > t.bottom) {
+        tree.scrollTop += a.top - t.top - (tree.clientHeight - a.height) / 2;
+      }
+    }
+  }
+
+  tree.addEventListener("click", function (e) {
+    if (!e.target.closest("a")) return;
+    try { sessionStorage.setItem(key, String(tree.scrollTop)); } catch (err) {}
+  });
+})();
+</script>
+    <main class="main" id="main">
+      <section class="section source-page">
+        <p class="section__path">
+          <a href="../../index.html#projects" class="link">~/projects</a> /
+          <a href="../mainframe.html" class="link">mainframe</a> / source
+        </p>
+        <div class="source-page__head">
+          <h1 class="section__title">src/cmd.rs</h1>
+          <a href="../mainframe.html" class="link">← Back to Mainframe</a>
+        </div>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">  1</span>
+<span class="normal">  2</span>
+<span class="normal">  3</span>
+<span class="normal">  4</span>
+<span class="normal">  5</span>
+<span class="normal">  6</span>
+<span class="normal">  7</span>
+<span class="normal">  8</span>
+<span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span>
+<span class="normal">245</span>
+<span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span>
+<span class="normal">250</span>
+<span class="normal">251</span>
+<span class="normal">252</span>
+<span class="normal">253</span>
+<span class="normal">254</span>
+<span class="normal">255</span>
+<span class="normal">256</span>
+<span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span>
+<span class="normal">262</span>
+<span class="normal">263</span>
+<span class="normal">264</span>
+<span class="normal">265</span>
+<span class="normal">266</span>
+<span class="normal">267</span>
+<span class="normal">268</span>
+<span class="normal">269</span>
+<span class="normal">270</span>
+<span class="normal">271</span>
+<span class="normal">272</span>
+<span class="normal">273</span>
+<span class="normal">274</span>
+<span class="normal">275</span>
+<span class="normal">276</span>
+<span class="normal">277</span>
+<span class="normal">278</span>
+<span class="normal">279</span>
+<span class="normal">280</span>
+<span class="normal">281</span>
+<span class="normal">282</span>
+<span class="normal">283</span>
+<span class="normal">284</span>
+<span class="normal">285</span>
+<span class="normal">286</span>
+<span class="normal">287</span>
+<span class="normal">288</span>
+<span class="normal">289</span>
+<span class="normal">290</span>
+<span class="normal">291</span>
+<span class="normal">292</span>
+<span class="normal">293</span>
+<span class="normal">294</span>
+<span class="normal">295</span>
+<span class="normal">296</span>
+<span class="normal">297</span>
+<span class="normal">298</span>
+<span class="normal">299</span>
+<span class="normal">300</span>
+<span class="normal">301</span>
+<span class="normal">302</span>
+<span class="normal">303</span>
+<span class="normal">304</span>
+<span class="normal">305</span>
+<span class="normal">306</span>
+<span class="normal">307</span>
+<span class="normal">308</span>
+<span class="normal">309</span>
+<span class="normal">310</span>
+<span class="normal">311</span>
+<span class="normal">312</span>
+<span class="normal">313</span>
+<span class="normal">314</span>
+<span class="normal">315</span>
+<span class="normal">316</span>
+<span class="normal">317</span>
+<span class="normal">318</span>
+<span class="normal">319</span>
+<span class="normal">320</span>
+<span class="normal">321</span>
+<span class="normal">322</span>
+<span class="normal">323</span>
+<span class="normal">324</span>
+<span class="normal">325</span>
+<span class="normal">326</span>
+<span class="normal">327</span>
+<span class="normal">328</span>
+<span class="normal">329</span>
+<span class="normal">330</span>
+<span class="normal">331</span>
+<span class="normal">332</span>
+<span class="normal">333</span>
+<span class="normal">334</span>
+<span class="normal">335</span>
+<span class="normal">336</span>
+<span class="normal">337</span>
+<span class="normal">338</span>
+<span class="normal">339</span>
+<span class="normal">340</span>
+<span class="normal">341</span>
+<span class="normal">342</span>
+<span class="normal">343</span>
+<span class="normal">344</span>
+<span class="normal">345</span>
+<span class="normal">346</span>
+<span class="normal">347</span>
+<span class="normal">348</span>
+<span class="normal">349</span>
+<span class="normal">350</span>
+<span class="normal">351</span>
+<span class="normal">352</span>
+<span class="normal">353</span>
+<span class="normal">354</span>
+<span class="normal">355</span>
+<span class="normal">356</span>
+<span class="normal">357</span>
+<span class="normal">358</span>
+<span class="normal">359</span>
+<span class="normal">360</span>
+<span class="normal">361</span>
+<span class="normal">362</span>
+<span class="normal">363</span>
+<span class="normal">364</span>
+<span class="normal">365</span>
+<span class="normal">366</span>
+<span class="normal">367</span>
+<span class="normal">368</span>
+<span class="normal">369</span>
+<span class="normal">370</span>
+<span class="normal">371</span>
+<span class="normal">372</span>
+<span class="normal">373</span>
+<span class="normal">374</span>
+<span class="normal">375</span>
+<span class="normal">376</span>
+<span class="normal">377</span>
+<span class="normal">378</span>
+<span class="normal">379</span>
+<span class="normal">380</span>
+<span class="normal">381</span>
+<span class="normal">382</span>
+<span class="normal">383</span>
+<span class="normal">384</span>
+<span class="normal">385</span>
+<span class="normal">386</span>
+<span class="normal">387</span>
+<span class="normal">388</span>
+<span class="normal">389</span>
+<span class="normal">390</span>
+<span class="normal">391</span>
+<span class="normal">392</span>
+<span class="normal">393</span>
+<span class="normal">394</span>
+<span class="normal">395</span>
+<span class="normal">396</span>
+<span class="normal">397</span>
+<span class="normal">398</span>
+<span class="normal">399</span>
+<span class="normal">400</span>
+<span class="normal">401</span>
+<span class="normal">402</span>
+<span class="normal">403</span>
+<span class="normal">404</span>
+<span class="normal">405</span>
+<span class="normal">406</span></pre></div></td><td class="code"><div><pre><span></span><span class="sd">//! What a task runs. Mainframe's own commands are programs started directly with their</span>
+<span class="sd">//! arguments, and the logic between them is Rust ([`Builtin`]), so no shell's quoting or</span>
+<span class="sd">//! syntax gets in the way on any system; only what the user writes goes through their shell.</span>
+<span class="sd">//! `run` carries them out.</span>
+
+<span class="k">use</span><span class="w"> </span><span class="n">std</span><span class="p">::{</span>
+<span class="w">    </span><span class="n">path</span><span class="p">::{</span><span class="n">Path</span><span class="p">,</span><span class="w"> </span><span class="n">PathBuf</span><span class="p">},</span>
+<span class="w">    </span><span class="n">process</span><span class="p">::</span><span class="n">Command</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="k">use</span><span class="w"> </span><span class="n">serde</span><span class="p">::{</span><span class="n">Deserialize</span><span class="p">,</span><span class="w"> </span><span class="n">Serialize</span><span class="p">};</span>
+
+<span class="k">use</span><span class="w"> </span><span class="k">crate</span><span class="p">::{</span><span class="n">platform</span><span class="p">,</span><span class="w"> </span><span class="n">shell</span><span class="p">::</span><span class="n">Shell</span><span class="p">};</span>
+
+<span class="cp">#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">enum</span><span class="w"> </span><span class="nc">Cmd</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="sd">/// Run one after another, each only when the one before succeeded.</span>
+<span class="w">    </span><span class="n">Steps</span><span class="p">(</span><span class="nb">Vec</span><span class="o">&lt;</span><span class="n">Job</span><span class="o">&gt;</span><span class="p">),</span>
+<span class="w">    </span><span class="sd">/// A command line for the user's shell: typed with `:`, custom actions, runners.</span>
+<span class="w">    </span><span class="n">Shell</span><span class="p">(</span><span class="nb">String</span><span class="p">),</span>
+<span class="w">    </span><span class="sd">/// A POSIX sh command line: installing a system-wide .desktop entry with sudo (Linux</span>
+<span class="w">    </span><span class="sd">/// only), and output tabs saved before commands were steps. On Windows it'd run in Git's sh.</span>
+<span class="w">    </span><span class="n">Sh</span><span class="p">(</span><span class="nb">String</span><span class="p">),</span>
+<span class="p">}</span>
+
+<span class="sd">/// One step of [`Cmd::Steps`].</span>
+<span class="cp">#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">enum</span><span class="w"> </span><span class="nc">Job</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="sd">/// A program.</span>
+<span class="w">    </span><span class="n">Run</span><span class="p">(</span><span class="n">Step</span><span class="p">),</span>
+<span class="w">    </span><span class="sd">/// A step of Mainframe's own, in Rust.</span>
+<span class="w">    </span><span class="n">Do</span><span class="p">(</span><span class="n">Builtin</span><span class="p">),</span>
+<span class="p">}</span>
+
+<span class="k">impl</span><span class="w"> </span><span class="nb">From</span><span class="o">&lt;</span><span class="n">Step</span><span class="o">&gt;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">Job</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">from</span><span class="p">(</span><span class="n">s</span><span class="p">:</span><span class="w"> </span><span class="nc">Step</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">Self</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Job</span><span class="p">::</span><span class="n">Run</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">impl</span><span class="w"> </span><span class="nb">From</span><span class="o">&lt;</span><span class="n">Builtin</span><span class="o">&gt;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">Job</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">from</span><span class="p">(</span><span class="n">b</span><span class="p">:</span><span class="w"> </span><span class="nc">Builtin</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">Self</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Job</span><span class="p">::</span><span class="n">Do</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">impl</span><span class="w"> </span><span class="n">Job</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">display</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">shell</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">Shell</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">String</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">match</span><span class="w"> </span><span class="bp">self</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">Job</span><span class="p">::</span><span class="n">Run</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">display</span><span class="p">(</span><span class="n">shell</span><span class="p">),</span>
+<span class="w">            </span><span class="n">Job</span><span class="p">::</span><span class="n">Do</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">describe</span><span class="p">(),</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="sd">/// What used to be shell script between the programs: plain data, so a task can be</span>
+<span class="sd">/// rerun and saved like any other. `run` has the code.</span>
+<span class="cp">#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">enum</span><span class="w"> </span><span class="nc">Builtin</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="sd">/// Prints a line.</span>
+<span class="w">    </span><span class="n">Say</span><span class="p">(</span><span class="nb">String</span><span class="p">),</span>
+<span class="w">    </span><span class="sd">/// Waits, unless the task is stopped.</span>
+<span class="w">    </span><span class="n">Sleep</span><span class="p">(</span><span class="kt">u64</span><span class="p">),</span>
+<span class="w">    </span><span class="sd">/// Deletes local branches whose remote branch is gone, when their work is in `base`.</span>
+<span class="w">    </span><span class="n">PruneGoneBranches</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">base</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="sd">/// A command line the user wrote (release checks), in their shell.</span>
+<span class="w">    </span><span class="n">RunShell</span><span class="p">(</span><span class="nb">String</span><span class="p">),</span>
+<span class="w">    </span><span class="sd">/// Sets the first `version = "…"` line of `file`.</span>
+<span class="w">    </span><span class="n">SetVersion</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">file</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span>
+<span class="w">        </span><span class="n">version</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="sd">/// Stops unless the manifest `file` is at `version`, with `why`.</span>
+<span class="w">    </span><span class="n">RequireVersion</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">file</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span>
+<span class="w">        </span><span class="n">version</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span>
+<span class="w">        </span><span class="n">why</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="sd">/// Deletes `branch` here and on `remote`, where it's still there.</span>
+<span class="w">    </span><span class="n">DeleteBranch</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">remote</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span>
+<span class="w">        </span><span class="n">branch</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="sd">/// Follows the CI run a pushed release tag started, then shows the release.</span>
+<span class="w">    </span><span class="n">WatchRelease</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">repo</span><span class="p">:</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">        </span><span class="n">workflow</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span>
+<span class="w">        </span><span class="n">tag</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="sd">/// Waits for the GitHub Pages build of HEAD, then says `live`.</span>
+<span class="w">    </span><span class="n">FollowPages</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">repo</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span>
+<span class="w">        </span><span class="n">live</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="sd">/// Deletes files and folders, like `rm -rf`.</span>
+<span class="w">    </span><span class="n">Delete</span><span class="p">(</span><span class="nb">Vec</span><span class="o">&lt;</span><span class="n">PathBuf</span><span class="o">&gt;</span><span class="p">),</span>
+<span class="w">    </span><span class="sd">/// Runs `jobs`, then says how much room `what` freed on the disk (`expected` bytes, if known).</span>
+<span class="w">    </span><span class="n">Cleanup</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">jobs</span><span class="p">:</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="n">Job</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">        </span><span class="n">what</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span>
+<span class="w">        </span><span class="n">expected</span><span class="p">:</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="kt">u64</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="sd">/// A deploy target's deploy, rollback or backup list, from the project at `root`.</span>
+<span class="w">    </span><span class="n">Deploy</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">target</span><span class="p">:</span><span class="w"> </span><span class="nb">Box</span><span class="o">&lt;</span><span class="k">crate</span><span class="p">::</span><span class="n">deploy</span><span class="p">::</span><span class="n">Deploy</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">        </span><span class="n">root</span><span class="p">:</span><span class="w"> </span><span class="nc">PathBuf</span><span class="p">,</span>
+<span class="w">        </span><span class="n">keep_build</span><span class="p">:</span><span class="w"> </span><span class="kt">bool</span><span class="p">,</span>
+<span class="w">        </span><span class="n">run</span><span class="p">:</span><span class="w"> </span><span class="nc">crate</span><span class="p">::</span><span class="n">deploy</span><span class="p">::</span><span class="n">Run</span><span class="p">,</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="sd">/// Copies a program to where it's installed.</span>
+<span class="w">    </span><span class="n">InstallFile</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">src</span><span class="p">:</span><span class="w"> </span><span class="nc">PathBuf</span><span class="p">,</span>
+<span class="w">        </span><span class="n">dest</span><span class="p">:</span><span class="w"> </span><span class="nc">PathBuf</span><span class="p">,</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="n">RemoveFile</span><span class="p">(</span><span class="n">PathBuf</span><span class="p">),</span>
+<span class="p">}</span>
+
+<span class="k">impl</span><span class="w"> </span><span class="n">Builtin</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="sd">/// What it does, in the output pane's command line and in forms.</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">describe</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">String</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">match</span><span class="w"> </span><span class="bp">self</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">Builtin</span><span class="p">::</span><span class="n">Say</span><span class="p">(</span><span class="n">text</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="fm">format!</span><span class="p">(</span><span class="s">"echo {text}"</span><span class="p">),</span>
+<span class="w">            </span><span class="n">Builtin</span><span class="p">::</span><span class="n">Sleep</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="fm">format!</span><span class="p">(</span><span class="s">"wait {s}s"</span><span class="p">),</span>
+<span class="w">            </span><span class="n">Builtin</span><span class="p">::</span><span class="n">PruneGoneBranches</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">base</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="fm">format!</span><span class="p">(</span><span class="s">"delete branches whose remote branch is gone and whose work is in {base}"</span><span class="p">)</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="n">Builtin</span><span class="p">::</span><span class="n">RunShell</span><span class="p">(</span><span class="n">line</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">line</span><span class="p">.</span><span class="n">clone</span><span class="p">(),</span>
+<span class="w">            </span><span class="n">Builtin</span><span class="p">::</span><span class="n">SetVersion</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">file</span><span class="p">,</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="fm">format!</span><span class="p">(</span><span class="s">"set version = </span><span class="se">\"</span><span class="s">{version}</span><span class="se">\"</span><span class="s"> in {file}"</span><span class="p">),</span>
+<span class="w">            </span><span class="n">Builtin</span><span class="p">::</span><span class="n">RequireVersion</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">file</span><span class="p">,</span><span class="w"> </span><span class="n">version</span><span class="p">,</span><span class="w"> </span><span class="o">..</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="fm">format!</span><span class="p">(</span><span class="s">"check that {file} is at {version}"</span><span class="p">),</span>
+<span class="w">            </span><span class="n">Builtin</span><span class="p">::</span><span class="n">DeleteBranch</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">remote</span><span class="p">,</span><span class="w"> </span><span class="n">branch</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="fm">format!</span><span class="p">(</span><span class="s">"delete {branch} (also on {remote})"</span><span class="p">),</span>
+<span class="w">            </span><span class="n">Builtin</span><span class="p">::</span><span class="n">WatchRelease</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">workflow</span><span class="p">,</span><span class="w"> </span><span class="n">tag</span><span class="p">,</span><span class="w"> </span><span class="o">..</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="fm">format!</span><span class="p">(</span><span class="s">"follow the {workflow} run of {tag}"</span><span class="p">),</span>
+<span class="w">            </span><span class="n">Builtin</span><span class="p">::</span><span class="n">FollowPages</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="o">..</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">"wait for the GitHub Pages build"</span><span class="p">.</span><span class="n">into</span><span class="p">(),</span>
+<span class="w">            </span><span class="n">Builtin</span><span class="p">::</span><span class="n">InstallFile</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">src</span><span class="p">,</span><span class="w"> </span><span class="n">dest</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="fm">format!</span><span class="p">(</span><span class="s">"install {} → {}"</span><span class="p">,</span><span class="w"> </span><span class="k">crate</span><span class="p">::</span><span class="n">config</span><span class="p">::</span><span class="n">pretty_path</span><span class="p">(</span><span class="n">src</span><span class="p">),</span><span class="w"> </span><span class="k">crate</span><span class="p">::</span><span class="n">config</span><span class="p">::</span><span class="n">pretty_path</span><span class="p">(</span><span class="n">dest</span><span class="p">))</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="n">Builtin</span><span class="p">::</span><span class="n">RemoveFile</span><span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="fm">format!</span><span class="p">(</span><span class="s">"remove {}"</span><span class="p">,</span><span class="w"> </span><span class="k">crate</span><span class="p">::</span><span class="n">config</span><span class="p">::</span><span class="n">pretty_path</span><span class="p">(</span><span class="n">p</span><span class="p">)),</span>
+<span class="w">            </span><span class="n">Builtin</span><span class="p">::</span><span class="n">Delete</span><span class="p">(</span><span class="n">paths</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="kd">let</span><span class="w"> </span><span class="n">paths</span><span class="p">:</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="n">_</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">paths</span><span class="p">.</span><span class="n">iter</span><span class="p">().</span><span class="n">map</span><span class="p">(</span><span class="o">|</span><span class="n">p</span><span class="o">|</span><span class="w"> </span><span class="k">crate</span><span class="p">::</span><span class="n">config</span><span class="p">::</span><span class="n">pretty_path</span><span class="p">(</span><span class="n">p</span><span class="p">)).</span><span class="n">collect</span><span class="p">();</span>
+<span class="w">                </span><span class="fm">format!</span><span class="p">(</span><span class="s">"delete {}"</span><span class="p">,</span><span class="w"> </span><span class="n">paths</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="s">" "</span><span class="p">))</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="n">Builtin</span><span class="p">::</span><span class="n">Cleanup</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">what</span><span class="p">,</span><span class="w"> </span><span class="o">..</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="fm">format!</span><span class="p">(</span><span class="s">"clean {what}"</span><span class="p">),</span>
+<span class="w">            </span><span class="n">Builtin</span><span class="p">::</span><span class="n">Deploy</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">target</span><span class="p">,</span><span class="w"> </span><span class="n">run</span><span class="p">,</span><span class="w"> </span><span class="o">..</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="k">match</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">crate</span><span class="p">::</span><span class="n">deploy</span><span class="p">::</span><span class="n">Run</span><span class="p">::</span><span class="n">Deploy</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="fm">format!</span><span class="p">(</span><span class="s">"deploy {} → {}"</span><span class="p">,</span><span class="w"> </span><span class="n">target</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">target</span><span class="p">.</span><span class="n">host</span><span class="p">),</span>
+<span class="w">                </span><span class="k">crate</span><span class="p">::</span><span class="n">deploy</span><span class="p">::</span><span class="n">Run</span><span class="p">::</span><span class="n">Rollback</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="fm">format!</span><span class="p">(</span><span class="s">"roll back {} on {}"</span><span class="p">,</span><span class="w"> </span><span class="n">target</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">target</span><span class="p">.</span><span class="n">host</span><span class="p">),</span>
+<span class="w">                </span><span class="k">crate</span><span class="p">::</span><span class="n">deploy</span><span class="p">::</span><span class="n">Run</span><span class="p">::</span><span class="n">Backups</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="fm">format!</span><span class="p">(</span><span class="s">"list the backups on {}"</span><span class="p">,</span><span class="w"> </span><span class="n">target</span><span class="p">.</span><span class="n">host</span><span class="p">),</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cp">#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">Step</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">program</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span>
+<span class="w">    </span><span class="cp">#[serde(default, skip_serializing_if = </span><span class="s">"Vec::is_empty"</span><span class="cp">)]</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">args</span><span class="p">:</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="cp">#[serde(default, skip_serializing_if = </span><span class="s">"Vec::is_empty"</span><span class="cp">)]</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">env</span><span class="p">:</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="p">(</span><span class="nb">String</span><span class="p">,</span><span class="w"> </span><span class="nb">String</span><span class="p">)</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="sd">/// Skipped when this (relative to where the task runs) exists, like `meson setup build`.</span>
+<span class="w">    </span><span class="cp">#[serde(default, skip_serializing_if = </span><span class="s">"Option::is_none"</span><span class="cp">)]</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">unless_exists</span><span class="p">:</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="n">PathBuf</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="sd">/// Runs here instead of where the task runs.</span>
+<span class="w">    </span><span class="cp">#[serde(default, skip_serializing_if = </span><span class="s">"Option::is_none"</span><span class="cp">)]</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">dir</span><span class="p">:</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="n">PathBuf</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="sd">/// A failure doesn't stop the steps after it (tidying up that may have nothing to do).</span>
+<span class="w">    </span><span class="cp">#[serde(default, skip_serializing_if = </span><span class="s">"std::ops::Not::not"</span><span class="cp">)]</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">may_fail</span><span class="p">:</span><span class="w"> </span><span class="kt">bool</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="k">impl</span><span class="w"> </span><span class="n">Step</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">new</span><span class="p">(</span><span class="n">program</span><span class="p">:</span><span class="w"> </span><span class="nc">impl</span><span class="w"> </span><span class="nb">Into</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">Self</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="bp">Self</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">program</span><span class="p">:</span><span class="w"> </span><span class="nc">program</span><span class="p">.</span><span class="n">into</span><span class="p">(),</span>
+<span class="w">            </span><span class="n">args</span><span class="p">:</span><span class="w"> </span><span class="nb">Vec</span><span class="p">::</span><span class="n">new</span><span class="p">(),</span>
+<span class="w">            </span><span class="n">env</span><span class="p">:</span><span class="w"> </span><span class="nb">Vec</span><span class="p">::</span><span class="n">new</span><span class="p">(),</span>
+<span class="w">            </span><span class="n">unless_exists</span><span class="p">:</span><span class="w"> </span><span class="nb">None</span><span class="p">,</span>
+<span class="w">            </span><span class="n">dir</span><span class="p">:</span><span class="w"> </span><span class="nb">None</span><span class="p">,</span>
+<span class="w">            </span><span class="n">may_fail</span><span class="p">:</span><span class="w"> </span><span class="nc">false</span><span class="p">,</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="sd">/// A fixed command line, split at spaces: `Step::words("cargo build --release")`.</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">words</span><span class="p">(</span><span class="n">line</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">Self</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">words</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">line</span><span class="p">.</span><span class="n">split_whitespace</span><span class="p">();</span>
+<span class="w">        </span><span class="bp">Self</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="n">words</span><span class="p">.</span><span class="n">next</span><span class="p">().</span><span class="n">unwrap_or_default</span><span class="p">()).</span><span class="n">args</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="sd">/// From a setting like `editor = "code --wait"`: words, with "…" or '…' around one that</span>
+<span class="w">    </span><span class="sd">/// has spaces (`"C:\Program Files\Notepad++\notepad++.exe"`). Backslashes are kept, and</span>
+<span class="w">    </span><span class="sd">/// a leading `~` is the home folder, as a shell would have it.</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">from_setting</span><span class="p">(</span><span class="n">s</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="bp">Self</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">words</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">split_words</span><span class="p">(</span><span class="n">s</span><span class="p">).</span><span class="n">into_iter</span><span class="p">();</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">program</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">words</span><span class="p">.</span><span class="n">next</span><span class="p">()</span><span class="o">?</span><span class="p">;</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">program</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">program</span><span class="p">.</span><span class="n">starts_with</span><span class="p">(</span><span class="sc">'~'</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">crate</span><span class="p">::</span><span class="n">config</span><span class="p">::</span><span class="n">expand_tilde</span><span class="p">(</span><span class="o">&amp;</span><span class="n">program</span><span class="p">).</span><span class="n">to_string_lossy</span><span class="p">().</span><span class="n">into_owned</span><span class="p">()</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">program</span>
+<span class="w">        </span><span class="p">};</span>
+<span class="w">        </span><span class="nb">Some</span><span class="p">(</span><span class="bp">Self</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="n">program</span><span class="p">).</span><span class="n">args</span><span class="p">(</span><span class="n">words</span><span class="p">))</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="sd">/// git with colors on, since the output pane isn't a terminal.</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">git</span><span class="p">()</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">Self</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="bp">Self</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="s">"git"</span><span class="p">).</span><span class="n">args</span><span class="p">([</span><span class="s">"-c"</span><span class="p">,</span><span class="w"> </span><span class="s">"color.ui=always"</span><span class="p">])</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">arg</span><span class="p">(</span><span class="k">mut</span><span class="w"> </span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">:</span><span class="w"> </span><span class="nc">impl</span><span class="w"> </span><span class="nb">Into</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">Self</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="bp">self</span><span class="p">.</span><span class="n">args</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">into</span><span class="p">());</span>
+<span class="w">        </span><span class="bp">self</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">args</span><span class="o">&lt;</span><span class="n">S</span><span class="p">:</span><span class="w"> </span><span class="nb">Into</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="k">mut</span><span class="w"> </span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">args</span><span class="p">:</span><span class="w"> </span><span class="nc">impl</span><span class="w"> </span><span class="nb">IntoIterator</span><span class="o">&lt;</span><span class="n">Item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">S</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">Self</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="bp">self</span><span class="p">.</span><span class="n">args</span><span class="p">.</span><span class="n">extend</span><span class="p">(</span><span class="n">args</span><span class="p">.</span><span class="n">into_iter</span><span class="p">().</span><span class="n">map</span><span class="p">(</span><span class="nb">Into</span><span class="p">::</span><span class="n">into</span><span class="p">));</span>
+<span class="w">        </span><span class="bp">self</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">Path</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">Self</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="bp">self</span><span class="p">.</span><span class="n">arg</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">to_string_lossy</span><span class="p">())</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">env</span><span class="p">(</span><span class="k">mut</span><span class="w"> </span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">:</span><span class="w"> </span><span class="nc">impl</span><span class="w"> </span><span class="nb">Into</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">Self</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="bp">self</span><span class="p">.</span><span class="n">env</span><span class="p">.</span><span class="n">push</span><span class="p">((</span><span class="n">key</span><span class="p">.</span><span class="n">into</span><span class="p">(),</span><span class="w"> </span><span class="n">value</span><span class="p">.</span><span class="n">into</span><span class="p">()));</span>
+<span class="w">        </span><span class="bp">self</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">unless_exists</span><span class="p">(</span><span class="k">mut</span><span class="w"> </span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">:</span><span class="w"> </span><span class="nc">impl</span><span class="w"> </span><span class="nb">Into</span><span class="o">&lt;</span><span class="n">PathBuf</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">Self</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="bp">self</span><span class="p">.</span><span class="n">unless_exists</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">into</span><span class="p">());</span>
+<span class="w">        </span><span class="bp">self</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">in_dir</span><span class="p">(</span><span class="k">mut</span><span class="w"> </span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">dir</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">Path</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">Self</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="bp">self</span><span class="p">.</span><span class="n">dir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">dir</span><span class="p">.</span><span class="n">to_path_buf</span><span class="p">());</span>
+<span class="w">        </span><span class="bp">self</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">may_fail</span><span class="p">(</span><span class="k">mut</span><span class="w"> </span><span class="bp">self</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">Self</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="bp">self</span><span class="p">.</span><span class="n">may_fail</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">        </span><span class="bp">self</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="sd">/// This, then `next` if it succeeded.</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">then</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">next</span><span class="p">:</span><span class="w"> </span><span class="nc">impl</span><span class="w"> </span><span class="nb">Into</span><span class="o">&lt;</span><span class="n">Job</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">Cmd</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Cmd</span><span class="p">::</span><span class="n">Steps</span><span class="p">(</span><span class="fm">vec!</span><span class="p">[</span><span class="bp">self</span><span class="p">.</span><span class="n">into</span><span class="p">(),</span><span class="w"> </span><span class="n">next</span><span class="p">.</span><span class="n">into</span><span class="p">()])</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">command</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">Command</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Command</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="n">resolve</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">.</span><span class="n">program</span><span class="p">));</span>
+<span class="w">        </span><span class="n">c</span><span class="p">.</span><span class="n">args</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">.</span><span class="n">args</span><span class="p">);</span>
+<span class="w">        </span><span class="n">c</span><span class="p">.</span><span class="n">envs</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">env</span><span class="p">.</span><span class="n">iter</span><span class="p">().</span><span class="n">map</span><span class="p">(</span><span class="o">|</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="o">|</span><span class="w"> </span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="p">)));</span>
+<span class="w">        </span><span class="n">c</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="sd">/// The step as you'd type it into `shell`. The colors git is asked for are left out.</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">display</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">shell</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">Shell</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">String</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">args</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="p">[</span><span class="nb">String</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="bp">self</span><span class="p">.</span><span class="n">args</span><span class="p">;</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">program</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">"git"</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">args</span><span class="p">.</span><span class="n">starts_with</span><span class="p">(</span><span class="o">&amp;</span><span class="p">[</span><span class="s">"-c"</span><span class="p">.</span><span class="n">into</span><span class="p">(),</span><span class="w"> </span><span class="s">"color.ui=always"</span><span class="p">.</span><span class="n">into</span><span class="p">()])</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">args</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">args</span><span class="p">[</span><span class="mi">2</span><span class="o">..</span><span class="p">];</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">out</span><span class="p">:</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">env</span><span class="p">.</span><span class="n">iter</span><span class="p">().</span><span class="n">map</span><span class="p">(</span><span class="o">|</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="o">|</span><span class="w"> </span><span class="fm">format!</span><span class="p">(</span><span class="s">"{k}={}"</span><span class="p">,</span><span class="w"> </span><span class="n">shell</span><span class="p">.</span><span class="n">quote</span><span class="p">(</span><span class="n">v</span><span class="p">))).</span><span class="n">collect</span><span class="p">();</span>
+<span class="w">        </span><span class="n">out</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">shell</span><span class="p">.</span><span class="n">quote</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">.</span><span class="n">program</span><span class="p">));</span>
+<span class="w">        </span><span class="n">out</span><span class="p">.</span><span class="n">extend</span><span class="p">(</span><span class="n">args</span><span class="p">.</span><span class="n">iter</span><span class="p">().</span><span class="n">map</span><span class="p">(</span><span class="o">|</span><span class="n">a</span><span class="o">|</span><span class="w"> </span><span class="n">shell</span><span class="p">.</span><span class="n">quote</span><span class="p">(</span><span class="n">a</span><span class="p">)));</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">out</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="s">" "</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">d</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="bp">self</span><span class="p">.</span><span class="n">dir</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">line</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="fm">format!</span><span class="p">(</span><span class="s">"{line}   (in {})"</span><span class="p">,</span><span class="w"> </span><span class="k">crate</span><span class="p">::</span><span class="n">config</span><span class="p">::</span><span class="n">pretty_path</span><span class="p">(</span><span class="n">d</span><span class="p">));</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">match</span><span class="w"> </span><span class="o">&amp;</span><span class="bp">self</span><span class="p">.</span><span class="n">unless_exists</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nb">Some</span><span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="fm">format!</span><span class="p">(</span><span class="s">"{line} (if there's no {})"</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">display</span><span class="p">()),</span>
+<span class="w">            </span><span class="nb">None</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">line</span><span class="p">,</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">impl</span><span class="w"> </span><span class="nb">From</span><span class="o">&lt;</span><span class="n">Step</span><span class="o">&gt;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">Cmd</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">from</span><span class="p">(</span><span class="n">step</span><span class="p">:</span><span class="w"> </span><span class="nc">Step</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">Self</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Cmd</span><span class="p">::</span><span class="n">Steps</span><span class="p">(</span><span class="fm">vec!</span><span class="p">[</span><span class="n">step</span><span class="p">.</span><span class="n">into</span><span class="p">()])</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">impl</span><span class="w"> </span><span class="nb">From</span><span class="o">&lt;</span><span class="n">Builtin</span><span class="o">&gt;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">Cmd</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">from</span><span class="p">(</span><span class="n">b</span><span class="p">:</span><span class="w"> </span><span class="nc">Builtin</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">Self</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Cmd</span><span class="p">::</span><span class="n">Steps</span><span class="p">(</span><span class="fm">vec!</span><span class="p">[</span><span class="n">b</span><span class="p">.</span><span class="n">into</span><span class="p">()])</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">impl</span><span class="w"> </span><span class="n">Cmd</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="sd">/// A fixed command line, split at spaces.</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">words</span><span class="p">(</span><span class="n">line</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">Self</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Step</span><span class="p">::</span><span class="n">words</span><span class="p">(</span><span class="n">line</span><span class="p">).</span><span class="n">into</span><span class="p">()</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="sd">/// This, then `step` if it succeeded.</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">then</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">step</span><span class="p">:</span><span class="w"> </span><span class="nc">Step</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">Self</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">match</span><span class="w"> </span><span class="bp">self</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">Cmd</span><span class="p">::</span><span class="n">Steps</span><span class="p">(</span><span class="k">mut</span><span class="w"> </span><span class="n">steps</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">steps</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">step</span><span class="p">.</span><span class="n">into</span><span class="p">());</span>
+<span class="w">                </span><span class="n">Cmd</span><span class="p">::</span><span class="n">Steps</span><span class="p">(</span><span class="n">steps</span><span class="p">)</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="n">Cmd</span><span class="p">::</span><span class="n">Shell</span><span class="p">(</span><span class="n">line</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">Cmd</span><span class="p">::</span><span class="n">Shell</span><span class="p">(</span><span class="fm">format!</span><span class="p">(</span><span class="s">"{line} &amp;&amp; {}"</span><span class="p">,</span><span class="w"> </span><span class="n">step</span><span class="p">.</span><span class="n">display</span><span class="p">(</span><span class="o">&amp;</span><span class="n">Shell</span><span class="p">::</span><span class="n">default</span><span class="p">()))),</span>
+<span class="w">            </span><span class="n">Cmd</span><span class="p">::</span><span class="n">Sh</span><span class="p">(</span><span class="n">line</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">Cmd</span><span class="p">::</span><span class="n">Sh</span><span class="p">(</span><span class="fm">format!</span><span class="p">(</span><span class="s">"{line} &amp;&amp; {}"</span><span class="p">,</span><span class="w"> </span><span class="n">step</span><span class="p">.</span><span class="n">display</span><span class="p">(</span><span class="o">&amp;</span><span class="n">Shell</span><span class="p">::</span><span class="n">sh</span><span class="p">()))),</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="sd">/// How the output pane shows it: as you'd type it into `shell`.</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">display</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">shell</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">Shell</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">String</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">match</span><span class="w"> </span><span class="bp">self</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">Cmd</span><span class="p">::</span><span class="n">Steps</span><span class="p">(</span><span class="n">steps</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">steps</span><span class="p">.</span><span class="n">iter</span><span class="p">().</span><span class="n">map</span><span class="p">(</span><span class="o">|</span><span class="n">s</span><span class="o">|</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">display</span><span class="p">(</span><span class="n">shell</span><span class="p">)).</span><span class="n">collect</span><span class="p">::</span><span class="o">&lt;</span><span class="nb">Vec</span><span class="o">&lt;</span><span class="n">_</span><span class="o">&gt;&gt;</span><span class="p">().</span><span class="n">join</span><span class="p">(</span><span class="s">" &amp;&amp; "</span><span class="p">),</span>
+<span class="w">            </span><span class="n">Cmd</span><span class="p">::</span><span class="n">Shell</span><span class="p">(</span><span class="n">line</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">line</span><span class="p">.</span><span class="n">clone</span><span class="p">(),</span>
+<span class="w">            </span><span class="n">Cmd</span><span class="p">::</span><span class="n">Sh</span><span class="p">(</span><span class="n">line</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">line</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="k">crate</span><span class="p">::</span><span class="n">git</span><span class="p">::</span><span class="n">GIT</span><span class="p">,</span><span class="w"> </span><span class="s">"git"</span><span class="p">),</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="sd">/// On Windows `Command` only finds `.exe` files on PATH by itself; `code`, `npm` and `npx`</span>
+<span class="sd">/// are `.cmd` scripts. A full path also lets std run those safely.</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">resolve</span><span class="p">(</span><span class="n">program</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">PathBuf</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="fm">cfg!</span><span class="p">(</span><span class="n">windows</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="n">program</span><span class="p">.</span><span class="n">contains</span><span class="p">([</span><span class="sc">'/'</span><span class="p">,</span><span class="w"> </span><span class="sc">'\\'</span><span class="p">])</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">platform</span><span class="p">::</span><span class="n">which</span><span class="p">(</span><span class="n">program</span><span class="p">).</span><span class="n">unwrap_or_else</span><span class="p">(</span><span class="o">||</span><span class="w"> </span><span class="n">program</span><span class="p">.</span><span class="n">into</span><span class="p">())</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">program</span><span class="p">.</span><span class="n">into</span><span class="p">()</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="sd">/// A program's name without folder or extension, lowercased: `C:\Tools\Code.exe` → `code`.</span>
+<span class="sd">/// Splits at `/` and `\` on every system, since settings may be written for either.</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">program_stem</span><span class="p">(</span><span class="n">program</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">String</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">program</span><span class="p">.</span><span class="n">rsplit</span><span class="p">([</span><span class="sc">'/'</span><span class="p">,</span><span class="w"> </span><span class="sc">'\\'</span><span class="p">]).</span><span class="n">next</span><span class="p">().</span><span class="n">unwrap_or</span><span class="p">(</span><span class="n">program</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">stem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">match</span><span class="w"> </span><span class="n">file</span><span class="p">.</span><span class="n">rsplit_once</span><span class="p">(</span><span class="sc">'.'</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nb">Some</span><span class="p">((</span><span class="n">stem</span><span class="p">,</span><span class="w"> </span><span class="n">ext</span><span class="p">))</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="o">!</span><span class="n">stem</span><span class="p">.</span><span class="n">is_empty</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">ext</span><span class="p">.</span><span class="n">chars</span><span class="p">().</span><span class="n">all</span><span class="p">(</span><span class="o">|</span><span class="n">c</span><span class="o">|</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">is_ascii_alphanumeric</span><span class="p">())</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">stem</span><span class="p">,</span>
+<span class="w">        </span><span class="n">_</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">file</span><span class="p">,</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="w">    </span><span class="n">stem</span><span class="p">.</span><span class="n">to_ascii_lowercase</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="sd">/// Words separated by whitespace; "…" or '…' keep spaces in one. No escapes, so Windows</span>
+<span class="sd">/// paths come through as written.</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">split_words</span><span class="p">(</span><span class="n">s</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">words</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Vec</span><span class="p">::</span><span class="n">new</span><span class="p">();</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">cur</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">String</span><span class="p">::</span><span class="n">new</span><span class="p">();</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">in_word</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">quote</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">None</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">chars</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">match</span><span class="w"> </span><span class="n">quote</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nb">Some</span><span class="p">(</span><span class="n">q</span><span class="p">)</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">q</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">quote</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">None</span><span class="p">,</span>
+<span class="w">            </span><span class="nb">Some</span><span class="p">(</span><span class="n">_</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">cur</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">c</span><span class="p">),</span>
+<span class="w">            </span><span class="nb">None</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">'"'</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">'\''</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">quote</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>
+<span class="w">                </span><span class="n">in_word</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="nb">None</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">is_whitespace</span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="n">in_word</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">words</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">std</span><span class="p">::</span><span class="n">mem</span><span class="p">::</span><span class="n">take</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="n">cur</span><span class="p">));</span>
+<span class="w">                    </span><span class="n">in_word</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="nb">None</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">cur</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>
+<span class="w">                </span><span class="n">in_word</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">in_word</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">words</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">cur</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">words</span>
+<span class="p">}</span>
+
+<span class="cp">#[cfg(test)]</span>
+<span class="k">mod</span><span class="w"> </span><span class="nn">tests</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">use</span><span class="w"> </span><span class="k">super</span><span class="p">::</span><span class="o">*</span><span class="p">;</span>
+<span class="w">    </span><span class="k">use</span><span class="w"> </span><span class="k">crate</span><span class="p">::</span><span class="n">shell</span><span class="p">::</span><span class="n">Kind</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">posix</span><span class="p">()</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">Shell</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Shell</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">program</span><span class="p">:</span><span class="w"> </span><span class="s">"sh"</span><span class="p">.</span><span class="n">into</span><span class="p">(),</span><span class="w"> </span><span class="n">kind</span><span class="p">:</span><span class="w"> </span><span class="nc">Kind</span><span class="p">::</span><span class="n">Posix</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cp">#[test]</span>
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">settings_split_into_words</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">split_words</span><span class="p">(</span><span class="s">"code --wait"</span><span class="p">),</span><span class="w"> </span><span class="p">[</span><span class="s">"code"</span><span class="p">,</span><span class="w"> </span><span class="s">"--wait"</span><span class="p">]);</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span>
+<span class="w">            </span><span class="n">split_words</span><span class="p">(</span><span class="s">r#""C:\Program Files\Notepad++\notepad++.exe" -multiInst"#</span><span class="p">),</span>
+<span class="w">            </span><span class="p">[</span><span class="s">r"C:\Program Files\Notepad++\notepad++.exe"</span><span class="p">,</span><span class="w"> </span><span class="s">"-multiInst"</span><span class="p">]</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">split_words</span><span class="p">(</span><span class="s">"  vim  '' x"</span><span class="p">),</span><span class="w"> </span><span class="p">[</span><span class="s">"vim"</span><span class="p">,</span><span class="w"> </span><span class="s">""</span><span class="p">,</span><span class="w"> </span><span class="s">"x"</span><span class="p">]);</span>
+<span class="w">        </span><span class="fm">assert!</span><span class="p">(</span><span class="n">split_words</span><span class="p">(</span><span class="s">"   "</span><span class="p">).</span><span class="n">is_empty</span><span class="p">());</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">home</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">crate</span><span class="p">::</span><span class="n">config</span><span class="p">::</span><span class="n">home</span><span class="p">();</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">Step</span><span class="p">::</span><span class="n">from_setting</span><span class="p">(</span><span class="s">"~/bin/ed -w"</span><span class="p">).</span><span class="n">unwrap</span><span class="p">().</span><span class="n">program</span><span class="p">,</span><span class="w"> </span><span class="n">home</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="s">"bin/ed"</span><span class="p">).</span><span class="n">to_string_lossy</span><span class="p">());</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cp">#[test]</span>
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">display_is_what_youd_type</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">cmd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Cmd</span><span class="p">::</span><span class="n">from</span><span class="p">(</span><span class="n">Step</span><span class="p">::</span><span class="n">git</span><span class="p">().</span><span class="n">args</span><span class="p">([</span><span class="s">"commit"</span><span class="p">,</span><span class="w"> </span><span class="s">"-m"</span><span class="p">,</span><span class="w"> </span><span class="s">"it's done"</span><span class="p">])).</span><span class="n">then</span><span class="p">(</span><span class="n">Step</span><span class="p">::</span><span class="n">words</span><span class="p">(</span><span class="s">"git status --short"</span><span class="p">));</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">cmd</span><span class="p">.</span><span class="n">display</span><span class="p">(</span><span class="o">&amp;</span><span class="n">posix</span><span class="p">()),</span><span class="w"> </span><span class="s">r"git commit -m 'it'\''s done' &amp;&amp; git status --short"</span><span class="p">);</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">meson</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Step</span><span class="p">::</span><span class="n">words</span><span class="p">(</span><span class="s">"meson setup build"</span><span class="p">).</span><span class="n">unless_exists</span><span class="p">(</span><span class="s">"build"</span><span class="p">);</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">meson</span><span class="p">.</span><span class="n">display</span><span class="p">(</span><span class="o">&amp;</span><span class="n">posix</span><span class="p">()),</span><span class="w"> </span><span class="s">"meson setup build (if there's no build)"</span><span class="p">);</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">ps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Shell</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">program</span><span class="p">:</span><span class="w"> </span><span class="s">"pwsh"</span><span class="p">.</span><span class="n">into</span><span class="p">(),</span><span class="w"> </span><span class="n">kind</span><span class="p">:</span><span class="w"> </span><span class="nc">Kind</span><span class="p">::</span><span class="n">PowerShell</span><span class="w"> </span><span class="p">};</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">Step</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="s">"cargo"</span><span class="p">).</span><span class="n">args</span><span class="p">([</span><span class="s">"run"</span><span class="p">,</span><span class="w"> </span><span class="s">"--"</span><span class="p">,</span><span class="w"> </span><span class="s">"a b"</span><span class="p">]).</span><span class="n">display</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ps</span><span class="p">),</span><span class="w"> </span><span class="s">"cargo run -- 'a b'"</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cp">#[test]</span>
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">steps_survive_saving</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">cmd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Cmd</span><span class="p">::</span><span class="n">from</span><span class="p">(</span><span class="n">Step</span><span class="p">::</span><span class="n">words</span><span class="p">(</span><span class="s">"cargo build"</span><span class="p">).</span><span class="n">env</span><span class="p">(</span><span class="s">"RUSTFLAGS"</span><span class="p">,</span><span class="w"> </span><span class="s">"-D warnings"</span><span class="p">));</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">json</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">serde_json</span><span class="p">::</span><span class="n">to_string</span><span class="p">(</span><span class="o">&amp;</span><span class="n">cmd</span><span class="p">).</span><span class="n">unwrap</span><span class="p">();</span>
+<span class="w">        </span><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">serde_json</span><span class="p">::</span><span class="n">from_str</span><span class="p">::</span><span class="o">&lt;</span><span class="n">Cmd</span><span class="o">&gt;</span><span class="p">(</span><span class="o">&amp;</span><span class="n">json</span><span class="p">).</span><span class="n">unwrap</span><span class="p">(),</span><span class="w"> </span><span class="n">cmd</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div></td></tr></table></div>
+
+      </section>
+    </main>
+  </div>
+</body>
+</html>
